@@ -1,0 +1,9 @@
+<ul>
+  <% works.each do |work| %>
+    <li>
+      <strong><%= work.title %></strong>
+      <%= "by #{work.creator}" if work.creator %>
+      <%= "(#{work.publication_year})" if work.publication_year %>
+    </li>
+  <% end %>
+</ul>

@@ -18,5 +18,8 @@ csv.each do |row|
   w.creator = row["creator"]
   w.publication_year = row["publication_year"]
   w.description = row["description"]
+  unless w.valid?
+    puts w.title
+  end
   w.save!
 end
