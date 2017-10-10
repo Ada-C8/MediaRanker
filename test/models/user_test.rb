@@ -1,9 +1,11 @@
 require "test_helper"
 
 describe User do
-  let(:user) { User.new }
+  describe "valiations" do
 
-  it "must be valid" do
-    value(user).must_be :valid?
+  end
+
+  describe "relationships" do
+
   end
 end

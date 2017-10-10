@@ -1,7 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+bennett:
+  name: Bennett
 
-two:
-  name: MyString
+sarah:
+  name: Sarah
+
+lauren:
+  name: Lauren
