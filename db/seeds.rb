@@ -17,11 +17,11 @@ CSV.foreach(MEDIA_FILE, :headers => true) do |row|
   work.id = row['id']
   work.name = row['name']
   work.vin = row['vin']
-  puts "Created work: #{work.inspect}"
   successful = work.save
   if !successful
     work_failures << work
   end
+  puts "Created work: #{work.inspect}"
 end
 
 puts "Added #{Work.count} driver records"
