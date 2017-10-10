@@ -1,0 +1,36 @@
+<h2>List of works</h2>
+
+<section>
+  <h3>Albums</h3>
+  <table>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+    <% @works.each do |work| %>
+      <tr>
+        <td><%= "Votes" %></td>
+        <td><%= work.title %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td><%= "Upvote" %></td>
+      </tr>
+    <% end %>
+  </table>
+</section>
+
+<section>
+  <h3>Books</h3>
+
+</section>
+
+<section>
+  <h3>Movies</h3>
+
+</section>
+
+<p>View top media</p>
+<p>Add a new record</p>
