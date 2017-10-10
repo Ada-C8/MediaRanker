@@ -23,6 +23,8 @@ describe User do
       u = User.new(name: "name")
       u.must_respond_to :vote
     end
+
+
   end
 
   # describe "custom methods" do
