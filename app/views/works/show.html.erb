@@ -1,0 +1,27 @@
+<h2><%= @work.title %></h2>
+
+<ul>
+  <% if @work.creator %>
+    <li>
+      <p>
+        Created By:
+        <strong><%= @work.creator %></strong>
+      </p>
+    </li>
+  <% end %>
+  <% if @work.publication_year %>
+    <li>
+      <p>
+        Published:
+        <strong><%= @work.publication_year %></strong>
+      </p>
+    </li>
+  <% end %>
+  <% if @work.description %>
+    <li>
+      <p>
+        <%= @work.description %>
+      </p>
+    </li>
+  <% end %>
+</ul>
