@@ -5,3 +5,26 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'csv'
+
+WORK_FILE = Rails.root.join('db', 'media_seeds.csv')
+puts "Loading raw media data from #{WORK_FILE}"
+
+work_failures = []
+CSV.foreach(WORK_FILE, :headers => true) do |row|
+  work = Work.new
+  category = row[:category]
+  title = row[:title]
+  creator = row[:creator]
+  publication_year = row[:publication_year]
+  description = row[:description]
+  puts "Created work: #{work.inspect}"
+  sucessful = work.save
+  if !sucessful
+    work_failures << work
+  end
+end
+
+puts "Added #{Work.count} work records"
+puts "#{work_failures.length} works failed to save"
