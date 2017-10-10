@@ -1,1 +1,7 @@
 <h3>INDEX page</h3>
+<% @works.each do |work| %>
+<div class="work">
+   <strong> <%= work.category %> </strong>
+   <%= work.title %>
+</div>
+<% end %> 
