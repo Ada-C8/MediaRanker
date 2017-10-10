@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'main_page/index'
+
   get 'works/index'
 
   get 'works/show'
