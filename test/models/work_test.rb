@@ -1,9 +1,18 @@
 require "test_helper"
 
 describe Work do
-  let(:work) { Work.new }
+  describe "validations" do
+    # it "must be valid" do
+    #   value(work).must_be :valid?
+    # end
+    #
+    # it "isn't valid with out" do
+    # end
+  end
 
-  it "must be valid" do
-    value(work).must_be :valid?
+  describe "relations" do
+  end
+
+  describe "methods" do
   end
 end
