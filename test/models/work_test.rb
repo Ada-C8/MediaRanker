@@ -1,9 +1,13 @@
 require "test_helper"
 
-describe Work do
+
+describe "validations" do
   let(:work) { Work.new }
 
-  it "must be valid" do
-    value(work).must_be :valid?
+  it "requires a category" do
+    is_valid = work.valid?
+    is_valid.must_be false
+    work.error.messages.wont_include :category
   end
+
 end

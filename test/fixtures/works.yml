@@ -4,8 +4,22 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
+album:
+  category: album
+  title: Can't Buy a Thrill
+  creator: Steely Dan
+  publicaton: 1972
+  descripton: An album description
+book:
+  category: book
+  title: Hidden Figures
+  creator: Margot Lee Shetterly
+  publicaton: 2016
+  descripton: Good book that came before the movie
+movie:
+  category: album
+  title: Can't Buy a Thrill
+  creator: Steely Dan
+  publicaton: 1972
+  descripton: An album description
 # column: value
