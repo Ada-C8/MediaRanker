@@ -1,7 +1,11 @@
 <h3>INDEX page</h3>
+
 <% @works.each do |work| %>
 <div class="work">
-   <strong> <%= work.category %> </strong>
-   <%= work.title %>
+   <strong> Category: <%= work.category %> </strong>
+   <p>Title: <%= link_to work.title, work_path(work.id) %></p>
+   <p>Creator: <%= work.creator %></p>
+   <p>Publication Year: <%= work.publication_year %></p>
+   <p>Description:<%= work.description %></p>
 </div>
-<% end %> 
+<% end %>
