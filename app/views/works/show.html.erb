@@ -1,0 +1,19 @@
+<h2>Works details page</h2>
+
+<strong><%= @work.title %></strong>
+
+<ul>
+  <li><%= "Created by: #{@work.creator}" %></li>
+  <li><%= "Published: #{@work.publication_year}" %>
+</li>
+</ul>
+
+<p>
+  <%= "Description: #{@work.description}" %>
+</p>
+
+<!-- link to the main root page   -->
+
+<%= button_to "Edit", edit_work_path(@work.id), method: :get %>
+<!-- link to upvote  -->
+<%= button_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you would like to delete this entry?" } %>
