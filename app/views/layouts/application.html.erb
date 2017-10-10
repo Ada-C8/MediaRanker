@@ -9,6 +9,19 @@
   </head>
 
   <body>
+    <header>
+      <h1>Media Ranker</h1>
+      <h2>Ranking the best of everything</h2>
+      <nav>
+        <%= link_to 'top media', root_path %>
+        <%= link_to 'view all media', works_path %>
+        <%= link_to 'add a new work', new_work_path %>
+        <%= link_to 'view all users', users_path %>
+        <%= link_to 'log in', new_user_path %>
+      </nav>
+    </header>
+
     <%= yield %>
+  </footer>
   </body>
 </html>
