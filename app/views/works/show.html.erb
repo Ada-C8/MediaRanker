@@ -25,3 +25,20 @@
     </li>
   <% end %>
 </ul>
+
+<nav>
+  <ul>
+    <li>
+      <%= link_to "Back to media ranks", works_path %>
+    </li>
+    <li>
+      <%= link_to "Edit", edit_work_path(@work.id) %>
+    </li>
+    <li>
+      <%= link_to "Upvote", works_path %>
+    </li>
+    <li>
+      <%= link_to "Delete", works_path %>
+    </li>
+  </ul>
+</nav>
