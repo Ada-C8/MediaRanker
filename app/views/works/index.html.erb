@@ -1,0 +1,30 @@
+<section>
+    <h3>
+      List of Works
+    </h3>
+
+    <h4> Albums
+    </h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Votes</th>
+            <th>Title</th>
+            <th>Created By</th>
+            <th>Published</th>
+            <th>Upvote</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @works.each do |work| %>
+            <tr>
+              <td> TBD </td>
+              <td> <%= work.title %> </td>
+              <td> <%= work.creator %> </td>
+              <td> <%= work.publication_year %> </td>
+              <td> upvote button </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+</section>
