@@ -3,8 +3,8 @@ class WorksController < ApplicationController
     @works = Work.all
   end
 
-  def show
-    @work = Work.find(params[:id])
-  end
-  
+  # def show
+  #   @work = Work.find(params[:id])
+  # end
+
 end
