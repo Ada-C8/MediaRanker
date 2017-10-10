@@ -16,5 +16,17 @@ Rails.application.routes.draw do
 
   get 'works/index'
 
+  get '/works/new', to: 'works#new', as: 'new_work'
+
+  get '/works/:id/edit', to: 'works#edit', as: 'edit_work'
+
+  post '/works', to: 'works#create', as: 'works'
+
+  patch '/works/:id', to: 'works#update'
+
+  get 'works/:id', to: 'works#show', as: 'work'
+
+  delete '/works/:id', to: 'works#destory'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
