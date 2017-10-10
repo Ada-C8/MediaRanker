@@ -1,0 +1,9 @@
+<h2>All Works</h2>
+
+<ul>
+  <% @works.each do |work| %>
+    <li>
+      <strong><%= work.title %></strong>: by <%=work.creator%>
+    </li>
+  <%end%>
+</ul>
