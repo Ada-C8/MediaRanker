@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: one
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyText
+hp:
+  category: book
+  title: "Harry Potter"
+  creator: "J.K. Rowling"
+  publication_year: 2000
+  description: "magical and fantastical"
 
-two:
-  category: two
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyText
+dune:
+  category: book
+  title: Dune
+  creator: Frank Herbert
+  publication_year: 1974
+  description: happy face
+
+nonsense:
+  category: misc
+  title: Stuff and nonsense
+  creator: anonymous
+  publication_year: 2005
+  description: etc etc etc
