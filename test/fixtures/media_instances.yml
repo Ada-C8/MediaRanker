@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  media_type: Music
+  title: MyString
+  creator: MyString
+  pub_yr: 1986
+  description: MyString
+
+two:
+  media_type: Book
+  title: MyString
+  creator: MyString
+  pub_yr: 1873
+  description: MyString
