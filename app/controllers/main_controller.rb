@@ -3,7 +3,4 @@ class MainController < ApplicationController
     @works = Work.all
   end
 
-  def new
-    @work = Work.new
-  end
 end
