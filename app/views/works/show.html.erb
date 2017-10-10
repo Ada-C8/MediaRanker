@@ -1,0 +1,19 @@
+<section class="details">
+  <h1><%= @work.title %></h1>
+  <ul>
+    <li>Created by: <%= @work.creator %></li>
+    <li>Published: <%= @work.publication_year %></li>
+    <li>Description: <%= @work.description %></li>
+  </ul>
+
+  <ul>
+    <li><%= link_to "Back to Media Ranks", root_path %></li>
+    <li><%= link_to "Edit", edit_work_path(@work.id) %></li>        <li><%= link_to "Upvote", root_path %></li>
+    <li><%= link_to "Delete", work_path(@work.id), method: :delete %></li>
+
+  </ul>
+</section>
+
+<section class="votes">
+  <h1>Votes for this Album</h1>
+</section>

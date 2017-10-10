@@ -1,0 +1,32 @@
+<section class="spotlight">
+  <h1>Media Spotlight: </h1>
+  <% top = Work.all[0] %>
+  <%= link_to top.title, work_path(top.id)%> by <%= top.creator %>
+</section>
+
+<section class="top-ten">
+  <h1>Top Movies</h1>
+  <ul>
+    <% movies = Work.where(category:"movie")[0..9]%>
+    <% movies.each do |work| %>
+      <li><%= link_to work.title, work_path(work.id)%> by <%= work.creator %></li>
+    <% end %>
+  </ul>
+
+  <h1>Top Books</h1>
+  <ul>
+    <% books = Work.where(category:"book")[0..9]%>
+    <% books.each do |work| %>
+      <li><%= link_to work.title, work_path(work.id)%> by <%= work.creator %></li>
+    <% end %>
+  </ul>
+
+  <h1>Top Albums</h1>
+  <ul>
+    <% albums = Work.where(category:"album")[0..9]%>
+    <% albums.each do |work| %>
+      <li><%= link_to work.title, work_path(work.id)%> by <%= work.creator %></li>
+    <% end %>
+  </ul>
+
+</section>
