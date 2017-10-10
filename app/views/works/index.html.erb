@@ -1,1 +1,7 @@
 <h2>Hey this is the index!</h2>
+
+<ol>
+  <% @works.each do |work|%>
+    <li><%= link_to work.title, work_path(work.id) %></li>
+    <% end %>
+</ol>
