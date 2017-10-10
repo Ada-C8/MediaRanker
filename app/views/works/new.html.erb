@@ -1,0 +1,21 @@
+<h2>Add new work</h2>
+
+<%= form_for @work do |f| %>
+  <%= f.label "Title" %>
+  <%= f.text_field :title %>
+
+  <%= f.label "Creator" %>
+  <%= f.text_field :creator %>
+
+  <%= f.label "Category" %>
+  <%= f.text_field :category %>
+
+  <%= f.label "Publication_year" %>
+  <%= f.text_field :publication_year %>
+
+  <%= f.label "Description" %>
+  <%= f.text_field :description %>
+
+  <%= f.submit "Submit" %>
+
+<% end %>
