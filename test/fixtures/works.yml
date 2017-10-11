@@ -7,6 +7,13 @@ test_book:
   publication_year: 1950
   description: "A book that is turning out to be kind of true."
 
+another_test:
+  category: "album"
+  title: "Some Album"
+  creator: "George Michael"
+  publication_year: 1997
+  description: "An album for people that like albums"
+
 titleless:
  category: "book"
  title:
