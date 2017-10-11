@@ -17,4 +17,23 @@ class WorksController < ApplicationController
   def show
     @work = Work.find(params[:id])
   end
+
+  def edit
+    @work = Work.find(params[:id])
+  end
+
+  def update
+    work_updates = params[:work]
+    @work = Work.find(params[:id])
+
+    @work.title = work_updates[:title]
+    @work.creator = work_updates[:creator]
+    @work.category= work_updates[:category]
+    @work.publication_year = work_updates[:publication_year]
+    @work.description = work_updates[:description]
+
+    @work.save
+
+    redirect_to work_path(@work)
+  end
 end
