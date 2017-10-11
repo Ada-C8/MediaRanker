@@ -19,6 +19,7 @@ class WorksController < ApplicationController
       flash[:sucess] = "Successfully created #{@work.category} #{@work.id}"
       redirect_to work_path(@work.id)
     else
+      flash.now[:error] = "A problem occurred: Could not create #{@work.category}"
       render :new
     end
   end
@@ -36,6 +37,7 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path(@work.id)
     else
+      flash.now[:error] = "A problem occurred: Could not update #{@work.category}"
       render :edit
     end
   end
@@ -43,7 +45,8 @@ class WorksController < ApplicationController
   def destroy
     @work = Work.find_by(id: params[:id])
     @work.destroy
-    redirect_to works_path
+    flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
+    redirect_to root_path
   end
 
   private

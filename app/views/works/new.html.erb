@@ -1,4 +1,14 @@
+<% if @work.errors.any? %>
+<ul>
+  <% @work.errors.each do |column, message| %>
+  <li>
+    <%= column %>: <%= message %>
+  </li>
+  <% end %>
+</ul>
+<% end %>
 <h2>Add a new work</h2>
+
 
 <%= form_for @work do |f| %>
   <%= f.label :category %>
