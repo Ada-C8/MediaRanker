@@ -13,6 +13,11 @@
       <h2><%= link_to 'Media Ranker', root_path %></h2>
       <small>Ranking the Best of Everything</small>
     </nav>
+    <section class="flash">
+      <% flash.each do |name, message| %>
+        <div class="<%= name %>"><%= message %></div>
+      <% end %>
+    </section>
     <%= yield %>
   </body>
 </html>
