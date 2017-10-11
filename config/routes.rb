@@ -11,11 +11,11 @@ Rails.application.routes.draw do
 
   get '/works/:id', to: 'works#show', as: 'work' # work_path
 
-  post '/works/:id/create', to: 'works#create', as: 'create_work' # create_work_path
+  post '/works', to: 'works#create', as: 'create_work' # create_work_path
 
-  patch '/works/:id/update', to: 'works#update', as: 'update_work' # update_work_path
+  patch '/works/:id', to: 'works#update', as: 'update_work' # update_work_path
 
-  delete 'works/:id/destroy', to: 'works#destroy', as: 'destroy_work' # destroy_work_path
+  delete '/works/:id', to: 'works#destroy', as: 'destroy_work' # destroy_work_path
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

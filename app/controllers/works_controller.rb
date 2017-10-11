@@ -1,22 +1,21 @@
 class WorksController < ApplicationController
   def home
     @works = Work.all
-    @media = media_hash
+    @media = media_hash(true)
     # get first work until Vote model added
     @spotlight = Work.first
   end
 
   def index
     @works = Work.all
-    @media = media_hash
+    @media = media_hash(false)
   end
 
   def show
     @work = Work.find_by(id: params[:id])
 
     unless @work
-      flash[:notice] = "Item not found"
-      redirect_to root_path
+      render_404
     end
   end
 
@@ -28,9 +27,12 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
-      flash[:notice] = "Successfully created #{work.category.name}"
+      #flash[:success] = "Successfully created #{@work.category.name}"
       redirect_to root_path
     else
+      puts "error message"
+      puts @work.errors.inspect
+      flash[:error] = "ERROR"
       render :new
     end
   end
@@ -38,23 +40,20 @@ class WorksController < ApplicationController
   def edit
     @work = Work.find_by(id: params[:id])
 
-    unless @work
-      flash[:notice] = "Item not found"
-      redirect_to root_path
-    end
+    render_404 unless @work
   end
 
   def update
     @work = Work.find_by(id: params[:id])
 
     unless @work
-      flash[:notice] = "Item not found"
-      redirect_to works_path
+      render_404 unless @work
+      return
     end
 
-    if @work.update_attributes(work_params)
-      flash[:notice] = "#{@work.category.name} successfully updated"
-      redirect_to work_path
+    if @work.update_attributes work_params
+      flash[:success] = "Successfully updated #{@work.category.name}"
+      redirect_to root_path
     else
       render :edit
     end
@@ -65,20 +64,29 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
     @work.destroy
 
-    redirect_to root_path
+    if @work.destroyed?
+      flash[:success] = "Successfully deleted #{@work.category.name}"
+      redirect_to root_path
+    else
+      flash[:error] = "Unable to delete #{@work.category.name}"
+    end
   end
 
   private
 
   def work_params
-    return params.require(:work).permit(:category_id, :title, :creator, :publication_year, :description)
+    return params.require(:work).permit(:title, :creator, :publication_year, :description, :category_id)
   end
 
-  def media_hash
-    albums = Work.where(category_id: Category.find_by(name: "album"))[0...10]
-    movies = Work.where(category_id: Category.find_by(name: "movie"))[0...10]
-    books = Work.where(category_id: Category.find_by(name: "book"))[0...10]
+  def media_hash(top_ten = true)
+    albums = Work.where(category_id: Category.find_by(name: "album"))
+    movies = Work.where(category_id: Category.find_by(name: "movie"))
+    books = Work.where(category_id: Category.find_by(name: "book"))
 
-    return {"albums": albums, "movies": movies, "books": books}
+    if top_ten
+      return {"albums": albums[0...10], "movies": movies[0...10], "books": books[0...10]}
+    else
+      return {"albums": albums, "movies": movies, "books": books}
+    end
   end
 end
