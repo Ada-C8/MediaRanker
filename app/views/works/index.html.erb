@@ -1,21 +1,21 @@
 <section class="all-media">
   <h1>Movies</h1>
   <ul>
-    <% Work.where(category:"movie").each do |work| %>
+    <% Work.order_by_votes("movie").each do |work| %>
       <li><%= link_to work.title, work_path(work.id)%> by <%= work.creator %></li>
     <% end %>
   </ul>
 
   <h1>Books</h1>
   <ul>
-    <% Work.where(category:"book").each do |work| %>
+    <% Work.order_by_votes("book").each do |work| %>
       <li><%= link_to work.title, work_path(work.id)%> by <%= work.creator %></li>
     <% end %>
   </ul>
 
   <h1>Albums</h1>
   <ul>
-    <% Work.where(category:"album").each do |work| %>
+    <% Work.order_by_votes("album").each do |work| %>
       <li><%= link_to work.title, work_path(work.id)%> by <%= work.creator %></li>
     <% end %>
   </ul>
