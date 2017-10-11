@@ -5,3 +5,8 @@
 <h3>Creator:  <%= @work.creator %></h3>
 <h3>Publication_year: <%= @work.publication_year %></h3>
 <h3>Description: <%= @work.description %></h3>
+
+<div>
+  <%= button_to "Edit", edit_work_path(@work.id), method: :get %>
+  <%= button_to "Delete", work_path(@work.id), method: :delete %>
+</div>
