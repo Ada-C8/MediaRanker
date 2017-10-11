@@ -5,4 +5,5 @@ class Work < ApplicationRecord
 
   #relationships
   has_many :votes
+
 end

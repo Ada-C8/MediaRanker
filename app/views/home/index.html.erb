@@ -1,10 +1,51 @@
 <h1>Home index view</h1>
 <h2>Top Albums</h2>
-<table class="main-list">
+<table>
   <% @albums.each do |album| %>
   <tr>
     <td>
       <%= album.title %>
+    </td>
+    <td>
+      by
+      <%= album.creator ? album.creator : "" %>
+    </td>
+    <td>
+      <%= album.votes.count %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<h2>Top Books</h2>
+<table>
+  <% @books.each do |book| %>
+  <tr>
+    <td>
+      <%= book.title %>
+    </td>
+    <td>
+      by <%= book.creator ? book.creator : "" %>
+    </td>
+    <td>
+      <%= book.votes.count %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<h2>Top Movies</h2>
+<table>
+  <% @movies.each do |movie| %>
+  <tr>
+    <td>
+      <%= movie.title%>
+    </td>
+    <td>
+      by <%= movie.creator ? movie.creator : "" %>
+    </td>
+    <td>
+      <%= movie.votes.count %>
     </td>
   </tr>
   <% end %>
