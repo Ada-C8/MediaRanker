@@ -30,6 +30,21 @@ class WorksController < ApplicationController
   end
 
   def create
+
+    # think about logic for only creating work if user is logged in
+    # dan's destroy method works in books_controller
+
+    # current_user = nil
+    # if session[:logged_in_user]
+    #   current_user = User.find_by(id: session[:logged_in_user])
+    # end
+    # else
+    #   flash[:statu] = :failure
+    #   flash[:message] = "You must be logged in to do that."
+    #   redirect_to works_path
+    #   return
+    # end
+
     @work = Work.new(
     work_params
     )
@@ -62,8 +77,8 @@ class WorksController < ApplicationController
     end
   end
   def destroy
-    @work = Work.find(params[:id])
-    if @work.destroy
+    if find_work
+      @work.destroy
       redirect_to works_path
     else
       #error message

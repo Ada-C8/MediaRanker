@@ -26,13 +26,15 @@ class UsersController < ApplicationController
   end
 
   def login
-    user_id = params[:user][:user_id]
-    user = User.find_by(id: user_id)
+    name = params[:user][:name]
+    user = User.find_by(name: name)
     if user
-      session[:logged_in_user] = user_id
+      session[:logged_in_user] = user.id
       redirect_to works_path
     else
-      head :not_found
+      flash[:status] = :failure
+      flash[:message] = "User not created "
+      render :login_form
     end
   end
 
