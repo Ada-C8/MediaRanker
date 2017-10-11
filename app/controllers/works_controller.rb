@@ -26,7 +26,7 @@ class WorksController < ApplicationController
       flash.now[:status] = :failure
       flash.now[:message] = "Failed to create #{@work.category}."
       flash.now[:details] = @work.errors.messages
-      render new_work_path
+      render new_work_path, status: :bad_request
       return
     end
   end
@@ -48,7 +48,7 @@ class WorksController < ApplicationController
       flash.now[:status] = :failure
       flash.now[:message] = "Failed to update #{@work.category}."
       flash.now[:details] = @work.errors.messages
-      render new_work_path
+      render edit_work_path, status: :bad_request
       return
     end
   end

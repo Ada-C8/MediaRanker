@@ -49,23 +49,49 @@ describe WorksController do
 
   describe 'new' do
     it 'returns success' do
-      skip
+      get new_work_path
 
+      must_respond_with :success
     end
   end
 
   describe 'create' do
     it 'successfully creates work and returns :success when data is valid' do
-      skip
+      good_work_data = {
+        work: {
+          category: "album",
+          title: "Safety Time",
+          creator: "Safety Guy",
+        }
+      }
 
+      Work.new(good_work_data[:work]).must_be :valid?
+      before_count = Work.count
+
+      post works_path, params: good_work_data
+      must_respond_with 302
+
+      Work.count.must_equal (before_count + 1)
+      Work.last.title.must_equal "Safety Time"
     end
 
     it 'does not create work and returns :bad_request when data is invalid' do
-      skip
+      bad_work_data = {
+        work: {
+          title: ''
+        }
+      }
 
+      Work.new(bad_work_data[:work]).wont_be :valid?
+      before_count = Work.count
+
+      post works_path, params: bad_work_data
+      must_respond_with 400
+
+      Work.count.must_equal before_count
     end
 
-    it 'uses strong params' do
+    it 'uses strong params to filter user input' do
       fake_id = bad_id + 1000
 
       tmi_work_data = {
