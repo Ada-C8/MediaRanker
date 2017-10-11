@@ -10,6 +10,7 @@ describe User do
     it "isn't valid with out a name" do
       u = User.new(username: "")
       u.wont_be :valid?
+      u.errors.messages.must_include :username
     end
   end
 
