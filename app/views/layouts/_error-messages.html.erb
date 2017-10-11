@@ -1,0 +1,9 @@
+<div class="error-messages">
+  <ul>
+    <% item.errors.messages.each do |field, error| %>
+      <li>
+        <%= field %>: <%= error %>
+      </li>
+    <% end %>
+  </ul>
+</div>
