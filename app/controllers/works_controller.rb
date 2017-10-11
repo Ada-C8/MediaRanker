@@ -3,7 +3,17 @@ class WorksController < ApplicationController
     @works = Work.order(:id)
   end
 
+  def homepage
+    @albums = Work.where("category = 'album'")
+    @books = Work.where("category = 'book'")
+    @movies = Work.where("category = 'movie'")
+  end
+
   def show
+    @work = Work.find_by(id: params[:id])
+    if @work == nil
+      redirect_to root_path
+    end
   end
 
   def new
@@ -20,4 +30,5 @@ class WorksController < ApplicationController
 
   def update
   end
+
 end
