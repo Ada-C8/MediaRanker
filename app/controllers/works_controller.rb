@@ -10,4 +10,8 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
   end
+
+  def show
+    @work = Work.find(params[:id])
+  end
 end
