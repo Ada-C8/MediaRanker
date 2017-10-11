@@ -1,8 +1,10 @@
+
+<!-- raises an error if you attempt tp create a new work without filling in the required feilds. -->
 <% if @work.errors.any? %>
-  <ul>
+  <ul class="errors">
     <% @work.errors.each do |column, message| %>
       <li>
-        <%= column.capitalize %><%= message %>
+        <strong><%= column.capitalize %></strong> <%= message %>
       </li>
     <% end %>
   </ul>
@@ -11,7 +13,7 @@
 
 <%= form_for @work do |f| %>
   <%= f.label :category %>
-  <%= f.text_field :category %>
+  <%= f.select :category, [ 'album','book','movie' ], :prompt => 'Select One' %>
 
   <%= f.label :title %>
   <%= f.text_field :title %>
