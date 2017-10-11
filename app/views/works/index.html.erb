@@ -1,2 +1,20 @@
+<header>
 <h1>List of works</h1>
-<p>Find me in app/views/works/index.html.erb</p>
+</header>
+
+<body>
+  <main>
+    <h2>Albums</h2>
+    <%= render partial: "form", locals: {works: @albums} %>
+
+    <h2>Books</h2>
+    <%= render partial: "form", locals: {works: @books} %>
+
+    <h2>Movies</h2>
+    <%= render partial: "form", locals: {works: @movies} %>
+  </main>
+</body>
+<footer>
+   <h3>View top media</h3>
+   <h3>Add a new work</h3>
+ </footer>
