@@ -21,9 +21,13 @@ Rails.application.routes.draw do
   #
   # get 'main_page/index'
   root to: 'main_page#index'
+
   post 'works/:id/upvote', to: 'upvotes#create', as: 'create_upvote'
+
   resources :works
   resources :users
 
+  get '/login', to: 'sessions#login_form'
+  post '/login', to: 'sessions#login'
 
 end
