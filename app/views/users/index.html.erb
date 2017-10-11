@@ -1,0 +1,19 @@
+<h3>List of Users</h3>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Votes</th>
+    <th>Joined</th>
+  </tr>
+  <tr>
+    <% @users.each do |user| %>
+    <div class="user">
+      <td><strong><%= link_to user.name, user_path(user.id)  %> </strong></td>
+      <td> ### </td>
+      <td> <%= user.created_at.to_date %> </td>
+    </div>
+    </tr>
+    <% end %>
+
+</table>

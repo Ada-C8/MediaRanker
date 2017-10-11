@@ -1,11 +1,63 @@
-<h3>INDEX page</h3>
+<h3>Lists of works</h3>
+<h4> Albums </h4>
+<table>
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
 
-<% @works.each do |work| %>
-<div class="work">
-   <strong> Category: <%= work.category %> </strong>
-   <p>Title: <%= link_to work.title, work_path(work.id) %></p>
-   <p>Creator: <%= work.creator %></p>
-   <p>Publication Year: <%= work.publication_year %></p>
-   <p>Description:<%= work.description %></p>
-</div>
-<% end %>
+  <% @albums.each do |work| %>
+  <tr>
+    <td> # </td>
+    <td><%= link_to work.title, work_path(work.id) %></td>
+    <td><%= work.creator %></td>
+    <td><%= work.publication_year %></td>
+    <td><%= link_to "Upvote", new_vote_path %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h4> Books</h4>
+<table>
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
+
+  <% @books.each do |work| %>
+  <tr>
+    <td> # </td>
+    <td><%= link_to work.title, work_path(work.id) %></td>
+    <td><%= work.creator %></td>
+    <td><%= work.publication_year %></td>
+    <td><%= link_to "Upvote", new_vote_path %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h4> Movies </h4>
+<table>
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
+
+  <% @movies.each do |work| %>
+  <tr>
+    <td> # </td>
+    <td><%= link_to work.title, work_path(work.id) %></td>
+    <td><%= work.creator %></td>
+    <td><%= work.publication_year %></td>
+    <td><%= link_to "Upvote", new_vote_path %></td>
+  </tr>
+  <% end %>
+</table>
