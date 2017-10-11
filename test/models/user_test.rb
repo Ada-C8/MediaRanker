@@ -1,6 +1,7 @@
 require "test_helper"
 
 describe User do
+#how to use let in this test??
 
   describe "valiations" do
       it "is valid" do

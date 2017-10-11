@@ -1,17 +1,12 @@
 require "test_helper"
 
 describe Work do
-  # let(:work) { Work.new }
-  #
-  # it "must be valid" do
-  #   value(work).must_be :valid?
-  # end
   let :title {"test book title"}
 
   describe 'validations' do
     # this is the positive test:
-    it 'can be created with all fields' do
-      b = Work.new(title: "StarWars")
+    it 'is valid' do
+      b = Work.new(title: title)
       b.must_be :valid?
     end
 
