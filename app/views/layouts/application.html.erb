@@ -10,7 +10,7 @@
 
   <body>
     <header>
-      <h1>Media Ranker</h1>
+      <h1><%= link_to "Media Ranker", root_path %></h1>
       <h2>Ranking the Best of Everything</h2>
 
       <nav>
@@ -19,7 +19,7 @@
           <li><%= link_to "View All Media", works_path %></li>
           <li><%= link_to "Add a New Work", new_work_path %></li>
           <li><%= link_to "View All Users", users_path %></li>
-          <!-- <li><%= link_to "Login", root_path %></li> -->
+          <li><%= link_to "Login", new_user_path %></li>
         </ul>
       </nav>
     </header>

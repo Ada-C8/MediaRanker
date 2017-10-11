@@ -1,4 +1,4 @@
 class Vote < ApplicationRecord
-  belongs_to :user, optional: true
-  belongs_to :work, optional: true
+  belongs_to :user
+  belongs_to :work
 end

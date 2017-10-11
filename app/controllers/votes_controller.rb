@@ -3,18 +3,12 @@ class VotesController < ApplicationController
     @votes = Vote.all
   end
 
-  def show
-    @vote = Vote.find_by(id: params[:id])
-  end
-
-  def new
-    @vote = vote.new
-  end
-
   def create
-    @vote = Vote.new
+    @user = User.find(1)
+    @vote = Vote.new(user_id: @user.id, work_id: params[:work_id])
+
     if @vote.save
-      redirect_to votes_path
+      redirect_to work_path(params[:work_id])
     else
       render :new
     end
@@ -28,5 +22,5 @@ class VotesController < ApplicationController
 
   def destroy
   end
-  
+
 end
