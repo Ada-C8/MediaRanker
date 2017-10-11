@@ -4,11 +4,10 @@
 <ol>
   <% @works.each do |work| %>
     <li>
-      <p>Title: <%= work.title %></p>
+      <p>Title: <%= link_to(work.title, work_path(work.id)) %></p>
       <p>Category: <%= work.category %></p>
-      <p>Creator: <%= work.creator %></p>
-      <p>Publication Year: <%= work.publication_year %></p>
-      <p>Description: <%= work.description %></p>
+      <%= link_to("Edit", edit_work_path(work.id)) %>
+      <%= link_to("Delete", work_path(work.id), method: :delete) %>
       <hr>
     </li>
   <% end %>

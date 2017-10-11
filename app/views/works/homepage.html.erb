@@ -1,0 +1,35 @@
+<h1>Homepage</h1>
+
+<h2>Albums</h2>
+<ol>
+  <% @albums.each do |album| %>
+    <li>
+      <p>Title: <%= link_to(album.title, work_path(album.id)) %></p>
+      <p>Category: <%= album.category %></p>
+    </li>
+  <% end %>
+</ol>
+
+<hr>
+
+<h2>Books</h2>
+<ol>
+  <% @books.each do |book| %>
+    <li>
+      <p>Title: <%= link_to(book.title, work_path(book.id)) %></p>
+      <p>Category: <%= book.category %></p>
+    </li>
+  <% end %>
+</ol>
+
+<hr>
+
+<h2>Movies</h2>
+<ol>
+  <% @movies.each do |movie| %>
+    <li>
+      <p>Title: <%= link_to(movie.title, work_path(movie.id)) %></p>
+      <p>Category: <%= movie.category %></p>
+    </li>
+  <% end %>
+</ol>
