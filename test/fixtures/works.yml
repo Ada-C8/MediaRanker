@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  category: MyString
-  creator: 
-  publication_year: 1
-  description: MyString
+hp:
+  title: Harry Potter
+  category: book
+  creator: JK Rowling
+  publication_year: 2001
+  description: boy wizard
 
-two:
-  title: MyString
-  category: MyString
-  creator: 
-  publication_year: 1
-  description: MyString
+fifty:
+  title: Fifty First Dates
+  category: movie
+  creator: Adam Sandler
+  publication_year: 2002
+  description: 
