@@ -4,6 +4,11 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-vote:
-  user_id: one # Not sure how to test this relation
-  work_id: album
+# vote:
+#   user_id: one # Not sure how to test this relation
+#   work_id: album
+
+# user - raised error
+# work -
+# I am trying to get the user_id from the users.yml and it does not work. Am I supposed to be testing this.
+# How to test tables that need a foreign key

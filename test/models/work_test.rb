@@ -15,17 +15,25 @@ describe Work do
       w.must_be :valid?
     end
 
-    it "requires a category, title, creator, description, publication_year" do
-      work = Work.new
-      is_valid = work.valid?
+    it "will raise an error if category, title, creator, description, publication_year is invalid" do
+      w = Work.new
+      is_valid = w.valid?
       is_valid.must_equal false
-      work.errors.messages.must_include :category
-      work.errors.messages.must_include :title
-      work.errors.messages.must_include :creator
-      work.errors.messages.must_include :description
-      work.errors.messages.must_include :publication_year
+      w.errors.messages.must_include :category
+      w.errors.messages.must_include :title
+      w.errors.messages.must_include :creator
+      w.errors.messages.must_include :description
+      w.errors.messages.must_include :publication_year
     end
 
+    it "requires category, title, creator, description, publication_year is invalid" do
+      work.must_be :valid?
+      work.errors.messages.wont_include :category
+      work.errors.messages.wont_include :title
+      work.errors.messages.wont_include :creator
+      work.errors.messages.wont_include :description
+      work.errors.messages.wont_include :publication_year
+    end
   end # Describe
 
 end
