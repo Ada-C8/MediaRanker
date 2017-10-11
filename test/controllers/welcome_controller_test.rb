@@ -1,9 +1,9 @@
 require "test_helper"
 
-describe WelcomeController do
-  it "should get index" do
-    get welcome_index_url
-    value(response).must_be :success?
+describe "WelcomeController" do
+  it "should go to the index page" do
+    get root_path
+    must_respond_with :success
   end
 
 end

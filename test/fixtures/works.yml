@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+almost:
+  category: "movie"
+  title: "Almost Famous"
+  creator: "John Smith"
+  publication_year: 2000
+  description: "the greatest movie in the world"
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+gatsby:
+   category: "book"
+   title: "The Great Gatsby"
+   creator: "F. Scott Fitzgerald"
+   publication_year: 1920
+   description: "the best book ever"
+
+thriller:
+  category: "album"
+  title: "MJ's Thriller"
+  creator: "The King of Pop"
+  publication_year: 1989
+  description: "the greatest dance in the world"
