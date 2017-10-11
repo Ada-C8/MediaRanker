@@ -7,4 +7,8 @@ Rails.application.routes.draw do
     resources :votes, only: [:index, :new]
   end
   resources :votes
+
+  get 'login', to: 'users#login_form', as: 'login'
+  post 'login', to: 'users#login'
+  #think about logout
 end

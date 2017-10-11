@@ -16,6 +16,11 @@
     <%= link_to "Add a new work", new_work_path %>
 
     <%= link_to "View all users", users_path %>
+
+    <% if User.find(session[:logged_in_user]).name %>
+
+    <%= link_to "Login", login_path %>
+    
   </header>
 
   <main>

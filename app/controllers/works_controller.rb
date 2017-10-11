@@ -23,9 +23,6 @@ class WorksController < ApplicationController
 
   def show
     find_work
-    unless @work
-      head :not_found
-    end
   end
 
   def new
@@ -38,21 +35,18 @@ class WorksController < ApplicationController
     )
     if @work.save
       flash[:status] = :success
-      flash[:message] = "Successfully created work #{work.id}"
+      flash[:message] = "Successfully created work #{@work.id}"
       redirect_to works_path
     else
       flash[:status] = :failure
-      flash[:message] = "Failed to created work #{work.id}"
-      flash[:details] = @work.error.messages
+      flash[:message] = "Failed to created work #{@work.id}"
+      flash[:details] = @work.errors.messages
       render :new, status: :bad_request
     end
   end
 
   def edit
     find_work
-    unless @work
-      head :not_found
-    end
   end
 
   def update
