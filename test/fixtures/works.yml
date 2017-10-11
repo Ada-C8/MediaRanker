@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+scandal:
+  title: Scandal
+  description: An amazing show that I love to watch on the reg
+  creator: Shonda Rhimes
+  year: 2011
+
+greys:
+  title: Grey's Anatomy
+  description: Another amazing show that has maybe lasted too long because all of the characters have died off now
+  creator: Shonda Rhimes
+  year: 2008

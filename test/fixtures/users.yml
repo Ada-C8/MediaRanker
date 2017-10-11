@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+west:
+  name: Canaan West
+
+wells:
+  name: Wendy Wells
