@@ -2,7 +2,7 @@
   <% works.each do |work| %>
     <li>
       <strong><%= link_to work.title, work_path(work.id) %></strong>
-      <%= "by #{work.creator}" if work.creator %>
+      <%= "by #{work.creator}" unless work.creator.empty? %>
       <%= "(#{work.publication_year})" if work.publication_year %>
     </li>
   <% end %>

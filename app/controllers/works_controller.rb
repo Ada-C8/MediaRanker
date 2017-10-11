@@ -18,8 +18,13 @@ class WorksController < ApplicationController
     result = @work.save
 
     if result
+      flash[:status] = :success
+      flash[:message] = "Successfully created #{@work.category} #{@work.title}."
       redirect_to work_path(@work.id)
     else
+      flash.now[:status] = :failure
+      flash.now[:message] = "Failed to create #{@work.category}."
+      flash.now[:details] = @work.errors.messages
       render new_work_path
     end
   end

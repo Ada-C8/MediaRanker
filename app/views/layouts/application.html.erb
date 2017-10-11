@@ -28,6 +28,22 @@
         </ul>
       </nav>
     </header>
+    <main>
+      <div class="message <%= flash[:status] %>">
+        <%= flash[:message] %>
+        <% if flash[:details] %>
+        <ul>
+          <% flash[:details].each do |field, errors| %>
+            <% errors.each do |error| %>
+              <li>
+                <%= field.capitalize %> <%= error %>.
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
     <%= yield %>
+  </main>
   </body>
 </html>
