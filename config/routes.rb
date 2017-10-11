@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   resources :works
 
   root "main#index"
+
+  get 'login', to: "users#login_form", as: 'login'
+  post 'login', to: 'users#login'
 end
