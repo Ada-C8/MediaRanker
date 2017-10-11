@@ -9,7 +9,7 @@
     <tr>
       <td><%= link_to user.username, user_path(user.id) %></td>
       <td><%= user.votes.count %></td>
-      <td><%= user.created_at.strftime("%b") + ' ' + user.created_at.strftime("%d") + ', ' + user.created_at.strftime("%Y") %></td>
+      <td><%= user.created_at.strftime("%b %d, %Y")%></td>
     </tr>
   <% end %>
 </table>
