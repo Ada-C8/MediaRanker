@@ -1,7 +1,20 @@
 <h2>Hey this is the index!</h2>
 
-<ol>
-  <% @works.each do |work|%>
-    <li><%= link_to work.title, work_path(work.id) %></li>
-    <% end %>
-</ol>
+
+<table>
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
+  <% @works.each do |work| %>
+  <tr>
+    <td><%= work.title %></td>
+    <td><%= work.category %></td>
+    <td><%= work.creator %></td>
+    <td><%= work.publication_year %></td>
+  </tr>
+  <% end %>
+</table>
