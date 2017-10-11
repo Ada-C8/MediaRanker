@@ -23,7 +23,7 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_parameters)
     if @work.save
-      redirect book_path(@work.id)
+      redirect_to @work
     else
       render :new
     end
