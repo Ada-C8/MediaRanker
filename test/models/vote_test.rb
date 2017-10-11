@@ -10,11 +10,13 @@ describe Vote do
   it "will not be valid unless user is present" do
     vote.user = nil
     vote.valid?.must_equal false
+    vote.errors.must_include :user
   end
 
   it "will not be valid unless a work is present" do
     vote.work = nil
     vote.valid?.must_equal false
+    vote.errors.must_include :work
   end
 
 end
