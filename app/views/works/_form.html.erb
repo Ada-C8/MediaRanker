@@ -1,7 +1,6 @@
 <%= form_for @work do |f| %>
 <%= f.label :category %>
-<%= f.text_field :category %>
-<%#= f.collection_select() %>
+<%= f.select :category, Work::CATEGORIES, {include_blank: 'Select a category'} %>
 
 <%= f.label :title %>
 <%= f.text_field :title %>
