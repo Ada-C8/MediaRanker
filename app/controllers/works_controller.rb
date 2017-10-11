@@ -34,8 +34,10 @@ class WorksController < ApplicationController
     result = @work.update(work_params)
     if result
       redirect_to work_path(@work.id)
+      return
     else
       render :edit
+      return
     end
   end
 
@@ -47,6 +49,7 @@ class WorksController < ApplicationController
   end
 
   private
+  
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
@@ -56,6 +59,6 @@ class WorksController < ApplicationController
       @work = Work.find_by(id: params[:id])
       unless @work
         head :not_found
-      end 
+      end
   end
 end
