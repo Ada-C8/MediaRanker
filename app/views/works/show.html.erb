@@ -1,0 +1,31 @@
+<h1>Works#show</h1>
+<p>Find me in app/views/works/show.html.erb</p>
+
+<ul>
+    <li>
+      Title: <%= @work.title %>
+    </li>
+    <li>
+      Category: <%= @work.category %>
+    </li>
+    <li>
+      Creator: <%= @work.creator %>
+    </li>
+    <li>
+      Publication Year: <%= @work.publication_year %>
+    </li>
+    <li>
+      Description: <%= @work.description %>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <%= link_to("Edit work", edit_work_path, alt: "Edit work form") %>
+      <%# button_to("Edit work", edit_work_path, method: :get) %>
+    </li>
+    <li>
+      <%= link_to "Delete", work_path(@work[:id]), method: :delete %>
+      <%# button_to("Delete work", work_path, method: :delete) %>
+    </li>
+  </ul>
