@@ -16,3 +16,31 @@
   <%= link_to "Upvote" %> <%#creates a new vote%>
   <%= link_to "Delete", work_path(@work.id), method: :delete %>
 </section>
+
+<article>
+  <h3><%=@work.votes.count%> Votes for this <%=@work.category.capitalize%></h3>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          User
+        </th>
+        <th>
+          Date
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@work.votes.each do |vote| %>
+        <tr>
+          <td>
+            <%=vote.user.name%>
+          </td>
+          <td>
+            <%=vote.created_at%> <%#need to get this to be the date in english%>
+          </td>
+        </tr>
+        <%end%>
+    </tbody>
+  </table>
+</article>
