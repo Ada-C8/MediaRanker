@@ -2,6 +2,9 @@
 
 <ul>
   <% @works.each do |work| %>
+    <!-- work.title is broken here -->
+    <%= link_to work.title, work_path(work.id) %>
+
     <% if work.title%>
       <li><%= work.title %></li>
     <% end %>
