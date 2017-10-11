@@ -9,5 +9,5 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
-  end  
+  end
 end

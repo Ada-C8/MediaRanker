@@ -1,1 +1,36 @@
-<h1>Works#index</h1>
+<h1>Works</h1>
+
+<ul>
+  <h2> Albums </h2>
+  <% @works.each do |work| %>
+    <% if work.category == "album"%>
+    <li>
+      Title: <%=work.title %>
+      Created by: <%=work.creator %>
+      Published: <%=work.year%>
+    </li>
+    <% end %>
+    <%end%>
+
+  <h2> Books </h2>
+    <% @works.each do |work| %>
+      <% if work.category == "book"%>
+      <li>
+        Title: <%=work.title %>.
+        Created by: <%=work.creator %>.
+        Published: <%=work.year%>.
+      </li>
+      <% end %>
+      <%end%>
+
+  <h2> Movies </h2>
+      <% @works.each do |work| %>
+        <% if work.category == "movie"%>
+        <li>
+          Title: <%=work.title %>
+          Created by: <%=work.creator %>
+          Published: <%=work.year%>
+        </li>
+        <% end %>
+        <%end%>
+</ul>
