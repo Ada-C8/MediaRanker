@@ -31,18 +31,23 @@ class WorksController < ApplicationController
   end
 
   def update
-    work_updates = params[:work]
+    # work_updates = params[:work]
+    # @work = Work.find(params[:id])
+    #
+    # @work.title = work_updates[:title]
+    # @work.creator = work_updates[:creator]
+    # @work.category= work_updates[:category]
+    # @work.publication_year = work_updates[:publication_year]
+    # @work.description = work_updates[:description]
+
     @work = Work.find(params[:id])
+    @work.update_attributes(work_params)
 
-    @work.title = work_updates[:title]
-    @work.creator = work_updates[:creator]
-    @work.category= work_updates[:category]
-    @work.publication_year = work_updates[:publication_year]
-    @work.description = work_updates[:description]
-
-    @work.save
-
-    redirect_to work_path(@work)
+    if @work.save
+      redirect_to work_path(@work)
+    else
+      render :edit
+    end
   end
 
   def destroy
