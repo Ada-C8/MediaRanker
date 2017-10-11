@@ -3,7 +3,7 @@ require "test_helper"
 describe Upvote do
   let(:upvote) { Upvote.new }
 
-  it "must be valid" do
-    value(upvote).must_be :valid?
+  it "empty upvote must be invalid" do
+    upvote.valid?.must_equal false
   end
 end
