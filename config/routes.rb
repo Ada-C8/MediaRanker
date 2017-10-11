@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :users, :works do
     resources :votes, only: [:index, :new, :create]
   end
+
+  get 'login', to: 'users#login_form', as: 'login'
+  post 'login', to: 'users#login'
 end

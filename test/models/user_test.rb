@@ -32,14 +32,6 @@ describe User do
     it 'responds to votes' do
       user.must_respond_to :votes
     end
-
-    it 'has many votes' do
-      u = User.create!(name: "Selina Kyle", id: 1)
-      w = Work.create!(title: "Of Mice and Men", id: 1)
-      v = Vote.create!(user_id: u.id, work_id: w.id)
-
-      u.votes.must_include v
-    end
   end # end relations tests
 
 end

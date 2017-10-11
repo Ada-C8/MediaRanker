@@ -26,3 +26,21 @@
     <%= yield %>
   </body>
 </html>
+<!--
+if session[:logged_in_author]
+p - logged in as
+Author.find(session[:logged_in_author]).name
+else
+not logged in -->
+
+
+<!-- section class="flash <%# flash[:status]%>" -->
+<!-- flash[:message]
+if flash[:details]
+flash[:details].each do |field,problems|
+problems.each do |problem|
+field
+problem
+end
+end
+end -->
