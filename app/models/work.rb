@@ -3,7 +3,7 @@ class Work < ApplicationRecord
 
 
   def get_top_10_by_category
-
+    
   end
-  
+
 end
