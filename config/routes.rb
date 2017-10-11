@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   get '/works/new', to: 'works#new', as: 'new_work'
   post '/works', to: 'works#create', as: 'create_work'
   get '/works/:id', to: 'works#show', as: 'work'
+  get '/works/:id/edit', to: 'works#edit', as: 'edit_work'
+  patch '/works/:id', to: 'works#update', as: 'update_work'
+  delete '/works/:id', to: 'works#destroy', as: 'delete_trip'
 end
