@@ -1,1 +1,22 @@
-Home Index 
+<h1> Media Ranker </h1>
+
+<h3>Top Movies</h3>
+<ul>
+  <% @top_movies.each do |movie| %>
+  <li><%= link_to movie.title, "#" %> by <%= movie.creator %></li>
+  <% end %>
+</ul>
+
+<h3>Top Books</h3>
+<ul>
+  <% @top_books.each do |book| %>
+  <li><%= link_to book.title, "#" %> by <%= book.creator %></li>
+  <% end %>
+</ul>
+
+<h3>Top Albums</h3>
+<ul>
+  <% @top_albums.each do |album| %>
+  <li><%= link_to album.title, "#" %> by <%= album.creator %></li>
+  <% end %>
+</ul>
