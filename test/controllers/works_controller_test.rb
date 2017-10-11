@@ -40,7 +40,7 @@ describe 'WorksController' do
 
     must_respond_with :success
   end
-  it 'destroys a work' do
+  it 'destroys a work if given existing work id' do
     proc {delete work_path( works(:gatsby).id )}.must_change 'Work.count', -1
 
     must_redirect_to root_path
