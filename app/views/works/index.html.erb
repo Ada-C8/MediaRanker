@@ -17,10 +17,12 @@
       <% @works.each do |work| %>
       <%  if work.category == "album" %>
           <tr>
+                <!-- # TODO need to make this actual number of votes - probably in model method?? -->
           <td><%= 0 %> </td>
-          <td><%= work.title %></td>
+          <td><%= link_to(work.title, work_path(work.id), alt: "link to work show page") %></td>
           <td><%= work.creator %></td>
           <td><%= work.publication_year %></td>
+          <!-- # TODO need to make upvote link to vote  -->
           <td><%= "Upvote" %></td>
         </tr>
         <% end %>
@@ -46,10 +48,12 @@
         <% @works.each do |work| %>
         <%  if work.category == "book" %>
             <tr>
+              <!-- # TODO need to make this actual number of votes - probably in model method?? -->
             <td><%= 0 %> </td>
-            <td><%= work.title %></td>
+            <td><%= link_to(work.title, work_path(work.id), alt: "link to work show page") %></td>
             <td><%= work.creator %></td>
             <td><%= work.publication_year %></td>
+            <!-- # TODO need to make upvote link to vote  -->
             <td><%= "Upvote" %></td>
           </tr>
           <% end %>
@@ -76,10 +80,12 @@
         <% @works.each do |work| %>
         <%  if work.category == "movie" %>
             <tr>
+                  <!-- # TODO need to make this actual number of votes - probably in model method?? -->
             <td><%= 0 %> </td>
-            <td><%= work.title %></td>
+            <td><%= link_to(work.title, work_path(work.id), alt: "link to work show page") %></td>
             <td><%= work.creator %></td>
             <td><%= work.publication_year %></td>
+            <!-- # TODO need to make upvote link to vote  -->
             <td><%= "Upvote" %></td>
           </tr>
           <% end %>

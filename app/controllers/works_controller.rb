@@ -12,6 +12,7 @@ class WorksController < ApplicationController
   end
 
   def show
+    @work = Work.find_by(id: params[:id])
   end
 
   def update
@@ -20,4 +21,11 @@ class WorksController < ApplicationController
   def index
     @works = Work.order(:category)
   end
+
+  private
+
+  def work_params
+    return params.require(:work).permit(:category, :title)
+  end
+
 end
