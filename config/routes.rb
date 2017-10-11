@@ -2,11 +2,13 @@ Rails.application.routes.draw do
 
   get '/works', to: 'works#index'
 
+  get '/works/:id', to: 'works#show'
+
   get 'works/edit'
 
   get 'works/update'
 
-  get 'works/show'
+
 
   get 'works/create'
 
