@@ -1,0 +1,14 @@
+<h2>Media Spotlight: (some link to something) by someone</h2>
+
+<% @works.each do |key, array| %>
+  <section>
+  <h2><%= "Top #{key.capitalize}" %></h2>
+  <ul>
+    <% array.each do |work| %>
+    <li>
+      <%= link_to "#{work.title}", work_path(work.id) %> by <%= work.creator %>
+      <p>Votes</p>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
