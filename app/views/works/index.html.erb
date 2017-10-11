@@ -1,22 +1,86 @@
+<section>
 <h1>List of Works</h1>
 
+<article>
 <h3>Albums</h3>
-  <% @works.each do |w| %>
-    <% if w.category == "album" %>
-    <p><%= w.title %>, category: <%= w.category %></p>
-    <% end %>
-  <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @works.each do |w| %>
+      <% if w.category == "album" %>
+      <tr>
+        <td>#</td>
+        <td><%= link_to w.title, work_path(w.id) %></td>
+        <td><%= w.creator %></td>
+        <td><%= w.publication_year %></td>
+        <td><%= link_to "Upvote" %></td>
+      </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 
 <h3>Books</h3>
-  <% @works.each do |w| %>
-    <% if w.category == "book" %>
-    <p><%= w.title %>, category: <%= w.category %></p>
-    <% end %>
-  <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @works.each do |w| %>
+      <% if w.category == "book" %>
+      <tr>
+        <td>#</td>
+        <td><%= link_to w.title, work_path(w.id) %></td>
+        <td><%= w.creator %></td>
+        <td><%= w.publication_year %></td>
+        <td><%= link_to "Upvote" %></td>
+      </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 
 <h3>Movies</h3>
-  <% @works.each do |w| %>
+<table>
+  <thead>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @works.each do |w| %>
     <% if w.category == "movie" %>
-    <p><%= w.title %>, category: <%= w.category %></p>
+    <tr>
+      <td>#</td>
+      <td><%= link_to w.title, work_path(w.id) %></td>
+      <td><%= w.creator %></td>
+      <td><%= w.publication_year %></td>
+      <td><%= link_to "Upvote" %></td>
+    </tr>
+      <% end %>
     <% end %>
-  <% end %>
+  </tbody>
+</table>
+
+</article>
+
+
+</section>

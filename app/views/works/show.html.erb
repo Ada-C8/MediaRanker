@@ -1,2 +1,10 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
+<h1><%= @work.title %></h1>
+
+<p>Created by: <%= @work.creator %></p>
+<p>Published: <%= @work.publication_year %></p>
+
+<!-- waiting for working root path -->
+<%= link_to "Back to media ranks" %>
+<%= link_to "Edit" %>
+<%= link_to "Upvote" %>
+<%= link_to "Delete" %>
