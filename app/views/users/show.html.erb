@@ -1,0 +1,24 @@
+<main>
+<h3>User Summary: <%= @user.name %></h3>
+<p>Joined site <%= (@user.created_at).strftime('%d-%m-%Y')%></p>
+<h4>Votes</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Media Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Category</th>
+      <th>Voted On</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+
+  <%= button_to("See all Users", users_path, method: :get, alt: "link to user index page") %>
+
+  <%= button_to("Back to Media List", root_path, method: :get, alt: "link to home page") %>
+</main>
