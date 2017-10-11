@@ -15,5 +15,9 @@ class Work < ApplicationRecord
     @movies = Work.where(category: "movie")
   end
 
+  def self.categories
+    @categories = ["album", "book", "movie",]
+  end
+
 
 end
