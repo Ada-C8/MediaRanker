@@ -1,1 +1,10 @@
 <h1>works#index</h1>
+
+<%= link_to "Add new media", new_work_path %>
+<ul>
+<%= @works.each do |work| %>
+  <li>
+    <%= work.title %>
+  </li>
+</ul>
+<% end %>
