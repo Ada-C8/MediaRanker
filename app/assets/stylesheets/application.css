@@ -27,3 +27,11 @@ nav li a {
   border-radius: 1rem;
   padding: .5rem;
 }
+
+.success {
+  color: darkgreen;
+}
+
+.failure {
+  color: crimson;
+}
