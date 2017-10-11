@@ -12,4 +12,9 @@ describe UsersController do
     value(response).must_be :success?
   end
 
+  it "should render 404 page if not found" do
+    get user_path(-1)
+    assert_response 404
+  end
+
 end
