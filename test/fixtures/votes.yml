@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-harry:
-  name: Harry Potter
+one:
+  work: hp
+  user: harry
 
-hermione:
-  name: Hermione Granger
+two:
+  work: dune
+  user: hermione

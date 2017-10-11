@@ -79,6 +79,30 @@ describe WorksController do
       must_respond_with :redirect
       must_redirect_to root_path
     end
+
+    it "should update creator attribute" do
+      new_creator = "New Artist"
+      patch update_work_path( works(:dune) ), params: { work: { creator: new_creator } }
+
+      updated_work = Work.find(works(:dune).id)
+      updated_work.creator.must_equal new_creator
+    end
+
+    it "should update publication year attribute" do
+      new_year = 2000
+      patch update_work_path( works(:dune) ), params: { work: { publication_year: new_year } }
+
+      updated_work = Work.find(works(:dune).id)
+      updated_work.publication_year.must_equal new_year
+    end
+
+    it "should update title attribute" do
+      new_title = "Dune part 2"
+      patch update_work_path( works(:dune) ), params: { work: { title: new_title } }
+
+      updated_work = Work.find(works(:dune).id)
+      updated_work.title.must_equal new_title
+    end
   end
 
 

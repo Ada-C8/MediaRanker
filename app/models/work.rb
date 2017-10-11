@@ -3,6 +3,7 @@ require 'date'
 class Work < ApplicationRecord
 
   belongs_to :category
+  has_many :votes, dependent: :destroy
   validates_presence_of :title, :creator
   validates :publication_year, numericality: { only_integer: true }, allow_nil: true
   validates :title, uniqueness: { scope: [:category_id, :creator], message: "Duplicated works not allowed" }
