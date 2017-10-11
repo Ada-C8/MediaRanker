@@ -1,0 +1,2 @@
+module MediaInstanceHelper
+end
