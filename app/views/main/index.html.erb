@@ -12,18 +12,21 @@
   <% @movies.each do |work| %>
   <p><strong><%= link_to work.title, work_path(work.id) %></p></strong>
   <p>by: <%= work.creator %></p>
+  <p><%= work.votes.count%> votes </p>
   <% end %>
 
   <h3> Top Books </h3>
   <% @books.each do |work| %>
   <p><strong><%= link_to work.title, work_path(work.id) %></strong></p>
   <p>by: <%= work.creator %></p>
+  <p><%= work.votes.count%> votes </p>
   <% end %>
 
   <h3> Top Albums</h3>
   <% @albums.each do |work| %>
   <p><strong><%= link_to work.title, work_path(work.id) %></strong></p>
   <p>by: <%= work.creator %></p>
+  <p><%= work.votes.count%> votes </p>
   <% end %>
 
 </body>

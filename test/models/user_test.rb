@@ -1,12 +1,11 @@
 require "test_helper"
 
 describe User do
-#how to use let in this test??
+let :user1 {users(:santa) }
 
   describe "valiations" do
       it "is valid" do
-        b = User.new(name: "santa")
-        b.must_be :valid?
+        user1.must_be :valid?
       end
 
       it 'requires a name' do
@@ -19,8 +18,8 @@ describe User do
 
     describe "relationships" do
       it "can have a vote" do
-        b = User.new(name: "lauren")
-        b.must_respond_to :votes
+        # b = User.new(name: "lauren")
+        user1.must_respond_to :votes
       end
     end
 end
