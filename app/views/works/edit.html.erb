@@ -1,0 +1,5 @@
+<h3>Edit this <%= @work.category.capitalize %></h3>
+
+<%= render partial: 'layouts/errors', locals: { model: @work } %>
+
+<%= render partial: "form", locals: { hide_placeholder_text: true, button_text: "Update Work" }%>

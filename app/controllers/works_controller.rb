@@ -44,7 +44,7 @@ class WorksController < ApplicationController
     @work.destroy
     redirect_to works_path
   end
-  def works_params
+  def work_params
     # params are what fields the user is allowed to set
     return params.require(:work).permit(:title, :category, :creator, :publication_year, :description)
   end
