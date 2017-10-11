@@ -1,8 +1,68 @@
 Rails.application.routes.draw do
 
+  get 'users/index'
+
+  get 'users/new'
+
+  get 'users/show'
+
+  get 'users/create'
+
+  get 'users/edit'
+
+  get 'users/update'
+
+  get 'users/destroy'
+
+  get 'votes/index'
+
+  get 'votes/new'
+
+  get 'votes/show'
+
+  get 'votes/create'
+
+  get 'votes/edit'
+
+  get 'votes/update'
+
+  get 'votes/destroy'
+
+  get 'homes/index'
+
   root to: 'works#index'
   # this code is the same as all of the down below code :D
   #   Rails.application.routes.draw do
+  get 'users/index'
+
+  get 'users/new'
+
+  get 'users/show'
+
+  get 'users/create'
+
+  get 'users/edit'
+
+  get 'users/update'
+
+  get 'users/destroy'
+
+  get 'votes/index'
+
+  get 'votes/new'
+
+  get 'votes/show'
+
+  get 'votes/create'
+
+  get 'votes/edit'
+
+  get 'votes/update'
+
+  get 'votes/destroy'
+
+  get 'homes/index'
+
   #   resources :works
   # end
 
