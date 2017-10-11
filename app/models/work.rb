@@ -3,8 +3,8 @@ require 'date'
 class Work < ApplicationRecord
 
   belongs_to :category
-  validates_presence_of :title, :creator, :publication_year
-  validates :publication_year, numericality: { only_integer: true }
+  validates_presence_of :title, :creator
+  validates :publication_year, numericality: { only_integer: true }, allow_nil: true
   validates :title, uniqueness: { scope: [:category_id, :creator], message: "Duplicated works not allowed" }
   validate :publication_year_cannot_be_in_future, if: Proc.new { publication_year.is_a?Integer }
 

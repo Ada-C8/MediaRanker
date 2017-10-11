@@ -20,9 +20,17 @@ describe Work do
       dune.valid?.must_equal true
     end
 
-    it "must have a publication year" do
+    # it "must have a publication year" do
+    #   dune.publication_year = nil
+    #   dune.valid?.must_equal false
+    #
+    #   dune.publication_year = 1974
+    #   dune.valid?.must_equal true
+    # end
+
+    it "doesn't require a publication year" do
       dune.publication_year = nil
-      dune.valid?.must_equal false
+      dune.valid?.must_equal true
 
       dune.publication_year = 1974
       dune.valid?.must_equal true
