@@ -11,10 +11,15 @@ class WorksController < ApplicationController
   end
 
   def create
-    work = Work.new(title: params[:work][:title], description: params[:work][:description], creator: params[:work][:creator], category: params[:work][:category], publication_year: params[:work][:publication_year])
+    # work = Work.new(title: params[:work][:title], description: params[:work][:description], creator: params[:work][:creator], category: params[:work][:category], publication_year: params[:work][:publication_year])
 
-    work.save
-    redirect_to('/works')
+    @work = Work.new(work_params)
+
+    if @work.save
+      redirect_to('/works')
+    else
+      render :new
+    end
   end
 
   def show
@@ -46,4 +51,9 @@ class WorksController < ApplicationController
 
     redirect_to works_path
   end
+
+  private
+    def work_params
+      return params.require(:work).permit(:title, :creator, :category, :publication_year, :description)
+    end
 end
