@@ -27,4 +27,12 @@ describe "WorksController" do
     updated_work.title.must_equal "New Title"
     must_redirect_to works_path
   end
+
+  it "should delete a work" do
+    proc {
+      delete work_path (works(:almost).id)
+    }.must_change 'Work.count', -1
+    must_respond_with :redirect
+    must_redirect_to works_path
+  end
 end
