@@ -64,6 +64,7 @@ class WorksController < ApplicationController
 
     unless @work
       head :not_found
+      return
     end
   end
 end
