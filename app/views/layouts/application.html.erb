@@ -16,10 +16,8 @@
       <%= button_to("View top media", root_path, method: :get, alt: "link to home page") %>
       <%= button_to("View all media", works_path, method: :get, alt: "link to index page") %>
       <%= button_to("Add a new work", new_work_path, method: :get, alt: "link to add a new work") %>
-      <!-- # TODO need to create real view all users link -->
       <%= button_to("View all users", users_path, method: :get, alt: "link to user index") %>
       <div>
-        <!-- TODO # logged in button name and both these links need to be updated to go right places -->
         <%= button_to((session[:user_id] == nil ? "Log In" : "Logged in as #{session[:name]}"), login_path, method: :get, alt: "link to user summary") %>
         <%= button_to("Log Out", logout_path, method: :get, alt: "link to log out") %>
       </div>
