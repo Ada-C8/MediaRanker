@@ -19,13 +19,15 @@ class WorksController < ApplicationController
 
     if result
       flash[:status] = :success
-      flash[:message] = "Successfully created #{@work.category} #{@work.title}."
+      flash[:message] = "Created #{@work.category} #{@work.title}."
       redirect_to work_path(@work.id)
+      return
     else
       flash.now[:status] = :failure
       flash.now[:message] = "Failed to create #{@work.category}."
       flash.now[:details] = @work.errors.messages
       render new_work_path
+      return
     end
   end
 
@@ -38,9 +40,16 @@ class WorksController < ApplicationController
     result = @work.update(work_params)
 
     if result
+      flash[:status] = :success
+      flash[:message] = "Updated #{@work.category} #{@work.title}."
       redirect_to work_path(params[:id])
+      return
     else
-      #error message
+      flash.now[:status] = :failure
+      flash.now[:message] = "Failed to update #{@work.category}."
+      flash.now[:details] = @work.errors.messages
+      render new_work_path
+      return
     end
   end
 
@@ -49,7 +58,10 @@ class WorksController < ApplicationController
     result = @work.destroy
 
     if result
+      flash[:status] = :success
+      flash[:message] = "Deleted #{@work.category} #{@work.title}."
       redirect_to works_path
+      return
     else
       #error message
     end
