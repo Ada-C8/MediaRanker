@@ -7,27 +7,56 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header>
-    <nav>
-      <ul>
-        <li>
-          <%= link_to 'View top media', root_path %>
-        </li>
-        <li>
-          <%= link_to 'View all media', works_path %>
-        </li>
-        <li>
-          <%= link_to 'Add a new work', new_work_path %>
-        </li>
-        <li>
-          <%= link_to 'View all users', users_path %>
-        </li>
-
-      </ul>
-    </nav>
-  </header>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <%= link_to 'View top media', root_path %>
+          </li>
+          <li>
+            <%= link_to 'View all media', works_path %>
+          </li>
+          <li>
+            <%= link_to 'Add a new work', new_work_path %>
+          </li>
+          <li>
+            <%= link_to 'View all users', users_path %>
+          </li>
+
+        </ul>
+      </nav>
+      <% if session[:logged_in_user] %>
+        <p> Logged in as
+           <%= User.find(session[:logged_in_user]).name %>
+        </p>
+      <%else%>
+        <p>
+          Not logged in.
+        </p>
+      <% end %>
+    </header>
+    <main>
+      <section class="flash <%= flash[:status] %>">
+        <p>
+          <%= flash[:message] %>
+        </p>
+
+        <% if flash[:details] %>
+          <ul>
+            <% flash[:details].each do |field, problems| %>
+              <% problems.each do |problem| %>
+                <li>
+                  <strong><%= field %>:</strong> <%= problem %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
+      </section>
+
+      <%= yield %>
+    </main>
   </body>
 </html>
