@@ -3,7 +3,7 @@
 <ul>
   <% @works.each do |work| %>
     <li>
-      <strong><%= work.title %></strong>: by <%=work.creator%>
+      <strong><%= link_to "#{work.title}", work_path(work)%></strong>: by <%=work.creator%>
     </li>
   <%end%>
 </ul>
