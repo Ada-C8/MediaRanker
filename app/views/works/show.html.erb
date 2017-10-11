@@ -1,18 +1,19 @@
 <!-- @work.title is broken here -->
 <h2> <%= @work.title %> details </h2>
 
+<%= link_to "Edit Work", edit_work_path %>
 <% if @work.title%>
-  <li><%= @work.title %></li>
+  <li>Title : <%= @work.title %></li>
 <% end %>
 <% if @work.creator%>
-  <li><%= @work.creator %></li>
+  <li>Creator : <%= @work.creator %></li>
 <% end %>
 <% if @work.category%>
-  <li><%= @work.category %></li>
+  <li>Category : <%= @work.category %></li>
 <% end %>
 <% if @work.publication_year%>
-  <li><%= @work.publication_year %></li>
+  <li> Publication year : <%= @work.publication_year %></li>
 <% end %>
 <% if @work.description%>
-  <li><%= @work.description %></li>
+  <li>Description : <%= @work.description %></li>
 <% end %>
