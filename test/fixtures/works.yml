@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: MyString
-  description: MyString
+album_one:
+  category: album
+  title: 6 Feet Beneath the Moon
+  creator: King Krule
+  publication_year: "2013"
+  description: King Krule's first major studio release
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: MyString
-  description: MyString
+book_one:
+  category: book
+  title: Suddenly, a Knock on the Door
+  creator: Etgar Keret
+  publication_year: "2012"
+  description: Keret's latest book
+
+movie_one:
+  category: movie
+  title: Rosemary's Baby
+  creator: Roman Polanski
+  publication_year: "1968"
+  description: Horror classic

@@ -32,7 +32,7 @@ input[type="submit"]  {
     width: 112px;
   }
 
-  input, #work_category {
+  input, #work_category, textarea {
     height: 2.4375rem;
     margin: 0 0 1rem;
     padding: 0.5rem;
@@ -55,9 +55,14 @@ input[type="submit"]  {
 
 
   body {
-    font-family: sans-serif;
+    font-family: "Gudea", sans-serif;
   }
+/*@media print, screen and (min-width: 40em) h3 {
+  font-size: 1.9375rem;
+}*/
 
   h3 {
     color: #26A69A;
+    font-weight: bold;
+    font-size: 1.9375rem;
   }
