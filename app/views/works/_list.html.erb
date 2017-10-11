@@ -1,0 +1,32 @@
+<!-- <% @category = ""%> -->
+I this doing anything?
+
+
+<% @data = Work.where(:category => @category) %>
+
+<h4> <%=@category.capitalize%>s
+</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @data.each do |data| %>
+
+        <tr>
+          <td> TBD </td>
+          <td> <%= data.title %> </td>
+          <td> <%= data.creator %> </td>
+          <td> <%= data.publication_year %> </td>
+          <td> upvote button </td>
+        </tr>
+
+    <% end %>
+  </tbody>
+</table>

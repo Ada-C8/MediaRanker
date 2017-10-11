@@ -3,6 +3,9 @@
       List of Works
     </h3>
 
+    <% @category = "album" %>
+    <%= render partial: 'list' %>
+
     <h4> Albums
     </h4>
       <table>
@@ -19,7 +22,7 @@
           <% @works.each do |work| %>
             <% if work.category == "album" %>
               <tr>
-                <td> TBD </td>
+                <td> <%= work.votes.count %> </td>
                 <td> <%= work.title %> </td>
                 <td> <%= work.creator %> </td>
                 <td> <%= work.publication_year %> </td>
@@ -46,7 +49,7 @@
             <% @works.each do |work| %>
               <% if work.category == "book" %>
                 <tr>
-                  <td> TBD </td>
+                  <td> <%= work.votes.count %> </td>
                   <td> <%= work.title %> </td>
                   <td> <%= work.creator %> </td>
                   <td> <%= work.publication_year %> </td>
@@ -73,7 +76,7 @@
               <% @works.each do |work| %>
                 <% if work.category == "movie" %>
                   <tr>
-                    <td> TBD </td>
+                    <td> <%= work.votes.count %> </td> 
                     <td> <%= work.title %> </td>
                     <td> <%= work.creator %> </td>
                     <td> <%= work.publication_year %> </td>
