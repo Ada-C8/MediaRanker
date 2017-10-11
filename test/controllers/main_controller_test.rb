@@ -1,7 +1,13 @@
 require "test_helper"
 
 describe MainController do
-  # it "must be a real test" do
-  #   flunk "Need real tests"
-  # end
+  describe "index" do
+    # check that the index page works
+    it "returns success status" do
+      # act
+      get root_path
+      # assert
+      must_respond_with :success
+    end
+  end # index
 end

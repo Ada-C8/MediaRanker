@@ -14,11 +14,11 @@ puts "Loading raw media data from #{WORK_FILE}"
 work_failures = []
 CSV.foreach(WORK_FILE, :headers => true) do |row|
   work = Work.new
-  category = row[:category]
-  title = row[:title]
-  creator = row[:creator]
-  publication_year = row[:publication_year]
-  description = row[:description]
+  work.category = row['category']
+  work.title = row['title']
+  work.creator = row['creator']
+  work.publication_year = row['publication_year']
+  work.description = row['description']
   puts "Created work: #{work.inspect}"
   sucessful = work.save
   if !sucessful
