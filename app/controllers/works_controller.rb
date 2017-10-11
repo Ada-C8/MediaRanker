@@ -1,8 +1,13 @@
 class WorksController < ApplicationController
   def index
-    @book_works = Work.where(category: "book").order(:title)
-    @movie_works = Work.where(category: "movie").order(:title)
-    @album_works = Work.where(category: "album").order(:title)
+    # @work = Work.find_by(id: params[:id])
+    # @book_work = @work.where(category: "book").order(:title)
+    # @movie_work = @work.where(category: "movie").order(:title)
+    # @album_work = @work.where(category: "album").order(:title)
+
+    @book_work = Work.where(category: "book").order(:title)
+    @movie_work = Work.where(category: "movie").order(:title)
+    @album_work = Work.where(category: "album").order(:title)
   end
 
   def show
