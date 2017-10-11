@@ -42,7 +42,10 @@ describe "WorksController" do
   end
 
   it "should be able to delete a work" do
+    proc {delete work_path( works(:twilight).id )}.must_change 'Work.count', -1
 
+    must_respond_with :redirect
+    must_redirect_to works_path
   end
 
 end
