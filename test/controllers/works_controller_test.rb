@@ -1,7 +1,9 @@
 require "test_helper"
 
 describe WorksController do
-  # it "must be a real test" do
-  #   flunk "Need real tests"
-  # end
+  it "the books index page is successful" do
+    get works_path
+    must_respond_with :success
+  end
+
 end

@@ -1,0 +1,18 @@
+<header>
+  <h1>List of works </h1>
+</header>
+<main>
+  <h2>Albums</h2>
+  <%= render partial: "table", locals: {works: @albums} %>
+
+  <h2>Books</h2>
+  <%= render partial: "table", locals: {works: @books} %>
+
+  <h2>Movies</h2>
+  <%= render partial: "table", locals: {works: @movies} %>
+
+</main>
+<footer>
+  <h3>View top media</h3>
+  <h3>Add a new work</h3>
+</footer>
