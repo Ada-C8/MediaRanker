@@ -1,4 +1,9 @@
 class WorksController < ApplicationController
+
+  def home
+    @homepage = true
+  end
+
   def create
   end
 

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'works#index', as: "root"
+  root to: "works#home", as: "root"
 
   # get 'user/index'
   #
