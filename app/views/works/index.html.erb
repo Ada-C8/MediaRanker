@@ -1,3 +1,10 @@
+<% if flash[:error].present? %>
+  <p class='flash-error'><%= flash[:error] %></p>
+<% end %>
+<% if flash[:notice].present? %>
+  <p class='flash-notice'><%= flash[:notice] %></p>
+<% end %>
+
 <h2>List of works</h2>
 
 <% category_rename = { "album" => "Albums", "book" => "Books", "movie" => "Movies" }  %>
@@ -17,7 +24,7 @@
     <% works.each do |work| %>
       <tr>
         <td><%= "Votes" %></td>
-        <td><%= work.title %></td>
+        <td><%= link_to work.title, work_path(work.id) %></td>
         <td><%= work.creator %></td>
         <td><%= work.publication_year %></td>
         <td><%= "Upvote" %></td>
@@ -28,4 +35,4 @@
 <% end %>
 
 <p>View top media</p>
-<p>Add a new record</p>
+<p><%= link_to "Add a new record", new_work_path %></p>

@@ -1,11 +1,18 @@
+<% if flash[:error].present? %>
+  <p class='flash-error'><%= flash[:error] %></p>
+<% end %>
+<% if flash[:notice].present? %>
+  <p class='flash-notice'><%= flash[:notice] %></p>
+<% end %>
+
 <h2><%= @work.title %></h2>
 <p>Created by: <%= @work.creator %></p>
 <p>Published: <%= @work.publication_year %></p>
 
 <p>Back to media ranks</p>
-<p>Edit</p>
+<p><%= link_to "Edit", edit_work_path %></p>
 <p>Upvote</p>
-<p>Delete</p>
+<p><%= link_to "Delete", work_path(@work.id), method: :delete %></p>
 
 <h2>Votes for this <%= @work.category.capitalize %></h2>
 
