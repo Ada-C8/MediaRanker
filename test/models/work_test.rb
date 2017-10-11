@@ -5,14 +5,14 @@ describe Work do
 
   describe "validations" do
     it "can be created with all fields" do
-      work = Work.new(
+      w = Work.new(
         category: "album",
         title: "Can't Buy a Thrill",
         creator: "Steely Dan",
         publication_year: "1972",
         description: "An album description"
       )
-      work.must_be :valid?
+      w.must_be :valid?
     end
 
     it "requires a category, title, creator, description, publication_year" do
