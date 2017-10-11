@@ -1,9 +1,9 @@
 require "test_helper"
 
 describe User do
-  let(:user) { User.new }
+  let(:user) { users(:west)}
 
   it "must be valid" do
-    value(user).must_be :valid?
+    user.valid?.must_equal true
   end
 end
