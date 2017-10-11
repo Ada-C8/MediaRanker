@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   get '/works/:id', to: 'works#show', as: 'work'
   get '/works/:id/edit', to: 'works#edit', as: 'edit_work'
   patch '/works/:id', to: 'works#update', as: 'update_work'
-  delete '/works/:id', to: 'works#destroy', as: 'delete_trip'
+  delete '/works/:id', to: 'works#destroy', as: 'delete_work'
 end
