@@ -28,7 +28,7 @@ class WorksController < ApplicationController
     if @work.save
       redirect_to works_path
     else
-      render :new
+      render :new, status: :bad_request
     end
   end
 

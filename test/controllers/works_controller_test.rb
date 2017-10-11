@@ -31,17 +31,31 @@ describe WorksController do
         }
       }
       Work.new(work_data[:work]).must_be :valid?
-      start_book_count = Work.count
+      start_work_count = Work.count
 
       post works_path, params: work_data
       must_respond_with :redirect
       must_redirect_to works_path
-      Work.count.must_equal start_book_count + 1
+      Work.count.must_equal start_work_count + 1
     end
 
     # negative test
     it "does something when the work data is invalid" do
+      # arrange
+      bad_work = {
+        work: {
+          category: "book",
+          # no title given!!
+        }
+      }
+      Work.new(bad_work[:work]).wont_be :valid?
+      start_work_count = Work.count
+      # act
+      post works_path, params: bad_work
 
+      # assert
+      must_respond_with :bad_request
+      Work.count.must_equal start_work_count
     end
   end
 
