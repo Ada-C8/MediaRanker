@@ -19,7 +19,7 @@
           <li><%= link_to "View All Media", works_path %></li>
           <li><%= link_to "Add a New Work", new_work_path %></li>
           <li><%= link_to "View All Users", users_path %></li>
-          <li><%= link_to "Login", new_user_path %></li>
+          <li><%= link_to "Login", login_path %></li>
         </ul>
       </nav>
     </header>
@@ -29,7 +29,7 @@
      <div class="<%= name %>"><%= message %></div>
    <% end %>
  </section>
- 
+
     <%= yield %>
   </body>
 </html>
