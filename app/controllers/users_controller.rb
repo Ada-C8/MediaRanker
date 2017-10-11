@@ -20,13 +20,19 @@ class UsersController < ApplicationController
   end
 
   def login
-    user_id = params[:user][:user_id]
-    user = User.find_by(id: user_id)
+    # user_id = params[:user][:user_id]
+    name = params[:user][:name]
+
+    # user = User.find_by(id: user_id)
+    user = User.find_by(name: name)
     if user
       session[:logged_in_user] = user_id
       redirect_to root_path
     else
-      head :not_found
+      # head :not_found
+      flash[:status] = :failure
+      flash[:message] = "No user with #{name}"
+      render :login_form
     end
   end
 

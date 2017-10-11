@@ -30,10 +30,11 @@ class WorksController < ApplicationController
   end
 
   def update
-    if find_by_params_id
+    if find_work_by_params_id
       @work.update_attributes(work_params)
       if @work.save
         redirect_to work_path(@work)
+        return
       else
         render :edit, status: :bad_request
         return
@@ -42,8 +43,20 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    if find_by_params_id
+    # if session[:logged_in_user]
+    #   # current_user = User.find(session[:logged_in_user])
+    #   current_user = User.find_by(id: session[:logged_in_user])
+    # # else
+    # #   flash[:status] = :failure
+    # #   flash[:message] = "You must be logged in!"
+    # #   redirect_to works_path
+    # #   return
+    # end
+
+    if find_work_by_params_id
       @work.destroy
+      # flash[:status] = :success
+      # flash[:message] = "Deleted work #{@work.title}"
       redirect_to works_path
     end
   end
@@ -51,7 +64,7 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    return params.require(:work).permit(:id, :title, :category, :creator, :year, :desc)
+    return params.require(:work).permit(:title, :category, :creator, :year, :desc)
   end
 
   def find_work_by_params_id
@@ -59,5 +72,6 @@ class WorksController < ApplicationController
     unless @work
       head :not_found
     end
+    return @work
   end
 end

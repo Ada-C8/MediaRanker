@@ -88,9 +88,8 @@ describe WorksController do
       }
       work.update_attributes(changes[:work])
       work.must_be :valid?
-      Work.new(changes[:work])
 
-      path work_path(work), params: changes
+      patch work_path(work), params: changes
       must_respond_with :redirect
       must_redirect_to work_path(work)
 
@@ -99,12 +98,51 @@ describe WorksController do
     end
 
     it "returns bad_request if work exists and changes are invalid" do
+      work = Work.first
+      changes = {
+        work: {
+          title: "",
+        }
+      }
+      work.update_attributes(changes[:work])
+      work.wont_be :valid?
+
+      patch work_path(work), params: changes
+      must_respond_with :bad_request
     end
 
     it "returns not_found if work does not exist" do
+      work = Work.first
+      changes = {
+        work: {
+          title: "testing",
+          category: "movie"
+        }
+      }
+      work.update_attributes(changes[:work])
+      work.must_be :valid?
+      work.destroy
+
+      patch work_path(work), params: changes
+      must_respond_with :not_found
     end
   end
 
   describe "destroy" do
+    it "returns success and destroys if work exists" do
+      work = Work.first
+      work.must_be :valid?
+      delete work_path(work)
+      must_respond_with :redirect
+      must_redirect_to works_path
+    end
+
+    it "returns not_found if work does not exist" do
+      work = Work.first
+      work.must_be :valid?
+      delete work_path(work)
+      delete work_path(work)
+      must_respond_with :not_found
+    end
   end
 end
