@@ -8,9 +8,22 @@ class WorksController < ApplicationController
   end
 
   def edit
+    @work = Work.find_by(id: params[:id].to_i)
+
+    unless @work
+      redirect_to works_path
+    end
   end
 
   def update
+    @work = Work.find_by(id: params[:id].to_i)
+    redirect_to works_path unless @work
+
+    if @work.update_attributes work_params
+      redirect_to works_path
+    else
+      render :edit
+    end
   end
 
   def new
