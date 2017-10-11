@@ -1,5 +1,5 @@
 require "test_helper"
 
-describe Vote do
-
-end
+# describe Vote do
+#
+# end

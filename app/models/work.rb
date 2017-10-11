@@ -5,5 +5,5 @@ class Work < ApplicationRecord
   validates :title, presence: true
   validates :creator, presence: true
   validates :description, presence: true
-  validates :year, numericality: { only_integer: true}
+  validates :publication_year, presence: true
 end

@@ -1,25 +1,18 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-album:
+one:
   category: album
   title: Can't Buy a Thrill
   creator: Steely Dan
-  publicaton: 1972
-  descripton: An album description
-book:
+  publication_year: 1972
+  description: An album description
+two:
   category: book
   title: Hidden Figures
   creator: Margot Lee Shetterly
-  publicaton: 2016
-  descripton: Good book that came before the movie
-movie:
-  category: album
-  title: Can't Buy a Thrill
-  creator: Steely Dan
-  publicaton: 1972
-  descripton: An album description
-# column: value
+  publication_year: 2016
+  description: Good book that came before the movie
+three:
+  category: movie
+  title: Toy Story 3
+  creator: Lee Unkrich
+  publication_year: 2010
+  description: An movie description
