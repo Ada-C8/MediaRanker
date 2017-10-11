@@ -4,7 +4,10 @@ class WorksController < ApplicationController
   end
 
   def show
-    # @work = Work.find_by
+    @work = Work.find_by(id: params[:id].to_i)
+    unless @work
+      render_404
+    end
   end
 
   def new
@@ -14,7 +17,7 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(works_params)
   if @work.save
-    redirect_to works_path
+    redirect_to root_path
   else
     render :new
   end
@@ -27,13 +30,15 @@ class WorksController < ApplicationController
   def update
     @work = Work.find_by(id: params[:id].to_i)
     if @work.update_attributes works_params
-      redirect_to works_path
+      redirect_to root_path
     else
       render :edit
     end
   end
 
   def destroy
+    Work.find_by(id: params[:id]).destroy
+    redirect_to root_path
   end
 
   private
