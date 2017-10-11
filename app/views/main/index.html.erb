@@ -10,19 +10,19 @@
 
   <h3>Top Movies </h3>
   <% @movies.each do |work| %>
-  <p>Title: <%= link_to work.title, work_path(work.id) %></p>
+  <p><strong><%= link_to work.title, work_path(work.id) %></p></strong>
   <p>by: <%= work.creator %></p>
   <% end %>
 
   <h3> Top Books </h3>
   <% @books.each do |work| %>
-  <p>Title: <%= link_to work.title, work_path(work.id) %></p>
+  <p><strong><%= link_to work.title, work_path(work.id) %></strong></p>
   <p>by: <%= work.creator %></p>
   <% end %>
 
   <h3> Top Albums</h3>
   <% @albums.each do |work| %>
-  <p>Title: <%= link_to work.title, work_path(work.id) %></p>
+  <p><strong><%= link_to work.title, work_path(work.id) %></strong></p>
   <p>by: <%= work.creator %></p>
   <% end %>
 
