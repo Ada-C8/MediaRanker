@@ -1,4 +1,3 @@
-require 'pry'
 class VotesController < ApplicationController
   def index
     @votes = Vote.all
@@ -19,7 +18,7 @@ class VotesController < ApplicationController
         if @vote.save
           redirect_to work_path(params[:work_id])
         else
-          render :new #fix this!
+          flash[:error] = "Sorry, that vote didn't go through."
         end
     end
   end
