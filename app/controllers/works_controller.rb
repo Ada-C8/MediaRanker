@@ -7,6 +7,7 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
+
   end
 
   def new
@@ -20,7 +21,7 @@ class WorksController < ApplicationController
     if result
       redirect_to work_path(@work.id)
     else
-      render new_work_path
+      render new_work_path, status: :bad_request
     end
   end
 
