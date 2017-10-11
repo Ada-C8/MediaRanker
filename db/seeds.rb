@@ -14,6 +14,7 @@ puts "Loading raw work data from #{WORK_FILE}"
 work_failures = []
 CSV.foreach(WORK_FILE, :headers => true) do |row|
   work = Work.new
+  work.title = row['title']
   work.category = row['category']
   work.creator = row['creator']
   work.publication_year = row['publication_year']
