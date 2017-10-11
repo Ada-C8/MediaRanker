@@ -17,9 +17,16 @@ class WorksController < ApplicationController
   end
 
   def new
+    @work = Work.new
   end
 
   def create
+    @work = Work.new(work_parameters)
+    if @work.save
+      redirect book_path(@work.id)
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -29,6 +36,11 @@ class WorksController < ApplicationController
   end
 
   def update
+  end
+
+  private
+  def work_parameters
+    params.require(:work).permit(:title, :category, :creator, :description, :publication_year)
   end
 
 end
