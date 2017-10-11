@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   get 'works/:id', to: 'works#show', as: 'work'
 
-  delete '/works/:id', to: 'works#destory'
+  delete '/works/:id', to: 'works#destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
