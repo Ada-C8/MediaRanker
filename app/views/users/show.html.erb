@@ -15,7 +15,7 @@
     <th>Voted On</th>
   </tr>
   <tr>
-    <% @votes.each do |vote| %>
+    <% @works.votes.each do |work| %>
     <div class="user">
     <td><%= link_to @work.title, work_path(@work.id) %> </td>
     <td> <%= @work.creator %></td>

@@ -1,6 +1,12 @@
 class WorksController < ApplicationController
 
   def index
+    # if params[:author_id]
+    # @books = Author.find(params[:author_id]).books
+  # else
+  # @books = Book.all
+  # end
+
     @works = Work.all
     @movies = Work.where(category: "movie")
     @books = Work.where(category: "book")

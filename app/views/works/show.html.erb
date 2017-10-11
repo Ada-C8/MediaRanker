@@ -15,3 +15,5 @@
 work_path(@work),
 method: :delete,
 data: { confirm: 'Are you sure?' } %>
+
+<%= "#{@work.votes.count} Votes for this work" %>

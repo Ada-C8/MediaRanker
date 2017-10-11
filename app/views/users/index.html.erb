@@ -10,7 +10,7 @@
     <% @users.each do |user| %>
     <div class="user">
       <td><strong><%= link_to user.name, user_path(user.id)  %> </strong></td>
-      <td> ### </td>
+      <td> <%= user.votes.count %> </td>
       <td> <%= user.created_at.to_date %> </td>
     </div>
     </tr>
