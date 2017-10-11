@@ -13,4 +13,8 @@ class WorksController < ApplicationController
     work.save
     redirect_to('/works')
   end
+
+  def show
+    @work = Work.find(params[:id])
+  end
 end
