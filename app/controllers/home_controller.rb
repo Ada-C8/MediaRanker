@@ -5,3 +5,6 @@ class HomeController < ApplicationController
     @top_albums = Work.where(category: 'album').limit(10)
   end
 end
+
+
+#this will be modified to contain 10 highest rated works.
