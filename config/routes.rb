@@ -2,22 +2,6 @@ Rails.application.routes.draw do
 
   root to: "works#home", as: "root"
 
-  # get 'user/index'
-  #
-  # get 'works/create'
-  #
-  # get 'works/destroy'
-  #
-  # get 'works/edit'
-  #
-  # get 'works/new'
-  #
-  # get 'works/show'
-  #
-  # get 'works/update'
-  #
-  # get 'works/index'
-
   resources:works
 
   resources:users

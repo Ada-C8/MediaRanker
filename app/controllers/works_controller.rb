@@ -34,7 +34,7 @@ class WorksController < ApplicationController
 
   def update
     @work = Work.find_by(id: params[:id])
-    result = @work.update({category: params[:work][:category], title: params[:work][:title], creator: params[:work][:creator], publication_year: params[:work][:publication_year], description: params[:work][:description]})
+    result = @work.update( work_params )
     if result
       redirect_to work_path(@work.id)
     else
