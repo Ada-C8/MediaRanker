@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe Work do
-  let :category {"album"}
+  let :category { "album" }
   let :title { "test name" }
 
   describe "validations" do

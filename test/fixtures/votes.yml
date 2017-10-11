@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-vote1:
-  user: user1
-  work: cd
-vote2:
-  user: user2
-  work: novel
+# vote1:
+#   user: user1
+#   work: cd
+# vote2:
+#   user: user2
+#   work: novel
