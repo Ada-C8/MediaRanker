@@ -3,23 +3,9 @@
 <ul>
   <% @works.each do |work| %>
     <!-- work.title is broken here -->
-    <%= link_to work.title, work_path(work.id) %>
+<li>
+  <%= link_to work.title, work_path(work.id) %>
+</li>
 
-    <% if work.title%>
-      <li><%= work.title %></li>
-    <% end %>
-    <% if work.creator%>
-      <li><%= work.creator %></li>
-    <% end %>
-    <% if work.category%>
-      <li><%= work.category %></li>
-    <% end %>
-    <% if work.publication_year%>
-      <li><%= work.publication_year %></li>
-    <% end %>
-    <% if work.description%>
-      <li><%= work.description %></li>
-    <% end %>
-    <hr>
   <% end %>
 </ul>
