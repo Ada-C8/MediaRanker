@@ -1,9 +1,50 @@
 require "test_helper"
 
-describe Work do
-  let(:work) { Work.new }
+# 1984:
+#   category: "book"
+#   title: "1984"
+#   creator: "George Orwell"
+#   publication_year: 1950
+#   description: "A book that is turning out to be kind of true."
 
-  it "must be valid" do
-    value(work).must_be :valid?
+
+describe Work do
+  let(:book) {works(:test_book)}
+
+  it "requires a title to be valid" do
+    book.valid?.must_equal true
+    works(:titleless).valid?.must_equal false
+  end
+
+  it "requires a category to be valid" do
+    book.valid?.must_equal true
+    works(:no_category).valid?.must_equal false
+  end
+
+  it "requires a creator to be valid" do
+    book.valid?.must_equal true
+    works(:no_creator).valid?.must_equal false
+  end
+
+  it "does not require a publication date to be valid" do
+    book.valid?.must_equal true
+    works(:no_pub_date).valid?.must_equal true
+  end
+
+  it "does not require a publication date to be valid" do
+    book.valid?.must_equal true
+    works(:no_description).valid?.must_equal true
+  end
+
+  it "requires a publication_year to be integers" do
+    book = works(:no_pub_date)
+    book.publication_year = "Two thousand and three"
+    book.save
+    book.valid?.must_equal false
+
+    book.publication_year = 2003
+    book.save
+    book.valid?.must_equal true
+
   end
 end
