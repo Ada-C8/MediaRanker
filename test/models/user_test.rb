@@ -9,5 +9,7 @@ describe User do
   end
   it "is invalid without a name" do
     user.valid?.must_equal false
+    user.name = ""
+    user.valid?.must_equal false
   end
 end

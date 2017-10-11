@@ -43,11 +43,10 @@ describe WorksController do
     must_redirect_to works_path
   end
 
-  it "will redirect if not updated" do
-    skip
-    put work_path(book.id), params: {work: {title: nil} }
-    must_redirect_to edit_work_path
-  end
+  # it "will redirect if not updated" do
+  #   put work_path(book.id), params: {work: {title: nil} }
+  #   assert_template :edit
+  # end
 
   it "should destroy" do
     delete work_path(book.id)
