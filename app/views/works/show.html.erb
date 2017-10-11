@@ -1,0 +1,31 @@
+<article class="show-work">
+
+  <section class="work-info">
+    <h2 class="title-green"><%= @work.title %></h2>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published: <%= @work.year %></p>
+    <p><%= @work.desc %></p>
+
+    <div class="link-buttons">
+      <%= link_to "Back to media ranks", root_path %>
+      <%= link_to "Edit", edit_work_path(@work) %>
+      <%= link_to "Upvote", new_work_vote_path(@work[:id]) %>
+      <%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: 'Are you sure you want to delete this work?'} %>
+    </div>
+  </section>
+
+  <section class="vote-info">
+    <h2 class="title-green"><%= @work.votes.length %> Votes for this <%= @work.category.capitalize%></h2>
+    <table class="voted-users">
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+      <% @work.votes.each do |vote| %>
+        <td><% vote.user_id.name%></td>
+        <td><% vote.date %></td>
+      <% end %>
+    </table>
+  </section>
+
+</article>
