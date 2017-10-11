@@ -1,0 +1,17 @@
+<h2><%= @work.title %></h2>
+<p>Created by: <%= @work.creator %></p>
+<p>Published: <%= @work.publication_year %></p>
+
+<h2><%= @work.votes.length %> votes for this <%= @work.category.titleize %></h2>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Date</th>
+  </tr>
+  <% @work.votes.each do |vote| %>
+    <tr>
+      <td><%= vote.user.username %></td>
+      <td><%= vote.created_at.strftime("%b") + ' ' + vote.created_at.strftime("%d") + ' ' + vote.created_at.strftime("%Y") %></td>
+    </tr>
+  <% end %>
+</table>
