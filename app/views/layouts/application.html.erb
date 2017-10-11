@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MediaRanker</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>MediaRanker</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
   <header>
     <%= link_to "View top media", root_path %>
 
@@ -17,7 +18,28 @@
     <%= link_to "View all users", users_path %>
   </header>
 
-  <body>
+  <main>
+    <section class="flash <%= flash[:status] %> ">
+      <p>
+        <%= flash[:message] %>
+      </p>
+      <% if flash[:details] %>]
+      <ul>
+        <% flash[:details].each do |field, problems| %>
+        <% problems.each do |problem| %>
+        <li>
+          <strong>
+            <%= field %>:
+          </strong>
+          <%= problem %>
+        </li>
+        <% end %>
+        <% end %>
+      </ul>
+      <% end %>
+    </section>
+
     <%= yield %>
-  </body>
+  </main>
+</body>
 </html>
