@@ -5,7 +5,10 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find(params[:id])
+    @work = Work.find_by(id: params[:id])
+    unless @work
+      head :not_found
+    end
   end
 
   def new
@@ -18,7 +21,7 @@ class WorksController < ApplicationController
     if @work.save
       redirect_to works_path
     else
-      render :new
+      render :new, status: :bad_request
     end
   end
 
@@ -46,5 +49,13 @@ class WorksController < ApplicationController
   private
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_book_by_params_id
+      # can add the repeated show and edit code here to try it up some more
+      @work = Work.find_by(id: params[:id])
+      unless @work
+        head :not_found
+      end 
   end
 end
