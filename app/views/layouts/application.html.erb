@@ -7,7 +7,15 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <header>
+    <h2><%= link_to "Media Ranker", root_path %><small>Ranking the Best of Everything</small></h2>
+    <%= link_to "View Top Media", root_path %>
+    <%= link_to "View All Media", works_path %>
+    <%= link_to "Add A New Work", new_work_path %>
+    <%= link_to "View All Users", users_path %>
+    <%= link_to "Log In", root_path %>
+    <%= link_to "Log Out", root_path %>
+  </header>
   <body>
     <%= yield %>
   </body>

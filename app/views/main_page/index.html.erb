@@ -1,2 +1,32 @@
-<h1>MainPage#index</h1>
-<p>Find me in app/views/main_page/index.html.erb</p>
+<h3>Media Spotlight: <%= link_to @top.title, work_path(@top.id) %> by: <%= @top.creator %></h3>
+<p><%= @top.upvotes.count %> votes - <%= @top.description %></p>
+
+<hr />
+
+<h3>Top Books</h3>
+<ul>
+  <% @top_books.each do |work| %>
+  <li>
+    <h4><%= link_to work.title, work_path(work.id) %> <small>by <%= work.creator %></small></h4>
+    <p><%= work.upvotes.count %> votes</p>
+  </li>
+  <% end %>
+</ul>
+<h3>Top Movies</h3>
+<ul>
+  <% @top_movies.each do |work| %>
+  <li>
+    <h4><%= link_to work.title, work_path(work.id) %> <small>by <%= work.creator %></small></h4>
+    <p><%= work.upvotes.count %> votes</p>
+  </li>
+  <% end %>
+</ul>
+<h3>Top Albums</h3>
+<ul>
+  <% @top_albums.each do |work| %>
+  <li>
+    <h4><%= link_to work.title, work_path(work.id) %> <small>by <%= work.creator %></small></h4>
+    <p><%= work.upvotes.count %> votes</p>
+  </li>
+  <% end %>
+</ul>

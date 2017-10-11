@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   # get 'works/destroy'
   #
   # get 'main_page/index'
+  root to: 'main_page#index'
   resources :works
-  # resources :users
+  resources :users
+
 end
