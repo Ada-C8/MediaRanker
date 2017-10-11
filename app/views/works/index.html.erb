@@ -1,2 +1,15 @@
 <h1>Works#index</h1>
 <p>Find me in app/views/works/index.html.erb</p>
+
+<ol>
+  <% @works.each do |work| %>
+    <li>
+      <p>Title: <%= work.title %></p>
+      <p>Category: <%= work.category %></p>
+      <p>Creator: <%= work.creator %></p>
+      <p>Publication Year: <%= work.publication_year %></p>
+      <p>Description: <%= work.description %></p>
+      <hr>
+    </li>
+  <% end %>
+</ol>
