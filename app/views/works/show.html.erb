@@ -1,2 +1,11 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
+
+<h3> <%= @work.title %> </h3>
+<p>
+  Created by: <%=@work.creator%>
+</p>
+<p>
+  Published: <%=@work.year%>
+</p>
+<p>
+  <%=@work.description%>
+</p>
