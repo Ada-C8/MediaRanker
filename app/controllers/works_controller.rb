@@ -18,8 +18,10 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(category: params[:work][:category], title: params[:work][:title], creator: params[:work][:creator], publication_year: params[:work][:publication_year], description: params[:work][:description])
     if @work.save
-      redirect_to works_path
+      flash[:success] = "Your work has been added!"
+      redirect_to work_path(@work.id)
     else
+      flash.now[:error] = "There was a problem adding your work :("
       render :new
     end
   end

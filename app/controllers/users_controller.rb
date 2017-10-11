@@ -19,26 +19,28 @@ class UsersController < ApplicationController
     else
       render :new
     end
+
+    
   end
 
-  def edit
-    @user = User.find_by(id: params[:id])
-    unless @user
-      redirect_to users_path
-    end
-  end
-
-  def update
-    @user = User.find_by(id: params[:id])
-    result = @user.update({
-      username: params[:user][:name]
-      })
-      if result
-        redirect_to user_path(@user.id)
-      else
-        render :edit
-      end
-  end
+  # def edit
+  #   @user = User.find_by(id: params[:id])
+  #   unless @user
+  #     redirect_to users_path
+  #   end
+  # end
+  #
+  # def update
+  #   @user = User.find_by(id: params[:id])
+  #   result = @user.update({
+  #     username: params[:user][:name]
+  #     })
+  #     if result
+  #       redirect_to user_path(@user.id)
+  #     else
+  #       render :edit
+  #     end
+  # end
 
   def destroy
     user = User.find_by(id: params[:id])

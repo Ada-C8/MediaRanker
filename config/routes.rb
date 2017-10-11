@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   end
 
   resources :votes
-  
+
   resources :works do
     resources :votes, only: [:create]
   end
+
+  get '/login', to: 'sessions#login'
 end
