@@ -1,8 +1,43 @@
 <h1>Welcome to Media Ranker</h1>
 
+<table>
 
+<tr>
+  <th>
+    Category
+  </th>
+  <th>
+    Title
+  </th>
+  <th>
+    Creator
+  </th>
+  <th>
+    Publication Year
+  </th>
+  <th>
+    Description
+  </th>
+</tr>
 
 <% @works.each do |work| %>
-  <h3><%= link_to work.title, work %></h3>
-
+<tr>
+  <td>
+    <%= work.category %>
+  </td>
+  <td>
+    <%= link_to work.title, work %>
+  </td>
+  <td>
+    <%= work.creator %>
+  </td>
+  <td>
+    <%= work.publication_year %>
+  </td>
+  <td>
+    <%= work.description %>
+  </td>
+</tr>
 <% end %>
+
+</table>

@@ -17,6 +17,23 @@ class WorksController < ApplicationController
     redirect_to works_index_path
   end
 
+  def edit
+    @work = Work.find(params[:id])
+  end
+
+  def update
+    @work = Work.find(params[:id])
+    @work.update_attributes(work_params)
+    @work.save
+    redirect_to works_index_path
+  end
+
+  def destroy
+    @work = Work.find(params[:id])
+    @work.destroy
+    redirect_to works_index_path
+  end
+
   private
 
   def work_params
