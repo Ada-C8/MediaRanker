@@ -2,24 +2,22 @@ require "test_helper"
 
 describe Work do
   let :category {"album"}
-  let :publication_year { 2010 }
-  let :description { "I'm a description"}
   let :title { "test name" }
-  let :creator { "test" }
+
   describe "validations" do
-    it "must be valid, created with all fields" do
-      w = Work.create!(category: category, title: title, publication_year: publication_year, creator: creator, description: description)
+    it "is valid" do
+      w = Work.create!(category: category, title: title)
       w.must_be :valid?
     end
 
     it "isn't valid with out a title" do
-      w = Work.new(category: category, title: "", publication_year: publication_year, creator: creator, description: description)
+      w = Work.new
       w.wont_be :valid?
       w.errors.messages.must_include :title
     end
 
     it "isn't valid with out a category" do
-      w = Work.new(category: "", title: title, publication_year: publication_year, creator: creator, description: description)
+      w = Work.new
       w.wont_be :valid?
       w.errors.messages.must_include :category
     end
@@ -32,6 +30,6 @@ describe Work do
     end
   end
 
-  describe "methods" do
-  end
+  # describe "methods" do
+  # end
 end

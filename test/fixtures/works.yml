@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  category: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+cd:
+  title: "Discovery"
+  category: "album"
+  creator: "Daft Punk"
+  publication_year: 2001
+  description: "test description"
 
-two:
-  title: MyString
-  category: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+novel:
+  title: "Book Title"
+  category: "book"
+  creator: "Author name"
+  publication_year: 2011
+  description: "words about books"

@@ -16,21 +16,21 @@ ActiveRecord::Schema.define(version: 20171010225910) do
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
+    t.string "username" #validate presence
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "work_id"
+    t.integer "user_id" #validate presence
+    t.integer "work_id" #validate presence
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "works", force: :cascade do |t|
-    t.string "title"
-    t.string "category"
+    t.string "title" #validate presence
+    t.string "category" #validate presence
     t.string "creator"
     t.integer "publication_year"
     t.string "description"
