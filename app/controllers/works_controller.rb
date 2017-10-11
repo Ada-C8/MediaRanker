@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
   def index
-    # @works = Work.all
+    @works = Work.all
   end
 
   # def show
@@ -26,5 +26,6 @@ class WorksController < ApplicationController
   # def destroy
   #
   # end
+  
 
 end
