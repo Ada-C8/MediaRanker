@@ -1,2 +1,18 @@
 <h1>Works#index</h1>
 <p>Find me in app/views/works/index.html.erb</p>
+
+<% @media.each do |type, works_list| %>
+  <section class="<%=type%>">
+    <h1><%=type.capitalize%></h1>
+    <ol>
+    <% works_list.each do |work| %>
+      <li>
+        <%= "#{work.title} by #{work.creator}" %>
+        <%= link_to("Edit", edit_work_path(work.id)) %>
+        <%= link_to("New", new_work_path) %>
+      </li>
+    <% end %>
+  </ol>
+  </section>
+
+<% end %>
