@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'works/index', to: 'works#index', as: 'works'
+  get 'works', to: 'works#index', as: 'works'
 
   get 'works/new', to: 'works#new', as: 'new_work'
 
