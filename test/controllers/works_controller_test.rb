@@ -18,11 +18,8 @@ describe "WorksController" do
   end
 
   it "if try to show for work that doesn't exist does 404 error" do
-    #TODO not sure how to get this to work
-    # test = :twilight
-    # test.id = nil
-    # get work_path( works(test).id )
-    # must_respond_with :missing
+    get work_path(-2)
+    must_respond_with :not_found
 
   end
 
