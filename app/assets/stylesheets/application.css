@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+ .flash .success {
+   background-color: lightgreen;
+   display: block;
+ }

@@ -10,6 +10,9 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find_by(id: params[:id])
+    unless @work
+      render_404
+    end
   end
 
   def new
@@ -17,10 +20,12 @@ class WorksController < ApplicationController
   end
 
   def create
-    @work = Work.new(category: params[:work][:category], title: params[:work][:title], creator: params[:work][:creator], publication_year: params[:work][:publication_year], description: params[:work][:description])
-    if @work.save
+    @work = Work.create work_params
+    if @work.id != nil
+      flash.now[:sucess] = "Work added successfully"
       redirect_to works_path
     else
+      flash.now[:error] = "Work not added"
       render :new
     end
   end
@@ -36,8 +41,9 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
     result = @work.update( work_params )
     if result
-      redirect_to work_path(@work.id)
+      flash.now[:success] = "Successfully updated #{@work.category} #{@work.id}"
     else
+      flash.now[:error] = "Work not editted successfully"
       render :edit
     end
   end
@@ -45,6 +51,7 @@ class WorksController < ApplicationController
   def destroy
     @work = Work.find_by(id: params[:id])
     if @work.destroy
+      flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
       redirect_to works_path
     else
 

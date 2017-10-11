@@ -17,6 +17,15 @@ describe "WorksController" do
     must_respond_with :success
   end
 
+  it "if try to show for work that doesn't exist does 404 error" do
+    #TODO not sure how to get this to work
+    # test = :twilight
+    # test.id = nil
+    # get work_path( works(test).id )
+    # must_respond_with :missing
+
+  end
+
   it "should be able to create a work" do
 
     proc {post works_path, params: {work: {category: "movie", title: "New Movie"}}}.must_change 'Work.count', 1

@@ -23,7 +23,7 @@
           <td><%= work.creator %></td>
           <td><%= work.publication_year %></td>
           <!-- # TODO need to make upvote link to vote  -->
-          <td><%= "Upvote" %></td>
+          <td><%= link_to("Upvote", votes_path, method: :post, alt: "link to vote")%></td>
         </tr>
         <% end %>
         <% end %>
@@ -54,7 +54,7 @@
             <td><%= work.creator %></td>
             <td><%= work.publication_year %></td>
             <!-- # TODO need to make upvote link to vote  -->
-            <td><%= "Upvote" %></td>
+            <td><%= link_to("Upvote", votes_path, method: :post, alt: "link to vote")%></td>
           </tr>
           <% end %>
           <% end %>
@@ -86,10 +86,13 @@
             <td><%= work.creator %></td>
             <td><%= work.publication_year %></td>
             <!-- # TODO need to make upvote link to vote  -->
-            <td><%= "Upvote" %></td>
+            <td><%= link_to("Upvote", votes_path, method: :post, alt: "link to vote")%></td>
           </tr>
           <% end %>
           <% end %>
       </tbody>
     </table>
+    <%= button_to("View top media", root_path, method: :get, alt: "link to home page") %>
+
+    <%= button_to("Add a new work", new_work_path, method: :get, alt: "link to create new work") %>
   </section>
