@@ -1,0 +1,30 @@
+<h1>Works#index</h1>
+
+<h1>Book</h1>
+<ul>
+  <% @book_works.each do |book| %>
+  <li>
+    <%= link_to(work.title, work_path(work.id), alt:'book title')%>
+  </li>
+  <% end %>
+</ul>
+
+<h1>Movies</h1>
+<ul>
+  <% @movie_works.each do |movie| %>
+  <li>
+    <%= link_to(work.title, work_path(work.id), alt:'Movie title')%>
+  </li>
+  <% end %>
+</ul>
+
+<h1>Albums</h1>
+<ul>
+  <% @album_works.each do |album| %>
+  <li>
+    <%= link_to(work.title, work_path(work.id), alt:'Album title')%>
+  </li>
+  <% end %>
+</ul>
+
+<p>Find me in app/views/works/index.html.erb</p>

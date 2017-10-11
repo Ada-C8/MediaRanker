@@ -9,6 +9,25 @@
   </head>
 
   <body>
+    <header>
+      <strong><h2><%= link_to("Media Ranker", home_path, alt:'homepage')%></h2></strong>
+      <nav>
+        <ul>
+          <li>
+            <%= link_to("View Top Media", home_path) %>
+          </li>
+          <li>
+            <%= link_to("View All Media", works_path) %>
+          </li>
+          <li>
+            <%= link_to("Add A New Work", new_work_path)  %>
+          </li>
+          <li>
+            <%= link_to("View All Users", users_path) %>
+          </li>
+        </ul>
+      </nav>
+</header>
     <%= yield %>
   </body>
 </html>

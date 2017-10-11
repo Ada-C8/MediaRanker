@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: 
+  title: 
+  pub_year: 
+  description: 
+
+two:
+  category: 
+  title: 
+  pub_year: 
+  description: 
