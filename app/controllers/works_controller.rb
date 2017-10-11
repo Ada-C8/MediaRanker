@@ -18,5 +18,6 @@ class WorksController < ApplicationController
   end
 
   def index
+    @works = Work.order(:category)
   end
 end
