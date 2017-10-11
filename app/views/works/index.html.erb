@@ -1,1 +1,11 @@
 <h2>Works</h2>
+
+<ol>
+  <% @works.each do |work| %>
+    <div class="work">
+        <strong>
+          <li><%= link_to work.title, work_path(work.id) %></li>
+        </strong>
+    </div>
+  <% end %>
+</ol>
