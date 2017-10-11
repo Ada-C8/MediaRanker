@@ -41,7 +41,7 @@ class WorksController < ApplicationController
   def destroy
     @work = Work.find(params[:id])
     if @work.destroy
-      redirect_to work_path
+      redirect_to works_path
     else
       #error message
     end
