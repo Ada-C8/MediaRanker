@@ -33,7 +33,7 @@ describe Work do
 
   it "can find the unique categories using get_categories()" do
     categories = Work.get_categories()
-    categories.must_equal ['Album', 'Book', 'Movie']
+    categories.must_equal ['album', 'book', 'movie']
   end
 
   it "can find the top works for each category using get_top_works(categories)" do
@@ -54,6 +54,14 @@ describe Work do
       value.must_include works[i]
       i+= 1
     end
+  end
+
+  it "can find the top work using get_top_work" do
+    top_work = Work.get_top_work
+    top_work.must_equal nil
+    Vote.create(user_id: user.id, work_id: album.id)
+    top_work = Work.get_top_work
+    top_work.id.must_equal album.id
   end
 
 end

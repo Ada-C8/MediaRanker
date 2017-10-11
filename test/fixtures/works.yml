@@ -1,21 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 album:
-  category: Album
+  category: album
   title: MyString
   creator: MyString
   publication_year: 1
   description: MyString
 
 movie:
-  category: Movie
+  category: movie
   title: MyString
   creator: MyString
   publication_year: 1
   description: MyString
 
 book:
-  category: Book
+  category: book
   title: MyString
   creator: MyString
   publication_year: 1

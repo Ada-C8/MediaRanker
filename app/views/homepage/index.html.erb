@@ -1,18 +1,22 @@
-<section>
-  <h2>Media Spotlight: <%= link_to @top_work.title, work_path(@top_work.id) %> by <%= @top_work.creator %></h2>
-  <p><%= @top_work.votes.count %> vote<%= @plural %> - <%= @top_work.description %></p>
-</section>
+<% if @top_work %>
+  <section>
+    <h2>Media Spotlight: <%= link_to @top_work.title, work_path(@top_work.id) %> by <%= @top_work.creator %></h2>
+    <p><%= @top_work.votes.count %> vote<%= @plural %> - <%= @top_work.description %></p>
+  </section>
 
-<section>
-  <% @top_works.each do |category, works| %>
-    <h3>Top <%= category.titleize %>s</h3>
-    <ol>
-      <% works.each do |work| %>
-        <li>
-          <h4><%= link_to work.title, work_path(work.id) %> by <%= work.creator %></h4>
-          <p><%= work.votes.count %> votes</p>
-        </li>
-      <% end %>
-    </ol>
-  <% end %>
-</section>
+  <section>
+    <% @top_works.each do |category, works| %>
+      <h3>Top <%= category.titleize %>s</h3>
+      <ol>
+        <% works.each do |work| %>
+          <li>
+            <h4><%= link_to work.title, work_path(work.id) %> by <%= work.creator %></h4>
+            <p><%= work.votes.count %> votes</p>
+          </li>
+        <% end %>
+      </ol>
+    <% end %>
+  </section>
+<% else %>
+  <h2><%= link_to 'Get voting!', works_path %></h2>
+<% end %>
