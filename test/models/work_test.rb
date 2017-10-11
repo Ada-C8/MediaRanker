@@ -15,18 +15,26 @@ describe Work do
       w.must_be :valid?
     end
 
-    it "requires a title" do
-      w = Work.new
+    describe "titles" do
+      it "requires a title" do
+        w = Work.new
 
-      w.wont_be :valid?
-      w.errors.messages.must_include :title
-    end
+        w.wont_be :valid?
+        w.errors.messages.must_include :title
+      end
 
-    it "requires unique title" do
-      w = Work.new(title:"Blade Runner")
+      it "requires unique title" do
+        w = Work.new(title:"Blade Runner", category: "movie")
 
-      w.wont_be :valid?
-      w.errors.messages.must_include :title      
+        w.wont_be :valid?
+        w.errors.messages.must_include :title
+      end
+
+      it "allows for title uniqueness within category" do
+        x = Work.new(title:"Blade Runner", category: "book")
+
+        x.must_be :valid?
+      end
     end
   end
 end
