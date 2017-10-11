@@ -1,6 +1,10 @@
 require "test_helper"
 
 describe WorksController do
+
+  let(:good_id) { Work.first.id }
+  let(:bad_id) { Work.last.id + 1 }
+
   describe 'index' do
     it 'returns success with full database' do
       get works_path
@@ -24,20 +28,22 @@ describe WorksController do
         [:@books, 'book'],
         [:@movies, 'movie']
       ].each do |list, category|
-        controller.instance_variable_get(list).each {|work| work.category.must_equal 'category'}
+        controller.instance_variable_get(list).each {|work| work.category.must_equal category}
       end
     end
   end
 
   describe 'show' do
     it 'returns success if work exists' do
-      skip
+      get work_path(good_id)
 
+      must_respond_with :success
     end
 
     it 'returns not_found if work does not exist' do
-      skip
+      get work_path(bad_id)
 
+      must_respond_with :not_found
     end
   end
 
@@ -60,7 +66,7 @@ describe WorksController do
     end
 
     it 'uses strong params' do
-      fake_id = Work.last.id + 1000
+      fake_id = bad_id + 1000
 
       tmi_work_data = {
         work: {
