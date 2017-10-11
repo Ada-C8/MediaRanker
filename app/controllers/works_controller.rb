@@ -21,10 +21,19 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
   end
 
+  def update
+    @work = Work.find(params[:id])
+    result = @work.update(work_params)
+    if result
+      redirect_to work_path(@work.id)
+    else
+      render :edit
+    end
+  end
+
   def show
     @work = Work.find(params[:id])
   end
-
 
 
   private
