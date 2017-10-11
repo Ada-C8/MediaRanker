@@ -2,6 +2,7 @@
 <h2> <%= @work.title %> details </h2>
 
 <%= link_to "Edit Work", edit_work_path %>
+<%= link_to "Delete Work", work_path(@work), method: :delete %>
 <% if @work.title%>
   <li>Title : <%= @work.title %></li>
 <% end %>
