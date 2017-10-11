@@ -1,7 +1,11 @@
 <h2>List of works</h2>
 
+<% category_rename = { "album" => "Albums", "book" => "Books", "movie" => "Movies" }  %>
+
+<% works_by_category = @works.group_by { |w| w.category } %>
+<% works_by_category.each do |category, works|%>
 <section>
-  <h3>Albums</h3>
+  <h3><%= category_rename[category] %></h3>
   <table>
     <tr>
       <th>Votes</th>
@@ -10,7 +14,7 @@
       <th>Published</th>
       <th>Upvote</th>
     </tr>
-    <% @works.each do |work| %>
+    <% works.each do |work| %>
       <tr>
         <td><%= "Votes" %></td>
         <td><%= work.title %></td>
@@ -21,16 +25,7 @@
     <% end %>
   </table>
 </section>
-
-<section>
-  <h3>Books</h3>
-
-</section>
-
-<section>
-  <h3>Movies</h3>
-
-</section>
+<% end %>
 
 <p>View top media</p>
 <p>Add a new record</p>
