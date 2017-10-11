@@ -2,14 +2,28 @@
   <h2>Media Spotlight</h2>
 </section>
 
-<h2>Top Works</h2>
+<h2>All Works</h2>
 
-
-<p>Top Books</p>
-<p>Top Albums</p>
-<p>Top Movies</p>
+<p>Books</p>
 <ul>
-  <% @works.each do |work| %>
+  <% @books.each do |work| %>
+    <li>
+      <%= link_to work.title, work_path(work.id) %>
+    </li>
+  <% end %>
+</ul>
+
+<p>Albums</p>
+<ul>
+  <% @albums.each do |work| %>
+    <li>
+      <%= link_to work.title, work_path(work.id) %>
+    </li>
+  <% end %>
+</ul>
+<p>Movies</p>
+<ul>
+  <% @movies.each do |work| %>
     <li>
       <%= link_to work.title, work_path(work.id) %>
     </li>
