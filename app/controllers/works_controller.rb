@@ -20,7 +20,7 @@ class WorksController < ApplicationController
     if result
       redirect_to work_path(@work.id)
     else
-      #error message
+      render new_work_path
     end
   end
 
