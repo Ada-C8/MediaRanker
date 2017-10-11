@@ -134,13 +134,15 @@ describe WorksController do
 
   describe 'edit' do
     it 'returns success if work exists' do
-      skip
+      get edit_work_path(good_id)
 
+      must_respond_with :success
     end
 
     it 'returns not_found if work does not exist' do
-      skip
+      get edit_work_path(bad_id)
 
+      must_respond_with :not_found
     end
   end
 
