@@ -1,11 +1,17 @@
-<h2>Works</h2>
+<section>
+  <h2>Media Spotlight</h2>
+</section>
 
+<h2>Top Works</h2>
+
+
+<p>Top Books</p>
+<p>Top Albums</p>
+<p>Top Movies</p>
 <ul>
   <% @works.each do |work| %>
-    <!-- work.title is broken here -->
-<li>
-  <%= link_to work.title, work_path(work.id) %>
-</li>
-
+    <li>
+      <%= link_to work.title, work_path(work.id) %>
+    </li>
   <% end %>
 </ul>
