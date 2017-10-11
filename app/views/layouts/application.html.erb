@@ -9,6 +9,20 @@
   </head>
 
   <body>
+    <section class="flash">
+      <% flash.each do |name, message| %>
+        <div class="<%= name %>">
+          <%= message %>
+          <ul class="errors">
+            <% @work.errors.each do |column, message| %>
+              <li>
+                <strong><%= column %></strong> <%= message %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </section>
     <%= yield %>
   </body>
 </html>

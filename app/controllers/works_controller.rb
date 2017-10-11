@@ -7,26 +7,32 @@ class WorksController < ApplicationController
     @works = {Albums: albums, Books: books, Movies: movies}
   end
 
-  def new
-  end
-
   def show
     @work = Work.find_by(id: params[:id])
+    render_404 unless @work
+  end
+
+  def new
   end
 
   def create
   end
 
-  def update
-    work = Work.find_by(id: params[:id])
-    #TODO: decide on redirect if doesn't exist
-    work.update_attributes(work_params) ? (redirect_to work_path(params[:id])) : (render :edit)
-  end
-
   def edit
     @work = Work.find_by(id: params[:id])
+    render_404 if @work == nil
+  end
 
-    #TODO: decide on redirect if doesn't exist
+  def update
+    @work = Work.find_by(id: params[:id])
+
+    if @work.update_attributes(work_params)
+      flash[:success] = "Successfully updated Media ID#{@work.id}!"
+      redirect_to work_path(params[:id])
+    else
+      flash.now[:error] = "A problem occurred: Could not update Media ID#{@work.id}"
+      render :edit
+    end
   end
 
   def destroy
