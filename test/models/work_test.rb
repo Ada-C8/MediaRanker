@@ -6,7 +6,6 @@ describe Work do
   let(:v) { Vote.new(user_id: u.id, date: Date.today) }
 
   it "has many votes" do
-    # w = Work.first
     w.must_respond_to :votes
     # starts off without any votes
     w.votes.must_be_empty
