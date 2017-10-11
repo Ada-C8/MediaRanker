@@ -18,6 +18,9 @@ class WorksController < ApplicationController
   end
 
   def update
+    work = Work.find_by(id: params[:id])
+    #TODO: decide on redirect if doesn't exist
+    work.update_attributes(work_params) ? (redirect_to work_path(params[:id])) : (render :edit)
   end
 
   def edit
@@ -36,5 +39,10 @@ class WorksController < ApplicationController
     albums = Work.where(category: "album").limit(10)
 
     @works = {Albums: albums, Books: books, Movies: movies}
+  end
+
+  private
+  def work_params
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 end
