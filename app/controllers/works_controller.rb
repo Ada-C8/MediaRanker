@@ -16,18 +16,24 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
-      redirect_to('/works')
+      redirect_to works_path
     else
-      render :new
+      render :new, status: :bad_request
     end
   end
 
   def show
-    @work = Work.find(params[:id])
+    @work = Work.find_by(id: params[:id])
+    unless @work
+      head :not_found
+    end
   end
 
   def edit
-    @work = Work.find(params[:id])
+    @work = Work.find_by(id: params[:id])
+    unless @work
+      head :not_found
+    end
   end
 
   def update
@@ -46,7 +52,7 @@ class WorksController < ApplicationController
     if @work.save
       redirect_to work_path(@work)
     else
-      render :edit
+      render :edit, status: :not_found
     end
   end
 
