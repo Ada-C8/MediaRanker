@@ -1,5 +1,8 @@
 class Work < ApplicationRecord
   has_many :votes
+  validates :title, presence: true, uniqueness: { scope: [:creator, :category] }
+  validates :creator, presence: true
+  validates :publication_year, numericality: { only_integer: true }, allow_nil: true
 
   def self.get_categories
     return Work.distinct.pluck(:category).sort
@@ -17,9 +20,6 @@ class Work < ApplicationRecord
       this_category_top_works = Work.where(category: a_category).joins(:votes).group(:id).order("count(votes.id) DESC").limit(10)
       all_top_works[a_category] = this_category_top_works
     end
-    puts "----------------------------------------"
-    p categories
-    puts "----------------------------------------"
     return all_top_works
   end
 end

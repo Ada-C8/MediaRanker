@@ -7,8 +7,28 @@ describe Work do
   let(:book) { works(:book) }
   let(:user) { users(:one) }
 
-  it "must be valid" do
-    value(work).must_be :valid?
+  it "requires a title and a creator to be valid" do
+    work.valid?.must_equal false
+    work.title = "A title"
+    work.valid?.must_equal false
+    work.title = nil
+    work.creator = "A creator"
+    work.valid?.must_equal false
+    work.title = "A title"
+    work.valid?.must_equal true
+  end
+
+  it "requires a unique set of category, title, and creator to be valid" do
+    hp_book = Work.new(category: 'book', 'title': "Harry Potter", creator: "JK Rowling")
+    hp_book.save.must_equal true
+    another_hp_book = Work.new(category: 'book', 'title': "Harry Potter", creator: "JK Rowling")
+    another_hp_book.valid?.must_equal false
+    another_hp_book.title = 'Harry Potter and the Chamber of Secrets'
+    another_hp_book.valid?.must_equal true
+    hp_movie = Work.new(category: 'movie', 'title': "Harry Potter", creator: "JK Rowling")
+    hp_movie.valid?.must_equal true
+    hp_new_author = Work.new(category: 'book', 'title': "Harry Potter", creator: "Robert Galbraith")
+    hp_new_author.valid?.must_equal true
   end
 
   it "can find the unique categories using get_categories()" do
