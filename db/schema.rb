@@ -10,24 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010213332) do
+ActiveRecord::Schema.define(version: 20171011224505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.date "join_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "join_date", null: false
   end
 
   create_table "votes", force: :cascade do |t|
-    t.date "date"
     t.integer "user_id"
     t.integer "work_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "date", null: false
   end
 
   create_table "works", force: :cascade do |t|
@@ -36,8 +32,6 @@ ActiveRecord::Schema.define(version: 20171010213332) do
     t.string "creator"
     t.string "year"
     t.text "desc"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
