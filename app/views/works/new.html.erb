@@ -1,8 +1,10 @@
 <h1>Works#new</h1>
 <p>Find me in app/views/works/new.html.erb</p>
 
+<%= render partial: "form", locals: {button_name: "Edit this work"} %>
 
-<% if @work.errors.any? %>
+
+<!-- <% if @work.errors.any? %>
   <ul>
     <% @work.errors.each do |column, message| %>
       <li>
@@ -30,4 +32,4 @@
    <%= f.text_field :description %>
 
   <%= f.submit "submit" %>
-<% end %>
+<% end %> -->
