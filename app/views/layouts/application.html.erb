@@ -20,12 +20,12 @@
       <%= button_to("View all users", users_path, method: :get, alt: "link to user index") %>
       <div>
         <!-- TODO # logged in button name and both these links need to be updated to go right places -->
-        <%= button_to("Logged in as ", root_path, method: :get, alt: "link to user summary") %>
-        <%= button_to("Log Out", root_path, method: :get, alt: "link to log out") %>
+        <%= button_to((session[:user_id] == nil ? "Log In" : "Logged in as #{session[:name]}"), login_path, method: :get, alt: "link to user summary") %>
+        <%= button_to("Log Out", logout_path, method: :get, alt: "link to log out") %>
       </div>
     </nav>
   </header>
-  
+
   <section class="flash">
       <% flash.each do |name, message| %>
         <div class="<%= name %>"><%= message %></div>
