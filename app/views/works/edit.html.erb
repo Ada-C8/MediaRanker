@@ -1,9 +1,10 @@
 <main>
 
-  <h3>Edit this <%= @work.category %></h3>
+  <h3>Edit this <%= @work.category.capitalize %></h3>
 
   <section>
-    <%= form_for @work do |f| %>
+    <%= render partial: "form", locals: {button_name: "Update Work"} %>
+    <!-- <%= form_for @work do |f| %>
     <%= f.label :category %>
     <%= f.select(:category, ["movie", "album", "book"]) %>
 
@@ -20,7 +21,7 @@
     <%= f.text_field :description %>
 
     <%= f.submit %>
-    <% end %>
+    <% end %> -->
   </section>
 
 </main>
