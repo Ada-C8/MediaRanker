@@ -1,7 +1,18 @@
 <section>
-  <h2>Media Spotlight:</h2>
+  <h2>Media Spotlight: <%= @top_work.title %> by <%= @top_work.creator %></h2>
+  <p><%= @top_work.votes.count %> vote<%= @plural %> - <%= @top_work.description %></p>
 </section>
 
 <section>
-
+  <% @top_works.each do |category, works| %>
+    <h3>Top <%= category.titleize %>s</h3>
+    <ol>
+      <% works.each do |work| %>
+        <li>
+          <h4><%= work.title %> by <%= work.creator %></h4>
+          <p><%= work.votes.count %> votes</p>
+        </li>
+      <% end %>
+    </ol>
+  <% end %>
 </section>
