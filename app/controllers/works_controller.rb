@@ -6,7 +6,7 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find(params[:id])
+    find_work_by_params(params)
   end
 
   def new
@@ -21,35 +21,39 @@ class WorksController < ApplicationController
       flash[:status] = :success
       flash[:message] = "Successfully created #{@work.category} #{@work.title}."
       redirect_to work_path(@work.id)
+      return
     else
       flash.now[:status] = :failure
       flash.now[:message] = "Failed to create #{@work.category}."
       flash.now[:details] = @work.errors.messages
       render new_work_path
+      return
     end
   end
 
   def edit
-    @work = Work.find(params[:id])
+    find_work_by_params(params)
   end
 
   def update
-    @work = Work.find(params[:id])
+    find_work_by_params(params)
     result = @work.update(work_params)
 
     if result
       redirect_to work_path(params[:id])
+      return
     else
       #error message
     end
   end
 
   def destroy
-    @work = Work.find(params[:id])
+    find_work_by_params(params)
     result = @work.destroy
 
     if result
       redirect_to works_path
+      return
     else
       #error message
     end
@@ -58,5 +62,14 @@ class WorksController < ApplicationController
   private
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work_by_params(params)
+    @work = Work.find_by(id: params[:id])
+
+    unless @work
+      head :not_found
+      return
+    end
   end
 end
