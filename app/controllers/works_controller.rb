@@ -4,10 +4,18 @@ class WorksController < ApplicationController
     @homepage = true
   end
 
-  def create
+  def index
+    @works = Work.order(:category)
   end
 
-  def destroy
+  def show
+    @work = Work.find_by(id: params[:id])
+  end
+
+  def new
+  end
+
+  def create
   end
 
   def edit
@@ -17,24 +25,28 @@ class WorksController < ApplicationController
     end
   end
 
-  def new
-  end
-
-  def show
-    @work = Work.find_by(id: params[:id])
-  end
-
   def update
+    @work = Work.find_by(id: params[:id])
+    result = @work.update({category: params[:work][:category], title: params[:work][:title], creator: params[:work][:creator], publication_year: params[:work][:publication_year], description: params[:work][:description]})
+    if result
+      redirect_to work_path(@work.id)
+    else
+      render :edit
+    end
   end
 
-  def index
-    @works = Work.order(:category)
+  def destroy
   end
+
+
+
+
+
 
   private
 
   def work_params
-    return params.require(:work).permit(:category, :title)
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 
 end
