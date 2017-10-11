@@ -1,15 +1,43 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: 
-  publication_year: 1
-  description: MyText
+book1:
+  category: book
+  title: Some Title
+  creator: D.A. Burns
+  publication_year: 1999
+  description: Blurbity blurb blurb
 
-two:
-  category: MyString
-  title: MyString
-  creator: 
-  publication_year: 1
-  description: MyText
+book2:
+  category: book
+  title: Another Title
+  creator: D.A. Burns
+  publication_year: 2000
+  description: more Blurbity blurb blurb
+
+album1:
+  category: album
+  title: Some Album
+  creator: Singer Songwriter
+  publication_year: 2010
+  description: Singity song song
+
+album2:
+  category: album
+  title: Another Album
+  creator: Bob Dylan
+  publication_year: 2000
+  description: Hey hey. Singity song song
+
+movie1:
+  category: movie
+  title: Some Movie
+  creator: Directorface
+  publication_year: 2003
+  description: Flash flash bang bang ha ha
+
+movie2:
+  category: movie
+  title: Another Movie
+  creator: A good person
+  publication_year: 2017
+  description: Goody good times

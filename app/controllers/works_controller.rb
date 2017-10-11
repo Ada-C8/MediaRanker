@@ -35,6 +35,12 @@ class WorksController < ApplicationController
     end
   end
 
+  def update
+    work = Work.find_by(id: params[:id])
+    #TODO: decide on redirect if doesn't exist
+    work.update_attributes(work_params) ? (redirect_to work_path(params[:id])) : (render :edit)
+  end
+
   def destroy
   end
 
