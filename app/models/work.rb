@@ -10,4 +10,13 @@ class Work < ApplicationRecord
   def self.order_by_votes(type)
     return Work.where(category:type).sort_by { |work| work.votes.count }.reverse
   end
+
+  def self.already_voted?(a_work, a_user)
+    users = []
+    Work.find(a_work).votes.each do |vote|
+      users << vote.user_id
+    end
+
+    return users.include?(a_user)
+  end
 end
