@@ -9,16 +9,17 @@
 </article>
 <article>
   <a><%= link_to("Back to media ranks", root_path, alt: "link to media ranker home page") %></a>
-  <a><%= link_to("Edit", root_path, alt: "link to edit work") %></a>
+  <a><%= link_to("Edit", edit_work_path(@work.id), alt: "link to edit work") %></a>
   <a><%= link_to("Upvote", root_path, alt: "link to upvote this work") %></a>
   <a><%= link_to("Delete", root_path, alt: "link to delete this work") %></a>
 
 
 </article>
-  <h3></h3>
+  <h3><%= "NUMBER OF VOTES Votes for this #{@work.category.capitalize}"%></h3>
   <table>
     <thead>
       <tr>
+          <!-- # TODO Need to fill in this table onc e have user data  -->
         <th>User</th>
         <th>Date</th>
       </tr>

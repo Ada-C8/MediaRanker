@@ -11,6 +11,10 @@ class WorksController < ApplicationController
   end
 
   def edit
+    @work = Work.find_by(id: params[:id])
+    unless @work
+      redirect_to works_path
+    end
   end
 
   def new
