@@ -1,15 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyText
+book:
+  category: book
+  title: Field of Stars
+  creator: St. James
+  publication_year: 1983
+  description: A book about the Camino de Santiago
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyText
+movie:
+  category: movie
+  title: Anna Karenina
+  creator: Tolstoy
+  publication_year: 1999
+
+
+album:
+  category: album
+  title: MXPX
+  creator: Jessica
+  publication_year: 2002
