@@ -4,6 +4,37 @@ describe WorksController do
 
   let(:good_id) { Work.first.id }
   let(:bad_id) { Work.last.id + 1 }
+  let(:fake_id) { Work.last.id + 1000 }
+  let(:good_work_data) {
+    {
+      work: {
+        category: "album",
+        title: "Safety Time",
+        creator: "Safety Guy",
+      }
+    }
+  }
+  let(:tmi_work_data) {
+    {
+      work: {
+        id: fake_id,
+        category: "album",
+        title: "Danger Time",
+        creator: "Danger Guy",
+        publication_year: 2017,
+        description: "This is way too much information",
+        created_at: DateTime.new(1),
+        updated_at: DateTime.new(1)
+      }
+    }
+  }
+  let(:bad_work_data) {
+    {
+      work: {
+        title: ''
+      }
+    }
+  }
 
   describe 'index' do
     it 'returns success with full database' do
@@ -57,14 +88,6 @@ describe WorksController do
 
   describe 'create' do
     it 'successfully creates work and returns :success when data is valid' do
-      good_work_data = {
-        work: {
-          category: "album",
-          title: "Safety Time",
-          creator: "Safety Guy",
-        }
-      }
-
       Work.new(good_work_data[:work]).must_be :valid?
       before_count = Work.count
 
@@ -76,12 +99,6 @@ describe WorksController do
     end
 
     it 'does not create work and returns :bad_request when data is invalid' do
-      bad_work_data = {
-        work: {
-          title: ''
-        }
-      }
-
       Work.new(bad_work_data[:work]).wont_be :valid?
       before_count = Work.count
 
@@ -92,21 +109,6 @@ describe WorksController do
     end
 
     it 'uses strong params to filter user input' do
-      fake_id = bad_id + 1000
-
-      tmi_work_data = {
-        work: {
-          id: fake_id,
-          category: "album",
-          title: "Danger Time",
-          creator: "Danger Guy",
-          publication_year: 2017,
-          description: "This is way too much information",
-          created_at: DateTime.new(1),
-          updated_at: DateTime.new(1)
-        }
-      }
-
       Work.new(tmi_work_data[:work]).must_be :valid?
       before_count = Work.count
 
@@ -120,12 +122,6 @@ describe WorksController do
     end
 
     it 're-renders new form (without creating) when passed invalid parameters' do
-      bad_work_data = {
-        work: {
-          title: ''
-        }
-      }
-
       Work.new(bad_work_data[:work]).wont_be :valid?
       before_count = Work.count
 
