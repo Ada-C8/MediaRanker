@@ -16,6 +16,7 @@ describe WorksController do
     }
   }
   let :work_id { Work.last.id }
+  let :hp { works(:hp1) }
 
   describe "index" do
     it "returns a success status for all works" do
@@ -41,7 +42,10 @@ describe WorksController do
   end
 
   describe "new" do
-
+    it "returns a success status for new form" do
+      get new_work_path
+      must_respond_with :success
+    end
   end
 
   describe "create" do
@@ -99,7 +103,7 @@ describe WorksController do
     end
 
     it "returns succes if the work exists and the change is valid" do
-      hp = works(:hp1)
+
       hp.must_be :valid?
       put work_path(hp), params: work_data
       must_respond_with :redirect
@@ -108,17 +112,20 @@ describe WorksController do
 
 
     it "returns bad_request if the change is invalid" do
-      hp = works(:hp1)
-      # hp.must_be :valid?
-
-      put work_path(hp.id), params: invalid_work_data
+      #  don't quite know how to check invalidity here....
+      put work_path(hp), params: invalid_work_data
       must_respond_with :bad_request
-
     end
-
   end
 
   describe "destroy" do
+    it "returns success if the work was destroyed" do
+      total = Work.count
+      delete work_path(hp)
+      must_respond_with :redirect
+      must_redirect_to works_path
+      total.must_equal Work.count + 1
+    end
 
   end
 end

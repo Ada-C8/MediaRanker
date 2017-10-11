@@ -24,15 +24,15 @@ class WorksController < ApplicationController
   end
 
   def edit
-    find_book_by_params_id
+    find_work_by_params_id
   end
 
   def show
-    find_book_by_params_id
+    find_work_by_params_id
   end
 
   def update
-    if find_book_by_params_id
+    if find_work_by_params_id
 
       @work.update_attributes(work_params)
       if @work.save
@@ -56,7 +56,7 @@ class WorksController < ApplicationController
     #   return
     end
 
-    if find_book_by_params_id
+    if find_work_by_params_id
       # if current_user =! @book.author
       #   flash[:status] = :failure
       #   flash[:message] = "Only author can"
@@ -75,7 +75,7 @@ private
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 
-  def find_book_by_params_id
+  def find_work_by_params_id
     @work = Work.find_by(id: params[:id])
     head :not_found unless @work
     return @work
