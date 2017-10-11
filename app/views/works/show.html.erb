@@ -38,7 +38,7 @@
       <%= link_to "Upvote", works_path %>
     </li>
     <li>
-      <%= link_to "Delete", works_path %>
+      <%= link_to "Delete", work_path, method: :delete, data: {confirm: "Are you sure?"} %>
     </li>
   </ul>
 </nav>

@@ -39,6 +39,17 @@ class WorksController < ApplicationController
     end
   end
 
+  def destroy
+    @work = Work.find(params[:id])
+    result = @work.destroy
+
+    if result
+      redirect_to works_path
+    else
+      #error message
+    end
+  end
+
   private
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
