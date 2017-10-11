@@ -1,9 +1,17 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+  end
 
   def new
 
   end
+
   def create
+
+  end
+
+  def show
 
   end
 
@@ -12,13 +20,19 @@ class UsersController < ApplicationController
   end
 
   def login
-    user_id = params[:user][:user_id]
-    user = User.find_by(id: user_id)
+    # user_id = params[:user][:user_id]
+    # user = User.find_by(id: user_id)
+    name = params[:user][:name]
+
+    user = User.find_by(name: name)
+
     if user
-      session[:logged_in_user] = user_id
+      session[:logged_in_user] = user.id
       redirect_to root_path
     else
-      head :not_found
+      flash.now[:status] = :failure
+      flash.now[:message] = "No user found with name #{name}"
+      render :login_form
     end
   end
 

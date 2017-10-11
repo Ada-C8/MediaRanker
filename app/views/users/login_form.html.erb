@@ -1,7 +1,10 @@
-<h2>New User</h2>
+<h2>Login</h2>
 
 <%= form_tag do %>
-  <%= text_field_tag "user", "J.K. Rowling", class: "users" %>
+  <%# collection_select(:user, :user_id, User.all, :id, :name) %>
+  <!-- take all the Users, display their name, and send back the id. -->
+  <%= label_tag "User Name" %>
+  <%= text_field :user, :name %>
 
   <%= submit_tag "Login" %>
 <% end %>

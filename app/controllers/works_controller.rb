@@ -44,10 +44,30 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find(params[:id])
-    @work.destroy
+    current_user = nil
+    if session[:logged_in_user]
+      current_user = User.find_by(id: session[:logged_in_user])
+    #   current_user = User.find(session[:logged_in_user])
 
-    redirect_to works_path
+    # else
+    #   flash[:status] = :failure
+    #   flash[:message] = "You must be logged in to do that."
+    #   redirect_to works_path
+    #   return
+    end
+
+    if find_book_by_params_id
+      # if current_user =! @book.author
+      #   flash[:status] = :failure
+      #   flash[:message] = "Only author can"
+      #   redirect_to works_path
+      #   return
+      # end
+      @work.destroy
+      flash[:status] = :success
+      flash[:message] = "Successfully deleted."
+      redirect_to works_path
+    end
   end
 
 private
