@@ -53,3 +53,19 @@ puts "#{work_failures.length} works failed to save"
 
 # reset pk sequence for category table ONLY
 ActiveRecord::Base.connection.reset_pk_sequence!('categories')
+
+USER_FILE = Rails.root.join('db', 'user_seeds.csv')
+puts "Loading user sample data from #{USER_FILE}"
+
+user_failures = []
+CSV.foreach(USER_FILE, :headers => true) do |row|
+  user = User.new
+  user.name = row['name']
+
+  puts "Created user: #{user.inspect}"
+  successful = user.save
+
+  if !successful
+    user_failures << user
+  end
+end
