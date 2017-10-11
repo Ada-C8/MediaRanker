@@ -14,6 +14,7 @@ describe WorksController do
   end
 
   describe 'create' do
+    it ''
     it 'uses strong params' do
       fake_id = Work.last.id + 1000
 
@@ -60,7 +61,17 @@ describe WorksController do
 end
 
 describe 'edit' do
+  it 'returns success if work exists and change is valid' do
 
+  end
+
+  it 'returns not_found if work doesn\'t exist' do
+
+  end
+
+  it "returns bad_request if change is invalid" do
+
+  end
 end
 
 describe 'update' do
