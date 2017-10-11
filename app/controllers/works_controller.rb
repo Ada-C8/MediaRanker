@@ -11,6 +11,7 @@ class WorksController < ApplicationController
   end
 
   def show
+    @work = Work.find_by(id: params[:id])
   end
 
   def create
@@ -20,6 +21,9 @@ class WorksController < ApplicationController
   end
 
   def edit
+    @work = Work.find_by(id: params[:id])
+
+    #TODO: decide on redirect if doesn't exist
   end
 
   def destroy

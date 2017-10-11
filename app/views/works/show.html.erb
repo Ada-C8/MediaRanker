@@ -1,2 +1,22 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
+<section>
+  <h2><%= @work.title %></h2>
+  <p>Created by: <%= @work.creator %></p>
+  <p>Published: <%= @work.publication_year %></p>
+  <p><%= @work.description %></p>
+  <nav> Buttons/Links: "Back to media ranks", "Edit", "Upvote", "Delete"</nav>
+</section>
+
+<section>
+  <h2><%= "? Votes for this #{@work.category.capitalize}" %></h2>
+  <table>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
+    <tr>
+      <!-- TODO setup works.votes loop -->
+      <td>@work.votes as a link</td>
+      <td>@work.votes date created</td>
+    </tr>
+  </table>
+</section>
