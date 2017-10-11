@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: "works#index"
+  root to: "welcome#index"
 
   resources :works
 
