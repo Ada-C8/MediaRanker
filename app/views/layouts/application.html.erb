@@ -12,6 +12,7 @@
     <header>
 
     <h2>Media Ranker | Ranking the Best of Everything</h2>
+      SESSION ID!!!! <%= session[:user_id] %>
     <nav>
       <%= button_to("View top media", root_path, method: :get, alt: "link to home page") %>
       <%= button_to("View all media", works_path, method: :get, alt: "link to index page") %>
