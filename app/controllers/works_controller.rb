@@ -24,6 +24,9 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find_by(id: params[:id])
+    unless @work
+      render_404
+    end
   end
 
   def update
@@ -45,5 +48,13 @@ class WorksController < ApplicationController
 
   def work_params
     params.require(:work).permit(:title, :category, :description, :creator, :publication_year)
+  end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
+  def render_404
+    render file: "/public/404.html", status: 404
   end
 end

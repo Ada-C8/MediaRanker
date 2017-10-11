@@ -30,12 +30,23 @@ describe WorksController do
     must_respond_with :success
   end
 
+  it "should render 404 page if not found" do
+    get work_path(-1)
+    assert_response 404
+  end
+
   it "should update" do
     put work_path(book.id), params: {work: {title: "Harry and The Stone"} }
     work = Work.find(book.id)
     work.title.must_equal "Harry and The Stone"
     must_respond_with :redirect
     must_redirect_to works_path
+  end
+
+  it "will redirect if not updated" do
+    skip
+    put work_path(book.id), params: {work: {title: nil} }
+    must_redirect_to edit_work_path
   end
 
   it "should destroy" do
