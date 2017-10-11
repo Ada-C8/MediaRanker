@@ -1,0 +1,23 @@
+<h1>Work show view</h1>
+<h3><%= @work.title %></h3>
+<p>Created by: <%= @work.creator %></p>
+<p>Published: <%= @work.publication_year %></p>
+<p><%= @work.description %></p>
+
+<h3><%= @work.votes.count%> Votes for this <%= @work.category.capitalize %></h3>
+<table>
+  <thead>
+    <tr>
+      <td>User</td>
+      <td>Date</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @votes.each do |vote| %>
+      <tr>
+        <td><%= vote.user.username%></td>
+        <td><%= vote.created_at.to_date%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

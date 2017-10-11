@@ -22,6 +22,7 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
+    @votes = Vote.where(work_id: params[:id])
   end
 
   def edit
