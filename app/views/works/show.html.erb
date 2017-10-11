@@ -12,7 +12,7 @@
   </tr>
   <% @work.votes.each do |vote| %>
     <tr>
-      <td><%= vote.user.username %></td>
+      <td><%= link_to vote.user.username, user_path(vote.user_id) %></td>
       <td><%= vote.created_at.strftime("%b") + ' ' + vote.created_at.strftime("%d") + ', ' + vote.created_at.strftime("%Y") %></td>
     </tr>
   <% end %>
