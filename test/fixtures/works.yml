@@ -4,8 +4,21 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+# one: {}
+# # column: value
+# #
+# two: {}
 # column: value
-#
-two: {}
-# column: value
+harrypotter:
+  category: book
+  title: Harry Potter
+  creator: JK Rowling
+  publication_year: 1993
+  description: a great Read
+
+StarWars:
+  category: movie
+  title: Star Wars
+  creator: Some dude
+  publication_year: 1995
+  description: a great film
