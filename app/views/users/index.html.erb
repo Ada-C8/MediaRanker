@@ -1,2 +1,15 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h3>List of Users</h3>
+<table>
+  <tr>
+    <th>Usernames</th>
+    <th>Votes</th>
+    <th>Joined</th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= link_to user.name, user_path(user.id) %></td>
+    <td><%=user.upvotes.count%></td>
+    <td><%=user.created_at%></td>
+  </tr>
+  <% end %>
+</table>
