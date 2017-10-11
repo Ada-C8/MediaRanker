@@ -1,0 +1,21 @@
+<h2><%= @work.title %></h2>
+<p>Created by: <%= @work.creator %></p>
+<p>Published: <%= @work.publication_year %></p>
+
+<p>Back to media ranks</p>
+<p>Edit</p>
+<p>Upvote</p>
+<p>Delete</p>
+
+<h2>Votes for this <%= @work.category.capitalize %></h2>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Date</th>
+  </tr>
+  <tr>
+    <td>vote</td>
+    <td>vote_date</td>
+  </tr>
+</table>
