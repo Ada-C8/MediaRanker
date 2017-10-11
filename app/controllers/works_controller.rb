@@ -16,8 +16,13 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
+      flash[:status] = :success
+      flash[:message] = "Successfully created work #{@work.id}"
       redirect_to works_path
     else
+      flash.now[:status] = :failure
+      flash.now[:message] = "Failed to create work"
+      flash.now[:details] = @work.errors.messages
       render :new, status: :bad_request
     end
   end
@@ -46,11 +51,12 @@ class WorksController < ApplicationController
     # @work.publication_year = work_updates[:publication_year]
     # @work.description = work_updates[:description]
 
-    @work = Work.find(params[:id])
+    @work = Work.find_by(id: params[:id])
     @work.update_attributes(work_params)
 
     if @work.save
       redirect_to work_path(@work)
+      return
     else
       render :edit, status: :not_found
     end
