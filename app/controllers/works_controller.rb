@@ -15,7 +15,10 @@ class WorksController < ApplicationController
     else
       render :new
     end
+  end
 
+  def edit
+    @work = Work.find(params[:id])
   end
 
   def show
