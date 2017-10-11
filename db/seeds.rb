@@ -20,7 +20,6 @@ CSV.foreach(WORK_FILE, :headers => true) do |row|
   work.creator = row['creator']
   work.pub_year = row['pub_year']
   work.description = row['description']
-  work.user_id = row['user_id']
   puts "Created work: #{work.inspect}"
   successful = work.save
   if !successful
@@ -82,4 +81,7 @@ ActiveRecord::Base.connection.tables.each do |t|
   ActiveRecord::Base.connection.reset_pk_sequence!(t)
 end
 
+# puts "Work_failures[0] = #{work_failures[0].errors.keys} #{work_failures[0].errors.values}"
+# puts "Vote_failures[0] = #{vote_failures[0].errors.keys} #{vote_failures[0].errors.values}"
+# puts "User_failures[0] = #{user_failures[0].errors.keys} #{user_failures[0].errors.values}"
 puts "done"
