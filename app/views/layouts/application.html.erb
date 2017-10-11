@@ -9,6 +9,21 @@
   </head>
 
   <body>
+    <header>
+      <h2><%= link_to "Media Ranker", root_path %></h2>
+      <small>Rank the Best of Everything</small>
+      <nav>
+        <%= link_to "View top media", root_path %>
+        <%= link_to "View all media", works_path %>
+        <%= link_to "Add a new work", new_work_path %>
+        <%= link_to "View all users", users_path %>
+      </nav>
+      <div>
+        <% link_to "Log In", root_path %>
+      </div>
+    </header>
+
     <%= yield %>
+
   </body>
 </html>
