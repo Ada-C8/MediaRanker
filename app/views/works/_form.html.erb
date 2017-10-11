@@ -11,7 +11,7 @@
 <%= form_for @work do |f| %>
 
   <%= f.label "Category" %>
-  <%= f.select :category, [['album', 1], ['book', 2], ['movie', 3]] %>
+  <%= f.select :category, [['album', 'album'], ['book', 'book'], ['movie', 'movie']] %>
 
   <%= f.label "Title" %>
   <%= f.text_field :title , :required => true %>
