@@ -7,9 +7,9 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
-      redirect_to('/works')
+      redirect_to works_path
     else
-      render :new
+      render :new, status: :bad_request
     end
 
   end
@@ -19,20 +19,22 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find(params[:id])
+    find_book_by_params_id
   end
 
   def show
-    @work = Work.find(params[:id])
+    find_book_by_params_id
   end
 
   def update
-    @work = Work.find(params[:id])
-    @work.update_attributes(work_params)
-    if @work.save
-      redirect_to(work_path(@work))
-    else
-      render :new
+    if find_book_by_params_id
+
+      @work.update_attributes(work_params)
+      if @work.save
+        redirect_to(work_path(@work))
+      else
+        render :edit, status: :bad_request
+      end
     end
   end
 
@@ -46,5 +48,11 @@ class WorksController < ApplicationController
 private
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_book_by_params_id
+    @work = Work.find_by(id: params[:id])
+    head :not_found unless @work
+    return @work
   end
 end
