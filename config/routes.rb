@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'votes/index'
+
   get '/users/index'
 
   get '/users/new', to: 'users#new', as: 'new_user'
