@@ -1,2 +1,35 @@
 <h1>Works#index</h1>
 <p>Find me in app/views/works/index.html.erb</p>
+
+
+
+<h3> Top Albums </h3>
+
+<ul>
+  <% @works.each do |work| %>
+    <% if work.category == "album" %>
+      <li> <%= link_to(work.title, works_path(work.id)) %> </li>
+    <% end %>
+  <% end %>
+</ul>
+
+
+<h3> Top Books </h3>
+
+<ul>
+  <% @works.each do |work| %>
+    <% if work.category == "book" %>
+      <li> <%= link_to(work.title, works_path(work.id)) %> </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h3> Top Movies </h3>
+
+<ul>
+  <% @works.each do |work| %>
+    <% if work.category == "movie" %>
+      <li> <%= link_to(work.title, works_path(work.id)) %> </li>
+    <% end %>
+  <% end %>
+</ul>

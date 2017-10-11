@@ -1,6 +1,6 @@
 require 'csv'
 
-WORKS_FILE = Rails.root.join('db', 'seed_data', 'media_seeds.csv')
+WORKS_FILE = Rails.root.join('db', 'media_seeds.csv')
 puts "Loading raw media data from #{WORKS_FILE}"
 
 works_failures = []
