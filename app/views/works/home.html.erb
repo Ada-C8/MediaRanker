@@ -1,0 +1,19 @@
+<section class="spotlight">
+  <h1>Media Spotlight:</h1>
+  <%= "#{@spotlight.title} by #{@spotlight.creator}" %>
+</section>
+
+<% @media.each do |type, top_ten| %>
+  <section class="<%=type%>">
+    <h1> Top <%=type.capitalize%></h1>
+
+    <% top_ten.each do |work| %>
+    <ul>
+      <li>
+        <%= "#{work.title} by #{work.creator}" %>
+      </li>
+    </ul>
+    <% end %>
+  </section>
+
+<% end %>

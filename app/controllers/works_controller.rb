@@ -1,12 +1,14 @@
 class WorksController < ApplicationController
+  def home
+    @works = Work.all
+    @media = media_hash
+    # get first work until Vote model added
+    @spotlight = Work.first
+  end
+
   def index
     @works = Work.all
-
-    albums = Work.where(category_id: Category.find_by(name: "album"))[0...10]
-    movies = Work.where(category_id: Category.find_by(name: "movie"))[0...10]
-    books = Work.where(category_id: Category.find_by(name: "book"))[0...10]
-
-    @media = { "albums": albums, "movies": movies, "books": books }
+    @media = media_hash
   end
 
   def show
@@ -70,5 +72,13 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:category_id, :title, :creator, :publication_year, :description)
+  end
+
+  def media_hash
+    albums = Work.where(category_id: Category.find_by(name: "album"))[0...10]
+    movies = Work.where(category_id: Category.find_by(name: "movie"))[0...10]
+    books = Work.where(category_id: Category.find_by(name: "book"))[0...10]
+
+    return {"albums": albums, "movies": movies, "books": books}
   end
 end
