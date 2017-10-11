@@ -20,7 +20,6 @@ class Work < ApplicationRecord
 
   def self.get_top_work
     top_work = Work.joins(:votes).group(:id).order("count(votes.id) DESC").limit(1)[0]
-    p top_work
     return top_work
   end
 
