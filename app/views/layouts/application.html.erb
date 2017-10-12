@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MediaRanker</title>
+    <title>MediaRanker BB</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,7 @@
   </head>
 
   <header>
+    <h1><%= link_to "Media Ranker", '/', method: :get %> | Ranking the Best of Everything</h1>
     <%= link_to "View top media", '/', method: :get %>
     <%= link_to "View all media", works_path, method: :get %>
     <%= link_to "Add a new work", new_work_path, method: :get %>
