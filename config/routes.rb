@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'votes/new'
+
+  get 'votes/create'
+
+  get 'votes/update'
+
+  get 'votes/edit'
+
+  get 'votes/destroy'
+
+  get 'votes/index'
+
+  get 'votes/show'
+
   get 'homes/index', to: 'homes#index', as: 'home'
 
   # get 'users/index'

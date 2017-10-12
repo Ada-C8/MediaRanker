@@ -11,6 +11,11 @@ class WorksController < ApplicationController
   end
 
   def show
+    @work = Work.find_by(id: params[:id])
+
+    unless @work
+      render_404
+    end
   end
 
   def edit

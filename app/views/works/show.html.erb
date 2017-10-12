@@ -1,4 +1,36 @@
 <h1>Works#show</h1>
-
-
 <p>Find me in app/views/works/show.html.erb</p>
+
+<h2><%=@work.title%></h2>
+<ul>
+  <li>
+    <strong>Work ID: </strong> <%=@work.id%>
+  </li>
+  <li>
+    <strong>Category: </strong><%=@work.category%>
+  </li>
+  <li>
+    <strong>Publication Year: </strong><%=@work.pub_year%>
+  </li>
+  <li>
+    <strong>Creator: </strong><%=@work.creator%>
+  </li>
+  <li>
+    <strong>Description: </strong><%=@work.description%>
+  </li>
+</ul>
+
+<ul>
+  <li>
+    Back to media ranks
+  </li>
+  <li>
+    Edit
+  </li>
+  <li>
+    Upvote
+  </li>
+  <li>
+    Delete
+  </li>
+</ul>
