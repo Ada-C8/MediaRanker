@@ -10,3 +10,17 @@ gatsby:
   creator: "F. Scott Fitzgerald"
   publication_year: "2017"
   description: "Rich people are sad"
+
+potter:
+  category: "book"
+  title: "Harry Potter"
+  creator: "J.K. Rowling"
+  publication_year: "2017"
+  description: "Yer a wizard, Harry"
+
+wonderwoman:
+  category: "movie"
+  title: "Wonder Woman"
+  creator: "Someone?"
+  publication_year: "2017"
+  description: "Cool movie"

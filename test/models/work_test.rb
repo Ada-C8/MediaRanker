@@ -25,4 +25,11 @@ describe Work do
     work.title = "Uniquest Book Ever"
     work.valid?.must_equal true
   end
+
+  it "must have a collection of associated votes" do
+    its_votes = Vote.where(work_id: gatsby.id)
+
+    its_votes.length.must_equal 2
+    its_votes[0].must_be_instance_of Vote
+  end
 end
