@@ -39,7 +39,7 @@ describe WorksController do
       Work.count.must_equal start_count_work + 1
     end # "it adds the work..."
 
-    xit "returns bad_request when the work data is invalid" do
+    it "returns bad_request when the work data is invalid" do
       # QUESTION: what is invalid data? add this test if we add validations to the Work model
     end # it "returns bad_request when the work data is invalid" do
   end #describe "create" do
@@ -57,5 +57,19 @@ describe WorksController do
       must_respond_with :not_found
     end # it "returns not_found ... invalid work id" do
   end #describe "show" do
+
+  describe "edit" do
+    it "return success when given a valid work id" do
+      work_id = Work.first.id
+      get edit_work_path(work_id)
+      must_respond_with :success
+    end # it "return success when given a valid work id" do
+
+    it "returns not_found when given an invalid work id" do
+      invalid_work_id = Work.last.id + 1
+      get edit_work_path(invalid_work_id)
+      must_respond_with :not_found
+    end # it "returns not_found when given an invalid work id" do
+  end # describe "edit" do
 
 end

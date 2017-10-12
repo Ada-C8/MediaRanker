@@ -21,6 +21,10 @@ class WorksController < ApplicationController
     end # if/else
   end # create
 
+  def edit
+    find_work_by_params
+  end # edit
+
   private
   def find_work_by_params
     @work = Work.find_by(id: params[:id])
