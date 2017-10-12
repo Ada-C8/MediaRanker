@@ -3,7 +3,8 @@
 <p>Published: <%= @work.publication_year %></p>
 <%= link_to 'Back to media ranks', works_path, method: :get%>
 <%= link_to 'Edit', edit_work_path(@work.id), method: :get%>
-<%= link_to 'Upvote', create_vote_path(user_id: session[:user_id], work_id: @work.id), method: :post%>
+<% user_id = session[:user_id] || -1 %>
+<%= link_to 'Upvote', create_vote_path(user_id: user_id, work_id: @work.id), method: :post%>
 <%= link_to 'Delete', delete_work_path(@work.id), method: :delete%>
 
 <h2><%= @work.votes.length %> votes for this <%= @work.category.titleize %></h2>
