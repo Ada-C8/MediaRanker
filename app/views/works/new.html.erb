@@ -1,0 +1,17 @@
+<%= form_for @work, html: { class: form_class } do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, placeholder: hide_placeholder_text ? "" : "title" %>
+
+
+  <% if @work.author_id %>
+    <%= f.hidden_field :author_id %>
+  <% else %>
+    <%= f.label :author %>
+    <%= f.collection_select(:author_id, Author.all, :id, :name) %>
+  <% end %>
+
+  <%= f.label :publication_year %>
+  <%= f.number_field :publication_year %>
+
+  <%= f.submit button_text %>
+<% end %>

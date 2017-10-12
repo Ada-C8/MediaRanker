@@ -1,2 +1,26 @@
-<h1>Media Ranker</h1>
-<h2> Ranking the best of everything</h2>
+<h2>Top Movies</h2>
+<ul>
+  <% @works.each do |work|%>
+    <% if work.category == "movie" %>
+      <li><%= link_to work.title, work_path(work.id) %> by <%= work.creator%></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h2>Top Books</h2>
+<ul>
+  <% @works.each do |work|%>
+    <% if work.category == "book" %>
+      <li><%= link_to work.title, work_path(work.id) %> by <%= work.creator%></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h2>Top Albums</h2>
+<ul>
+  <% @works.each do |work|%>
+    <% if work.category == "album" %>
+      <li><%= link_to work.title, work_path(work.id) %> by <%= work.creator%></li>
+    <% end %>
+  <% end %>
+</ul>

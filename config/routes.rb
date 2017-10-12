@@ -13,9 +13,12 @@ Rails.application.routes.draw do
   # patch "/works/:id", to: "works#update"
   #
   # delete "/work/:id", to: "works#destroy"
+  root :to => "main#index"
+
   resources :works
 
   resources :votes
 
   resources :users
+
 end

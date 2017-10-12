@@ -1,114 +1,88 @@
 
-<head>
-  <title>Media Ranker 2.0</title>
-</head>
+<h2> List of works</h2>
+<h3> Albums </h3>
 
-<body>
+<table>
+  <thead>
+    <tr>
+      <th width=80>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th width=100>Published</th>
+      <th width=100>Upvote</th>
+    </tr>
+  </thead>
 
-  <header class="page-header row">
-    <h2 class="columns small-12">
-      <a href="/">Media Ranker</a>
-      <small>Ranking the Best of Everything</small>
-    </h2>
-
-    <nav class="columns small-12">
-      <a class="button" href="/">View top media</a>
-      <a class="button" href="/works">View all media</a>
-      <a class="button" href="/works/new">Add a new work</a>
-      <a class="button" href="/users">View all users</a>
-      <div class="float-right">
-          <a class="button" href="/users/316">Logged in as sa</a>
-          <a class="button" rel="nofollow" data-method="post" href="/logout">Log Out</a>
-      </div>
-    </nav>
-  </header>
-
-  <h1> List of works</h1>
-  <h2> Albums </h2>
-
-  <table>
-    <thead>
+  <tbody>
+    <% @works.each do |work|%>
+      <% if work.category == "album" %>
       <tr>
-        <th width=80>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th width=100>Published</th>
-        <th width=100>Upvote</th>
+        <td>3</td>
+        <td><%= link_to work.title, work_path(work.id) %></td>
+        <td><%= work.creator%></td>
+        <td>  <%= work.publication_year%></td>
+        <td><a class="button upvote" rel="nofollow" data-method="post" href="/works/246/upvote">Upvote</a></td>
       </tr>
-    </thead>
-
-    <tbody>
-      <% @works.each do |work|%>
-        <% if work.category == "album" %>
-        <tr>
-          <td>3</td>
-          <td><%= link_to work.title, work_path(work.id) %></td>
-          <td><%= work.creator%></td>
-          <td>  <%= work.publication_year%></td>
-          <td><a class="button upvote" rel="nofollow" data-method="post" href="/works/246/upvote">Upvote</a></td>
-        </tr>
-        <% end %>
       <% end %>
-    </tbody>
+    <% end %>
+  </tbody>
 
-  </table>
+</table>
 
-  <h2> Books </h2>
+<h3> Books </h3>
 
-  <table>
-    <thead>
-      <tr>
-        <th width=80>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th width=100>Published</th>
-        <th width=100>Upvote</th>
-      </tr>
-    </thead>
+<table>
+  <thead>
+    <tr>
+      <th width=80>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th width=100>Published</th>
+      <th width=100>Upvote</th>
+    </tr>
+  </thead>
 
-    <tbody>
-      <% @works.each do |work|%>
-        <% if work.category == "book" %>
-        <tr>
-          <td>3</td>
-          <td><%= link_to work.title, work_path(work.id) %></td>
-          <td><%= work.creator%></td>
-          <td>  <%= work.publication_year%></td>
-          <td><a class="button upvote" rel="nofollow" data-method="post" href="/works/246/upvote">Upvote</a></td>
-        </tr>
-        <% end %>
-      <% end %>
-    </tbody>
+  <tbody>
+    <% @works.each do |work|%>
+    <% if work.category == "book" %>
+    <tr>
+      <td>3</td>
+      <td><%= link_to work.title, work_path(work.id) %></td>
+      <td><%= work.creator%></td>
+      <td>  <%= work.publication_year%></td>
+      <td><a class="button upvote" rel="nofollow" data-method="post" href="/works/246/upvote">Upvote</a></td>
+    </tr>
+    <% end %>
+    <% end %>
+  </tbody>
 
-  </table>
+</table>
 
-  <h2> Movies </h2>
+<h3> Movies </h3>
 
-  <table>
-    <thead>
-      <tr>
-        <th width=80>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th width=100>Published</th>
-        <th width=100>Upvote</th>
-      </tr>
-    </thead>
+<table>
+  <thead>
+    <tr>
+      <th width=80>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th width=100>Published</th>
+      <th width=100>Upvote</th>
+    </tr>
+  </thead>
 
-    <tbody>
-      <% @works.each do |work|%>
-        <% if work.category == "movie" %>
-        <tr>
-          <td>3</td>
-          <td><%= link_to work.title, work_path(work.id) %></td>
-          <td><%= work.creator%></td>
-          <td>  <%= work.publication_year%></td>
-          <td><a class="button upvote" rel="nofollow" data-method="post" href="/works/246/upvote">Upvote</a></td>
-        </tr>
-        <% end %>
-      <% end %>
-    </tbody>
+  <tbody>
+    <% @works.each do |work|%>
+    <% if work.category == "movie" %>
+    <tr>
+      <td>3</td>
+      <td><%= link_to work.title, work_path(work.id) %></td>
+      <td><%= work.creator%></td>
+      <td>  <%= work.publication_year%></td>
+      <td><a class="button upvote" rel="nofollow" data-method="post" href="/works/246/upvote">Upvote</a></td>
+    </tr>
+    <% end %>
+    <% end %>
+  </tbody>
 
-  </table>
-
-</body>
+</table>

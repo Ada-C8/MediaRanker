@@ -9,6 +9,23 @@
   </head>
 
   <body>
+    <header class="page-header row">
+      <h2 class="columns small-12">
+        <a href="/">Media Ranker</a>
+        <small>Ranking the Best of Everything</small>
+      </h2>
+
+      <nav class="columns small-12">
+        <a class="button" href="/">View top media</a>
+        <a class="button" href="/works">View all media</a>
+        <a class="button" href="/works/new">Add a new work</a>
+        <a class="button" href="/users">View all users</a>
+        <div class="float-right">
+            <a class="button" href="/users/316">Logged in as sa</a>
+            <a class="button" rel="nofollow" data-method="post" href="/logout">Log Out</a>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
