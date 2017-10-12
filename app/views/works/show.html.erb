@@ -1,4 +1,4 @@
-<h1> This is the work show page</h1>
+
 <main>
   <h3><%=@work.title%></h3>
   <article>
@@ -20,13 +20,20 @@
 </article>
 <%votes = Vote.all.where(work_id: @work.id)%>
 <h3><%=votes.count%> Votes for this book </h3>
-<ul>
+<table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
   <%votes.each do |vote| %>
   <%user = User.all.find_by(id: vote.user_id)%>
-  <li>
-    <%=user.name%>
-    <%= user.created_at %>
-  </li>
+  <tr>
+    <td><%=user.name%></td>
+    <td><%= user.created_at %></td>
+  </tr>
   <%end %>
 </ul>
 </article>
