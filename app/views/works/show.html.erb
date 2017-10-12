@@ -28,4 +28,8 @@
       <%= link_to "Delete", work_path(@work[:id]), method: :delete %>
       <%# button_to("Delete work", work_path, method: :delete) %>
     </li>
+    <li>
+      <%= link_to("View Top Media", home_index_path, alt: "View Top Media") %>
+      <%# button_to("View Top Media", home_index_path, method: :get) %>
+    </li>
   </ul>
