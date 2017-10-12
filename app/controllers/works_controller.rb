@@ -28,10 +28,10 @@ class WorksController < ApplicationController
 
 
   def update
-    work = Work.find_by(id: params[:id].to_i)
-    redirect_to works_path unless work
+    @work = Work.find_by(id: params[:id].to_i)
+    # redirect_to works_path unless @work
 
-    if work.update_attributes work_params
+    if @work.update_attributes work_params
       redirect_to root_path
     else
       render :edit

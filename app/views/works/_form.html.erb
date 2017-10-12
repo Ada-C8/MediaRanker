@@ -1,19 +1,12 @@
 
 <!-- raises an error if you attempt tp create a new work without filling in the required feilds. -->
-<% if @work.errors.any? %>
-  <ul class="errors">
-    <% @work.errors.each do |column, message| %>
-      <li>
-        <strong><%= column.capitalize %></strong> <%= message %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+
 
 
 <%= form_for @work do |f| %>
   <%= f.label :category %>
   <%= f.select :category, [ 'album','book','movie' ], :prompt => 'Select One' %>
+
 
   <%= f.label :title %>
   <%= f.text_field :title %>
