@@ -25,22 +25,6 @@ describe WorksController do
       must_respond_with :success
   end
 
-  it "should be able to successfully create a new work" do
-
-    proc {
-      post works_path, params: { work: {category: "album", title: "Por Vida", creator: "Kali Uchis", publication_year: "2015", description: "Kali's debut EP"} }
-    }.must_change 'Work.count', 1
-
-
-    must_respond_with :redirect
-    must_redirect_to work_path(Work.find_by(title: "Por Vida").id)
-
-  end
-
-  it "should redirect to the new work's detail page if it is created successfully" do
-
-
-  end
 
   it "should stay on the add work page and display the error message banner if we are unsuccessful in creating or updating a work" do
 
@@ -54,11 +38,12 @@ describe WorksController do
 
   end
 
-  it "renders to the same page if unsucessful create or update" do
-
-  end
-
   describe 'creating a new Work' do
+    it "should be able to visit the 'Add New Work' page " do
+      get new_work_path
+      must_respond_with :success
+    end
+
     it "requires only a title to create a new Work" do
       work = Work.new
 
@@ -70,19 +55,39 @@ describe WorksController do
     end
 
     it "raises an error if there is a Work that has the same category AND same title" do
-      existing_book = works(:book_one)
-      new_book_same_title = Work.new(category: existing_book.category, title: existing_book.title)
+      # existing_book = works(:book_one)
+      #
+      # proc { post works_path, params: { work: {category: existing_book.category, title: existing_book.title} } }.must_raise ArugmentError.new
 
-      new_book_same_title.valid?.must_equal false
+    end
 
-      new_book_same_title.errors.must_include :title
+    it "should be able to create a new work and redirect to the new work's detail page if successful" do
+
+      proc {
+        post works_path, params: { work: {category: "album", title: "Por Vida", creator: "Kali Uchis", publication_year: "2015", description: "Kali's debut EP"} }
+      }.must_change 'Work.count', 1
+
+
+      must_respond_with :redirect
+      must_redirect_to work_path(Work.find_by(title: "Por Vida").id)
+
     end
 
     it "allows you to create a new Work that has the same title of a Work in a different category" do
-      book_with_title = works(:book_one)
-      album_with_same_title = Work.new(category: "album", title: book_with_title.title)
+      existing_movie = works(:movie_one)
 
-      album_with_same_title.valid?.must_equal true
+      proc {
+        post works_path, params: { work: {category: "album", title: existing_movie.title} }
+      }.must_change 'Work.count', 1
+
+    end
+
+    it "should stay on the add work page and display the error message banner if we are unsuccessful in creating a work" do
+
+    end
+
+    it "should stay on the add work page if we are unsuccessful in creating a work" do
+
     end
   end
 

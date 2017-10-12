@@ -15,20 +15,7 @@ describe Work do
       work.errors.messages.must_include :title
     end
 
-  end
-
-  describe 'creating a new Work' do
-    it "requires only a title to create a new Work" do
-      work = Work.new
-
-      work.valid?.must_equal false
-
-      work.title = "New Work"
-
-      work.valid?.must_equal true
-    end
-
-    it "raises an error if there is a Work that has the same category AND same title" do
+    it "is invalid with a title shared by another work in the same category" do
       existing_book = works(:book_one)
       new_book_same_title = Work.new(category: existing_book.category, title: existing_book.title)
 
@@ -37,12 +24,15 @@ describe Work do
       new_book_same_title.errors.must_include :title
     end
 
-    it "allows you to create a new Work that has the same title of a Work in a different category" do
+    it "is valid if it shares the same title of a Work in a different category" do
       book_with_title = works(:book_one)
       album_with_same_title = Work.new(category: "album", title: book_with_title.title)
 
       album_with_same_title.valid?.must_equal true
     end
+
+    #TODO: Test Relations to Votes
+
   end
 
 end
