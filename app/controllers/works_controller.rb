@@ -23,6 +23,11 @@ class WorksController < ApplicationController
   end
 
   def show
+    @work = Work.find_by(id: params[:id].to_i)
+
+    unless @work
+      render_404
+    end
   end
 
   def edit
@@ -35,6 +40,9 @@ class WorksController < ApplicationController
   end
 
   private
+    def render_404
+      render file: "/public/404.html", status: 404
+    end
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
