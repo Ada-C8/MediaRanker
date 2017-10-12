@@ -1,0 +1,15 @@
+<ul>
+  <% index = 0 %>
+  <% while media_type[index]%>
+  <li>
+    <%work_id = media_type[index][0]%>
+    <h4>
+      <%=Work.all.find_by(id: work_id).title%>
+    </h4>
+    <p>
+      <%=media_type[index][1]%>
+    </p>
+  </li>
+  <%index +=1 %>
+  <%end %>
+</ul>

@@ -1,1 +1,22 @@
-<h1> This is the main page</h1>
+<main>
+  <section>
+    <h3>Media Spotlight: </h3>
+    <p>
+
+    </p>
+  </section>
+
+  <section class="top-ten">
+    <h3>Top Movies</h3>
+    <%= render partial: 'top_ten', locals: {media_type: @movies} %>
+  </section>
+  <section class="top-ten">
+    <h3>Top Books</h3>
+    <%= render partial: 'top_ten', locals: {media_type: @books} %>
+  </section>
+  <section class="top-ten">
+    <h3>Top Albums</h3>
+    <%= render partial: 'top_ten', locals: {media_type: @albums} %>
+  </section>
+
+</main>
