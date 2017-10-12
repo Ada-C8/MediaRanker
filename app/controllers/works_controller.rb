@@ -14,6 +14,7 @@ class WorksController < ApplicationController
 
   def new
     @work = Work.new
+    render_404 unless @work
   end
 
   def create
@@ -23,8 +24,8 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully created #{@work.category} #{@work.id}!"
       redirect_to work_path(@work.id)
     else
-      render :new
       flash.now[:error] = "A problem occurred: Could not create #{@work.category}"
+      render :new
     end
   end
 

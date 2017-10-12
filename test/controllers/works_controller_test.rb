@@ -24,16 +24,15 @@ describe WorksController do
   end
 
   it "should create a new Work" do
-    #false
-    # post works_path, params: { work: { title: book1.title, category: book1.category} }
-    # must_respond_with :error
-    #TODO how to test false? this passes, no variables or empty params triggers ::ParameterMissing which is not :error nor :missing response :/
+    #false - test invalid id to not_found
+    #TODO
+    #false - invalid without title
+    proc { post works_path, params: { work: { category: "book"} } }.must_change 'Work.count', 0
+    must_respond_with :success #renders
 
     #true
     proc { post works_path, params: { work: { title: "#{book1.title} 2", category: "book" } } }.must_change 'Work.count', 1
-
     must_respond_with :redirect
-    #TODO must_redirect_to work_path(?HOW?)
   end
 
   it "should update the work" do
@@ -51,7 +50,7 @@ describe WorksController do
     #TODO redirects... is valid?
 
     #false - non existent id
-    # patch work_path("pamplemousse"), params: {work: {title: "Doesn't Matter"}}
+    # patch work_path("pamplemousse"), params: { work: { title: "Doesn't Matter" } }
     # must_respond_with :not_found
     #TODO "undefined method 'errors' for nil"
   end
