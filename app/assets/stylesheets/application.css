@@ -16,11 +16,11 @@
 
 /* Palette */
 :root {
---mint: #B2DFDB;
---turq: #26A69A;
---red: #FF5722;
---char: #424242;
---grey: slategrey;
+  --mint: #B2DFDB;
+  --turq: #26A69A;
+  --red: #FF5722;
+  --char: #424242;
+  --grey: slategrey;
 }
 
 * {
