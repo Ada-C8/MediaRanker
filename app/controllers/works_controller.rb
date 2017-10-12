@@ -4,6 +4,13 @@ class WorksController < ApplicationController
     @movies = Work.where(category: "movie").sort_by{|work| -work.votes.count}
     @books = Work.where(category: "book").sort_by{|work| -work.votes.count}
     @albums = Work.where(category: "album").sort_by{|work| -work.votes.count}
+
+
+    unless @works
+      head :bad_request #not sure this is correct status code need clarification
+    end
+
+
   end
 
   def new

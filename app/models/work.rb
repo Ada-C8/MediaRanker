@@ -5,22 +5,25 @@ class Work < ApplicationRecord
 
   #relationships
   has_many :votes
+  # pulls all of the disctinct values from the category attribute
 
   def self.popular_works(category)
     top_works = Work.all.where(category: category).sort_by{|work| -work.votes.count}[0..9]
     return top_works
   end
 
-  def sorted_works
+  def self.sorted_works
     all_works_sorted = Work.all.sort_by{|work| -work.votes.count}
     return all_works_sorted
   end
 
-  def top_work
+  def self.top_work
+    return sorted_works.first
+  end
 
-  end
-  def self.top_works(category)
-    top_works = Work.where(category: category).joins(:votes).group(:id).order("count(votes.id) DESC").limit(10)
-    return top_works
-  end
+
+  # def self.top_works(category)
+  #   top_works = Work.where(category: category).joins(:votes).group(:id).order("count(votes.id) DESC").limit(10)
+  #   return top_works
+  # end
 end
