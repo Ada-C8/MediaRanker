@@ -25,7 +25,7 @@ class WorksController < ApplicationController
 
   def show
     find_work
-    @votes = Vote.where(work_id: params[:id])
+    # @votes = Vote.where(work_id: params[:id])
   end
 
   def new

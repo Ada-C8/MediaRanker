@@ -5,9 +5,9 @@ class VotesController < ApplicationController
     vote = Vote.new(vote_params)
     vote.user_id = session[:user_id]
     if vote.save
-      flash[:success] = "Successfully upvoted!"
+      flash[:message] = "Successfully upvoted!"
     else
-      flash[:error] = "The vote was not valid"
+      flash[:message] = "The vote was not valid"
     end
     redirect_to works_path
   end
