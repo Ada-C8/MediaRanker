@@ -1,6 +1,6 @@
-<main>
+<main class="row">
 <h3>User Summary: <%= @user.name %></h3>
-<p>Joined site <%= (@user.created_at).strftime('%d-%m-%Y')%></p>
+<p>Joined site <%= (@user.created_at).strftime('%b %m, %Y')%></p>
 <h4>Votes</h4>
 
 <table>
@@ -20,13 +20,13 @@
         <td><%= vote.work.creator %></td>
         <td><%= vote.work.publication_year %></td>
         <td><%= vote.work.category %></td>
-        <td><%= (vote.created_at).strftime('%m-%d-%Y') %></td>
+        <td><%= (vote.created_at).strftime('%b %m, %Y') %></td>
         <% end %>
       </tr>
   </tbody>
 </table>
 
-  <%= button_to("See all Users", users_path, method: :get, alt: "link to user index page") %>
+  <%= button_to("See all Users", users_path, method: :get, alt: "link to user index page", class: "button") %>
 
-  <%= button_to("Back to Media List", root_path, method: :get, alt: "link to home page") %>
+  <%= button_to("Back to Media List", root_path, method: :get, alt: "link to home page", class: "button") %>
 </main>

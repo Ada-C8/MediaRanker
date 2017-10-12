@@ -1,4 +1,4 @@
-<main>
+<main class="row">
 
   <h3>Edit this <%= @work.category.capitalize %></h3>
 
@@ -12,7 +12,7 @@
     <% end %>
   </ul>
 <% end %>
-    <%= render partial: "form", locals: {button_name: "Update Work"} %>
+    <%= render partial: "form", locals: {button_name: "Update Work", class: "edit_work"} %>
   </section>
 
 </main>
