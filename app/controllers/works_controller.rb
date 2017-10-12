@@ -36,7 +36,6 @@ class WorksController < ApplicationController
 
   def update
     @work = Work.find_by(id: params[:id])
-    render_404 if @work == nil
 
     if @work.update_attributes(work_params)
       flash[:success] = "Successfully updated Media ID#{@work.id}!"
