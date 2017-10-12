@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get '/login', to: 'users#login', as: 'login'
   post '/login', to: 'users#process_login'
   get '/logout', to: 'users#logout', as: 'logout'
+
+  get 'works/upvote/:id', to: 'works#upvote', as: 'upvote'
 end
