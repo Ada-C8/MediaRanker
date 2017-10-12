@@ -6,7 +6,7 @@ class VotesController < ApplicationController
     else
       flash[:error] = "The vote was not valid"
     end
-    redirect_ to works_path
+    redirect_to works_path
   end
 
   private

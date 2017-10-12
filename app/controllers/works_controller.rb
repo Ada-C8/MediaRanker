@@ -80,8 +80,8 @@ class WorksController < ApplicationController
   def destroy
     current_user = nil
     #am I actually using this if statement?
-    if session[:logged_in_user]
-      current_user = User.find_by(id: session[:logged_in_user])
+    if session[:user_id]
+      current_user = User.find_by(id: session[:user_id])
     end
     if find_work
       @work.destroy

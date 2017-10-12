@@ -27,7 +27,11 @@ class UsersController < ApplicationController
 
   def login
     if session[:user_id] == nil
-      user = User.find_by(name: params[:name])
+      # choose this:
+      name = params[:user][:name]
+      user = User.find_by(name: name)
+      # or
+      # user = User.find_by(name: params[:name])
       if user
         session[:user_id] = user.id
         flash[:success] = "Successfully logged in as existing user #{ user.name }"
@@ -39,19 +43,21 @@ class UsersController < ApplicationController
           flash[:success] = "Successfully created new user #{params[:name]} with ID #{user.id}"
           redirect_to root_path
         else
-          flash.now[:error] = "Username #{params[:name]} was not created"
-          render :login_form
+          flash[:status] = :failure
+          flash[:message] = "Username #{params[:name]} was not created"
+          render :login_form, status: :bad_request
         end
       end
     else
-      flash[:error] = "You are already logged in as #{User.find_by(id: session[:user_id].to_i).name}"
+      flash[:status] = :failure
+      flash[:message] = "You are already logged in as #{User.find_by(id: session[:user_id].to_i).name}"
       redirect_to root_path
     end
   end
   # name = params[:user][:name]
   # user = User.find_by(name: name)
   # if user
-  #   session[:logged_in_user] = user.id
+  #   session[:X] = user.id
   #   redirect_to root_path
   # else
   #   flash[:status] = :failure
