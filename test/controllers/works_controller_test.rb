@@ -138,4 +138,28 @@ describe WorksController do
       work.title.wont_equal invalid_work_data[:work][:title]
     end
   end
+
+  describe "destroy" do
+    it "returns success and destroys the work when given a valid work ID" do
+      valid_work_id = Work.first.id
+      start_count = Work.count
+
+      delete work_path(valid_work_id)
+
+      must_respond_with :redirect
+      must_redirect_to works_path
+      Work.count.must_equal start_count - 1
+      Work.find_by(id: valid_work_id).must_be_nil
+    end
+
+    it "returns not_found when given a invalid work ID" do
+      invalid_work_id = Work.last.id + 1
+      start_count = Work.count
+
+      delete work_path(invalid_work_id)
+
+      must_respond_with :not_found
+      Work.count.must_equal start_count
+    end
+  end
 end

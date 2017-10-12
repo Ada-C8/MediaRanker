@@ -47,10 +47,12 @@ class WorksController < ApplicationController
   end
 
     def destroy
-      @work = Work.find(params[:id])
-      @work.destroy
-      flash[:notice] = "Successfully destroyed #{@work.category} #{@work.title}"
-      redirect_to works_path
+      if find_work_by_id
+        @work.destroy
+        flash[:status] = :success
+        flash[:notice] = "Successfully destroyed #{@work.category} #{@work.title}"
+        redirect_to works_path
+      end
     end
 
   private
