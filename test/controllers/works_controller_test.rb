@@ -62,11 +62,13 @@ describe WorksController do
       get edit_work_path(book1.id)
       must_respond_with :not_found
     end
-    #
-    # it "should get destroy" do
-    #   get works_destroy_url
-    #   value(response).must_be :success?
-    # end
+
+    it "should destroy a Work" do
+      proc { delete delete_work_path(book1.id) }.must_change 'Work.count', -1
+      must_respond_with :redirect
+
+      Work.find_by(id: book1.id).must_equal nil
+    end
 
   end # CRUD Tests
 
@@ -74,6 +76,7 @@ describe WorksController do
     it "should display a root page" do
       get root_path
       must_respond_with :success
+
 
       #TODO flesh out when you decide where which methods live between Controller and Model
     end

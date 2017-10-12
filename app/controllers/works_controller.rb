@@ -47,6 +47,7 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    redirect_back(fallback_location: works_path) if Work.find_by(id: params[:id]).destroy
   end
 
   def home #same as index with limit, how to do?
