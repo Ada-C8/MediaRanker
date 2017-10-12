@@ -1,10 +1,7 @@
-<!-- <% @category = ""%> -->
-I this doing anything?
 
+<% @data = Work.where(:category => category) %>
 
-<% @data = Work.where(:category => @category) %>
-
-<h4> <%=@category.capitalize%>s
+<h4> <%= category.capitalize%>s
 </h4>
 <table>
   <thead>
