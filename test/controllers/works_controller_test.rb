@@ -56,10 +56,13 @@ describe WorksController do
   end
 
   it "should display an edit form" do
+    #true
     get edit_work_path(book1.id)
     must_respond_with :success
 
-    get edit_work_path("ada")
+    #false
+    book1.destroy
+    get edit_work_path(book1.id)
     must_respond_with :not_found
   end
   #
