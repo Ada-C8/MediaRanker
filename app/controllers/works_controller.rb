@@ -14,10 +14,10 @@ class WorksController < ApplicationController
   private
   def find_work_by_params
     @work = Work.find_by(id: params[:id])
-    # TODO: uncomment this once i have clickable links
-    # unless @book
-    #   head :not_found
-    # end
+
+    unless @work
+      head :not_found
+    end
   end
 
 end
