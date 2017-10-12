@@ -11,10 +11,13 @@ describe WorksController do
   end
 
   it "should get work detail page (#show) or render a 404" do
+    #true
     get work_path(book1.id)
     must_respond_with :success
 
-    get work_path("ada")
+    #false
+    book1.destroy
+    get work_path(book1.id)
     must_respond_with :not_found
   end
 
@@ -24,8 +27,6 @@ describe WorksController do
   end
 
   it "should create a new Work" do
-    #false - test invalid id to not_found
-    #TODO
     #false - invalid without title
     proc { post works_path, params: { work: { category: "book"} } }.must_change 'Work.count', 0
     must_respond_with :success #renders
