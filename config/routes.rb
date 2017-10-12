@@ -4,5 +4,9 @@ Rails.application.routes.draw do
   root 'main#index'
 
   resources :works
-  resources :users
+  resources :users, except: [:edit, :destroy, :update]
+
+  get 'login', to: 'users#login_form', as: 'login'
+  post 'login', to: 'users#login'
+
 end
