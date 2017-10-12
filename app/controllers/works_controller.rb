@@ -7,7 +7,7 @@ class WorksController < ApplicationController
   end
 
   def index
-    @works = Work.left_outer_joins(:votes).distinct.select('works.*, COUNT(votes.*) AS num_votes').group('works.id').order('num_votes DESC')
+    #@works = Work.left_outer_joins(:votes).distinct.select('works.*, COUNT(votes.*) AS num_votes').group('works.id').order('num_votes DESC')
     @media = media_hash(top_ten: false)
   end
 
@@ -39,7 +39,6 @@ class WorksController < ApplicationController
 
   def edit
     @work = Work.find_by(id: params[:id])
-
     render_404 unless @work
   end
 
