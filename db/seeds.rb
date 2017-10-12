@@ -8,11 +8,11 @@
 
 require 'csv'
 
-WORK_FILE = Rails.root.join('db', 'seed_data', 'media_seeds.csv')
+WORK_FILE = Rails.root.join('db', 'media_seeds.csv')
 puts "Loading raw work data from #{WORK_FILE}"
 
 work_failures = []
-CSV.foreach(MEDIA_FILE, :headers => true) do |row|
+CSV.foreach(WORK_FILE, :headers => true) do |row|
   work = Work.new
   work.category = row['category']
   work.title = row['title']
