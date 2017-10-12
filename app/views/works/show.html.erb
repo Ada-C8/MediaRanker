@@ -1,0 +1,16 @@
+<strong>
+  <%= @work.title %>
+</strong>
+<p> Created by:  <% @work.creator %> </p>
+
+<p>Published: <%= @work.publication_year %> </p>
+
+<p><% @work.description %></p>
+
+<%= link_to "Back to media ranks" %>
+<%= link_to "Edit", edit_work_path(@work.id) %>
+<%= link_to "Upvote", edit_work_path(@work.id) %>
+<%= link_to "Delete", work_path(@work.id), method: :delete,
+    data: { confirm: "Really really?" } %>
+
+<p> Votes for this <% @work.category %></p>
