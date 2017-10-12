@@ -19,7 +19,7 @@ class WorksController < ApplicationController
         redirect_to work_path(@work.id)
         return
       else
-        render :edit, status: bad_request
+        render :edit, status: :bad_request
       end
     end
   end
@@ -39,12 +39,11 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    work = find_work_by_params_id
-    work.destroy
-    redirect_to works_path
-
+    if find_work_by_params_id
+      @work.destroy
+      redirect_to works_path
+    end
   end
-
 
   private
 

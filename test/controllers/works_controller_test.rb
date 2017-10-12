@@ -75,4 +75,101 @@ describe "WorksController" do
     end
   end
 
+  describe "edit" do
+    it "returns a success status when given a valid work ID" do
+      work_id = Work.first.id
+      get edit_work_path(work_id)
+      must_respond_with :success
+    end
+
+    it "returns not_found when given an invalid work ID" do
+      invalid_work_id = Work.last.id + 1
+      get edit_work_path(invalid_work_id)
+      must_respond_with :not_found
+    end
+  end
+
+  describe "update" do
+    it "returns a success status if the work ID is valid and the change is valid" do
+      work = Work.first
+      work_data = {
+        work: {
+          category: work.category,
+          title: work.title,
+          creator: work.creator,
+          publication_year: work.publication_year,
+          description: "change description"
+        }
+      }
+
+      work.update_attributes(work_data[:work])
+      work.must_be :valid?
+
+      patch work_path(work.id), params: work_data
+      work.reload
+
+      work.description.must_equal work_data[:work][:description]
+    end
+
+    it "returns not_found when given an invalid work ID" do
+      invalid_work_id = Work.last.id + 1
+      book_data = {
+        work: {
+          category: Work.first.category,
+          title: "different title",
+          creator: Work.first.creator
+        }
+      }
+
+      patch work_path(invalid_work_id), params: book_data
+      must_respond_with :not_found
+    end
+
+    it "returns bad_request if the change is invalid" do
+      work = Work.first
+      invalid_work_data = {
+        work: {
+          category: work.category,
+          title: "",
+          creator: work.creator
+        }
+      }
+
+      work.update_attributes(invalid_work_data[:work])
+      work.wont_be :valid?
+
+      patch work_path(work.id), params: invalid_work_data
+
+      must_respond_with :bad_request
+      work.reload
+
+      work.title.wont_equal invalid_work_data[:work][:title]
+    end
+
+  end
+
+  describe "destory" do
+    it "returns a success status and destroys the work when given a valid work ID" do
+      work_id = Work.first.id
+
+      delete work_path(work_id)
+
+      must_respond_with :redirect
+      must_redirect_to works_path
+      Work.find_by(id: work_id).must_be_nil
+    end
+
+    it "returns not_found when given an invalid work ID" do
+      invalid_work_id = Work.first.id + 1
+
+      start_work_count = Work.count
+
+      delete work_path(invalid_work_id)
+
+      must_respond_with :not_found
+      Work.count.must_equal start_work_count
+
+    end
+  end
+
 end
