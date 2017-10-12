@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'works#index'
 
+  get '/works/top', to: 'works#top', as: 'top_works' 
   resources :works
   resources :users
   resources :votes

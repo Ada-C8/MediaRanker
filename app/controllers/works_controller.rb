@@ -1,7 +1,6 @@
 class WorksController < ApplicationController
   def index
     @works = Work.all
-    @types = ["movie", "book", "album"]
   end
 
   def show
@@ -25,6 +24,8 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    @work = Work.find(params[:id].to_i).destroy
+    redirect_to works_path
   end
 
   def edit
@@ -41,6 +42,11 @@ class WorksController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def top
+    @works = Work.all
+    @types = ["movie", "book", "album"]
   end
 
   private

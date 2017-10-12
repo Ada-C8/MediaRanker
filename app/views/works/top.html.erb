@@ -1,0 +1,20 @@
+<h3>Top 10</h3>
+<h3>List of works</h3>
+
+<% @types.each do |type| %>
+  <section>
+    <h4>Top <%= type.capitalize %>s</h4>
+    <section>
+      <ul>
+          <% Work.top_ten(type.to_sym).each do |work| %>
+              <li>
+                <%=link_to work.title, work_path(work.id)%> by <%=work.creator%>
+                <%= work.votes.count %> votes
+                <%= link_to "Upvote" %>
+              </li>
+          <%end%>
+      </ul>
+    </section>
+  </section>
+
+<% end %>
