@@ -91,4 +91,16 @@ describe WorksController do
     end
   end
 
+  describe "Deleting a Work" do
+    it "should successfully delete an existing work" do
+
+      proc {
+        delete work_path( works(:movie_one).id )
+      }.must_change 'Work.count', -1
+
+      must_respond_with :redirect
+      must_redirect_to root_path
+    end
+  end
+
 end
