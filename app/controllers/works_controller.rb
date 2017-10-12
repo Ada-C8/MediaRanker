@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.all
+    # @works = Work.all
   end
 
   def show
@@ -13,6 +13,8 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
+    @work.creator = "Unknown" if @work.creator.nil?
+
     if @work.save
       redirect_to works_path
       return
@@ -41,7 +43,13 @@ class WorksController < ApplicationController
   end
 
   def destroy
-
+    p "heere 4"
+    if find_work_by_id
+      p "heere"
+      @work.destroy
+      redirect_to works_path
+      return
+    end
   end
 
   private
@@ -51,10 +59,12 @@ class WorksController < ApplicationController
   end
 
   def find_work_by_id
-    @work = work.find(params[:id])
+    @work = Work.find(params[:id])
     unless @work
       head :not_found
     end
+
+    return @work
   end
 
 end

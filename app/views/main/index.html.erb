@@ -1,2 +1,28 @@
-This is the homepage
-<%= Work.top_ten %>
+
+<% work = Work.sort_by_votes.first %>
+<h3>
+<%= "Media Spotlight: #{work.title} by #{work.creator}" %>
+<p> <%= "Votes: #{work.votes.count}" %> </p>
+</h3>
+
+
+<h3> Top Albums </h3>
+  <ol>
+    <% Work.top_ten_albums.each do |work| %>
+    <li> <%= "#{work.title} by #{work.creator} category: #{work.category} Votes: #{work.votes.count}" %> </li>
+    <% end %>
+  </ol>
+
+<h3> Top Books </h3>
+  <ol>
+    <% Work.top_ten_books.each do |work| %>
+    <li> <%= "#{work.title} by #{work.creator} category: #{work.category} Votes: #{work.votes.count}" %> </li>
+    <% end %>
+  </ol>
+
+<h3> Top Movies </h3>
+  <ol>
+    <% Work.top_ten_movies.each do |work| %>
+    <li> <%= "#{work.title} by #{work.creator} category: #{work.category} Votes: #{work.votes.count}" %> </li>
+    <% end %>
+  </ol>

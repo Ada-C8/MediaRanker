@@ -1,0 +1,17 @@
+<section class="form">
+
+  <%= form_for @work do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, placeholder: "Media Title"%>
+    <%= f.label :creator %>
+    <%= f.text_field :creator, placeholder: "Bob Dylan"%>
+    <%= f.label :category %>
+    <%= f.select(:category, options_for_select([["Album", "album"], ["Book", "book"], ["Movie", "movie"]]))%>
+    <%= f.label :publication_year %>
+    <%= f.number_field :publication_year, placeholder: "1999" %>
+    <%= f.label :description %>
+    <%= f.text_field :description, placeholder: "Description" %>
+
+    <%= f.submit %>
+  <% end %>
+</section>
