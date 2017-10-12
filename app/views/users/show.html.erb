@@ -1,6 +1,6 @@
-<h1> Individual User detail </h1>
+
 <p>
-  <strong>User Summary: <%= @user.name %></strong>
+  <strong>User Summary: <%= link_to @user.name, user_path(@user.id)%></strong>
 </p>
 <p>
   Joined site <%= @user.created_at.to_date %>

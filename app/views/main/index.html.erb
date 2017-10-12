@@ -2,7 +2,7 @@
 <body>
   <section>
     <h1 class="spotlight">Media Spotlight:
-      <%= @top.title%> by <%= @top.creator %>
+      <%= link_to @top.title, work_path(@top.id)%> by <%= @top.creator %>
     </h1>
     <p><%= @top.votes.count %> of votes <%= @top.description %>
     </p>
