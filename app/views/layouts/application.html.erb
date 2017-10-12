@@ -11,11 +11,17 @@
   <body>
     <header class="page-header row">
       <h2 class="columns small-12">
-        <%= link_to "Media Ranker", 'root_path' %>
+        <%= link_to "Media Ranker", root_path %>
         <small>Ranking the Best of Everything</small>
       </h2>
       <nav class="columns small-12">
-
+        <%= link_to "View top media", root_path, class: "button" %>
+        <%= link_to "View all media", works_path, class: "button" %>
+        <%= link_to "Add a new work", new_work_path, class: "button" %>
+        <%= link_to "View all users!!", users_path, class: "button" %>
+        <div class="float-right">
+          <%= link_to "Log In!!", users_path, class: "button float-right" %>
+        </div>
       </nav>
     </header>
     <%= yield %>
