@@ -9,3 +9,15 @@ one: {}
 #
 two: {}
 # column: value
+
+zipangu:
+  category: album
+  title: zipangu
+  creator: wednesday campanella
+  publication_year: 2014
+  description: an album by wednesday campanella
+
+poodr:
+  category: book
+  title: Practical Object Oriented Design in Ruby
+  creator: Sandy Metz
