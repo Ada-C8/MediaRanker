@@ -1,44 +1,56 @@
-<h2><%= @work.title %></h2>
+<h2 class="small-12 columns"><%= @work.title %></h2>
 
-<ul>
-  <% if @work.creator %>
-    <li>
+<div class="row">
+  <section class="small-12 large-6 columns">
+    <% if @work.creator %>
       <p>
         Created By:
         <strong><%= @work.creator %></strong>
       </p>
-    </li>
-  <% end %>
-  <% if @work.publication_year %>
-    <li>
+    <% end %>
+    <% if @work.publication_year %>
       <p>
         Published:
         <strong><%= @work.publication_year %></strong>
       </p>
-    </li>
-  <% end %>
-  <% if @work.description %>
-    <li>
+    <% end %>
+    <% if @work.description %>
       <p>
         <%= @work.description %>
       </p>
-    </li>
   <% end %>
-</ul>
-
-<nav>
-  <ul>
-    <li>
-      <%= link_to "Back to media ranks", works_path %>
-    </li>
-    <li>
-      <%= link_to "Edit", edit_work_path(@work.id) %>
-    </li>
-    <li>
-      <%= link_to "Upvote", upvote_path(@work.id) %>
-    </li>
-    <li>
-      <%= link_to "Delete", work_path, method: :delete, data: {confirm: "Are you sure?"} %>
-    </li>
-  </ul>
-</nav>
+    <nav>
+      <%= link_to "Back to media ranks", works_path, class: 'button' %>
+      <%= link_to "Edit", edit_work_path(@work.id), class: 'button' %>
+      <%= link_to "Upvote", upvote_path(@work.id), class: 'button' %>
+      <%= link_to "Delete", work_path, method: :delete, data: {confirm: "Are you sure?"}, class: 'button' %>
+    </nav>
+  </section>
+  <section class="small-12 large-6 columns">
+    <h2><%= @work.users.count %> vote<%= 's' unless @work.users.count == 1 %> for this <%= @work.category %></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>
+            User
+          </th>
+          <th>
+            Date
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @work.votes.each do |vote| %>
+        <tr>
+          <td>
+            <%= vote.user.name %>
+          </td>
+          <td>
+            <%= vote.created_at.strftime('%B %d, %Y') %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+</div>
