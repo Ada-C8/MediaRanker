@@ -6,6 +6,11 @@ describe WorksController do
     must_respond_with :success
   end
 
+  it "successfully loads a show page for an individual work" do
+    work = Work.find( works(:movie).id )
+    get work_path(work.id)
+  end
+
   it "successfully loads the new_work form" do
     get new_work_path
     must_respond_with :success

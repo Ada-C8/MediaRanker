@@ -6,6 +6,10 @@ class WorksController < ApplicationController
     @movies = Work.movies
   end
 
+  def show
+    @work = Work.find( params[:id].to_i )
+  end
+
   def new
     @work = Work.new
   end
