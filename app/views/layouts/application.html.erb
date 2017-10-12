@@ -9,22 +9,15 @@
   </head>
 
   <body>
-    <section class="flash">
-      <% flash.each do |name, message| %>
-        <div class="<%= name %>">
-          <%= message %>
-          <ul class="errors">
-            <% if @work %>
-              <% @work.errors.each do |column, message| %>
-                <li>
-                  <%= "#{column}: #{message}" %>
-                </li>
-              <% end %>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-    </section>
+    <header class="page-header row">
+      <h2 class="columns small-12">
+        <%= link_to "Media Ranker", 'root_path' %>
+        <small>Ranking the Best of Everything</small>
+      </h2>
+      <nav class="columns small-12">
+
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
