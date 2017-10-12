@@ -1,7 +1,10 @@
 class WorksController < ApplicationController
 
   def home
-    @homepage = true
+    @works = Work.order(:category)
+    @winner = @works.max_by {|work| work.votes.length}
+    # @sorted_movies = @works.top_ten("movie")
+
   end
 
   def index

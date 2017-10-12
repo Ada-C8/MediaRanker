@@ -1,1 +1,33 @@
-<h1>Media Spotlight</h1>
+<main>
+<section>
+  <div>
+    <h3>
+      <span>Media Spotlight</span>
+      <%= link_to @winner.title, work_path(@winner.id), alt: "link to see details of work with most votes" %>
+    </h3>
+    <p>
+      <%= @winner.votes.length %> votes
+    </p>
+  </div>
+</section>
+
+<section>
+  <h3>Top Movies</h3>
+  <ul>
+    <li>
+
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3>Top Books</h3>
+
+</section>
+
+<section>
+  <h3>Top Albums</h3>
+
+</section>
+
+</main>
