@@ -39,18 +39,24 @@ describe Work do
   it "can find the top works for each category using get_top_works(categories)" do
     works = [album, book, movie]
     categories = Work.get_categories()
-    # top_works should be empty when no works have any votes
+    # top_works should not be empty when no works have any votes
     top_works = Work.get_top_works(categories)
+    i = 0
     top_works.values.each do |value|
-      value.must_equal []
+      value.must_equal [works[i]]
+      i +=1
     end
     # top_works should contain Work objects when works have votes
     works.each do |a_work|
+      (1..100).to_a.each do |j|
+        Work.create(title: "#{j}", creator: "a creator", category: a_work.category)
+      end
       Vote.create(user_id: user.id, work_id: a_work.id)
     end
     top_works = Work.get_top_works(categories)
     i = 0
     top_works.values.each do |value|
+      value.length.must_equal 10
       value.must_include works[i]
       i+= 1
     end
