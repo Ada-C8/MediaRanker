@@ -76,10 +76,14 @@ class WorksController < ApplicationController
     result = vote.save
 
     if result
-      return redirect_back(fallback_location: works_path)
+      flash[:status] = :success
+      flash[:message] = "Voted for #{vote.work.title}!"
     else
-      return redirect_back(fallback_location: works_path)
+      flash[:status] = :failure
+      flash[:message] = "Could not vote for #{vote.work.title}:"
+      flash[:details] = @vote.errors.messages
     end
+    return redirect_back(fallback_location: works_path)
   end
 
   private
