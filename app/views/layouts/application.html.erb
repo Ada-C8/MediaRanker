@@ -8,6 +8,13 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header>
+    <%= link_to "View top media", '/', method: :get %>
+    <%= link_to "View all media", works_path, method: :get %>
+    <%= link_to "Add a new work", new_work_path, method: :get %>
+    <%= link_to "View all users", users_path, method: :get %>
+  </header>
+
   <body>
     <%= yield %>
   </body>
