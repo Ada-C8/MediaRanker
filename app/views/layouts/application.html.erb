@@ -10,9 +10,13 @@
 
   <body>
     <header>
-      <nav>
-        <ul>
-          <li>
+      <div class='row'>
+        <h1 class='small-5 columns'>Media Ranker </h1>
+        <h2 class='small-7 columns'>Ranking the Best of Everything</h2>
+      </div>
+      <nav class='small-12 columns'>
+        <ul class='small-8 columns'>
+          <li >
             <%= link_to 'View top media', root_path %>
           </li>
           <li>
@@ -24,21 +28,23 @@
           <li>
             <%= link_to 'View all users', users_path %>
           </li>
+        </ul>
 
+        <ul class='small-4 columns '>
+          <li>
+            <%= link_to "Login", login_path %>
+          </li>
+          <% if session[:logged_in_user] %>
+          <li>
+            <%= link_to "Logged in as #{User.find(session[:logged_in_user]).name}", user_path(User.find(session[:logged_in_user]))  %>
+          </li>
+          <%else%>
+          <li>
+            Not logged in.
+          </li>
+          <% end %>
         </ul>
       </nav>
-      <p>
-        <%= link_to "Login", login_path %>
-      </p>
-      <% if session[:logged_in_user] %>
-        <p> Logged in as
-           <%= User.find(session[:logged_in_user]).name %>
-        </p>
-      <%else%>
-        <p>
-          Not logged in.
-        </p>
-      <% end %>
     </header>
     <main>
       <section class="flash <%= flash[:status] %>">

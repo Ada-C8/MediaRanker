@@ -1,7 +1,14 @@
 <h2><%= link_to "#{@work.title}", work_path(@work)%></h2>
 
 <p>
+  category: <%= @work.category %>
+</p>
+<p>
   Created by: <%= @work.creator %>
+</p>
+
+<p>
+  Votes: <%= @work.votes.count %>
 </p>
 
 <%= link_to 'Edit', edit_work_path(@work) %>

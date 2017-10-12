@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
   def index
-    @books = Work.where(category: "book").limit(10)
-    @albums = Work.where(category: "album").limit(10)
-    # @movies = 
+    @spotlight = Work.most_popular
+    @books = Work.top_10("book")
+    @albums = Work.top_10("album")
+    @movies = Work.top_10("movie")
   end
 end

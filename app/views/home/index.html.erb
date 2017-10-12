@@ -1,17 +1,28 @@
-<h1>This is the Home Page</h1>
+<h3>Media Spotlight: <%= link_to "#{@spotlight.title}", work_path(@spotlight)%></h3>
 
+<h3>Books:</h3>
 <ul>
   <% @books.each do |book| %>
     <li>
-      <%= book.title %>
+      <%= book.votes.count %>: <%= book.title %>
     </li>
   <%end%>
 </ul>
 
+<h3>Albums:</h3>
 <ul>
   <% @albums.each do |album| %>
     <li>
-      <%= album.title %>
+      <%= album.votes.count %>: <%= album.title %>
+    </li>
+  <%end%>
+</ul>
+
+<h3>Movies:</h3>
+<ul>
+  <% @movies.each do |movie| %>
+    <li>
+      <%= movie.votes.count %>: <%= movie.title %>
     </li>
   <%end%>
 </ul>
