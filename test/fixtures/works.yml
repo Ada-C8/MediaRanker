@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+conroy:
+  category: book
+  title: Prince of Tides
+  creator: Pat Conroy
+  publication_year: 1987
+  description: A memoir about difficult upbringing in South Carolina.
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+relaxer:
+  category: album
+  title: Relaxer
+  creator: Alt-J
+  publication_year: 2016
+  description: Smooth tunes alt-rock, basically hipster music.
+
+baby:
+  category: movie
+  title: Baby Driver
+  creator: Neeraj Pandey
+  publication_year: 2017
+  description: Action crime film set to superb soundtrack.
