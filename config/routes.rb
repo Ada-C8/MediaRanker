@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'users/index'
+
+  get 'users/new'
+
+  get 'users/edit'
+
+  get 'users/show'
+
   root to: 'works#home', as: 'root' #root_path
   
   get 'works', to: 'works#index', as: 'works'
