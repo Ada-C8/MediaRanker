@@ -1,4 +1,4 @@
-<main>
+<main class="row">
   <h3>Add a new work</h3>
 
   <section>
@@ -11,7 +11,7 @@
     <% end %>
   </ul>
 <% end %>
-    <%= render partial: "form", locals: {button_name: "Create Work"} %>
+    <%= render partial: "form", locals: {button_name: "Create Work", class: "new_work", id: "new_work"} %>
 
   </section>
 

@@ -24,8 +24,8 @@ class WorksController < ApplicationController
   def create
     @work = Work.create work_params
     if @work.id != nil
-      flash[:sucess] = "Work added successfully"
-      redirect_to works_path
+      flash[:sucess] = "Successfully created #{@work.category} #{@work.id}"
+      redirect_to work_path(@work.id)
     else
       flash.now[:error] = "A problem occured: could not create #{@work.category}"
       render :new

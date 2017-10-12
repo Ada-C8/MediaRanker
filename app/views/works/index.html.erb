@@ -1,16 +1,18 @@
+<main class="row">
+
 <h3>List of Works</h3>
 
-<section>
+<section class="media-table">
 
   <h4>Albums</h4>
   <table>
     <thead>
       <tr>
-        <th>Vote </th>
+        <th width="80">Vote </th>
         <th>Title</th>
         <th>Created By</th>
-        <th>Published</th>
-        <th>Upvote</th>
+        <th width="100">Published</th>
+        <th width="100">Upvote</th>
       </tr>
     </thead>
     <tbody>
@@ -20,14 +22,14 @@
           <td><%= link_to(work.title, work_path(work.id), alt: "link to work show page") %></td>
           <td><%= work.creator %></td>
           <td><%= work.publication_year %></td>
-          <td><%= link_to("Upvote", work_votes_path(work.id), method: :post, alt: "link to upvote this work")%></td>
+          <td><%= link_to("Upvote", work_votes_path(work.id), method: :post, alt: "link to upvote this work", class: "button upvote")%></td>
         </tr>
         <% end %>
       </tbody>
     </table>
   </section>
 
-  <section>
+  <section class="media-table">
 
     <h4>Books</h4>
     <table>
@@ -54,7 +56,7 @@
     </table>
   </section>
 
-  <section>
+  <section class="media-table">
 
     <h4>Movies</h4>
 
@@ -80,7 +82,8 @@
           <% end %>
       </tbody>
     </table>
-    <%= button_to("View top media", root_path, method: :get, alt: "link to home page") %>
+    <%= button_to("View top media", root_path, method: :get, alt: "link to home page", class: "button") %>
 
-    <%= button_to("Add a new work", new_work_path, method: :get, alt: "link to create new work") %>
+    <%= button_to("Add a new work", new_work_path, method: :get, alt: "link to create new work", class: "button") %>
   </section>
+</main>
