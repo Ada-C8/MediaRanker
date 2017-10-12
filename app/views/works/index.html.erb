@@ -17,4 +17,7 @@
   <section class="media table">
     <%= render partial: 'media_table', locals:      {media_type: "movie"}%>
   </section>
+
+  <%= link_to "View top media", root_path,   class:  "link"%>
+    <%= link_to "Add a new work", new_work_path,   class:  "link"%>
 </main>
