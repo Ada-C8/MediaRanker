@@ -6,11 +6,11 @@ describe WorksController do
     must_respond_with :success
   end
 
-  # it "should get index" do
-  #   get works_index_url
-  #   value(response).must_be :success?
-  # end
-  #
+  it "should get index" do
+    get works_path
+    must_respond_with :success
+  end
+
   # it "should get show" do
   #   get works_show_url
   #   value(response).must_be :success?

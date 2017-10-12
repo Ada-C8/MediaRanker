@@ -12,9 +12,9 @@ describe Work do
     end
   end
 
-  describe 'top_work' do
-    it "must return the work object with the highest number of votes" do
-      
-    end
-  end
+  # describe 'top_work' do
+  #   it "must return the work object with the highest number of votes" do
+  #
+  #   end
+  # end
 end
