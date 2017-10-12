@@ -4,7 +4,10 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find(params[:id])
+    @work = Work.find_by(id: params[:id])
+    unless @work
+      head :not_found
+    end
   end
 
   def new
@@ -17,10 +20,15 @@ class WorksController < ApplicationController
       category: params[:work][:category],
       title: params[:work][:title],
       creator: params[:work][:creator],
-      description: params[:work][:description],
-      year: params[:work][:year]
+      publication_year: params[:work][:publication_year],
+      description: params[:work][:description]
     )
-    work.save # Add redirect_to
+    work.save
+    if work.save
+      redirect_to works_path
+    else
+      render :new, status: :bad_request
+    end
   end
 
   def edit
@@ -28,19 +36,32 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find(params[:id])
+    @work = Work.find_by(id: params[:id])
+    unless @work
+      head :not_found
+      return
+    end
+
     work_updates = params[:work]
+    # This is the same as the create method params
     @work.category = work_updates[:category]
     @work.title = work_updates[:title]
     @work.creator = work_updates[:creator]
-    @work.descripton = work_updates[:descripton]
+    @work.publication_year = work_updates[:publication_year]
+    @work.description = work_updates[:description]
+
     @work.save
-    # Add a redirect_to
+
+    if @work.save
+      redirect_to work_path(@work)
+    else
+      render :edit, status: :bad_request
+    end
   end
 
   def destroy
     @work = Work.find(params[:id])
     @work.destroy
-    # Add a redirect_to
+    redirect_to works_path
   end
 end

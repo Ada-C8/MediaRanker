@@ -14,7 +14,7 @@ describe Work do
       )
       w.must_be :valid?
     end
-
+    
     it "will raise an error if category, title, creator, description, publication_year is invalid" do
       w = Work.new
       is_valid = w.valid?
