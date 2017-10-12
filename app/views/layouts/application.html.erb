@@ -18,7 +18,7 @@
         <div class="small-2 columns"><%= link_to "View all users", users_path %></div>
 
         <% if session[:logged_in_user] %>
-          <% current_user = User.find_by(session[:logged_in_user])%>
+          <% current_user = User.find_by(id: session[:logged_in_user])%>
 
           <div class="small-2 columns">
             <%= link_to "Logged in as #{current_user.name}", user_path(current_user.id) %>

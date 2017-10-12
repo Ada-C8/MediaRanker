@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def login
     user = User.new(name: params[:user][:name], joined: Date.today)
+    user.save
 
     if user
       session[:logged_in_user] = user.id
