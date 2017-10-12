@@ -1,6 +1,6 @@
 <main>
 <section>
-  <h3>Media Spotlight: <%= @top_work.title %> by <%= @top_work.creator %>
+  <h3>Media Spotlight: <%= @top_work %> by <%= @top_work.creator %>
   </h3>
   <p>
     <%= @top_work.votes %>
@@ -12,7 +12,6 @@
     <ul>
       <% @movies.each do |movie| %>
         <li><%= movie.title %> by <%= movie.creator %></li>
-        <li><%= movie.votes %> votes</li>
       <% end %>
     </ul>
 
