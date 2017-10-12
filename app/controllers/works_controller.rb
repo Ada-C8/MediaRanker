@@ -20,14 +20,12 @@ class WorksController < ApplicationController
     if result
       flash[:status] = :success
       flash[:message] = "Created #{@work.category} #{@work.title}."
-      redirect_to work_path(@work.id)
-      return
+      return redirect_to work_path(@work.id)
     else
       flash.now[:status] = :failure
       flash.now[:message] = "Failed to create #{@work.category}."
       flash.now[:details] = @work.errors.messages
-      render new_work_path
-      return
+      return render :new, status: :bad_request
     end
   end
 
@@ -36,34 +34,39 @@ class WorksController < ApplicationController
   end
 
   def update
-    find_work_by_params(params)
-    result = @work.update(work_params)
-
-    if result
-      flash[:status] = :success
-      flash[:message] = "Updated #{@work.category} #{@work.title}."
-      redirect_to work_path(params[:id])
-      return
+    @work = Work.find_by(id: params[:id])
+    # binding.pry
+    if @work
+      result = @work.update(work_params)
+      # binding.pry
+      if result
+        flash[:status] = :success
+        flash[:message] = "Created #{@work.category} #{@work.title}."
+        return redirect_to works_path
+      else
+        flash.now[:status] = :failure
+        flash.now[:message] = "Failed to create #{@work.category}."
+        flash.now[:details] = @work.errors.messages
+        return render :edit, status: :bad_request
+      end
     else
-      flash.now[:status] = :failure
-      flash.now[:message] = "Failed to update #{@work.category}."
-      flash.now[:details] = @work.errors.messages
-      render new_work_path
-      return
+      return head :not_found
     end
   end
 
   def destroy
-    find_work_by_params(params)
-    result = @work.destroy
+    # find_work_by_params(params)
+    @work = Work.find_by(id: params[:id])
 
-    if result
+    if @work
+      @work.destroy
       flash[:status] = :success
       flash[:message] = "Deleted #{@work.category} #{@work.title}."
-      redirect_to works_path
-      return
+      return redirect_to works_path
     else
-      #error message
+      flash[:status] = :failure
+      flash[:message] = "Unable to find work to delete."
+      return redirect_to works_path
     end
   end
 
@@ -76,8 +79,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     unless @work
-      head :not_found
-      return
+      return head :not_found
     end
   end
 end
