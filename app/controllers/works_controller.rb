@@ -76,7 +76,7 @@ class WorksController < ApplicationController
     result = vote.save
 
     if result
-      return render works_path
+      return redirect_back(fallback_location: works_path)
     else
       return redirect_back(fallback_location: works_path)
     end
