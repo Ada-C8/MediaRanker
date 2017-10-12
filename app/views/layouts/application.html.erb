@@ -9,6 +9,11 @@
   </head>
 
   <body>
+    <nav class = "columns small-12">
+      <%= button_to "View Top Media", root_path, method: :get %>
+      <%= button_to "View All Media", works_path, method: :get %>
+      <%= button_to "Add a New Work", new_work_path, method: :get %>
+    </nav>
     <section class="flash">
       <% flash.each do |name, message| %>
       <div class="<%= name %>"><%= message %></div>
