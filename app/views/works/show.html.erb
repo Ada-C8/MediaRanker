@@ -1,8 +1,11 @@
 <h2><%= @work.title %></h2>
 <p>Created by: <%= @work.creator %></p>
 <p>Published: <%= @work.publication_year %></p>
-<%= button_to 'Edit', edit_work_path(@work.id), method: :get%>
-<%= button_to 'Delete', delete_work_path(@work.id), method: :delete%>
+<%= link_to 'Back to media ranks', works_path, method: :get%>
+<%= link_to 'Edit', edit_work_path(@work.id), method: :get%>
+<% user_id = session[:user_id] || -1 %>
+<%= link_to 'Upvote', create_vote_path(user_id: user_id, work_id: @work.id), method: :post%>
+<%= link_to 'Delete', delete_work_path(@work.id), method: :delete%>
 
 <h2><%= @work.votes.length %> votes for this <%= @work.category.titleize %></h2>
 <table>
@@ -12,8 +15,8 @@
   </tr>
   <% @work.votes.each do |vote| %>
     <tr>
-      <td><%= vote.user.username %></td>
-      <td><%= vote.created_at.strftime("%b") + ' ' + vote.created_at.strftime("%d") + ', ' + vote.created_at.strftime("%Y") %></td>
+      <td><%= link_to vote.user.username, user_path(vote.user_id) %></td>
+      <td><%= vote.created_at.strftime("%b %d, %Y")%></td>
     </tr>
   <% end %>
 </table>
