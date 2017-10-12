@@ -5,11 +5,7 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
-    unless @work
-      head :not_found
-    end
-    return @work
+    find_work_by_id
   end
 
   def new
@@ -32,18 +28,21 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find(params[:id])
+    find_work_by_id
   end
 
   def update
-    @work = Work.find(params[:id])
-    updated = @work.update(work_params)
-
-    if updated
-      flash[:notice] = "Successfully updated #{@work.category} #{@work.title}"
-      redirect_to work_path(@work.id)
-    else
-      render :edit
+    if find_work_by_id
+      @work.update_attributes(work_params)
+      if @work.save
+        flash[:status] = :success
+        flash[:notice] = "Successfully updated #{@work.category} #{@work.title}"
+        redirect_to work_path(@work.id)
+      else
+        flash[:status] = :failure
+        flash[:notice] = "Failed to update the work"
+        render :edit, status: :bad_request
+      end
     end
   end
 
@@ -57,5 +56,13 @@ class WorksController < ApplicationController
   private
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work_by_id
+    @work = Work.find_by(id: params[:id])
+    unless @work
+      head :not_found
+    end
+    return @work
   end
 end
