@@ -12,7 +12,7 @@ class Work < ApplicationRecord
     works = {}
     categories = Work.get_categories
     categories.each do |a_category|
-      category_works = Work.where(category: a_category)
+      category_works = Work.where(category: a_category).joins("LEFT JOIN votes ON works.id = votes.work_id").group(:id).order("count(votes.id) DESC")
       works[a_category] = category_works
     end
     return works
