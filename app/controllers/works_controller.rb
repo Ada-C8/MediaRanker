@@ -18,11 +18,10 @@ class WorksController < ApplicationController
       render_404
     end
 
-    @vote = Vote.all
-
   end
 
   def edit
+    @work = Work.find_by(id: params[:id])
   end
 
   def update
