@@ -20,14 +20,12 @@ class WorksController < ApplicationController
     if result
       flash[:status] = :success
       flash[:message] = "Created #{@work.category} #{@work.title}."
-      redirect_to work_path(@work.id)
-      return
+      return redirect_to work_path(@work.id)
     else
       flash.now[:status] = :failure
       flash.now[:message] = "Failed to create #{@work.category}."
       flash.now[:details] = @work.errors.messages
-      render new_work_path, status: :bad_request
-      return
+      return render new_work_path, status: :bad_request
     end
   end
 
@@ -36,20 +34,23 @@ class WorksController < ApplicationController
   end
 
   def update
-    find_work_by_params(params)
-    result = @work.update(work_params)
-
-    if result
-      flash[:status] = :success
-      flash[:message] = "Updated #{@work.category} #{@work.title}."
-      redirect_to work_path(params[:id])
-      return
+    @work = Work.find_by(id: params[:id])
+    # binding.pry
+    if @work
+      result = @work.update(work_params)
+      # binding.pry
+      if result
+        flash[:status] = :success
+        flash[:message] = "Created #{@work.category} #{@work.title}."
+        return redirect_to works_path
+      else
+        flash.now[:status] = :failure
+        flash.now[:message] = "Failed to create #{@work.category}."
+        flash.now[:details] = @work.errors.messages
+        return render edit_work_path, status: :bad_request
+      end
     else
-      flash.now[:status] = :failure
-      flash.now[:message] = "Failed to update #{@work.category}."
-      flash.now[:details] = @work.errors.messages
-      render edit_work_path, status: :bad_request
-      return
+      return head :not_found
     end
   end
 
@@ -60,8 +61,7 @@ class WorksController < ApplicationController
     if result
       flash[:status] = :success
       flash[:message] = "Deleted #{@work.category} #{@work.title}."
-      redirect_to works_path
-      return
+      return redirect_to works_path
     else
       #error message
     end
@@ -77,7 +77,6 @@ class WorksController < ApplicationController
 
     unless @work
       head :not_found
-      return
     end
   end
 end

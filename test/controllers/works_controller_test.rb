@@ -19,8 +19,8 @@ describe WorksController do
       work: {
         id: fake_id,
         category: "album",
-        title: "Danger Time",
-        creator: "Danger Guy",
+        title: "TMI Time",
+        creator: "TMI Guy",
         publication_year: 2017,
         description: "This is way too much information",
         created_at: DateTime.new(1),
@@ -31,7 +31,9 @@ describe WorksController do
   let(:bad_work_data) {
     {
       work: {
-        title: ''
+        category: "album",
+        title: "",
+        creator: "Safety Guy",
       }
     }
   }
@@ -118,7 +120,7 @@ describe WorksController do
       Work.count.must_equal (before_count + 1)
       Work.last.created_at.wont_equal DateTime.new(1)
       Work.last.id.wont_equal fake_id
-      Work.last.title.must_equal "Danger Time"
+      Work.last.title.must_equal "TMI Time"
     end
 
     it 're-renders new form (without creating) when passed invalid parameters' do
@@ -147,19 +149,33 @@ describe WorksController do
   end
 
   describe 'update' do
-    it 'returns success if work exists and change is valid' do
-      skip
+    it 'returns found if work exists and change is valid' do
+      patch work_path(good_id), params: good_work_data
+      must_respond_with 302
 
+      Work.first.title.must_equal "Safety Time"
     end
 
     it 'returns not_found if work does not exist' do
-      skip
+      patch work_path(bad_id), params: good_work_data
+      must_respond_with 404
 
+      Work.where(title: "Safety Time").must_equal []
     end
 
-    it "returns bad_request if change is invalid" do
+    it 'returns bad_request if change is invalid' do
       skip
+      patch work_path(good_id), params: {work:{title:""}}
+      must_respond_with :bad_request
+    end
 
+    it 'uses strong params' do
+      patch work_path(good_id), params: tmi_work_data
+      must_respond_with 302
+
+      Work.last.created_at.wont_equal DateTime.new(1)
+      Work.last.id.wont_equal fake_id
+      Work.find(good_id).title.must_equal "TMI Time"
     end
   end
 
