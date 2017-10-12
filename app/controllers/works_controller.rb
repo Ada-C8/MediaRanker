@@ -1,6 +1,15 @@
 class WorksController < ApplicationController
   def index
     @works = Work.all
+    @types = []
+
+    @works.each do |work|
+      if @types.include?(work.category)
+        next
+      else
+        @types.push(work.category)
+      end
+    end 
   end
 
   def show
