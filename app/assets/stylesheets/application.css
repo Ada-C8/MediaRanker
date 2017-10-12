@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+
+@import url('foundation.css');
+@import url('https://fonts.googleapis.com/css?family=Gudea:400,400i,700');

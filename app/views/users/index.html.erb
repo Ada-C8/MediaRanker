@@ -1,1 +1,24 @@
-<h2>index for users</h2>
+<main class="users-index">
+  <h2 class="title-green">List of Users</h2>
+
+  <section class="user-list">
+    <table class="all-users">
+      <tr>
+        <th>Username</th>
+        <th>Votes</th>
+        <th>Joined</th>
+      </tr>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%=link_to user.name, user_path(user[:id])%></td>
+          <td><%= user.votes.length %></td>
+          <td><%= user.join_date %></td>
+        </tr>
+      <% end %>
+    </table>
+  </section>
+
+  <section class="bottom-nav">
+    <%= link_to "Back of Media List", root_path, class: "button" %>
+  </section>
+</main>

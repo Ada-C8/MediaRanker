@@ -1,60 +1,62 @@
-<article class="main-index">
-  <h2>Media Spotlight:
-    <% w = @works.max_by { |work| work.votes.length } %>
-    <%= link_to work_path(w[:id]) do %>
-      <%= w.title %> by <span class="author"><%= w.creator %></span>
-    <% end %>
-  </h2>
-  <p><%= w.votes.length %> votes -</p>
+<main class="grid-x main-index">
+
+  <article class="small-12 cell media-spotlight">
+    <h2>Media Spotlight:
+      <% w = @works.max_by { |work| work.votes.length } %>
+      <%= link_to w.title, work_path(w[:id]) %>
+      by <span class="author"><%= w.creator %></span>
+    </h2>
+    <p><%= w.votes.length %> votes - <%= w.desc %></p>
+  </article>
 
   <hr>
-  
-  <section class="top-lists">
 
-    <div class="movies-list">
-      <h3>Top Movies</h3>
-      <ul>
-        <% movies = @movies[0..9] %>
-        <% movies.each do |movie_work| %>
-          <li>
-            <%= link_to movie_work.title, work_path(movie_work[:id]) %>
-            by <span class="author"><%= movie_work.creator %></span>
-            <br />
-            <span><%= movie_work.votes.length %> votes</span>
-          </li>
-        <% end %>
-      </ul>
+  <article class="small-12 cell top-lists">
+    <div class="grid-x">
+      <section class="small-12 large-4 cell movies-list">
+        <h3>Top Movies</h3>
+        <ul>
+          <% movies = @movies[0..9] %>
+          <% movies.each do |movie_work| %>
+            <li>
+              <%= link_to movie_work.title, work_path(movie_work[:id]) %>
+              by <span class="author"><%= movie_work.creator %></span>
+              <br />
+              <span><%= movie_work.votes.length %> votes</span>
+            </li>
+          <% end %>
+        </ul>
+      </section>
+
+      <section class="small-12 large-4 cell books-list">
+        <h3>Top Books</h3>
+        <ul>
+          <% books = @books[0..9] %>
+          <% books.each do |book_work| %>
+            <li>
+              <%= link_to book_work.title, work_path(book_work[:id]) %>
+              by <span class="author"><%= book_work.creator %></span>
+              <br />
+              <span><%= book_work.votes.length %> votes</span>
+            </li>
+          <% end %>
+        </ul>
+      </section>
+
+      <section class="small-12 large-4 cell albums-list">
+        <h3>Top Albums</h3>
+        <ul>
+          <% albums = @albums[0..9] %>
+          <% albums.each do |album_work| %>
+            <li>
+              <%= link_to album_work.title, work_path(album_work[:id]) %>
+              by <span class="author"><%= album_work.creator %></span>
+              <br />
+              <span><%= album_work.votes.length %> votes</span>
+            </li>
+          <% end %>
+        </ul>
+      </section>
     </div>
-
-    <div class="books-list">
-      <h3>Top Books</h3>
-      <ul>
-        <% books = @books[0..9] %>
-        <% books.each do |book_work| %>
-          <li>
-            <%= link_to book_work.title, work_path(book_work[:id]) %>
-            by <span class="author"><%= book_work.creator %></span>
-            <br />
-            <span><%= book_work.votes.length %> votes</span>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="albums-list">
-      <h3>Top Albums</h3>
-      <ul>
-        <% albums = @albums[0..9] %>
-        <% albums.each do |album_work| %>
-          <li>
-            <%= link_to album_work.title, work_path(album_work[:id]) %>
-            by <span class="author"><%= album_work.creator %></span>
-            <br />
-            <span><%= album_work.votes.length %> votes</span>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-
-  </section>
-</article>
+  </article>
+</main>

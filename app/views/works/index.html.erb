@@ -1,4 +1,4 @@
-<article class="works-list">
+<main class="works-list">
   <h2 class="title-green">List of Works</h2>
 
   <section class="work-list">
@@ -18,7 +18,7 @@
             <td><%= link_to work.title, work_path(work[:id]) %></td>
             <td><%= work.creator %></td>
             <td><%= work.year %></td>
-            <td><a href="">Upvote button</a></td>
+            <td><a href="" class="button" >Upvote</a></td>
           </tr>
         <% end %>
       <% end %>
@@ -42,7 +42,7 @@
             <td><%= link_to work.title, work_path(work[:id]) %></td>
             <td><%= work.creator %></td>
             <td><%= work.year %></td>
-            <td><a href="">Upvote button</a></td>
+            <td><a href="" class="button" >Upvote</a></td>
           </tr>
         <% end %>
       <% end %>
@@ -66,7 +66,7 @@
             <td><%= link_to work.title, work_path(work[:id]) %></td>
             <td><%= work.creator %></td>
             <td><%= work.year %></td>
-            <td><a href="">Upvote button</a></td>
+            <td><a href="" class="button" >Upvote</a></td>
           </tr>
         <% end %>
       <% end %>
@@ -74,8 +74,8 @@
   </section>
 
   <section class="bottom-nav">
-    <%= link_to "View top media", root_path %>
-    <%= link_to "Add a new work", new_work_path %>
+    <%= link_to "View top media", root_path, class: "button" %>
+    <%= link_to "Add a new work", new_work_path, class: "button" %>
   </section>
 
-</article>
+</main>

@@ -8,19 +8,28 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header class="main-header">
-      <h1><%=link_to "Media Ranker", root_path %> | Ranking the Best of Everything</h1>
-      <nav>
-        <section class="list-buttons">
-          <%= link_to "View top media", root_path %>
-          <%= link_to "View all media", works_path %>
-          <%= link_to "Add a new work", new_work_path %>
-          <%= link_to "View all users", users_path %>
-        </section>
-        <section class="login-buttons">
-          <%= link_to "Log In", new_user_path %>
-        </section>
+  <body class="grid-container fluid">
+    <header class="main-header grid-x">
+      <h1 class="small-12 cell"><%=link_to "Media Ranker", root_path %> | Ranking the Best of Everything</h1>
+      <nav class="small-12 cell">
+        <div class="grid-x">
+          <section class="small-12 large-8 cell">
+            <%= link_to "View top media", root_path, class: "button" %>
+            <%= link_to "View all media", works_path, class: "button" %>
+            <%= link_to "Add a new work", new_work_path, class: "button" %>
+            <%= link_to "View all users", users_path, class: "button" %>
+          </section>
+          <%# if session[:logged_in_user]%>
+          <!-- <p>Logged in as -->
+          <%# User.find(session[:logged_in_user]).name%>
+          <!-- </p> -->
+          <%# else%>
+          <!-- <p>Not logged in</p> -->
+          <%# end %>
+          <section class="login-buttons small-12 large-4 cell">
+            <%= link_to "Log In", new_user_path, class: "button" %>
+          </section>
+        </div>
       </nav>
     </header>
     <%= yield %>
