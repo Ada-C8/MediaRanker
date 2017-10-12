@@ -32,8 +32,9 @@ describe WorksController do
   end
 
   describe "new" do
-    it "creates a new work" do
-      # fill in!
+    it "creates a new work successfully" do
+      get new_work_path
+      must_respond_with :success
     end
   end
 
@@ -109,48 +110,46 @@ describe WorksController do
     end
 
     it "returns not_found if work id is invalid" do
-      # fill in
-      
-      # bad_work_id = Work.last.id + 1
       # work_data = {
       #   work: {
-      #     title: "booktitle"
+      #     title: " title"
       #   }
       # }
-      # work.update_attributes(work_data[:work])
-      # work.wont_be :valid?
-      # start_work_count = Work.count
-      #
-      # patch work_path(work), params: bad_work_data
-      # must_respond_with :bad_request
-      # Work.count.must_equal start_work_count
-    end
+      # bad_work_id = Work.last.id + 1
+      # patch work_path(bad_work_id), params: work_data
+      # must_respond_with :not_found
+  end
 
-    it "returns bad_request when change is invalid" do
-      work = Work.first
-      bad_work_data = {
-        work: {
-          title: ""
-        }
+  it "returns bad_request when change is invalid" do
+    work = Work.first
+    bad_work_data = {
+      work: {
+        title: ""
       }
-      work.update_attributes(bad_work_data[:work])
-      work.wont_be :valid?
-      start_work_count = Work.count
+    }
+    work.update_attributes(bad_work_data[:work])
+    work.wont_be :valid?
+    start_work_count = Work.count
 
-      patch work_path(work), params: bad_work_data
-      must_respond_with :bad_request
-      Work.count.must_equal start_work_count
-    end
-
+    patch work_path(work), params: bad_work_data
+    must_respond_with :bad_request
+    Work.count.must_equal start_work_count
   end
 
-  describe "destroy" do
-    it "success when book is deleted" do
-      #fill in
-    end
+end
 
-    it "returns bad_request when ???" do
-      # fill in
-    end
+describe "destroy" do
+  it "success when book is deleted" do
+    work_count = Work.count
+    delete work_path(Work.first)
+    must_respond_with :redirect
+    must_redirect_to works_path
+    work_count.must_equal Work.count + 1
   end
+
+  it "test negative delete" do
+    # fill in
+  end
+
+end
 end

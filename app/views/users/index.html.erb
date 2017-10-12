@@ -11,7 +11,7 @@
     <div class="user">
       <td><strong><%= link_to user.name, user_path(user.id)  %> </strong></td>
       <td> <%= user.votes.count %> </td>
-      <td> <%= user.created_at.to_date %> </td>
+      <td> <%= user.created_at.strftime("%b %d, %Y") %> </td>
     </div>
     </tr>
     <% end %>

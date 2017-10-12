@@ -13,9 +13,9 @@ class WorksController < ApplicationController
     # end
 
     @works = Work.all
-    @movies = Work.where(category: "movie")
-    @books = Work.where(category: "book")
-    @albums = Work.where(category: "album")
+    @movies = Work.where(category: "movie").sort_by{|work| -work.votes.count}
+    @books = Work.where(category: "book").sort_by{|work| -work.votes.count}
+    @albums = Work.where(category: "album").sort_by{|work| -work.votes.count}
     unless @works
       head :not_found
     end
@@ -76,12 +76,18 @@ class WorksController < ApplicationController
       end
     end
   end
+
   def destroy
+    current_user = nil
+    #am I actually using this if statement?
+    if session[:logged_in_user]
+      current_user = User.find_by(id: session[:logged_in_user])
+    end
     if find_work
       @work.destroy
+      flash[:status] = :success
+      flash[:message] = "Successfully deleted!"
       redirect_to works_path
-    else
-      #error message
     end
   end
 

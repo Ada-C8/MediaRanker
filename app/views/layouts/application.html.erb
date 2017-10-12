@@ -18,13 +18,13 @@
     <%= link_to "View all users", users_path %>
 
     <% if session[:logged_in_user] %>
-        <p> Logged in as
-           <%= User.find(session[:logged_in_user]).name %>
-        </p>
-      <%else%>
-        <p> Not logged in. </p>
-      <% end %>
-    <%= link_to "Login", login_path %>
+    <p> Logged in as
+      <%= User.find(session[:logged_in_user]).name %>
+      <%= link_to "Logout", logout_path, method: :get %>
+    </p>
+    <%else%><%= link_to "Login", login_path %>
+    <% end %>
+
 
   </header>
 

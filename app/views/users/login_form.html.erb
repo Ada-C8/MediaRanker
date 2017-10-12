@@ -1,7 +1,7 @@
 <%= form_tag do %>
 
-<%= label_tag "User Name" %>
-<%= text_field :user, :name %>
+<%= label_tag(:name, "User Name") %>
+<%= text_field_tag(:name) %>
 
-<%= submit_tag "Login"%>
+<%= submit_tag("Login")%>
 <% end %>

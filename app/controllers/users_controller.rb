@@ -26,59 +26,75 @@ class UsersController < ApplicationController
   end
 
   def login
-    name = params[:user][:name]
-    user = User.find_by(name: name)
-    if user
-      session[:logged_in_user] = user.id
-      redirect_to works_path
+    if session[:user_id] == nil
+      user = find_by(name: params[:name])
+      if user
+        session[:user_id] = user.id
+        flash[:success] = "Successfully logged in as existing user #{user.name}!"
+        redirect_to root_path
+      else
+        if User.create(name: params[:name])
+          user = User.find_by(name: params[:name])
+          flash[:success] = "Successfully created and logged in as #{params[:name]} with ID #{user.id}!"
+          redirect_to root_path
+        else
+          flash.now[:error] = "User #{params[:name]} not created."
+          render :login_form
+        end
+      end
     else
-      flash[:status] = :failure
-      flash[:message] = "User not created "
-      render :login_form
+      flash[:error] = "You are already logged in as #{User.find_by(id: session[:user_id].to_i).username}"
+      redirect_to root_path
     end
   end
-
-  # def get_votes
-  #   vote_works = []
-  #   # vote1 = self.votes
-  #   self.votes.each do |vote|
-  #     vote_works << WorksController.find_work(vote.work_id)
-  #   end
-  #   return vote_works
-  # end
-  
-  #create a class vote_info
-  # for each vote, get the work and create a new instance of vote_info, fill in details (title and published etc,) and push it into an array
-  # return that array
-
-  # def edit
-  #   @user = User.find(params[:id])
-  # end
-  #
-  # def update
-  #   @user = User.find(params[:id])
-  #   result = @user.update(user_params)
-  #
-  #   if result
-  #     redirect_to user_path(@user.id)
-  #   else
-  #     render :edit
-  #   end
-  # end
-  #
-  # def destroy
-  #   @user = User.find(params[:id])
-  #   if @user.destroy
-  #     redirect_to users_path
-  #   else
-  #     #error message
-  #   end
+  # name = params[:user][:name]
+  # user = User.find_by(name: name)
+  # if user
+  #   session[:logged_in_user] = user.id
+  #   redirect_to root_path
+  # else
+  #   flash[:status] = :failure
+  #   flash[:message] = "User not found with name #{name}"
+  #   render :login_form, status: :bad_request
   # end
 
-  private
-
-  def user_params
-    return params.require(:user).permit(:name)
+  def logout
+    if session[:user_id]
+      session[:user_id] = nil
+      flash[:success] = "Successfully logged out"
+      redirect_to root_path
+    end
   end
+end
 
+
+
+# def edit
+#   @user = User.find(params[:id])
+# end
+#
+# def update
+#   @user = User.find(params[:id])
+#   result = @user.update(user_params)
+#
+#   if result
+#     redirect_to user_path(@user.id)
+#   else
+#     render :edit
+#   end
+# end
+#
+# def destroy
+#   @user = User.find(params[:id])
+#   if @user.destroy
+#     redirect_to users_path
+#   else
+#     #error message
+#   end
+# end
+
+private
+
+def user_params
+  return params.require(:user).permit(:name)
 end

@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   resources :users do
     resources :votes, only: [:index, :new]
   end
-  resources :votes
+  # resources :votes
+  post '/votes/:user_id/:work_id', to: 'votes#create', as: 'create_vote'
 
   get 'login', to: 'users#login_form', as: 'login'
   post 'login', to: 'users#login'
+  get '/logout', to: 'users#logout', as: 'logout'
   #think about logout
 end
