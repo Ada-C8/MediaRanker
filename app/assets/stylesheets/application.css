@@ -47,6 +47,11 @@
   clear: both;
 }
 
+section {
+  margin: auto;
+  max-width: 75rem;
+}
+
 /**********/
 /* HEADER */
 /**********/
