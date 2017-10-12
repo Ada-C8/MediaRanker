@@ -67,6 +67,18 @@ class WorksController < ApplicationController
     end
   end
 
+  def upvote
+    vote = Vote.new(user_id: session[:user]['id'], work_id: params[:id])
+
+    result = vote.save
+
+    if result
+      return render works_path
+    else
+      return redirect_back(fallback_location: works_path)
+    end
+  end
+
   private
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
