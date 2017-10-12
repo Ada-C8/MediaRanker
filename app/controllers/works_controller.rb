@@ -22,20 +22,20 @@ class WorksController < ApplicationController
     end
   end
 
-  # def edit
-  #   @work = Work.find(params[:id])
-  # end
+  def edit
+    @work = Work.find(params[:id])
+  end
 
-  # def update
-  #   @work = Work.find(params[:id])
-  #   result = @work.update_attributes(work_params)
-  #
-  #   if result
-  #     redirect_to work_path(params[:id])
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    @work = Work.find(params[:id])
+    result = @work.update_attributes(work_params)
+
+    if result
+      redirect_to work_path(params[:id])
+    else
+      render :edit
+    end
+  end
 
   # def destroy
   #   work = Work.find(params[:id])
