@@ -1,6 +1,6 @@
 require "test_helper"
 
-describe MediaInstanceController do
+describe "MediaInstancesController" do
   # it "must be a real test" do
   #   flunk "Need real tests"
   # end
@@ -11,7 +11,7 @@ describe MediaInstanceController do
     end
 
     it "returns a success status when there are no media_instances" do
-      media_instance.destroy_all
+      MediaInstance.destroy_all
       get media_instances_path
       must_respond_with :success
     end
@@ -30,7 +30,7 @@ describe MediaInstanceController do
 
   describe "new" do
     it "works with an user id" do
-      get new_user_media_instance_path(user.first)
+      get new_media_instance_path(user.first)
       must_respond_with :success
     end
 
@@ -46,15 +46,16 @@ describe MediaInstanceController do
       media_instance_data = {
         media_instance: {
           media_type: "Test media_instance",
-          title: "a title",
-          user_id: user.first.id
+          title: "a title"
         }
       }
+
       # Test data should result in a valid media_instance, otherwise
       # the test is broken
-      media_instance.new(media_instance_data[:media_instance]).must_be :valid?
 
-      start_media_instance_count = media_instance.count
+      MediaInstance.new(media_instance_data[:media_instance]).must_be :valid?
+      start_media_instance_count = MediaInstance.count
+
 
       # Act
       post media_instances_path, params: media_instance_data
@@ -168,7 +169,7 @@ describe MediaInstanceController do
     end
 
     it "returns bad_request if the change is invalid" do
-      media_instance = media_instance.first
+      media_instance = MediaInstance.first
       invalid_media_instance_data = {
         media_instance: {
           title: ""
@@ -190,7 +191,7 @@ describe MediaInstanceController do
   describe "destroy" do
     it "returns success and destroys the media_instance when given a valid media_instance ID" do
       # Arrange
-      media_instance_id = media_instance.first.id
+      media_instance_id = MediaInstance.first.id
 
       # Act
       delete media_instance_path(media_instance_id)

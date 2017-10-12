@@ -9,6 +9,20 @@
   </head>
 
   <body>
+    <header class = "row">
+      <h1>
+        <%= link_to "Top Media", root_path %>
+        </h1>
+        <nav>
+          <ul>
+            <li><%= link_to "Log In" %>, </li>
+          </ul>
+        </nav>
+    </header>
     <%= yield %>
   </body>
+
+  <footer>
+    &copy 2017
+  </footer>
 </html>

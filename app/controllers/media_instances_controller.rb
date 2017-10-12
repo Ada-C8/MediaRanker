@@ -1,4 +1,4 @@
-class MediaInstanceController < ApplicationController
+class MediaInstancesController < ApplicationController
   def index
     @media_instances = MediaInstance.all
   end
