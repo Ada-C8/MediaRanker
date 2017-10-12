@@ -151,7 +151,7 @@ describe WorksController do
   describe 'update' do
     it 'returns found if work exists and change is valid' do
       patch work_path(good_id), params: good_work_data
-      must_respond_with 302
+      must_respond_with :found
 
       Work.first.title.must_equal "Safety Time"
     end
@@ -180,13 +180,13 @@ describe WorksController do
 
   describe 'destroy' do
     it 'deletes the work and returns :success if work exists' do
-      skip
-
+      delete work_path(good_id)
+      must_respond_with :found
     end
 
     it 'returns not_found if work does not exist' do
-      skip
-
+      delete work_path(bad_id)
+      must_respond_with :not_found
     end
   end
 end

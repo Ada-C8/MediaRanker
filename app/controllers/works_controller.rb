@@ -55,15 +55,18 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    find_work_by_params(params)
-    result = @work.destroy
+    # find_work_by_params(params)
+    @work = Work.find_by(id: params[:id])
 
-    if result
+    if @work
+      @work.destroy
       flash[:status] = :success
       flash[:message] = "Deleted #{@work.category} #{@work.title}."
       return redirect_to works_path
     else
-      #error message
+      flash[:status] = :failure
+      flash[:message] = "Unable to find work to delete."
+      return redirect_to works_path
     end
   end
 
@@ -76,7 +79,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     unless @work
-      head :not_found
+      return head :not_found
     end
   end
 end
