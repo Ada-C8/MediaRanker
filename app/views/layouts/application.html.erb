@@ -3,22 +3,28 @@
   <head>
     <title>MediaRanker</title>
     <%= csrf_meta_tags %>
-
+    <link href="styles/normalize.css" rel="stylesheet">
+    <link rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Gudea">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header>
+  <header class="page-header row">
     <h2><%= link_to "Media Ranker", root_path %><small>Ranking the Best of Everything</small></h2>
-    <%= link_to "View Top Media", root_path %>
-    <%= link_to "View All Media", works_path %>
-    <%= link_to "Add A New Work", new_work_path %>
-    <%= link_to "View All Users", users_path %>
-    <% if session[:user] %>
-      <%= link_to session[:user], user_path(session[:user_id]) %>
-      <%= link_to "Log Out", login_path, method: :delete %>
-    <% else %>
-      <%= link_to "Log In", login_path %>
-    <% end %>
+    <nav>
+      <%= link_to "View Top Media", root_path, class:"button" %>
+      <%= link_to "View All Media", works_path, class:"button" %>
+      <%= link_to "Add A New Work", new_work_path, class:"button" %>
+      <%= link_to "View All Users", users_path, class:"button" %>
+      <div class:"float-right">
+        <% if session[:user] %>
+        <%= link_to session[:user], user_path(session[:user_id]), class:"button" %>
+        <%= link_to "Log Out", login_path, method: :delete, class:"button" %>
+        <% else %>
+        <%= link_to "Log In", login_path , class:"button"%>
+        <% end %>
+      </div>
+    </nav>
   </header>
   <body>
     <section class="flash">
