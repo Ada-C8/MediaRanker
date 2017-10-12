@@ -17,7 +17,7 @@ class WorksController < ApplicationController
       flash[:success] = "Work added successfully"
       redirect_to works_path
     else
-      flash.now[:error] = "Book not added successfully"
+      flash.now[:error] = "Work not added successfully"
       render :new
     end
   end
@@ -37,7 +37,7 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    return params.require(:book).permit(:category, :title, :creator, :publication_year, :description)
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
 
   end
 end
