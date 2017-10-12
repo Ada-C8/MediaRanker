@@ -1,13 +1,7 @@
 class SessionsController < ApplicationController
 
   def login_form
-    # user = User.find_by(name: params[:name])
-    #
-    # if user
-    #   session[:user_id] = user.id
-    #   flash[:success] = "#{ user.name } is successfully logged in"
-    #   redirect_to root_path
-    # end
+
   end
 
   #ex syntax to check session info
