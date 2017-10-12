@@ -20,14 +20,6 @@ describe Work do
       dune.valid?.must_equal true
     end
 
-    # it "must have a publication year" do
-    #   dune.publication_year = nil
-    #   dune.valid?.must_equal false
-    #
-    #   dune.publication_year = 1974
-    #   dune.valid?.must_equal true
-    # end
-
     it "doesn't require a publication year" do
       dune.publication_year = nil
       dune.valid?.must_equal true
@@ -73,6 +65,21 @@ describe Work do
       end
     end
 
+  end
+
+  describe "relations" do
+    let(:cat) { categories(:misc) }
+    let(:new_work) { Work.new(creator: "Anon", title: "New Work") }
+
+    it "can set the category through 'category'" do
+      new_work.category = cat
+      new_work.category_id.must_equal cat.id
+    end
+
+    it "can set the category through 'category_id'" do
+      new_work.category_id = cat.id
+      new_work.category.must_equal cat
+    end
   end
 
 
