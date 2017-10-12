@@ -80,7 +80,15 @@ describe Work do
       new_work.category_id = cat.id
       new_work.category.must_equal cat
     end
-  end
 
+    it "must cascade delete associated votes" do
+      dune_vote = votes(:two)
+      num_votes = Vote.count
+
+      works(:dune).destroy
+      Vote.count.must_equal (num_votes - 1)
+      Vote.all.wont_include dune_vote
+    end
+  end
 
 end

@@ -3,15 +3,29 @@ require "test_helper"
 describe User do
   let(:harry) { users(:harry) }
 
-  it "must be valid" do
-    harry.valid?.must_equal true
+  describe "validations" do
+    it "must be valid" do
+      harry.valid?.must_equal true
+    end
+
+    it "must only allow unique usernames" do
+      dup_user = User.new(name: users(:harry).name)
+      dup_user.valid?.must_equal false
+
+      dup_user.name = "New name"
+      dup_user.valid?.must_equal true
+    end
   end
 
-  it "must only allow unique usernames" do
-    dup_user = User.new(name: users(:harry).name)
-    dup_user.valid?.must_equal false
+  describe "relations" do
+    it "must cascade delete associated votes" do
+      hermione_vote = votes(:two)
+      num_votes = Vote.count
 
-    dup_user.name = "New name"
-    dup_user.valid?.must_equal true
+      votes(:two).destroy
+      Vote.count.must_equal (num_votes - 1)
+      Vote.all.wont_include hermione_vote
+    end
   end
+
 end
