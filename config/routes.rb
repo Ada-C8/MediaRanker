@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login', as: 'login'
   get '/logout', to: 'users#logout', as: 'logout'
   # ~~~~~~~~~~~~~~~~ Votes ~~~~~~~~~~~~~~~~
-  post '/votes', to: 'votes#create', as: 'create_vote'
+  post '/votes/:user_id/:work_id', to: 'votes#create', as: 'create_vote'
 end
