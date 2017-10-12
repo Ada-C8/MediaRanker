@@ -14,18 +14,21 @@
 *= require_self
 */
 
-li {
-  list-style: none;
+/* Palette */
+:root {
+--mint: #B2DFDB;
+--turq: #26A69A;
+--red: #FF5722;
+--char: #424242;
+--grey: slategrey;
 }
 
-nav li {
-  display: inline-block;
+* {
+  /*border: 1px solid lawngreen;*/
 }
 
-nav li a {
-  border: 2px solid grey;
-  border-radius: 1rem;
-  padding: .5rem;
+.columns {
+  padding: 1rem;
 }
 
 .success {
@@ -38,4 +41,16 @@ nav li a {
 
 .right {
   float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+/**********/
+/* HEADER */
+/**********/
+
+header {
+  background-color: var(--mint);
 }
