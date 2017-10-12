@@ -1,6 +1,9 @@
 require "test_helper"
 
 describe UsersController do
+  let :user_id { User.last.id }
+
+
   describe "index" do
     it "returns a success status for all users" do
       get users_path
@@ -11,6 +14,17 @@ describe UsersController do
       Work.destroy_all
       get users_path
       must_respond_with :success
+    end
+  end
+
+  describe "show" do
+    it "returns success when given a vaild id" do
+      get user_path(user_id)
+      must_respond_with :success
+    end
+    it "returns not_found when given an invaild id" do
+      get user_path(user_id + 1)
+      must_respond_with :not_found
     end
   end
 

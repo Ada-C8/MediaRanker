@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @user = User.find_by(id: params[:id])
+    head :not_found unless @user
   end
 
   def login_form
