@@ -9,6 +9,7 @@ describe WorksController do
   it "successfully loads a show page for an individual work" do
     work = Work.find( works(:movie).id )
     get work_path(work.id)
+    must_respond_with :success
   end
 
   it "successfully loads the new_work form" do
@@ -25,7 +26,7 @@ describe WorksController do
     must_redirect_to works_path
   end
 
-  it "creates a new work in the database correctly" do
+  it "creates a new work in the database with attributes" do
     proc {
       post works_path, params: { work: {category: "movie", title: "Anna Karenina", creator: "Tolstoy", publication_year: 1807, description: "description"}}
     }.must_change 'Work.count', 1
@@ -34,6 +35,17 @@ describe WorksController do
     work.creator.must_equal "Tolstoy"
     # work.publication_year.must_equal 1807
     # work.description.must_equal "description"
+  end
+
+  it "successfully deletes a work from the database" do
+    post works_path, params: { work: {category: "movie", title: "A new movie", creator: "someone", publication_year: 2003, description: "description"}}
+
+    proc {
+      delete work_path(Work.find_by(title: "Anna Karenina"))
+    }.must_change 'Work.count', -1
+
+    must_respond_with :redirect
+    must_redirect_to works_path
   end
 
   it "successfully loads the edit work form" do
