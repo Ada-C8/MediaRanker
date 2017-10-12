@@ -1,39 +1,32 @@
 Rails.application.routes.draw do
 
-  get 'votes/index'
-
-  get 'votes/show'
-
-  get 'votes/create'
-
-  get 'votes/update'
-
-  get 'votes/destroy'
-
-  get 'votes/edit'
-
-  get 'votes/new'
-
-  get 'users/index'
-
-  get 'users/show'
-
-  get 'users/create'
-
-  get 'users/update'
-
-  get 'users/destroy'
-
-  get 'users/edit'
-
-  get 'users/new'
-
   root to: "home#index"
   root to: "work#index"
+  root to: "vote#index"
+  root to: "user#index"
+
 
   resources :home, only: [:index]
 
   resources :works
+  resources :users
+  resources :votes
+
+  # get 'votes/index'
+  # get 'votes/show'
+  # get 'votes/create'
+  # get 'votes/update'
+  # get 'votes/destroy'
+  # get 'votes/edit'
+  # get 'votes/new'
+
+  # get 'users/index'
+  # get 'users/show'
+  # get 'users/create'
+  # get 'users/update'
+  # get 'users/destroy'
+  # get 'users/edit'
+  # get 'users/new'
 
   # get 'home/index'
   # get 'works/index'
