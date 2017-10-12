@@ -5,6 +5,6 @@
 
 <!-- waiting for working root path -->
 <%= link_to "Back to media ranks", home_path %>
-<%= link_to "Edit" %>
+<%= link_to "Edit", edit_work_path(@work.id) %>
 <%= link_to "Upvote" %>
 <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %>

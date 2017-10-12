@@ -6,14 +6,22 @@ class WorksController < ApplicationController
     @works = Work.all
   end
 
-  # def edit
-  #   @work = Work.find_by(id: params[:id])
-  #   if @work == nil
-  #     redirect_to works_path
-  #   end
-  # end
+  def edit
+    @work = Work.find_by(id: params[:id])
+    unless @work
+      redirect_to work_path(@work.id)
+    end
+  end
 
   def update
+    @work = Work.find_by(id: params[:id])
+    redirect_to work_path(@work.id) unless @work
+
+    if @work.update_attributes work_params
+      redirect_to work_path(@work.id)
+    else
+      render :edit
+    end
   end
 
   def show
@@ -23,14 +31,14 @@ class WorksController < ApplicationController
     end
   end
 
-    def new
-      @work = Work.new
-    end
+  def new
+    @work = Work.new
+  end
 
   def create
     @work = Work.new(work_params)
     if @work.save
-      redirect_to works_path
+      redirect_to work_path(@work.id)
     else
       render :new
     end
