@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
   def create
-    if session[:user_id] == params[:user_id]
+    if session[:user_id].to_i == params[:user_id].to_i
       vote = Vote.new(vote_params)
       if vote.save
         flash[:success] = "Successfully upvoted!"
