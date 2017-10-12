@@ -164,7 +164,6 @@ describe WorksController do
     end
 
     it 'returns bad_request if change is invalid' do
-      skip
       patch work_path(good_id), params: {work:{title:""}}
       must_respond_with :bad_request
     end
