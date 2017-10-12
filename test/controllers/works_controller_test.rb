@@ -1,6 +1,11 @@
 require "test_helper"
 
 describe WorksController do
+  it "successfully loads the home page" do
+    get root_path
+    must_respond_with :success
+  end
+
   it "the books index page is successful" do
     get works_path
     must_respond_with :success
@@ -28,13 +33,14 @@ describe WorksController do
 
   it "creates a new work in the database with attributes" do
     proc {
-      post works_path, params: { work: {category: "movie", title: "Anna Karenina", creator: "Tolstoy", publication_year: 1807, description: "description"}}
+      post works_path, params: { work: {category: "movie", title: "Factory Girl", creator: "Rails", publication_year: 2005, description: "about a girl"}}
     }.must_change 'Work.count', 1
 
-    work = Work.find_by(title: "Anna Karenina")
-    work.creator.must_equal "Tolstoy"
-    # work.publication_year.must_equal 1807
-    # work.description.must_equal "description"
+    work = Work.find_by(title: "Factory Girl")
+    work.creator.must_equal "Rails"
+    work.category.must_equal "movie"
+    work.publication_year.must_equal 2005
+    work.description.must_equal "about a girl"
   end
 
   it "successfully deletes a work from the database" do

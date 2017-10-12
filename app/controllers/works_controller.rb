@@ -1,5 +1,12 @@
 class WorksController < ApplicationController
 
+  def home
+    @top_work = Work.order(:id).first
+    @albums = Work.albums
+    @books = Work.books
+    @movies = Work.movies
+  end
+
   def index
     @albums = Work.albums
     @books = Work.books
@@ -8,6 +15,10 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find( params[:id].to_i )
+
+    unless @work
+      render_404
+    end
   end
 
   def new
