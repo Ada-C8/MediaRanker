@@ -1,0 +1,8 @@
+<ul>
+  <% users.each do |user| %>
+    <li>
+      <strong><%= link_to user.name, user_path(user.id) %></strong>
+      <%= user.created_at.strftime('%B %d, %Y') %>      
+    </li>
+  <% end %>
+</ul>
