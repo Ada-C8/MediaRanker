@@ -20,10 +20,14 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
+      flash[:status] = :success
       flash[:notice] = "Successfully created #{@work.category} #{@work.title}"
       redirect_to work_path(@work.id)
     else
-      render :new
+      flash.now[:status] = :failure
+      flash.now[:notice] = "Failed to create a new work"
+      flash.now[:details] = @work.errors.messages
+      render :new, status: :bad_request
     end
   end
 

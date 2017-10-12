@@ -28,6 +28,46 @@ describe WorksController do
   end
 
   describe "new" do
-    
+    it "returns success" do
+      get new_work_path do
+        must_respond_with :success
+      end
+    end
+  end
+
+  describe "create" do
+    it "adds new work to the DB and redirects when the work data is valid" do
+      new_work_data = {
+        work: {
+          category: "album",
+          title: "New title"
+        }
+      }
+      Work.new(new_work_data[:work]).must_be :valid?
+
+      start_count = Work.count
+
+      post works_path, params: new_work_data
+
+      must_respond_with :redirect
+      Work.count.must_equal start_count + 1
+    end
+
+    it "sends bad_request when the new work is invalid" do
+      invalid_new_work_data = {
+        #no category
+        work: {
+          title: "hello"
+        }
+      }
+      Work.new(invalid_new_work_data[:work]).wont_be :valid?
+
+      start_count = Work.count
+
+      post works_path, params: invalid_new_work_data
+
+      must_respond_with :bad_request
+      Work.count.must_equal start_count
+    end
   end
 end
