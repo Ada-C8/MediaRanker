@@ -1,0 +1,25 @@
+<section>
+  <h3>User Summary: <%= @user.name %></h3>
+  <p>
+    Joined site: <%= @user.joined %>
+  </p>
+
+  <article>
+    <table>
+      <tr>
+        <th>Media Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
+      </tr>
+    </table>
+  </article>
+</section>
+      <%#<% @users.each do |user| %>
+        <%#<tr>
+          <td><%= link_to user.name, user_path(user.id) %><%#</td>
+          <td><%= user.joined%><%#</td>
+          <td></td>
+        </tr>
+      <% end %>

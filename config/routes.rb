@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   root 'main#index'
 
   resources :works
-  
+  resources :users
 end

@@ -1,10 +1,6 @@
 require "test_helper"
 
 describe "WorksController" do
-  # it "must be a real test" do
-  #   flunk "Need real tests"
-  # end
-
   describe "index" do
     it "returns a success status for all works" do
       get works_path
@@ -16,7 +12,6 @@ describe "WorksController" do
       get works_path
       must_respond_with :success
     end
-
   end
 
   describe "new" do
@@ -85,6 +80,25 @@ describe "WorksController" do
     it "returns not_found when given an invalid work ID" do
       invalid_work_id = Work.last.id + 1
       get edit_work_path(invalid_work_id)
+      must_respond_with :not_found
+    end
+  end
+
+  describe "show" do
+    it "returns success when given a valid work ID" do
+      # Arrange
+      work_id = Work.first.id
+
+      # Act
+      get work_path(work_id)
+
+      # Assert
+      must_respond_with :success
+    end
+
+    it "returns not_found when given an invalid work ID" do
+      invalid_work_id = Work.last.id + 1
+      get work_path(invalid_work_id)
       must_respond_with :not_found
     end
   end
