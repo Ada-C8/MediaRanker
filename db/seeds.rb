@@ -26,8 +26,8 @@ CSV.foreach(WORK_FILE, :headers => true) do |row|
   puts "Created work: #{work.inspect}"
 end
 
-puts "Added #{Work.count} driver records"
-puts "#{media_failures.length} drivers failed to save"
+puts "Added #{Work.count} work records"
+puts "#{work_failures.length} work failed to save"
 
 puts "Manually resetting PK sequence on each table"
 ActiveRecord::Base.connection.tables.each do |t|
