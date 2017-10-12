@@ -2,14 +2,17 @@
 <p>Find me in app/views/works/new.html.erb</p>
 
 <%= form_for @work do |f| %>
+  <%=f.label :category%>
+  <%=f.select :category, ["book", "movie", "album"]%>
+
   <%=f.label :title%>
   <%=f.text_field :title%>
+
+  <%=f.label "Publication year"%>
+  <%=f.text_field :year %>
 
   <%=f.label :description%>
   <%=f.text_field :description%>
 
-  <%=f.label :category%>
-  <%=f.select :category, ["book", "movie", "music"]%>
-
-  <%=f.submit%>
+  <%=f.submit "Create Work"%>
   <%end%>
