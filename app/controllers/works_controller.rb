@@ -81,7 +81,7 @@ class WorksController < ApplicationController
     else
       flash[:status] = :failure
       flash[:message] = "Could not vote for #{vote.work.title}:"
-      flash[:details] = @vote.errors.messages
+      flash[:details] = vote.errors.messages
     end
     return redirect_back(fallback_location: works_path)
   end
