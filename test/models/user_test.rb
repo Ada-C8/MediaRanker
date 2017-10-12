@@ -17,7 +17,7 @@ describe User do
 
     it "requires a unique name" do
       name = "Harleen Quinzel"
-      user_one = User.create!(name: name)
+      user_one = User.create!(name: name, join_date: DateTime.now)
       user_two = User.new(name: name)
 
       user_two.wont_be :valid?
