@@ -1,5 +1,5 @@
 <h3>List of works</h3>
 <%# TODO: add locals to render different data in each table! %>
-<%= render partial: "work_table" %>
-<%= render partial: "work_table" %>
-<%= render partial: "work_table" %>
+<%= render partial: "work_table", locals: {type: "movie"} %>
+<%= render partial: "work_table", locals: {type: "book"} %>
+<%= render partial: "work_table", locals: {type: "albums"}%>
