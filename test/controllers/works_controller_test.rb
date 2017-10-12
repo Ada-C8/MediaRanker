@@ -35,15 +35,21 @@ describe WorksController do
     end
 
     it "should not create a new work with invalid params" do
-      skip
       #i need to modify the controller to raise an error here
       #requires a creator
       post create_work_path, params: {work: {title: "A new work", creator: nil}}
-
+      must_respond_with :error
+      #requires a title
+      post create_work_path, params: {work: {title: nil, creator: "A new creator"}}
+      must_respond_with :error
     end
 
     it "should not create a new work if it is not unique" do
-      skip
+      post create_work_path, params: {work: {title: "A new work", creator: "A new creator"}}
+      must_respond_with :redirect
+      must_redirect_to works_path
+      post create_work_path, params: {work: {title: "A new work", creator: "A new creator"}}
+      must_respond_with :error
     end
   end
 end
