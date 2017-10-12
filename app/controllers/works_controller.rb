@@ -25,6 +25,19 @@ class WorksController < ApplicationController
     find_work_by_params
   end # edit
 
+  def update
+    if find_work_by_params
+      @work.update_attributes(work_params)
+      if @work.save
+        redirect_to work_path(@work)
+        return
+      else
+        render :edit, status: :bad_request
+        return
+      end # if/else
+    end # else
+  end # update
+
   private
   def find_work_by_params
     @work = Work.find_by(id: params[:id])
@@ -32,6 +45,7 @@ class WorksController < ApplicationController
     unless @work
       head :not_found
     end
+    return @work
   end
 
   def work_params

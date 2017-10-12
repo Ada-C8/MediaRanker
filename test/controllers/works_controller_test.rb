@@ -72,4 +72,50 @@ describe WorksController do
     end # it "returns not_found when given an invalid work id" do
   end # describe "edit" do
 
+  describe "update" do
+    it "will return success if the work id is valid and given valid work data" do
+      # arrange
+      work = Work.first
+      work_data = {
+        work: {
+          category: "book",
+          title: "HP 3",
+          creator: "J.K Rowling"
+        }
+      }
+      work.update_attributes(work_data[:work])
+      work.must_be :valid?
+
+      # act
+      patch work_path(work), params: work_data
+
+      # Assert
+      must_respond_with :redirect
+      must_redirect_to work_path(work)
+
+    end # success
+
+    it "will return not_found if the work id is invalid" do
+      # Arrange
+      invalid_id = Work.last.id + 1
+      work_data = {
+        work: {
+          category: "book",
+          title: "HP 3",
+          creator: "J.K Rowling"
+        }
+      }
+
+      # act
+      patch work_path(invalid_id), params: work_data
+
+      # Assert
+      must_respond_with :not_found
+    end # invalid work id
+
+    it "will respond with bad_request if the change is invalid" do
+      # TODO: Add this test if we add any validations to the work model
+    end
+  end # describe "update" do
+
 end
