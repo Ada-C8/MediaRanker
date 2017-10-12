@@ -1,13 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: 
-  title: MyString
+book:
+  category: book
+  title: Grapes of Wrath
+  creator: John Steinbeck
   publication_year: 2017-10-10
-  description: MyString
+  description: This is a book
 
-two:
-  category: 
-  title: MyString
+album:
+  category: album
+  title: The Good Fight
+  creator: Oddisee
   publication_year: 2017-10-10
-  description: MyString
+  description: This is an album
+
+movie:
+  category: movie
+  title: Sense and Sensibility
+  creator: Ang Lee
+  publication_year: 1995-10-10
+  description: This is a movie
