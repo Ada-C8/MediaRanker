@@ -16,6 +16,11 @@
         <%= link_to "Add new media", new_work_path %>
       </nav>
     </header>
+    <section class="flash">
+    <% flash.each do |name, message| %>
+      <div class="<%= name %>"><%= message %></div>
+    <% end %>
+  </section>
     <%= yield %>
   </body>
 </html>
