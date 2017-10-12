@@ -9,7 +9,7 @@
 require 'csv'
 
 CAT_FILE = Rails.root.join('db', 'category_seeds.csv')
-puts "Loading category data from #{CAT_FILE}"
+puts "==== Loading category data from #{CAT_FILE} ===="
 
 cat_failures = []
 CSV.foreach(CAT_FILE, :headers => true) do |row|
@@ -28,8 +28,9 @@ end
 puts "Added #{Category.count} category recsords"
 puts "#{cat_failures.length} categories failed to save"
 
+
 MEDIA_FILE = Rails.root.join('db', 'media_seeds.csv')
-puts "Loading media sample data from #{MEDIA_FILE}"
+puts "\n==== Loading media sample data from #{MEDIA_FILE} ===="
 
 work_failures = []
 CSV.foreach(MEDIA_FILE, :headers => true) do |row|
@@ -54,8 +55,9 @@ puts "#{work_failures.length} works failed to save"
 # reset pk sequence for category table ONLY
 ActiveRecord::Base.connection.reset_pk_sequence!('categories')
 
+
 USER_FILE = Rails.root.join('db', 'user_seeds.csv')
-puts "Loading user sample data from #{USER_FILE}"
+puts "\n==== Loading user sample data from #{USER_FILE} ===="
 
 user_failures = []
 CSV.foreach(USER_FILE, :headers => true) do |row|
@@ -69,3 +71,27 @@ CSV.foreach(USER_FILE, :headers => true) do |row|
     user_failures << user
   end
 end
+
+puts "Added #{User.count} user records"
+puts "#{user_failures.length} users failed to save"
+
+
+VOTE_FILE = Rails.root.join('db', 'vote_seeds.csv')
+puts "\n==== Loading vote sample data from #{VOTE_FILE} ===="
+
+vote_failures = []
+CSV.foreach(VOTE_FILE, :headers => true) do |row|
+  vote = Vote.new
+  vote.work_id = row['work_id']
+  vote.user_id = row['user_id']
+
+  puts "Created vote: #{vote.inspect}"
+  successful = vote.save
+
+  if !successful
+    vote_failures << vote
+  end
+end
+
+puts "Added #{Vote.count} vote records"
+puts "#{vote_failures.length} votes failed to save"
