@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   ####### users ######
 
   ####### votes ######
-  post '/votes/:user_id/:work_id', to: 'votes#create', as: 'create_vote'
+  post '/votes/:work_id', to: 'votes#create', as: 'create_vote'
   ####### votes ######
 end

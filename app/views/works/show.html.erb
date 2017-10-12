@@ -9,7 +9,7 @@
 <%= link_to "Back to media ranks", root_path %>
 <%= link_to "Edit", edit_work_path(@work) %>
 
-<%= link_to 'Upvote', create_vote_path(user_id: session[:user_id], work_id: @work.id), method: :post%>
+<%= link_to 'Upvote', create_vote_path(work_id: @work.id), method: :post%>
 
 <%= link_to 'Delete',
 work_path(@work),

@@ -7,6 +7,7 @@ describe Vote do
 
     describe "valiations" do
       it "a vote itself is valid" do
+        vote = Vote.new
         vote.must_be :valid?
       end
 

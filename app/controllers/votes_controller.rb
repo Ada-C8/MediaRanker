@@ -3,6 +3,7 @@ class VotesController < ApplicationController
 
   def create
     vote = Vote.new(vote_params)
+    vote.user_id = session[:user_id]
     if vote.save
       flash[:success] = "Successfully upvoted!"
     else
@@ -11,10 +12,10 @@ class VotesController < ApplicationController
     redirect_to works_path
   end
 
-  
+
 
   private
   def vote_params
-    params.permit(:user_id, :work_id)
+    params.permit(:work_id)
   end
 end
