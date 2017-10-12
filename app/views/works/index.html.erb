@@ -10,31 +10,70 @@
 
 <h3> Top Albums </h3>
 
-<ul>
-  <% @works.each do |work| %>
-    <% if work.category == "album" %>
-      <li> <%= link_to(work.title, work_path(work.id)) %> </li>
-    <% end %>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+    </tr>
+  </thead>
+      <% @works.each do |work| %>
+        <% if work.category == "album" %>
+  <tbody>
+    <tr>
+      <td><%= link_to work.title, work_path(work.id) %></td>
+      <td><%= work.creator %></td>
+      <td><%= work.publication_year %></td>
+        <% end %>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
 
-
-<h3> Top Books </h3>
-
-<ul>
-  <% @works.each do |work| %>
-    <% if work.category == "book" %>
-      <li> <%= link_to(work.title, work_path(work.id)) %> </li>
-    <% end %>
-  <% end %>
-</ul>
 
 <h3> Top Movies </h3>
 
-<ul>
-  <% @works.each do |work| %>
-    <% if work.category == "movie" %>
-      <li> <%= link_to(work.title, work_path(work.id)) %> </li>
-    <% end %>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+    </tr>
+  </thead>
+      <% @works.each do |work| %>
+        <% if work.category == "movie" %>
+  <tbody>
+      <tr>
+        <td><%= link_to work.title, work_path(work.id) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <% end %>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+
+<h3> Top Books </h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+    </tr>
+  </thead>
+      <% @works.each do |work| %>
+        <% if work.category == "book" %>
+  <tbody>
+      <tr>
+        <td><%= link_to work.title, work_path(work.id) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <% end %>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
