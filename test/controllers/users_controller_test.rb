@@ -17,9 +17,9 @@ describe UsersController do
   it "should be able to successfully CREATE a user" do
     proc  {
       post users_path, params: {user: {username: "Sample Username"}} }.must_change 'User.count', 1
-      #
-      # must_respond_with :redirect
-      # must_redirect_to root_path
+
+      must_respond_with :redirect
+      must_redirect_to root_path
   end
 
 
@@ -37,8 +37,5 @@ describe UsersController do
 
     must_redirect_to root_path
   end
-
-
-
 
 end

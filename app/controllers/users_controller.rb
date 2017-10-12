@@ -13,23 +13,21 @@ class UsersController < ApplicationController
   end
 
 
-# ---------------------------------------
+  # ---------------------------------------
   def create
     @user = User.new user_params
 
     if @user.save
-      # puts @user.as_json
-      flash[:success] = "User added successfully"
+      # flash[:success] = "User added successfully"
       redirect_to root_path
 
     else
-      puts "fail"
-      flash.now[:error] = "User not added"
+      # flash.now[:error] = "User not added"
       render :new
     end
   end
 
-#----------------------------------------
+  #----------------------------------------
   def update
     @user = User.find_by(id: params[:id].to_i)
 
@@ -40,12 +38,6 @@ class UsersController < ApplicationController
     end
   end
 
-# ------------------------------------------
-  def destroy
-    @user = User.find_by(id: params[:id].to_i)
-    @user.destroy
-    redirect_to root_path
-  end
 
   def edit
     @user = User.find_by(id: params[:id].to_i)
@@ -54,7 +46,14 @@ class UsersController < ApplicationController
       redirect_to users_path
     end
   end
-# ------------------------------------------
+  # ------------------------------------------
+
+  def destroy
+    @user = User.find_by(id: params[:id].to_i)
+    @user.destroy
+    redirect_to root_path
+  end
+
 
   def new
     @user = User.new
@@ -63,9 +62,8 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    puts params
-    puts params.require(:user).permit(:username)
-
+    # puts params
+    # puts params.require(:user).permit(:username)
     return params.require(:user).permit(:username)
   end
 
