@@ -26,4 +26,11 @@ describe WorksController do
     end
   end
 
+  describe "new" do
+    it "returns a success" do
+      get new_work_path
+      must_respond_with :success
+    end
+  end
+
 end
