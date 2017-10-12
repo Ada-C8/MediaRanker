@@ -35,3 +35,7 @@ nav li a {
 .failure {
   color: crimson;
 }
+
+.right {
+  float: right;
+}
