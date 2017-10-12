@@ -11,12 +11,25 @@
 <%= link_to "Back to media ranks", root_path %>
 <%= link_to "Edit", edit_work_path(@work) %>
 
-<%= link_to 'Upvote', create_vote_path(user_id: :user_id, work_id: @work.id), method: :post%>
+<%= link_to 'Upvote', create_vote_path(user_id: session[:user_id], work_id: @work.id), method: :post%>
 
 <%= link_to 'Delete',
 work_path(@work),
 method: :delete,
 data: { confirm: 'Are you sure?' } %>
 
-
 <%= "#{@work.votes.count} Votes for this work" %>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Date</th>
+  </tr>
+  <tr>
+    <% @work.votes.each do |vote| %>
+    <div class="user">
+      <td><%= link_to vote.user_id, user_path(vote.user_id)  %></td>
+      <td> <%= vote.created_at.strftime("%b %d, %Y") %> </td>
+    </tr>
+    <% end %>
+  </table>

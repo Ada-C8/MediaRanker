@@ -20,6 +20,7 @@ describe WorksController do
   describe "show" do
     it "returns success when given a valid work id" do
       work_id = Work.first.id
+      # user_id = session[:user_id]
       get work_path(work_id)
       must_respond_with :success
     end
