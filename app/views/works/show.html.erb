@@ -1,5 +1,15 @@
 <h2>This is the Show Page</h2>
 
+<p>
+  User who created it
+</p>
+
+<p>
+  Link to Edit, Link to Upvote, Link to Delete
+</p>
+
+<%= link_to "Edit Work", edit_work_path %>
+<%= link_to "Delete Work", work_path(@work.id), method: :delete, data: {:confirm => "Are you sure you want to delete this Work?"} %>
 
 <%= @work.category %>
 <%= @work.title %>
