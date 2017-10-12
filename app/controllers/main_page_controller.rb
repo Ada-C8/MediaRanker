@@ -1,6 +1,5 @@
 class MainPageController < ApplicationController
   def index
-    #TODO fix this sorting!
     works = Upvote.group(:work_id).count
     top = works.max_by { |id,count| count }
     @top = Work.find(top[0])
