@@ -1,11 +1,11 @@
  class VotesController < ApplicationController
-  def index
-    @votes = Vote.all
-  end
-
-  def new
-
-  end
+  # def index
+  #   @votes = Vote.all
+  # end
+  #
+  # def new
+  #
+  # end
 
   def create
     @user = User.find(session[:user_id])
@@ -23,13 +23,13 @@
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
+  # def edit
+  # end
+  #
+  # def update
+  # end
+  #
+  # def destroy
+  # end
 
 end

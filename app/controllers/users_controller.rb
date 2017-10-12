@@ -8,9 +8,9 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
-  def new
-    @user = User.new
-  end
+  # def new
+  #   @user = User.new
+  # end
 
   def create
     @user = User.new(username: params[:user][:username])
@@ -19,8 +19,6 @@ class UsersController < ApplicationController
     else
       render :new
     end
-
-    
   end
 
   # def edit
@@ -42,14 +40,14 @@ class UsersController < ApplicationController
   #     end
   # end
 
-  def destroy
-    user = User.find_by(id: params[:id])
-
-    if user.destroy
-      redirect_to user_path
-    else
-
-    end
-  end
+  # def destroy
+  #   user = User.find_by(id: params[:id])
+  #
+  #   if user.destroy
+  #     redirect_to user_path
+  #   else
+  #
+  #   end
+  # end
 
 end
