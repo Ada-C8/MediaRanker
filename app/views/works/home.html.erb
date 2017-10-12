@@ -16,16 +16,6 @@
 
     <h3>Top Albums</h3>
     <%= render partial: "ulhome", locals: {works: @albums} %>
-
-
-    <ul>
-      <% @movies.each do |movie| %>
-        <li><%= movie.title %> by <%= movie.creator %></li>
-        <p><%= movie.votes %> votes </p>
-      <% end %>
-    </ul>
-
-
   </article>
 </section>
 
