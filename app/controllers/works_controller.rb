@@ -22,26 +22,30 @@ class WorksController < ApplicationController
     if @work.save
       redirect_to works_path
     else
-      render :new
+      render :new, status: :bad_request
     end
   end
 
   def show
-    @work = Work.find(params[:id])
-    @votes = Vote.where(work_id: params[:id])
+    find_work_by_params_id
+    # @work = Work.find(params[:id])
+    # @votes = Vote.where(work_id: params[:id])
   end
 
   def edit
-    @work = Work.find(params[:id])
+    # @work = Work.find(params[:id])
+    find_work_by_params_id
   end
 
   def update
-    @work = Work.find(params[:id])
-    @work.update_attributes(work_params)
-    if @work.save
-      redirect_to work_path(@work)
-    else
-      render :edit
+    if find_work_by_params_id
+      @work.update_attributes(work_params)
+      if @work.save
+        redirect_to work_path(@work)
+      else
+        render :edit, status: :bad_request
+        return
+      end
     end
   end
 
@@ -50,6 +54,16 @@ class WorksController < ApplicationController
     @work.destroy
     redirect_to works_path
   end
+
+private
+  def find_work_by_params_id
+    @work = Work.find_by(id: params[:id])
+    unless @work
+      head :not_found
+    end
+    return @work
+  end
+
   def work_params
     # params are what fields the user is allowed to set
     return params.require(:work).permit(:title, :category, :creator, :publication_year, :description)
