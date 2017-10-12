@@ -9,6 +9,22 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="header_link">
+        <%=link_to "All Works", works_path, method: :get%>
+        <%=link_to "Add New Work", new_work_path, method: :get%>
+      </div>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <div>
+          copyright 2017
+      </div>
+
+    </footer>
   </body>
 </html>
