@@ -4,8 +4,8 @@
 
 <% @users.each do |user| %>
 <li>
-  <%= user.name%>
-  <%= user.votes.count %>
+  <%= link_to user.name, user_path(user), class: "link"%>
+  <%= user.vote.count %>
   <%= user.created_at %>
 </li>
 <% end %>

@@ -1,1 +1,33 @@
 <h1> This is the work show page</h1>
+<main>
+  <h3><%=@work.title%></h3>
+  <article>
+    <p>
+      Created by: <%@work.creator%>
+    </p>
+    <p>
+      Published: <%=@work.publication_year%>
+    </p>
+    <p>
+    </p>
+    <section>
+      <%=link_to "Back to media ranks", root_path, class: "link" %>
+      <%= link_to "Edit", edit_work_path, class: "link" %>
+      <%= "Upvote button here" %>
+      <%= "Delete button here" %>
+    </section>
+  </article>
+</article>
+<%votes = Vote.all.where(work_id: @work.id)%>
+<h3><%=votes.count%> Votes for this book </h3>
+<ul>
+  <%votes.each do |vote| %>
+  <%user = User.all.find_by(id: vote.user_id)%>
+  <li>
+    <%=user.name%>
+    <%= user.created_at %>
+  </li>
+  <%end %>
+</ul>
+</article>
+</main>

@@ -1,1 +1,20 @@
 <h1> This is the user show page</h1>
+
+<h3> User Summary: <%=@user.name%> </h3>
+<p>
+  Joined site <%=@user.created_at%>
+</p>
+<h4>Votes</h4>
+<ul>
+  <% votes = Vote.all.where(user_id: @user.id)%>
+    <%votes.each do |vote|%>
+    <%work =Work.find_by(id: vote.work_id)%>
+  <li>
+    <%=link_to work.title, work_path(work.id), class: "link"%>
+    <%=work.creator%>
+    <%=work.publication_year%>
+    <%=work.category%>
+    <%=vote.created_at%>
+  </li>
+  <%end%>
+</ul>
