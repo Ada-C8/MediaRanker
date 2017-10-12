@@ -1,6 +1,4 @@
 <section class="media-table">
-  <% data = @works.where(category: "type") %>
-  <h4><%# TODO: %>Make this be the work category </h4>
   <table>
     <thead>
       <tr>
@@ -22,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      <%= data.each do |work| %>
+      <% @works.where(category: type ).each do |work| %>
       <tr>
         <td>
           <%= work.votes.count %>
