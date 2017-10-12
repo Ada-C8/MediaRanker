@@ -1,17 +1,18 @@
-<%= form_for @work, html: { class: form_class } do |f| %>
+<%= form_for @work do |f| %>
+  <%= f.label :category %>
+  <%= f.select :category, options_for_select([["Album", "album"], ["Book", "book"], ["Movie", "movie"]]) %>
+
   <%= f.label :title %>
-  <%= f.text_field :title, placeholder: hide_placeholder_text ? "" : "title" %>
+  <%= f.text_field :title %>
 
-
-  <% if @work.author_id %>
-    <%= f.hidden_field :author_id %>
-  <% else %>
-    <%= f.label :author %>
-    <%= f.collection_select(:author_id, Author.all, :id, :name) %>
-  <% end %>
+  <%= f.label :creator %>
+  <%= f.text_field :creator %>
 
   <%= f.label :publication_year %>
   <%= f.number_field :publication_year %>
 
-  <%= f.submit button_text %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.submit "Create Work" %>
 <% end %>
