@@ -6,10 +6,11 @@ class Work < ApplicationRecord
   validates_uniqueness_of :title, scope: [:category]
 
 
-  # def self.top_ten(type)
-  #   category_list = Work.where(category: "type")
-  #   sorted = category_list.sort_by {|work| work.votes.length}
-  #   return sorted
-  # end
+  def self.top_ten(type)
+    category_list = Work.where(category: type)
+    sorted = category_list.sort_by {|x| x.votes.length}.reverse
+    ten = sorted.first(10)
+    return ten
+  end
 
 end

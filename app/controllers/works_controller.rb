@@ -3,7 +3,7 @@ class WorksController < ApplicationController
   def home
     @works = Work.order(:category)
     @winner = @works.max_by {|work| work.votes.length}
-    @movies = @works.where(category: "movie").sort_by { |work| work.votes.length }
+    # @movies = @works.where(category: "movie").sort_by { |work| work.votes.length }
   end
 
   def index
