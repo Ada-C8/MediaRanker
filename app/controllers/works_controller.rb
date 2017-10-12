@@ -60,8 +60,15 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find(params[:id])
+    @work = Work.find_by(id: params[:id])
+
+    unless @work
+      head :not_found
+      return
+    end
+
     @work.destroy
+
     redirect_to works_path
   end
 end

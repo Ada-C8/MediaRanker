@@ -134,7 +134,7 @@ describe WorksController do
           title: "Changed Title",
           creator: "J.K. Rowling",
           publication_year: 2001,
-          description: "A boy to has a scar",
+          description: "A boy who has a scar",
         }
       }
 
@@ -152,7 +152,7 @@ describe WorksController do
           title: "",
           creator: "J.K. Rowling",
           publication_year: 2001,
-          description: "A boy to has a scar",
+          description: "A boy who has a scar",
         }
       }
 
@@ -167,6 +167,28 @@ describe WorksController do
       work.title.wont_equal invalid_work_data[:work][:title]
     end
   end # Des
+
+  describe "#destroy" do
+    it "returns success when given a valid work ID" do
+      before_count = Work.count
+      work_id = Work.first.id
+
+      delete work_path(work_id)
+
+      must_respond_with :redirect
+      must_redirect_to works_path
+      Work.find_by(id: work_id).must_equal nil
+      Work.count.must_equal before_count - 1
+    end
+
+    it "returns not found when a given work ID is invalid" do
+      invalid_work_id = Work.last.id + 1
+
+      delete work_path(invalid_work_id)
+
+      must_respond_with :not_found
+    end
+  end
 end # Des
 
 
