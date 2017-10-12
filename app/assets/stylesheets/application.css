@@ -14,7 +14,9 @@
  *= require_self
  */
 
- .flash .success {
+  @import url('foundation');
+
+ /*.flash .success {
    background-color: lightgreen;
    display: block;
- }
+ }*/
