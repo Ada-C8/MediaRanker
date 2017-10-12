@@ -2,7 +2,9 @@
 <ul>
   <li>
 <%= f.label :category %>
-<%= f.text_field :category, class: "form-field"%>
+<%= f.select :category, ['book', 'album', 'movie']%>
+<%# f.collection_select(:id, Author.all, :id, :name) %>
+<%# f.text_field :category, class: "form-field"%>
 </li>
 <li>
 <%= f.label :title %>

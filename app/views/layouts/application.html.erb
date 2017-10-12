@@ -9,18 +9,23 @@
   </head>
 
   <body>
-    <header>
-      <% if session[:logged_in_user] %>
-      <p>
+    <header class="row">
+      <h1 class="small-12 columns">MediaRanker</h1>
+      <nav class="small-12">
+        <!-- <link_to class="small-6 large-2 columns" -->
+
+
+      <%# if session[:logged_in_user] %>
+      <!-- <p>
         Logged in as
-        <%= User.find(session[:logged_in_user]) %>
+        <%= User.find(session[:logged_in_user]).username %>
       </p>
-      <% else %>
+      <%# else %>
       <p>
         Not logged in
-      </p>
-      <% end %>
-
+      </p> -->
+      <%# end %>
+</nav>
     </header>
     <main>
       <section class="flash <%= flash[:status]%>">
