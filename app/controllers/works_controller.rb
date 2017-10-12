@@ -6,7 +6,8 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find(params[:id])
+    @work = Work.find_by(id: params[:id])
+    head :not_found if @work.nil?
   end
 
   def new

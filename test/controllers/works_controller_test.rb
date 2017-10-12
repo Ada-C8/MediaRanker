@@ -12,6 +12,18 @@ describe WorksController do
       get works_path
       must_respond_with :success
     end
-
   end
+
+  describe "show" do
+    it "returns a success if work exists" do
+      get work_path(Work.first)
+      must_respond_with :success
+    end
+
+    it "should return a Not Found Error (or 404) if work isn't found" do
+      get work_path(Work.last.id + 1)
+      must_respond_with :not_found
+    end
+  end
+
 end
