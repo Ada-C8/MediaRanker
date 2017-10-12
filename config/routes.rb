@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   # get 'main_page/index'
   root to: 'main_page#index'
 
-  post 'works/:id/upvote', to: 'upvotes#create', as: 'create_upvote'
+  post 'works/:id/upvote', to: 'upvotes#create', as: 'upvote'
 
   resources :works
   resources :users
