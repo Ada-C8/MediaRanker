@@ -11,11 +11,13 @@ describe WorksController do
  end
  it "redirects from a failed individual work show page" do
    get work_path(999)
-
    must_respond_with :redirect
    must_redirect_to works_path
  end
-
+ it "generates a successful create work page" do
+   get create_work_path
+   must_respond_with :success
+ end
 
   # it "should get edit" do
   #   get works_edit_url

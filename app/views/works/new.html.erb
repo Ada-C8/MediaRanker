@@ -1,2 +1,17 @@
-<h1>Works#new</h1>
-<p>Find me in app/views/works/new.html.erb</p>
+<section>
+<h1>Add a new work</h1>
+  <%= form_for @work do |f| %>
+  <%= f.label :category %>
+  <%= f.select :category, options_for_select([["album"], ["book"], ["movie"]]) %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :creator %>
+    <%= f.text_field :creator %>
+    <%= f.label :publication_year %>
+    <%= f.text_field :publication_year %>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    <%= f.submit %>
+  <% end %>
+</section>

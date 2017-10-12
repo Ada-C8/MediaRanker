@@ -1,20 +1,21 @@
 Rails.application.routes.draw do
+  root to: 'works#home'
 
-  get '/works', to: 'works#index'
+  get '/home', to: 'works#home', as: 'home'
+
+  get '/works', to: 'works#index', as: 'works'
+
+  get '/works/new', to: 'works#new', as: 'new_work'
+
+  post 'works', to: 'works#create', as: 'create_work'
 
   get '/works/:id', to: 'works#show', as: 'work'
 
-  get 'works/edit'
+  get '/works/edit'
 
-  get 'works/update'
+  put '/works/update'
 
-
-
-  get 'works/create'
-
-  get 'works/new'
-
-  get 'works/destroy'
+  delete '/works/:id', to: 'works#destroy'
 
   get 'users/index'
 

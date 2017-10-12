@@ -6,8 +6,12 @@ class WorksController < ApplicationController
     @works = Work.all
   end
 
-  def edit
-  end
+  # def edit
+  #   @work = Work.find_by(id: params[:id])
+  #   if @work == nil
+  #     redirect_to works_path
+  #   end
+  # end
 
   def update
   end
@@ -19,12 +23,26 @@ class WorksController < ApplicationController
     end
   end
 
-  def create
-  end
+    def new
+      @work = Work.new
+    end
 
-  def new
+  def create
+    @work = Work.new(work_params)
+    if @work.save
+      redirect_to works_path
+    else
+      render :new
+    end
   end
 
   def destroy
+    @work = Work.find_by(id: params[:id]).destroy
+    redirect_to root_path
+  end
+
+  private
+  def work_params
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 end
