@@ -38,6 +38,14 @@ class WorksController < ApplicationController
     end # else
   end # update
 
+  def destroy
+    if find_work_by_params
+      @work.destroy
+      redirect_to works_path
+      return
+    end # if
+  end # destroy
+
   private
   def find_work_by_params
     @work = Work.find_by(id: params[:id])
