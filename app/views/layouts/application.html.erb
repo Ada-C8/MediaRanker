@@ -9,10 +9,14 @@
   </head>
 
   <body>
+    <h2 class= "columns small-12">
+      <%= link_to "Media Ranker", root_path %>
+      <small>Ranking the Best of Everything</small>
+    </h2>
     <nav class = "columns small-12">
-      <%= button_to "View Top Media", root_path, method: :get %>
-      <%= button_to "View All Media", works_path, method: :get %>
-      <%= button_to "Add a New Work", new_work_path, method: :get %>
+      <%= link_to "View Top Media", root_path, class: :button %>
+      <%= link_to "View All Media", works_path, class: :button %>
+      <%= link_to "Add a New Work", new_work_path, class: :button %>
     </nav>
     <section class="flash">
       <% flash.each do |name, message| %>

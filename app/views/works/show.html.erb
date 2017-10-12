@@ -1,2 +1,21 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
+<h3> <%= @work.title %></h3>
+
+<% if @work.errors.any? %>
+  <ul class="errors">
+    <% @work.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<section class = "show-page-buttons">
+  <%= link_to "Back to media ranks", root_path, class: :button %>
+  <%= link_to "Edit", edit_work_path, class: :button %>
+  <%= link_to "Delete", delete_work_path, method: :delete, class: :button %>
+</section>
+
+<section>
+  This will be the upvotes table on the side
+</section>
