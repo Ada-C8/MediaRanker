@@ -2,21 +2,21 @@
 
 album:
   category: album
-  title: MyString
-  creator: MyString
+  title: MyAlbum
+  creator: AlbumCreator
   publication_year: 1
-  description: MyString
+  description: an album
 
 movie:
   category: movie
-  title: MyString
-  creator: MyString
+  title: MyMovie
+  creator: MovieCreator
   publication_year: 1
-  description: MyString
+  description: a movie
 
 book:
   category: book
-  title: MyString
-  creator: MyString
+  title: MyBook
+  creator: BookCreator
   publication_year: 1
-  description: MyString
+  description: a book

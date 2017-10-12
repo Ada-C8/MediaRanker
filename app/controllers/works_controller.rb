@@ -38,12 +38,13 @@ class WorksController < ApplicationController
      if @work.update_attributes work_params
        redirect_to work_path
      else
-       render :edit
+       render :edit, status: 500
      end
   end
 
   def destroy
-    Work.find_by(id: params[:id]).destroy
+    work = Work.find_by(id: params[:id])
+    work.destroy if work
     redirect_to root_path
   end
 
