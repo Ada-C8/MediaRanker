@@ -14,23 +14,39 @@ describe WorksController do
     end
   end
 
-#   describe "new" do
-#     # didn't do this in lecture figure it out
-#   end
-#
-#   describe "create" do
-#     it "redirects to works_path if the work data is valid" do
-#       # # Arrange
-#       # # Act
-#       # # Assert
-#     end
-#
-#     it "returns bad_request status when the work data is invalid" do
-#       # # Arrange
-#       # # Act
-#       # # Assert
-#     end
-#   end
+  describe "new" do
+    it "returns success" do
+      get new_work_path
+      must_respond_with :success
+    end
+  end
+
+  describe "create" do
+    it "redirects to works_path if the work data is valid and adds a work to the db" do
+      # # Arrange
+      work_data = {
+        work: {
+          category: "movie",
+          title: "Shawshank Redemption"
+        }
+      }
+      # test if work is valid
+      Work.new(work_data[:work]).must_be :valid?
+
+      # # Act
+      post works_path, params: work_data
+
+      # # Assert
+      must_respond_with :redirect
+      must_redirect_to works_path
+    end
+
+    it "returns bad_request status when the work data is invalid" do
+      # # Arrange
+      # # Act
+      # # Assert
+    end
+  end
 #
 #   describe "show" do
 #     it "returns success when given a valid work_id and user has votes" do
