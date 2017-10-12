@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   get '/login', to: 'users#login_form', as: 'login_form'
   post '/login', to: 'users#login', as: 'login'
   get '/logout', to: 'users#logout', as: 'logout'
-
+  # ~~~~~~~~~~~~~~~~ Votes ~~~~~~~~~~~~~~~~
+  post '/votes', to: 'votes#create', as: 'create_vote'
 end
