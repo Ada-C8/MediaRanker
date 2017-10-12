@@ -1,36 +1,19 @@
 <h1>Works</h1>
 
 <ul>
-  <h2> Albums </h2>
-  <% @works.each do |work| %>
-    <% if work.category == "album"%>
-    <li>
-      Title: <%=link_to work.title, work_path(work.id) %>.
-      Created by: <%=work.creator %>
-      Published: <%=work.year%>
-    </li>
-    <% end %>
-    <%end%>
 
-  <h2> Books </h2>
-    <% @works.each do |work| %>
-      <% if work.category == "book"%>
-      <li>
-        Title: <%=link_to work.title, work_path(work.id) %>.
-        Created by: <%=work.creator %>.
-        Published: <%=work.year%>.
-      </li>
-      <% end %>
-      <%end%>
+  <% Work::CATEGORIES.each do |category| %>
 
-  <h2> Movies </h2>
-      <% @works.each do |work| %>
-        <% if work.category == "movie"%>
-        <li>
-          Title: <%=link_to work.title, work_path(work.id) %>.
-          Created by: <%=work.creator %>
-          Published: <%=work.year%>
-        </li>
-        <% end %>
-        <%end%>
+  <h2> <%= category.capitalize %> </h2>
+
+  <% Work.where(category: category).each do |work| %>
+  <li>
+    Title: <%= link_to work.title, works_path(work.id) %>
+    Created by: <%=work.creator %>
+    Published: <%=work.year%>
+  </li>
+
+  <% end %>
+<% end %>
+
 </ul>

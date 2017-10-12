@@ -7,13 +7,14 @@
   <%= w.text_field :title %>
 
   <%= w.label :category %>
-  <%= w.text_field :category %>
+  <%= w.select :category, Work::CATEGORIES %>
 
   <%= w.label :creator %>
   <%= w.text_field :creator %>
 
   <%= w.label "Publication year" %>
-  <%= w.text_field :year %>
+  <%= w.number_field :year %>
+
 
   <%= w.label "Description" %>
   <%= w.text_field :description %>
