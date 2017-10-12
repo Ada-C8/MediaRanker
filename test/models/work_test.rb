@@ -1,5 +1,9 @@
 require "test_helper"
 
+# Write at least one test for each custom method on a model
+# Write at least one test for each model relationship on a model
+# Write at least two tests for each validation on a model
+
 describe Work do
   let :work { Work.first }
 
@@ -13,8 +17,13 @@ describe Work do
         description: "An album description"
       )
       w.must_be :valid?
+      w.errors.messages.wont_include :category
+      w.errors.messages.wont_include :title
+      w.errors.messages.wont_include :creator
+      w.errors.messages.wont_include :description
+      w.errors.messages.wont_include :publication_year
     end
-    
+
     it "will raise an error if category, title, creator, description, publication_year is invalid" do
       w = Work.new
       is_valid = w.valid?
@@ -24,15 +33,6 @@ describe Work do
       w.errors.messages.must_include :creator
       w.errors.messages.must_include :description
       w.errors.messages.must_include :publication_year
-    end
-
-    it "requires category, title, creator, description, publication_year is invalid" do
-      work.must_be :valid?
-      work.errors.messages.wont_include :category
-      work.errors.messages.wont_include :title
-      work.errors.messages.wont_include :creator
-      work.errors.messages.wont_include :description
-      work.errors.messages.wont_include :publication_year
     end
   end # Describe
 

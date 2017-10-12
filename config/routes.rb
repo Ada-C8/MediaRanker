@@ -12,7 +12,15 @@ Rails.application.routes.draw do
 get '/', to: 'main#index', as: 'root'
 
 resources :users
+
 resources :votes
+
 resources :works
+
+post 'works/:id/votes', to: 'votes#create'
+
+# get "/passengers/:id/trips/new", to: "trips#new", as: "new_passenger_trip"
+
+# get 'works/:id/votes/new', to: 'votes#new', as: new_work_vote_path
 
 end

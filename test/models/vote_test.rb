@@ -84,3 +84,10 @@ describe Vote do
     # end
   end
 end
+
+
+  #must_be(expression, fail_message)
+# wont_be(expression, fail_message)
+# must_equal(expr1, expr2, fail_message)
+# must_include(collection, object, fail_message)
+# wont_be_nil(expression, fail_message)

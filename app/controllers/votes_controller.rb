@@ -17,6 +17,7 @@ class VotesController < ApplicationController
       work_id: params[:vote][:work_id]
     )
     vote.save
+    redirect_to works_path(vote.work_id)
     # Add redirect_to
   end
 
