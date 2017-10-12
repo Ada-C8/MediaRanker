@@ -23,6 +23,7 @@ class UsersController < ApplicationController
       else
         if User.create(username: params[:username])
           user = User.find_by(username: params[:username])
+          session[:user_id] = user.id
           flash[:success] = "Successfully created new user #{params[:username]} with ID #{user.id}"
           redirect_to root_path
         else
