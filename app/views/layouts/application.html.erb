@@ -9,14 +9,15 @@
   </head>
 
   <body>
-    <header>
-      <h2><%= link_to "Media Ranker", root_path %></h2>
+    <header class="row">
+      <h2 class="small-12-columns"><%= link_to "Media Ranker", root_path %></h2>
       <small>Rank the Best of Everything</small>
-      <nav>
-        <%= link_to "View top media", root_path %>
-        <%= link_to "View all media", works_path %>
-        <%= link_to "Add a new work", new_work_path %>
-        <%= link_to "View all users", users_path %>
+      <%# Must fix these %>
+      <nav class="row">
+        <%= link_to "View top media", root_path, class: "small-6 large-2 columns" %>
+        <%= link_to "View all media", works_path, class: "small-6 large-2 columns" %>
+        <%= link_to "Add a new work", new_work_path, class: "small-6 large-2 columns" %>
+        <%= link_to "View all users", users_path, class: "small-6 large-2 columns" %>
         <div>
           <%= link_to "Log In", root_path %>
         </div>
