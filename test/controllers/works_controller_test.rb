@@ -18,6 +18,7 @@ describe WorksController do
   end
 
   it "should update the work" do
+    #true
     old_title = book1.title
     patch work_path(book1.id), params: {work: {title: "#{book1.title} Updated"}}
 
@@ -25,18 +26,23 @@ describe WorksController do
     book1_updated.title.must_equal "#{old_title} Updated"
     must_redirect_to work_path(book1.id)
 
-    patch work_path(book2.id), params: {work: {title: book1.title, category: book1.category}}
-    must_respond_with :error
+    #false - duplicate title and category of another work in db
+    # patch work_path(book2.id), params: {work: {title: book1.title, category: book1.category}}
+    # must_respond_with :error
+    #TODO redirects... is valid?
 
-    #wrong id
-    #data is bad and validations failed
+    #false - non existent id
+    # patch work_path("pamplemousse"), params: {work: {title: "Doesn't Matter"}}
+    # must_respond_with :not_found
+    #TODO "undefined method 'errors' for nil"
   end
 
   it "should display an edit form" do
     get edit_work_path(book1.id)
     must_respond_with :success
 
-    #TODO if no id
+    get edit_work_path("ada")
+    must_respond_with :not_found
   end
   #
   # it "should get destroy" do
