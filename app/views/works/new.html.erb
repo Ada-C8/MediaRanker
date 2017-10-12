@@ -1,35 +1,5 @@
 <h3>New Work</h3>
 
-
-<div class="form">
-  <%= form_for @work do |f| %>
-    <div class="form-item">
-      <%= f.label :category %>
-       <%= f.select :category, [['Album','album'],['Book','book'],['Movie','movie']], {include_blank: 'Select a category'} %>
-    </div>
-
-    <div class="form-item">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div>
-
-    <div class="form-item">
-      <%= f.label :creator, "Created by" %>
-      <%= f.text_field :creator %>
-    </div>
-
-    <div class="form-item">
-      <%= f.label :publication_year %>
-      <%= f.text_field :publication_year %>
-    </div>
-
-    <div class="form-item">
-      <%= f.label :description %>
-      <%= f.text_field :description %>
-    </div>
-
-    <div class="form-item">
-      <%= f.submit "Create new work"%>
-    </div>
-  <% end %>
+<div>
+  <%= render partial: "form", locals: {action_name: "Create new work"} %>
 </div>

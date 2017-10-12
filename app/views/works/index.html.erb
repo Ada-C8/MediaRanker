@@ -1,7 +1,10 @@
 <h1>works index page</h1>
-<section>
-  <%= link_to "New Work", new_work_path %>
-</section>
+<!-- <nav>
+  <ul>
+    <li><%= link_to "New Work", new_work_path %></li>
+  </ul>
+</nav> -->
+
 <section>
   <h3>All Works</h3>
 
@@ -20,7 +23,7 @@
         <% if work.category == "album" %>
           <tr>
             <td></td>
-            <td><%= work.title %></td>
+            <td><%= link_to work.title, work_path(work.id) %></td>
             <td><%= work.creator %></td>
             <td><%= work.publication_year%></td>
             <td></td>
@@ -45,7 +48,7 @@
         <% if work.category == "book" %>
           <tr>
             <td></td>
-            <td><%= work.title %></td>
+            <td><%= link_to work.title, work_path(work.id) %></td>
             <td><%= work.creator %></td>
             <td><%= work.publication_year%></td>
             <td></td>
@@ -70,7 +73,7 @@
         <% if work.category == "movie" %>
           <tr>
             <td></td>
-            <td><%= work.title %></td>
+            <td><%= link_to work.title, work_path(work.id) %></td>
             <td><%= work.creator %></td>
             <td><%= work.publication_year%></td>
             <td></td>

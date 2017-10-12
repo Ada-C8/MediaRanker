@@ -52,6 +52,27 @@ describe "WorksController" do
 
       Work.count.must_equal start_work_count + 1
     end
+
+    it "sends a bad_request when the work data is invalid" do
+      #arrange
+      invalid_work_data = {
+        work: {
+          category: "book",
+          title: "Civilizations and its Discontents"
+        }
+      }
+
+      Work.new(invalid_work_data[:work]).wont_be :valid?
+
+      start_work_count = Work.count
+
+      #act
+      post works_path, params: invalid_work_data
+
+      #assert
+      must_respond_with :bad_request
+      Work.count.must_equal start_work_count
+    end
   end
 
 end
