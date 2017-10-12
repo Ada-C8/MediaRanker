@@ -17,7 +17,7 @@ class WorksController < ApplicationController
 
     if @work.save
       flash[:status] = :success
-      flash[:message] = "Successfully created work #{@work.title} by #{@work.creator}"
+      flash[:message] = "Successfully created work #{@work.id}"
       redirect_to works_path
     else
       flash.now[:status] = :failure
