@@ -1,0 +1,30 @@
+
+  <table>
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% types = Work.all.where(category: media_type)%>
+      <% types.all.each do |type|%>
+      <tr>
+      <td>
+        <%=Vote.all.where(work_id: type.id).count %>
+      </td>
+      <td>
+        <%=type.title %>
+      </td>
+      <td>
+        <%=type.publication_year %>
+      </td>
+      <td>
+        put upvote button here
+      </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
