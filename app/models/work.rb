@@ -12,18 +12,15 @@ class Work < ApplicationRecord
   end
 
   def self.all_albums
-    albums = all.where(category: "albums")
-    return albums
+    return Work.where(category: "album")
   end
 
   def self.all_books
-    books = all.where(category: "books")
-    return books
+    return Work.where(category: "book")
   end
 
   def self.all_movies
-    movies = all.where(category: "movies")
-    return movies
+    return Work.where(category: "movie")
   end
 
   def self.top_ten_albums
