@@ -3,23 +3,23 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  # def show
-  #   # @user = User.find(params[:id])
-  # end
+  def show
+    @user = User.find_by(id: params[:id])
+  end
 
   def new
-    # @user = User.new
+    @user = User.new
   end
 
   def create
-  #   @user = User.new(
-  #   user_params
-  #   )
-  #   if @user.save
-  #     redirect_to user_path
-  #   else
-  #     render :new
-  #   end
+    @user = User.new(
+    user_params
+    )
+    if @user.save
+      redirect_to user_path
+    else
+      render :new
+    end
   end
 
   def login_form
@@ -37,6 +37,19 @@ class UsersController < ApplicationController
       render :login_form
     end
   end
+
+  # def get_votes
+  #   vote_works = []
+  #   # vote1 = self.votes
+  #   self.votes.each do |vote|
+  #     vote_works << WorksController.find_work(vote.work_id)
+  #   end
+  #   return vote_works
+  # end
+  
+  #create a class vote_info
+  # for each vote, get the work and create a new instance of vote_info, fill in details (title and published etc,) and push it into an array
+  # return that array
 
   # def edit
   #   @user = User.find(params[:id])
