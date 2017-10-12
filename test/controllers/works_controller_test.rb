@@ -33,4 +33,36 @@ describe WorksController do
     end
   end
 
+  describe "create" do
+    it "will successfully create work item" do
+      work_data = {
+        work: {
+          title: "Test book",
+          category: "album"
+        }
+      }
+      work_count = Work.count
+      post works_path, params: work_data
+
+      must_respond_with :redirect
+      must_redirect_to works_path
+
+      Work.count.must_equal work_count + 1
+    end
+
+    it "will successfully create work item" do
+      bad_work_data = {
+        work: {
+          #No title,
+          category: "album"
+        }
+      }
+      work_count = Work.count
+      post works_path, params: bad_work_data
+
+      must_respond_with :bad_request
+
+      Work.count.must_equal work_count
+    end
+  end
 end
