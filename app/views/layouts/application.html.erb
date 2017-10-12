@@ -3,45 +3,47 @@
   <head>
     <title>MediaRanker</title>
     <%= csrf_meta_tags %>
-    <link href="styles/normalize.css" rel="stylesheet">
-    <link rel="stylesheet"
-  href="https://fonts.googleapis.com/css?family=Gudea">
+    <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header class="page-header row">
-    <h2><%= link_to "Media Ranker", root_path %><small>Ranking the Best of Everything</small></h2>
-    <nav>
-      <%= link_to "View Top Media", root_path, class:"button" %>
-      <%= link_to "View All Media", works_path, class:"button" %>
-      <%= link_to "Add A New Work", new_work_path, class:"button" %>
-      <%= link_to "View All Users", users_path, class:"button" %>
-      <div class:"float-right">
-        <% if session[:user] %>
-        <%= link_to session[:user], user_path(session[:user_id]), class:"button" %>
-        <%= link_to "Log Out", login_path, method: :delete, class:"button" %>
-        <% else %>
-        <%= link_to "Log In", login_path , class:"button"%>
-        <% end %>
-      </div>
-    </nav>
-  </header>
   <body>
-    <section class="flash">
-      <% flash.each do |name, message| %>
-        <div class="<%= name %>"><%= message %></div>
-        <% if name == "error" %>
-        <ul>
-          <% @work.errors.each do |column, message| %>
-          <li>
-            <%= column %>: <%= message %>
-          </li>
+    
+    <header class="page-header row">
+      <h2 class= "columns small-12"><%= link_to "Media Ranker", root_path %><small>Ranking the Best of Everything</small></h2>
+      <nav class= "columns small-12">
+        <%= link_to "View Top Media", root_path, class:"button" %>
+        <%= link_to "View All Media", works_path, class:"button" %>
+        <%= link_to "Add A New Work", new_work_path, class:"button" %>
+        <%= link_to "View All Users", users_path, class:"button" %>
+        <div class="float-right">
+          <% if session[:user] %>
+          <%= link_to session[:user], user_path(session[:user_id]), class:"button" %>
+          <%= link_to "Log Out", login_path, method: :delete, class:"button" %>
+          <% else %>
+          <%= link_to "Log In", login_path , class:"button"%>
           <% end %>
-        </ul>
-        <% end %>
-      <% end %>
+        </div>
+      </nav>
+    </header>
 
-    </section>
-    <%= yield %>
+    <main class="row">
+      <section>
+        <% flash.each do |name, message| %>
+        <div class="flash <%= name %>"><h3><%= message %></h3>
+          <% if name == "error" %>
+          <ul>
+            <% @work.errors.each do |column, message| %>
+            <li>
+              <%= column %>: <%= message %>
+            </li>
+            <% end %>
+          </ul>
+          <% end %>
+          <% end %>
+        </div>
+      </section>
+      <%= yield %>
+    </main>
   </body>
 </html>
