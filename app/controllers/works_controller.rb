@@ -26,39 +26,44 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find(params[:id])
+    find_work_by_params_id
   end
 
   def update
-    @work = Work.find(params[:id])
-    result = @work.update(work_params)
-    if result
-      redirect_to work_path(@work.id)
-      return
-    else
-      render :edit
-      return
+    if find_work_by_params_id
+      @work.update_attributes(work_params)
+      if @work.save
+        redirect_to work_path(@work)
+        return
+      else
+        render :edit, status: :bad_request
+        return
+      end
     end
   end
 
   def destroy
-    work = Work.find(params[:id])
-    work.destroy
+    if find_work_by_params_id
+      @work.destroy
+      redirect_to works_path
+      return
+    else
+      head :not_found
+    end
 
-    redirect_to works_path
   end
 
   private
-  
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 
-  def find_book_by_params_id
-      # can add the repeated show and edit code here to try it up some more
-      @work = Work.find_by(id: params[:id])
-      unless @work
-        head :not_found
-      end
+  def find_work_by_params_id
+    # can add the repeated show and edit code here to try it up some more
+    @work = Work.find_by(id: params[:id])
+    unless @work
+      head :not_found
+    end
+    return @work
   end
 end
