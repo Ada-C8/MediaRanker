@@ -1,14 +1,14 @@
 class WorksController < ApplicationController
   def home
-    @works = Work.all
-    @media = media_hash(true)
-    # get first work until Vote model added
-    @spotlight = Work.first
+    @media = media_hash(top_ten: true)
+
+    works = Work.left_outer_joins(:votes).distinct.select('works.*, COUNT(votes.*) AS num_votes').group('works.id').order('num_votes DESC')
+    @spotlight = works[0]
   end
 
   def index
-    @works = Work.all
-    @media = media_hash(false)
+    @works = Work.left_outer_joins(:votes).distinct.select('works.*, COUNT(votes.*) AS num_votes').group('works.id').order('num_votes DESC')
+    @media = media_hash(top_ten: false)
   end
 
   def show
@@ -79,9 +79,9 @@ class WorksController < ApplicationController
   end
 
   def media_hash(top_ten = true)
-    albums = Work.where(category_id: Category.find_by(name: "album"))
-    movies = Work.where(category_id: Category.find_by(name: "movie"))
-    books = Work.where(category_id: Category.find_by(name: "book"))
+    albums = Work.left_outer_joins(:votes).where(category_id: Category.find_by(name: "album")).distinct.select('works.*, COUNT(votes.*) AS num_votes').group('works.id').order('num_votes DESC')
+    movies = Work.left_outer_joins(:votes).where(category_id: Category.find_by(name: "movie")).distinct.select('works.*, COUNT(votes.*) AS num_votes').group('works.id').order('num_votes DESC')
+    books = Work.left_outer_joins(:votes).where(category_id: Category.find_by(name: "book")).distinct.select('works.*, COUNT(votes.*) AS num_votes').group('works.id').order('num_votes DESC')
 
     if top_ten
       return {"albums": albums[0...10], "movies": movies[0...10], "books": books[0...10]}
@@ -89,4 +89,5 @@ class WorksController < ApplicationController
       return {"albums": albums, "movies": movies, "books": books}
     end
   end
+
 end
