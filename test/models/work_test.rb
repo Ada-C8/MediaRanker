@@ -4,6 +4,10 @@ describe Work do
   let(:work) { Work.new }
   let(:book) { works(:book1)}
 
+  describe "relationships" do
+
+  end # Relationships
+  
   describe "validations" do
     it "must have a title to be valid" do
       #false
