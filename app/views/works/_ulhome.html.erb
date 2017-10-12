@@ -1,0 +1,6 @@
+<ul>
+  <% works.each do |work| %>
+    <li><%= work.title %> by <%= work.creator %></li>
+    <p><%= work.votes %> votes </p>
+  <% end %>
+</ul>

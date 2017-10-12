@@ -2,9 +2,9 @@ class WorksController < ApplicationController
 
   def home
     @top_work = Work.order(:id).first
-    @albums = Work.albums
-    @books = Work.books
-    @movies = Work.movies
+    @albums = Work.albums.first(10)
+    @books = Work.books.first(10)
+    @movies = Work.movies.first(10)
   end
 
   def index

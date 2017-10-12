@@ -1,6 +1,6 @@
 <main>
 <section>
-  <h3>Media Spotlight: <%= @top_work %> by <%= @top_work.creator %>
+  <h3>Media Spotlight: <%= @top_work.title %> by <%= @top_work.creator %>
   </h3>
   <p>
     <%= @top_work.votes %>
@@ -9,9 +9,19 @@
 <section>
   <article>
     <h3>Top Movies</h3>
+    <%= render partial: "ulhome", locals: {works: @movies} %>
+
+    <h3>Top Books</h3>
+    <%= render partial: "ulhome", locals: {works: @books} %>
+
+    <h3>Top Albums</h3>
+    <%= render partial: "ulhome", locals: {works: @albums} %>
+
+
     <ul>
       <% @movies.each do |movie| %>
         <li><%= movie.title %> by <%= movie.creator %></li>
+        <p><%= movie.votes %> votes </p>
       <% end %>
     </ul>
 
