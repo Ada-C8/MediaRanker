@@ -3,3 +3,7 @@
 <%= render partial: "work_table", locals: {type: "movie"} %>
 <%= render partial: "work_table", locals: {type: "book"} %>
 <%= render partial: "work_table", locals: {type: "albums"}%>
+
+<%= link_to "View top media", root_path, :html => { :class => "button" } %>
+
+<%= link_to "Add a new work", new_work_path, :html => {:class => "button"} %>
