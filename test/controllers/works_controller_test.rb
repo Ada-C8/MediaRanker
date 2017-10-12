@@ -95,7 +95,7 @@ describe WorksController do
       get work_path(work_id)
       must_respond_with :success
       ## returning 200 instead of redirect
-      # must_respond_with :redirect_to
+      # must_respond_with :redirect
 
     end
     it "returns not found if the work id is invalid" do
