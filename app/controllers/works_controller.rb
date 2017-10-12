@@ -2,6 +2,7 @@ class WorksController < ApplicationController
   before_action :find_by_id, only: [:show, :edit, :update, :destroy]
 
   def index
+
   end
 
   def show
