@@ -3,10 +3,10 @@ class VotesController < ApplicationController
     vote = Vote.new(vote_params)
     if vote.save
       flash[:success] = "Successfully upvoted!"
-      redirect_back(fallback_location: works_path)
     else
-      flash.now[:error] = "The vote was not valid"
+      flash[:error] = "The vote was not valid"
     end
+    redirect_back(fallback_location: works_path)
   end
 
   private
