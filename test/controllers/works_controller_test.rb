@@ -20,4 +20,15 @@ describe WorksController do
     must_redirect_to works_path
   end
 
+  it "creates a new work in the database correctly" do
+    proc {
+      post works_path, params: { work: {category: "movie", title: "Anna Karenina", creator: "Tolstoy", publication_year: 1807, description: "description"}}
+    }.must_change 'Work.count', 1
+
+    work = Work.find_by(title: "Anna Karenina")
+    work.creator.must_equal "Tolstoy"
+    work.publication_year.must_equal "1807"
+    work.description.must_equal "description"
+  end
+
 end
