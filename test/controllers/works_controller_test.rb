@@ -127,5 +127,10 @@ describe WorksController do
       total.must_equal Work.count + 1
     end
 
+    it "returns not_found when given an invaild id" do
+      put work_path(work_id + 1)
+      must_respond_with :not_found
+    end
+
   end
 end

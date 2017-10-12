@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     else
       flash.now[:status] = :failure
       flash.now[:message] = "No user found with name #{name}"
-      render :login_form
+      render :login_form, status: :bad_request
     end
   end
 
