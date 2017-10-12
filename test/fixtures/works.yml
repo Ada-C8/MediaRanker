@@ -4,8 +4,8 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+movie:
+  title: Jurassic Park
+  publication_year: 1994
+  creator: Steven Spielberg
+  category: movie

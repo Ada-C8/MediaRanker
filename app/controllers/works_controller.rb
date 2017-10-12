@@ -24,17 +24,20 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find(params[:id])
+    @work = Work.find_by(id: params[:id])
+    head :not_found if @work.nil?
   end
 
   def update
-    @work = Work.find(params[:id])
+    @work = Work.find_by(id: params[:id])
+    head :not_found and return if @work.nil?
+
     result = @work.update_attributes(work_params)
 
     if result
       redirect_to work_path(params[:id])
     else
-      render :edit
+      render :edit, status: :bad_request
     end
   end
 
