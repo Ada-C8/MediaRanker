@@ -1,9 +1,11 @@
-# require "test_helper"
-#
-# describe Work do
-#   let(:work) { Work.new }
-#
-#   it "must be valid" do
-#     value(work).must_be :valid?
-#   end
-# end
+require "test_helper"
+
+describe "work" do
+  describe "validations"do
+    it "can be created with all fields" do
+      a = Work.new(title: "Test Title", category: "movie", publication_year: 2000, description: "whatever")
+
+      a.must_be :valid?
+    end
+  end
+end

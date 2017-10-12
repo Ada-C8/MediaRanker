@@ -1,11 +1,20 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+poodr:
+  title: POODR
+  category: book
+  publication_year: 2000
+  creator: Sandi Metz
+  description: org your code
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+cat_stevens:
+  title: Cats in the Cradle
+  category: album
+  publication_year: 1970
+  creator: Cat Stevens
+  description:
+
+wonder_woman:
+  title: Wonder Woman
+  category: movie
+  publication_year: 2017
+  creator: Jane Doe
+  description: awesome

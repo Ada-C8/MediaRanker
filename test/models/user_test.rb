@@ -15,7 +15,7 @@ describe User do
 
   describe "relationships" do
     it "can access votes" do
-      u = User.new(name: "Tanja")
+      u = User.new(name: "Jones")
       u.votes.count.must_equal 0
     end
   end
