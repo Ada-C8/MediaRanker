@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources:votes
 
+  delete '/works/destroy/:id', to: 'works#destroy', as: 'delete_work'
+
   # get 'votes/new'
   #
   # get 'votes/create'
