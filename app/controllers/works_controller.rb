@@ -1,15 +1,7 @@
 class WorksController < ApplicationController
   def index
     @works = Work.all
-    @types = []
-
-    @works.each do |work|
-      if @types.include?(work.category)
-        next
-      else
-        @types.push(work.category)
-      end
-    end 
+    @types = ["movies", "books", "music"]
   end
 
   def show
@@ -17,17 +9,33 @@ class WorksController < ApplicationController
   end
 
   def create
+    @work.create work_params
+
+    if @work.id != nil
+      flash[:success] = "Work added successfully!"
+      redirect_to works_path
+    else
+      render :new
+    end
+
   end
 
   def new
+    @work = Work.new
   end
 
   def destroy
   end
 
   def edit
+
   end
 
   def update
+  end
+
+  private
+  def work_params
+    return params.require(:work).permit(:title, :description, :category)
   end
 end
