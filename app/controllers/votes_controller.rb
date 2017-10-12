@@ -11,6 +11,8 @@ class VotesController < ApplicationController
     redirect_to works_path
   end
 
+  
+
   private
   def vote_params
     params.permit(:user_id, :work_id)
