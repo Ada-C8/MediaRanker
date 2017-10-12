@@ -49,7 +49,7 @@ class WorksController < ApplicationController
   private
   def find_work_by_params
     @work = Work.find_by(id: params[:id])
-
+    # TODO: Dan told sarah that this isn't the right status code to use
     unless @work
       head :not_found
     end

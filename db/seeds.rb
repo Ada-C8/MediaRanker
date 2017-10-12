@@ -28,3 +28,21 @@ end
 
 puts "Added #{Work.count} work records"
 puts "#{work_failures.length} works failed to save"
+
+
+USER_FILE = Rails.root.join('db', 'user_seeds.csv')
+puts "Loading raw media data from #{USER_FILE}"
+
+user_failures = []
+CSV.foreach(USER_FILE, :headers => true) do |row|
+  user = User.new
+  user.name = row['name']
+  puts "Created user: #{user.inspect}"
+  sucessful = user.save
+  if !sucessful
+    user_failures << user
+  end
+end
+
+puts "Added #{User.count} user records"
+puts "#{user_failures.length} user failed to save"
