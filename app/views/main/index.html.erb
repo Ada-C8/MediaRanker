@@ -2,9 +2,9 @@
 <body>
   <section>
     <h1 class="spotlight">Media Spotlight:
-      <% @work = Work.find(1) %> <%= @work.title%> by <%= @work.creator %>
+      <%= @top.title%> by <%= @top.creator %>
     </h1>
-    <p># of votes- <%= @work.description %>
+    <p><%= @top.votes %> of votes <%= @top.description %>
     </p>
   </section>
 

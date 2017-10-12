@@ -16,8 +16,9 @@ class WorksController < ApplicationController
     @movies = Work.where(category: "movie").sort_by{|work| -work.votes.count}
     @books = Work.where(category: "book").sort_by{|work| -work.votes.count}
     @albums = Work.where(category: "album").sort_by{|work| -work.votes.count}
+    # order("vote DESC").first
     unless @works
-      # how to trigger this and make this actually occur? 
+      # how to trigger this and make this actually occur?
       head :not_found
     end
   end
