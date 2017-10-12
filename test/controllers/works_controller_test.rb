@@ -71,8 +71,11 @@ describe WorksController do
   end # CRUD Tests
 
   describe "Other Controller Methods" do
-    it "should " do
+    it "should display a root page" do
+      get root_path
+      must_respond_with :success
 
+      #TODO flesh out when you decide where which methods live between Controller and Model
     end
   end
 end
