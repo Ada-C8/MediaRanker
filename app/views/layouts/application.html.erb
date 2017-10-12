@@ -9,7 +9,13 @@
   </head>
 
   <body>
-    <%= link_to "Add New Work", new_work_path %>
+    <header class = "row">
+      <h1 class="small-12 columns"> Media Ranker </h1>
+      <nav class="small-12">
+
+      <%= link_to "Add New Work", new_work_path %>
+
+    </header>
     <%= yield %>
   </body>
 </html>

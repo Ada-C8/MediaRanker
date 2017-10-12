@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users, only: [:index]
-  resources :works, only: [:index, :show, :edit, :update, :create, :destroy]
+  resources :works, only: [:index, :show, :new, :edit, :update, :create, :destroy]
   # resources :votes
 
   root 'main#index'
