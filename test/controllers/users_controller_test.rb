@@ -1,39 +1,44 @@
 require "test_helper"
 
 describe UsersController do
-  it "should get index" do
-    get users_index_url
-    value(response).must_be :success?
+
+  it "should get to user INDEX" do
+    get users_path
+    must_respond_with :success
   end
 
-  it "should get show" do
-    get users_show_url
-    value(response).must_be :success?
+  it "Should be able to acces a SHOW page for a page based on a specific ID" do
+    get user_path(users(:one).id)
+    must_respond_with :success
   end
 
-  it "should get create" do
-    get users_create_url
-    value(response).must_be :success?
+
+  #TODO
+  it "should be able to successfully CREATE a user" do
+    proc  {
+      post users_path, params: {user: {username: "Sample Username"}} }.must_change 'User.count', 1
+      #
+      # must_respond_with :redirect
+      # must_redirect_to root_path
   end
 
-  it "should get update" do
-    get users_update_url
-    value(response).must_be :success?
+
+  it "Should be able to DELETE/DESTROY a user" do
+    proc  {
+      delete user_path(users(:one).id)}.must_change 'User.count', - 1
+      must_redirect_to root_path
   end
 
-  it "should get destroy" do
-    get users_destroy_url
-    value(response).must_be :success?
+
+  it "Should be able to EDIT a user" do
+    put user_path(users(:one)), params: {user: {username: "Updated"} }
+    updated_user = User.find(users(:one).id)
+    updated_user.username.must_equal "Updated"
+
+    must_redirect_to root_path
   end
 
-  it "should get edit" do
-    get users_edit_url
-    value(response).must_be :success?
-  end
 
-  it "should get new" do
-    get users_new_url
-    value(response).must_be :success?
-  end
+
 
 end

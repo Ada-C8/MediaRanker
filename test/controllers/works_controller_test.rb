@@ -28,7 +28,6 @@ describe WorksController do
   end
 
   it "Should be able to EDIT a work" do
-
     put work_path(works(:one)), params: {work: {title: "Updated Title"}}
     updated_work = Work.find(works(:one).id)
     updated_work.title.must_equal "Updated Title"

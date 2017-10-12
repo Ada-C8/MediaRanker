@@ -16,17 +16,21 @@ class UsersController < ApplicationController
     @user = User.new user_params
 
     if @user.save
+      # puts @user.as_json
+      puts "success"
       redirect_to root_path
+
     else
+      puts "fail"
       flash.now[:error] = "User not added"
       render :new
     end
   end
 
   def update
-    @user = Work.find_by(id: params[:id].to_i)
+    @user = User.find_by(id: params[:id].to_i)
 
-    if @user.update_attributes work_params
+    if @user.update_attributes user_params
       redirect_to root_path
     else
       render :edit
@@ -54,7 +58,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    return params.require(:User).permit(:username)
+    puts params
+    puts params.require(:user).permit(:username)
+
+    return params.require(:user).permit(:username)
   end
 
 end
