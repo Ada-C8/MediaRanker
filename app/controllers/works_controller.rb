@@ -17,12 +17,14 @@ class WorksController < ApplicationController
     @books = Work.where(category: "book").sort_by{|work| -work.votes.count}
     @albums = Work.where(category: "album").sort_by{|work| -work.votes.count}
     unless @works
+      # how to trigger this and make this actually occur? 
       head :not_found
     end
   end
 
   def show
     find_work
+    @votes = Vote.where(work_id: params[:id])
   end
 
   def new

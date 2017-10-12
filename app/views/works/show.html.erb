@@ -28,7 +28,7 @@ data: { confirm: 'Are you sure?' } %>
   <tr>
     <% @work.votes.each do |vote| %>
     <div class="user">
-      <td><%= link_to vote.user_id, user_path(vote.user_id)  %></td>
+      <td><%= link_to vote.user.name, user_path(vote.user_id)  %></td>
       <td> <%= vote.created_at.strftime("%b %d, %Y") %> </td>
     </tr>
     <% end %>
