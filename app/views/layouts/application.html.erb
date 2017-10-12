@@ -17,10 +17,11 @@
         <%= link_to "View all media", works_path %>
         <%= link_to "Add a new work", new_work_path %>
         <%= link_to "View all users", users_path %>
+        <div>
+          <%= link_to "Log In", root_path %>
+        </div>
       </nav>
-      <div>
-        <% link_to "Log In", root_path %>
-      </div>
+
     </header>
 
     <%= yield %>

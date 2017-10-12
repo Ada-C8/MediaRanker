@@ -1,1 +1,23 @@
-This is the user show page
+<main>
+  <h3>User Summary: <%= @user.name %></h3>
+  <p>Joined site: <%= @user.created_at %></p>
+  <h4>Votes</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Media Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr> <%# Loop over here to get all the media titles for user votes %>
+        <td><%= link_to @user.vote.work.name, work_path(@user.vote.work) %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to "See all Users", users_path %>
+  <%= link_to "Back to Media List", works_path %>
+</main>
