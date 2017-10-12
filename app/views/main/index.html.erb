@@ -4,7 +4,7 @@
     <h1 class="spotlight">Media Spotlight:
       <%= @top.title%> by <%= @top.creator %>
     </h1>
-    <p><%= @top.votes %> of votes <%= @top.description %>
+    <p><%= @top.votes.count %> of votes <%= @top.description %>
     </p>
   </section>
 
