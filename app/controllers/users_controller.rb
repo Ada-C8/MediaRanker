@@ -28,10 +28,10 @@ class UsersController < ApplicationController
   def login
     if session[:user_id] == nil
       # choose this:
-      name = params[:user][:name]
-      user = User.find_by(name: name)
+      # name = params[:user][:name]
+      # user = User.find_by(name: name)
       # or
-      # user = User.find_by(name: params[:name])
+      user = User.find_by(name: params[:name])
       if user
         session[:user_id] = user.id
         flash[:success] = "Successfully logged in as existing user #{ user.name }"
