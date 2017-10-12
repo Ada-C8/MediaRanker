@@ -1,19 +1,26 @@
 Rails.application.routes.draw do
-  get 'votes/new'
-
-  get 'votes/create'
-
-  get 'votes/update'
-
-  get 'votes/edit'
-
-  get 'votes/destroy'
-
-  get 'votes/index'
-
-  get 'votes/show'
 
   get 'homes/index', to: 'homes#index', as: 'home'
+
+  resources:works
+
+  resources:users
+
+  resources:votes
+
+  # get 'votes/new'
+  #
+  # get 'votes/create'
+  #
+  # get 'votes/update'
+  #
+  # get 'votes/edit'
+  #
+  # get 'votes/destroy'
+  #
+  # get 'votes/index'
+  #
+  # get 'votes/show'
 
   # get 'users/index'
   #
@@ -44,8 +51,6 @@ Rails.application.routes.draw do
   # get 'works/destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources:works
 
-  resources:users
 
 end

@@ -18,6 +18,9 @@
   <li>
     <strong>Description: </strong><%=@work.description%>
   </li>
+  <li>
+    <strong>Votes: </strong><%=@work.total_votes(@work.id)%>
+  </li>
 </ul>
 
 <ul>

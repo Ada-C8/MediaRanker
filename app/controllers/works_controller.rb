@@ -8,6 +8,7 @@ class WorksController < ApplicationController
     @book_work = Work.where(category: "book").order(:title)
     @movie_work = Work.where(category: "movie").order(:title)
     @album_work = Work.where(category: "album").order(:title)
+
   end
 
   def show
@@ -16,6 +17,9 @@ class WorksController < ApplicationController
     unless @work
       render_404
     end
+
+    @vote = Vote.all
+
   end
 
   def edit
@@ -33,3 +37,5 @@ class WorksController < ApplicationController
   def destroy
   end
 end
+
+private
