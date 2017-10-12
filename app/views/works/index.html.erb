@@ -1,4 +1,4 @@
-<h2>Hey this is the index!</h2>
+<h2>List of Works</h2>
 
 <table>
   <tr>
@@ -10,10 +10,11 @@
   </tr>
   <% @works.each do |work| %>
   <tr>
-    <td><%= work.title %></td>
-    <td><%= work.category %></td>
+    <td>num of votes goes here</td>
+    <td><%= link_to "#{work.title}", work_path(work.id), method: :get %></td>
     <td><%= work.creator %></td>
     <td><%= work.publication_year %></td>
+    <td>upvote button goes here</td>
   </tr>
   <% end %>
 </table>
