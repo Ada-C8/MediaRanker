@@ -5,4 +5,9 @@ Rails.application.routes.draw do
   resources :works
 
   resources :users, only:[:new, :create]
+
+  get '/login', to: 'sessions#login_form'
+
+  post '/login', to: 'sessions#login'
+  
 end
