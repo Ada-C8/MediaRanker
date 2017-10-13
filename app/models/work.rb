@@ -5,7 +5,7 @@ class Work < ApplicationRecord
 
   #The following test fails when I include the first pub_year validation below:
   #test_0003_requires both a title and category to be created
-  # validates :pub_year, format: { with: /\d{4}/,
+  # validates :pub_year, presence: false, format: { with: /\d{4}/,
   #   message: "only allows a year format of 4 numbers (ex. 2017)" }
   # validates :pub_year, numericality: { only_integer: true, less_than: 2018 }
 
