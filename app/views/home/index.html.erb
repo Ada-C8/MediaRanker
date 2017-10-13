@@ -4,7 +4,7 @@
 <ul>
   <% @books.each do |book| %>
     <li>
-      <%= book.votes.count %>: <%= book.title %>
+      <%= book.votes.count %>: <%= book.title %> <%= link_to "Upvote", create_vote_path(work_id: book.id), method: :post %>
     </li>
   <%end%>
 </ul>

@@ -3,12 +3,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def new
-
-  end
-
   def create
-
+    user = User.new(name: params[:user][:name])
+    user.save
+    return user
   end
 
   def show
@@ -31,10 +29,18 @@ class UsersController < ApplicationController
       session[:logged_in_user] = user.id
       redirect_to root_path
     else
-      flash.now[:status] = :failure
-      flash.now[:message] = "No user found with name #{name}"
-      render :login_form, status: :bad_request
+      user = create
+      redirect_to user_path(user.id)
+      session[:logged_in_user] = user.id
+      # flash.now[:status] = :failure
+      # flash.now[:message] = "No user found with name #{name}"
+      # render :login_form, status: :bad_request
     end
+  end
+
+  def logout
+    session[:logged_in_user] = nil
+    redirect_to root_path
   end
 
 end

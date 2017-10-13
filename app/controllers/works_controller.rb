@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+  before_action :find_work_by_params_id, only: [:show, :edit, :update, :destroy]
   def index
     @works = Work.all#.order('title asc')
   end
@@ -24,15 +25,15 @@ class WorksController < ApplicationController
   end
 
   def edit
-    find_work_by_params_id
+    # find_work_by_params_id
   end
 
   def show
-    find_work_by_params_id
+    # find_work_by_params_id
   end
 
   def update
-    if find_work_by_params_id
+    # if find_work_by_params_id
 
       @work.update_attributes(work_params)
       if @work.save
@@ -40,7 +41,7 @@ class WorksController < ApplicationController
       else
         render :edit, status: :bad_request
       end
-    end
+    # end
   end
 
   def destroy
@@ -56,7 +57,7 @@ class WorksController < ApplicationController
     #   return
     end
 
-    if find_work_by_params_id
+    # if find_work_by_params_id
       # if current_user =! @book.author
       #   flash[:status] = :failure
       #   flash[:message] = "Only author can"
@@ -67,7 +68,7 @@ class WorksController < ApplicationController
       flash[:status] = :success
       flash[:message] = "Successfully deleted."
       redirect_to works_path
-    end
+    # end
   end
 
 private
@@ -78,6 +79,6 @@ private
   def find_work_by_params_id
     @work = Work.find_by(id: params[:id])
     head :not_found unless @work
-    return @work
+    # return @work
   end
 end
