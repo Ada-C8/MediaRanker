@@ -6,7 +6,7 @@
     <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= favicon_link_tag 'owl.jpg' %> 
+    <%= favicon_link_tag 'owl.jpg' %>
   </head>
   <body>
 
@@ -28,11 +28,10 @@
       </nav>
     </header>
 
-    <main class="row">
-      <section>
         <% flash.each do |name, message| %>
-        <div class="flash <%= name %>"><h3><%= message %></h3>
+        <div class="row flash <%= name %>"><h3><%= message %></h3>
           <% if name == "error" %>
+
           <ul>
             <% @work.errors.each do |column, message| %>
             <li>
@@ -44,6 +43,7 @@
           <% end %>
         </div>
       </section>
+    <main class="row">
       <%= yield %>
     </main>
   </body>
