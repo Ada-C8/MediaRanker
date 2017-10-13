@@ -20,11 +20,8 @@ class UsersController < ApplicationController
     find_user_by_params_id
   end
 
-  # no need for an edit or and update
+  # no need for an edit, update, or destroy actions for user controller!
 
-  def destroy
-
-  end
 
 private
   def find_user_by_params_id

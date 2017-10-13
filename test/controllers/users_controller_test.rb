@@ -75,23 +75,4 @@ describe UsersController do
       must_respond_with :not_found
     end
   end
-
-  describe "edit" do
-    it "returns success when given a valid user ID" do
-      get edit_user_path(user_id)
-      must_respond_with :success
-    end
-
-  end
-  # # Arrange
-  # # Act
-  # # Assert
-  describe "update" do
-
-  end
-
-  describe "destroy" do
-
-  end
-
 end
