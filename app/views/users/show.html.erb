@@ -5,7 +5,7 @@
 <p>
   Joined site <%= @user.created_at.to_date %>
 </p>
-
+<h4>Votes</h4>
 <table>
   <tr>
     <th>Media Title</th>
@@ -23,8 +23,8 @@
       <td><%= vote.work.category %></td>
       <td><%= vote.created_at.strftime("%b %d, %Y")%></td>
     </tr>
-  <% end %>
-</table>
+    <% end %>
+  </table>
 
   <%= link_to "See all Users", users_path %>
   <%= link_to "Back to Media List", root_path %>
