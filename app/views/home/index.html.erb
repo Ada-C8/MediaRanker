@@ -1,13 +1,25 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
 
+<h3>Media Spotlight:</h3>
 
-<!-- <%= link_to("View Top Media") %>
+<h3>Top Albums</h3>
+<ul>
+  <% @albums.each do |album| %>
+    <li><%= album.title %></li>
+  <%end%>
+</ul>
 
-<%= link_to("View All Media", works_path) %>
-<%= link_to "Add New Work", new_work_path %>
+<h3>Top Movies</h3>
+<ul>
+  <% @movies.each do |movie| %>
+    <li><%= movie.title %></li>
+  <%end%>
+</ul>
 
-<%= link_to("View All Users",users_path) %>
-<%= link_to("Log In") %> -->
-
-<%# @works.sort(.category).limit(10) %>
+<h3>Top books</h3>
+<ul>
+  <% @books.each do |book| %>
+    <li><%= book.title %></li>
+  <%end%>
+</ul>
