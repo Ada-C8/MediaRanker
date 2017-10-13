@@ -4,10 +4,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
-  end
-
-
   def login_form
     @user = User.new
     if params[:user_id]
@@ -16,16 +12,40 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user = User.new(user_params)
+    username = params[:user][:username]
+    user = User.find_by(username: username)
 
-    if save_and_flash(@user)
+    if user
+      session[:logged_in_user] = user.id
+      flash[:status] = :success
+      flash[:message] = "Successfully logged in as an existing user #{username}"
       redirect_to root_path
     else
-      render :new, status: :bad_request
+      user = User.new(username: username, created_at: Date.today)
+      user.save
+      flash[:status] = :success
+      flash[:message] = "Successfully logged in as #{username}"
+      session[:logged_in_user] = user.id
+      redirect_to root_path
     end
   end
 
-  private
+  def logout
+    session[:logged_in_user] = nil
+    flash[:status] = :success
+    flash[:message] = "Successfully logged out"
+    redirect_to root_path
+  end
+
+  def show
+    if find_user_by_params_id
+      redirect_to user_path
+    end
+  end
+
+
+private
+
   def user_params
     return params.require(:user).permit(:username)
   end
