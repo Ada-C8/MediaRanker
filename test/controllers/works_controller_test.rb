@@ -1,6 +1,24 @@
 require "test_helper"
 
 describe WorksController do
+  let :work_data {
+    work_data = {
+      work: {
+        title: "GhostBusters",
+        category: "movie"
+      }
+    }
+  }
+  let :bad_work_data {
+    bad_work_data = {
+      work: {
+        title: "",
+        category: "movie"
+      }
+    }
+  }
+  let :work_id { Work.last.id }
+  # use let to create refernce variables here
   describe "index" do
     it "returns a success status" do
       get works_path
@@ -24,12 +42,6 @@ describe WorksController do
   describe "create" do
     it "redirects to works_path if the work data is valid and adds a work to the db" do
       # # Arrange
-      work_data = {
-        work: {
-          category: "movie",
-          title: "Shawshank Redemption"
-        }
-      }
       # test if work is valid
       Work.new(work_data[:work]).must_be :valid?
       work_count = Work.count
@@ -59,11 +71,10 @@ describe WorksController do
       Work.count.must_equal work_count
     end
   end
-#
+
   describe "show" do
     it "returns success when given a valid work_id" do
       # # Arrange
-      work_id = Work.first.id
       # # Act
       get work_path(work_id)
       # # Assert
@@ -72,9 +83,8 @@ describe WorksController do
 
     it "returns not_found when given an invalid work_id" do
       # # Arrange
-      invalid_work_id = Work.first.id + 1
       # # Act
-      get work_path(invalid_work_id)
+      get work_path(work_id + 1)
       # # Assert
       must_respond_with :not_found
     end
@@ -84,7 +94,6 @@ describe WorksController do
   describe "edit" do
     it "returns success when given a valid work ID" do
       # # Arrange
-      work_id = Work.first.id
       # # Act
       get edit_work_path(work_id)
       # # Assert
@@ -93,9 +102,8 @@ describe WorksController do
 
     it "returns not_found when given a invalud work ID" do
       # # Arrange
-      invalid_work_id = Work.first.id + 1
       # # Act
-      get edit_work_path(invalid_work_id)
+      get edit_work_path(work_id + 1)
       # # Assert
       must_respond_with :not_found
     end
@@ -128,12 +136,6 @@ describe WorksController do
     it "returns bad_request if the change is invalid, no title" do
       # # Arrange
       work = Work.first
-      bad_work_data = {
-        work: {
-          category: work.category,
-          title: ""
-        }
-      }
       work.update_attributes(bad_work_data[:work])
       work.wont_be :valid?
 
@@ -148,9 +150,8 @@ describe WorksController do
 
     it "returns not_found if the book ID is invalid" do
       # # Arrange
-      invalid_work_id = Work.first.id + 1
       # # Act
-      get edit_work_path(invalid_work_id)
+      get edit_work_path(work_id + 1)
       # # Assert
       must_respond_with :not_found
     end
@@ -159,7 +160,6 @@ describe WorksController do
   describe "destroy" do
     it "returns success, and destroys the work, if the work ID is valid " do
       # # Arrange
-      work_id = Work.first.id
       work_count = Work.count
       # # Act
       delete work_path(work_id)
@@ -173,10 +173,9 @@ describe WorksController do
 
     it "returns not_found if the work ID is invalid" do
       # # Arrange
-      invalid_work_id = Work.first.id + 1
       work_count = Work.count
       # # Act
-      delete work_path(invalid_work_id)
+      delete work_path(work_id + 1)
       # # Assert
       must_respond_with :not_found
       # check book wasn't destroyed
@@ -184,6 +183,3 @@ describe WorksController do
     end
   end
 end
-# # Arrange
-# # Act
-# # Assert
