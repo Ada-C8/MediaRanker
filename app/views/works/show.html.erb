@@ -10,6 +10,19 @@
   </ul>
 <% end %>
 
+<section class = "work-info">
+  <p>
+    <%= "Created by: #{@work.creator}"%>
+  </p>
+  <p>
+    <%= "Published: #{@work.publication_year}"%>
+  </p>
+  <p>
+    <%= " #{@work.description}"%>
+  </p>
+
+</section>
+
 <section class = "show-page-buttons">
   <%= link_to "Back to media ranks", root_path, class: :button %>
   <%= link_to "Edit", edit_work_path, class: :button %>
