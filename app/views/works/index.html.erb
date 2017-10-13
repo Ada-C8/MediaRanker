@@ -1,27 +1,67 @@
 <h2>All Works</h2>
 
-<p>Books</p>
-<ul>
-  <% @books.each do |work| %>
-    <li>
-      <%= link_to work.title, work_path(work.id) %>
-    </li>
-  <% end %>
-</ul>
+<table>
+  <h3>Albums</h3>
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
 
-<p>Albums</p>
-<ul>
   <% @albums.each do |work| %>
-    <li>
-      <%= link_to work.title, work_path(work.id) %>
-    </li>
+    <tr>
+      <td>tbd</td>
+      <td><%= link_to work.title, work_path(work.id) %></td>
+      <td><%= work.creator %></td>
+      <td><%= work.publication_year %></td>
+      <td>tbd</td>
+    </tr>
   <% end %>
-</ul>
-<p>Movies</p>
-<ul>
+</table>
+
+<table>
+  <h3>Albums</h3>
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
+
+  <% @books.each do |work| %>
+    <tr>
+      <td>tbd</td>
+      <td><%= link_to work.title, work_path(work.id) %></td>
+      <td><%= work.creator %></td>
+      <td><%= work.publication_year %></td>
+      <td>tbd</td>
+    </tr>
+  <% end %>
+</table>
+
+<table>
+  <h3>Albums</h3>
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
+
   <% @movies.each do |work| %>
-    <li>
-      <%= link_to work.title, work_path(work.id) %>
-    </li>
+    <tr>
+      <td>tbd</td>
+      <td><%= link_to work.title, work_path(work.id) %></td>
+      <td><%= work.creator %></td>
+      <td><%= work.publication_year %></td>
+      <td>tbd</td>
+    </tr>
   <% end %>
-</ul>
+</table>
+
+<%=link_to "View top media", root_path%>
+<%=link_to "Add a new work", new_work_path%>
