@@ -9,7 +9,7 @@
   <section>
     <h3>Top Movies</h3>
     <ul>
-      <% Vote.where(work_id: 1).count %>
+      <%= Vote.where(work_id: 1).count %>
 <!-- What can I do to sort all the works by the number of votes that each has? -->
 <!-- Work.all.each do |work|
 Vote.where(work_id: work.id).count -->
