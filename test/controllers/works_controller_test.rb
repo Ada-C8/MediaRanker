@@ -71,4 +71,23 @@ describe WorksController do
       Work.count.must_equal start_work_count
     end
   end
+
+  describe "show"  do
+    it "returns success when given a valid work ID" do
+      # Arrange
+      work_id = Work.first.id
+
+      # Act
+      get work_path(work_id)
+
+      # Assert
+      must_respond_with :success
+    end
+
+    # it "returns not_found when given an invalid work ID" do
+    #   invalid_work_id = Work.last.id + 1
+    #   get work_path(invalid_work_id)
+    #   must_respond_with :not_found
+    # end
+  end
 end#big describe

@@ -8,11 +8,20 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+<body>
   <header>
-    <%= link_to "View all media", works_path %>
-    <%= link_to "Add a new work", new_work_path %>
+    <h1 class = "row" > Media Ranker |Ranking the Best Of Everything </h1>
+    <nav class = "row" >
+      <div class = "large-8 small-12 columns" >
+        <%= link_to "View all media", works_path, class: "button" %>
+        <%= link_to "Add a new work", new_work_path, class: "button"%>
+      </div>
+      <div class = "large-4 small-12 columns">
+        <p class = "button"> login </p>
+      </div>
+    </nav>
   </header>
-  <body>
+
     <section class="flash <%= flash[:status] %>">
         <p>
           <%= flash[:message] %>

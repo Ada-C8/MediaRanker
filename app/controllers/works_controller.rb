@@ -26,12 +26,19 @@ class WorksController < ApplicationController
   # @work = Work.create(title: params[:work][:title], category: params[:work][:category], creator: params[:work][:creator], year: params[:work][:year], description: params[:work][:description])
 
 
-def show
-  @work = Work.find(params[:id])
-end
-end
+  def show
+    @work = Work.find(params[:id])
+    # unless  @work
+    #   flash[:status] = :not_found
+    #   flash[:message] = "Work not found"
+    #   # head :not_found
+    # end
+  end
 
-private
-def work_params
-  return params.require(:work).permit(:title, :category, :creator, :year, :description)
+
+  private
+  def work_params
+    return params.require(:work).permit(:title, :category, :creator, :year, :description)
+  end
+
 end

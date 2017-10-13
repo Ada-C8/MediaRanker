@@ -8,7 +8,7 @@
 
   <% Work.where(category: category).each do |work| %>
   <li>
-    Title: <%= link_to work.title, works_path(work.id) %>
+    Title: <%= link_to work.title, work_path(work.id) %>
     Created by: <%=work.creator %>
     Published: <%=work.year%>
   </li>
