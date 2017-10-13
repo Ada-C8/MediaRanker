@@ -12,10 +12,10 @@ class UsersController < ApplicationController
     end
 
     def login
-      if params[:user][:name] == nil
+      if params[:user][:name] == ""
         flash[:status] = :failure
         flash[:message] = "Please enter a username"
-        redirect_to root_path
+        render :login_form
       else
         user = User.new(name: params[:user][:name], joined: Date.today)
         user.save

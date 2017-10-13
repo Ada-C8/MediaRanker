@@ -14,7 +14,7 @@ describe UsersController do
 
     @invalid_user_data = {
       user: {
-        name: nil,
+        name: "",
         joined: Date.today
       }
     }
@@ -68,16 +68,18 @@ describe UsersController do
       flash[:message].must_equal  "#{@valid_user_data[:user][:name]} is successfully logged in"
     end
 
-    it "returns a redirect status to root path if given invalid user data (blank name field)" do
-      post login_path, params: @invalid_user_data
-      must_respond_with :redirect
-      must_redirect_to root_path
-    end
-
     it "sets a flash variable to be equal to :failure and the message to indicate to the user to enter a username, if given invalid user data" do
       post login_path, params: @invalid_user_data
       flash[:status].must_equal :failure
       flash[:message].must_equal  "Please enter a username"
+    end
+  end
+
+  describe "logout" do
+    it "redirects to the root_path when a user is logged in" do
+      get logout_path
+      must_respond_with :redirect
+      must_redirect_to root_path
     end
   end
 end
