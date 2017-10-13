@@ -27,81 +27,81 @@ class MediaInstancesController < ApplicationController
   def create
     @media_instance = MediaInstance.new(media_instance_params)
     if @media_instance.save
-    flash[:status] = :success
-    flash[:message] = "Successfully created Media Instance #{@media_instance.id}"
-    redirect_to media_instances_path
-  else
-    # Tell the user what went wrong
-    flash.now[:status] = :failure
-    flash.now[:message] = "Failed to create media"
-    flash.now[:details] = @media_instance.errors.messages
-    render :new, status: :bad_request
+      flash[:status] = :success
+      flash[:message] = "Successfully created Media Instance #{@media_instance.id}"
+      redirect_to media_instances_path
+    else
+      # Tell the user what went wrong
+      flash.now[:status] = :failure
+      flash.now[:message] = "Failed to create media"
+      flash.now[:details] = @media_instance.errors.messages
+      render :new, status: :bad_request
+    end
+
   end
 
-end
-
-def edit
-  @media_instance = MediaInstance.find(params[:id])
-end
-
-def update
-  @media_instance = MediaInstance.find(params[:id])
-  @media_instance.update_attributes(media_instance_params)
-  if @media_instance.save
-    redirect_to media_instance_path
-  else
-    render :edit
+  def edit
+    @media_instance = MediaInstance.find(params[:id])
   end
-end
 
-def destroy
-  current_user = nil
-  if session[:logged_in_user]
-    current_user = User.find_by(id:session[:logged_in_user])
+  def update
+    @media_instance = MediaInstance.find(params[:id])
+    @media_instance.update_attributes(media_instance_params)
+    if @media_instance.save
+      redirect_to media_instance_path
+    else
+      render :edit
+    end
+  end
 
+  def destroy
+    current_user = nil
+    if session[:logged_in_user]
+      current_user = User.find_by(id:session[:logged_in_user])
+
+      @media_instance.destroy
+      flash[:status] = :success
+      flash[:message] = "Deleted media #{@media_instance.id}"
+      redirect_to media_instances_path
+    end
     @media_instance.destroy
     flash[:status] = :success
     flash[:message] = "Deleted media #{@media_instance.id}"
+
     redirect_to media_instances_path
   end
-  @media_instance.destroy
-  flash[:status] = :success
-  flash[:message] = "Deleted media #{@media_instance.id}"
 
-  redirect_to media_instances_path
-end
-
-def get_music
+  def get_music
     MediaInstance.where(media_type: "music")
-end
+  end
 
-def ten_music
-  get_music.first(10).order(@media_instance.votes.length)
-end
+  def ten_music
+    get_music.first(10).order(@media_instance.votes.length)
+  end
 
-def get_news
- MediaInstance.where(media_type: "news")
-end
+  def get_news
+    MediaInstance.where(media_type: "news")
+  end
 
-def ten_news
-get_news.first(10).order(@media_instance.votes.length)
-end
+  def ten_news
+    get_news.first(10).order(@media_instance.votes.length)
+  end
 
-def get_books
-  MediaInstance.where(media_type: "book")
-end
+  def get_books
+    MediaInstance.where(media_type: "book")
+  end
 
-def ten_books
-get_books.first(10).order(@media_instance.votes.length)
-end
+  def ten_books
+    get_books.first(10).order(@media_instance.votes.length)
+  end
 
-def num_votes
-  Vote.where(media_instance_id: @media_instance.id).length
-end
-private
+  def num_votes
+    Vote.where(media_instance_id: @media_instance.id).length
+  end
+  private
 
-def media_instance_params
-  return params.permit(:media_type, :title, :creator, :pub_yr, :details)
-end
+  def media_instance_params
+    return params.permit(:media_type, :title, :creator, :pub_yr, :details)
+  end
 
 end
