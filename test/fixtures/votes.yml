@@ -8,6 +8,10 @@ vote_b:
   work: lemonade
   user: user_b
 
+vote_c:
+  work: lemonade
+  user: user_a
+
 vote_duplicate:
   work: lemonade
   user: user_b

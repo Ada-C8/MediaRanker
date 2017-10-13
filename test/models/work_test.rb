@@ -4,6 +4,11 @@ describe Work do
   let(:work) { Work.new }
   let(:lemonade) { works(:lemonade)}
   let(:hellodolly) { works(:hellodolly)}
+  let(:vote_a) { votes(:vote_a)}
+  let(:vote_b) { votes(:vote_b)}
+  let(:vote_c) { votes(:vote_c)}
+  let(:user_a) { users(:user_a)}
+  let(:user_b) { votes(:user_b)}
 
   describe "validations" do
     it "is not valid without a title and author" do
@@ -48,18 +53,15 @@ describe Work do
 
   end
 
-  # describe "custom methods" do
-  #
-  #   # it "calculates total votes" do
-  #   #   test_user = User.create!(name: "Shel Silverstein")
-  #   #   test_work = Work.create!(title: "Amelia Badelia", category: "book")
-  #   #
-  #   #
-  #   #   puts "vote1: #{vote1}, #{vote1.user_id}"
-  #   #   puts "----------"
-  #   #   test_vote.valid?.must_equal true
-  #
-  #   end
-  # end
+  describe "custom methods" do
+
+    it "calculates total votes" do
+      #our votes fixture file shows 3 votes for lemonade (1 is invalid [vote_duplicate], and not brought in via the "let" above)
+      lemonade.total_votes(lemonade.id).must_equal 3
+      hellodolly.total_votes(hellodolly.id).must_equal 1
+
+
+    end
+  end
 
 end
