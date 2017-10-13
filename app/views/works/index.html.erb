@@ -1,6 +1,6 @@
 <h1>List of works</h1>
 
-<% @media.each do |type, works_list| %>
+<% ["albums", "books", "movies"].each do |type| %>
   <section class="<%=type%>">
     <h1><%=type.capitalize%></h1>
     <table>
@@ -21,7 +21,8 @@
           Upvote
         </th>
       </tr>
-      <% works_list.each do |work| %>
+      <% @works_list = @media[type] %>
+      <% @works_list.each do |work| %>
       <tr>
         <td>
           <%= work.num_votes %>

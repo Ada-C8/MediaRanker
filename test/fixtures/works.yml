@@ -15,8 +15,15 @@ dune:
   description: happy face
 
 nonsense:
-  category: misc
+  category: album
   title: Stuff and nonsense
   creator: anonymous
   publication_year: 2005
   description: etc etc etc
+
+lego:
+  category: movie
+  title: Lego Batman
+  creator: Somebody
+  publication_year: 2017
+  description: Lego + Batman

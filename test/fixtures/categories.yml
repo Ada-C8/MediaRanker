@@ -6,5 +6,8 @@ album:
 book:
   name: "book"
 
-misc:
-  name: "misc"
+movie:
+  name: "movie"
+
+# misc:
+#   name: "misc"

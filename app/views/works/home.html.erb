@@ -1,13 +1,16 @@
-<section class="spotlight">
-  <h1>Media Spotlight:</h1>
-  <%= "#{@spotlight.title} by #{@spotlight.creator}" %>
+<section class="row spotlight">
+  <h3>Media Spotlight:
+    <%= link_to(@spotlight.title, work_path(@spotlight.id)) %> by <%= @spotlight.creator %> </h3>
+  <p>
+    <%= "#{@spotlight.num_votes} - #{@spotlight.description}" %>
+  </p>
 </section>
 
-<% @media.each do |type, top_ten| %>
+<% ["movies", "books", "albums"].each do |type| %>
   <section class="<%=type%>">
     <h1> Top <%=type.capitalize%></h1>
-
-    <% top_ten.each do |work| %>
+    <% @top_ten = @media[type] %>
+    <% @top_ten.each do |work| %>
     <ul>
       <li>
         <%= "#{work.title} by #{work.creator}" %>

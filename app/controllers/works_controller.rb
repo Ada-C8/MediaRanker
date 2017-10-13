@@ -1,14 +1,20 @@
 class WorksController < ApplicationController
   def home
-    @media = media_hash(top_ten: true)
+    # @media = media_hash(top_ten: true)
+    # @media = Work.works_by_type_hash
+    # @media = { "albums": Work.works_of_type("album", top_ten: true),
+    #             "books": Work.works_of_type("book", top_ten: true),
+    #             "movies": Work.works_of_type("movie", top_ten: true) }
+    media_hash = Work.works_by_type_hash
+    @media = Work.top_ten(media_hash)
 
-    works = Work.left_outer_joins(:votes).distinct.select('works.*, COUNT(votes.*) AS num_votes').group('works.id').order('num_votes DESC')
-    @spotlight = works[0]
+    # works = Work.left_outer_joins(:votes).distinct.select('works.*, COUNT(votes.*) AS num_votes').group('works.id').order('num_votes DESC')
+    @spotlight = Work.spotlight
   end
 
   def index
     #@works = Work.left_outer_joins(:votes).distinct.select('works.*, COUNT(votes.*) AS num_votes').group('works.id').order('num_votes DESC')
-    @media = media_hash(top_ten: false)
+    @media = Work.works_by_type_hash
   end
 
   def show

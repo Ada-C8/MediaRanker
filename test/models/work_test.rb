@@ -68,7 +68,7 @@ describe Work do
   end
 
   describe "relations" do
-    let(:cat) { categories(:misc) }
+    let(:cat) { categories(:album) }
     let(:new_work) { Work.new(creator: "Anon", title: "New Work") }
 
     it "can set the category through 'category'" do
@@ -88,6 +88,54 @@ describe Work do
       works(:dune).destroy
       Vote.count.must_equal (num_votes - 1)
       Vote.all.wont_include dune_vote
+    end
+  end
+
+  describe "#works_by_type" do
+    let(:book_list) { [works(:hp), works(:dune)] }
+
+    it "must return an array of Works" do
+      books = Work.works_by_type("book")
+
+      books.each do |book|
+        book.must_be_instance_of Work
+      end
+    end
+
+    it "must return an array of Works in the specified category" do
+      books = Work.works_by_type("book")
+      books.must_equal book_list
+
+      movie = [works(:lego)]
+      Work.works_by_type("movie").must_equal movie
+    end
+  end
+
+  describe "#works_by_type_hash" do
+    let(:works_hash) { { "books" => [works(:hp), works(:dune)],
+                        "movies" => [works(:lego)],
+                        "albums" => [works(:nonsense)] } }
+    it "must return a hash with category name as key and array of Works as value" do
+      Work.works_by_type_hash.must_equal works_hash
+    end
+
+    it "must return a hash with Works sorted by votes in descending order" do
+      works_hash.each_key do |cat|
+        work_list = works_hash[cat]
+
+        (work_list.length - 1).times do |idx|
+          work_list[idx].votes.length.must_be :>=, work_list[idx + 1].votes.length
+        end
+      end
+
+      # add votes
+      Vote.create!(user_id: users(:ron).id, work_id: works(:dune).id)
+      Vote.create!(user_id: users(:harry).id, work_id: works(:dune).id)
+
+      # resort books by num_votes DESC
+      works_hash["books"] = [Work.find_by(title: "Dune"), Work.find_by(title: "Harry Potter")]
+
+      Work.works_by_type_hash.must_equal works_hash
     end
   end
 
