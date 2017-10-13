@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :works
 
   get '/users', to: "users#index"
+  get '/users/:id', to: "users#show", as: "user"
 
   get '/login', to: 'sessions#login_form'
   post '/login', to: 'sessions#login'
