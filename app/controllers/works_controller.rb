@@ -79,7 +79,9 @@ class WorksController < ApplicationController
 
   def media_hash(top_ten = true)
     albums = Work.left_outer_joins(:votes).where(category_id: Category.find_by(name: "album")).distinct.select('works.*, COUNT(votes.*) AS num_votes').group('works.id').order('num_votes DESC')
+
     movies = Work.left_outer_joins(:votes).where(category_id: Category.find_by(name: "movie")).distinct.select('works.*, COUNT(votes.*) AS num_votes').group('works.id').order('num_votes DESC')
+    
     books = Work.left_outer_joins(:votes).where(category_id: Category.find_by(name: "book")).distinct.select('works.*, COUNT(votes.*) AS num_votes').group('works.id').order('num_votes DESC')
 
     if top_ten

@@ -7,3 +7,7 @@ one:
 two:
   work: dune
   user: hermione
+
+three:
+  work: hp
+  user: hermione
