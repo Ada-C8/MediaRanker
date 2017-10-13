@@ -23,11 +23,7 @@ describe UsersController do
       proc { post users_path, params: { user: { username: "A Name" } } }.must_change 'User.count', 1
       must_respond_with :redirect
     end
-    # it "should get edit" do
-    #   get users_edit_url
-    #   value(response).must_be :success?
-    # end
-    #
+
     it "should get user detail page (#show) or render a 404" do
       #true
       get user_path(user1.id)
