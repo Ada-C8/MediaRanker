@@ -25,7 +25,8 @@ class UsersController < ApplicationController
         flash[:success] = "Successfully logged in as existing user #{ user.username }"
         redirect_to root_path
       else
-        if User.create(username: params[:username])
+        user = User.new(username: params[:username])
+        if user.save(username: params[:username])
           user = User.find_by(username: params[:username])
           session[:user_id] = user.id
           flash[:success] = "Successfully created new user #{params[:username]} with ID #{user.id}"
