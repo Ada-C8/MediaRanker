@@ -6,42 +6,46 @@
     <section class="media-table">
       <h4><%=type.capitalize%></h4>
       <table>
-        <tr>
-          <th>
-            Votes
-          </th>
-          <th>
-            Title
-          </th>
-          <th>
-            Created By
-          </th>
-          <th>
-            Published
-          </th>
-          <th>
-            Upvote
-          </th>
-        </tr>
+        <thead>
+          <tr>
+            <th>
+              Votes
+            </th>
+            <th>
+              Title
+            </th>
+            <th>
+              Created By
+            </th>
+            <th>
+              Published
+            </th>
+            <th>
+              Upvote
+            </th>
+          </tr>
+        </thead>
+        <tbody>
         <% @works_list = @media[type] %>
         <% @works_list.each do |work| %>
-        <tr>
-          <td>
-            <%= work.num_votes %>
-          </td>
-          <td>
-            <%= link_to work.title, work_path(work.id) %>
-          </td>
-          <td>
-            <%= work.creator %>
-          </td>
-          <td>
-            <%= work.publication_year %>
-          </td>
-          <td>
-            link
-          </td>
-        </tr>
+          <tr>
+            <td>
+              <%= work.num_votes %>
+            </td>
+            <td>
+              <%= link_to work.title, work_path(work.id) %>
+            </td>
+            <td>
+              <%= work.creator %>
+            </td>
+            <td>
+              <%= work.publication_year %>
+            </td>
+            <td>
+              link
+            </td>
+          </tr>
+        </tbody>
         <% end %>
       </table>
     </section>

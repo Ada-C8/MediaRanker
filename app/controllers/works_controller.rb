@@ -33,7 +33,7 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
-      flash[:success] = "Successfully created #{@work.category.name} #{@work.work_id}"
+      flash[:success] = "Successfully created #{@work.category.name} #{@work.id}"
       redirect_to work_path(@work.id)
     else
       # puts "error message"  DEBUGGING
@@ -71,10 +71,10 @@ class WorksController < ApplicationController
     @work.destroy
 
     if @work.destroyed?
-      flash[:success] = "Successfully destroyed #{@work.category.name}"
+      flash[:success] = "Successfully destroyed #{@work.category.name} #{@work.id}"
       redirect_to root_path
     else
-      flash.now[:error] = "Unable to delete #{@work.category.name}"
+      flash.now[:error] = "Unable to delete #{@work.category.name} #{@work.id}"
     end
   end
 
