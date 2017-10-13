@@ -46,6 +46,12 @@ class WorksController < ApplicationController
     end # if
   end # destroy
 
+  def upvote
+    @work = Work.find(params[:id])
+    @work.votes.create(user_id: session[:logged_in_user], work_id: @work.id)
+    redirect_to works_path
+  end # upvote
+
   private
   def find_work_by_params
     @work = Work.find_by(id: params[:id])

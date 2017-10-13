@@ -35,7 +35,7 @@
           <%= work.publication_year %>
         </td>
         <td>
-          Upvote
+          <%= button_to 'Upvote', upvote_work_path(work), method: :post %>
         </td>
       </tr>
       <% end %>
