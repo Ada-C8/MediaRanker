@@ -1,22 +1,27 @@
-<h2><%= @work.title %></h2>
-<p>Created by: <%= @work.creator %></p>
-<p>Published: <%= @work.publication_year %></p>
-<%= link_to 'Back to media ranks', works_path, method: :get%>
-<%= link_to 'Edit', edit_work_path(@work.id), method: :get%>
-<% user_id = session[:user_id] || -1 %>
-<%= link_to 'Upvote', create_vote_path(user_id: user_id, work_id: @work.id), method: :post%>
-<%= link_to 'Delete', delete_work_path(@work.id), method: :delete%>
-
-<h2><%= @work.votes.length %> votes for this <%= @work.category.titleize %></h2>
-<table>
-  <tr>
-    <th>User</th>
-    <th>Date</th>
-  </tr>
-  <% @work.votes.each do |vote| %>
-    <tr>
-      <td><%= link_to vote.user.username, user_path(vote.user_id) %></td>
-      <td><%= vote.created_at.strftime("%b %d, %Y")%></td>
-    </tr>
-  <% end %>
-</table>
+<main class="row">
+  <article class="media-details columns large-6 small-12">
+    <h3><%= @work.title %></h3>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_year %></p>
+    <%= link_to 'Back to media ranks', works_path, method: :get, class: 'button'%>
+    <%= link_to 'Edit', edit_work_path(@work.id), method: :get, class: 'button'%>
+    <% user_id = session[:user_id] || -1 %>
+    <%= link_to 'Upvote', create_vote_path(user_id: user_id, work_id: @work.id), method: :post, class: 'button upvote'%>
+    <%= link_to 'Delete', delete_work_path(@work.id), method: :delete, class: 'alert button'%>
+  </article>
+  <article class="voting-users columns large-6 small-12">
+    <h3><%= @work.votes.length %> votes for this <%= @work.category.titleize %></h3>
+    <table>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+      <% @work.votes.each do |vote| %>
+        <tr>
+          <td><%= link_to vote.user.username, user_path(vote.user_id) %></td>
+          <td><%= vote.created_at.strftime("%b %d, %Y")%></td>
+        </tr>
+      <% end %>
+    </table>
+  </article>
+</main>

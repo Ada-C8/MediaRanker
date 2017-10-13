@@ -6,28 +6,35 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'owl.jpg'%>
+    <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
   </head>
-
   <body>
-    <nav>
-      <h2><%= link_to 'Media Ranker', root_path %></h2>
-      <small>Ranking the Best of Everything</small>
-      <%= link_to "View top media", root_path, method: :get %>
-      <%= link_to "View all media", works_path, method: :get %>
-      <%= link_to "Add a new work", new_work_path, method: :get %>
-      <%= link_to "View all users", users_path, method: :get %>
-      <% login_action = (session[:user_id] == nil ? "Log In" : "Logged in as #{User.find_by(id: session[:user_id]).username}") %>
-      <% path = (session[:user_id] == nil ? login_path : user_path(session[:user_id])) %>
-      <%= link_to login_action, path, method: :get %>
-      <% if session[:user_id] != nil %>
-        <%= link_to "Log Out", logout_path, method: :get %>
-      <% end %>
-    </nav>
-    <section class="flash">
-      <% flash.each do |name, message| %>
-        <div class="<%= name %>"><%= message %></div>
-      <% end %>
-    </section>
+    <header class="page-header row">
+      <h2 class="small-12 columns">
+        <%= link_to 'Media Ranker', root_path %>
+        <small>Ranking the Best of Everything</small>
+      </h2>
+      <nav class="small-12 columns">
+        <%= link_to "View top media", root_path, method: :get, class: 'button' %>
+        <%= link_to "View all media", works_path, method: :get, class: 'button' %>
+        <%= link_to "Add a new work", new_work_path, method: :get, class: 'button' %>
+        <%= link_to "View all users", users_path, method: :get, class: 'button' %>
+        <div class="float-right">
+          <% login_action = (session[:user_id] == nil ? "Log In" : "Logged in as #{User.find_by(id: session[:user_id]).username}") %>
+          <% path = (session[:user_id] == nil ? login_form_path : user_path(session[:user_id])) %>
+          <%= link_to login_action, path, method: :get, class: 'button' %>
+          <% if session[:user_id] != nil %>
+            <%= link_to "Log Out", logout_path, method: :get, class: 'button' %>
+          <% end %>
+        </div>
+      </nav>
+    </header>
+    <% flash.each do |key, message| %>
+      <section class="row status <%= key %>">
+        <h3><%= message %></h3>
+      </section>
+    <% end %>
     <%= yield %>
   </body>
 </html>
