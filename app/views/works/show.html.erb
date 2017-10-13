@@ -1,2 +1,28 @@
 <h1><%= @work[:title]  %></h1>
 <p>Works#show</p>
+
+<p>Created by: <%= @work[:creator] %></p>
+<p>Published: <%= @work[:publication_year] %></p>
+
+<p><%= @work[:description] %></p>
+
+<section>
+  <ul>
+    <li>
+      Back to Media ranks
+    </li>
+    <li>
+      Edit
+    </li>
+    <li>
+      Upvote
+    </li>
+    <li>
+      Delete
+    </li>
+  </ul>
+</section>
+
+<section>
+<h2>[#{Total}] Votes for this <%= @work[:category] %></h2>
+</section>
