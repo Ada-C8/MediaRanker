@@ -8,6 +8,8 @@ class WorksController < ApplicationController
     # @book_work = @work.where(category: "book").order(:title)
     # @movie_work = @work.where(category: "movie").order(:title)
     # @album_work = @work.where(category: "album").order(:title)
+
+    #if work_id on params is truthy
     if params[:work_id]
       @book_work = Work.where(category: "book").order(:title)
       @movie_work = Work.where(category: "movie").order(:title)
