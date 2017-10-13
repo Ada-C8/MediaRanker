@@ -11,13 +11,21 @@ awesome_movie:
   creator: James Cameron
 
 epic_album:
-  title: Purple rain
   category: album
   publication_year: 1984
   creator: Prince
 
 good_book:
   title: Half of a yellow sun
-  category: book
   publication_year: 2013
   creator: Chimamanda Ngozi Adichie
+
+oscar_worthy:
+  title: Shawshank redemption
+  category: movie
+  creator: Stephen King
+
+must_read:
+  title: The Alchemist
+  category: book
+  publication_year: 1988
