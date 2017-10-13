@@ -13,5 +13,6 @@ class VotesController < ApplicationController
   private
   def vote_params
     params.permit(:work_id)
+    # params.require(:vote).permit(:work_id)
   end
 end
