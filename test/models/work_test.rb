@@ -109,12 +109,6 @@ describe Work do
       Work.top_ten("book").count.must_equal 4
     end
 
-    #write test to see if they are in correct order once have votes
-
-
-
-
-#Not sure how to test this yet without fully implementing votes
     it "first element is the one with most number of votes" do
       work = Work.create!(title: "Vote Test", category: "album", creator: "No name")
       10.times do
@@ -124,7 +118,29 @@ describe Work do
       end
      Work.top_ten("album").first.must_equal work
     end
+
+    it "returns the elements in the correct order" do
+      work1 = works(:cat_stevens)
+      work2 = works(:florence)
+      work3 = works(:all_good)
+
+      Work.top_ten("album").first.must_equal work1
+      Work.top_ten("album")[1].must_equal work2
+      Work.top_ten("album")[2].must_equal work3
+    end
+
+    it "returns an empty list if no elements are present" do
+      Work.destroy_all
+      Work.top_ten("album").must_equal []
+    end
+
   end
 
-  ## WRITE TEST FOR self.top after making votes ##
+  describe "self.top" do
+    it "returns the Work with the most votes" do
+      top_work = works(:cat_stevens)
+      Work.top.must_equal top_work
+    end
+  end
+
 end
