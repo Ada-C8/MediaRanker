@@ -7,7 +7,7 @@ describe "WorksController" do
   end
 
   it "should visit an individual work's show page" do
-    get work_path (works(:almost).id)
+    get work_path(works(:almost).id)
     must_respond_with :success
   end
 
@@ -21,7 +21,7 @@ describe "WorksController" do
   end
 
   it "should update a work" do
-    put work_path ( works(:almost) ), params: { work: { title: "New Title" }}
+    put work_path(works(:almost)), params: { work: { title: "New Title" }}
 
     updated_work = Work.find( works(:almost).id )
     updated_work.title.must_equal "New Title"
@@ -30,7 +30,7 @@ describe "WorksController" do
 
   it "should delete a work" do
     proc {
-      delete work_path (works(:almost).id)
+      delete work_path(works(:almost).id)
     }.must_change 'Work.count', -1
     must_respond_with :redirect
     must_redirect_to works_path

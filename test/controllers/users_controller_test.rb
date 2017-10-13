@@ -1,24 +1,22 @@
 require "test_helper"
 
 describe UsersController do
-  it "should get index" do
-    get users_index_url
-    value(response).must_be :success?
+  it "should go to the index page" do
+    get users_path
+    must_respond_with :success
   end
 
-  it "should get show" do
-    get users_show_url
-    value(response).must_be :success?
+  it "should visit a user's show page" do
+    get user_path(users(:susie).id)
+    must_respond_with :success
   end
 
-  it "should get new" do
-    get users_new_url
-    value(response).must_be :success?
-  end
+  it "should create a work" do
+    proc {
+      post users_path, params: { user: {username: "Slimer"}}
+    }.must_change 'User.count', 1
 
-  it "should get create" do
-    get users_create_url
-    value(response).must_be :success?
+    must_respond_with :redirect
+    must_redirect_to users_path
   end
-
 end
