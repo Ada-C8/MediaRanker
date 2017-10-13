@@ -77,7 +77,11 @@ describe UsersController do
   end
 
   describe "edit" do
-    
+    it "returns success when given a valid user ID" do
+      get edit_user_path(user_id)
+      must_respond_with :success
+    end
+
   end
   # # Arrange
   # # Act
