@@ -14,7 +14,7 @@
   <tbody>
     <% @user.votes.each do |vote| %>
     <tr>
-      <td><%= link_to "#{vote.work.title}", 'work_path(vote.work.id)' %></td>
+      <td><%= link_to vote.work.title, work_path(vote.work.id) %></td>
       <td><%= vote.work.creator %></td>
       <td><%= vote.work.publication_year %></td>
       <td><%= vote.work.category %></td>
@@ -23,5 +23,5 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to "See all Users", 'users_path', class: "button" %>
-<%= link_to "Back to Media List", 'root_path', class: "button" %>
+<%= link_to "See all Users", users_path, class: "button" %>
+<%= link_to "Back to Media List", root_path, class: "button" %>

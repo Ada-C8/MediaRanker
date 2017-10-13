@@ -12,16 +12,17 @@
 </section>
 
 <section>
-  <h2><%= "? Votes for this #{@work.category.capitalize}" %></h2>
+  <h2><%= "#{@work.votes.count} Votes for this #{@work.category.capitalize}" %></h2>
   <table>
     <tr>
       <th>User</th>
       <th>Date</th>
     </tr>
+    <% @work.votes.each do |vote| %>
     <tr>
-      <!-- TODO setup works.votes loop -->
-      <td>@work.votes as a link</td>
-      <td>@work.votes date created</td>
+      <td><%= link_to vote.user.username, user_path(vote.user.id) %></td>
+      <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
     </tr>
+    <% end %>
   </table>
 </section>
