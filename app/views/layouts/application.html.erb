@@ -36,24 +36,29 @@
       </nav>
     </header>
 
-    <section class="flash <%= flash[:status]%>">
-      <p><%= flash[:message]%></p>
+    <section>
+      <p><%= flash[:status] %></p>
+      <p><%= flash[:message] %></p>
+    </section>
+
+    <!-- <section class="flash <%= flash[:status]%>">
+      <p><%# flash[:message]%></p>
       <ul>
-        <% flash[:details].each do |field, problems| %>
-          <% problems.each do |problem| %>
+        <%# flash[:details].each do |field, problems| %>
+          <%# problems.each do |problem| %>
           <li>
             <strong>
-              <%= field %>:
+              <%# field %>:
             </strong>
-            <%= problem %>
+            <%# problem %>
           </li>
-          <% end %>
-        <% end %>
+          <%# end %>
+        <%# end %>
       </ul>
-      <% flash.each do |name, message| %>
-        <div class="<%= name %>"><%= message %></div>
-      <% end %>
-    </section>
+      <%# flash.each do |name, message| %>
+        <div class="<%# name %>"><%# message %></div>
+      <%# end %>
+    </section> -->
 
     <%= yield %>
   </body>

@@ -6,35 +6,34 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def new
-    @user = User.new
-  end
-
   def create
     @user = User.new(user_params)
+    @user.join_date = DateTime.now
     if save_and_flash(@user)
-      redirect to root_path
+      redirect_to root_path
     else
-      render :new, status: :bad_request
+      render :login_form, status: :bad_request
     end
   end
 
-  def login_form
-
-  end
+  # def login_form
+  # end
 
   def login
     name = params[:user][:name]
     user = User.find_by(name: name)
     if user
-      session[:logged_in_user] = user_id
+      session[:logged_in_user] = user.id
+      flash[:success] = "#{ user.name } is successfully logged in"
       redirect_to root_path
     else
-      head :not_found
-      # flash[:status] = :failure
-      # flash[:message] = "No user with #{name}"
-      # render :login_form
+      create
+      session[:logged_in_user] = user.id
     end
+  end
+
+  def logout
+  	session[:logged_in_user] = @user = nil
   end
 
   def show ; end
