@@ -1,6 +1,19 @@
-<h3><span class"media-spotlight-header">Media Spotlight:</span> <%= @top.title %> by <%= @top.creator%></h3>
-<p>
-  <%= @top.votes.count %> votes - <%= @top.description %>
+
+  <% if @new %>
+    <h3>
+      <span class"media-spotlight-header">Media Spotlight:</span> No data
+  <% else %>
+    <h3>
+      <span class"media-spotlight-header">Media Spotlight:</span><%= @top.title %> by <%= @top.creator%>
+    </h3>
+    <p>
+      <%= @top.votes.count %> votes - <%= @top.description %>
+    </p>
+  <% end %>
+
+
+</h3>
+
 </p>
 <hr>
 <%= render partial: "works", locals: { model: @movies}%>
