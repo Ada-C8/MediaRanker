@@ -41,7 +41,6 @@ describe Work do
     end
 
     it "allow descriptions <= 500 characters" do
-      skip
       descriptions = [
         "a" * 500,
         "a" * 10,
@@ -49,7 +48,7 @@ describe Work do
       ]
 
       descriptions.each do |desc|
-        w = Work.new(title: "test", creator: "test creator", description: desc)
+        w = Work.new(title: "test", creator: "test creator", category: "album", description: desc)
 
         w.must_be :valid?
       end
