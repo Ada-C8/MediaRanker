@@ -15,22 +15,16 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
-    if @work.save
-      flash[:status] = :success
-      flash[:message] = "Successfuly created new #{@work.category}"
+    if save_and_flash(@work, "create")
       redirect_to work_path(@work.id)
     else
-      flash.now[:status] = :failure
-      flash.now[:message] = "Failed to create new work"
-      flash.now[:details] = @work.errors.messages
       render :new, status: :bad_request
     end
   end
 
   def update
     @work.update_attributes(work_params)
-    # if @work.save
-    if save_and_flash(@work)
+    if save_and_flash(@work, "save")
       redirect_to work_path(@work.id)
     else
       render :edit, status: :bad_request
