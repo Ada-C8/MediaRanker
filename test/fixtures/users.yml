@@ -1,7 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: 
+user_a:
+  name: "Eleanor Rigby"
 
-two:
-  name: 
+user_b:
+  name: "Mary Poppins"
+
+user_c:
+  name: "Elizah Doolittle"
