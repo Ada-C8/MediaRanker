@@ -36,7 +36,7 @@
           <%= vote.user.name %>
         </td>
         <td>
-          <%= vote.date %>
+          <%= vote.created_at.strftime("%b %d, %Y") %>
         </td>
       </tr>
       <% end %>
