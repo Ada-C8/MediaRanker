@@ -5,7 +5,12 @@ class UpvotesController < ApplicationController
       flash[:success] = "Successfully upvoted!"
       redirect_to work_path(params[:id])
     else
-      flash[:error] = "You can't upvote more than once!"
+      error = @upvote.errors.messages
+      if !error[:user].empty?
+        flash[:error] = "You must log in to do that"
+      else
+        flash[:error] = "You can't upvote more than once!"
+      end
       redirect_to work_path(params[:id])
     end
   end
