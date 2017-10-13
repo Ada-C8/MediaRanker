@@ -2,6 +2,8 @@ require "test_helper"
 
 describe Vote do
   describe "validations" do
+    let :user { User.create!(name: "bob") }
+    let :work { Work.create!(category: "album", title: "purple rain", creator: "prince", publication_year: 1984, description: "one of the best albums of the year") }
     # it "requires a user id" do
     #   user_id = 1
     #   work_id = 1
@@ -20,10 +22,10 @@ describe Vote do
     # end
 
     it "can be created with all fields" do
-      u = User.new(name: "cheetara")
-      w = Work.new(category: "album", title: "purple rain", creator: "prince", publication_year: 1984, description: "one of the best albums of the year")
+      # u = User.new({name: "cheetara"})
+      # w = Work.new({category: "album", title: "purple rain", creator: "prince", publication_year: 1984, description: "one of the best albums of the year"})
 
-      v = Vote.new(user_id: u, work_id: w)
+      v = Vote.new(user: user, work: work)
       result = v.valid?
       result.must_equal true
     end
@@ -53,11 +55,23 @@ describe Vote do
     # end
   end
 
-  # describe "relations" do
-  #   it "must have user_id and work_id" do
-  #     u = User.new(name: "bob")
-  #     u.votes.count.must_equal 0
-  #   end
-  # end
+  describe "relationships" do
+    it "has a user" do
+      v = Vote.new(user_id: user.id, work_id: work.id)
+      u = User.new(name: "cheetara")
+
+      v.must_respond_to :user
+      v.user.must_equal u
+      v.user_id.must_equal u.id
+    end
+
+    it "has a work" do
+      v = Vote.new
+
+      v.must_respond_to :work
+      v.work.must_equal work
+      v.work_id.must_equal work.id
+    end
+  end
 
 end
