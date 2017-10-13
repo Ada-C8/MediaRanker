@@ -51,10 +51,9 @@ class WorksController < ApplicationController
   end
 
   def home #same as index with limit, how to do?
-    #TODO add sort method by vote
-    books = Work.where(category: "book").limit(10)
-    movies = Work.where(category: "movie").limit(10)
-    albums = Work.where(category: "album").limit(10)
+    books = Work.where(category: "book").joins(:votes).group('works.id').order('count(votes) DESC').limit(10)
+    movies = Work.where(category: "movie").joins(:votes).group('works.id').order('count(votes) DESC').limit(10)
+    albums = Work.where(category: "album").joins(:votes).group('works.id').order('count(votes) DESC').limit(10)
 
     @works = {Albums: albums, Books: books, Movies: movies}
   end
