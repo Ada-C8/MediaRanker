@@ -11,5 +11,6 @@ protected
       flash.now[:status] = :failure
       flash.now[:message] = "Failed to save #{model.class}"
       flash.now[:details] = model.errors.messages
+    end
   end
 end
