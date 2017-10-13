@@ -30,13 +30,6 @@ describe UsersController do
     end
   end
 
-  describe "new" do
-    it "returns success" do
-      get new_user_path
-      must_respond_with :success
-    end
-  end
-
   describe "create" do
     it "redirects to the users_path if the user data is valud and adds a user to the db" do
       # # Arrange
@@ -50,7 +43,7 @@ describe UsersController do
       must_redirect_to users_path
       User.count.must_equal user_count + 1
     end
-    
+
     it "returns bad_request status when the user date is invalid" do
       # # Arrange
       User.new(bad_user_data[:user]).wont_be :valid?
