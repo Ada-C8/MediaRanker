@@ -63,8 +63,15 @@ body, h1, h2, h3, h4, h5 {
 .page-header h2 small {
   color: white;
 }
+h2 {
+  text-align: center;
+  margin: 25px auto 40px auto;
+}
 .button {
   background-color: #26A69A;
+}
+.float-right {
+float: right !important;
 }
 /*********************************
 ##############  BODY MAIN PAGE  ############*/
