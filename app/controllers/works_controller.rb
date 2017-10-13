@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update]
+
   def index
     @books = Work.where(category:"book")
     @movies = Work.where(category:"movie")
@@ -10,7 +12,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
   end
 
   def create
@@ -25,14 +26,12 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
     unless @work
       render_404
     end
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
     if @work.update(work_params)
       flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path(@work.id)
@@ -55,8 +54,8 @@ class WorksController < ApplicationController
     params.require(:work).permit(:title, :category, :description, :creator, :publication_year)
   end
 
-  def not_found
-    raise ActionController::RoutingError.new('Not Found')
+  def find_work
+    @work = Work.find_by(id: params[:id])
   end
 
   def render_404
