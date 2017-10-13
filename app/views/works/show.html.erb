@@ -7,3 +7,5 @@
 <p>Creator: <%= @work.creator %></p>
 <p>Publication Year: <%= @work.publication_year %></p>
 <p>Description: <%= @work.description %></p>
+<%= link_to("Edit", edit_work_path(@work.id)) %>
+<%= link_to("Delete", work_path(@work.id), method: :delete) %>
