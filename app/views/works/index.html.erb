@@ -1,60 +1,77 @@
-<h1>List of Works</h1>
-<h2>Books</h2>
-<table>
-  <tr>
-    <th>Votes</th>
-    <th>Title</th>
-    <th>Creator</th>
-    <th>Published</th>
-    <th>UpVote</th>
-  </tr>
-  <% @books.each do |work| %>
-  <tr>
-    <td><%= work.upvotes.count %></td>
-    <td><%=link_to work.title, work_path(work.id)%></td>
-    <td><%=work.creator%></td>
-    <td><%=work.publication_year%></td>
-    <td><%=link_to "Upvote", upvote_path(work.id), method: :post%></td>
-  </tr>
-  <% end %>
-</table>
+<h3>List of Works</h3>
+<section class="media-table">
+  <h4>Albums</h4>
+  <table>
+    <thead>
+      <tr>
+        <th width="80">Votes</th>
+        <th>Title</th>
+        <th>Creator</th>
+        <th width="100">Published</th>
+        <th width="100">UpVote</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @albums.each do |work| %>
+      <tr>
+        <td><%= work.upvotes.count %></td>
+        <td><%=link_to work.title, work_path(work.id)%></td>
+        <td><%=work.creator%></td>
+        <td><%=work.publication_year%></td>
+        <td><%=link_to "Upvote", upvote_path(work.id), method: :post, class:'button'%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
 
-<h2>Movies</h2>
-<table>
-  <tr>
-    <th>Votes</th>
-    <th>Title</th>
-    <th>Creator</th>
-    <th>Published</th>
-    <th>UpVote</th>
-  </tr>
-  <% @movies.each do |work| %>
-  <tr>
-    <td><%= work.upvotes.count %></td>
-    <td><%=link_to work.title, work_path(work.id)%></td>
-    <td><%=work.creator%></td>
-    <td><%=work.publication_year%></td>
-    <td><%=link_to "Upvote", upvote_path(work.id), method: :post%></td>
-  </tr>
-  <% end %>
-</table>
-
-<h2>Albums</h2>
-<table>
-  <tr>
-    <th>Votes</th>
-    <th>Title</th>
-    <th>Creator</th>
-    <th>Published</th>
-    <th>UpVote</th>
-  </tr>
-  <% @albums.each do |work| %>
-  <tr>
-    <td><%= work.upvotes.count %></td>
-    <td><%=link_to work.title, work_path(work.id)%></td>
-    <td><%=work.creator%></td>
-    <td><%=work.publication_year%></td>
-    <td><%=link_to "Upvote", upvote_path(work.id), method: :post%></td>
-  </tr>
-  <% end %>
-</table>
+<section class="media-table">
+  <h4>Books</h4>
+  <table>
+    <thead>
+      <tr>
+        <th width="80">Votes</th>
+        <th>Title</th>
+        <th>Creator</th>
+        <th width="100">Published</th>
+        <th width="100">UpVote</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @books.each do |work| %>
+      <tr>
+        <td><%= work.upvotes.count %></td>
+        <td><%=link_to work.title, work_path(work.id)%></td>
+        <td><%=work.creator%></td>
+        <td><%=work.publication_year%></td>
+        <td><%=link_to "Upvote", upvote_path(work.id), method: :post, class:'button'%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+<section class="media-table">
+  <h4>Movies</h4>
+  <table>
+    <thead>
+      <tr>
+        <th width="80">Votes</th>
+        <th>Title</th>
+        <th>Creator</th>
+        <th width="100">Published</th>
+        <th width="100">UpVote</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @movies.each do |work| %>
+      <tr>
+        <td><%= work.upvotes.count %></td>
+        <td><%=link_to work.title, work_path(work.id)%></td>
+        <td><%=work.creator%></td>
+        <td><%=work.publication_year%></td>
+        <td><%=link_to "Upvote", upvote_path(work.id), method: :post, class:'button'%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

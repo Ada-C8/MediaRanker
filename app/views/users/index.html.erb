@@ -1,15 +1,22 @@
 <h3>List of Users</h3>
 <table>
-  <tr>
-    <th>Usernames</th>
-    <th>Votes</th>
-    <th>Joined</th>
-  </tr>
-  <% @users.each do |user| %>
-  <tr>
-    <td><%= link_to user.name, user_path(user.id) %></td>
-    <td><%=user.upvotes.count%></td>
-    <td><%=user.created_at%></td>
-  </tr>
-  <% end %>
+  <thead>
+    <tr>
+      <th>Usernames</th>
+      <th width="100">Votes</th>
+      <th width="200">Joined</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.name, user_path(user.id) %></td>
+      <td><%=user.upvotes.count%></td>
+      <td><%=user.created_at.strftime("%b %d, %Y")%></td>
+    </tr>
+    <% end %>
+
+  </tbody>
 </table>
+<%= link_to "Back to Media List", root_path, class:"button"%>

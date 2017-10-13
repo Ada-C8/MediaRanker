@@ -121,16 +121,29 @@ a:hover {
 //   font-weight: normal;
 // }
 //
-// table {
-//     width: 100%;
-//     margin-bottom: 1rem;
-//     border-radius: 0;
-// }
-//
-// h2, h3, h4 {
-//   font-weight: bold;
-// }
-//
+table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 0;
+}
+th {
+    background: #f8f8f8;
+    color: #0a0a0a;
+}
+thead, tbody, tfoot {
+    border: 1px solid #f1f1f1;
+    background-color: #fefefe;
+}
+
+tbody tr:nth-child(even) {
+    border-bottom: 0;
+    background-color: #f1f1f1;
+}
+.media-table .button {
+    margin: 0;
+}
+// $global-radius: 5px;
+
 // // .row {
 // //   // max-width: 75rem;
 // //   margin-right: auto;

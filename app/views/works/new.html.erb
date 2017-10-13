@@ -1,6 +1,6 @@
 <h3>Add a new work</h3>
 
-
+<section>
 <%= form_for @work do |f| %>
   <%= f.label :category %>
   <%= f.select :category, options_from_collection_for_select(Work.all.to_a.uniq{ |o| o.category },"category","category") %>
@@ -17,5 +17,6 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
 
-  <%= f.submit "Create Work" %>
-<% end %>
+  <%= f.submit "Create Work", class:'button' %>
+  <% end %>
+</section>
