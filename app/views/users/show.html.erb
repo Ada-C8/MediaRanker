@@ -1,9 +1,39 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
 
-<h2>User Summary: <%=@user.name%></h2>
-<h2></h2>
-<ul>
-  <li>
+<h2>
+  User Summary: <%=@user.name%>
+</h2>
+<p>
+  Joined site <%=@user.created_at.strftime("%b. %d, %Y")%>
+</p>
+<h3>
+  Votes
+</h3>
+<table>
+      <thead>
+        <tr>
+          <th>Media Title</th>
+          <th>Created By</th>
+          <th>Published</th>
+          <th>Category</th>
+          <th>Voted On</th>
+        </tr>
+      </thead>
 
-  </li>
+      <tbody>
+        <% @user_votes.each do |t| %>
+          <tr>
+            <td> <%= @works.find_by(t.work_id).title%></td>
+            <td> <%= t.user_id %></td>
+            <td> <%= @works.find_by(t.work_id).creator %></td>
+            <td> <%= t.passenger.name  %> </td>
+            <td> <%= t.created_on %></td>
+          </tr>
+
+        <% end %>
+
+      </tbody>
+    </table>
+
+    
