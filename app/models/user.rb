@@ -3,5 +3,5 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   # QUESTION: why does this work in my tests but not on the web?
-  # normalize_attribute :name, :with => :strip
+  normalize_attribute :name, :with => :strip
 end
