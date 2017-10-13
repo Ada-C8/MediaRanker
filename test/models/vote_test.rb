@@ -5,6 +5,7 @@ describe Vote do
   let(:vote1) { votes(:vote1) }
   let(:user3) { users(:user3) }
   let(:movie) { works(:movie1) }
+  let(:movie2) { works(:movie2) }
 
   describe "relationships" do
     it 'can set the user through "user"' do
@@ -52,21 +53,25 @@ describe Vote do
       vote.work = movie
       vote.valid?.must_equal true
     end
-    #
-    # it "must have a unique title in relation to its category to be valid" do
-    #   # false
-    #   new_book = Work.new(title: book.title, category: book.category)
-    #   another_book = Work.new(title: book.title, category: book.category)
-    #
-    #   (new_book && another_book).valid?.must_equal false
-    #
-    #   #true
-    #   new_book.title = "#{book.title} Changed"
-    #   new_book.valid?.must_equal true
-    #
-    #   another_book.category = "album"
-    #   another_book.valid?.must_equal true
-    # end
+
+    it "must have a unique User in relation to its Work to be valid" do
+      # false
+      vote.user = vote1.user
+      vote.work = vote1.work
+
+      vote.valid?.must_equal false
+
+      #true - different user
+      vote.user = User.new(username: "A Name")
+      vote.valid?.must_equal true
+
+      #true - different work
+      vote.user = vote1.user
+      vote.work = movie2
+
+      vote.valid?.must_equal true
+
+    end
 
   end # validations set
 end
