@@ -120,16 +120,69 @@ describe WorksController do
       # # Assert
       must_respond_with :redirect
       must_redirect_to work_path(work)
-
       # check that the change went through
       work.reload
       work.title.must_equal work_data[:work][:title]
     end
+
+    it "returns bad_request if the change is invalid, no title" do
+      # # Arrange
+      work = Work.first
+      bad_work_data = {
+        work: {
+          category: work.category,
+          title: ""
+        }
+      }
+      work.update_attributes(bad_work_data[:work])
+      work.wont_be :valid?
+
+      # # Act
+      patch work_path(work), params: bad_work_data
+
+      # # Assert
+      must_respond_with :bad_request
+      work.reload
+      work.title.wont_equal bad_work_data[:work][:title]
+    end
+
+    it "returns not_found if the book ID is invalid" do
+      # # Arrange
+      invalid_work_id = Work.first.id + 1
+      # # Act
+      get edit_work_path(invalid_work_id)
+      # # Assert
+      must_respond_with :not_found
+    end
   end
-#
-#   describe "destroy" do
-#
-#   end
+
+  describe "destroy" do
+    it "returns success, and destroys the work, if the work ID is valid " do
+      # # Arrange
+      work_id = Work.first.id
+      work_count = Work.count
+      # # Act
+      delete work_path(work_id)
+      # # Assert
+      must_respond_with :redirect
+      must_redirect_to works_path
+      # check work was destroyed
+      Work.find_by(id: work_id).must_be_nil
+      Work.count.must_equal work_count - 1
+    end
+
+    it "returns not_found if the work ID is invalid" do
+      # # Arrange
+      invalid_work_id = Work.first.id + 1
+      work_count = Work.count
+      # # Act
+      delete work_path(invalid_work_id)
+      # # Assert
+      must_respond_with :not_found
+      # check book wasn't destroyed
+      Work.count.must_equal work_count
+    end
+  end
 end
 # # Arrange
 # # Act

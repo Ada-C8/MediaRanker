@@ -50,9 +50,10 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find(params[:id])
-    @work.destroy
-    redirect_to works_path
+    if find_work_by_params_id
+      @work.destroy
+      redirect_to works_path
+    end
   end
 
 private
