@@ -1,6 +1,37 @@
 class WorksController < ApplicationController
   #add a control action with login name and status
 
+  def home
+    # if params[:work_id]
+      # @book_work = Work.where(category: "book").limit(10)
+      # @movie_work = Work.where(category: "movie").limit(10)
+      # @album_work = Work.where(category: "album").limit(10)
+      # if @book_work.empty? || @movie_work.empty? || @album_work.empty?
+      #   render :not_found
+      # end
+    # end
+    @votes = Vote.all
+    @works = Work.all
+
+    @book_votes = Hash.new(@works.where(category: "book") => 0)
+    @movie_votes = Hash.new(@works.where(category: "movie") => 0)
+    @album_votes = Hash.new(@works.where(category: "album") => 0)
+
+    @votes.each do |vote|
+      @works.each do |work|
+        if work.category == "book" && vote.work_id == work
+            @book_votes[work_id] += 1
+        end
+        if work.category == "movie" && vote.work_id == work
+            @movie_votes[work_id] += 1
+        end
+        if work.category == "album" && vote.work_id == work
+            @album_votes[work_id] += 1
+        end
+      end
+    end
+    
+  end
 
 
   def index
@@ -10,14 +41,14 @@ class WorksController < ApplicationController
     # @album_work = @work.where(category: "album").order(:title)
 
     #if work_id on params is truthy
-    if params[:work_id]
+    # if params[:work_id]
       @book_work = Work.where(category: "book").order(:title)
       @movie_work = Work.where(category: "movie").order(:title)
       @album_work = Work.where(category: "album").order(:title)
       if @book_work.empty? || @movie_work.empty? || @album_work.empty?
         render :not_found
       end
-    end
+    # end
   end
 
   def show

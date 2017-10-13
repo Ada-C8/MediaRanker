@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
+  root to: 'works#home'
 
-  get 'homes/index', to: 'homes#index', as: 'home'
+  # get 'homes/index', to: 'homes#index', as: 'home'
+
+  #route to "home" or main page with ranked media
 
   resources:works
 
   resources:users
 
   resources:votes
+
+  get 'works/home', to: 'works#home', as: 'home'
 
   delete '/works/destroy/:id', to: 'works#destroy', as: 'delete_work'
 
