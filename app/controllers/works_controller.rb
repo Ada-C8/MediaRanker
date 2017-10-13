@@ -9,6 +9,7 @@ class WorksController < ApplicationController
   end
 
   def show
+
   end
 
   def new
@@ -48,7 +49,7 @@ class WorksController < ApplicationController
   end
 
   def find_work
-    redirect_to works_path unless @work
+    # redirect_to works_path unless @work
     @work = Work.find_by_id(params[:id])
   end
 end

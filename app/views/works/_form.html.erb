@@ -1,6 +1,6 @@
 <%= form_for @work do |f| %>
   <%= f.label :Category %>
-  <%= f.text_field :category %>
+  <%= f.select :category, options_for_select(["album", "book", "movie"]) %>
 
   <%= f.label :title %>
   <%= f.text_field :title %>
@@ -12,7 +12,9 @@
   <%= f.text_field :publication_year %>
 
   <%= f.label :Description %>
-  <%= f.text_field :description %>
+  <%= f.text_area :description %>
 
   <%= f.submit submit_name %>
 <% end %>
+
+<!-- .select_year(Date.today, :start_year => Time.now.year, :field_name => :publication_year) -->
