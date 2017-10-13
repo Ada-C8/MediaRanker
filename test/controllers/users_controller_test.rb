@@ -12,4 +12,6 @@ describe UsersController do
     must_respond_with :success
   end
 
+
+
 end
