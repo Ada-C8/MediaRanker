@@ -12,6 +12,7 @@ describe User do
       u = User.new
       result = u.valid?
       result.must_equal false
+      u.errors.messages.must_include :name
     end
   end
 
