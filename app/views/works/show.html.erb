@@ -1,4 +1,7 @@
 <main>
+
+
+
   <article>
     <h3><%= @work.title %></h3>
     <p> Created by: <%= @work.creator %></p>
@@ -6,6 +9,7 @@
     <p> <%= @work.description %></p>
   </article>
   <article>
-    
+
   </article>
+  <%= link_to("Upvote", votes_path(:work => @work.id), method: :post )%>
 </main>

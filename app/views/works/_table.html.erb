@@ -13,7 +13,7 @@
     <td><%= work.title %></td>
     <td><%= work.creator %></td>
     <td><%= work.publication_year %></td>
-    <td>UPVOTE BUTTON</td>
+    <td><%= link_to("Upvote", votes_path(:work => work.id), method: :post )%></td>
   </tr>
   <% end %>
   </tbody>

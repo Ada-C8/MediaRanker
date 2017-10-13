@@ -14,6 +14,5 @@ describe Work do
 
     book.errors.keys.must_include :title
     book.errors.keys.must_include :category
-
   end
 end
