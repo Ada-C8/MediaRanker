@@ -34,6 +34,12 @@ Rails.application.routes.draw do
 
   root to: 'works#main', as: 'root' #root_path
 
+  ### LOGIN ###
+
+  get '/login', to: 'sessions#login_form'
+
+  post '/login', to: 'sessions#login'
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
