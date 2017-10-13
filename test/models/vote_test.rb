@@ -5,7 +5,7 @@ describe Vote do
 
   describe "validations" do
     it "can created with all fields" do
-      v = Vote.new(user_id: User.first.id, work_id: Work.first.id, voted_on: Date.today)
+      v = Vote.new(user_id: User.first.id, work_id: Work.first.id)
 
       v.must_be :valid?
     end
@@ -22,10 +22,15 @@ describe Vote do
       vote.errors.messages.must_include :work_id
     end
 
-    it "is invalid without a voted_on value" do
-      result = vote.valid?
-      result.must_equal false
-      vote.errors.messages.must_include :voted_on
+  end
+
+  describe "relations" do
+    it "responds to work" do
+      vote.must_respond_to :work
+    end
+
+    it "responds to user" do
+      vote.must_respond_to :user
     end
   end
 end

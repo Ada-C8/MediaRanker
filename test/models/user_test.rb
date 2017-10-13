@@ -1,12 +1,12 @@
 require "test_helper"
 
 describe User do
+  let(:user) { User.new } 
 
   describe "validations" do
-    let(:user) { User.new }
 
     it "can be created with all fields" do
-      u = User.new(name: "new user", joined: Date.new)
+      u = User.new(name: "new user")
 
       u.must_be :valid?
     end
@@ -17,12 +17,12 @@ describe User do
       user.errors.messages.must_include :name
     end
 
-    it "is invalid without a joined date" do
-      result = user.valid?
-      result.must_equal false
-      user.errors.messages.must_include :joined
-    end
+  end
 
+  describe "relations" do
+    it "responds to votes" do
+      user.must_respond_to :votes
+    end
   end
 
 end
