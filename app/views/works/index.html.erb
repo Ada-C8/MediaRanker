@@ -1,4 +1,4 @@
-<h1>List of works </h1>
+<h3>List of works </h3>
 
 <!-- TODO: What to display when there are none of that sub-category -->
 
@@ -10,9 +10,9 @@
   </p>
 <% end %>
 
-<% albums = @works.where(category: "album")%>
+<% albums = (@works.where(category: "album")).order(:id)%>
 <section class = "albums-table">
-  <h2>Albums</h2>
+  <h4>Albums</h4>
   <table>
     <tr>
       <% work_headers.each do |header| %>
@@ -26,7 +26,7 @@
         <% if key == "Votes" %>
           <%= "This will be # of votes" %>
         <% elsif key == "Title" %>
-          <%= "#{album.title}" %>
+          <%= link_to "#{album.title}", work_path(album.id) %>
         <% elsif key == "Created By" %>
           <%= "#{album.creator}"%>
         <% elsif key == "Published" %>
@@ -41,10 +41,10 @@
   </table>
 </section>
 
-<% books = @works.where(category: "book")%>
+<% books = (@works.where(category: "book")).order(:id)%>
 
 <section class = "books-table">
-  <h2>Books</h2>
+  <h4>Books</h4>
   <table>
     <tr>
       <% work_headers.each do |header| %>
@@ -58,7 +58,7 @@
         <% if key == "Votes" %>
           <%= "This will be # of votes" %>
         <% elsif key == "Title" %>
-          <%= "#{book.title}" %>
+          <%= link_to "#{book.title}", work_path(book.id) %>
         <% elsif key == "Created By" %>
           <%= "#{book.creator}"%>
         <% elsif key == "Published" %>
@@ -73,10 +73,10 @@
   </table>
 </section>
 
-<% movies = @works.where(category: "movie")%>
+<% movies = (@works.where(category: "movie")).order(:id)%>
 
 <section class = "movies-table">
-  <h2>Movies</h2>
+  <h4>Movies</h4>
   <table>
     <tr>
       <% work_headers.each do |header| %>
@@ -90,7 +90,7 @@
         <% if key == "Votes" %>
           <%= "This will be # of votes" %>
         <% elsif key == "Title" %>
-          <%= "#{movie.title}" %>
+          <%= link_to "#{movie.title}", work_path(movie.id) %>
         <% elsif key == "Created By" %>
           <%= "#{movie.creator}"%>
         <% elsif key == "Published" %>

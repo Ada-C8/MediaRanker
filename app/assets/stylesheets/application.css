@@ -14,7 +14,7 @@
  *= require_self
  */
 
-input[type="submit"]  {
+/*input[type="submit"]  {
     display: inline-block;
     vertical-align: middle;
     margin: 0 0 1rem 0;
@@ -55,7 +55,7 @@ input[type="submit"]  {
 
   .button {
     display: inline-block;
-  }
+  }*/
 
 
   body {
@@ -64,9 +64,11 @@ input[type="submit"]  {
 /*@media print, screen and (min-width: 40em) h3 {
   font-size: 1.9375rem;
 }*/
+  a, h3 {
+    color: #26A69A;
+  }
 
   h3 {
-    color: #26A69A;
     font-weight: bold;
     font-size: 1.9375rem;
   }
@@ -75,3 +77,12 @@ input[type="submit"]  {
    background-color: lightgreen;
    display:block;
  }
+
+ .button {
+   background-color: #26A69A;
+ }
+
+
+
+
+/*  background-color: #26A69A;*/

@@ -43,11 +43,14 @@ class WorksController < ApplicationController
   def destroy
     @work= Work.find_by(id: params[:id]).destroy
 
+    #TODO: What if a work is not destroyed successfully?
+    flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
     redirect_to root_path
   end
 
   def main
     @works= Work.all
+    #find collection of top works in each category here or in model
   end
 
   private
