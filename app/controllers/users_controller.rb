@@ -13,7 +13,6 @@ class UsersController < ApplicationController
   end
 
 
-  # ---------------------------------------
   def create
     @user = User.new user_params
 
@@ -27,7 +26,7 @@ class UsersController < ApplicationController
     end
   end
 
-  #----------------------------------------
+
   def update
     @user = User.find_by(id: params[:id].to_i)
 
@@ -46,7 +45,7 @@ class UsersController < ApplicationController
       redirect_to users_path
     end
   end
-  # ------------------------------------------
+
 
   def destroy
     @user = User.find_by(id: params[:id].to_i)
