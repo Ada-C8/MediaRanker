@@ -17,11 +17,19 @@
       <%= link_to "View top media" %>
       <%= link_to "View all media", works_path %>
       <%= link_to "Add a new work", new_work_path %>
-      <%= link_to "View all users" %>
+      <%= link_to "View all users", users_path %>
       <div class="float-right">
-          <%= link_to "Log In" %>
+          <%= link_to "Log In", login_path %>
       </div>
     </nav>
+
+    <main>
+
+    <section class="flash" <%= flash[:status] %>">
+      <%= flash[:message] %>
+    </section>
+
     <%= yield %>
+    </main>
   </body>
 </html>

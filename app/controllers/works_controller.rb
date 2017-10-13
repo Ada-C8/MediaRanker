@@ -3,7 +3,7 @@ class WorksController < ApplicationController
   end
 
   def index
-    @works = Work.all
+    @works = Work.order(:id)
   end
 
   def edit

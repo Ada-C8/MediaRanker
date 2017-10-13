@@ -15,17 +15,17 @@ Rails.application.routes.draw do
 
   get '/works/:id', to: 'works#show', as: 'work'
 
-
-
   delete '/works/:id', to: 'works#destroy'
 
-  get 'users/index'
 
-  get 'users/show'
+  get '/users', to: 'users#index', as: 'users'
 
-  get 'users/new'
+  get '/users/:id', to: 'users#show', as: 'user'
 
-  get 'users/create'
+# is this... right?
+  get '/login', to: 'users#login', as: 'login'
+
+  post '/users', to: 'users#create', as: 'create_login'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
