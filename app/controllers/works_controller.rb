@@ -3,7 +3,6 @@ require 'date'
 class WorksController < ApplicationController
   def index
     @albums = Work.where(category: 'album')
-
     @books = Work.where(category: 'book')
     @movies = Work.where(category: 'movie')
     @top_work_id = Vote.limit(1).group(:work_id).order('count_work_id DESC').count('work_id')
@@ -40,10 +39,6 @@ class WorksController < ApplicationController
 
   def upvote
     @work = Work.find(params[:id])
-    #@vote = Vote.new(category: params[:work][:category],
-                    #work_id: params[:work][:work_id],
-#                    user_id: 1)
-
     @vote = Vote.new(category: @work.category,
                     work_id: @work.id,
                     date: Date.today,

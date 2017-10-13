@@ -36,7 +36,7 @@
   </h3>
 
   <ul>
-    <% @albums.each do |album| %>
+    <% top_10('album').each do |album| %>
       <li>
         <h4>
             <%= link_to album.title, work_path(album) %>
@@ -53,7 +53,7 @@
 <section>
   <h3> Top Movies </h3>
     <ul>
-      <% @movies.each do |movie| %>
+      <%  top_10('movie').each do |movie| %>
         <li>
           <h4>
               <%= link_to movie.title, work_path(movie) %>
@@ -74,7 +74,7 @@
   </h3>
 
   <ul>
-    <% @books.each do |book| %>
+    <%   top_10('book').each do |book| %>
       <li>
         <h4>
             <%= link_to book.title, work_path(book) %>
