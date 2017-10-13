@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to users_path
     else
-      render :new, status: :bad_request
+      render :login_form, status: :bad_request
     end
   end
 

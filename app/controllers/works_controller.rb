@@ -21,7 +21,7 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     # message = "Successfully created #{@work.category} #{@work.id}"
-    if save_and_flash(@work)
+    if save_and_flash(@work, "created", "create")
       redirect_to works_path
     else
       render :new, status: :bad_request
@@ -34,7 +34,7 @@ class WorksController < ApplicationController
 
   def update
     @work.update_attributes(work_params)
-    if save_and_flash(@work)
+    if save_and_flash(@work, "updated", "update")
       redirect_to work_path(@work)
       return
     else
@@ -44,10 +44,11 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    if find_work_by_params_id
+    # we don't need this here because it is getting checked in controller filter above
+    # if find_work_by_params_id
       @work.destroy
       redirect_to works_path
-    end
+    # end
   end
 
 private
