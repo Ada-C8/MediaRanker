@@ -9,6 +9,13 @@ class WorksController < ApplicationController
     @top_work_votes = Vote.where(work_id: @top_work_id.keys[0])
   end
 
+  def destroy
+    @work = Work.find(params[:id])
+    @work.destroy
+
+    redirect_to works_path
+  end
+
   def show
     @work = Work.find(params[:id])
     @votes = Vote.where(work_id: @work.id)
@@ -18,6 +25,7 @@ class WorksController < ApplicationController
     #if params[:category] == 'book'
 
   end
+
 
   def update
     @work = Work.find(params[:id])
@@ -44,4 +52,7 @@ class WorksController < ApplicationController
     task.save
     redirect_to tasks_path
   end
+
+
+
 end
