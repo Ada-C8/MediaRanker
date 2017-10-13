@@ -8,10 +8,30 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <header>
     <%= link_to "View all media", works_path %>
     <%= link_to "Add a new work", new_work_path %>
-
+  </header>
+  <body>
+    <section class="flash <%= flash[:status] %>">
+        <p>
+          <%= flash[:message] %>
+        </p>
+        <% if flash[:details] %>
+          <ul>
+            <% flash[:details].each do |field, problems| %>
+              <% problems.each do |problem| %>
+                <li>
+                  <strong>
+                    <%= field %>:
+                  </strong>
+                  <%= problem %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
+      </section>
     <%= yield %>
   </body>
 </html>

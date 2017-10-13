@@ -12,16 +12,23 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
+      flash[:status] = :success
+      flash[:message] = "Successfully created #{@work.category}: #{@work.title}"
       redirect_to works_path
     else
-      # something els
+      # Tell the user what went wrong
+      flash.now[:status] = :failure
+      flash.now[:message] = "Failed to create work"
+      flash.now[:details] = @work.errors.messages
+      render :new, status: :bad_request
     end
-    # @work = Work.create(title: params[:work][:title], category: params[:work][:category], creator: params[:work][:creator], year: params[:work][:year], description: params[:work][:description])
   end
+  # @work = Work.create(title: params[:work][:title], category: params[:work][:category], creator: params[:work][:creator], year: params[:work][:year], description: params[:work][:description])
 
-  def show
-    @work = Work.find(params[:id])
-  end
+
+def show
+  @work = Work.find(params[:id])
+end
 end
 
 private
