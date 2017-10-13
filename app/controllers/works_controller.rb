@@ -7,14 +7,9 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
 
-    if @work.save
-      flash[:status] = :success
-      flash[:message] = "Successfully created work #{@work.id}"
+    if save_and_flash(@work)
       redirect_to works_path
     else
-      flash.now[:status] = :failure
-      flash.now[:message] = "Failed to create work"
-      flash.now[:details] = @work.errors.messages
       render :new, status: :bad_request
     end
 
@@ -36,7 +31,7 @@ class WorksController < ApplicationController
     # if find_work_by_params_id
 
       @work.update_attributes(work_params)
-      if @work.save
+      if save_and_flash(@work)
         redirect_to(work_path(@work))
       else
         render :edit, status: :bad_request
