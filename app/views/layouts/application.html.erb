@@ -10,24 +10,24 @@
 
   <body>
     <header class="row">
-      <h1 class="small-12 columns">anders' Media Ranker</h1>
+      <h1 class="row">anders' Media Ranker</h1>
       <nav class="row">
-        <div class="small-2 columns"><%= link_to "View top media", root_path %></div>
-        <div class="small-2 columns"><%= link_to "View all media", works_path %></div>
-        <div class="small-2 columns"><%= link_to "Add a new work", new_work_path %></div>
-        <div class="small-2 columns"><%= link_to "View all users", users_path %></div>
+        <div class="large-8 small-12 columns button-group">
+          <%= link_to "View top media", root_path, class: "button"%>
+          <%= link_to "View all media", works_path, class: "button" %>
+          <%= link_to "Add a new work", new_work_path, class: "button" %>
+          <%= link_to "View all users", users_path, class: "button" %>
+        </div>
 
-        <% if session[:logged_in_user] %>
-          <% current_user = User.find_by(id: session[:logged_in_user])%>
-
-          <div class="small-2 columns">
-            <%= link_to "Logged in as #{current_user.name}", user_path(current_user.id) %>
-          </div>
-          <div class="small-2 columns"><%= link_to "Logout", logout_path %></div>
-
-        <% else %>
-          <div class="small-2 columns"><%= link_to "Login", login_path %></div>
-        <% end %>
+        <div class="large-4 small-12 columns button-group row">
+          <% if session[:logged_in_user] %>
+            <% current_user = User.find_by(id: session[:logged_in_user])%>
+              <%= link_to "Logged in as #{current_user.name}", user_path(current_user.id), class: "button small-6 large-3" %>
+              <%= link_to "Logout", logout_path, class: "button small-6 large-3" %>
+          <% else %>
+            <%= link_to "Login", login_path, class: "button small-6 large-3" %>
+          <% end %>
+        </div>
       </nav>
     </header>
 

@@ -27,13 +27,11 @@ class UsersController < ApplicationController
     end
 
     def logout
-      if session[:logged_in_user]
-        session[:logged_in_user] = nil
-        flash[:status] = :success
-        flash[:message] = "You have been successfully logged out"
+      session[:logged_in_user] = nil
+      flash[:status] = :success
+      flash[:message] = "You have been successfully logged out"
 
-        redirect_to root_path
-      end
+      redirect_to root_path
     end
 
     private

@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+ nav div {
+   padding: 0px;
+   box-sizing: border-box;
+ }
+
+ nav div .button {
+   box-sizing: border-box;
+ }
