@@ -1,25 +1,34 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
 
-<h3>Media Spotlight:</h3>
+
+
+<h3>Media Spotlight: <%= link_to(@spotlight.title, work_path(@spotlight.id)) %> by: <%=@spotlight.creator%> </h3>
+
+
 
 <h3>Top Albums</h3>
 <ul>
   <% @albums.each do |album| %>
-    <li><%= album.title %></li>
+    <li><%=link_to(album.title, work_path(album.id)) %></li>
+    <li>by: <%= album.creator %></li>
   <%end%>
 </ul>
+
 
 <h3>Top Movies</h3>
 <ul>
   <% @movies.each do |movie| %>
-    <li><%= movie.title %></li>
+    <li><%=link_to(movie.title, work_path(movie.id)) %></li>
+    <li>by: <%= movie.creator %></li>
   <%end%>
 </ul>
+
 
 <h3>Top books</h3>
 <ul>
   <% @books.each do |book| %>
-    <li><%= book.title %></li>
+    <li><%=link_to(book.title, work_path(book.id)) %></li>
+    <li>by: <%= book.creator %></li>
   <%end%>
 </ul>
