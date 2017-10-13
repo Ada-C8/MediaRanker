@@ -25,7 +25,11 @@ describe UsersController do
       post users_path, params: {user: {username: "checkingitout"}}
     }.must_change 'User.count', 1
   end
-  # 
+
+  # trying to show a user that doesnt exist should respond with not_found
+
+
+  #
   # it "should successfully delete work" do
   #   delete work_path(works(:test_book).id)
   #   must_respond_with :redirect

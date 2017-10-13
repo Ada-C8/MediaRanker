@@ -14,3 +14,38 @@
  *= require_self
  */
  @import url('foundation');
+
+ body, h1, h2, h3, h4, h5 {
+  font-family: "Gudea", sans-serif;
+ }
+
+.header a{
+  color: #FF5722;
+  font-weight: bold;
+  border-right: white 2px solid;
+}
+
+.header small {
+  color: white;
+}
+
+nav ul {
+  display: inline;
+}
+
+.button {
+  background-color: #26A69A;
+}
+
+.button li {
+  color: white;
+}
+
+.header {
+   min-width: 100%;
+   background-color: #B2DFDB;
+   border-bottom: 1px solid #EEEEEE;
+   margin-bottom: 10px;
+   padding: 25px 20px 10px 20px;
+   text-align: center;
+ }
