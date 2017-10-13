@@ -23,7 +23,9 @@ class SessionsController < ApplicationController
 
   def logout
     session.delete(params[:user_id])
-    @current_user = nil
+    # @current_user = nil
+    flash[:success] =  "Successfully logged out"
+    redirect_to root_path
   end
 
 end
