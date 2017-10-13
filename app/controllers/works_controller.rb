@@ -6,8 +6,7 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
-    head :not_found if @work.nil?
+    find_work_by_params_id
   end
 
   def new
@@ -24,31 +23,25 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
-    head :not_found if @work.nil?
+    find_work_by_params_id
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
-    head :not_found and return if @work.nil?
+    if find_work_by_params_id
+      result = @work.update_attributes(work_params)
 
-    result = @work.update_attributes(work_params)
-
-    if result
-      redirect_to work_path(params[:id])
-    else
-      render :edit, status: :bad_request
+      if result
+        redirect_to work_path(params[:id])
+      else
+        render :edit, status: :bad_request
+      end
     end
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
-    head :not_found and return if @work.nil?
-    result = @work.destroy
-    if result
+    if find_work_by_params_id
+      @work.destroy
       redirect_to works_path
-    else
-      redirect_to work_path(params[:id])
     end
   end
 
@@ -56,5 +49,14 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:title, :creator, :publication_year, :category, :description)
+  end
+
+  def find_work_by_params_id
+    @work = Work.find_by(id: params[:id])
+    # head :not_found and return if @work.nil?
+    unless @work
+      head :not_found
+    end
+    return @work
   end
 end
