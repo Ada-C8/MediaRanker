@@ -1,7 +1,10 @@
-<h1>Media Spotlight: <%# link_to Work.top_work.title, work_path(Work.top_work.id)%> by <%= Work.top_work.creator%></h1>
+<h1>Media Spotlight:
+  <% if Work.top_work %>
+  <% link_to Work.top_work.title, work_path(Work.top_work.id)%> by <% Work.top_work.creator%></h1>
 <p>
-  <%#Work.top_work.votes.count%>-<%#Work.top_work.description%>
+  <%Work.top_work.votes.count%>-<%Work.top_work.description%>
 </p>
+<%end%>
 <h2>ORDER BY VOTES!</h2>
 <h2>Top Albums</h2>
 <table>
