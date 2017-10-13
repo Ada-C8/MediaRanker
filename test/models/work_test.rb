@@ -3,12 +3,11 @@ require "test_helper"
 describe Work do
 
   let(:work) { Work.new }
+  let(:w) { Work.new(category: "album", title: "Infinite Worlds", creator: "Vagabon", publication_year: 2017, description: "On her compact debut, Lætitia Tamko explores ideas of home, community, and sharing space with others who don’t necessarily see eye to eye.") }
 
   describe "validations" do
 
     it "can be created with all fields" do
-      w = Work.new(category: "album", title: "Infinite Worlds", creator: "Vagabon", publication_year: 2017, description: "On her compact debut, Lætitia Tamko explores ideas of home, community, and sharing space with others who don’t necessarily see eye to eye.")
-
       w.must_be :valid?
     end
 
@@ -34,6 +33,38 @@ describe Work do
   describe "relations" do
     it "responds to votes" do
       work.must_respond_to :votes
+    end
+  end
+
+  describe "top_ten method" do
+    it "returns an Array of Work objects" do
+      Work.top_ten.must_be_instance_of Array
+
+      Work.top_ten[0].must_be_instance_of Work
+    end
+  end
+
+  describe "top_work method" do
+    it "returns a Work object" do
+      Work.top_work.must_be_instance_of Work
+    end
+
+  end
+
+  describe "sort_by_most_votes method" do
+
+    it "returns an Array of Work objects" do
+      Work.sort_by_most_votes.must_be_instance_of Array
+
+      Work.sort_by_most_votes[0].must_be_instance_of Work
+    end
+
+    it "is sorted in descending order" do
+      sorted_works = Work.sort_by_most_votes
+      index_1 = sorted_works[0].votes
+      index_2 = sorted_works[1].votes
+
+      index_1.must_be :>, index_2
     end
   end
 
