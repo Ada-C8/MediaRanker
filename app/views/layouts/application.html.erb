@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MediaRanker</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>MediaRanker</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
+<body>
+  <header class = "row">
+    <h1 class="small-12 columns"> <%= link_to("Media Ranker", root_path) %>
+      <small>Ranking the Best of Everything</small>
+    </h1>
+    <nav class="row">
+      <div class="large-8 small-12 columns button-group">
+        <%= link_to("View top media", root_path, :class => "button") %>
+        <%= link_to("View all media", works_path, :class => "button") %>
+        <%= link_to("Add a new work", new_work_path, :class => "button") %>
+      </div>
+    </header>
+
+    <% flash.each do |name, message| %>
+    <section class="<%= name %>>
+      <%= name %>"><%= message %>
+    </section>
+    <% end %>
     <%= yield %>
   </body>
-</html>
+  </html>

@@ -1,7 +1,4 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
 <main>
-
   <article>
     <h3><%= @work.title %></h3>
     <p> Created by: <%= @work.creator %></p>
@@ -9,7 +6,7 @@
     <p> <%= @work.description %></p>
       <%= link_to("Back to media ranks", works_path) %>
       <%= link_to("Edit", edit_work_path(@work.id))%>
-      <%= link_to("Upvote", votes_path(:work => @work.id), method: :post )%>
+
       <%= link_to("Delete", work_path(@work.id), method: :delete )%>
   </article>
   <article>
