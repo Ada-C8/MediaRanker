@@ -24,20 +24,24 @@
 <h2>Create new work</h2>
 
 <div>
-  <p>
-    <%= form_for @task do |f| %>
+  <%= form_for @work do |f| %>
+      <%= f.label :category %>
+      <%= f.select :category, [['album', 'album'], ['book', 'book'], ['movie', 'movie']] %>
+      <br />
       <%= f.label :title %>
       <%= f.text_field :title %>
       <br />
+      <%= f.label :creator %>
+      <%= f.text_field :creator %>
+      <br />
+      <%= f.label :published %>
+      <%= f.text_field :published %>
+      <br />
       <%= f.label :description %>
-      <%= f.text_field :description %>
+      <%= f.text_area :description %>
       <br />
-      <%= f.label :due_date %>
-      <%= f.date_field :due_date %>
-      <br />
-      <%= f.submit "Make a new task"%>
-    <% end %>
 
+      <%= f.submit %>
 
-
+  <% end %>
 </div>

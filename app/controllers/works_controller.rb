@@ -1,7 +1,9 @@
+require 'date'
+
 class WorksController < ApplicationController
   def index
-    @works = Work.all
     @albums = Work.where(category: 'album')
+
     @books = Work.where(category: 'book')
     @movies = Work.where(category: 'movie')
     @top_work_id = Vote.limit(1).group(:work_id).order('count_work_id DESC').count('work_id')
@@ -22,10 +24,35 @@ class WorksController < ApplicationController
   end
 
   def new
-    #if params[:category] == 'book'
-
+    @work = Work.new
   end
 
+  def create
+    @work = Work.new(title: params[:work][:title],
+                    description: params[:work][:description],
+                    category: params[:work][:category],
+                    creator: params[:work][:creator],
+                    published: params[:work][:published])
+    @work.save
+
+    redirect_to works_path
+  end
+
+  def upvote
+    @work = Work.find(params[:id])
+    #@vote = Vote.new(category: params[:work][:category],
+                    #work_id: params[:work][:work_id],
+#                    user_id: 1)
+
+    @vote = Vote.new(category: @work.category,
+                    work_id: @work.id,
+                    date: Date.today,
+                    user_id: 1)
+    @vote.save
+
+    redirect_to work_path
+
+  end
 
   def update
     @work = Work.find(params[:id])
@@ -46,13 +73,4 @@ class WorksController < ApplicationController
   def show_all
     @works = Work.all
   end
-
-  def create
-     task = Work.new(title: params[:task][:title], description: params[:task][:description], due_date: params[:task][:due_date], complete: false)
-    task.save
-    redirect_to tasks_path
-  end
-
-
-
 end
