@@ -65,11 +65,6 @@ a:hover {
   color: var(--dark);
 }
 
-section {
-  margin: auto;
-  /*max-width: 75rem;*/
-}
-
 h1 {
   font-weight: bold;
   font-size: 2.5rem;
@@ -95,14 +90,35 @@ h2 {
   font-weight: bold;
 }
 
+h2 strong {
+  color: var(--char);
+}
+
+h2 a {
+  border-bottom: 2px solid;
+}
+
 h3 {
   color: var(--char);
   font-size: 1.5rem;
   font-weight: bold;
 }
 
+h3 small {
+  color: var(--grey);
+}
+
+hr {
+  margin-bottom: 4.5rem;
+}
+
 main {
   padding: 2rem 0;
+}
+
+section {
+  margin: auto;
+  /*max-width: 75rem;*/
 }
 
 /**********/
@@ -111,6 +127,7 @@ main {
 
 header.header {
   background-color: var(--mint);
+  margin-bottom: 1rem;
   max-width: 100%;
   padding: 1.5rem 1.25rem .675rem 1.25rem;
 }
@@ -121,7 +138,6 @@ header.header {
   font-weight: bolder;
 }
 
-
 /************/
 /* MESSAGES */
 /************/
@@ -131,4 +147,21 @@ header.header {
   border-radius: .25rem;
   margin-top: 2rem;
   padding: 1.25rem 1.5rem;
+}
+
+/*************/
+/* TOP MEDIA */
+/*************/
+
+.spotlight {
+  margin: 0 1.5rem 2rem 1.5rem;
+}
+
+.top-10 h2 {
+  border-bottom: 2px solid var(--mint);
+}
+
+.top-10 ul {
+  list-style: none;
+  margin-left: 0;
 }
