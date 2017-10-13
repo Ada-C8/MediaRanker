@@ -1,3 +1,14 @@
+<% if @work.errors.any? %>
+<h3><%= flash[:error] %></h3>
+  <ul class="failure">
+    <% @work.errors.each do |column, message| %>
+      <li>
+        <%= "#{column}: #{message}" %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_for @work do |f| %>
   <%= f.label "Category" %>
   <%= f.select :category_id, options_from_collection_for_select(Category.all, "id", "name") %>
