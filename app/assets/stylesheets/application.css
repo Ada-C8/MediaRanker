@@ -22,6 +22,7 @@
   --red: #FF5722;
   --char: #424242;
   --grey: slategrey;
+  --silv: #e6e6e6;
 }
 
 * {
@@ -90,7 +91,7 @@ h1 a:hover {
 
 h2 {
   color: var(--turq);
-  font-size: 2rem;
+  font-size: 1.925rem;
   font-weight: bold;
 }
 
@@ -104,12 +105,6 @@ main {
   padding: 2rem 0;
 }
 
-.header small {
-  color: white;
-  font-size: 2rem;
-  font-weight: bolder;
-}
-
 /**********/
 /* HEADER */
 /**********/
@@ -118,4 +113,22 @@ header.header {
   background-color: var(--mint);
   max-width: 100%;
   padding: 1.5rem 1.25rem .675rem 1.25rem;
+}
+
+.header small {
+  color: white;
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+
+/************/
+/* MESSAGES */
+/************/
+
+.message {
+  background-color: var(--silv);
+  border-radius: .25rem;
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
 }
