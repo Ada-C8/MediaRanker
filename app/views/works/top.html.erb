@@ -15,7 +15,7 @@
       <ul>
           <% Work.top_ten(type.to_sym).each do |work| %>
               <li>
-                <%=link_to work.title, work_path(work.id)%> by <%=work.creator%>
+                <h4><%=link_to work.title, work_path(work.id)%> by <small><%=work.creator%></small></h4>
                 <%= work.votes.count %> votes
                 <%= link_to "Upvote" %>
               </li>

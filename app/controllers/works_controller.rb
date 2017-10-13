@@ -1,6 +1,7 @@
 class WorksController < ApplicationController
   def index
     @works = Work.all
+    @types = ["movie", "book", "album"]
   end
 
   def show
@@ -45,7 +46,6 @@ class WorksController < ApplicationController
   end
 
   def top
-    @works = Work.all
     @types = ["movie", "book", "album"]
   end
 
