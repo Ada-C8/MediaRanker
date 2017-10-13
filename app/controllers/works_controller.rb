@@ -56,9 +56,9 @@ class WorksController < ApplicationController
 
     if @work.save
       redirect_to work_path(@work)
-      return
+      # return
     else
-      render :edit, status: :not_found
+      render :edit, status: :bad_request
     end
   end
 
