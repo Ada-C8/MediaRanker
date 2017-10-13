@@ -1,0 +1,31 @@
+<h2>List of All Users</h2>
+
+<table>
+  <tr>
+    <th>Users</th>
+    <th>Votes</th>
+    <th>Joined</th>
+
+  </tr>
+  <tr>
+      <%users = User.all%>
+      <% users.each do |user| %>
+
+      <th>
+      Votes!
+    </th>
+    <th>
+      <%= link_to user.name, user_path(user.id), class: "link"%>
+    </th>
+    <th>
+      <%= Vote.all.where(user.id).length%>
+    </th>
+    <th>
+      <%= user.created_at %>
+    </th>
+
+    <%end%>
+
+
+
+</table>

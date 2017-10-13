@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MediaRanker</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>MediaRanker</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+  <main>
+
+
+  <header>
+    <h1 id = "title">
+      <%= link_to "MediaRanker", root_path,   class:   "link"%>
+    </h1>
+    <nav id = "links">
+      <ul >
+        <li>
+          <%= link_to "View Top Media", root_path,   class:   "link"%>
+        </li>
+        <li>
+          <%= link_to "View all Media",   works_path,   class: "link"%>
+        </li>
+        <li>
+          <%= link_to "Add a new work", new_work_path, class: "link"%>
+        </li>
+        <li>
+          <%= link_to "View all users", users_path, class:"link"%>
+        </li>
+        <li>
+          LOG IN/ LOG OUT
+        </li>
+
+      </ul>
+    </nav>
+  </header>
 
   <body>
     <%= yield %>
   </body>
+
+  <footer>
+    <p>&copy 2017</p>
+    <p>Diane Lenertz</p>
+  </footer>
+</main>
 </html>

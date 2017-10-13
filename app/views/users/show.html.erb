@@ -1,0 +1,31 @@
+<table>
+  <tr>
+    <th>Media Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Category</th>
+    <th>Voted On</th>
+  </tr>
+  <tr>
+    <%# vote = Vote.all.where(user.id)works = Work.all.where()%>
+      <% votes.each do |vote| %>
+
+    <th>
+      <%= link_to Work.find_by_id(vote.work_id).name, work_path(vote.work_id), class: "link"%>
+    </th>
+    <th>
+      <%= Work.find_by_id(vote.work_id).creator%>
+    </th>
+    <th>
+      <%= Work.find_by_id(vote.work_id).pub_year%>
+    </th>
+    <th>
+      <%= Work.find_by_id(vote.work_id).category%>
+    </th>
+    <th>
+      <%=  %>
+    </tr>
+    <%end%>
+
+
+</table>

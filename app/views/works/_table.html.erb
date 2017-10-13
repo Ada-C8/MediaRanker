@@ -14,13 +14,13 @@
       Votes!
     </th>
     <th>
-      <%= work.title %>
+      <%= link_to work.title, work_path(work.id), class: "link"%>
     </th>
     <th>
-      <%=work.creator%>
+      <%= work.creator%>
     </th>
     <th>
-      <%=work.pub_year %>
+      <%= work.pub_year %>
     </th>
     <th>
       This is where the upvote button goes!
