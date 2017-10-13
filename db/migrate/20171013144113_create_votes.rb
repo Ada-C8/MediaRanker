@@ -1,8 +1,8 @@
 class CreateVotes < ActiveRecord::Migration[5.1]
   def change
     create_table :votes do |t|
-      t.author_id
-      t.work_id
+      t.belongs_to :user, index: true
+      t.belongs_to :work, index: true
 
       t.timestamps
     end
