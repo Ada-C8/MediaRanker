@@ -10,7 +10,7 @@
 
   <body>
     <header class="page-header row">
-      <h2 class="columns small-12"><%= link_to "Media Ranker |", root_path %> Ranking the Best of Everything </h2>
+      <h2 class="columns small-12"><%= link_to "Media Ranker", root_path %> <small>Ranking the Best of Everything</small></h2>
       <nav class="columns small-12">
         <%= link_to 'View top media', root_path, class: "button" %>
         <%= link_to 'View all media', works_path, class: "button "%>
@@ -19,7 +19,7 @@
       </nav>
 
       <div class="float-right">
-        <%= link_to "Log In/Out" new_user_path %>
+        <%= link_to "Log In/Out", login_path, class: "button" %>
       </div>
     </header>
 
