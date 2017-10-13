@@ -7,7 +7,7 @@
   <% @albums.each do |album| %>
   <tr>
     <td>
-      <%= album.title %>
+      <%= link_to album.title, work_path(album.id) %>
     </td>
     <td>
       by
