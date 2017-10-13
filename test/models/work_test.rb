@@ -3,6 +3,13 @@ require "test_helper"
 describe Work do
   let(:work) { Work.new }
   let(:book) { works(:book1)}
+  let(:album1) {works(:album1)}
+
+  describe "relationships" do
+    it 'can have votes' do
+      album1.votes.length.must_equal 2
+    end
+  end # Relationships
 
   describe "validations" do
     it "must have a title to be valid" do
