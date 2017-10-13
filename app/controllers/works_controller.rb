@@ -39,7 +39,7 @@ class WorksController < ApplicationController
         redirect_to work_path(@work)
         return
       else
-        render edit, status: :bad_request
+        render :edit, status: :bad_request
         return
       end
     end
