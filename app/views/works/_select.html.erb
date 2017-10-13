@@ -1,0 +1,31 @@
+<%= form_for @work do |f| %>
+  <section>
+    <%= f.label :category  %>
+    <%= f.select(:category, ["album", "book", "movie"]) %>
+  </section>
+
+  <section>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </section>
+
+  <section>
+    <%= f.label :creator %>
+    <%= f.text_field :creator %>
+  </section>
+
+  <section>
+    <%= f.label :publication_year %>
+    <%= f.text_field :publication_year %>
+  </section>
+
+  <section>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </section>
+
+  <section>
+    <%= f.submit %>
+  </section>
+
+<% end %>

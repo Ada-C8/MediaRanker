@@ -1,13 +1,26 @@
 class WorksController < ApplicationController
   def create
-    @work = Work.new(title: params[:work][:title], category:params[:work][:category])
-    successful = @work.save
-    if successful
-      redirect_to root_path
+    @work = Work.create work_params
+    if @work.id != nil
+      flash[:success] = "Item added successfully!"
+      redirect_to works_path
     else
+      flash[:error] = "Error - create unsuccessful"
       render :new
     end
   end
+
+  def new
+    @work = Work.new
+  end
+
+
+  private
+
+  def work_params
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
 
   def destroy
     Work.find_by(id: params[:id]).destroy
@@ -24,9 +37,6 @@ class WorksController < ApplicationController
     @movies = Work.movies
   end
 
-  def new
-    @work = Work.new
-  end
 
   def show
     @work = Work.find( params[:id].to_i)
