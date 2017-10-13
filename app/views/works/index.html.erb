@@ -16,17 +16,14 @@
       <tbody>
         <% @works.where(category: "album").each do |work| %>
           <tr>
-            <td>
-              <%= Vote.where(work_id: work.id).count %>
-            </td>
+            <td><%= Vote.where(work_id: work.id).count %></td>
             <td><%= work.title %></td>
             <td><%= work.creator %></td>
             <td><%= work.publication_year %></td>
-            <td>
+            <td>Upvote</td>
               <%# Need to be able to do a nested route somehow %>
               <%# In order to upvote, I need the user_id of the person that is LOGGED IN. I also need the id of the works that is clicked on. I can only do this when I have my sessions working.
               <%= link_to "Upvote", votes_path(work), method: :post %>
-            </td>
           </tr>
         <% end %>
       </tbody>
@@ -47,11 +44,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>
-            <!--This is repeating information here -->
-          </td>
-        </tr>
+        <% @works.where(category: "book").each do |work| %>
+          <tr>
+            <td><%= Vote.where(work_id: work.id).count %></td>
+            <td><%= work.title %></td>
+            <td><%= work.creator %></td>
+            <td><%= work.publication_year %></td>
+            <td>Upvote</td>
+              <%# Need to be able to do a nested route somehow %>
+              <%# In order to upvote, I need the user_id of the person that is LOGGED IN. I also need the id of the works that is clicked on. I can only do this when I have my sessions working.
+              <%= link_to "Upvote", votes_path(work), method: :post %>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </section>
@@ -69,11 +73,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>
-            <!--This is repeating information here -->
-          </td>
-        </tr>
+        <% @works.where(category: "movie").each do |work| %>
+          <tr>
+            <td><%= Vote.where(work_id: work.id).count %></td>
+            <td><%= work.title %></td>
+            <td><%= work.creator %></td>
+            <td><%= work.publication_year %></td>
+            <td>Upvote</td>
+              <%# Need to be able to do a nested route somehow %>
+              <%# In order to upvote, I need the user_id of the person that is LOGGED IN. I also need the id of the works that is clicked on. I can only do this when I have my sessions working.
+              <%= link_to "Upvote", votes_path(work), method: :post %>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </section>
