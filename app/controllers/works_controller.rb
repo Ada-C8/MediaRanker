@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update]
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def index
     @books = Work.where(category:"book")
@@ -12,6 +12,9 @@ class WorksController < ApplicationController
   end
 
   def edit
+    unless @work
+      render_404
+    end
   end
 
   def create
@@ -32,20 +35,27 @@ class WorksController < ApplicationController
   end
 
   def update
-    if @work.update(work_params)
-      flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
-      redirect_to work_path(@work.id)
+    if @work
+      if @work.update(work_params)
+        flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
+        redirect_to work_path(@work.id)
+      else
+        flash.now[:error] = "A problem occurred: Could not update #{@work.category}"
+        render :edit
+      end
     else
-      flash.now[:error] = "A problem occurred: Could not update #{@work.category}"
-      render :edit
+      render_404
     end
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
-    @work.destroy
-    flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
-    redirect_to root_path
+    if @work
+      @work.destroy
+      flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
+      redirect_to root_path
+    else
+      render_404
+    end
   end
 
   private
