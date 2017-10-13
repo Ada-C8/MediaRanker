@@ -1,15 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'users/index'
-
-  get 'users/new'
-
-  get 'users/edit'
-
-  get 'users/show'
-
   root to: 'works#home', as: 'root' #root_path
-  
+
   get 'works', to: 'works#index', as: 'works'
 
   get 'works/new', to: 'works#new', as: 'new_work'
@@ -24,5 +16,12 @@ Rails.application.routes.draw do
 
   delete 'works/:id', to: 'works#destroy', as: 'delete_work'
 
+  get 'users', to: 'users#index', as: 'users'
+
+  get 'users/new', to: 'users#new', as: 'new_user'
+
+  get 'users/:id', to: 'users#show', as: 'user'
+
+  post 'users', to: 'users#create', as: 'create_user'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
