@@ -44,7 +44,7 @@ describe UsersController do
       User.count.must_equal user_count + 1
     end
 
-    it "returns bad_request status when the user date is invalid" do
+    it "returns bad_request status when the user data is invalid" do
       # # Arrange
       User.new(bad_user_data[:user]).wont_be :valid?
       user_count = User.count
