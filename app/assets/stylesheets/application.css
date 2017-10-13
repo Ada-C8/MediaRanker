@@ -18,6 +18,7 @@
 :root {
   --mint: #B2DFDB;
   --turq: #26A69A;
+  --dark: #00796B;
   --red: #FF5722;
   --char: #424242;
   --grey: slategrey;
@@ -28,7 +29,7 @@
 }
 
 .columns {
-  padding: .5rem;
+  /*padding: .5rem;*/
 }
 
 .success {
@@ -43,8 +44,24 @@
   float: right;
 }
 
-.clear {
-  clear: both;
+.button {
+  background-color: var(--turq);
+}
+
+.button:hover {
+  background-color: var(--dark);
+}
+
+body, h1, h2, h3 {
+  font-family: 'Gudea', sans-serif;
+}
+
+a {
+  color: var(--turq);
+}
+
+a:hover {
+  color: var(--dark);
 }
 
 section {
@@ -52,10 +69,53 @@ section {
   /*max-width: 75rem;*/
 }
 
+h1 {
+  font-weight: bold;
+  font-size: 2.5rem;
+  padding: 0 1rem;
+  margin: 1.5rem 0 2.5rem 0;
+  text-align: center;
+}
+
+h1 a {
+  border-right: 2px solid white;
+  color: var(--red);
+  padding-right: 1.5rem;
+  margin-right: 1rem;
+}
+
+h1 a:hover {
+  color: var(--red);
+}
+
+h2 {
+  color: var(--turq);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h3 {
+  color: var(--char);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+main {
+  padding: 2rem 0;
+}
+
+.header small {
+  color: white;
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
 /**********/
 /* HEADER */
 /**********/
 
-header {
+header.header {
   background-color: var(--mint);
+  max-width: 100%;
+  padding: 1.5rem 1.25rem .675rem 1.25rem;
 }

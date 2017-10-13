@@ -4,14 +4,15 @@
   <title>MediaRanker</title>
   <%= csrf_meta_tags %>
 
+  <link href="https://fonts.googleapis.com/css?family=Gudea:400,700" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
-  <header>
-    <h1><%= link_to "Media Ranker", root_path %></h1>
-    <div class="row">
+  <header class="header row">
+    <h1><%= link_to "Media Ranker", root_path %>
+    <small>Ranking the Best of Everything</small></h1>
       <nav class="small-12 columns">
         <%= link_to "View top media", root_path, class: "button" %>
         <%= link_to "View all media", works_path, class: "button"  %>
@@ -23,11 +24,10 @@
           <% end %>
           <%= session[:user] ? (link_to "Log Out", logout_path, class: "button" ) : (link_to "Log In", login_path, class: "button" ) %>
         </div>
-        <div class="clear">
-          
-        </div>
+        <!-- <div class="clear">
+
+        </div> -->
       </nav>
-    </div>
   </header>
   <main>
     <div class="message <%= flash[:status] %>">
