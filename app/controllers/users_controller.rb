@@ -12,6 +12,8 @@ class UsersController < ApplicationController
 
     if user
       session[:user] = user
+      flash[:status] = :success
+      flash[:message] = "Logged in as #{user.name}"
       return redirect_to root_path
     else
       create
@@ -23,9 +25,14 @@ class UsersController < ApplicationController
     if user.valid?
       user.save
       session[:user] = user
+      flash[:status] = :success
+      flash[:message] = "User created"
       return redirect_to root_path
     else
-      return render login_path
+      flash[:status] = :failure
+      flash[:message] = "Could not create user:"
+      flash[:details] = user.errors.messages
+      return render :login
     end
   end
 
@@ -42,5 +49,7 @@ class UsersController < ApplicationController
     unless @user
       return head :not_found
     end
+
+    @user
   end
 end
