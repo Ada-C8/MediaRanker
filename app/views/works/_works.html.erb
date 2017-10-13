@@ -1,6 +1,28 @@
+</ul>
+<% works.each do |work| %>
+<body>
+  <ul>
+    <li>
+      Votes
+      <p><%= work.votes.count %></p>
+    </li>
+    <li>
+      Title
+      <p><%= work.title %></p>
+    </li>
+    <li>
+      Created By
+      <p><%= work.creator %></p>
+    </li>
+    <li>
+      Published
+      <p><%= work.publication_year %></p>
+    </li>
+    <li>
+      Upvote
+      <p>UPVOTE BUTTON</p>
+    </li>
+  </ul>
 
-<p><%= work.votes.count %></p>
-<p><%= work.title %></p>
-<p><%= work.creator %></p>
-<p><%= work.publication_year %></p>
-<p>UPVOTE BUTTON</p>
+</body>
+<% end %>

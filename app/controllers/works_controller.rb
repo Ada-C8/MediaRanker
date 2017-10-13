@@ -10,26 +10,6 @@ class WorksController < ApplicationController
     end
   end
 
-  def new
-    @work = Work.new
-  end
-
-
-  private
-
-  def work_params
-    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
-  end
-
-
-  def destroy
-    Work.find_by(id: params[:id]).destroy
-    redirect_to root_path
-  end
-
-  def edit
-  end
-
   def index
     @works = Work.all
     @albums = Work.albums
@@ -37,9 +17,31 @@ class WorksController < ApplicationController
     @movies = Work.movies
   end
 
+  def show
+    @work = Work.find( params[:id].to_i)
+  end
+
+  def new
+    @work = Work.new
+  end
+
+  def destroy
+    Work.find_by(id: params[:id]).destroy
+    redirect_to root_path
+  end
+
+  def edit
+    @work = Work.find_by(id: params[:id])
+  end
 
   def show
     @work = Work.find( params[:id].to_i)
+  end
+
+  private
+
+  def work_params
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 
   def update

@@ -5,13 +5,13 @@
 <body>
   <main>
     <h2>Albums</h2>
-    <%= render partial: "form", locals: {works: @albums} %>
+    <%= render partial: "works", locals: {works: @albums} %>
 
     <h2>Books</h2>
-    <%= render partial: "form", locals: {works: @books} %>
+    <%= render partial: "works", locals: {works: @books} %>
 
     <h2>Movies</h2>
-    <%= render partial: "form", locals: {works: @movies} %>
+    <%= render partial: "works", locals: {works: @movies} %>
   </main>
 </body>
 
