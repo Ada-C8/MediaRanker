@@ -5,7 +5,8 @@
       <%# f.text_field :category %>
       <%# collection_select(:user, :user_id, User.all, :id, :name) %>
       <!-- take all the Users, display their name, and send back the id. -->
-      <%= f.collection_select(:category, Work.all, :category, :category )%>
+      <%# f.collection_select(:category, Work.all, :category, :category )%>
+      <%= f.select :category, [['album'], ['book'], ['movie']] %>
     </li>
     <li>
       <%= f.label :title%>
