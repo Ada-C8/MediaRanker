@@ -22,7 +22,6 @@ class UsersController < ApplicationController
 
   # no need for an edit, update, or destroy actions for user controller!
 
-
 private
   def find_user_by_params_id
     @user = User.find_by(id: params[:id])

@@ -50,6 +50,7 @@ describe UsersController do
       must_redirect_to users_path
       User.count.must_equal user_count + 1
     end
+    
     it "returns bad_request status when the user date is invalid" do
       # # Arrange
       User.new(bad_user_data[:user]).wont_be :valid?
@@ -61,9 +62,7 @@ describe UsersController do
       User.count.must_equal user_count
     end
   end
-  # # Arrange
-  # # Act
-  # # Assert
+
   describe "show" do
     it "returns success when given a valid user ID" do
       get user_path(user_id)
