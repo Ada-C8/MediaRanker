@@ -16,18 +16,18 @@
 
 /*********************************
 ##############  GENERAL ############*/
-@media print, screen and (min-width: 64em)
+@media print, screen and (min-width: 64em){
 .large-4 {
   width: 33.33333%;
 }
 .small-12 {
   width: 100%;
-}
-@media print, screen and (min-width: 40em)
+}}
+@media print, screen and (min-width: 40em){
 .columns {
   padding-right: 0.9375rem;
   padding-left: 0.9375rem;
-}
+}}
 .columns {
   float: left;
 }
