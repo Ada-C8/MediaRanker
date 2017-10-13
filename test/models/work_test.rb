@@ -38,4 +38,8 @@ describe Work do
     book2.save
     book2.valid?.must_equal true
   end
+
+  it "has relations" do
+    book.upvotes[0].id.must_equal upvotes(:two).id
+  end
 end
