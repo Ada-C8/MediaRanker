@@ -70,7 +70,6 @@ class WorksController < ApplicationController
     unless @work
       head :not_found
     end
-
     return @work
   end
 

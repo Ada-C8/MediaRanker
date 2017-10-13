@@ -115,12 +115,15 @@ describe Work do
 
 
 #Not sure how to test this yet without fully implementing votes
-    # it "first element is the one with most number of votes" do
-    #   user1 = User.new(name: "Bianca")
-    #   work = Work.new(title: "Vote Test", category: "album", creator: "No name")
-    #   vote1 = Vote.new(user_id: user1.id, work_id: work.id)
-    #  Work.top_ten("album").first.must_equal work
-    # end
+    it "first element is the one with most number of votes" do
+      work = Work.create!(title: "Vote Test", category: "album", creator: "No name")
+      10.times do
+        name = rand(0..200).to_s
+        user = User.create!(name: name)
+        Vote.create!(user: user, work: work)
+      end
+     Work.top_ten("album").first.must_equal work
+    end
   end
 
   ## WRITE TEST FOR self.top after making votes ##
