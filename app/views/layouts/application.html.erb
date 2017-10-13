@@ -33,10 +33,10 @@
         <ul class='small-4 columns '>
           <% if session[:logged_in_user] %>
           <li>
-            <%= link_to "Logout", logout_path, method: :post %>
+            <%= link_to "Logged in as #{User.find(session[:logged_in_user]).name}", user_path(User.find(session[:logged_in_user]))  %>
           </li>
           <li>
-            <%= link_to "Logged in as #{User.find(session[:logged_in_user]).name}", user_path(User.find(session[:logged_in_user]))  %>
+            <%= link_to "Logout", logout_path, method: :post %>
           </li>
           <%else%>
           <li>

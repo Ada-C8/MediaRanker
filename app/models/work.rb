@@ -24,4 +24,8 @@ class Work < ApplicationRecord
   def self.top_10(category)
     return popular(category: category)[0..9]
   end
+
+  # def vote_by(user)
+  #   return Work.where(user_id: user.id).votes
+  # end
 end
