@@ -27,12 +27,12 @@ describe UsersController do
 
   describe "#create" do
     let(:user_params) { { name: "New User" } }
-    
+
     it "should create a new user" do
       post create_user_path, params: { user: user_params }
 
       must_respond_with :redirect
-      must_redirect_to users_path
+      must_redirect_to root_path
     end
 
     it "should increase user count" do

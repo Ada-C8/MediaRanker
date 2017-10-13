@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.order('created_at ASC')
   end
 
   def show
@@ -17,8 +17,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:success] = "Successfully saved user"
-      redirect_to users_path
+      flash[:success] = "Successfully created new user #{@user.name} with ID #{@user.id}"
+      redirect_to root_path
     else
       render :new
     end
