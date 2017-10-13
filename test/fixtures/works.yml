@@ -1,15 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+pride:
+  category: book
+  title: Pride and Prejudice
+  creator: Jane Austen
+  publication_year: 1813
+  description: Mr. Bingley lol
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+bonito:
+  category: album
+  title: Bonito Generation
+  creator: Kero Kero Bonito
+  publication_year: 2016
+  description: Hold ur camera high..and click! exercise your right to picture thIS but don't forget to SHow everybody you'veeverknown
+
+anti:
+  category: album
+  title: Anti
+  creator: Rihanna
+  publication_year: 2016
+  description: /#fenty
+
+lotr:
+  category: movie
+  title: Lord of the Rings: The Two Towers
+  creator: Peter Jackson
+  publication_year: 2003
+  description: empty string
