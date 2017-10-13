@@ -3,7 +3,7 @@ require "test_helper"
 describe User do
   describe "validations" do
     it "is valid with a name" do
-      u = User.new(name: "bob")
+      u = users(:cheetara)
       result = u.valid?
       result.must_equal true
     end
@@ -18,13 +18,8 @@ describe User do
 
   describe "relations" do
     it "must have votes" do
-      u = User.new(name: "bob")
+      u = users(:cheetara)
       u.votes.count.must_equal 0
     end
-
   end
-
-  # describe "custom method" do
-  #
-  # end
 end
