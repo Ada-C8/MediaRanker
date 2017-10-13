@@ -31,25 +31,26 @@
         </div>
       </nav>
     </header>
-    <section class="flash-notice <%= flash[:status] %>">
-      <% if flash[:notice].present? %>
-        <p><%= flash[:notice] %></p>
-      <% end %>
-        <% if flash[:details].present? %>
-          <ul>
-            <% flash[:details].each do |field, problems| %>
-              <% problems.each do |problem| %>
-              <li><strong>
-                <%= field %>:
-              </strong>
-              <%= problem %>
-              </li>
-              <% end %>
-          <% end %>
-          </ul>
+    <% if !flash.empty? %>
+      <section class="flash-notice <%= flash[:status] %>">
+        <% if flash[:notice].present? %>
+          <p><%= flash[:notice] %></p>
         <% end %>
-
-    </section>
+          <% if flash[:details].present? %>
+            <ul>
+              <% flash[:details].each do |field, problems| %>
+                <% problems.each do |problem| %>
+                <li><strong>
+                  <%= field %>:
+                </strong>
+                <%= problem %>
+                </li>
+                <% end %>
+            <% end %>
+            </ul>
+          <% end %>
+      </section>
+    <% end %>  
     <%= yield %>
   </body>
 </html>
