@@ -6,18 +6,27 @@
     </p>
   </section>
 
-  <section class="top-ten">
-    <h3>Top Movies</h3>
-    <%= render partial: 'top_ten', locals: {media_type: @movies} %>
+  <section>
+    <div>
+      <h3>Media Spotlight: <%=link_to @top_work.title, work_path(@top_work)%> by <%=@top_work.creator%> </h3>
+      <p>
+        <%= @top_work.vote.count %> votes - <%=@top_work.description %>
+      </p>
+    </div>
   </section>
   <section class="top-ten">
+    <h3>Top Movies</h3>
+    <%= render partial: 'top_ten', locals: {collection_of_media: @movies} %>
+  </section>
+
+  <section class="top-ten">
     <h3>Top Books</h3>
-    <%= render partial: 'top_ten', locals: {media_type: @books} %>
+    <%= render partial: 'top_ten', locals: {collection_of_media: @books} %>
   </section>
   <section class="top-ten">
     <h3>Top Albums</h3>
-    <%= render partial: 'top_ten', locals: {media_type: @albums} %>
+    <%= render partial: 'top_ten', locals: {collection_of_media: @albums} %>
   </section>
 
-  <%= link_to "Back to Media List", root_path,   class:  "link"%>
+
 </main>

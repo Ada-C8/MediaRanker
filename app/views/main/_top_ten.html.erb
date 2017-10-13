@@ -1,15 +1,12 @@
 <ul>
-  <% index = 0 %>
-  <% while media_type[index]%>
+  <% collection_of_media.each do |work|%>
   <li>
-    <%work_id = media_type[index][0]%>
     <h4>
-      <%=Work.all.find_by(id: work_id).title%>
+      <%=work.title%>
     </h4>
     <p>
-      <%=media_type[index][1]%>
+      <%=work.vote.count%>
     </p>
   </li>
-  <%index +=1 %>
   <%end %>
 </ul>
