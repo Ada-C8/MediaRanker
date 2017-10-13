@@ -1,10 +1,10 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
   def index
     @works = Work.get_works
   end
 
   def show
-    @work = Work.find_by(id: params[:id].to_i)
     unless @work
       render_404
     end
@@ -24,31 +24,30 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id].to_i)
-
     unless @work
       redirect_to root_path
     end
   end
 
   def update
-    @work = Work.find_by(id: params[:id].to_i)
-     redirect_to work_path unless @work
-
-     if @work.update_attributes work_params
-       redirect_to work_path
-     else
-       render :edit, status: 500
-     end
+   redirect_to work_path unless @work
+   if @work.update_attributes work_params
+     redirect_to work_path
+   else
+     render :edit, status: 500
+   end
   end
 
   def destroy
-    work = Work.find_by(id: params[:id])
-    work.destroy if work
+    @work.destroy if work
     redirect_to root_path
   end
 
   private
+  def find_work
+    @work = Work.find_by(id: params[:id].to_i)
+  end
+
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end

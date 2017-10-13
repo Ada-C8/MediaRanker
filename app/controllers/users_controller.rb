@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:login]
   def index
     @users = User.all
   end
@@ -14,7 +15,10 @@ class UsersController < ApplicationController
   end
 
   def login
-    if session[:user_id] == nil
+    if logged_in?
+      flash[:error] = "You are already logged in as #{User.find_by(id: session[:user_id].to_i).username}"
+      redirect_to root_path
+    else
       user = User.find_by(username: params[:username])
       if user
         session[:user_id] = user.id
@@ -31,17 +35,19 @@ class UsersController < ApplicationController
           render :login_form
         end
       end
-    else
-      flash[:error] = "You are already logged in as #{User.find_by(id: session[:user_id].to_i).username}"
-      redirect_to root_path
     end
   end
 
   def logout
-    if session[:user_id]
+    if logged_in?
       session[:user_id] = nil
       flash[:success] = "Successfully logged out"
       redirect_to root_path
     end
+  end
+
+  private
+  def logged_in?
+    return session[:user_id] != nil
   end
 end

@@ -9,9 +9,9 @@
   </head>
 
   <body>
+    <h2><%= link_to 'Media Ranker', root_path %></h2>
+    <small>Ranking the Best of Everything</small>
     <nav>
-      <h2><%= link_to 'Media Ranker', root_path %></h2>
-      <small>Ranking the Best of Everything</small>
       <%= link_to "View top media", root_path, method: :get %>
       <%= link_to "View all media", works_path, method: :get %>
       <%= link_to "Add a new work", new_work_path, method: :get %>
