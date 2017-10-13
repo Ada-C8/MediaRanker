@@ -7,7 +7,7 @@ class VotesController < ApplicationController
     if vote.save
       flash[:message] = "Successfully upvoted!"
     else
-      flash[:message] = "The vote was not valid"
+      flash[:message] = "Hey! You've already voted for that!"
     end
     redirect_to works_path
   end
