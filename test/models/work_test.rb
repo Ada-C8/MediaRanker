@@ -52,7 +52,7 @@ describe Work do
     # it "calculates total votes" do
     #   test_user = User.create!(name: "Shel Silverstein")
     #   test_work = Work.create!(title: "Amelia Badelia", category: "book")
-    #   test_vote = Vote.create!(user_id: test_user.user_id, work_id: test_work.work_id)
+    #   test  _vote = Vote.create!(user_id: test_user.user_id, work_id: test_work.work_id)
     #   puts "vote1: #{vote1}, #{vote1.user_id}"
     #   puts "----------"
     #   test_vote.valid?.must_equal true
