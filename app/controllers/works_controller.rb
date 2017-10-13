@@ -13,8 +13,7 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def show ; end
     # @votes = Vote.where(work_id: params[:id])
-
-
+    
   def new
     @work = Work.new
   end
@@ -23,14 +22,9 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
     @work = Work.new(
     work_params
     )
-    if @work.save
-      flash[:status] = :success
-      flash[:message] = "Successfully created work #{@work.id}"
+    if save_and_flash(@work)
       redirect_to works_path
     else
-      flash[:status] = :failure
-      flash[:message] = "Failed to created work #{@work.id}"
-      flash[:details] = @work.errors.messages
       render :new, status: :bad_request
     end
   end
@@ -40,7 +34,7 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
   def update
     if find_work
       @work.update_attributes(work_params)
-      if @work.save
+      if save_and_flash(@work)
         redirect_to work_path(@work)
         return
       else
@@ -56,12 +50,19 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
     if session[:user_id]
       current_user = User.find_by(id: session[:user_id])
     end
-    if find_work
+    if current_user != @work.creator
+      flash[:status] = :failure
+      flash[:message] = "Only the creator can destroy it!"
+      redirect_to works_path
+      return
+    end
+
+    # if find_work
       @work.destroy
       flash[:status] = :success
       flash[:message] = "Successfully deleted!"
       redirect_to works_path
-    end
+    # end
   end
 
   private
@@ -74,8 +75,8 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
     @work = Work.find_by(id: params[:id])
     unless @work
       head :not_found
-    else
-      return @work
+    # else
+    #   return @work
     end
   end
 

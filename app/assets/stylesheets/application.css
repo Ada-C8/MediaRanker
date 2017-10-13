@@ -83,6 +83,9 @@ a, h3 {
   margin: 0px auto 75px auto;
   color: #EEEEEE;
 }
+.media-table .upvote.button {
+    margin: 0;
+  }
 /*********************************
 ##############  MAIN PAGE COLUMNS ############*/
 .top-ten h3 {
