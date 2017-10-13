@@ -2,8 +2,10 @@
 <html>
   <head>
     <title>MediaRanker</title>
+
     <%= csrf_meta_tags %>
 
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -19,8 +21,15 @@
         <%= link_to("View all media", works_path) %>
         <%= link_to("Add a new work", new_work_path) %>
         <%= link_to("View all users", users_path) %>
-        <!-- <%= link_to("Logged in as " , root_path) %>
-        <%= link_to("Log Out", logout_path, method: :post) %> -->
+        <div>
+          <% if session[:user_id] %>
+            <%= link_to("Logged in as #{@user_in_session.name}" , root_path) %>
+            <%= link_to('Log Out', logout_path, method: :post) %>
+          <% else %>
+            <%= link_to('Log In', login_path)  %>
+          <% end %>
+
+        </div>
       </nav>
     </header>
     <%= yield %>
