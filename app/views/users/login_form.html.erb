@@ -2,7 +2,7 @@
 
 <%= form_tag do %>
   <%= label_tag "Username" %>
-  <%= text_field :user, :username %>
+  <%= text_field_tag :name, params[:name], required: true %>
   <%= submit_tag "Log in" %>
 <% end %>
 <article>
