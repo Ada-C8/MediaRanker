@@ -24,7 +24,7 @@ describe Work do
 
   end
 
-  it "requires a title " do # why is there only one test?
+  it "requires a title invalid without" do # why is there only one test?
     work = Work.new
     is_valid = work.valid?
     is_valid.must_equal false #why is it false, copied from the books example
