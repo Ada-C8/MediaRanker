@@ -22,12 +22,14 @@ describe UsersController do
   end
 
   describe "show" do
-  end
-
-  describe "new" do
-  end
-
-  describe "create" do
+    it "sucessfully shows a user" do
+      get user_path(User.first.id)
+      must_respond_with :success
+    end
+    it "does not show a user that does not exist" do
+      get user_path(User.last.id + 1)
+      must_respond_with :error
+    end
   end
 
 

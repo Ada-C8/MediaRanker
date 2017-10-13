@@ -27,5 +27,14 @@ describe VotesController do
       # b1.wont_be :valid?
     end
 
+    it "will not allow a user to vote unless logged in" do
+      work_id = Work.first.id
+      vote_count = Vote.count
+      # implicitly not logged in 
+      post create_vote_path(work_id)
+
+      Vote.count.must_equal vote_count
+    end
+
   end
 end
