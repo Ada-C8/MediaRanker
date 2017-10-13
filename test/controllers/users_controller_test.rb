@@ -29,20 +29,4 @@ describe UsersController do
     end
   end
 
-  # describe "login" do
-  #   it "returns success for returning user" do
-  #     name = User.first.name
-  #     user = User.find_by(name: name)
-  #
-  #     post login_path
-  #
-  #     must_respond_with :redirect
-  #     must_redirect_to works_path
-  #   end
-  #
-  # end
-
-  # describe "logout" do
-  #
-  # end
 end
