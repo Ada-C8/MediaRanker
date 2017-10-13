@@ -1,0 +1,23 @@
+<h2>This is the works index page</h2>
+
+<%#took out the sort_by for passengers as it was comparing a could not compare nil to string%>
+
+<div class = 'table_list'>
+  <h2>Movies</h2>
+  <% @cat = "Movie" %>
+    <%= render partial: 'table' %>
+</div>
+
+<div class = "table_list">
+
+<h2>Music</h2>
+  <% @cat = "Music" %>
+    <%= render partial: 'table' %>
+</div>
+
+<div class = "table_list">
+
+<h2>Books</h2>
+  <% @cat = "Book" %>
+    <%= render partial: 'table' %>
+</div>

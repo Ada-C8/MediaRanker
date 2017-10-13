@@ -1,0 +1,30 @@
+
+<div class = "form">
+  <ul>
+   <%= form_for @work do |f| %>
+   <li>
+     <%= f.label "Category:" %>
+     <%= f.select :category, ["Music", "Book", "Movie"]%>
+   </li>
+   <li>
+     <%= f.label "Title:"%>
+     <%= f.text_field :title %>
+   </li>
+   <li>
+     <%= f.label "Creator:" %>
+     <%= f.text_field :creator %>
+   </li>
+   <li>
+     <%= f.label "Publication Year:" %>
+     <%= f.text_field :pub_year %>
+   </li>
+   <li>
+     <%= f.label "Description:" %>
+     <%= f.text_field :description %>
+   </li>
+   <li>
+     <%= f.submit button_text %>
+   </li>
+<% end %>
+  </ul>
+</div>

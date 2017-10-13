@@ -1,0 +1,33 @@
+<table>
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
+  <tr>
+      <%works = Work.all%>
+      <% works.each do |work| %>
+      <% if work.category == @cat %>
+      <th>
+      Votes!
+    </th>
+    <th>
+      <%= work.title %>
+    </th>
+    <th>
+      <%=work.creator%>
+    </th>
+    <th>
+      <%=work.pub_year %>
+    </th>
+    <th>
+      This is where the upvote button goes!
+    </tr>
+    <%end%>
+
+    <%end%>
+
+
+</table>
