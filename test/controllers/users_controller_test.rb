@@ -2,6 +2,24 @@ require "test_helper"
 
 describe UsersController do
 
+  before do
+    @valid_user_data = {
+      user: {
+        name: "Mello Joy",
+        joined: Date.today
+      }
+    }
+
+    User.new(@valid_user_data[:user]).must_be :valid?
+
+    @invalid_user_data = {
+      user: {
+        name: nil,
+        joined: Date.today
+      }
+    }
+  end
+
   describe "index" do
     it "returns a success status for all users" do
       get users_path
@@ -21,6 +39,45 @@ describe UsersController do
       get user_path(invalid_user_id)
       must_respond_with :not_found
     end
+  end
 
+  describe "login_form" do
+    it "returns a success status" do
+      get login_path
+      must_respond_with :success
+    end
+  end
+
+  describe "login" do
+    it "returns a redirect status when user data is valid (anything but blank)" do
+      post login_path, params: @valid_user_data
+      must_respond_with :redirect
+      must_redirect_to root_path
+    end
+
+    it "saves a new user to the database when given valid user data" do
+      user_count = User.count
+      post login_path, params: @valid_user_data
+      User.count.must_equal user_count + 1
+    end
+
+    it "sets a session variable to be equal to be an Integer (the new user ID), a flash variable to be equal to :success, and a flash message indicating that the user is logged in" do
+      post login_path, params: @valid_user_data
+      session[:logged_in_user].must_be_instance_of Integer
+      flash[:status].must_equal :success
+      flash[:message].must_equal  "#{@valid_user_data[:user][:name]} is successfully logged in"
+    end
+
+    it "returns a redirect status to root path if given invalid user data (blank name field)" do
+      post login_path, params: @invalid_user_data
+      must_respond_with :redirect
+      must_redirect_to root_path
+    end
+
+    it "sets a flash variable to be equal to :failure and the message to indicate to the user to enter a username, if given invalid user data" do
+      post login_path, params: @invalid_user_data
+      flash[:status].must_equal :failure
+      flash[:message].must_equal  "Please enter a username"
+    end
   end
 end
