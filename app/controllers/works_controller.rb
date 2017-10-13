@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :delete]
+
   def index
     @books = Work.where(category: "book")
     @albums = Work.where(category: "album")
@@ -25,5 +27,11 @@ class WorksController < ApplicationController
   end
 
   def home
+  end
+
+  private
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
   end
 end
