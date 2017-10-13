@@ -4,7 +4,7 @@
     <title>MediaRanker</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -18,12 +18,37 @@
         <%= link_to "View all media", works_path, class: "small-6 large-2 columns" %>
         <%= link_to "Add a new work", new_work_path, class: "small-6 large-2 columns" %>
         <%= link_to "View all users", users_path, class: "small-6 large-2 columns" %>
-        <div>
-          <%= link_to "Log In", root_path %>
-        </div>
+
+        <%# When session is logged in, will add a Log Out button to the navigation %>
+        <% if session[:logged_in_session] %>
+          <div>
+            <%= link_to "Logged in as #{User.find(session[:logged_in_session]).name}", user_path(session[:logged_in_session]) %>
+          </div>
+
+          <div>
+            <%= link_to "Log Out", logout_path, method: :post %>
+          </div>
+        <% end %>
+
+        <% if session[:logged_in_session] == nil %>
+          <div>
+            <%= link_to "Log In", login_path %>
+          </div>
+        <% end %>
       </nav>
 
     </header>
+
+    <%# When session is logged in, will flash success %>
+    <% if session[:logged_in_session] %>
+      <section>
+        <h3><%= flash[:success] %></h3>
+      </section>
+    <% else %>
+      <section>
+        <h3><%= flash[:logged_out] %></h3>
+      </section>
+    <% end %>
 
     <%= yield %>
 
