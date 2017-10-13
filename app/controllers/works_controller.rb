@@ -68,7 +68,6 @@ class WorksController < ApplicationController
   def find_work_by_id
     @work = Work.find_by(id: params[:id])
     unless @work
-      puts ">>>>>>>>> DPR: sending back not_found headers"
       head :not_found
     end
     return @work

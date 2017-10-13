@@ -1,5 +1,5 @@
 
-<% work = Work.sort_by_votes.first %>
+<% work = Work.top %>
 <h3>
 <%= "Media Spotlight: #{work.title} by #{work.creator}" %>
 <p> <%= "Votes: #{work.votes.count}" %> </p>
