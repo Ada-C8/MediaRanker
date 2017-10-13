@@ -1,0 +1,24 @@
+<section class="row-spotlight">
+  <div>
+    <h3>
+      <span class="media-spotlight-header">Media Spotlight: <%= @top.title %> by: <%= @top.creator %></span>
+    </h3>
+    <p>
+      <%= @top.votes.count %> votes - <%= @top.description %>
+    </p>
+  </div>
+</section>
+<hr class="root-hr">
+<%# TODO: iterate though @works to print the top 10 highest ranking works of each category in the ul below%>
+<section class="top-ten columns large-4 small-12">
+  <h3>Top movies</h3>
+  <%= render partial: "top_ten_table", locals: {category: @movies} %>
+</section>
+<section class="top-ten columns large-4 small-12">
+  <h3>Top Books</h3>
+  <%= render partial: "top_ten_table", locals: {category: @books} %>
+</section>
+<section class="top-ten columns large-4 small-12">
+  <h3>Top Albums</h3>
+  <%= render partial: "top_ten_table", locals: {category: @albums} %>
+</section>

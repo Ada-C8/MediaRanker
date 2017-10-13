@@ -1,0 +1,19 @@
+<% if category.length == 0 %>
+  <p>
+    No data 
+  </p>
+<% else %>
+<ul>
+  <% category.each do |work| %>
+  <li>
+    <h4>
+      <%= link_to work.title, work_path(work) %>
+      <small>by: <%= work.creator %></small>
+    </h4>
+    <p>
+      <%= work.votes.count %>
+    </p>
+  </li>
+    <% end %>
+</ul>
+<% end %>
