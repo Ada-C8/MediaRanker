@@ -1,15 +1,20 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+book:
+  category: book
+  title: Born in Sin
+  creator: Kinley MacGregor
+  publication_year: 1989
+  description: My tattoo is based on this book!
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyText
+movie:
+  category: movie
+  title: A Beautiful Mind
+  creator: Someone
+  publication_year: 1999
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyText
+
+album:
+  category: album
+  title: Red
+  creator: Lindsey
+  publication_year: 1952
