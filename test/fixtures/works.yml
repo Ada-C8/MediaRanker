@@ -21,3 +21,7 @@ poodr:
   category: book
   title: Practical Object Oriented Design in Ruby
   creator: Sandy Metz
+
+no_creator:
+  category: movie
+  title: I am a work without a creator
