@@ -90,4 +90,15 @@ describe UsersController do
       User.count.must_equal (before_count + 1)
     end
   end
+
+  describe 'logout' do
+    it 'logs the user out and redirects to root' do
+      post login_path(existing_params)
+
+      get logout_path
+
+      session[:user].must_be :nil?
+      must_respond_with :found
+    end
+  end
 end
