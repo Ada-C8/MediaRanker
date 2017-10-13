@@ -1,6 +1,6 @@
 require "test_helper"
 
-describe "work" do
+describe Work do
   describe "validations"do
 
     it "can be created with all fields" do
@@ -31,8 +31,8 @@ describe "work" do
     end
 
     it "will allow a description less than 500 characters" do
-      # work = works(:poodr)
-      # work.must_be :valid?
+      work = works(:poodr)
+      work.must_be :valid?
       a = Work.new(title: "Test Title", category: "book", description: "T", creator: "B N")
       a.must_be :valid?
     end
@@ -93,22 +93,26 @@ describe "work" do
       Work.top_ten_albums.count.must_equal 3
     end
 
-    #This test passses but it breaks other tests
-    # it "will not return more than 10 items" do
-    #   title = "Test"
-    #   category = "album"
-    #   creator = "No one"
-    #   10.times do
-    #     Work.create!(title: title, category: category, creator: creator)
-    #   end
-    #   Work.top_ten_albums.count.must_equal 10
-    # end
+    it "will not return more than 10 items" do
+      title = "Test"
+      category = "album"
+      creator = "No one"
+      10.times do
+        Work.create!(title: title, category: category, creator: creator)
+      end
+      Work.top_ten_albums.count.must_equal 10
+    end
   end
 
   describe "self.top_ten" do
     it "returns the correct number of elements" do
       Work.top_ten("book").count.must_equal 4
     end
+
+    #write test to see if they are in correct order once have votes
+
+
+
 
 #Not sure how to test this yet without fully implementing votes
     # it "first element is the one with most number of votes" do
@@ -118,4 +122,6 @@ describe "work" do
     #  Work.top_ten("album").first.must_equal work
     # end
   end
+
+  ## WRITE TEST FOR self.top after making votes ##
 end

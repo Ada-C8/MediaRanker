@@ -12,6 +12,14 @@ class Work < ApplicationRecord
   #   return sort_by_votes
   # end
 
+  def self.top
+    top = all.sort_by do |work|
+      work.votes.count
+    end
+    top = top.reverse
+      return top.first
+  end
+
   def self.all_albums
     return Work.where(category: "album")
   end
@@ -46,6 +54,7 @@ class Work < ApplicationRecord
     top_ten = top_ten.sort_by do |work|
       work.votes.count
     end
+    top_ten = top_ten.reverse
     return top_ten[0...10]
   end
 

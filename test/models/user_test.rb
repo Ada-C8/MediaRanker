@@ -19,4 +19,8 @@ describe User do
       u.votes.count.must_equal 0
     end
   end
+
+  it "can access fixtures" do
+    users(:tanja).wont_be_nil
+  end
 end
