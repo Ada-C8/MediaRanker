@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       session[:logged_in_user] = user_id
       redirect_to root_path
     else
-      # head :not_found
+      head :not_found
       # flash[:status] = :failure
       # flash[:message] = "No user with #{name}"
       # render :login_form

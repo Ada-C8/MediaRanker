@@ -36,7 +36,20 @@
       </nav>
     </header>
 
-    <section class="flash">
+    <section class="flash <%= flash[:status]%>">
+      <p><%= flash[:message]%></p>
+      <ul>
+        <% flash[:details].each do |field, problems| %>
+          <% problems.each do |problem| %>
+          <li>
+            <strong>
+              <%= field %>:
+            </strong>
+            <%= problem %>
+          </li>
+          <% end %>
+        <% end %>
+      </ul>
       <% flash.each do |name, message| %>
         <div class="<%= name %>"><%= message %></div>
       <% end %>
@@ -45,21 +58,3 @@
     <%= yield %>
   </body>
 </html>
-<!--
-if session[:logged_in_author]
-p - logged in as
-Author.find(session[:logged_in_author]).name
-else
-not logged in -->
-
-
-<!-- section class="flash <%# flash[:status]%>" -->
-<!-- flash[:message]
-if flash[:details]
-flash[:details].each do |field,problems|
-problems.each do |problem|
-field
-problem
-end
-end
-end -->
