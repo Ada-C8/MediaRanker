@@ -8,12 +8,18 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
-    <h1><%= link_to "Media Ranker", '/', method: :get %> | Ranking the Best of Everything</h1>
-    <%= link_to "View top media", '/', method: :get %>
-    <%= link_to "View all media", works_path, method: :get %>
-    <%= link_to "Add a new work", new_work_path, method: :get %>
-    <%= link_to "View all users", users_path, method: :get %>
+  <header >
+    <h1 class="row"><%= link_to "Media Ranker", '/', method: :get %> | Ranking the Best of Everything</h1>
+    <nav class="row">
+      <div class="large-8 small-12 columns">
+        <%= link_to "View top media", '/', method: :get %>
+        <%= link_to "View all media", works_path, method: :get %>
+        <%= link_to "Add a new work", new_work_path, method: :get%>
+        <%= link_to "View all users", users_path, method: :get%>
+      </div>
+
+
+    </nav>
   </header>
 
   <body>

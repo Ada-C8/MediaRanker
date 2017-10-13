@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ nav div {
+   border-style: solid;
+   border-color: purple;
+   border-width: thin;
+ }
