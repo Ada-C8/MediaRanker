@@ -21,6 +21,7 @@
   --dark: #00796B;
   --red: #FF5722;
   --char: #424242;
+  --midg: #8a8a8a;
   --grey: slategrey;
   --silv: #e6e6e6;
   --rust: #cc4b37;
@@ -28,18 +29,6 @@
 
 * {
   /*border: 1px solid lawngreen;*/
-}
-
-.columns {
-  /*padding: .5rem;*/
-}
-
-.success {
-  color: darkgreen;
-}
-
-.failure {
-  color: crimson;
 }
 
 .right {
@@ -152,7 +141,15 @@ header.header {
   background-color: var(--silv);
   border-radius: .25rem;
   margin-top: 2rem;
-  padding: 1.25rem 1.5rem;
+  padding: 1.25rem 1.5rem 1.75rem 1.5rem;
+}
+
+.success {
+  color: var(--midg);
+}
+
+.failure {
+  color: var(--rust);
 }
 
 /*************/

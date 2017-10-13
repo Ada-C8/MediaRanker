@@ -71,7 +71,7 @@ class WorksController < ApplicationController
 
     if result
       flash[:status] = :success
-      flash[:message] = "Voted for #{vote.work.title}!"
+      flash[:message] = "Voted for #{vote.work.title}."
     else
       flash[:status] = :failure
       flash[:message] = "Could not vote for #{vote.work.title}:"
