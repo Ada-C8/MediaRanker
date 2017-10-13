@@ -21,4 +21,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  # get "login", to: "user#login_form", as: "login"
+  # post "login", to: "users#login"
+  # get "logout", to: "users#logout", as: "logout"
+
 end

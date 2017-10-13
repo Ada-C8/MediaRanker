@@ -1,13 +1,13 @@
 class WorksController < ApplicationController
+  before_action :find_work_by_params_id, only: [:show, :edit, :update, :destroy]
+
   def index
     @movies = Work.where(category: "movie")
     @books = Work.where(category: "book")
     @albums = Work.where(category: "album")
   end
 
-  def show
-    find_work_by_params_id
-  end
+  def show ; end
 
   def new
     @work = Work.new
@@ -22,30 +22,27 @@ class WorksController < ApplicationController
     end
   end
 
-  def edit
-    find_work_by_params_id
-  end
+  def edit ; end
 
   def update
-    if find_work_by_params_id
-      result = @work.update_attributes(work_params)
-
-      if result
-        redirect_to work_path(params[:id])
-      else
-        render :edit, status: :bad_request
-      end
+    # if find_work_by_params_id
+    @work.update_attributes(work_params)
+    if save_and_flash(@work)
+      redirect_to work_path(@work)
+    else
+      render :edit, status: :bad_request
+      return
     end
   end
 
   def destroy
-    if find_work_by_params_id
-      @work.destroy
-      redirect_to works_path
-    end
+    # if find_work_by_params_id
+    @work.destroy
+    redirect_to works_path
+    # end
   end
 
-  private
+private
 
   def work_params
     return params.require(:work).permit(:title, :creator, :publication_year, :category, :description)
@@ -57,6 +54,8 @@ class WorksController < ApplicationController
     unless @work
       head :not_found
     end
-    return @work
+    # Don't need a return b/c we're no longer calling this directly
+    # and if there's an error we won't even get into our controller action
+    # return @work
   end
 end
