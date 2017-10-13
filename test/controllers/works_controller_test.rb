@@ -14,7 +14,6 @@ describe WorksController do
       must_respond_with :success
     end
 
-  #WHY is this not passing?
     it "returns an error message when given a bogus work id" do
       get work_path(Work.last.id + 1)
       must_respond_with :not_found
