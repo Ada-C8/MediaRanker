@@ -55,12 +55,6 @@ describe WorksController do
 
     it "returns bad_request status when the work data is invalid" do
       # # Arrange
-      bad_work_data = {
-        work: {
-          category: "",
-          title: "Shawshank Redemption"
-        }
-      }
       # test that work is invalid
       Work.new(bad_work_data[:work]).wont_be :valid?
       work_count = Work.count
@@ -73,7 +67,7 @@ describe WorksController do
   end
 
   describe "show" do
-    it "returns success when given a valid work_id" do
+    it "returns success when given a valid work ID" do
       # # Arrange
       # # Act
       get work_path(work_id)
