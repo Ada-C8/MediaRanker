@@ -4,6 +4,7 @@ class Work < ApplicationRecord
 
 
   validates :title, presence: true, uniqueness: {scope: :category}
+  validate :legal_category
 
   LEGAL_CATEGORIES = ["album", "book", "movie"]
 
@@ -17,5 +18,10 @@ class Work < ApplicationRecord
 
   def self.best_10(category)
     Work.where(category: category).sort_by{|w| -w.votes.count}[0...10]
+  end
+
+  private
+  def legal_category
+    errors.add(:category, 'is not a legal category') unless LEGAL_CATEGORIES.include? category
   end
 end

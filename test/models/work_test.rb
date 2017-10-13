@@ -1,37 +1,42 @@
-require "test_helper"
+require 'test_helper'
 
 
 describe Work do
   let(:w) { works(:bladerunner) }
-  # it "must be valid" do
-  #   value(work).must_be :valid?
-  # end
-
 
   describe 'validations' do
-    it "can be created with all validations" do
+    it 'can be created with all validations' do
       w.must_be :valid?
     end
 
-    describe "titles" do
-      it "requires a title" do
+    describe 'titles' do
+      it 'requires a title' do
         w = Work.new
 
         w.wont_be :valid?
         w.errors.messages.must_include :title
       end
 
-      it "requires unique title" do
-        w = Work.new(title:"Blade Runner", category: "movie")
+      it 'requires unique title' do
+        w = Work.new(title:'Blade Runner', category: 'movie')
 
         w.wont_be :valid?
         w.errors.messages.must_include :title
       end
 
-      it "allows for title uniqueness within category" do
-        x = Work.new(title:"Blade Runner", category: "book")
+      it 'allows for title uniqueness within category' do
+        x = Work.new(title:'Blade Runner', category: 'book')
 
         x.must_be :valid?
+      end
+    end
+
+    describe 'categories' do
+      it 'requires a legal category' do
+        w = Work.new(title: 'Uncharted', category: 'video game')
+
+        w.wont_be :valid?
+        w.errors.messages.must_include :category
       end
     end
   end
