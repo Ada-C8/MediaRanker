@@ -16,16 +16,20 @@ describe WorksController do
   #   value(response).must_be :success?
   # end
   #
-  # it "should get new" do
-  #   get works_new_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get create" do
-  #   get works_create_url
-  #   value(response).must_be :success?
-  # end
-  #
+  it "should get new form" do
+    get new_work_path
+    must_respond_with :success
+  end
+
+  it "should post a new work" do
+    proc {
+      post works_path, params: { work: {title: "Pride and Prejudice", category: "movie", creator: "Joe Wright", publication_year: 2005 } }
+    }.must_change 'Work.count', 1
+
+    must_respond_with :redirect
+    must_redirect_to works_path
+  end
+
   # it "should get edit" do
   #   get works_edit_url
   #   value(response).must_be :success?
