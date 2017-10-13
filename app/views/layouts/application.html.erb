@@ -9,6 +9,18 @@
   </head>
 
   <body>
+    <header>
+      <h1>Media Ranker Ranking the Best of Everything</h1>
+      <nav>
+        <%= link_to("View Top Media") %>
+
+        <%= link_to("View All Media", works_path) %>
+        <%= link_to "Add New Work", new_work_path %>
+
+        <%= link_to("View All Users",users_path) %>
+        <%= link_to("Log In") %>
+      </nav>
+    </header>
     <section class="flash">
       <% flash.each do |name, message| %>
         <div class="<%= name %>"><%= message %></div>
