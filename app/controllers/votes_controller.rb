@@ -8,7 +8,7 @@ class VotesController < ApplicationController
         flash[:error] = "The vote was not valid"
       end
     else
-      flash[:error] = "Please log in before voting"
+      flash[:error] = "You must log in to do that"
     end
     redirect_back(fallback_location: works_path)
   end

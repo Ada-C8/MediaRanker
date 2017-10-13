@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/users', to: 'users#index', as: 'users'
   get '/users/:id', to: 'users#show', as: 'user'
   get '/login', to: 'users#login_form', as: 'login_form'
-  post '/login/:username', to: 'users#login', as: 'login'
+  post '/login', to: 'users#login', as: 'login'
   get '/logout', to: 'users#logout', as: 'logout'
   # ~~~~~~~~~~~~~~~~ Votes ~~~~~~~~~~~~~~~~
   post '/votes/:user_id/:work_id', to: 'votes#create', as: 'create_vote'

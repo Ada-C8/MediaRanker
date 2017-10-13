@@ -12,16 +12,20 @@
   <article class="voting-users columns large-6 small-12">
     <h3><%= @work.votes.length %> votes for this <%= @work.category.titleize %></h3>
     <table>
-      <tr>
-        <th>User</th>
-        <th>Date</th>
-      </tr>
-      <% @work.votes.each do |vote| %>
+      <thead>
         <tr>
-          <td><%= link_to vote.user.username, user_path(vote.user_id) %></td>
-          <td><%= vote.created_at.strftime("%b %d, %Y")%></td>
+          <th>User</th>
+          <th>Date</th>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% @work.votes.each do |vote| %>
+          <tr>
+            <td><%= link_to vote.user.username, user_path(vote.user_id) %></td>
+            <td><%= vote.created_at.strftime("%b %d, %Y")%></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </article>
 </main>
