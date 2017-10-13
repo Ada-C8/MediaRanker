@@ -13,7 +13,11 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
-    @work.creator = "Unknown" if @work.creator.nil?
+    # @work.creator = "Unknown" if @work.creator.nil?
+
+    if @work.creator == nil
+      @work.creator = "Unknown"
+    end
 
     if @work.save
       redirect_to works_path
@@ -56,6 +60,9 @@ class WorksController < ApplicationController
 
   def work_params
     params.require(:work).permit(:title, :category, :creator, :publication_year, :description)
+    # if params[:category] == nil
+    #   params[:category] = "Unknown"
+    # end
   end
 
   def find_work_by_id

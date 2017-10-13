@@ -5,12 +5,12 @@ class Work < ApplicationRecord
   validates :category, presence: {message: "Media must have a category."}
   validates :description, length: {maximum: 500}
 
-  def self.sort_by_votes
-    sort_by_votes = all.sort_by do |work|
-      work.votes.count
-    end
-    return sort_by_votes
-  end
+  # def self.sort_by_votes
+  #   sort_by_votes = all.sort_by do |work|
+  #     work.votes.count
+  #   end
+  #   return sort_by_votes
+  # end
 
   def self.all_albums
     return Work.where(category: "album")
