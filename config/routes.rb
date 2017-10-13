@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
   resources :home, only: [:index]
 
-  
+  get '/login', to: 'sessions#login_form'
+  post '/login', to: 'sessions#login'
 
   # get 'votes/index'
   # get 'votes/show'
