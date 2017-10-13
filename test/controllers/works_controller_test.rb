@@ -1,44 +1,48 @@
 require "test_helper"
 
 describe WorksController do
-  it "should get index" do
-    get works_index_url
-    value(response).must_be :success?
+
+  describe "index" do
+    it "returns a success status" do
+      get works_path
+      must_respond_with :success
+    end
+
+    it "returns an error when given a bogus work_id" do
+      bad_work_id = Work.last.id + 1
+      get work_path(bad_work_id)
+      must_respond_with :not_found
+    end
+
+    it "returns an error when there are no books, albums or movies" do
+
+    end
+
   end
 
-  it "returns a success status" do
-    get works_path
-    must_respond_with :success
+  describe "show" do
+
   end
 
-  it "should get show" do
-    get works_show_url
-    value(response).must_be :success?
+  describe "edit" do
+
   end
 
-  it "should get edit" do
-    get works_edit_url
-    value(response).must_be :success?
+  describe "new" do
+
   end
 
-  it "should get update" do
-    get works_update_url
-    value(response).must_be :success?
+  describe "create" do
+
   end
 
-  it "should get new" do
-    get works_new_url
-    value(response).must_be :success?
+  describe "update" do
+
   end
 
-  it "should get create" do
-    get works_create_url
-    value(response).must_be :success?
+  describe "destroy" do
+
   end
 
-  it "should get destroy" do
-    get works_destroy_url
-    value(response).must_be :success?
-  end
 
 end
