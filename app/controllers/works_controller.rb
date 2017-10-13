@@ -1,4 +1,7 @@
 class WorksController < ApplicationController
+  # filter process
+  before_action :find_work_by_params_id, only: [:show, :edit, :update, :destroy]
+
   def index
     #rework me please...
     @works = Work.all
@@ -18,41 +21,31 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
 
-    if @work.save
+    if save_and_flash(@work)
       redirect_to works_path
     else
       render :new, status: :bad_request
     end
   end
 
-  def show
-    find_work_by_params_id
-    # @work = Work.find(params[:id])
-    # @votes = Vote.where(work_id: params[:id])
-  end
+  def show ; end
 
-  def edit
-    # @work = Work.find(params[:id])
-    find_work_by_params_id
-  end
+  def edit ; end
 
   def update
-    if find_work_by_params_id
-      @work.update_attributes(work_params)
-      if @work.save
-        redirect_to work_path(@work)
-      else
-        render :edit, status: :bad_request
-        return
-      end
+    @work.update_attributes(work_params)
+    if save_and_flash(@work)
+      redirect_to work_path(@work)
+      return
+    else
+      render :edit, status: :bad_request
+      return
     end
   end
 
   def destroy
-    if find_work_by_params_id
-      @work.destroy
-      redirect_to works_path
-    end
+    @work.destroy
+    redirect_to works_path
   end
 
 private
@@ -61,7 +54,6 @@ private
     unless @work
       head :not_found
     end
-    return @work
   end
 
   def work_params
