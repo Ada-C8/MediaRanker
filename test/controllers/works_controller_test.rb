@@ -11,11 +11,11 @@ describe WorksController do
     must_respond_with :success
   end
 
-  # it "should get show" do
-  #   get works_show_url
-  #   value(response).must_be :success?
-  # end
-  #
+  it "should get show" do
+    get work_path(1)
+    must_respond_with :success
+  end
+
   it "should get new form" do
     get new_work_path
     must_respond_with :success

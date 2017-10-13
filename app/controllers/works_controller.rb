@@ -24,6 +24,9 @@ class WorksController < ApplicationController
   end
 
   def edit
+    unless @work
+      redirect_to works_path
+    end
   end
 
   def update

@@ -11,6 +11,15 @@
   <body>
     <header>
       <nav>
+        <ul>
+          <li><%= link_to("View Top Media", root_path) %></li>
+          <li><%= link_to("View All Media", works_path) %></li>
+          <li><%= link_to("Add New Work", new_work_path) %></li>
+          <li><%= link_to("View All Users", users_path) %></li>
+          <div class="float-right">
+          <li><%= link_to("Login") %></li>
+          </div>
+        </ul>
       </nav>
     </header>
     <%= yield %>
