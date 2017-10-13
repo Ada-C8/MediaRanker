@@ -1,0 +1,18 @@
+<%= form_for @work do |f| %>
+  <%= f.label :Category %>
+  <%= f.text_field :category %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :Creator %>
+  <%= f.text_field :creator %>
+
+  <%= f.label :"Publication year" %>
+  <%= f.text_field :publication_year %>
+
+  <%= f.label :Description %>
+  <%= f.text_field :description %>
+
+  <%= f.submit submit_name %>
+<% end %>
