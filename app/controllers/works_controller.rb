@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work_by_params, only: [:show, :edit, :update, :destroy]
+
   def index
     @albums = Work.where(category: "album")
     @movies = Work.where(category: "movie")
@@ -6,7 +8,7 @@ class WorksController < ApplicationController
   end
 
   def show
-    find_work_by_params
+    # find_work_by_params
   end
 
   def new
@@ -30,32 +32,24 @@ class WorksController < ApplicationController
   end
 
   def edit
-    find_work_by_params
+    # find_work_by_params
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
-    # binding.pry
-    if @work
-      result = @work.update(work_params)
-      # binding.pry
-      if result
-        flash[:status] = :success
-        flash[:message] = "Created #{@work.category} #{@work.title}."
-        return redirect_to works_path
-      else
-        flash.now[:status] = :failure
-        flash.now[:message] = "Failed to create #{@work.category}."
-        flash.now[:details] = @work.errors.messages
-        return render :edit, status: :bad_request
-      end
+    result = @work.update(work_params)
+    if result
+      flash[:status] = :success
+      flash[:message] = "Created #{@work.category} #{@work.title}."
+      return redirect_to works_path
     else
-      return head :not_found
+      flash.now[:status] = :failure
+      flash.now[:message] = "Failed to create #{@work.category}."
+      flash.now[:details] = @work.errors.messages
+      return render :edit, status: :bad_request
     end
   end
 
   def destroy
-    # find_work_by_params(params)
     @work = Work.find_by(id: params[:id])
 
     if @work

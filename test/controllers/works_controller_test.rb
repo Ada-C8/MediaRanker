@@ -188,11 +188,11 @@ describe WorksController do
       Work.count.must_equal (before_count - 1)
     end
 
-    it 'does not delete the work and displays an error if work does not exist' do
+    it 'does not delete the work and returns :not_found if work does not exist' do
       before_count = Work.count
 
       delete work_path(bad_id)
-      must_respond_with :found
+      must_respond_with :not_found
 
       Work.count.must_equal before_count
     end

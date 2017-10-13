@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    find_user_by_param
+    @user = User.find_by(id: params[:id])
+
+    unless @user
+      return head :not_found
+    end
   end
 
   def process_login
@@ -41,15 +45,5 @@ class UsersController < ApplicationController
     return redirect_to root_path
   end
 
-  private
-
-  def find_user_by_param
-    @user = User.find_by(id: params[:id])
-
-    unless @user
-      return head :not_found
-    end
-
-    @user
-  end
+  # private
 end
