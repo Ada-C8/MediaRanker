@@ -3,7 +3,12 @@
   <p>Created by: <%= @work.creator %></p>
   <p>Published: <%= @work.publication_year %></p>
   <p><%= @work.description %></p>
-  <nav> Buttons/Links: "Back to media ranks", "Edit", "Upvote", "Delete"</nav>
+  <nav>
+    <%= link_to "Back to media ranks", root_path, class: "button" %>
+    <%= link_to "Edit", edit_work_path(@work.id), class: "button" %>
+    <%= link_to "Upvote FIX ME!!", work_path(@work.id), class: "button" %>
+    <%= link_to "Delete", delete_work_path(@work.id), class: "alert button" %>
+  </nav>
 </section>
 
 <section>
