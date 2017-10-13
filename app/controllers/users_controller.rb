@@ -6,9 +6,6 @@ class UsersController < ApplicationController
 
   def show; end
 
-  def new
-  end
-
   def create
     @user = User.new(user_params)
     if @user.save
@@ -39,13 +36,13 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user = User.find_by(name: params[:name])
+    @user = User.find_by(name: params[:user][:name])
 
     if @user
       session[:logged_in_user] = @user
-      render user_path(@user.id)
+      redirect_to users_path
     else
-      head :not_found
+      create
     end
   end
 

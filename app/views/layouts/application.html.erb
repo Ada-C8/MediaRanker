@@ -9,12 +9,27 @@
   </head>
 
   <body>
-    <nav>
-      <%= link_to "View top meida", top_works_path %>
-      <%= link_to "View all media", works_path %>
-      <%= link_to "Add a new work", new_work_path %>
-      <%= link_to "View all users", users_path %>
-    </nav>
+    <header>
+      <nav>
+        <%= link_to "View top meida", top_works_path %>
+        <%= link_to "View all media", works_path %>
+        <%= link_to "Add a new work", new_work_path %>
+        <%= link_to "View all users", users_path %>
+      </nav>
+      <nav>
+        <% if session[:logged_in_user]%>
+        <% @user = session[:logged_in_user]['name'] %>
+          <%= link_to "Logged in as #{@user}" %>
+          <%= link_to "Log out" %>
+        <%else%>
+          <%= link_to "Log in", login_path %>
+        <%end%>
+      </nav>
+
+      <section>
+        <h2>Media Ranker |<small>Ranking the best of everything</small></h2>
+      </section>
+    </header>
     <%= yield %>
 
   </body>
