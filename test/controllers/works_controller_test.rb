@@ -88,11 +88,21 @@ describe WorksController do
 
   describe "update" do
     it "returns success if work id is valid and change is valid" do
-      work_id = Work.first.id
-      get work_path(work_id)
-      must_respond_with :success
-      ## returning 200 instead of redirect
-      # must_respond_with :redirect
+      work = Work.first
+      work_data = {
+        work: {
+          title: "a different title",
+          creator: work.creator
+        }
+      }
+      work.update_attributes(work_data[:work])
+      work.must_be :valid?, "Test is invalid because the provided data will produce an invalid"
+
+      patch work_path(work), params: work_data
+
+      must_respond_with :redirect
+      must_redirect_to work_path(work)
+
     end
 
     it "returns not found if the work id is invalid" do
@@ -110,12 +120,12 @@ describe WorksController do
     it "exist" do
       work_id = Work.first.id
       get work_path(work_id)
-      must_respond_with :succes
+      must_respond_with :success
     end
     ## currently errors
     it "does not exist" do
       work_id = Work.first.id
-      delete works_path(work_id)
+      delete work_path(work_id)
       must_respond_with :redirect
     end
   end
