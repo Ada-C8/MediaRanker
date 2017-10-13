@@ -11,7 +11,7 @@ class Work < ApplicationRecord
   end
 
   def self.top_work
-    return sort_by_vote_count.first.title
+    return sort_by_vote_count.first
   end # top_work
 
   def self.top_ten(category)
