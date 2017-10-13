@@ -119,38 +119,51 @@ describe WorksController do
       # bad_work_id = Work.last.id + 1
       # patch work_path(bad_work_id), params: work_data
       # must_respond_with :not_found
-  end
+    end
 
-  it "returns bad_request when change is invalid" do
-    work = Work.first
-    bad_work_data = {
-      work: {
-        title: ""
+    it "returns bad_request when change is invalid" do
+      work = Work.first
+      bad_work_data = {
+        work: {
+          title: ""
+        }
       }
-    }
-    work.update_attributes(bad_work_data[:work])
-    work.wont_be :valid?
-    start_work_count = Work.count
+      work.update_attributes(bad_work_data[:work])
+      work.wont_be :valid?
+      start_work_count = Work.count
 
-    patch work_path(work), params: bad_work_data
-    must_respond_with :bad_request
-    Work.count.must_equal start_work_count
+      patch work_path(work), params: bad_work_data
+      must_respond_with :bad_request
+      Work.count.must_equal start_work_count
+    end
+
   end
 
-end
+  describe "destroy" do
+    it "success when book is deleted" do
+      # work_data = {
+      #   work: {
+      #     creator: "lauren",
+      #     category: "book",
+      #     title: "Changed title"
+      #   }
+      # }
 
-describe "destroy" do
-  it "success when book is deleted" do
-    work_count = Work.count
-    delete work_path(Work.first)
-    must_respond_with :redirect
-    must_redirect_to works_path
-    work_count.must_equal Work.count + 1
+      work_count = Work.count
+      delete work_path(Work.first)
+      must_respond_with :redirect
+      must_redirect_to works_path
+      work_count.must_equal Work.count + 1
+    end
+
+    # no scenario in which a deletion does not happen in this project
+    # it "test negative delete" do
+      # work_count = Work.count
+      # delete work_path(Work.first)
+      # must_respond_with :redirect
+      # must_redirect_to works_path
+      # work_count.must_equal Work.count
+    # end
+
   end
-
-  it "test negative delete" do
-    # fill in
-  end
-
-end
 end
