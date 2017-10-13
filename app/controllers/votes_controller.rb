@@ -34,4 +34,10 @@ class VotesController < ApplicationController
     @vote = Vote.find(params[:id])
     # We do not need the destroy method for vote
   end
+
+  private
+
+  def votes_params
+    # params.require(:vote).permit(:user_id, :work_id)
+  end
 end

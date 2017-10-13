@@ -1,42 +1,55 @@
 <main>
   <section>
     <div>
-      <h3>Media Spotlight: </h3>
-      <p># of Votes</p>
+      <h3> <%# REMEMBER YOU CAN ACCESS THE NUMBER VOTES SIMPLY BY CALLING THE NAME OF THE OTHER CLASS WORK.VOTES %>
+        <% works = Work.all.sort_by { |work| -work.votes.count} %>
+        Media Spotlight: <%= works.first.title %>
+      </h3>
+      <p>
+        <%= works.first.votes.count %> of Votes
+      </p>
     </div>
   </section>
 
   <section>
     <h3>Top Movies</h3>
+    <% works = Work.where(category: "movie") %>
+    <% works.sort_by { |work| -work.votes.count } %>
     <ul>
-      <%= Vote.where(work_id: 1).count %>
-<!-- What can I do to sort all the works by the number of votes that each has? -->
-<!-- Work.all.each do |work|
-Vote.where(work_id: work.id).count -->
+      <% works.each do |work| %>
       <li>
-        <h4>Name of the Movie</h4>
-        <p># of Votes</p>
+        <h4><%= work.title %></h4>
+        <p><%= work.votes.count %> Votes</p>
       </li>
+      <% end %>
     </ul>
   </section>
 
   <section>
     <h3>Top Books</h3>
+    <% works = Work.where(category: "book") %>
+    <% works.sort_by { |work| -work.votes.count } %>
     <ul>
+      <% works.each do |work| %>
       <li>
-        <h4>Name of the Book</h4>
-        <p># of Votes</p>
+        <h4><%= work.title %></h4>
+        <p><%= work.votes.count %> Votes</p>
       </li>
+      <% end %>
     </ul>
   </section>
 
   <section>
     <h3>Top Albums</h3>
+    <% works = Work.where(category: "album") %>
+    <% works.sort_by { |work| -work.votes.count } %>
     <ul>
+      <% works.each do |work| %>
       <li>
-        <h4>Name of the Album</h4>
-        <p># of Votes</p>
+        <h4><%= work.title %></h4>
+        <p><%= work.votes.count %> Votes</p>
       </li>
+      <% end %>
     </ul>
   </section>
 </main>

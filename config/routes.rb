@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :votes, except: :index
+  resources :votes
 
   resources :works
 

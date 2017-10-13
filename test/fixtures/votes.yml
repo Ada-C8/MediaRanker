@@ -4,9 +4,9 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-# vote:
-#   user_id: one # Not sure how to test this relation
-#   work_id: album
+vote:
+  user: one # Not sure how to test this relation
+  work: album
 
 # user - raised error
 # work -

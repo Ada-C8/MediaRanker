@@ -14,6 +14,18 @@ describe Vote do
       vote.must_be :valid?
     end
 
+    it "cannot be created if the user_id and work_id already exists in the database" do
+      first = votes(:vote)
+      vote = Vote.new(
+        user_id: first.user,
+        work_id: first.work
+      )
+
+      vote.wont_be :valid?
+      vote.errors.messages.must_include :user_id
+      vote.errors.messages.must_include :work_id
+    end
+
     it "has a user_id as an integer" do
       vote = Vote.new(user_id: user.id)
 
@@ -36,6 +48,12 @@ describe Vote do
     it "is invalid if work_id is not an integer"do
       vote.valid?.must_equal false
       vote.errors.messages.must_include :work_id
+    end
+
+    it "is invalid if the user_id is blank or is not a number" do
+    end
+
+    it "is invalid if the work_id is blank or is not a number" do
     end
   end
 

@@ -14,22 +14,25 @@
       <small>Rank the Best of Everything</small>
       <%# Must fix these %>
       <nav class="row">
-        <%= link_to "View top media", root_path, class: "small-6 large-2 columns" %>
-        <%= link_to "View all media", works_path, class: "small-6 large-2 columns" %>
-        <%= link_to "Add a new work", new_work_path, class: "small-6 large-2 columns" %>
-        <%= link_to "View all users", users_path, class: "small-6 large-2 columns" %>
+        <%= link_to "View top media", root_path %>
+          <%= link_to "View all media", works_path %>
+          <%= link_to "Add a new work", new_work_path %>
+          <%= link_to "View all users", users_path %>
 
         <%# When session is logged in, will add a Log Out button to the navigation %>
         <% if session[:logged_in_session] %>
+        <%############## MAKE INTO A BUTTON %>
           <div>
             <%= link_to "Logged in as #{User.find(session[:logged_in_session]).name}", user_path(session[:logged_in_session]) %>
           </div>
 
+          <%############## MAKE INTO A BUTTON %>
           <div>
             <%= link_to "Log Out", logout_path, method: :post %>
           </div>
         <% end %>
 
+        <%############## MAKE INTO A BUTTON %>
         <% if session[:logged_in_session] == nil %>
           <div>
             <%= link_to "Log In", login_path %>
@@ -40,6 +43,7 @@
     </header>
 
     <%# When session is logged in, will flash success %>
+    <%############## STYLE THIS %>
     <% if session[:logged_in_session] %>
       <section>
         <h3><%= flash[:success] %></h3>
