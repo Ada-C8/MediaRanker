@@ -1,8 +1,5 @@
-<h2><%= link_to "#{@work.title}", work_path(@work)%></h2>
+<h3><%= @work.title %></h3>
 
-<p>
-  category: <%= @work.category %>
-</p>
 <p>
   Created by: <%= @work.creator %>
 </p>
@@ -11,5 +8,37 @@
   Votes: <%= @work.votes.count %>
 </p>
 
-<%= link_to 'Edit', edit_work_path(@work) %>
-<%= link_to 'Delete', work_path(@work), method: :delete, data: { confirm: "Are you sure?" } %>
+<p>
+  <%= @work.description %>
+</p>
+
+<ul>
+  <li>
+    <%= link_to "Back to Media List", root_path %>
+  </li>
+  <li>
+    <%= link_to 'Edit', edit_work_path(@work) %>
+  </li>
+    <%= link_to "Upvote", create_vote_path(work_id: @work.id), method: :post %>
+  <li>
+    <%= link_to 'Delete', work_path(@work), method: :delete, data: { confirm: "Are you sure?" } %>
+  </li>
+</ul>
+
+<h3><%= @work.votes.count %> votes for this <%= @work.category.capitalize %></h3>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @work.votes.each do |vote| %>
+      <tr>
+        <td><%= vote.user.name %></td>
+        <td><%= vote.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
