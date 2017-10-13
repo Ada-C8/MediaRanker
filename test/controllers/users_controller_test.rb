@@ -16,10 +16,10 @@ describe UsersController do
   end
 
   describe "login" do
-    it "sucessfully logs in a user " do
-    post login_path, params: { name: User.first.name }
-    must_redirect_to root_path
-  end
+    it "sucessfully logs in a known user" do
+      post login_path, params: { name: User.first.name }
+      must_redirect_to root_path
+    end
   end
 
   describe "show" do
@@ -41,4 +41,10 @@ describe UsersController do
     end
   end
 
+
+  describe "create" do
+    it "creates a new user" do
+    end
+
+  end
 end
