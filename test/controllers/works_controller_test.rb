@@ -16,6 +16,18 @@ describe WorksController do
     must_respond_with :success
   end
 
+  it "Creates: should be able to create a new work" do
+
+  proc {
+    post works_path, params: { work: { title: "New Work", category: 'album', creator: 'E.D.', publication_year: 2017, description: 'Long text about new work'} }
+  }.must_change 'Work.count', 1
+
+  #assert
+  must_respond_with :redirect
+  must_redirect_to works_path
+
+  end
+
   it "successfully loads an individual work(#show)page" do
     get work_path( works(:book1).id )
     must_respond_with :success
