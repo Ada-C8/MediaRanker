@@ -8,11 +8,12 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Task.find(params[:id])
+  
+
   end
 
   def new
-    if params[:category] == 'book'
+    #if params[:category] == 'book'
 
   end
 

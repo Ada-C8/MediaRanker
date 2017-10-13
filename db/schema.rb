@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171011040535) do
+ActiveRecord::Schema.define(version: 20171013090655) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title"
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 20171011040535) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.date "joined_on"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.string "category"
+    t.integer "work_id"
+    t.integer "user_id"
+    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

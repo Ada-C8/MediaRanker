@@ -1,5 +1,10 @@
 class AlbumsController < ApplicationController
-  def index
-    @albums = Album.all
+  def show
+    @album = Album.find(params[:id])
+    @votes = Vote.where(work_id: @album.id)
+  end
+
+  def edit
+    @album = Album.find(params[:id])
   end
 end

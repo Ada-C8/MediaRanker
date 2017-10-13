@@ -1,2 +1,74 @@
-<h1>Movie#index</h1>
-<p>Find me in app/views/movie/index.html.erb</p>
+<header>
+  <nav>
+    <h2>
+      Media Ranker
+    </h2>
+
+    <small>
+      Ranking the Best of Everything
+    </small>
+  </nav>
+
+  <nav>
+    <a href='/'>View top media </a>
+    <a href='/works'>View all media </a>
+    <a href='/works/new'>Add a new work </a>
+    <a href='/users'>View all users </a>
+  </nav>
+
+  <div>
+    <a href='/login'> Log In </a>
+  </div>
+</header>
+
+<article>
+  <h3>
+    <%= @album.title %>
+  </h3>
+
+  <p>
+    Created by <%= @album.creator %>
+  </p>
+
+  <p>
+    Published: <%= @album.published %>
+  </p>
+
+  <p>
+    <%= @album.description %>
+  </p>
+</article>
+
+<section>
+  <h3>
+    <%= @votes.count %> Votes for this Album
+  </h3>
+
+  <table>
+
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+
+    <tbody>
+      <% @votes.each do |vote| %>
+       <tr>
+         <td><%= find_user(vote.user_id)%> </td>
+         <td><%= vote.date %></td>
+        </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+
+
+
+</section>
+
+<nav>
+  <%= link_to 'Back to media ranks', works_path %>
+  <%= link_to 'Edit', edit_album_path %>
+  <%= link_to 'Upvote', works_path %>
+  <%= link_to 'Delete', works_path %>
+</nav>
