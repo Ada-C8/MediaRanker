@@ -18,7 +18,7 @@
       Upvote
     </li>
     <li>
-      <%= link_to("Delete", work_path(@work.id), method: :delete) %>
+      <%= link_to("Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"}) %>
     </li>
   </ul>
 </section>
