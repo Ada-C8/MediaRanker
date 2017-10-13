@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: MyString
-  description: MyString
+harrypot:
+  category: book
+  title: Harry Potter
+  creator: J.K. Rolling
+  publication_year: 1997
+  description: Just one of the best book ever, no big deal.
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: MyString
-  description: MyString
+foundation:
+  category: movie
+  title: Foundation
+  creator: Asimov
+  publication_year: 1942
+  description: Ok, actually talking about the book. When is the TV show coming out already?
+
+traveller:
+  category: album
+  title: Strange Trails
+  creator: Lord Huron
+  publication_year: 2012
+  description: Currently playing.

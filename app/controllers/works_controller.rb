@@ -37,6 +37,8 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    @work.destroy
+    redirect_to works_path
   end
 
   private
@@ -46,6 +48,7 @@ class WorksController < ApplicationController
   end
 
   def find_work
+    redirect_to works_path unless @work
     @work = Work.find_by_id(params[:id])
   end
 end
