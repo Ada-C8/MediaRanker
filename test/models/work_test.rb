@@ -139,4 +139,18 @@ describe Work do
     end
   end
 
+  describe "#spotlight" do
+    # what to do if no media in media db?
+    it "must return work with most votes" do
+      Work.spotlight.must_equal works(:hp)
+
+      # add votes
+      Vote.create!(user_id: users(:ron).id, work_id: works(:lego).id)
+      Vote.create!(user_id: users(:hermione).id, work_id: works(:lego).id)
+      Vote.create!(user_id: users(:harry).id, work_id: works(:lego).id)
+
+      Work.spotlight.must_equal works(:lego)
+    end
+  end
+
 end
