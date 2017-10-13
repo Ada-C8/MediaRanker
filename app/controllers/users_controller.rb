@@ -12,13 +12,22 @@ class UsersController < ApplicationController
     username = params[:user][:name]
 
     # check if the user already exists
-    user = User.find_by(name: name)
+    user = User.first
     if user
       session[:logged_in_user] = user.id
       redirect_to root_path
     else
       # TODO: add logic here to create a new user if the user doesn't already exist
-  end
+      @user = User.new(user_params)
+
+      if @user.save
+        redirect_to root_path
+      else
+        render :login
+      end # if/else
+    end # if/else
+  end # login
+
 
   private
   def user_params
