@@ -11,17 +11,16 @@
 <div class="buttons">
     <ul>
       <li>
-        <%= link_to "Edit", edit_work_path(@work.id), class: "link"%>
+        <%= link_to "Edit", edit_work_path(@work.id), class: "button"%>
       </li>
       <li>
-        UPVOTE LINK
-        <%#= link_to "Upvote",, class: "link"%>
+        <%= link_to "Upvote!", work_vote_path(params[:id]), class: "button"%>
       </li>
       <li>
-        <%= link_to "Back to Media Ranks", root_path, class: "link" %>
+        <%= link_to "Back to Media Ranks", root_path, class: "button" %>
       </li>
       <li>
-        <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you want to delete #{@work.title} from the database? You can not undo this action."}, class: "link"%>
+        <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you want to delete #{@work.title} from the database? You can not undo this action."}, class: "button"%>
       </li>
     </ul>
   </div>

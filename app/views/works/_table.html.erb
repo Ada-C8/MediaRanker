@@ -11,7 +11,7 @@
       <% works.each do |work| %>
       <% if work.category == @cat %>
       <th>
-      Votes!
+      <%=work.vote.count %>
     </th>
     <th>
       <%= link_to work.title, work_path(work.id), class: "link"%>
