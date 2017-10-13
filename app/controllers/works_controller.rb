@@ -49,6 +49,8 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    Work.find_by(id: params[:id]).destroy
+    redirect_to root_path
   end
 
   private

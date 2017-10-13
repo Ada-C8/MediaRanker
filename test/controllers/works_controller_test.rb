@@ -48,4 +48,14 @@ describe WorksController do
     must_redirect_to work_path( works(:book1).id )
   end
 
+  it "successfully deletes a work" do
+    proc {
+      delete work_path( works(:movie1))
+    }.must_change 'Work.count', -1
+
+    #assert
+    must_respond_with :redirect
+    must_redirect_to root_path
+  end
+
 end
