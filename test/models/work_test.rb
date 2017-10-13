@@ -10,8 +10,6 @@ describe Work do
 
   describe "Validations" do
     it "can be created with all validations" do
-      w = Work.create!(title: "The Phantom Menace")
-
       w.must_be :valid?
     end
 
