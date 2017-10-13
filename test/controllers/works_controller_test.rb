@@ -43,7 +43,9 @@ describe WorksController do
     it "should create a new work" do
       post create_work_path, params: { work: work_params }
       must_respond_with :redirect
-      must_redirect_to root_path
+
+      # ?????? work id?????
+      must_redirect_to work_path
     end
 
     it "should increase work count" do
