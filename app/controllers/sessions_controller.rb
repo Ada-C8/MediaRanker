@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
       user.name = params[:username]
       if user.save
         session[:user_id] = user.id
+        flash[:success] = "Successfully created new user #{user.name} with ID #{user.id}"
         redirect_to root_path
       else
         render login_path
@@ -25,6 +26,7 @@ class SessionsController < ApplicationController
   def logout
     if session[:user_id]
       session[:user_id] = nil
+      flash[:success] = "Successfully logged out"
     else
       #some sort of alert message
     end

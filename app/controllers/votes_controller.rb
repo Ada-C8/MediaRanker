@@ -3,10 +3,7 @@ class VotesController < ApplicationController
     @user = User.find_by(id: session[:user_id])
     @work = Work.find_by(id: params[:work])
 
-    # if @user.include_work?(work)
-    #   flash[:error] = "Unable to "
-    #   render #back to where you came from
-    # else
+    if session[:user_id]
       @vote = Vote.new
       @vote.user = @user
       @vote.work = @work
@@ -14,6 +11,8 @@ class VotesController < ApplicationController
         flash[:success] = "Successfully upvoted!"
         redirect_back(fallback_location: root_path)
       end
-    # end
+    else
+      flash[:error] = "You must log in to do that"
+    end
   end
 end
