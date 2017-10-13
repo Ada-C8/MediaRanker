@@ -33,27 +33,25 @@ describe Vote do
   end #Relationships
 
   describe "validations" do
-    it "must have a user to be valid" do
+    it "must have a User to be valid" do
       #false
       vote.work = movie
       vote.valid?.must_equal false
-      vote.errors[:user].must_include "can't be blank"
 
       #true
       vote.user = user3
       vote.valid?.must_equal true
     end
-    #
-    # it "must have a category to be valid" do
-    #   #false
-    #   work.title = "A Title"
-    #   work.valid?.must_equal false
-    #   work.errors[:category].must_include "can't be blank"
-    #
-    #   #true
-    #   work.category = "album"
-    #   work.valid?.must_equal true
-    # end
+
+    it "must have a Work to be valid" do
+      #false
+      vote.user = user3
+      vote.valid?.must_equal false
+
+      #true
+      vote.work = movie
+      vote.valid?.must_equal true
+    end
     #
     # it "must have a unique title in relation to its category to be valid" do
     #   # false
