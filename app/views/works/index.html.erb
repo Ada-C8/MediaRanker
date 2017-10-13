@@ -21,8 +21,53 @@
   </div>
 </header>
 
-<% @albums.each do |album| %>
-  <h2>
-    <%= link_to "#{album.title}",  album_path(album)%></h4>
-  </h2>
-<%end%>
+<section>
+    <h3>
+      Place holder for top media
+    </h3>
+</section>
+
+<section>
+  <h3>
+    Top Albums
+  </h3>
+
+  <ul>
+    <% @albums.each do |album| %>
+      <li>
+        <%= link_to "#{album.title}",  album_path(album)%>
+        <small> by <%= album.creator%> </small>
+      </li>
+    <%end%>
+  </ul>
+</section>
+
+<section>
+  <h3>
+    Top Movies
+  </h3>
+
+  <ul>
+    <% @movies.each do |movie| %>
+      <li>
+        <%= link_to "#{movie.title}",  movie_path(movie)%>
+        <small> by <%= movie.creator%> </small>
+      </li>
+    <%end%>
+  </ul>
+</section>
+
+<section>
+  <h3>
+    Top Books
+  </h3>
+
+  <ul>
+    <% @books.each do |book| %>
+      <li>
+        <%= link_to "#{book.title}",  book_path(book)%>
+        <small> by <%= book.creator%> </small>
+      </li>
+    <%end%>
+  </ul>
+</section>
