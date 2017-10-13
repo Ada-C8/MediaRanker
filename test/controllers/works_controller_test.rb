@@ -18,7 +18,6 @@ describe WorksController do
 
     it "should redirect to 404 page if user goes to a non-existent work's show page" do
       get work_path(9999)
-
       assert_response :not_found
     end
   end
@@ -49,11 +48,19 @@ describe WorksController do
   end
 
   describe "Work Edit/Update" do
-    puts "Not done!"
-    # it "should update information in a work" do
-    #   get works_edit_url
-    #   value(response).must_be :success?
-    # end
+    it "should be able to update a work" do
+      # change info
+      put work_path(works(:poodr).id), params: { book: { title: "The Bee Movie", description: "Meme" } }
+
+      # find the book with that ID in the databases
+      work = Work.find(works(:poodr).id)
+
+      # check if the book was actually updated
+      work.title.must_equal "The Bee Movie"
+      work.description.must_equal "Meme"
+
+      must_respond_with :redirect
+    end
   end
 
 
