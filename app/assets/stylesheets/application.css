@@ -19,33 +19,156 @@
   font-family: "Gudea", sans-serif;
  }
 
-.header a{
+h3, h3 a, h4, h4 a {
+  font-weight: bold;
+  color: #26A69A;
+  font-size: 2.5rem;
+ }
+
+
+h2 {
+  font-size: 3.25rem;
+}
+
+h1 {
+  color: black;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+ .header {
+    min-width: 100%;
+    min-height: 230px;
+    background-color: #B2DFDB;
+    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 10px;
+    padding: 25px 20px 10px 20px;
+    text-align: center;
+  }
+
+.header h2 {
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+}
+
+
+.header span a{
   color: #FF5722;
   font-weight: bold;
   border-right: white 2px solid;
+  padding-right: 25px;
+  margin-right: 15px;
 }
 
-.header small {
+.header h2 small {
   color: white;
 }
 
-nav ul {
-  display: inline;
+.header h2 small {
+  color: white;
+  font-weight: bold;
+}
+
+/*nav ul {
+  display: inline-block;
+}*/
+
+.nav .button{
+  float: left;
 }
 
 .button {
+  display: inline-block;
+  float: left;
+
   background-color: #26A69A;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  vertical-align: middle;
+margin: 0 0 1rem .75rem;
+padding: 0.85em 1em;
 }
 
 .button li {
-  color: white;
+ float: left;
+
 }
 
-.header {
-   min-width: 100%;
-   background-color: #B2DFDB;
-   border-bottom: 1px solid #EEEEEE;
-   margin-bottom: 10px;
-   padding: 25px 20px 10px 20px;
-   text-align: center;
- }
+.button:last-child {
+ float: right;
+
+}
+
+
+.button a {
+  color: white;
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.spotlight-header {
+  color: black
+}
+
+section.spotlight {
+  padding: 3rem 2rem 0rem 2rem;
+  border-bottom: slategrey 1px solid;
+}
+
+section.spotlight a{
+  border-bottom: #26A69A 2.5px solid;
+}
+
+section.spotlight p {
+  font-weight: normal;
+  color: black;
+  font-size: 1.25rem;
+  padding-top: .5rem;
+}
+
+.top-ten h3 {
+  padding: 4.5rem 2rem 0rem 2rem;
+  border-bottom: #B2DFDB 3px solid;
+}
+
+
+.top-ten h4 {
+  font-size: 2rem;
+  padding-left: 1rem;
+  list-style: none;
+
+}
+
+
+
+body small {
+  color: slategrey;
+}
+
+section.top-ten p {
+  font-weight: normal;
+  color: black;
+  font-size: 1.25rem;
+}
+
+th {
+  font-size: 1.25rem;
+  text-align: left;
+}
+
+td {
+  font-size: 1.15rem;
+}
+
+td a {
+  color: #26A69A;
+
+}
+
+label {
+    display: block;
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: normal;
+    line-height: 1.8;
+    color: #0a0a0a;
+}
