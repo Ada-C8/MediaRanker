@@ -137,5 +137,8 @@ p {
   padding-right: 0.9375rem;
   padding-left: 0.9375rem;
 }
+.login {
+  text-align: left;
+}
 /*********************************
 ##############  TABLE FORMATTING ############*/

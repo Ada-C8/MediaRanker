@@ -16,9 +16,10 @@ describe UsersController do
   end
 
   describe "login" do
+    it "sucessfully logs in a user " do
+    post login_path, params: { name: User.first.name }
+    must_redirect_to root_path
   end
-
-  describe "login_form " do
   end
 
   describe "show" do
@@ -28,9 +29,16 @@ describe UsersController do
     end
     it "does not show a user that does not exist" do
       get user_path(User.last.id + 1)
-      must_respond_with :error
+      must_respond_with :not_found
     end
   end
 
+  describe "logout" do
+    it "successfully logs out a user" do
+      post login_path, params: { name: User.first.name }
+      get logout_path
+      must_redirect_to root_path
+    end
+  end
 
 end

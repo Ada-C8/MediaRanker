@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+  find_user
   end
 
   def login_form
@@ -48,4 +48,11 @@ end
 private
 def user_params
   return params.require(:user).permit(:name)
+end
+
+def find_user
+  @user = User.find_by(id: params[:id])
+  unless @user
+    head :not_found
+  end
 end
