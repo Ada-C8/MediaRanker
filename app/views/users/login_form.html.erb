@@ -1,0 +1,6 @@
+<%= form_tag do %>
+  <%# collection_select(:user, :user_id, User.all, :id, :username) %>
+  <%= label_tag "Username" %>
+  <%= text_field :user, :username %>
+  <%= submit_tag "Log in" %>
+<% end %>

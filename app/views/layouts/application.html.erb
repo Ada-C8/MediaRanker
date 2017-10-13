@@ -16,16 +16,47 @@
       </h2>
 
       <nav class="columns small-12">
-        <a class="button" href="/">View top media</a>
-        <a class="button" href="/works">View all media</a>
-        <a class="button" href="/works/new">Add a new work</a>
-        <a class="button" href="/users">View all users</a>
-        <div class="float-right">
-            <a class="button" href="/users/316">Logged in as sa</a>
-            <a class="button" rel="nofollow" data-method="post" href="/logout">Log Out</a>
+        <%= link_to "View top media", root_path, class: "button" %>
+        <%= link_to "View all media", works_path, class: "button" %>
+        <%= link_to "Add a new work", new_work_path, class: "button" %>
+        <%= link_to "View all users", users_path, class: "button" %>
+
+        <div class="large-4 small-12 columns button-group">
+          <% if session[:logged_in_user] %>
+            <p class="button">
+              Logged in as
+              <%= User.find(session[:logged_in_user]).username %>
+            </p>
+            <%= link_to "Log out", logout_path, class: "button" %>
+          <% else %>
+            <%= link_to "Log in", login_path, class: "button" %>
+          <% end %>
         </div>
       </nav>
     </header>
-    <%= yield %>
+
+    <main>
+      <section class="flash <%= flash[:status] %>">
+        <p>
+          <%= flash[:message] %>
+        </p>
+        <% if flash[:details] %>
+          <ul>
+            <% flash[:details].each do |field, problems| %>
+              <% problems.each do |problem| %>
+                <li>
+                  <strong>
+                    <%= field %>:
+                  </strong>
+                  <%= problem %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
+      </section>
+
+      <%= yield %>
+    </main>
   </body>
 </html>
