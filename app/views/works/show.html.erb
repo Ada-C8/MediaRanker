@@ -1,24 +1,23 @@
-<h2 class="small-12 columns"><%= @work.title %></h2>
-
 <div class="row">
   <section class="small-12 large-6 columns">
+    <h2 class="small-12 columns"><%= @work.title %></h2>
     <% if @work.creator %>
-      <p>
-        Created By:
-        <strong><%= @work.creator %></strong>
-      </p>
+    <p>
+      Created By:
+      <%= @work.creator %>
+    </p>
     <% end %>
     <% if @work.publication_year %>
-      <p>
-        Published:
-        <strong><%= @work.publication_year %></strong>
-      </p>
+    <p>
+      Published:
+      <%= @work.publication_year %>
+    </p>
     <% end %>
     <% if @work.description %>
-      <p>
-        <%= @work.description %>
-      </p>
-  <% end %>
+    <p>
+      <%= @work.description %>
+    </p>
+    <% end %>
     <nav>
       <%= link_to "Back to media ranks", works_path, class: 'button' %>
       <%= link_to "Edit", edit_work_path(@work.id), class: 'button' %>
@@ -27,7 +26,7 @@
     </nav>
   </section>
   <section class="small-12 large-6 columns">
-    <h2><%= @work.users.count %> vote<%= 's' unless @work.users.count == 1 %> for this <%= @work.category %></h2>
+    <h2><%= @work.users.count %> Vote<%= 's' unless @work.users.count == 1 %> for this <%= @work.category.capitalize %></h2>
     <table>
       <thead>
         <tr>

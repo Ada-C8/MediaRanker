@@ -23,6 +23,7 @@
   --char: #424242;
   --grey: slategrey;
   --silv: #e6e6e6;
+  --rust: #cc4b37;
 }
 
 * {
@@ -51,6 +52,10 @@
 
 .button:hover {
   background-color: var(--dark);
+}
+
+.button.delete {
+  background-color: var(--rust);
 }
 
 body, h1, h2, h3 {
@@ -88,6 +93,7 @@ h2 {
   color: var(--turq);
   font-size: 1.925rem;
   font-weight: bold;
+  padding-left: 0 !important;
 }
 
 h2 strong {
@@ -165,7 +171,6 @@ header.header {
   list-style: none;
   margin-left: 0;
 }
-
 
 /**********/
 /* TABLES */
