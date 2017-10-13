@@ -1,8 +1,34 @@
 <h1>Works#home</h1>
 
 <h1>Top Books</h1>
+  <ul>
+    <% @top_books.each do |work, votes| %>
+    <li>
+      <%= link_to(work.title, work_path(work.id), alt:'Book title')%>
+    Votes: <%= votes %>
+    <% end %>
+  </ul>
 
 <h1>Top Movies</h1>
-
+<ul>
+  <% @top_movies.each do |work, votes| %>
+  <li>
+    <%= link_to(work.title, work_path(work.id), alt:'Movie title')%>
+  Votes: <%= votes %>
+  <% end %>
+</ul>
 
 <h1>Top Albums</h1>
+<ul>
+  <% @top_albums.each do |work, votes| %>
+  <li>
+    <%= link_to(work.title, work_path(work.id), alt:'Album title')%>
+  Votes: <%= votes %>
+  <% end %>
+</ul>
+
+<!-- Testing Votes -->
+<!-- <% @votes.each do |vote| %>
+  <%= vote %> User: <%= vote.user_id %> Work: <%= vote.work_id %>
+  <br />
+<% end %>

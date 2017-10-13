@@ -2,35 +2,53 @@ class WorksController < ApplicationController
   #add a control action with login name and status
 
   def home
-    # if params[:work_id]
-      # @book_work = Work.where(category: "book").limit(10)
-      # @movie_work = Work.where(category: "movie").limit(10)
-      # @album_work = Work.where(category: "album").limit(10)
-      # if @book_work.empty? || @movie_work.empty? || @album_work.empty?
-      #   render :not_found
-      # end
-    # end
     @votes = Vote.all
     @works = Work.all
 
-    @book_votes = Hash.new(@works.where(category: "book") => 0)
-    @movie_votes = Hash.new(@works.where(category: "movie") => 0)
-    @album_votes = Hash.new(@works.where(category: "album") => 0)
+    #Create Hashes for each media with 0 as default value:
+    @book_votes = Hash.new
+    @movie_votes = Hash.new
+    @album_votes = Hash.new
 
+    @works.each do |work|
+      if work.category == "book"
+        @book_votes[work] = 0
+      elsif work.category == "movie"
+        @movie_votes[work] = 0
+      elsif work.category == "album"
+          @album_votes[work] = 0
+      end
+    end
+
+    #Iterate through votes collection to determine counts for each media
     @votes.each do |vote|
-      @works.each do |work|
-        if work.category == "book" && vote.work_id == work
-            @book_votes[work_id] += 1
-        end
-        if work.category == "movie" && vote.work_id == work
-            @movie_votes[work_id] += 1
-        end
-        if work.category == "album" && vote.work_id == work
-            @album_votes[work_id] += 1
+      @book_votes.each do |book, book_vote|
+        if vote.work_id == book.id
+            @book_votes[book] += 1
         end
       end
     end
-    
+
+    @votes.each do |vote|
+      @movie_votes.each do |movie, movie_vote|
+        if vote.work_id == movie.id
+            @movie_votes[movie] += 1
+        end
+      end
+    end
+
+    @votes.each do |vote|
+      @album_votes.each do |album, album_vote|
+        if vote.work_id == album.id
+            @album_votes[album] += 1
+        end
+      end
+    end
+
+    #variable holds top ten media. Sorts hashes from highest to lowest values and returns first 10 pair values in the hash.
+    @top_books = @book_votes.sort_by{|key, value| -value }[0..9]
+    @top_movies = @movie_votes.sort_by{|key, value| -value }[0..9]
+    @top_albums = @album_votes.sort_by{|key, value| -value }[0..9]
   end
 
 
