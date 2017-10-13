@@ -1,15 +1,13 @@
 class WorksController < ApplicationController
   def index
-    @albums = Album.all
-
-    @books = Book.all
-
-    @movies = Movie.all
+    @works = Work.all
+    @top_work_id = Vote.limit(1).group(:work_id).order('count_work_id DESC').count('work_id')
+    @top_work = Work.find(@top_work_id.keys[0])
   end
 
   def show
-  
-
+    @work = Work.find(params[:id])
+    @votes = Vote.where(work_id: @work.id)
   end
 
   def new
@@ -17,8 +15,12 @@ class WorksController < ApplicationController
 
   end
 
+  def show_all
+    @works = Work.all
+  end
+
   def create
-     task = Task.new(title: params[:task][:title], description: params[:task][:description], due_date: params[:task][:due_date], complete: false)
+     task = Work.new(title: params[:task][:title], description: params[:task][:description], due_date: params[:task][:due_date], complete: false)
     task.save
     redirect_to tasks_path
   end

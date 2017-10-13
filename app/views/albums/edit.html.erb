@@ -23,7 +23,7 @@
 
 <%= form_for @album do |form| %>
   <%= form.label :category %>
-  <%= form.select :category, ['album', 'book', 'movie'] %>
+  <%= form.select :category, options_for_select['book', 'movie', 'album'] %>
   <br />
   <%= form.label :title %>
   <%= form.text_field :title %>

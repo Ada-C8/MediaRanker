@@ -23,20 +23,20 @@
 
 <section>
     <h3>
-      Place holder for top media
+      Media Spotlight: <%= @top_work.title %> by <%= @top_work.creator%>
     </h3>
 </section>
 
 <section>
   <h3>
-    Top Albums
+    Top work
   </h3>
 
   <ul>
-    <% @albums.each do |album| %>
+    <% @works.each do |work| %>
       <li>
-        <%= link_to "#{album.title}",  album_path(album)%>
-        <small> by <%= album.creator%> </small>
+        <%= link_to "#{work.title}",  work_path(work)%>
+        <small> by <%= work.creator%> </small>
       </li>
     <%end%>
   </ul>
@@ -48,12 +48,7 @@
   </h3>
 
   <ul>
-    <% @movies.each do |movie| %>
-      <li>
-        <%= link_to "#{movie.title}",  movie_path(movie)%>
-        <small> by <%= movie.creator%> </small>
-      </li>
-    <%end%>
+
   </ul>
 </section>
 
@@ -63,11 +58,6 @@
   </h3>
 
   <ul>
-    <% @books.each do |book| %>
-      <li>
-        <%= link_to "#{book.title}",  book_path(book)%>
-        <small> by <%= book.creator%> </small>
-      </li>
-    <%end%>
+
   </ul>
 </section>
