@@ -15,16 +15,29 @@
  */
  @import url('foundation');
 
+ .row {
+   max-width: 85rem;
+ }
+
  body, h1, h2, h3, h4, h5 {
   font-family: "Gudea", sans-serif;
  }
 
-h3, h3 a, h4, h4 a {
+ body {
+   display: block;
+ }
+
+h3, h3 a, h4 {
   font-weight: bold;
   color: #26A69A;
   font-size: 2.5rem;
  }
 
+ h4 a {
+   font-weight: bold;
+   color: #26A69A;
+   font-size: 2rem;
+ }
 
 h2 {
   font-size: 3.25rem;
