@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  ### VOTE ###
+
+  post 'votes/', to: 'votes#create', as: 'create_vote' #create_vote_path
+
+  get 'votes/create'
+
   ### USERS ###
   get 'users/', to: 'users#index', as: 'users' #users_path
 
