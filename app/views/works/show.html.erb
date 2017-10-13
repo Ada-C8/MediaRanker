@@ -1,4 +1,4 @@
-<article>
+<article class="media-details columns large-6 small-12">
   <h3><%= @work.title %></h3>
   <p>
     Created by: <%=@work.creator %>
@@ -10,24 +10,30 @@
     <%= @work.description %>
   </p>
   <section>
-    <%= link_to "Back to Media Ranks", root_path %>
-    <%= link_to "Edit", edit_work_path(@work.id) %>
-    <%= link_to "Upvote", upvote_path(@work.id), method: :post %>
-    <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %>
+    <%= link_to "Back to Media Ranks", root_path, class:'button' %>
+    <%= link_to "Edit", edit_work_path(@work.id), class:'button' %>
+    <%= link_to "Upvote", upvote_path(@work.id), method: :post, class:'button' %>
+    <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"}, class:'alert button' %>
   </section>
 </article>
-<article>
-  <h3><%=@work.upvotes.count%> Votes for this <%=@work.category%></h3>
+<article class="voting-users columns large-6 small-12">
+  <h3><%=@work.upvotes.count%> Votes for this <%=@work.category.capitalize%></h3>
   <table>
-    <tr>
-      <th>User</th>
-      <th>Date</th>
-    </tr>
-    <% @work.upvotes.each do |work| %>
-    <tr>
-      <td><%= link_to User.find(work.user_id).name, user_path(work.user_id) %></td>
-      <td><%=work.created_at%></td>
-    </tr>
-    <% end %>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th width="200">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @work.upvotes.each do |work| %>
+      <tr>
+        <td><%= link_to User.find(work.user_id).name, user_path(work.user_id) %></td>
+        <td><%=work.created_at.strftime("%b %d, %Y")%></td>
+      </tr>
+      <% end %>
+    </tbody>
   </table>
+
 </article>
