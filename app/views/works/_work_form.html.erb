@@ -1,29 +1,34 @@
 <% if @work.errors.any? %>
-<h3><%= flash[:error] %></h3>
-  <ul class="failure">
+<section class="row status failure">
+  <h3><%= flash[:error]%></h3>
+  <ul>
     <% @work.errors.each do |column, message| %>
-      <li>
-        <%= "#{column}: #{message}" %>
-      </li>
+    <li>
+      <%= "#{column}: #{message}" %>
+    </li>
     <% end %>
   </ul>
+</section>
 <% end %>
 
-<%= form_for @work do |f| %>
-  <%= f.label "Category" %>
-  <%= f.select :category_id, options_from_collection_for_select(Category.all, "id", "name") %>
+<main class="row">
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= form_for @work do |f| %>
+    <%= f.label "Category" %>
+    <%= f.select :category_id, options_from_collection_for_select(Category.all, "id", "name") %>
 
-  <%= f.label :creator %>
-  <%= f.text_field :creator %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
 
-  <%= f.label :publication_year %>
-  <%= f.text_field :publication_year %>
+    <%= f.label :creator %>
+    <%= f.text_field :creator %>
 
-  <%= f.label :description %>
-  <%= f.text_area :description %>
+    <%= f.label :publication_year %>
+    <%= f.text_field :publication_year %>
 
-  <%= f.submit class: "button" %>
-<% end %>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+
+    <%= f.submit class: "button" %>
+  <% end %>
+</main>

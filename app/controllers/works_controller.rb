@@ -33,8 +33,8 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
-      flash[:success] = "Successfully created #{@work.category.name}"
-      redirect_to root_path
+      flash[:success] = "Successfully created #{@work.category.name} #{@work.work_id}"
+      redirect_to work_path(@work.id)
     else
       # puts "error message"  DEBUGGING
       # puts @work.errors.inspect

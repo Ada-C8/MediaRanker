@@ -1,50 +1,53 @@
-<h3>List of works</h3>
+<main class-"row">
 
-<% ["albums", "books", "movies"].each do |type| %>
-  <section class="media-table">
-    <h4><%=type.capitalize%></h4>
-    <table>
-      <tr>
-        <th>
-          Votes
-        </th>
-        <th>
-          Title
-        </th>
-        <th>
-          Created By
-        </th>
-        <th>
-          Published
-        </th>
-        <th>
-          Upvote
-        </th>
-      </tr>
-      <% @works_list = @media[type] %>
-      <% @works_list.each do |work| %>
-      <tr>
-        <td>
-          <%= work.num_votes %>
-        </td>
-        <td>
-          <%= link_to work.title, work_path(work.id) %>
-        </td>
-        <td>
-          <%= work.creator %>
-        </td>
-        <td>
-          <%= work.publication_year %>
-        </td>
-        <td>
-          link
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </section>
+  <h3>List of works</h3>
 
-<% end %>
+  <% ["albums", "books", "movies"].each do |type| %>
+    <section class="media-table">
+      <h4><%=type.capitalize%></h4>
+      <table>
+        <tr>
+          <th>
+            Votes
+          </th>
+          <th>
+            Title
+          </th>
+          <th>
+            Created By
+          </th>
+          <th>
+            Published
+          </th>
+          <th>
+            Upvote
+          </th>
+        </tr>
+        <% @works_list = @media[type] %>
+        <% @works_list.each do |work| %>
+        <tr>
+          <td>
+            <%= work.num_votes %>
+          </td>
+          <td>
+            <%= link_to work.title, work_path(work.id) %>
+          </td>
+          <td>
+            <%= work.creator %>
+          </td>
+          <td>
+            <%= work.publication_year %>
+          </td>
+          <td>
+            link
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </section>
 
-<%= link_to "View top media", root_path, class: "button" %>
-<%= link_to "Add a new work", new_work_path, class: "button" %>
+  <% end %>
+
+  <%= link_to "View top media", root_path, class: "button" %>
+  <%= link_to "Add a new work", new_work_path, class: "button" %>
+</main>

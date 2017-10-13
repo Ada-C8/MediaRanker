@@ -1,25 +1,27 @@
-<% provide(:flash_error, flash[:error]) %>
-<% provide(:flash_success, flash[:success]) %>
+<%# render partial: "errors" %>
 
-<section class="row spotlight">
-  <h3>Media Spotlight:
-    <%= link_to(@spotlight.title, work_path(@spotlight.id)) %> by <%= @spotlight.creator %> </h3>
-  <p>
-    <%= "#{@spotlight.num_votes} - #{@spotlight.description}" %>
-  </p>
-</section>
+<main class="row">
 
-<% ["movies", "books", "albums"].each do |type| %>
-  <section class="<%=type%>">
-    <h3> Top <%=type.capitalize%></h3>
-    <% @top_ten = @media[type] %>
-    <% @top_ten.each do |work| %>
-    <ul>
-      <li>
-        <%= "#{work.title} by #{work.creator}" %>
-      </li>
-    </ul>
-    <% end %>
+  <section class="row spotlight">
+    <h3>Media Spotlight:
+      <%= link_to(@spotlight.title, work_path(@spotlight.id)) %> by <%= @spotlight.creator %> </h3>
+    <p>
+      <%= "#{@spotlight.num_votes} - #{@spotlight.description}" %>
+    </p>
   </section>
 
-<% end %>
+  <% ["movies", "books", "albums"].each do |type| %>
+    <section class="<%=type%>">
+      <h3> Top <%=type.capitalize%></h3>
+      <% @top_ten = @media[type] %>
+      <% @top_ten.each do |work| %>
+      <ul>
+        <li>
+          <%= "#{work.title} by #{work.creator}" %>
+        </li>
+      </ul>
+      <% end %>
+    </section>
+
+  <% end %>
+</main>
