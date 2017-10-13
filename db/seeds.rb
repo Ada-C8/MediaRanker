@@ -49,7 +49,7 @@ puts "#{user_failures.length} users failed to save"
 
 
 VOTES_FILE = Rails.root.join('db', 'seed_data', 'votes.csv')
-puts "Loading raw trip data from #{VOTES_FILE}"
+puts "Loading raw votes data from #{VOTES_FILE}"
 
 votes_failures = []
 CSV.foreach(VOTES_FILE, :headers => true) do |row|

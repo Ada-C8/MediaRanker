@@ -51,21 +51,21 @@ describe Work do
 
   end
 
-  describe "sort_by_most_votes method" do
-
-    it "returns an Array of Work objects" do
-      Work.sort_by_most_votes.must_be_instance_of Array
-
-      Work.sort_by_most_votes[0].must_be_instance_of Work
-    end
-
-    it "is sorted in descending order" do
-      sorted_works = Work.sort_by_most_votes
-      index_1 = sorted_works[0].votes
-      index_2 = sorted_works[1].votes
-
-      index_1.must_be :>, index_2
-    end
-  end
+  # describe "sort_by_most_votes method" do
+  #
+  #   it "returns an Array of Work objects" do
+  #     Work.sort_by_most_votes.must_be_instance_of Array
+  #
+  #     Work.sort_by_most_votes[0].must_be_instance_of Work
+  #   end
+  #
+  #   it "is sorted in descending order" do
+  #     sorted_works = Work.sort_by_most_votes
+  #     index_1 = sorted_works[0].votes
+  #     index_2 = sorted_works[1].votes
+  #
+  #     index_1.must_be :>, index_2
+  #   end
+  # end
 
 end

@@ -19,6 +19,8 @@ class Work < ApplicationRecord
     return top_ten
   end
 
+  private
+
   def self.sort_by_most_votes
     return Work.all.sort_by {|work| -work.votes.count}
   end
