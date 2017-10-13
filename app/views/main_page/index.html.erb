@@ -4,16 +4,20 @@
   <h2>Media Spotlight: <%= @spotlight_medi %></h2>
 </article>
 
-<% categories.each do |category| %>
+<% @works.each do |category, works| %>
 <article id= <%="top-#{category}" %> class="top-media">
   <h2><%= "Top #{category.upcase}" %></h2>
   <ul>
+    <% works.each do |work| %>
     <li>
       <%= link_to(work.title, work_path(work.id)) %> by <%=work.creator %>
     </li>
     <li>
-      <%=work.votes_count %> votes
+      <%=work.votes.length %> votes
     </li>
+    <% end %>
   </ul>
+  <hr />
+  <%end %>
 
 <p>Find me in app/views/main_page/index.html.erb</p>
