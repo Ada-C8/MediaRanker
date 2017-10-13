@@ -126,4 +126,27 @@ describe WorksController do
       Work.find(w.id).title.must_equal w.title
     end
   end
+
+  describe "destroy" do
+    it "returns success and destroys the work when given a valid work ID" do
+      w_id = Work.first.id # Arrange
+
+      delete work_path(w_id) # Act
+
+      must_respond_with :redirect # Assert
+      must_redirect_to works_path
+
+      Work.find_by(id: w_id).must_be_nil
+    end
+
+    it "should return not found when given invalid work ID" do
+      bad_w_id = Work.last.id + 1 # Arrange
+      work_count = Work.count
+
+      delete work_path(bad_w_id) #Act
+
+      must_respond_with :not_found # Assert
+      Work.count.must_equal work_count
+    end
+  end
 end
