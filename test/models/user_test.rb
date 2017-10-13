@@ -2,7 +2,7 @@ require "test_helper"
 
 describe User do
   let(:u) { User.new(name: "Mira") }
-  let(:v) { Vote.new(user_id: u.id, date: Date.today) }
+  let(:v) { Vote.new(user_id: u.id) }
 
 describe "Relationships" do
   it "has many votes" do
@@ -26,8 +26,10 @@ describe "Validations" do
   end
 
   it "strips white space from the beginning and end of a name" do
-    u = User.new(name: " Marc ")
-    u.name.length.must_equal 4     
+    # TODO: have to actually create the user for this to work!
+    # QUESTION: this still doesn't work?? why??
+    u = User.create!(name: " Marc ")
+    u.name.length.must_equal 4
   end # uniqueness
 end # describe "Validations" do
 

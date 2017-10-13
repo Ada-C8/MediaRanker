@@ -3,7 +3,7 @@ require "test_helper"
 describe Work do
   let(:w) { Work.first }
   let(:u) { User.new(name: "Mira") }
-  let(:v) { Vote.new(user_id: u.id, date: Date.today) }
+  let(:v) { Vote.new(user_id: u.id) }
 
   it "has many votes" do
     w.must_respond_to :votes
