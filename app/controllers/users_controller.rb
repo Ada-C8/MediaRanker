@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :find_user_by_params_id, only: [:show, :edit, :update, :destroy]
+
   def index
     @users = User.all
   end
@@ -9,59 +12,49 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      redirect_to users_path
+    if save_and_flash(@user)
+      redirect to root_path
     else
       render :new, status: :bad_request
     end
   end
 
-  # def login_form
-  # end
-  #
-  # def login
-  #   # user_id = params[:user][:user_id]
-  #   name = params[:user][:name]
-  #
-  #   # user = User.find_by(id: user_id)
-  #   user = User.find_by(name: name)
-  #   if user
-  #     session[:logged_in_user] = user_id
-  #     redirect_to root_path
-  #   else
-  #     # head :not_found
-  #     flash[:status] = :failure
-  #     flash[:message] = "No user with #{name}"
-  #     render :login_form
-  #   end
-  # end
+  def login_form
 
-  def show
-    find_user_by_params_id
   end
 
-  def edit
-    find_user_by_params_id
+  def login
+    name = params[:user][:name]
+    user = User.find_by(name: name)
+    if user
+      session[:logged_in_user] = user_id
+      redirect_to root_path
+    else
+      # head :not_found
+      # flash[:status] = :failure
+      # flash[:message] = "No user with #{name}"
+      # render :login_form
+    end
   end
+
+  def show ; end
+
+  def edit ; end
 
   def update
-    if find_user_by_params_id
-      @user.update_attributes(user_params)
-      if @user.save
-        redirect_to user_path(@user)
-        return
-      else
-        render :edit, status: :bad_request
-        return
-      end
+    @user.update_attributes(user_params)
+    if save_and_flash(@user)
+      redirect_to user_path(@user)
+      return
+    else
+      render :edit, status: :bad_request
+      return
     end
   end
 
   def destroy
-    if find_user_by_params_id
-      @user.destroy
-      redirect_to users_path
-    end
+    @user.destroy
+    redirect_to users_path
   end
 
   private
@@ -75,6 +68,5 @@ class UsersController < ApplicationController
     unless @user
       head :not_found
     end
-    return @user
   end
 end

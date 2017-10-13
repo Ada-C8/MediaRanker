@@ -16,7 +16,7 @@
       <section class="small-12 large-4 cell movies-list">
         <h3>Top Movies</h3>
         <ul>
-          <% movies = @movies[0..9] %>
+          <% movies = @movies.reverse[0..9] %>
           <% movies.each do |movie_work| %>
             <li>
               <%= link_to movie_work.title, work_path(movie_work[:id]) %>
@@ -31,7 +31,7 @@
       <section class="small-12 large-4 cell books-list">
         <h3>Top Books</h3>
         <ul>
-          <% books = @books[0..9] %>
+          <% books = @books.reverse[0..9] %>
           <% books.each do |book_work| %>
             <li>
               <%= link_to book_work.title, work_path(book_work[:id]) %>
@@ -46,7 +46,7 @@
       <section class="small-12 large-4 cell albums-list">
         <h3>Top Albums</h3>
         <ul>
-          <% albums = @albums[0..9] %>
+          <% albums = @albums.reverse[0..9] %>
           <% albums.each do |album_work| %>
             <li>
               <%= link_to album_work.title, work_path(album_work[:id]) %>
