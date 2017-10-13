@@ -7,7 +7,7 @@
     <% array.each do |work| %>
     <li>
       <%= link_to "#{work.title}", work_path(work.id) %> by <%= work.creator %>
-      <p>Votes</p>
+      <p><%= "#{work.votes.count} Votes" %></p>
     </li>
     <% end %>
   </ul>
