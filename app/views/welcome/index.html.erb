@@ -1,18 +1,7 @@
-<h1><li><%= link_to "MediaRanker", root_path %></h1>
-<h2>Ranking the Best of Everything</h2>
-
 <h2> Media Spotlight</h2>
 
 <li><%= link_to @rand_work.title, work_path(@rand_work.id) %></li>
 <p>by <%= @rand_work.creator %></p>
-
-<nav>
-  <ul>
-    <li><%= link_to "View Top Media", root_path %></li>
-    <li><%= link_to "View All Media", works_path %></li>
-    <li><%= link_to "Add a new work", new_work_path %></li>
-  </ul>
-</nav>
 
 <h3> Top Albums </h3>
 
