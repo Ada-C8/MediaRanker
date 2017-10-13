@@ -14,7 +14,8 @@
     <%= render partial: "form", locals: {works: @movies} %>
   </main>
 </body>
+
 <footer>
-   <h3>View top media</h3>
-   <h3>Add a new work</h3>
+  <h3><%= link_to("View top media", root_path) %></h3>
+  <h3><%= link_to("Add a new work", new_work_path) %></h3>
  </footer>
