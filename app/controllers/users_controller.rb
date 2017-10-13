@@ -48,9 +48,9 @@ class UsersController < ApplicationController
       else
         flash.now[:status] = :failure
         flash.now[:message] = "Unable to create user"
-        # flash[:details] = "MORE INFO HERE"
+        flash.now[:details] = @user.errors.messages
 
-        render :new
+        render :new, status: :bad_request
       end
     end
 

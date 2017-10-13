@@ -23,6 +23,10 @@
       </div>
     </header>
 
-    <%= yield %>
+    <%= render partial: "/layouts/flash" %>
+
+    <main class="row">
+      <%= yield %>
+    </main>
   </body>
 </html>

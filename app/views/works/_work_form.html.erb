@@ -1,4 +1,4 @@
-<% if @work.errors.any? %>
+<!-- <% if @work.errors.any? %>
 <section class="row status failure">
   <h3><%= flash[:error]%></h3>
   <ul>
@@ -9,26 +9,23 @@
     <% end %>
   </ul>
 </section>
+<% end %> -->
+
+<%= form_for @work do |f| %>
+  <%= f.label "Category" %>
+  <%= f.select :category_id, options_from_collection_for_select(Category.all, "id", "name") %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :creator %>
+  <%= f.text_field :creator %>
+
+  <%= f.label :publication_year %>
+  <%= f.text_field :publication_year %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.submit class: "button" %>
 <% end %>
-
-<main class="row">
-
-  <%= form_for @work do |f| %>
-    <%= f.label "Category" %>
-    <%= f.select :category_id, options_from_collection_for_select(Category.all, "id", "name") %>
-
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-
-    <%= f.label :creator %>
-    <%= f.text_field :creator %>
-
-    <%= f.label :publication_year %>
-    <%= f.text_field :publication_year %>
-
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-
-    <%= f.submit class: "button" %>
-  <% end %>
-</main>

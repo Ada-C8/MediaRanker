@@ -1,40 +1,37 @@
-<%= render partial: "success" %>
+<%# render partial: "success" %>
 
-<main class="row">
+<article class="media-details columns large-6 small-12">
+  <h3><%= @work.title %></h3>
+  <p>
+    Created by: <%= @work.creator %>
+  </p>
+  <p>
+    Published: <%= @work.publication_year %>
+  </p>
+  <section>
+    <%= link_to "Back to media ranks", root_path, class: "button" %>
+    <%= link_to "Edit", edit_work_path, class: "button" %>
+    <%= link_to "Upvote", root_path, class: "button" %>
+    <%= link_to "Delete", delete_work_path, method: :delete, data: { confirm: "Are you sure?" }, class: "alert button" %>
+  </section>
+</article>
 
-  <article class="media-details columns large-6 small-12">
-    <h3><%= @work.title %></h3>
-    <p>
-      Created by: <%= @work.creator %>
-    </p>
-    <p>
-      Published: <%= @work.publication_year %>
-    </p>
-    <section>
-      <%= link_to "Back to media ranks", root_path, class: "button" %>
-      <%= link_to "Edit", edit_work_path, class: "button" %>
-      <%= link_to "Upvote", root_path, class: "button" %>
-      <%= link_to "Delete", delete_work_path, method: :delete, data: { confirm: "Are you sure?" }, class: "alert button" %>
-    </section>
-  </article>
-
-  <article class="voting-users columns large-6 small-12">
-    <h3><%= "#{@work.votes.length} votes for this #{@work.category.name.capitalize}" %></h3>
-    <table>
-      <thead>
-        <tr>
-          <th>User</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @work.votes.each do |vote| %>
-        <tr>
-          <td><%= User.find_by(id: vote.user_id).name %></td>
-          <td><%= vote.created_at.strftime("%b %-d, %Y") %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </article>
-</main>
+<article class="voting-users columns large-6 small-12">
+  <h3><%= "#{@work.votes.length} votes for this #{@work.category.name.capitalize}" %></h3>
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @work.votes.each do |vote| %>
+      <tr>
+        <td><%= User.find_by(id: vote.user_id).name %></td>
+        <td><%= vote.created_at.strftime("%b %-d, %Y") %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</article>
