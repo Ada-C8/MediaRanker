@@ -4,6 +4,9 @@ class WorksController < ApplicationController
     @albums = Work.top_ten("album")
     @books = Work.top_ten("book")
     @top = Work.top_work
+    unless @top
+      @spotlight = "none"
+    end
   end
 
   def index
