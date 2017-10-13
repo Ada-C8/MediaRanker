@@ -1,10 +1,10 @@
 class WorksController < ApplicationController
 
   def home
-    @top_work = Work.first
-    @albums = Work.albums.first(10)
-    @books = Work.books.first(10)
-    @movies = Work.movies.first(10)
+    @top_work = Work.order_by_popularity(Work.all).first
+    @albums = Work.order_by_popularity(Work.albums).first(10)
+    @books = Work.order_by_popularity(Work.books).first(10)
+    @movies = Work.order_by_popularity(Work.movies).first(10)
   end
 
   def index

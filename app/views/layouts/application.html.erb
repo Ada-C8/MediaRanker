@@ -9,7 +9,20 @@
   </head>
 
   <body>
-    <h2> params are <%= params %></h2>
+    <header>
+      <h2>
+        <%= link_to("Media Ranker", root_path) %>
+        <small>Ranking the Best of Everything</small>
+      </h2>
+      <nav>
+        <%= link_to("View top media", root_path) %>
+        <%= link_to("View all media", works_path) %>
+        <%= link_to("Add a new work", new_work_path) %>
+        <%= link_to("View all users", users_path) %>
+        <!-- <%= link_to("Logged in as " , root_path) %>
+        <%= link_to("Log Out", logout_path, method: :post) %> -->
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

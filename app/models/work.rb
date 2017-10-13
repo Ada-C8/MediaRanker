@@ -20,11 +20,9 @@ class Work < ApplicationRecord
     @categories = ["album", "book", "movie"]
   end
 
-  # def self.order_by_popularity(works)
-  #   works.each do |work|
-  #
-  #   end
-  # end
+  def self.order_by_popularity(works)
+    return works.sort { |x,y| y.votes.length <=> x.votes.length}
+  end
 
 
 end
