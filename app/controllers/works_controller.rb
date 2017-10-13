@@ -1,7 +1,7 @@
 class WorksController < ApplicationController
 
   def home
-    @top_work = Work.order(:id).first
+    @top_work = Work.first
     @albums = Work.albums.first(10)
     @books = Work.books.first(10)
     @movies = Work.movies.first(10)
