@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work_by_params_id, only: [:show, :edit, :update, :destroy]
+
 
   def index
     if params[:work_id]
@@ -11,44 +13,36 @@ class WorksController < ApplicationController
     end
   end
 
-  def show
-    find_work_by_params_id
-  end
+  def show; end
 
   def new
     @work = Work.new
   end
 
-  def edit
-    find_work_by_params_id
-  end
+  def edit; end
 
   def create
     @work = Work.new(work_params)
-    @work.save
-    if @work.save
+    if save_and_flash(@work)
       redirect_to works_path
     else
-      render :new
+      render :new, status: :bad_request
     end
   end
 
   def update
-    @work =Work.find(params[:id])
-    @work.update_attributes(driver_params)
-    @work.save
-
-    redirect_to works_path
+    @work.update_attributes(work_params)
+    if save_and_flash(@work)
+      redirect_to work_path(@work)
+    else
+      render :edit, status: :bad_request
+    end
   end
 
   def destroy
-    @book = find_work_by_params_id
-    if @book
-      @book.destroy
-    else
-      #
-    end
-    redirect_to books_path
+    #Fails test if I take the if loop out, but I don't think I should need it given the before_action block
+      @work.destroy
+      redirect_to works_path
   end
 
   private
@@ -61,10 +55,6 @@ class WorksController < ApplicationController
     unless @work
       head :not_found
     end
-    return @work
   end
-
-
-
 
 end

@@ -30,10 +30,12 @@
     <tbody>
   <%votes.each do |vote| %>
   <%user = User.all.find_by(id: vote.user_id)%>
-  <tr>
-    <td><%=user.name%></td>
-    <td><%= user.created_at %></td>
-  </tr>
+  <%if user %>
+    <tr>
+      <td><%=link_to user.name, user_path(user)%></td>
+      <td><%= vote.created_at %></td>
+    </tr>
+    <%end%>
   <%end %>
 </ul>
 </article>

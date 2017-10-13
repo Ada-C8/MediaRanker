@@ -4,16 +4,17 @@ describe Work do
   let(:work) { Work.new }
 
   describe "validations" do
-    it "can be created with a title" do
-      w = Work.new(title: "title")
+    it "can be created with a title and a category" do
+      w = Work.new(title: "title", category: "category")
       w.must_be :valid?
     end
 
-    it "requires a title" do
+    it "requires a title and a category" do
       w = Work.new
       is_valid = w.valid?
       is_valid.must_equal false
       w.errors.messages.must_include (:title)
+      w.errors.messages.must_include (:category)
     end
   end
 
