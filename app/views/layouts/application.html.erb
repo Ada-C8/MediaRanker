@@ -18,15 +18,15 @@
   <body>
     <header class="page-header row">
 
-    <h2 class="columns small-12"> <%= link_to("Media Ranker", root_path, alt: "link to home page") %> | Ranking the Best of Everything</h2>
+    <h2 class="columns small-12"> <%= link_to("Media Ranker", root_path, alt: "link to home page") %> <small>Ranking the Best of Everything</small></h2>
     <nav class="columns small-12">
-      <%= button_to("View top media", root_path, method: :get, alt: "link to home page") %>
-      <%= button_to("View all media", works_path, method: :get, alt: "link to index page") %>
-      <%= button_to("Add a new work", new_work_path, method: :get, alt: "link to add a new work") %>
-      <%= button_to("View all users", users_path, method: :get, alt: "link to user index") %>
+      <%= button_to("View top media", root_path, method: :get, alt: "link to home page", class: "button") %>
+      <%= button_to("View all media", works_path, method: :get, alt: "link to index page", class: "button") %>
+      <%= button_to("Add a new work", new_work_path, method: :get, alt: "link to add a new work", class: "button") %>
+      <%= button_to("View all users", users_path, method: :get, alt: "link to user index", class: "button") %>
       <div class="float-right">
-        <%= button_to((session[:user_id] == nil ? "Log In" : "Logged in as #{session[:name]}"), (session[:user_id] == nil ? login_path : user_path((session[:user_id]))), method: :get, alt: "link to user summary") %>
-        <%= button_to("Log Out", logout_path, method: :get, alt: "link to log out") %>
+        <%= button_to((session[:user_id] == nil ? "Log In" : "Logged in as #{session[:name]}"), (session[:user_id] == nil ? login_path : user_path((session[:user_id]))), method: :get, alt: "link to user summary", class: "button") %>
+        <%= button_to("Log Out", logout_path, method: :get, alt: "link to log out", class: "button") %>
       </div>
     </nav>
   </header>

@@ -3,10 +3,11 @@
   <div>
     <h3>
       <span class="media-spotlight-header">Media Spotlight</span>
-      <%= link_to @winner.title, work_path(@winner.id), alt: "link to see details of work with most votes" %>
+      <%= link_to @winner.title, work_path(@winner.id), alt: "link to see details of work with most votes" %> by
+      <%= @winner.creator %>
     </h3>
     <p>
-      <%= @winner.votes.length %> votes
+      <%= @winner.votes.length%> votes - <%= @winner.description %>
     </p>
   </div>
 </section>
@@ -19,7 +20,7 @@
     <% @works.top_ten("movie").each do |work| %>
     <li>
       <h4>
-      <%= link_to(work.title, work_path(work.id), alt: "link to details for top ten movie") %> <small>by</small> <%= work.creator %>
+      <%= link_to(work.title, work_path(work.id), alt: "link to details for top ten movie") %> <small>by <%= work.creator %></small>
       </h4>
       <%= work.votes.count %> votes
       <% end %>
@@ -33,7 +34,7 @@
     <% @works.top_ten("book").each do |work| %>
     <li>
       <h4>
-      <%= link_to(work.title, work_path(work.id), alt: "link to details for top ten movie") %> <small>by</small> <%= work.creator %>
+      <%= link_to(work.title, work_path(work.id), alt: "link to details for top ten movie") %> <small>by <%= work.creator %></small>
       </h4>
       <%= work.votes.count %> votes
       <% end %>
@@ -47,7 +48,7 @@
     <% @works.top_ten("album").each do |work| %>
     <li>
       <h4>
-      <%= link_to(work.title, work_path(work.id), alt: "link to details for top ten movie") %> <small>by</small> <%= work.creator %>
+      <%= link_to(work.title, work_path(work.id), alt: "link to details for top ten movie") %> <small>by <%= work.creator %></small>
       </h4>
       <%= work.votes.count %> votes
       <% end %>

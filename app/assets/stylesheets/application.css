@@ -1,26 +1,229 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
 
-  @import url('foundation');
+@import url('foundation');
 
-  body, h1, h2, h3, h4, h5 {
-      font-family: "Gudea", sans-serif;
+/* Small only */
+@media screen and (max-width: 39.9375em) {}
+
+/* Medium and up */
+@media screen and (min-width: 40em) {
+  /*.column, .columns {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem;
+  }*/
+}
+  h2 {
+      font-size: 2.5rem;
   }
-  
- /*.flash .success {
-   background-color: lightgreen;
-   display: block;
- }*/
+
+}
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+  .column, .columns {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem;
+  }
+
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {}
+
+/* Large only */
+@media screen and (min-width: 64em) and (max-width: 74.9375em) {}
+
+/*header styling*/
+.page-header {
+  max-width: 100%;
+  background-color: #B2DFDB;
+  border-bottom: 1px solid #EEEEEE;
+  margin-bottom: 10px;
+  padding: 25px 20px 10px 20px;
+}
+
+.page-header h2 {
+  text-align: center;
+  margin: 25px auto 40px auto;
+  font-size: 2.5rem;
+}
+
+.page-header h2 small {
+  color: white;
+}
+
+.page-header h2 a {
+  color: #FF5722;
+  padding-right: 25px;
+  margin-right: 15px;
+  border-right: white 2px solid;
+}
+
+.float-right {
+    float: right !important;
+}
+
+.column:last-child:not(:first-child), .columns:last-child:not(:first-child) {
+    float: right;
+}
+
+
+
+.media-spotlight-header {
+    color: #424242;
+}
+
+/*body styling*/
+
+a {
+    line-height: inherit;
+    color: #1779ba;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+body, h1, h2, h3, h4, h5 {
+  font-family: "Gudea", sans-serif;
+}
+
+h2 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+
+
+
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+a, h3 {
+    color: #26A69A;
+}
+
+body small {
+    color: slategrey;
+}
+
+.row {
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+article, aside, footer, header, nav, section {
+  display: block;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fefefe;
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #0a0a0a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.button_to {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.button {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 1rem 0;
+    padding: 0.85em 1em;
+    -webkit-appearance: none;
+    border: 1px solid transparent;
+    border-radius: 0;
+    transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    font-size: 0.9rem;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    background-color: #26A69A;
+    color: #fefefe;
+}
+
+.button:hover {
+    background-color: #00796B;
+}
+
+.spotlight a {
+    border-bottom: 2px solid;
+}
+
+a {
+    line-height: inherit;
+    color: #1779ba;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a, h3 {
+    color: #26A69A;
+}
+
+a:hover {
+    color: #00796B;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.row::after {
+    clear: both;
+}
+
+.row::before, .row::after {
+    display: table;
+    content: ' ';
+}
+
+.top-ten h3 {
+    border-bottom: 2px solid;
+    border-bottom-color: #B2DFDB;
+}
+
+/*home page styling */
+
+/*.column, .columns {
+    width: 100%;
+    float: left;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+}*/
+/*.flash .success {
+background-color: lightgreen;
+display: block;
+}*/
