@@ -18,8 +18,14 @@ describe User do
 
   describe "relations" do
     it "must have votes" do
-      u = users(:cheetara)
+      u = users(:tygra)
       u.votes.count.must_equal 0
+    end
+
+    it "must have votes" do
+      # u = User.new(name: "bob")
+      u = users(:cheetara)
+      u.votes.count.must_equal 2
     end
   end
 end
