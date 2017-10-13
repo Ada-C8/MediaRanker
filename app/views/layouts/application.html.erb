@@ -9,6 +9,31 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+    </header>
+    <main>
+      <section class ="flash">
+        <p>
+          <%= flash[:message] %>
+        </p>
+        <% if flash[:details] %>
+        <ul>
+          <% flash[:details].each do |field, problems| %>
+            <% problems.each do |problem| %>
+            <li>
+              <strong> <%= field %>:</strong>
+              <%= problem %>
+            </li>
+            <% end %>
+          <%end %>
+        </ul>
+        <% end %>
+      </section>
+      <%= yield %>
+    </main>
+    <footer>
+
+    </footer>
+
   </body>
 </html>

@@ -36,6 +36,7 @@ describe UsersController do
       # Act
       post login_path, params: user_data
       # Assert
+      # TODO: Figure out why this is failing!!!
       session[:logged_in_user].must_equal user.id
     end # will log into existing user
 
