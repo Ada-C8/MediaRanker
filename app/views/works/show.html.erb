@@ -2,6 +2,7 @@
 <p>Created by: <%= @works[:creator] %></p>
 <p>Published: <%= @works[:publication_year] %></p>
 <p>Description: <%= @works[:description] %></p>
+<p>Testing time stamp <%= @works[:created_at].strftime("%B %d, %Y") %></p>
 
 <ul>
   <li><%= link_to "Back to media ranks", root_path %></li>
