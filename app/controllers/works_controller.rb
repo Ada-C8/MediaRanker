@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  # filter process
+  #filter process
   before_action :find_work_by_params_id, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -20,7 +20,7 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
-
+    # message = "Successfully created #{@work.category} #{@work.id}"
     if save_and_flash(@work)
       redirect_to works_path
     else
@@ -44,8 +44,10 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work.destroy
-    redirect_to works_path
+    if find_work_by_params_id
+      @work.destroy
+      redirect_to works_path
+    end
   end
 
 private

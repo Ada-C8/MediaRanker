@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     result = model.save
     if result
       flash[:status] = :success
-      flash[:message] = "Successfully saved #{model.class} number #{model.id}"
+      flash[:message] = "Successfully  #{model.class} number #{model.id}"
     else
       flash.now[:status] = :failure
       flash.now[:message] = "Failed to save #{model.class}"
