@@ -16,6 +16,6 @@ class Work < ApplicationRecord
   end
 
   def self.best_10(category)
-    Work.where(category: category).sort_by{|w| -w.votes.count}[0..10]
+    Work.where(category: category).sort_by{|w| -w.votes.count}[0...10]
   end
 end

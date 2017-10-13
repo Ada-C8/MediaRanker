@@ -1,7 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-
+  name: 'one'
 two:
-  name: MyString
+  name: 'two'
+three:
+  name: 'three'
+four:
+  name: 'four'
+five:
+  name: 'five'
+six:
+  name: 'six'
+seven:
+  name: 'seven'
+eight:
+  name: 'eight'
+nine:
+  name: 'nine'
+ten:
+  name: 'ten'
