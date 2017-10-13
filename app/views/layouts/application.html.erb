@@ -13,10 +13,6 @@
 
   <body>
     <header class="page-header row">
-      <%# if session[:logged_in_user] %>
-        <!-- <p>Logged in as -->
-        <%#= User.find(session[:logged_in_user]).name %></p>
-      <%# end %>
       <h2 class="small-12 columns">
         <%= link_to "Media Ranker", root_path %>
         <small>Ranking the Best of Everything</small></h2>
@@ -26,8 +22,12 @@
         <%= link_to "Add a new work", new_work_path, class: "button" %>
         <%= link_to "View all users", users_path, class: "button" %>
         <div class="float-right">
-          <%#= link_to "Logged in as USER", user_path(params[:user][:id]), class: "button" %>
-          <%= link_to "Log Out", logout_path, method: :destroy, class: "button" %>
+          <% if session[:logged_in_user] %>
+            <%= link_to "Logged in as #{User.find(session[:logged_in_user]).name}", user_path(session[:logged_in_user]), class: "button" %>
+            <%= link_to "Log Out", logout_path, method: :destroy, class: "button" %>
+          <% else %>
+            <%= link_to "Log In", login_path, class: "button" %>
+          <% end %>
         </div>
       </nav>
     </header>
@@ -50,7 +50,7 @@
             </ul>
           <% end %>
       </section>
-    <% end %>  
+    <% end %>
     <%= yield %>
   </body>
 </html>
