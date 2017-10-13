@@ -1,5 +1,12 @@
-<h3>Top 10</h3>
-<h3>List of works</h3>
+
+<div>
+  <%@top_work = Work.top%>
+  <h3>Media Spotlight: <%= link_to @top_work.title, work_path(@top_work.id) %> by: <%= @top_work.creator %></h3>
+  <p>
+    <%=@top_work.votes.count%> votes <%= @top_work.description%>
+  </p>
+</div>
+
 
 <% @types.each do |type| %>
   <section>
