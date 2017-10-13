@@ -1,2 +1,14 @@
 <h1>Works#edit</h1>
 <p>Find me in app/views/works/edit.html.erb</p>
+
+<h1 class="page_names">Edit this <%= @work.category %></h1>
+
+<% if @work.errors.any? %>
+  <ul class="errors">
+    <% @work.errors.each do |column, message| %>
+    <li> <strong><%= column.capitalize %> </strong> <%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render partial: "form", locals: { submit_name: "Update Work" }%>
