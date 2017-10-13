@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
 
   def new
@@ -39,7 +39,12 @@ class UserController < ApplicationController
       render :edit
     end
   end
-  
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+  end
+
 
   private
 

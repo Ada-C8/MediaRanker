@@ -71,6 +71,33 @@ def destroy
   redirect_to media_instances_path
 end
 
+def get_music
+    MediaInstance.where(media_type: "music")
+end
+
+def ten_music
+  get_music.first(10).order(@media_instance.votes.length)
+end
+
+def get_news
+ MediaInstance.where(media_type: "news")
+end
+
+def ten_news
+get_news.first(10).order(@media_instance.votes.length)
+end
+
+def get_books
+  MediaInstance.where(media_type: "book")
+end
+
+def ten_books
+get_books.first(10).order(@media_instance.votes.length)
+end
+
+def num_votes
+  Vote.where(media_instance_id: @media_instance.id).length
+end
 private
 
 def media_instance_params

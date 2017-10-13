@@ -1,0 +1,5 @@
+<%= form_tag do  %>
+<%= collection_select(:user, :user_id, User.all, :id, :email) %>
+<%= submit_tag "Log in as User" , data: { confirm: 'Are you sure this is you?' } %>
+<%= link_to "New User", new_user_path %>
+<% end %>

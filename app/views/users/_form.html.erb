@@ -1,0 +1,19 @@
+<%= form_for @user,  :html => {:class => 'form'}  do |f| %>
+
+<div>
+    <%= f.label :name %>
+  <%= f.text_field :name, size: "50" %>
+</div>
+<div>
+    <%= f.label :email %>
+  <%= f.text_field :email, size: "50" %>
+</div>
+
+<div>
+  <%= f.submit %>
+</div>
+
+<div>
+<%#= link_to "Delete", destroy_users_path %>
+</div>
+<% end %>

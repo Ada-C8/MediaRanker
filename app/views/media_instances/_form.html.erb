@@ -1,0 +1,28 @@
+<%= render partial: "layouts/error_messages", locals: { model: @media_instance} %>
+
+
+<%= form_for @media_instance,  :html => {:class => 'form'}  do |f| %>
+<div>
+    <%= f.label :media_type %>
+  <%= f.collection_select( :media_type, @media_instances, :id, :title) %>
+</div>
+<div>
+    <%= f.label :title %>
+  <%= f.text_field :title, size: "50" %>
+</div>
+<div>
+    <%= f.label :creator %>
+  <%= f.text_field :creator, size: "50" %>
+</div>
+<div>
+    <%= f.label :publication_year %>
+  <%= f.integer_field :pub_yr, size: "50" %>
+</div>
+<div>
+    <%= f.label :description %>
+  <%= f.text_field :description, size: "500" %>
+</div>
+<div>
+  <%= f.submit %>
+</div>
+<% end %>

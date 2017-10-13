@@ -1,0 +1,25 @@
+<!-- this is the main page and should have the top ten of each style of media -->
+
+<article class="small-1, medium-2, large-4 columns">
+  <h2>Music</h2>
+ <%# @media_instances.ten_music.each do |instance| %>
+ <%# if instance? %>
+ <ul>
+   <li>
+    <%= @media_instances.first.id %>
+   </li>
+   <li><%#= instance.title %></li>
+ </ul>
+  <%# end%>
+ <% #end %>
+</article>
+
+<article class="small-1, medium-2, large-4 columns">
+  <h2>Movies</h2>
+logic that gets top ten of Movies
+</article>
+
+<article class="small-1, medium-2, large-4 columns">
+  <h2>News</h2>
+logic that gets top 10 of News
+</article>

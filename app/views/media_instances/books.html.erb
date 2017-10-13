@@ -1,0 +1,15 @@
+<h1>Books</h1>
+
+<section>
+  
+  <ul>
+    <% @MediaInstance.each do |media_instance| %>
+    <li>
+        <%= if media_instance.media_type == "book" %>
+        <%= link_to book.name, media_instances_path(@media_instance) %>
+    </li>
+      <% end %>
+    <% end %>
+  </ul>
+
+</section>
