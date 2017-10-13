@@ -4,9 +4,9 @@ Rails.application.routes.draw do
     member do
       post 'upvote'
     end
-  end 
+  end
   resources :users, only: [:index, :show, :create]
-  root 'main#index'
+  root 'works#root'
 
   get 'login', to: 'users#login_form', as: 'login'
   post 'login', to: 'users#login'

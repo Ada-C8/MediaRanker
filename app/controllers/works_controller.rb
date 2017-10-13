@@ -1,4 +1,10 @@
 class WorksController < ApplicationController
+  def root
+    @movies = Work.top_ten("movie")
+    @albums = Work.top_ten("album")
+    @books = Work.top_ten("book")
+  end
+
   def index
     @works = Work.all
   end # index
