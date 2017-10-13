@@ -4,8 +4,20 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+awesome_movie:
+  title: Terminator II
+  category: movie
+  publication_year: 1991
+  creator: James Cameron
+
+epic_album:
+  title: Purple rain
+  category: album
+  publication_year: 1984
+  creator: Prince
+
+good_book:
+  title: Half of a yellow sun
+  category: book
+  publication_year: 2013
+  creator: Chimamanda Ngozi Adichie
