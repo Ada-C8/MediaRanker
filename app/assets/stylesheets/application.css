@@ -165,3 +165,12 @@ header.header {
   list-style: none;
   margin-left: 0;
 }
+
+
+/**********/
+/* TABLES */
+/**********/
+
+table .button {
+  margin-bottom: 0;
+}
