@@ -1,7 +1,9 @@
 class WorksController < ApplicationController
   before_action :find_work_by_params_id, only: [:show, :edit, :update, :destroy]
   def index
-    @works = Work.all#.order('title asc')
+    @books = Work.sort_by_category("book")
+    @albums = Work.sort_by_category("album")
+    @movies = Work.sort_by_category("movie")
   end
 
   def create

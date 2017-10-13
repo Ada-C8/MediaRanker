@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+def index
 
+end
 protected
   def save_and_flash(model)
     result = model.save
