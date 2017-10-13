@@ -1,2 +1,15 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
+<article class="media-details columns large-6 small-12">
+  <h3><%= @work.title %></h3>
+  <p>
+    Created by: <%= @work.creator %>
+  </p>
+  <p>
+    Published: <%= @work.publication_year %>
+  </p>
+  <section>
+    <%= link_to "Back to media ranks", root_path %>
+    <%= link_to "Edit", edit_work_path %>
+    <%= link_to "Upvote", root_path %>
+    <%= link_to "Delete", delete_work_path, method: :delete %>
+  </section>
+</article>

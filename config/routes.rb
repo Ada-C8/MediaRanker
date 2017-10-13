@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   patch '/works/:id', to: 'works#update', as: 'update_work' # update_work_path
 
-  delete '/works/:id', to: 'works#destroy', as: 'destroy_work' # destroy_work_path
+  delete '/works/:id', to: 'works#destroy', as: 'delete_work' # delete_work_path
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
