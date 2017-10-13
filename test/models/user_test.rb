@@ -24,6 +24,11 @@ describe "Validations" do
     u2 = User.new
     u2.wont_be :valid?
   end
+
+  it "strips white space from the beginning and end of a name" do
+    u = User.new(name: " Marc ")
+    u.name.length.must_equal 4     
+  end # uniqueness
 end # describe "Validations" do
 
 end # User do

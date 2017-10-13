@@ -18,16 +18,20 @@ class UsersController < ApplicationController
     if user
       session[:logged_in_user] = user.id
       flash[:status] = :success
-      flash[:message] = "Sucessfully logged in as existing user #{user.name}"
+      flash[:message] = "Sucessfully logged in as existing user #{user.name} with user.id #{user.id}"
       redirect_to root_path
     else
-      # TODO: add logic here to create a new user if the user doesn't already exist
+      # TODO: add logic to remove white space at the end of the username!!
       @user = User.new(user_params)
+      @user.name = @user.name.rstrip!
 
       if @user.save
+        session[:logged_in_user] = @user.id
+        flash[:status] = :success
+        flash[:message] = "Sucessfully created new user #{@user.name} with ID #{@user.id}"
         redirect_to root_path
       else
-        render :login
+        render :login_form
       end # if/else
     end # if/else
   end # login

@@ -36,7 +36,7 @@ describe UsersController do
       # Act
       post login_path, params: user_data
       # Assert
-      # TODO: Figure out why this is failing!!!
+      # TODO: Figure out why this is failing!!! My flash message shows the right user id, so I'm not sure what is happening here
       session[:logged_in_user].must_equal user.id
     end # will log into existing user
 
@@ -59,8 +59,6 @@ describe UsersController do
 
       # Assert
         User.count.must_equal number_of_users + 1
-
-
     end # create new User for new name
   end # login
 
