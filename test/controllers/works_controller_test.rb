@@ -92,11 +92,12 @@ describe WorksController do
       work_data = {
         work: {
           title: "a different title",
-          creator: work.creator
+          creator: "happy",
+          category: "album"
         }
       }
       work.update_attributes(work_data[:work])
-      work.must_be :valid?, "Test is invalid because the provided data will produce an invalid"
+      work.must_be :valid?
 
       patch work_path(work), params: work_data
 
