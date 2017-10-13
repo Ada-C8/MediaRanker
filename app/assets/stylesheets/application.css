@@ -15,3 +15,42 @@
  *= require_tree .
  *= require_self
  */
+
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+  font-style: normal;
+}
+
+body, h1, h2, h3, h4, h5 {
+  font-family: "Gudea", sans-serif;
+}
+
+.button {
+  background-color: #26A69A;
+  display: inline-block;
+}
+
+.float_right {
+  float: right;
+}
+.page-header {
+  background-color: #B2DFDB;
+  border-bottom: 1px solid #EEEEEE;
+ }
+
+.page-header h2 {
+  text-align: center;
+  margin: 25px auto 40px auto;
+}
+
+ .page-header h2 a {
+   color: #FF5722;
+   padding-right: 25px;
+   margin-right: 15px;
+   border-right: white 2px solid;
+ }
+
+ .page-header h2 small {
+   color: white;
+ }
