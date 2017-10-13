@@ -4,19 +4,19 @@ book:
   category: book
   title: Grapes of Wrath
   creator: John Steinbeck
-  publication_year: 2017-10-10
+  publication_year: 1939
   description: This is a book
 
 album:
   category: album
   title: The Good Fight
   creator: Oddisee
-  publication_year: 2017-10-10
+  publication_year: 2016
   description: This is an album
 
 movie:
   category: movie
   title: Sense and Sensibility
   creator: Ang Lee
-  publication_year: 1995-10-10
+  publication_year: 1995
   description: This is a movie
