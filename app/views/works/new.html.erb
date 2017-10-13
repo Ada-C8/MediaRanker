@@ -1,24 +1,28 @@
 <h1>Add new Work</h1>
 
 
-<%= form_for @work do |w| %>
-
-  <%= w.label :title %>
-  <%= w.text_field :title %>
-
-  <%= w.label :category %>
-  <%= w.select :category, Work::CATEGORIES %>
-
-  <%= w.label :creator %>
-  <%= w.text_field :creator %>
-
-  <%= w.label "Publication year" %>
-  <%= w.number_field :year %>
+<%= render partial: "form",
+    locals: { hide_placeholder_text: true, button_text: "Create Work" }%>
 
 
-  <%= w.label "Description" %>
-  <%= w.text_field :description %>
+<%# form_for @work do |w| %>
 
-  <%= w.submit "Create Work" %>
+  <%# w.label :title %>
+  <%# w.text_field :title %>
 
-  <% end %>
+  <%# w.label :category %>
+  <%# w.select :category, Work::CATEGORIES %>
+
+  <%# w.label :creator %>
+  <%# w.text_field :creator %>
+
+  <%# w.label "Publication year" %>
+  <%# w.number_field :year %>
+
+
+  <%# w.label "Description" %>
+  <%# w.text_field :description %>
+
+  <%# w.submit "Create Work" %>
+
+  <%# end %>

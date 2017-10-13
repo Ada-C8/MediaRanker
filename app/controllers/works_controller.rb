@@ -27,7 +27,7 @@ class WorksController < ApplicationController
 
 
   def show
-    @work = Work.find(params[:id])
+    find_work_by_params_id
     # unless  @work
     #   flash[:status] = :not_found
     #   flash[:message] = "Work not found"
@@ -35,10 +35,35 @@ class WorksController < ApplicationController
     # end
   end
 
+  def edit
+    find_work_by_params_id
+  end
+
+  def update
+    if find_work_by_params_id
+      @work.update_attributes(work_params)
+      if @work.save
+        redirect_to work_path(@work)
+        return
+      else
+        render :edit, status: :bad_request
+        return
+      end
+    end
+  end
+
 
   private
   def work_params
     return params.require(:work).permit(:title, :category, :creator, :year, :description)
   end
+
+  def find_work_by_params_id
+  @work = Work.find_by(id: params[:id])
+  unless @work
+    head :not_found
+  end
+  return @work
+end
 
 end
