@@ -46,6 +46,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+    session[:logged_in_user] = nil
+    redirect_to users_path
+  end
+
 private
   def user_params
     params.require(:user).permit(:name)
