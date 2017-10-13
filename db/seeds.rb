@@ -29,4 +29,30 @@ end
 puts "Added #{Work.count} work records"
 puts "#{work_failures.length} work failed to save"
 
+
+#add some users
+user_failures = []
+20.times do |i|
+  user = User.new name: "user number #{i}"
+  puts "Created user: #{user.inspect}"
+  successful = user.save
+  if !successful
+    user_failures << user
+  end
+end
+puts "Added #{User.count} user records"
+puts "#{user_failures.length} users failed to save"
+
+#add some votes
+vote_failures =[]
+40.times do
+  vote = Vote.create user_id: rand(20), work_id: rand(15)
+  puts "Created vote: #{vote.inspect}"
+  successful = vote.save
+  if !successful
+    vote_failures << vote
+  end
+end
+puts "Added #{Vote.count} vote records"
+puts "#{vote_failures.length} votes failed to save"
 puts "done"
