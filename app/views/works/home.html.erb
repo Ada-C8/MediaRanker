@@ -3,7 +3,7 @@
 <main class="row">
 
   <section class="row spotlight">
-    <h3>Media Spotlight:
+    <h3><span class="media-spotlight-header"> Media Spotlight: </span>
       <%= link_to(@spotlight.title, work_path(@spotlight.id)) %> by <%= @spotlight.creator %> </h3>
     <p>
       <%= "#{@spotlight.num_votes} - #{@spotlight.description}" %>

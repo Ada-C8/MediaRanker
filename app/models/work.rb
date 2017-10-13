@@ -9,6 +9,7 @@ class Work < ApplicationRecord
   validates :title, uniqueness: { scope: [:category_id, :creator], message: "Duplicated works not allowed" }
   validate :publication_year_cannot_be_in_future, if: Proc.new { publication_year.is_a?Integer }
 
+  # gets array of Works if given category name as string
   def self.works_by_type(category_name)
     works_in_cat = Work.left_outer_joins(:votes).where(category_id: Category.find_by(name: category_name)).distinct.select('works.*, COUNT(votes.*) AS num_votes').group('works.id').order('num_votes DESC')
 
@@ -16,6 +17,8 @@ class Work < ApplicationRecord
 
   end
 
+  # gets hash of all Works where category name is key (string)
+  # and array of Works is value
   def self.works_by_type_hash
     media_hash = {}
     cat_names = Category.all.map { |cat| cat.name }
@@ -38,6 +41,27 @@ class Work < ApplicationRecord
   def self.spotlight
     works = Work.left_outer_joins(:votes).distinct.select('works.*, COUNT(votes.*) AS num_votes').group('works.id').order('num_votes DESC')
     return works[0]
+  end
+
+  # returns string of num + vote(s) as singular or plural
+  # depending on number
+  def num_votes_to_s(num_votes = nil)
+    if !num_votes
+      num_votes = votes.length
+    end
+
+    return num_votes == 1 ? "1 vote" : "#{num_votes} votes"
+  end
+
+  # formats num votes + description based on presence / absence
+  # of description
+  def spotlight_caption(num_votes = nil)
+    # if work has a description, concatenate to votes and format
+    if @work.description.to_s != ""
+      return "#{@work.num_votes_to_s(num_votes)} - #{@work.description}"
+    else
+      return "#{@work.num_votes_to_s(num_votes)}"
+    end
   end
 
   private

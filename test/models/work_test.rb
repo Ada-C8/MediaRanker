@@ -91,66 +91,84 @@ describe Work do
     end
   end
 
-  describe "#works_by_type" do
-    let(:book_list) { [works(:hp), works(:dune)] }
+  describe "methods" do
+    describe "#works_by_type" do
+      let(:book_list) { [works(:hp), works(:dune)] }
 
-    it "must return an array of Works" do
-      books = Work.works_by_type("book")
+      it "must return an array of Works" do
+        books = Work.works_by_type("book")
 
-      books.each do |book|
-        book.must_be_instance_of Work
-      end
-    end
-
-    it "must return an array of Works in the specified category" do
-      books = Work.works_by_type("book")
-      books.must_equal book_list
-
-      movie = [works(:lego)]
-      Work.works_by_type("movie").must_equal movie
-    end
-  end
-
-  describe "#works_by_type_hash" do
-    let(:works_hash) { { "books" => [works(:hp), works(:dune)],
-                        "movies" => [works(:lego)],
-                        "albums" => [works(:nonsense)] } }
-    it "must return a hash with category name as key and array of Works as value" do
-      Work.works_by_type_hash.must_equal works_hash
-    end
-
-    it "must return a hash with Works sorted by votes in descending order" do
-      works_hash.each_key do |cat|
-        work_list = works_hash[cat]
-
-        (work_list.length - 1).times do |idx|
-          work_list[idx].votes.length.must_be :>=, work_list[idx + 1].votes.length
+        books.each do |book|
+          book.must_be_instance_of Work
         end
       end
 
-      # add votes
-      Vote.create!(user_id: users(:ron).id, work_id: works(:dune).id)
-      Vote.create!(user_id: users(:harry).id, work_id: works(:dune).id)
+      it "must return an array of Works in the specified category" do
+        books = Work.works_by_type("book")
+        books.must_equal book_list
 
-      # resort books by num_votes DESC
-      works_hash["books"] = [Work.find_by(title: "Dune"), Work.find_by(title: "Harry Potter")]
-
-      Work.works_by_type_hash.must_equal works_hash
+        movie = [works(:lego)]
+        Work.works_by_type("movie").must_equal movie
+      end
     end
+
+    describe "#works_by_type_hash" do
+      let(:works_hash) { { "books" => [works(:hp), works(:dune)],
+                          "movies" => [works(:lego)],
+                          "albums" => [works(:nonsense)] } }
+      it "must return a hash with category name as key and array of Works as value" do
+        Work.works_by_type_hash.must_equal works_hash
+      end
+
+      it "must return a hash with Works sorted by votes in descending order" do
+        works_hash.each_key do |cat|
+          work_list = works_hash[cat]
+
+          (work_list.length - 1).times do |idx|
+            work_list[idx].votes.length.must_be :>=, work_list[idx + 1].votes.length
+          end
+        end
+
+        # add votes
+        Vote.create!(user_id: users(:ron).id, work_id: works(:dune).id)
+        Vote.create!(user_id: users(:harry).id, work_id: works(:dune).id)
+
+        # resort books by num_votes DESC
+        works_hash["books"] = [Work.find_by(title: "Dune"), Work.find_by(title: "Harry Potter")]
+
+        Work.works_by_type_hash.must_equal works_hash
+      end
+    end
+
+    describe "#spotlight" do
+      # what to do if no media in media db?
+      it "must return work with most votes" do
+        Work.spotlight.must_equal works(:hp)
+
+        # add votes
+        Vote.create!(user_id: users(:ron).id, work_id: works(:lego).id)
+        Vote.create!(user_id: users(:hermione).id, work_id: works(:lego).id)
+        Vote.create!(user_id: users(:harry).id, work_id: works(:lego).id)
+
+        Work.spotlight.must_equal works(:lego)
+      end
+    end
+
+    describe "#num_votes_to_s" do
+      it "must return a String" do
+        
+      end
+
+      it "must return 1 vote if num_votes is singular" do
+
+      end
+
+      it "must return num_votes votes if num_votes is 0 or > 1" do
+
+      end
+    end
+
   end
 
-  describe "#spotlight" do
-    # what to do if no media in media db?
-    it "must return work with most votes" do
-      Work.spotlight.must_equal works(:hp)
-
-      # add votes
-      Vote.create!(user_id: users(:ron).id, work_id: works(:lego).id)
-      Vote.create!(user_id: users(:hermione).id, work_id: works(:lego).id)
-      Vote.create!(user_id: users(:harry).id, work_id: works(:lego).id)
-
-      Work.spotlight.must_equal works(:lego)
-    end
-  end
 
 end
