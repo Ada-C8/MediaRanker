@@ -1,8 +1,8 @@
-<h1>List of works</h1>
+<h3>List of works</h3>
 
 <% ["albums", "books", "movies"].each do |type| %>
-  <section class="<%=type%>">
-    <h1><%=type.capitalize%></h1>
+  <section class="media-table">
+    <h4><%=type.capitalize%></h4>
     <table>
       <tr>
         <th>
@@ -45,3 +45,6 @@
   </section>
 
 <% end %>
+
+<%= link_to "View top media", root_path, class: "button" %>
+<%= link_to "Add a new work", new_work_path, class: "button" %>

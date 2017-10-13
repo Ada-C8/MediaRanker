@@ -7,9 +7,9 @@
     Published: <%= @work.publication_year %>
   </p>
   <section>
-    <%= link_to "Back to media ranks", root_path %>
-    <%= link_to "Edit", edit_work_path %>
-    <%= link_to "Upvote", root_path %>
-    <%= link_to "Delete", delete_work_path, method: :delete %>
+    <%= link_to "Back to media ranks", root_path, class: "button" %>
+    <%= link_to "Edit", edit_work_path, class: "button" %>
+    <%= link_to "Upvote", root_path, class: "button" %>
+    <%= link_to "Delete", delete_work_path, method: :delete, data: { confirm: "Are you sure?" }, class: "alert button" %>
   </section>
 </article>

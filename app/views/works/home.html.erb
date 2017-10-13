@@ -1,3 +1,6 @@
+<% provide(:flash_error, flash[:error]) %>
+<% provide(:flash_success, flash[:success]) %>
+
 <section class="row spotlight">
   <h3>Media Spotlight:
     <%= link_to(@spotlight.title, work_path(@spotlight.id)) %> by <%= @spotlight.creator %> </h3>
@@ -8,7 +11,7 @@
 
 <% ["movies", "books", "albums"].each do |type| %>
   <section class="<%=type%>">
-    <h1> Top <%=type.capitalize%></h1>
+    <h3> Top <%=type.capitalize%></h3>
     <% @top_ten = @media[type] %>
     <% @top_ten.each do |work| %>
     <ul>

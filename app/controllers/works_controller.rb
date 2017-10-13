@@ -71,7 +71,7 @@ class WorksController < ApplicationController
     @work.destroy
 
     if @work.destroyed?
-      flash[:success] = "Successfully deleted #{@work.category.name}"
+      flash[:success] = "Successfully destroyed #{@work.category.name}"
       redirect_to root_path
     else
       flash.now[:error] = "Unable to delete #{@work.category.name}"
