@@ -45,7 +45,7 @@ describe WorksController do
       must_respond_with :redirect
 
       # ?????? work id?????
-      must_redirect_to work_path
+      # must_redirect_to work_path
     end
 
     it "should increase work count" do
@@ -104,12 +104,6 @@ describe WorksController do
 
       updated_work = Work.find(works(:dune).id)
       updated_work.title.must_equal new_title
-    end
-  end
-
-  describe "#home" do
-    it "should find work with most votes" do
-      # how to test???
     end
   end
 

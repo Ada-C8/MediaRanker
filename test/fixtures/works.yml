@@ -19,7 +19,7 @@ nonsense:
   title: Stuff and nonsense
   creator: anonymous
   publication_year: 2005
-  description: etc etc etc
+  description:
 
 lego:
   category: movie

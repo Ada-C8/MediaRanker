@@ -57,10 +57,10 @@ class Work < ApplicationRecord
   # of description
   def spotlight_caption(num_votes = nil)
     # if work has a description, concatenate to votes and format
-    if @work.description.to_s != ""
-      return "#{@work.num_votes_to_s(num_votes)} - #{@work.description}"
+    if description.to_s != ""
+      return "#{num_votes_to_s(num_votes)} - #{description}"
     else
-      return "#{@work.num_votes_to_s(num_votes)}"
+      return "#{num_votes_to_s(num_votes)}"
     end
   end
 

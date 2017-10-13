@@ -155,16 +155,47 @@ describe Work do
     end
 
     describe "#num_votes_to_s" do
+      let(:one_vote_work) { works(:dune) }
+      let(:two_votes_work) { works(:hp) }
+
       it "must return a String" do
-        
+        one_vote_work.num_votes_to_s.must_be_instance_of String
       end
 
       it "must return 1 vote if num_votes is singular" do
-
+        one_vote_work.num_votes_to_s.must_equal "1 vote"
       end
 
       it "must return num_votes votes if num_votes is 0 or > 1" do
+        num_votes = two_votes_work.votes.length
+        two_votes_work.num_votes_to_s.must_equal "#{num_votes} votes"
+      end
 
+      it "must take num_votes as parameter if supplied" do
+        one_vote_work.num_votes_to_s(1).must_equal "1 vote"
+        two_votes_work.num_votes_to_s(2).must_equal "2 votes"
+      end
+    end
+
+    describe "#spotlight_caption" do
+      let(:with_description) { works(:lego) } # no votes, has description
+      let(:no_description) { works(:nonsense) } # no votes
+
+      it "must return a String" do
+        with_description.spotlight_caption.must_be_instance_of String
+      end
+
+      it "must only display num votes if no description" do
+        expected = no_description.num_votes_to_s
+        no_description.spotlight_caption.must_equal expected
+
+        expected = with_description.num_votes_to_s
+        with_description.spotlight_caption.must_equal "#{expected} - #{with_description.description}"
+      end
+
+      it "must take num_votes as optional parameter" do
+        expected = no_description.num_votes_to_s
+        no_description.spotlight_caption(0).must_equal expected
       end
     end
 
