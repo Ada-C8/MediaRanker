@@ -10,32 +10,26 @@
 
   <body>
     <header class="row">
-      <h1 class="small-12 columns">Media Ranker Ranking the Best of Everything</h1>
-      <nav class="small-12">
-        <div class="small-6 large-2 columns">
-          <%= link_to "View top media", root_path %>
+      <h2 class="small-12 columns">
+        <%= link_to "Media Ranker", root_path%><small>Ranking the Best of Everything</small></h2>
+      <nav class="small-12 columns">
+        <%= link_to "View top media", root_path, class: "button" %>
+        <%= link_to "View all media", works_path, class: "button" %>
+        <%= link_to "Add a new work", new_work_path, class: "button" %>
+        <%= link_to "View all users", users_path, class: "button" %>
+        <div class="float-right">
+          <% if session[:logged_in_user] %>
+            <p>
+              Logged in as: <%= User.find(session[:logged_in_user]).username %>
+            </p>
+          <% else %>
+            <%= link_to "Log in", new_user_path, class: "button"%>
+          <% end %>
         </div>
-        <div class="small-6 large-2 columns">
-            <%= link_to "View all media", works_path %>
-        </div>
-        <div class="small-6 large-2 columns">
-          <%= link_to "Add a new work", new_work_path %>
-        </div>
-        <div class="small-6 large-2 columns">
-          <%= link_to "View all users", users_path %>
-        </div>
-
-        <% if session[:logged_in_user] %>
-          <p>
-            Logged in as: <%= User.find(session[:logged_in_user]).username %>
-          </p>
-        <% else %>
-          <p>
-            Not logged in
-          </p>
-        <% end %>
       </nav>
     </header>
-    <%= yield %>
+    <main class="columns">
+      <%= yield %>
+    </main>
   </body>
 </html>
