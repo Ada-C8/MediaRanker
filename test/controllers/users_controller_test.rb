@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe UsersController do
-
+  let(:user1) { users(:user1) }
 
   describe "CRUD methods" do
     it "should get index" do
@@ -28,10 +28,15 @@ describe UsersController do
     #   value(response).must_be :success?
     # end
     #
-    # it "should get show" do
-    #   get users_show_url
-    #   value(response).must_be :success?
-    # end
+    it "should get user detail page (#show) or render a 404" do
+      #true
+      get user_path(user1.id)
+      must_respond_with :success
+
+      #false
+      get user_path("this is not an id")
+      must_respond_with :not_found
+    end
 
   end #
 
