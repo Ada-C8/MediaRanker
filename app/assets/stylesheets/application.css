@@ -13,3 +13,59 @@
  *= require_tree .
  *= require_self
  */
+
+/*darkteal: #26A69A;*/
+/*lightteal: #B2DFDB;*/
+/*orange: #FF5722;*/
+/*delete button: #cc4b37;*/
+/*on hover: #008080;*/
+/*flash-grey: #e6e6e6;*/
+/*darkgrey: #8a8a8a;*/
+
+* {
+  font-family: 'Gudea', sans-serif;
+  box-sizing: border-box;
+}
+
+.page-header h2 {
+  text-align: center;
+  margin: 25px auto 40px auto;
+}
+
+.page-header h2 a {
+  font-size: 40px;
+  color: #FF5722;
+  font-weight: bold;
+  border-right: 2px solid #FFF;
+  padding-right: 25px;
+  margin-right: 15px;
+}
+
+h2 small {
+  font-size: 32px;
+  font-weight: bold;
+  color: #FFF;
+}
+
+header {
+  background-color: #B2DFDB;
+}
+
+.button {
+  background-color: #26A69A;
+}
+
+.button:hover {
+  background-color: #008080;
+}
+
+.float-right {
+  float: right;
+}
+
+.flash-notice {
+  background-color: #e6e6e6;
+  padding: 20px 25px;
+  margin-top: 30px;
+  color: #8a8a8a;
+}

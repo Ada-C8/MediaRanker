@@ -6,6 +6,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    unless @user
+      head :not_found
+    end
+    return @user
   end
 
   def login_form
@@ -34,6 +38,10 @@ class UsersController < ApplicationController
   end
 
   def logout
+    session[:logged_in_user] = nil
+    flash[:status] = :success
+    flash[:notice] = "Successfully logged out"
+    redirect_to works_path
   end
 
 end

@@ -1,13 +1,11 @@
-<%= render partial: "flash_message" %>
-
-<h2>List of works</h2>
+<h3>List of works</h3>
 
 <% category_rename = { "album" => "Albums", "book" => "Books", "movie" => "Movies" }  %>
 
 <% works_by_category = @works.group_by { |w| w.category } %>
 <% works_by_category.each do |category, works|%>
 <section>
-  <h3><%= category_rename[category] %></h3>
+  <h4><%= category_rename[category] %></h4>
   <table>
     <tr>
       <th>Votes</th>

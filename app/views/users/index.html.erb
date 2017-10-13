@@ -1,4 +1,4 @@
-<h2>List of Users</h2>
+<h3>List of Users</h3>
 <table>
   <tr>
     <th>Username</th>
@@ -6,7 +6,7 @@
     <th>Joined</th>
   </tr>
   <% @users.each do |user| %>
-    <td><%= user.name %></td>
+    <td><%= link_to user.name, user_path(user.id) %></td>
     <td><%= "votes" %></td>
     <td><%= user.created_at %></td>
     <% end %>

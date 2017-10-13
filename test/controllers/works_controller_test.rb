@@ -8,6 +8,7 @@ describe WorksController do
     end
 
     it "returns a success status for no works" do
+      Work.destroy_all
       get works_path
       must_respond_with :success
     end

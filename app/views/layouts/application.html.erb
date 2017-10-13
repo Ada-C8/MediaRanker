@@ -4,11 +4,52 @@
     <title>MediaRanker</title>
     <%= csrf_meta_tags %>
 
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Gudea' %>
+
   </head>
 
   <body>
+    <header class="page-header row">
+      <%# if session[:logged_in_user] %>
+        <!-- <p>Logged in as -->
+        <%#= User.find(session[:logged_in_user]).name %></p>
+      <%# end %>
+      <h2 class="small-12 columns">
+        <%= link_to "Media Ranker" %>
+        <small>Ranking the Best of Everything</small></h2>
+      <nav class="small-12 columns">
+        <%#= link_to "View top media", works_path, class: "button" %>
+        <%= link_to "View all media", works_path, class: "button" %>
+        <%= link_to "Add a new work", new_work_path, class: "button" %>
+        <%= link_to "View all users", users_path, class: "button" %>
+        <div class="float-right">
+          <%#= link_to "Logged in as USER", user_path(params[:user][:id]), class: "button" %>
+          <%= link_to "Log Out", logout_path, method: :destroy, class: "button" %>
+        </div>
+      </nav>
+    </header>
+    <section class="flash-notice <%= flash[:status] %>">
+      <% if flash[:notice].present? %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
+        <% if flash[:details].present? %>
+          <ul>
+            <% flash[:details].each do |field, problems| %>
+              <% problems.each do |problem| %>
+              <li><strong>
+                <%= field %>:
+              </strong>
+              <%= problem %>
+              </li>
+              <% end %>
+          <% end %>
+          </ul>
+        <% end %>
+
+    </section>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,6 @@
+<h3>User Summory: <%= @user.name %></h3>
+
+<p>Joined site <%= @user.created_at.strftime('%d %b %Y') %></p>
+
+<p><%= link_to "See all Users", users_path %></p>
+<p><%= link_to "Back to Media List", works_path %></p>
