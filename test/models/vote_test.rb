@@ -7,9 +7,12 @@ describe Vote do
 
   describe "valiations" do
     it "is a valid vote" do
-
-      # FILL IN TODAY!
+      # need to login session!
       
+      # b = Vote.new
+      # b.user_id = 1
+      # b.must_be :valid?
+
     end
     it "requires a user_id" do
       b = Vote.new

@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
       flash[:status] = :success
       flash[:message] = "Successfully saved #{model.class} #{model.id}"
     else
-      flash[:status] = :failure
-      flash[:message] = "Failed to save #{model.class}"
-      flash[:details] = models.errors.messages
+      flash.now[:status] = :failure
+      flash.now[:message] = "Failed to save #{model.class}"
+      flash.now[:details] = models.errors.messages
     end
     return result
   end
