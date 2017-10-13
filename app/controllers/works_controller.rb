@@ -2,9 +2,9 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def index
-    @books = Work.where(category:"book")
-    @movies = Work.where(category:"movie")
-    @albums = Work.where(category:"album")
+    @books = order_works("book")
+    @movies = order_works("movie")
+    @albums = order_works("album")
   end
 
   def new
@@ -70,5 +70,9 @@ class WorksController < ApplicationController
 
   def render_404
     render file: "/public/404.html", status: 404
+  end
+
+  def order_works(category)
+    return Work.where(category:category).joins("LEFT JOIN upvotes ON works.id = upvotes.work_id").group(:id).order("count(upvotes.id) DESC")
   end
 end
