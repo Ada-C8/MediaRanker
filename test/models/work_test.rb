@@ -7,7 +7,7 @@ describe Work do
 
   describe "relationships" do
     it 'can have votes' do
-      album1.votes.length.must_equal 2
+      album1.votes.count.must_equal 2
     end
   end # Relationships
 
