@@ -15,10 +15,10 @@
 
   <tr>
     <td>
-      <%=link_to user.username, work_path(user.id)%>
+      <%=link_to user.username, user_path(user.id) %>
     </td>
     <td>
-      <%=user.vote_count%>
+      <%=user.votes.count%>
     </td>
     <td>
       <%=user.date_joined.strftime('%b %d, %Y') %>

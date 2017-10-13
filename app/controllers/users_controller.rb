@@ -22,11 +22,21 @@ class UsersController < ApplicationController
       # flash.now[:message] = "No user found with username #{username}"
       # render :login_form, status: :bad_request
     end
-
-
   end
+
+  def logout
+    # session[:logged_in_user] = false
+    session[:logged_in_user] = nil
+    # flash[:message] = "Successfuly logged out"
+    redirect_to root_path, notice: "You have successfully logged out."
+  end
+
   def index
     @users = User.all
+  end
+
+  def show
+    @user = User.find_by(id: params[:id])
 
   end
 end

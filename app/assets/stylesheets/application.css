@@ -21,3 +21,29 @@
 .flash.failure {
   color: red;
 }
+
+nav div {
+  border-style: solid;
+  border-color: purple;
+}
+
+.button {
+  background-color: #26A69A;
+}
+nav div button {
+  box-sizing: border-box;
+}
+
+/*Header*/
+.page-header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 10px;
+    padding: 25px 20px 10px 20px;
+  }
+
+  .row {
+    margin-right: auto;
+    margin-left: auto;
+}
