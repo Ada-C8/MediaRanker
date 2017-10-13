@@ -1,0 +1,37 @@
+<main>
+  <article>
+    <h3><%= link_to work.name, work_path(@work) %></h3>
+    <p>Created by: <%= work.creator %></p>
+    <p>Published:</p>
+    <section>
+      <%= link_to "Back to media ranks", works_path %>
+      <%= link_to "Edit", edit_work_path %>
+      <%= link_to "Upvote", works_path %> <%# dont forget this %>
+      <%= link_to "delete", user_path, method: :delete %>
+    </section>
+  </article>
+  <article>
+    <h3><%= Vote.where(work_id: @work.id).count %> Votes for this <%= @work.category %></h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% votes = Vote.where(work_id: @work.id) %>
+        <% votes.each do |vote| %>
+          <tr>
+            <td>
+              <%= link_to vote.user_id.name, work_path(@work)%>
+            </td>
+            <td>
+              <%= vote.created_at %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </article>
+</main>
