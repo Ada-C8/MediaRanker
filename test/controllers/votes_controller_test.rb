@@ -1,39 +1,31 @@
-# require "test_helper"
-#
-# describe VotesController do
-#   it "should get index" do
-#     get votes_index_url
-#     value(response).must_be :success?
-#   end
-#
-#   it "should get show" do
-#     get votes_show_url
-#     value(response).must_be :success?
-#   end
-#
-#   it "should get new" do
-#     get votes_new_url
-#     value(response).must_be :success?
-#   end
-#
-#   it "should get create" do
-#     get votes_create_url
-#     value(response).must_be :success?
-#   end
-#
-#   it "should get destroy" do
-#     get votes_destroy_url
-#     value(response).must_be :success?
-#   end
-#
-#   it "should get edit" do
-#     get votes_edit_url
-#     value(response).must_be :success?
-#   end
-#
-#   it "should get update" do
-#     get votes_update_url
-#     value(response).must_be :success?
-#   end
-#
-# end
+require "test_helper"
+
+describe VotesController do
+  it "should display a list of all votes" do
+    get votes_path
+    must_respond_with :success
+  end
+
+  it "should show a specific vote's details on the show page" do
+    get vote_path(votes(:one))
+    must_respond_with :success
+  end
+
+  it "should produce a form for creating a new vote" do
+    get new_vote_path
+    must_respond_with :success
+  end
+
+  it "should be able to create a new vote" do
+    post votes_path params: {vote: {work: works(:greys), user: users(:west)}}
+    must_respond_with :redirect
+    must_redirect_to votes_path
+  end
+
+  it "should be able to destroy a vote" do
+    delete vote_path(votes(:one))
+    must_respond_with :redirect
+    # must_redirect_to
+  end
+
+end

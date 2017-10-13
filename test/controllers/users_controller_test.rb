@@ -17,15 +17,18 @@ describe UsersController do
   end
 
   it "should get create" do
-    post users_path, params: {works: {name: "new user"}}
+    # count = users.count
+    post users_path, params: {user: {name: "new user"}}
     must_respond_with :redirect
-    must_redirect_to :users_path
+    must_redirect_to users_path
+    # users.count.must_equal count+1
   end
 
   it "should get destroy" do
     delete user_path(users(:west).id)
     must_respond_with :redirect
-    must_redirect_to :users_path
+    must_redirect_to users_path
+    # users.count.must_equal 1
   end
 
   it "should get edit" do
@@ -34,9 +37,9 @@ describe UsersController do
   end
 
   it "should get update" do
-    patch user_path(users(:west).id), params: {works: {name: "Update User"}}
+    patch user_path(users(:west).id), params: {user: {name: "Update User"}}
     must_respond_with :redirect
-    must_redirect_to :users_path
+    must_redirect_to user_path
   end
 
 end
