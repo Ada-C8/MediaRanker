@@ -23,7 +23,7 @@
       <%= link_to "Back to media ranks", works_path, class: 'button' %>
       <%= link_to "Edit", edit_work_path(@work.id), class: 'button' %>
       <%= link_to "Upvote", upvote_path(@work.id), class: 'button' %>
-      <%= link_to "Delete", work_path, method: :delete, data: {confirm: "Are you sure?"}, class: 'button' %>
+      <%= link_to "Delete", work_path, method: :delete, data: {confirm: "Are you sure?"}, class: 'button delete' %>
     </nav>
   </section>
   <section class="small-12 large-6 columns">
