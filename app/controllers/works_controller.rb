@@ -19,8 +19,10 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
+      flash[:success] = "Successfully added #{@work.title}"
       redirect_to works_path
     else
+      flash.now[:error] = "#{@work.title} not added successfully"
       render :new, status: :bad_request
     end
   end

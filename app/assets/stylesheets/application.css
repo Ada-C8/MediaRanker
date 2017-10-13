@@ -14,8 +14,7 @@
  *= require_self
  */
 
- nav div {
-   border-style: solid;
-   border-color: purple;
-   border-width: thin;
- }
+.success {
+  display: block;
+  background-color: lightgreen;
+}

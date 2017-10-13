@@ -17,12 +17,18 @@
         <%= link_to "Add a new work", new_work_path, method: :get%>
         <%= link_to "View all users", users_path, method: :get%>
       </div>
-
-
     </nav>
   </header>
 
   <body>
+<section>
+<% flash.each do |name, message| %>
+<div class= "<%= name %>" > <%= message %> </div>
+  <% end %>
+</section>
+
     <%= yield %>
+
+
   </body>
 </html>
