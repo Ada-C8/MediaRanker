@@ -3,4 +3,7 @@ module ApplicationHelper
     return User.find(id).name
   end
 
+  def votes_for_work(work)
+    return Vote.where(work_id: work.id).count
+  end
 end

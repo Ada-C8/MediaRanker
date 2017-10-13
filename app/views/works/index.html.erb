@@ -25,32 +25,48 @@
     <h3>
       Media Spotlight: <%= @top_work.title %> by <%= @top_work.creator%>
     </h3>
+    <p>
+      <%= @top_work_votes.count %> votes - <%= @top_work.description %>
+    </p>
 </section>
 
 <section>
   <h3>
-    Top work
+    Top Albums
   </h3>
 
   <ul>
-    <% @works.each do |work| %>
+    <% @albums.each do |album| %>
       <li>
-        <%= link_to "#{work.title}",  work_path(work)%>
-        <small> by <%= work.creator%> </small>
+        <h4>
+            <%= link_to album.title, work_path(album) %>
+            <small> by <%= album.creator %> </small>
+        </h4>
+        <p>
+          <%= votes_for_work(album) %> votes
+        </p>
       </li>
-    <%end%>
+    <% end %>
   </ul>
 </section>
 
 <section>
-  <h3>
-    Top Movies
-  </h3>
-
-  <ul>
-
-  </ul>
+  <h3> Top Movies </h3>
+    <ul>
+      <% @movies.each do |movie| %>
+        <li>
+          <h4>
+              <%= link_to movie.title, work_path(movie) %>
+              <small> by <%= movie.creator %> </small>
+          </h4>
+          <p>
+            <%= votes_for_work(movie) %> votes
+          </p>
+        </li>
+      <% end %>
+    </ul>
 </section>
+
 
 <section>
   <h3>
@@ -58,6 +74,16 @@
   </h3>
 
   <ul>
-
+    <% @books.each do |book| %>
+      <li>
+        <h4>
+            <%= link_to book.title, work_path(book) %>
+            <small> by <%= book.creator %> </small>
+        </h4>
+        <p>
+          <%= votes_for_work(book) %> votes
+        </p>
+      </li>
+    <% end %>
   </ul>
 </section>

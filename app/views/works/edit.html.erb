@@ -1,0 +1,45 @@
+<header>
+  <nav>
+    <h2>
+      Media Ranker
+    </h2>
+
+    <small>
+      Ranking the Best of Everything
+    </small>
+  </nav>
+
+  <nav>
+    <%= link_to 'View top media', works_path %>
+    <a href='/works'>View all media </a>
+    <a href='/works/new'>Add a new work </a>
+    <a href='/users'>View all users </a>
+  </nav>
+
+  <div>
+    <a href='/login'> Log In </a>
+  </div>
+</header>
+
+<h3> Edit this  </h3>
+
+<%= form_for @work do |f| %>
+    <%= f.label :category %>
+    <%= f.select :category, [['Album', 'album'], ['Book', 'book'], ['Movie', 'movies']] %>
+    <br />
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <br />
+    <%= f.label :creator %>
+    <%= f.text_field :creator %>
+    <br />
+    <%= f.label :published %>
+    <%= f.text_field :published %>
+    <br />
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    <br />
+
+    <%= f.submit %>
+
+<% end %>

@@ -61,14 +61,13 @@
 
     </tbody>
   </table>
-
-
-
 </section>
+
+
 
 <nav>
   <%= link_to 'Back to media ranks', works_path %>
   <%= link_to 'Edit', edit_work_path %>
-  <%= link_to 'Upvote', works_path %>
-  <%= link_to 'Delete', works_path %>
+  <%= link_to 'Upvote', works_path(@work) %>
+  <%= link_to 'Delete', works_path(@work) %>
 </nav>
