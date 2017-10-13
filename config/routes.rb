@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   root to: "vote#index"
   root to: "user#index"
 
-
-  resources :home, only: [:index]
-
   resources :works
   resources :users
   resources :votes
+
+  resources :home, only: [:index]
+
+  
 
   # get 'votes/index'
   # get 'votes/show'
