@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 vote_a:
-  work_id: hellodolly.id
-  user_id: user_a.id
+  work_id: works(:hellodolly).id
+  user_id: users(user_a).id
 
 vote_b:
-  work_id: lemonade.id
-  user_id: user_b.id
+  work_id: works(:lemonade).id
+  user_id: users(user_b).id

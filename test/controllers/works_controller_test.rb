@@ -6,6 +6,11 @@ describe WorksController do
     value(response).must_be :success?
   end
 
+  it "returns a success status" do
+    get works_path
+    must_respond_with :success
+  end
+
   it "should get show" do
     get works_show_url
     value(response).must_be :success?
