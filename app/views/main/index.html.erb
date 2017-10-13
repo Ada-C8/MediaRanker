@@ -18,14 +18,15 @@
 
     <div class="small-12 large-4 columns">
       <h2>Top Movies</h2>
-      <%= @best_movies %>
       <%= render partial: 'top-list', locals: {works: @best_movies} %>
     </div>
     <div class="small-12 large-4 columns">
       <h2>Top Books</h2>
+      <%= render partial: 'top-list', locals: {works: @best_books} %>
     </div>
     <div class="small-12 large-4 columns">
       <h2>Top Albums</h2>
+      <%= render partial: 'top-list', locals: {works: @best_albums} %>
     </div>
 
   </section>
