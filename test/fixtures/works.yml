@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: 
-  title: 
-  pub_year: 
-  description: 
+hellodolly:
+  category: "movie"
+  creator: "Gene Kelly"
+  title: "Hello, Dolly"
+  pub_year: 1969
+  description: Hello, Dolly! is a 1969 American romantic comedy musical film based on the Broadway production of the same name.
 
-two:
-  category: 
-  title: 
-  pub_year: 
-  description: 
+lemonade:
+  category: "album"
+  creator: "Beyonce"
+  title: "Lemonade"
+  pub_year: 2016
+  description: Lemonade is the sixth studio album by American singer Beyoncé.
