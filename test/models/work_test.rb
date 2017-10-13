@@ -6,7 +6,7 @@ describe Work do
 
   describe "validations" do
       it "can be created with all fields" do
-        c = Category.create!
+        c = "Movie"
         w = Work.new(category: c, title: "test work")
         b.must_be :valid?
       end

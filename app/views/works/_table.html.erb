@@ -23,7 +23,7 @@
       <%= work.pub_year %>
     </th>
     <th>
-      This is where the upvote button goes!
+      <%= link_to "Upvote!", work_vote_path(work.id), class: "button"%>
     </tr>
     <%end%>
 

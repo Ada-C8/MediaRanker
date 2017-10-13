@@ -35,9 +35,9 @@
     </tr>
     <tr>
         <%votes = Vote.all%>
-        <% votes.each do |vote| %>
+        <% votes.where(id: @work.id).each do |vote| %>
       <th>
-        <%= vote.user_id %>
+        <%= User.find(vote.user_id).name %>
       </th>
       <th>
         <%= vote.created_at%>

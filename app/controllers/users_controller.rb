@@ -18,8 +18,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    strong_params = user_params
-    @user = User.new(strong_params)
+    # strong_params = user_params
+    name = "Diane"
+    @user = User.new
     @user.save
     redirect_to users_path
   end
@@ -38,9 +39,9 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
-private
-  def user_params
-    return params.require(:user).permit(:name)
-  end
+# private
+#   def user_params
+#     return params.require(:user).permit(:name)
+#   end
 
 end
