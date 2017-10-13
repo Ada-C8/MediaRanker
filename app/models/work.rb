@@ -3,6 +3,7 @@ class Work < ApplicationRecord
 
   validates :title, presence: {message: "Media must have a title."}
   validates :category, presence: {message: "Media must have a category."}
+  validates :description, length: {maximum: 500}
 
   def self.sort_by_votes
     sort_by_votes = all.sort_by do |work|
