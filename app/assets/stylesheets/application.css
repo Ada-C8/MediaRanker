@@ -90,7 +90,7 @@ h1 {
   float: left;
 }
 
-.button {
+.button, .extra{
   display: inline-block;
   float: left;
 
@@ -104,6 +104,10 @@ padding: 0.85em 1em;
 .button li {
  float: left;
 
+}
+
+.logged-in {
+  float: right;
 }
 
 .button:last-child {
