@@ -20,9 +20,6 @@ describe WorksController do
       get new_work_path
       must_respond_with :success
     end
-    it "" do
-
-    end
   end
 
   describe "create" do
@@ -96,8 +93,8 @@ describe WorksController do
       must_respond_with :success
       ## returning 200 instead of redirect
       # must_respond_with :redirect
-
     end
+
     it "returns not found if the work id is invalid" do
       work_id = Work.first.id + 1
       get work_path(work_id)
@@ -108,12 +105,18 @@ describe WorksController do
     end
   end
 
+  ## check if this is valid?
   describe "destroy" do
     it "exist" do
-
+      work_id = Work.first.id
+      get work_path(work_id)
+      must_respond_with :succes
     end
+    ## currently errors
     it "does not exist" do
-
+      work_id = Work.first.id
+      delete works_path(work_id)
+      must_respond_with :redirect
     end
   end
 end
