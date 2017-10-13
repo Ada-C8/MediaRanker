@@ -48,8 +48,16 @@ class WorksController < ApplicationController
 
   def upvote
     @work = Work.find(params[:id])
-    @work.votes.create(user_id: session[:logged_in_user], work_id: @work.id)
-    redirect_to works_path
+    created = @work.votes.new(user_id: session[:logged_in_user], work_id: @work.id)
+    if created.save
+      flash[:status] = :successful
+      flash[:message] = "Successfully upvoted!"
+      redirect_to works_path
+    else
+      flash[:status] = :failure
+      flash[:message] = "user: has already voted for this work"
+      redirect_to works_path
+    end # if/else
   end # upvote
 
   private

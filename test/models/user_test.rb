@@ -26,8 +26,7 @@ describe "Validations" do
   end
 
   it "strips white space from the beginning and end of a name" do
-    # TODO: have to actually create the user for this to work!
-    # QUESTION: this still doesn't work?? why??
+    # TODO: figure out why this test passes, but it doesn't work on my website
     u = User.create!(name: " Marc ")
     u.name.length.must_equal 4
   end # uniqueness
