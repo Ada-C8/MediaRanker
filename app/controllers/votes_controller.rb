@@ -1,6 +1,4 @@
 class VotesController < ApplicationController
-
-
   def create
     vote = Vote.new(vote_params)
     vote.user_id = session[:user_id]
@@ -11,8 +9,6 @@ class VotesController < ApplicationController
     end
     redirect_to works_path
   end
-
-
 
   private
   def vote_params

@@ -1,53 +1,25 @@
 class WorksController < ApplicationController
-
+before_action :find_work, only: [:show, :edit, :update, :destroy]
   def index
-    # if params[:author_id]
-    # @books = Author.find(params[:author_id]).books
-    # else
-    # @books = Book.all
-    # end
-
-    # if ##### do I want an if statement??
-    # else
-    # head :not_found
-    # end
-
     @works = Work.all
     @movies = Work.where(category: "movie").sort_by{|work| -work.votes.count}
     @books = Work.where(category: "book").sort_by{|work| -work.votes.count}
     @albums = Work.where(category: "album").sort_by{|work| -work.votes.count}
-    # order("vote DESC").first
     unless @works
       # how to trigger this and make this actually occur?
       head :not_found
     end
   end
 
-  def show
-    find_work
+  def show ; end
     # @votes = Vote.where(work_id: params[:id])
-  end
+
 
   def new
     @work = Work.new
   end
 
   def create
-
-    # think about logic for only creating work if user is logged in
-    # dan's destroy method works in books_controller
-
-    # current_user = nil
-    # if session[:logged_in_user]
-    #   current_user = User.find_by(id: session[:logged_in_user])
-    # end
-    # else
-    #   flash[:statu] = :failure
-    #   flash[:message] = "You must be logged in to do that."
-    #   redirect_to works_path
-    #   return
-    # end
-
     @work = Work.new(
     work_params
     )
@@ -63,9 +35,7 @@ class WorksController < ApplicationController
     end
   end
 
-  def edit
-    find_work
-  end
+  def edit ; end
 
   def update
     if find_work

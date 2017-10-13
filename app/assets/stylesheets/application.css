@@ -16,28 +16,19 @@
 
 /*********************************
 ##############  GENERAL ############*/
-@media print, screen and (min-width: 64em){
+
 .large-4 {
   width: 33.33333%;
 }
 .small-12 {
   width: 100%;
-}}
-@media print, screen and (min-width: 40em){
+}
+.large-6 {
+  width: 50%;
+}
 .columns {
   padding-right: 0.9375rem;
   padding-left: 0.9375rem;
-}}
-.columns {
-  float: left;
-}
-.columns:last-child:not(:first-child) {
-  float: right;
-}
-.row {
-  max-width: 75rem;
-  margin-right: auto;
-  margin-left: auto;
 }
 h1, h2, h3, h4, h5 {
   font-weight: bold;
@@ -69,9 +60,6 @@ h2 {
 }
 .button {
   background-color: #26A69A;
-}
-.float-right {
-float: right !important;
 }
 /*********************************
 ##############  BODY MAIN PAGE  ############*/
@@ -114,3 +102,5 @@ p {
   line-height: 1.6;
   text-rendering: optimizeLegibility;
 }
+/*********************************
+##############  TABLE FORMATTING ############*/

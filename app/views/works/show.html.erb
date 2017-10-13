@@ -1,33 +1,38 @@
-<p>
-  <strong><%= @work.title %></strong>
-</p>
+<article class="media-details columns large-6 small-12">
+  <h3><%= @work.title %></h3>
+  <p>Created by: <%= @work.creator %> </p>
+  <p>Published: <%= @work.publication_year %> </p>
+  <p><%= @work.description %> </p>
+  <section>
+    <a class="button" <%= link_to "Back to media ranks", root_path %></a>
 
-<p>Created by: <%= @work.creator %> </p>
-<p>Published: <%= @work.publication_year %> </p>
-<p><%= @work.description %> </p>
+    <a class="button" <%= link_to "Edit", edit_work_path(@work) %></a>
 
-<%= link_to "Back to media ranks", root_path %>
-<%= link_to "Edit", edit_work_path(@work) %>
+    <a class="button" rel="nofollow" data-method="post" <%= link_to 'Upvote', create_vote_path(work_id: @work.id), method: :post%> </a>
 
-<%= link_to 'Upvote', create_vote_path(work_id: @work.id), method: :post%>
+    <a class="alert button" data-confirm="Are you sure?" rel="nofollow" data-method="delete" <%= link_to 'Delete',
+    work_path(@work),
+    method: :delete,
+    data: { confirm: 'Are you sure?' } %> </a>
+  </section>
+</article>
 
-<%= link_to 'Delete',
-work_path(@work),
-method: :delete,
-data: { confirm: 'Are you sure?' } %>
-
-<%= "#{@work.votes.count} Votes for this work" %>
-
-<table>
-  <tr>
-    <th>User</th>
-    <th>Date</th>
-  </tr>
-  <tr>
-    <% @work.votes.each do |vote| %>
-    <div class="user">
-      <td><%= link_to vote.user.name, user_path(vote.user_id)  %></td>
-      <td> <%= vote.created_at.strftime("%b %d, %Y") %> </td>
-    </tr>
-    <% end %>
+<article class="voting-users columns large-6 small-12">
+  <h3><%= "#{@work.votes.count} Votes for this work" %></h3>
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @work.votes.each do |vote| %>
+        <td><a <td><%= link_to vote.user.name, user_path(vote.user_id)  %></a></td>
+        <td> <%= vote.created_at.strftime("%b %d, %Y") %> </td>
+      </tr>
+      <% end %>
+    </tbody>
   </table>
+</article>

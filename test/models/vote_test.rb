@@ -6,6 +6,11 @@ describe Vote do
   let :vote { Vote.new(work: work, user: user)}
 
   describe "valiations" do
+    it "is a valid vote" do
+
+      # FILL IN TODAY!
+      
+    end
     it "requires a user_id" do
       b = Vote.new
       b.wont_be :valid?
