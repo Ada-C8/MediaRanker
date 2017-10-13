@@ -4,17 +4,16 @@ class MainPageController < ApplicationController
     top = works.max_by { |id,count| count }
     @top = Work.find(top[0])
 
-    books = Work.where(category: "book")
-    book_results = books.sort_by { |work| -1*work.upvotes.count }
-    @top_books = book_results[0..[9, book_results.length].min]
+    @top_books = vote_sorter("book")
+    @top_movies = vote_sorter("movie")
+    @top_albums = vote_sorter("album")
+  end
 
-    movies = Work.where(category: "movie")
-    movie_results = movies.sort_by { |work| -1*work.upvotes.count }
-    @top_movies = movie_results[0..[9,
-    movie_results.length].min]
-
-    albums = Work.where(category: "album")
-    album_results = albums.sort_by { |work| -1*work.upvotes.count }
-    @top_albums = album_results[0..[9,album_results.length].min]
+  private
+  def vote_sorter(category)
+    works = Work.where(category: category)
+    work_results = works.sort_by { |work| -1*work.upvotes.count }
+    top_works = work_results[0..[9, work_results.length].min]
+    return top_works
   end
 end
