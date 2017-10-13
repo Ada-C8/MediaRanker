@@ -1,12 +1,12 @@
-<h1><%= @work.title %><h1>
+<h1><%= @work.title %></h1>
 <p>Created by: <%= @work.creator %></p>
 <p>Published: <%= @work.publication_year %></p>
 <p><%= @work.description %></p>
 
-<% link_to("Back to media ranks", ) %>
-<% link_to("Edit", ) %>
-<% link_to("Upvote", ) %>
-<% link_to("Delete", ) %>
+<%= button_to("Back to media ranks", works_path, method: :get) %>
+<%= button_to("Edit", edit_work_path(@work.id), method: :get) %>
+<%= button_to("Upvote", ) %>
+<%= button_to("Delete", work_path(@work.id), method: :delete) %>
 
 <h1>X Votes for this movie </h1>
 <p> Vote table </p>

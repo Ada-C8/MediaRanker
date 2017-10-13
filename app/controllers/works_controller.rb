@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def index
     @works = Work.all
     @albums = Work.where(category: "album").all.limit(10)
@@ -7,7 +9,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by_id(params[:id])
   end
 
   def new
@@ -27,6 +28,12 @@ class WorksController < ApplicationController
   end
 
   def update
+    redirect_to work_path unless @work
+    if @work.update_attributes work_params
+      redirect_to work_path(@work.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -36,5 +43,9 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by_id(params[:id])
   end
 end
