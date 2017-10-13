@@ -6,7 +6,7 @@ class WorksController < ApplicationController
   end
 
   def show
-    find_work_by_params(params)
+    find_work_by_params
   end
 
   def new
@@ -30,7 +30,7 @@ class WorksController < ApplicationController
   end
 
   def edit
-    find_work_by_params(params)
+    find_work_by_params
   end
 
   def update
@@ -91,7 +91,7 @@ class WorksController < ApplicationController
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 
-  def find_work_by_params(params)
+  def find_work_by_params
     @work = Work.find_by(id: params[:id])
 
     unless @work

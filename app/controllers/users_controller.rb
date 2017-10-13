@@ -4,21 +4,21 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    find_user_by_param
   end
 
   def process_login
-    @user = User.find_by(name: params[:username])
+    user = User.find_by(name: params[:username])
 
-    if @user
-      session[:user] = @user
+    if user
+      session[:user] = user
       return redirect_to root_path
     else
-      create(@user)
+      create
     end
   end
 
-  def create(user)
+  def create
     user = User.new(name: params[:username])
     if user.valid?
       user.save
@@ -32,5 +32,15 @@ class UsersController < ApplicationController
   def logout
     session[:user] = nil
     return redirect_to root_path
+  end
+
+  private
+
+  def find_user_by_param
+    @user = User.find_by(id: params[:id])
+
+    unless @user
+      return head :not_found
+    end
   end
 end
