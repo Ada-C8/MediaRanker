@@ -12,11 +12,11 @@
   <%= f.label :creator %>
   <%= f.text_field :creator %>
 
-  <%= f.label "Publication year" %>
-  <%= f.number_field :year %>
+  <%= f.label "Publication year", for: "work_year"%>
+  <%= f.text_field :year %>
 
 
-  <%= f.label "Description" %>
+  <%= f.label "Description", for:"work_description" %>
   <%= f.text_field :description %>
 
   <%= f.submit button_text %>
