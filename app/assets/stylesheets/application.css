@@ -76,6 +76,9 @@ a, h3 {
   cursor: pointer;
   color: #fefefe;
 }
+.button:hover, .button:focus {
+  background-color: #1b7169;
+  color: #fefefe; }
 .media-table .upvote.button {
   margin: 0;
 }
