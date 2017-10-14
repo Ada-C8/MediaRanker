@@ -22,7 +22,7 @@ describe WorksController do
       must_respond_with :success
     end
 
-    it "returns success when given a bogus work ID" do
+    it "returns not_found when given a bogus work ID" do
       bogus_id = Work.last.id + 1
       get work_path(bogus_id)
       must_respond_with :not_found
@@ -30,7 +30,7 @@ describe WorksController do
   end
 
   describe "new" do
-    it "returns success without a work id" do
+    it "returns success" do
       get new_work_path
       must_respond_with :success
     end
