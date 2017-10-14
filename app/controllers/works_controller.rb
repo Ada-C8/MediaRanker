@@ -9,7 +9,7 @@ class WorksController < ApplicationController
   end
 
   def show
-
+    redirect_to works_path unless @work
   end
 
   def new
