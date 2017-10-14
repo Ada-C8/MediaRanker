@@ -14,8 +14,8 @@
 *= require_self
 */
 
-*= require ./foundation.css
-*= require_tree .
+*= require ./foundation.css;
+/**= require_tree .;*/
 
 
 
@@ -61,11 +61,31 @@
 
 /*flash styling*/
 
-.status {
+/*.flash {
     border-radius: 5px;
     background-color: #e6e6e6;
     padding: 20px 25px;
     margin-top: 30px;
+}*/
+
+.failure, .success, .error {
+    border-radius: 5px;
+    background-color: #e6e6e6;
+    padding: 20px 25px;
+    margin-top: 30px;
+}
+
+.failure, .success, .error {
+    font-weight: normal;
+    font-size: 1em;
+}
+
+.success {
+    color: #8a8a8a;
+}
+
+.failure, .error {
+    color: #C70039;
 }
 
 /*body styling*/

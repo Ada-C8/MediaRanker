@@ -1,16 +1,17 @@
 <main class="row">
-  <h3>Add a new work</h3>
-
   <section>
     <% if @work.errors.any? %>
-  <ul class="errors">
+  <ul class="error">
     <% @work.errors.each do |column, message| %>
       <li>
-        <strong><%= column.capitalize %></strong> <%= message %>
+        <%= column.capitalize %>: <%= message %>
       </li>
     <% end %>
   </ul>
 <% end %>
+
+<h3>Add a new work</h3>
+
     <%= render partial: "form", locals: {button_name: "Create Work", class: "new_work", id: "new_work"} %>
 
   </section>
