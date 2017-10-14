@@ -82,58 +82,41 @@ end
   end
 
   describe "edit" do
+    it "returns success when given a valid work id" do
+      work_id = Work.first.id
+      get edit_work_path(work_id)
+      must_respond_with :success
+    end
+
+    it "returns not found when given an invalid work ID" do
+      invalid_work_id = Work.last.id + 1
+      get edit_work_path(invalid_work_id)
+      must_respond_with :not_found
+    end
   end
 
   describe "update" do
   end
 
   describe "show" do
-      it "returns success when given a valid work id" do
-        # Arrange
-        work_id = Work.first.id #pull id out of db,doesn't matter which bbok
+    it "returns success when given a valid work id" do
+      # Arrange
+      work_id = Work.first.id #pull id out of db,doesn't matter which work
 
-        # Act
-        get work_path(work_id)
+      # Act
+      get work_path(work_id)
 
-        # Assert
-        must_respond_with :success
-      end
+      # Assert
+      must_respond_with :success
+    end
 
-      it "returns not found when given an invalid work ID" do
-        invalid_work_id = Work.last.id + 1
-        get work_path(invalid_work_id)
-        must_respond_with :not_found
-      end
-
-     it "goes to the works details page" do
-
-      end
+    it "returns not found when given an invalid work ID" do
+      invalid_work_id = Work.last.id + 1
+      get work_path(invalid_work_id)
+      must_respond_with :not_found
+    end
   end
 
   describe "destroy" do
   end
-  #   it "returns a success status" do
-  #     @work = Work.new(category: "book", title: "Purple Hibiscus", creator: "Chimamanda", publication_year: 2006, description: "Riveting")
-  #
-  #     get works_path
-  #
-  #     must_respond_with :success
-  #   end
-  #
-  #   it "returns a success status when there are no works" do
-  #     @work = Work.new(category: "book", title: "Purple Hibiscus", creator: "Chimamanda", publication_year: 2006, description: "Riveting")
-  #
-  #     Work.destroy_all
-  #     get works_path
-  #
-  #     must_respond_with :success
-  #   end
-  #
-  #   it "returns success status when given a valid work" do
-  #     @work = Work.new(category: "book", title: "Purple Hibiscus", creator: "Chimamanda", publication_year: 2006, description: "Riveting")
-  #
-  #     get works_path(@work)
-  #     must_respond_with :success
-  #   end
-
 end
