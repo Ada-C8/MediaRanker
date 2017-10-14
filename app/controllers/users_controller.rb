@@ -3,8 +3,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-
-
   def show
     find_user_by_params_id
   end
@@ -12,7 +10,6 @@ class UsersController < ApplicationController
   def login
     # get username from for_tag/browser and see if it exists already
     user = User.find_by(username: params[:username])
-
 
     if user
       # if user exists already
@@ -40,7 +37,14 @@ class UsersController < ApplicationController
       render :login_form, status: :bad_request
     end
   end
-  # no need for an edit, update, or destroy actions for user controller!
+
+  def logout
+    # reset session
+    session[:logged_in_user] = nil
+    flash[:message] = "Successfully logged out"
+    flash[:status] = :success
+    redirect_to root_path
+  end
 
 private
   def find_user_by_params_id
