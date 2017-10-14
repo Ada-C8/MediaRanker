@@ -6,7 +6,7 @@ class WorksController < ApplicationController
     # @top_books = media_votes("book").sort_by{|key, value| -value }[0..9]
     # @top_movies = media_votes("movie").sort_by{|key, value| -value }[0..9]
     # @top_albums = media_votes("album").sort_by{|key, value| -value }[0..9]
-    @spotlight = spotlight_media
+    # @spotlight = spotlight_media
 
     @votes = Vote.all
     @works = Work.all
@@ -107,8 +107,10 @@ class WorksController < ApplicationController
   def create
     @work= Work.new(work_params)
     if @work.save
+      flash[:success] = "Work added successfully"
       redirect_to works_path
     else
+      flash.now[:error] = "Work not added successfully"
       render :new
     end
   end
