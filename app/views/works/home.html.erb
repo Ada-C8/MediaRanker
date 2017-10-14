@@ -1,34 +1,41 @@
-<h1>Works#home</h1>
+<!-- <h1>Works#home</h1> -->
+<% @spotlight.each do |work, votes| %>
+  <h2>Media Spotlight: <%= link_to(work.title, work_path(work.id), alt:'Work')%> by <%= work.creator%></h2>
+<% end %>
 
-<h1>Top Books</h1>
+
+<h3>Top Books</h3>
   <ul>
     <% @top_books.each do |work, votes| %>
     <li>
-      <%= link_to(work.title, work_path(work.id), alt:'Book title')%>
-    Votes: <%= votes %>
+      <%= link_to(work.title, work_path(work.id), alt:'Book title')%> by <%= work.creator%>
+    </li>
+    <li>
+      Votes: <%= votes %>
+    </li>
     <% end %>
   </ul>
 
-<h1>Top Movies</h1>
+<h3>Top Movies</h3>
 <ul>
   <% @top_movies.each do |work, votes| %>
   <li>
-    <%= link_to(work.title, work_path(work.id), alt:'Movie title')%>
-  Votes: <%= votes %>
+    <%= link_to(work.title, work_path(work.id), alt:'Movie title')%> by <%= work.creator%>
+  </li>
+  <li>
+    Votes: <%= votes %>
+  </li>
   <% end %>
 </ul>
 
-<h1>Top Albums</h1>
+<h3>Top Albums</h3>
 <ul>
   <% @top_albums.each do |work, votes| %>
   <li>
-    <%= link_to(work.title, work_path(work.id), alt:'Album title')%>
-  Votes: <%= votes %>
+    <%= link_to(work.title, work_path(work.id), alt:'Album title')%> by <%= work.creator%>
+  </li>
+  <li>
+    Votes: <%= votes %>
+  </li>
   <% end %>
 </ul>
-
-<!-- Testing Votes -->
-<!-- <% @votes.each do |vote| %>
-  <%= vote %> User: <%= vote.user_id %> Work: <%= vote.work_id %>
-  <br />
-<% end %>

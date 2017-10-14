@@ -2,6 +2,12 @@ class WorksController < ApplicationController
   #add a control action with login name and status
 
   def home
+    #ALTERNATE CODE - DOESN"T WORK YET BUT ALMOST THERE- THIS LINE AND PRIVATE METHOD MAY REALLY DRY UP CODE
+    # @top_books = media_votes("book").sort_by{|key, value| -value }[0..9]
+    # @top_movies = media_votes("movie").sort_by{|key, value| -value }[0..9]
+    # @top_albums = media_votes("album").sort_by{|key, value| -value }[0..9]
+    @spotlight = spotlight_media
+
     @votes = Vote.all
     @works = Work.all
 
@@ -19,6 +25,9 @@ class WorksController < ApplicationController
           @album_votes[work] = 0
       end
     end
+
+    # Am I making my life too hard? Is this an easier way?
+    # Deal.find(:all, :order => 'quantity_purchased * price', :limit => 100)
 
     #Iterate through votes collection to determine counts for each media
     @votes.each do |vote|
@@ -49,6 +58,8 @@ class WorksController < ApplicationController
     @top_books = @book_votes.sort_by{|key, value| -value }[0..9]
     @top_movies = @movie_votes.sort_by{|key, value| -value }[0..9]
     @top_albums = @album_votes.sort_by{|key, value| -value }[0..9]
+
+
   end
 
 
@@ -68,16 +79,13 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find_by(id: params[:id])
-
     unless @work
       render_404
     end
-
   end
 
   def edit
     @work = Work.find_by(id: params[:id])
-
     unless @work
       redirect_to works_path
     end
@@ -85,7 +93,6 @@ class WorksController < ApplicationController
 
   def update
     @work = Work.find_by(id: params[:id])
-
     if @work.update_attributes(work_params)
       redirect_to work_path(@work.id)
     else
@@ -99,21 +106,21 @@ class WorksController < ApplicationController
 
   def create
     @work= Work.new(work_params)
-
     if @work.save
       redirect_to works_path
     else
       render :new
     end
-
   end
 
   def destroy
   end
-end
+
 
 private
 
   def work_params
-    return params.require(:work).permit(:category, :title,:creator,:pub_year,:description)
+    return params.require(:work).permit(:category, :title, :creator, :pub_year, :description)
   end
+
+end
