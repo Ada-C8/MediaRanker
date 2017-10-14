@@ -30,6 +30,13 @@
         <h2>Media Ranker |<small>Ranking the best of everything</small></h2>
       </section>
     </header>
+    
+    <%flash.each do |name, message| %>
+      <section class="row status <%= name%> ">
+        <h3><%= message %></h3>
+      </section>
+    <%end%>
+
     <%= yield %>
 
   </body>
