@@ -4,8 +4,9 @@ class WorksController < ApplicationController
   end
 
   def new
-    if params[:id]
-
+    @works = Work.new
+    if params[:creator]
+      @works.creator = params[:creator]
     end
   end
 
