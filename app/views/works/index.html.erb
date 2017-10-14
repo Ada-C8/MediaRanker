@@ -1,6 +1,6 @@
 
-<h2> List of works</h2>
-<h3> Albums </h3>
+<h3> List of works</h3>
+<h4> Albums </h4>
 
 <table>
   <thead>
@@ -16,7 +16,7 @@
   <tbody>
     <% @albums.each do |work|%>
       <tr>
-        <td>3</td>
+        <td><%= work.votes_count %></td>
         <td><%= link_to work.title, work_path(work.id) %></td>
         <td><%= work.creator%></td>
         <td> <%= work.publication_year%></td>
@@ -43,7 +43,7 @@
   <tbody>
     <% @books.each do |work|%>
     <tr>
-      <td>3</td>
+      <td><%= work.votes_count %></td>
       <td><%= link_to work.title, work_path(work.id) %></td>
       <td><%= work.creator%></td>
       <td>  <%= work.publication_year%></td>
@@ -54,7 +54,7 @@
 
 </table>
 
-<h3> Movies </h3>
+<h4> Movies </h4>
 
 <table>
   <thead>
@@ -70,7 +70,7 @@
   <tbody>
     <% @movies.each do |work|%>
     <tr>
-      <td>3</td>
+      <td><%= work.votes_count %></td>
       <td><%= link_to work.title, work_path(work.id) %></td>
       <td><%= work.creator%></td>
       <td>  <%= work.publication_year%></td>

@@ -13,3 +13,96 @@
  *= require_tree .
  *= require_self
  */
+
+ ##############  GENERAL ############*/
+ .large-4 {
+   width: 33.33333%;
+ }
+ .small-12 {
+   width: 100%;
+ }
+ .large-6{
+   width: 50%
+ }
+ .columns {
+   padding-right: 0.9375rem;
+   padding-left: 0.9375rem;
+ }
+
+ .columns:last-child:not(:first-child) {
+   float: right;
+ }
+
+ h1, h2, h3, h4, h5 {
+   font-weight: bold;
+ }
+ body, h1, h2, h3, h4, h5 {
+   font-family: "Gudea", sans-serif
+ }
+ /*********************************
+ ##############  NAV ############*/
+ .page-header {
+   max-width: 100%;
+   background-color: #B2DFDB;
+   border-bottom: 1px solid #EEEEEE;
+   margin-bottom: 10px;
+   padding: 25px 20px 10px 20px;
+ }
+ .page-header h2 a {
+   color: #FF5722;
+   padding-right: 25px;
+   margin-right: 15px;
+   border-right: white 2px solid;
+ }
+ .page-header h2 small {
+   color: white;
+ }
+ h2 {
+   text-align: center;
+   margin: 25px auto 40px auto;
+ }
+ .button {
+   background-color: #26A69A;
+ }
+
+ /*********************************
+ ##############  BODY MAIN PAGE  ############*/
+ .row .row {
+   margin-right: -0.625rem;
+   margin-left: -0.625rem;
+ }
+ section.spotlight>div {
+   padding: 0 2rem 2rem 2rem;
+ }
+ a, h3 {
+   color: #26A69A;
+ }
+ .media-spotlight-header {
+   color: #424242;
+ }
+ .spotlight a {
+   border-bottom: 2px solid;
+ }
+ .root-hr {
+   margin: 0px auto 75px auto;
+   color: #EEEEEE;
+ }
+ /*********************************
+ ##############  MAIN PAGE COLUMNS ############*/
+ .top-ten h3 {
+   border-bottom: 2px solid;
+   border-bottom-color: #B2DFDB;
+ }
+ .top-ten ul {
+   list-style-type: none;
+   margin-left: 0px;
+ }
+ body small {
+   color: slategrey;
+ }
+ p {
+   margin-bottom: 1rem;
+   font-size: inherit;
+   line-height: 1.6;
+   text-rendering: optimizeLegibility;
+ }
