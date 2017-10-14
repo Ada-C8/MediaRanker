@@ -5,8 +5,8 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   <body>
     <header class="page-header row">
@@ -21,7 +21,7 @@
         <%= link_to "View all users", users_path, class: "button" %>
         <div class="float-right">
           <% if session[:logged_in_user] %>
-            <%=link_to "Logged in as #{User.find_by(id: session[:logged_in_user]).name}", user_path(session[:logged_in_user])%>
+            <%=link_to "Logged in as #{User.find_by(id: session[:logged_in_user]).name}", user_path(session[:logged_in_user]), class: "button"%>
             <%= link_to "Log out", logout_path, class: "button" %>
           <% else %>
             <%= link_to "Log In", login_path, class: "button"%>
