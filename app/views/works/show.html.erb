@@ -15,7 +15,7 @@
 <section>
   <%= link_to "Back to media ranks", top_works_path, class:"button" %> <%#links to top 10 list%>
   <%= link_to "Edit", edit_work_path(@work.id), class:"button" %>
-  <%= link_to "Upvote", new_vote_path, class:"button" %> <%#creates a new vote%>
+  <%= link_to "Upvote", vote_path(@work.id), method: :post, class:"button" %> <%#creates a new vote%>
   <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"}, class:"alert button" %>
 </section>
 
