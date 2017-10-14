@@ -64,6 +64,10 @@ class WorksController < ApplicationController
       flash[:status] = :successful
       flash[:message] = "Successfully upvoted!"
       redirect_to works_path
+    elsif !(session[:logged_in_user])
+      flash[:status] = :failure
+      flash[:message] = "You must log in to do that"
+      redirect_to works_path
     else
       flash[:status] = :failure
       flash[:message] = "user: has already voted for this work"
