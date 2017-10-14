@@ -68,5 +68,35 @@ describe Work do
       end
     end
 
+    describe 'popular_works' do
+      let :user { User.first }
+      let :work { Work.first }
+      let :vote { Vote.new(work: work, user: user) }
+
+      let :work2 {Work.first + 1 }
+
+      it "identifies the top 10" do
+        Work.popular_works("album").first.title.must_equal "Harry Potter"
+      end
+    end
+
+    describe "top " do
+      let :user { User.first }
+      let :work { Work.first }
+
+      let :user1 { User.last }
+      let :work1 { Work.last }
+
+      let :user2 { User.first + 1  }
+
+      let :vote { Vote.new(work: work, user: user) }
+      let :vote1 { Vote.new(work: work1, user: user1) }
+      let :vote2 { Vote.new(work: work, user: user2) }
+
+      it "finds the most voted for work" do
+        Work.top.title.must_equal "Harry Potter"
+      end
+    end
+
 
   end

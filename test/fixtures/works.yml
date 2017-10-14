@@ -10,14 +10,21 @@
 # two: {}
 # column: value
 harrypotter:
-  category: book
+  category: album
   title: Harry Potter
   creator: JK Rowling
   publication_year: 1993
   description: a great Read
 
+harrypotter2:
+    category: album
+    title: Harry Potter2
+    creator: JK Rowling
+    publication_year: 1993
+    description: a great Read
+
 StarWars:
-  category: movie
+  category: album
   title: Star Wars
   creator: Some dude
   publication_year: 1995
