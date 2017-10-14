@@ -22,7 +22,7 @@ class WorksController < ApplicationController
   def edit; end
 
   def create
-    @work = Work.new(work_params)
+    @work= Work.new(work_params)
     if save_and_flash(@work)
       redirect_to works_path
     else
@@ -40,14 +40,13 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    #Fails test if I take the if loop out, but I don't think I should need it given the before_action block
       @work.destroy
       redirect_to works_path
   end
 
   private
   def work_params
-    return params.require(:work).permit(:title)
+    return params.require(:work).permit(:title, :category, :publication_year, :creator)
   end
 
   def find_work_by_params_id

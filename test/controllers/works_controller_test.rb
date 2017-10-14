@@ -51,7 +51,6 @@ describe WorksController do
   end
 
   describe "create" do
-    #Expected response to be a <3XX: redirect>, but was a <400: Bad Request>
     it "adds a work to the DB and redirects when the work data is vaild" do
       valid_work_data = {
         work: {
@@ -63,24 +62,25 @@ describe WorksController do
       Work.new(valid_work_data[:work]).must_be :valid?
       post works_path, params: valid_work_data
       must_respond_with :redirect
-      #must_redirect_to works_path
+      must_redirect_to works_path
 
-      # Work.count.must_equal start_work_count + 1
+       Work.count.must_equal start_work_count + 1
     end
 
-    #NoMethodError: undefined method `response_code' for nil:NilClass
-    # it "sends bad_request when the work data is bogus" do
-    #   invalid_work_data = {
-    #     work: {
-    #       #no title
-    #       category: "album"
-    #     }
-    #   }
-    #   start_work_count = Work.count
-    #   Work.new(invalid_work_data[:work]).wont_be :valid?
-    #   must_respond_with :bad_request
-    #   Work.count.must_equal start_work_count
-    # end
+    it "sends bad_request when the work data is bogus" do
+      bogus_work_data = {
+        work: {
+          #no title
+          category: "album"
+        }
+      }
+
+      start_work_count = Work.count
+      Work.new(bogus_work_data[:work]).wont_be :valid?
+      post works_path, params: bogus_work_data
+      must_respond_with :bad_request
+      Work.count.must_equal start_work_count
+    end
   end
 
   describe "update" do
@@ -115,7 +115,6 @@ describe WorksController do
       must_respond_with :not_found
     end
 
-    #Expected response to be a <400: bad_request>, but was a <404: Not Found>
     it "returns bad_request if the work ID is valid and the change is bogus" do
       work = Work.first
       bogus_work_update = {
@@ -131,12 +130,11 @@ describe WorksController do
       must_respond_with :bad_request
 
       work.reload
-      work.title.wont_equal invalid_work_data[:work][:title]
+      work.title.wont_equal bogus_work_update[:work][:title]
     end
   end
 
   describe "destroy" do
-    #Expected response to be a <3XX: redirect>, but was a <404: Not Found>
     it "returns success and destroys work when given a valid work ID" do
       work_id = Work.first.id
       before_delete = Work.count

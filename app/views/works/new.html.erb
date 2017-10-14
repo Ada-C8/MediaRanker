@@ -1,1 +1,21 @@
-<h1> Add a new work</h1>
+<h3> Add a new work</h3>
+
+  <%= form_for @work do |f| %>
+  <lable>
+    <%= f.label "Category"%>
+  </lable>
+  <%= f.select :category, ["album", "book", "movie"]%>
+  <lable>
+    <%= f.label "Title"%>
+  </lable>
+  <%= f.text_field :title %>
+  <lable>
+    <%= f.label "Creator" %>
+  </lable>
+  <%= f.text_field :creator %>
+  <lable>
+    <%= f.label "Publication year" %>
+  </lable>
+  <%= f.text_field :publication_year %>
+  <%= f.submit "submit" %>
+  <%end %>
