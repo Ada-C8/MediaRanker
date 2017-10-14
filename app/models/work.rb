@@ -3,7 +3,8 @@ class Work < ApplicationRecord
   has_many :votes
 
   validates :title, presence: true
-  validates :category, presence: true
+  validates :category, presence: true, inclusion: { in: %w( album book movie )}
+
 
   def self.sort_by_vote_count
     sorted = Work.all.sort_by{|work| -work.votes.count}
@@ -21,6 +22,11 @@ class Work < ApplicationRecord
 
     return Work.all.where(category: category).sort_by{|work| -work.votes.count}[0..9]
   end
+
+  def self.category_sort(category)
+    return Work.all.where(category: category).sort_by{|work| -work.votes.count}
+  end # all_category
+
 
 
   # for this example it is ok to have all this into one method

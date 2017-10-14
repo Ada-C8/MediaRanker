@@ -8,53 +8,73 @@ describe Work do
   let(:w4) {Work.new(category: "Movie", title: "Singing in the rain", creator: "Gene Kelly", publication_year: 2001, description: "Amazing musical")}
 
 
-  it "has many votes" do
-    w.must_respond_to :votes
-    # starts off without any votes
-    w.votes.must_be_empty
+  describe "validations" do
+    it "has many votes" do
+      w.must_respond_to :votes
+      # starts off without any votes
+      w.votes.must_be_empty
 
-    # Can add a vote to it
-    w.votes << v
-    w.votes.must_include v
-  end # it "has many votes" do
+      # Can add a vote to it
+      w.votes << v
+      w.votes.must_include v
+    end # it "has many votes" do
 
-  it "requires a title" do
-    w2 = Work.new
-    is_valid = w2.valid?
-    is_valid.must_equal false
-    w2.errors.messages.must_include :title
-  end # it "requires a title" do
+    it "requires a title" do
+      w2 = Work.new
+      is_valid = w2.valid?
+      is_valid.must_equal false
+      w2.errors.messages.must_include :title
+    end # it "requires a title" do
 
-  it "will create an instance of Work when all fields are present" do
+    it "will create an instance of Work when all fields are present" do
       w3.must_be :valid?
-  end # it "will create an instance of Work when all fields are present" do
+    end # it "will create an instance of Work when all fields are present" do
 
-  it "requires a category" do
-    w2 = Work.new
-    is_valid = w2.valid?
-    is_valid.must_equal false
-    w2.errors.messages.must_include :category
-  end
+    it "requires a category" do
+      w2 = Work.new
+      is_valid = w2.valid?
+      is_valid.must_equal false
+      w2.errors.messages.must_include :category
+    end
+
+    it "recuires that the category be 'album, movie, or book'" do
+      # can create a new work with category 'book'
+      new_book = Work.new(title: "new book", category: 'book')
+      new_book.must_be :valid?
+
+      # can create a new work with category 'album'
+      new_album = Work.new(title: "new album", category: 'album')
+      new_album.must_be :valid?
+
+      # can create a new work with category 'movie'
+      new_movie = Work.new(title: "new movie", category: 'movie')
+      new_movie.must_be :valid?
+
+      # CANNOT create a new work with any other category
+      new_invalid_work = Work.new(title: "new album", category: 'other')
+      new_invalid_work.wont_be :valid?
+    end # requires album, book, or movie as category
+  end # validations
 
   describe "methods" do
     describe "sort_by_vote_count" do
       it "will sort the works by vote count in decending order" do
         #TODO: figure out why this test isn't passing!
         # Arrange
-          # create a second work to vote on
-          w3.save
-          w.save
-          # create a second user to vote
-            u2 = User.last
+        # create a second work to vote on
+        w3.save
+        w.save
+        # create a second user to vote
+        u2 = User.last
 
         # Act (vote on the two works, w and w3)
-          w.votes.create(user_id: u.id, work_id: w.id)
-          w3.votes.create(user_id: u2.id, work_id: w3.id)
-          w3.votes.create(user_id: u.id, work_id: w3.id)
-          sorted = Work.sort_by_vote_count
+        w.votes.create(user_id: u.id, work_id: w.id)
+        w3.votes.create(user_id: u2.id, work_id: w3.id)
+        w3.votes.create(user_id: u.id, work_id: w3.id)
+        sorted = Work.sort_by_vote_count
 
         # Assert
-          sorted.first.id.must_equal w3.id
+        sorted.first.id.must_equal w3.id
       end # it will sort by vote_count
     end # sort_by_vote_count
 
@@ -73,17 +93,34 @@ describe Work do
       end # return the top work
     end # top_work
 
-    it "will return the top ten works of a category" do
-      ten = Work.top_ten("album")
 
-      length = ten.length
-      i = 0
-      while i < length
-        work.votes[i].must_be :>=, work.votes[i - 1].votes
-      end
+    describe "top_ten" do
+      it "will return the top ten works of a category" do
+        ten = Work.top_ten("album")
 
-      ten.first.category.must_equal "album"
-    end # return the top ten works for a category
+        length = ten.length
+        i = 0
+        while i < length
+          work.votes[i].must_be :>=, work.votes[i - 1].votes
+        end
+
+        ten.first.category.must_equal "album"
+      end # return the top ten works for a category
+    end # top_ten
+
+    describe "category_sort" do
+      it "will return decending sorted list of all works in a category " do
+        all_books = Work.category_sort('book')
+
+        j = all_books.length
+        i = 0
+        while i < length
+          all_books[i].category.must_equal "book"
+          all_books.votes[i].must_be :>=, all_books.votes[i - 1].votes
+        end # while
+      end # return sorted list of one category
+
+    end # category_sort
 
   end # methods
 end
