@@ -29,9 +29,10 @@ describe WorksController do
   end
 
 
-  describe 'index' do
+  describe 'new' do
     it 'returns success status' do
-
+      get new_work_path
+      must_respond_with :success
     end
   end
 
