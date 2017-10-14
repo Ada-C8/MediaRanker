@@ -30,12 +30,12 @@ class UsersController < ApplicationController
     if user
       session[:logged_in_user] = user.id
       flash[:success] = "Successfully logged in as #{ user.name }!"
-      redirect_to request.referrer
+      redirect_to root_path
       return
     else
       user = User.create(name: name)
       session[:logged_in_user] = user.id
-      redirect_to request.referrer
+      redirect_to root_path #request.referrer
       return
     end
 
