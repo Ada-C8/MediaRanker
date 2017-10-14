@@ -5,7 +5,7 @@ class VotesController < ApplicationController
   end
 
   def create
-    user = User.find_by(id: params[:user][:id])
+    user = User.find_by(id: session[:logged_in_user])
     # current_user = nil
     # if session[:logged_in_user]
     #   current_user = User.find_by[id:session[:logged_in_user]]
@@ -16,7 +16,7 @@ class VotesController < ApplicationController
       return
     end
 
-    work = Work.find_by(id: params[:work][:id])
+    work = Work.find_by(params[:id])
 
     if work == nil
       flash[:status] = :failure

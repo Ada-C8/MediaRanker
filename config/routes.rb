@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post 'login', to: 'users#login'
   # patch 'logout', to: 'users#logout', as: 'logout'
   resources :works, only: [:index, :show, :new, :edit, :update, :create, :destroy]
-  # resources :votes
+  resources :votes, only: [:new, :create]
   patch 'reset_session', to: 'application#reset_session', as: 'reset_session'
 
 
