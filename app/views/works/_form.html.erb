@@ -1,7 +1,7 @@
 <%= form_for @work do |f| %>
 
 <%= f.label :category %>
-<%= f.select :category, ['book', 'album', 'movie'] %>
+<%= f.select :category, [['book'], ['album'], ['movie']] %>
 <br>
 <%= f.label :title %>
 <%= f.text_field :title %>
