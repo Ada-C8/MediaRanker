@@ -23,8 +23,9 @@
 
 <h2> Log In </h2>
 
-<% form_tag({controller: 'sessions', action: 'login'}, method: 'post') do |f| %>
+
+<%= form_for :sessions, url:login_session_path do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
-  <%= f.submit %>
+  <%= f.submit 'Log In' %>
 <% end %>
