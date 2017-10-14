@@ -14,7 +14,8 @@
 *= require_self
 */
 
-@import url('foundation');
+@import url(asset-path('foundation'));
+/*@import url('foundation');*/
 
 /* Small only */
 @media screen and (max-width: 39.9375em) {}
