@@ -1,1 +1,23 @@
 @import url('foundation');"
+
+header {
+  max-width: 100%;
+  background-color: #B2DFDB;
+  border-bottom: 1px solid #EEEEEE;
+  padding: 25px 20px 10px 20px;
+  margin-bottom: 10px
+}
+
+/*header.page-header.row::before {
+  display: table;
+  content: ' ';
+  box-sizing: inherit;
+}*/
+
+main {
+  max-width: 75%;
+}
+
+.button {
+  background-color: #26A69A
+}
