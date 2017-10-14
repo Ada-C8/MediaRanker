@@ -1,0 +1,19 @@
+<!-- Future me: errors.messages is a hash with an array in it. not sure what else is going on in there. Stay tuned. -->
+
+<% if model.errors.messages.length > 0 %>
+  <section class="error-messages">
+    <h3>Error Happened!</h3>
+    <ul>
+      <% model.errors.messages.each do |field, problems| %>
+        <% problems.each do |problem| %>
+          <ul>
+            <strong>
+              <%= field %>:
+            </strong>
+            <%= problem %>
+          </ul>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
