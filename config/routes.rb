@@ -1,25 +1,15 @@
 Rails.application.routes.draw do
-  get 'users/index'
+  root to: 'works#home'
 
-  get 'users/show'
+  get '/home', to: 'works#home', as: 'home'
 
-  get 'users/new'
+  get '/works', to: 'works#index', as: 'works'
 
-  get 'users/create'
+  get '/works/:id/edit', to: 'works#edit', as: 'edit_work'
 
-  get 'works/index'
+  get '/works/:id', to: 'works#show', as: 'work'
 
-  get 'works/show'
 
-  get 'works/new'
-
-  get 'works/edit'
-
-  get 'works/update'
-
-  get 'works/create'
-
-  get 'works/destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
