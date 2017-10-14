@@ -7,10 +7,10 @@ class ApplicationController < ActionController::Base
 
     if saved
       flash[:status] = :success
-      flash[:message] = "Successfully saved #{model.class} #{model.id}"
+      flash[:message] = "Successfully saved #{model.title}"
     else
       flash[:status] = :failure
-      flash[:message] = "A problem occurred: Could not create #{model.class}"
+      flash[:message] = "A problem occurred: Could not create #{params[:work][:category]}"
       flash[:details] = model.errors.messages
     end # if/else
 
