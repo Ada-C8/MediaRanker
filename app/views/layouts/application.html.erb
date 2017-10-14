@@ -13,27 +13,56 @@
     <strong>Media Ranker</strong>
      | Ranking the Best of Everything
   </h1>
-  <nav id = "links">
+  <nav>
     <ul >
       <li>
-        <%= link_to "View top media", root_path,   class:  "link"%>
+        <%= link_to "View top media", root_path,   class: "button"%>
       </li>
       <li>
-        <%= link_to "View all media", works_path,   class:  "link"%>
+        <%= link_to "View all media", works_path,   class: "button"%>
       </li>
       <li>
-        <%= link_to "Add a new work", new_work_path,   class:  "link"%>
+        <%= link_to "Add a new work", new_work_path,   class: "button"%>
       </li>
       <li>
-        <%= link_to "View all users", users_path,   class:  "link"%>
+        <%= link_to "View all users", users_path,   class: "button"%>
+      </li>
+      <li>
+        <%if session[:logged_in_user]%>
+        <p class="button">
+          Logged in as <%=User.find(session[:logged_in_user]).name%>
+        </p>
+        <%= link_to "Log out", logout_path, class: "button" %>
+        <% else %>
+        <%= link_to "Login", login_path, class:  "button"%>
+        <%end%>
       </li>
     </ul>
   </nav>
 </header>
-
-
-
+<main>
+  </main>
+  <section class="flash <%= flash[:status] %>">
+         <p>
+           <%= flash[:message] %>
+         </p>
+         <% if flash[:details] %>
+           <ul>
+             <% flash[:details].each do |field, problems| %>
+               <% problems.each do |problem| %>
+                 <li>
+                   <strong>
+                     <%= field %>:
+                   </strong>
+                   <%= problem %>
+                 </li>
+               <% end %>
+             <% end %>
+           </ul>
+         <% end %>
+       </section>
 <body>
   <%= yield %>
 </body>
+</main>
 </html>
