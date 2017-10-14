@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
     if user
       # if user exists already
-      session[:logged_in_user] = user.id
+      session[:logged_in_user] = user
       flash[:status] = :success
       flash[:message] = "Successfully logged in as existing user #{user.username}"
       redirect_to root_path
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(username: params[:username])
     if user.save
-      session[:logged_in_user] = user.id
+      session[:logged_in_user] = user
       flash[:status] = :success
       flash[:message] = "Successfully created new user #{user.username} with ID #{user.id}"
       redirect_to root_path
