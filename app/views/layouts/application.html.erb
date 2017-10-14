@@ -14,6 +14,10 @@
         <%= link_to "View top media", root_path %>
         <%= link_to "View all media", works_path %>
         <%= link_to "Add new media", new_work_path %>
+        <div class="float right">
+          <%= link_to "Log in", login_path %>
+          <%= link_to "Logout", logout_path, method: :post %>
+        </div>
       </nav>
     </header>
     <section class="flash">

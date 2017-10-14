@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      user = User.new(username: params[:username])
+      user = User.create(username: params[:username])
       flash[:success] = "Successfully created new user #{user.username}"
       session[:user_id] = user.id
       redirect_to root_path
@@ -18,5 +18,6 @@ class SessionsController < ApplicationController
   def logout
     session[:user_id] = nil
     flash[:success] = "Successfully logged out."
+    redirect_to root_path
   end
 end
