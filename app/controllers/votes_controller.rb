@@ -1,25 +1,20 @@
 class VotesController < ApplicationController
 
-  # def create # Add strong params
-  #
-  #   if the user is logged in but the user has
-  #   else
-  #     @vote = Vote.new(votes_params)
-  #       # user_id: params[:vote][:user_id],
-  #       # work_id: params[:vote][:work_id]
-  #     if @vote.save!
-  #       flash[:status] = :success
-  #       flash[:message] = "Successfully Upvoted!"
-  #
-  #       redirect_to works_path(@vote.work_id)
-  #     else
-  #       flash[:status] = :failure
-  #       flash[:message] = "Could not upvote"
-  #
-  #       redirect_to login_path
-  #     end
-  #   end
-  # end
+  def create # Add strong params
+    @vote = Vote.new(votes_params)
+    if @vote.save
+      flash[:status] = :success
+      flash[:message] = "Successfully Upvoted!"
+
+      redirect_to works_path(@vote.work_id)
+    else # If the @vote was not saved then
+      flash[:status] = :failure
+      flash[:message] = "Could not upvote"
+      flash[:details] = @vote.errors.messages
+
+      render :new, status: :bad_request
+    end
+  end
 
   private
 

@@ -3,9 +3,15 @@
     <h3>
       <%= link_to @work.title, work_path(@work) %>
     </h3>
-    <p>Created by: <%= @work.creator %></p>
-    <p>Published:</p>
+
+    <p>
+      Created by: <%= @work.creator %>
+    </p>
+    <p>
+      Published:
+    </p>
     <section>
+      
       <%= link_to "Back to media ranks", works_path, class: "button" %>
       <%= link_to "Edit", edit_work_path, class: "button" %>
       <%= link_to "Upvote", votes_path(
@@ -14,9 +20,12 @@
           work_id: @work.id
         }
       ), method: :post, class:"button" %>
+
       <%= link_to "Delete", work_path, method: :delete, class: "button" %>
     </section>
   </article>
+
+
   <article>
     <h3><%= Vote.where(work_id: @work.id).count %> Votes for this <%= @work.category %></h3>
     <table>
@@ -29,6 +38,7 @@
 
       <tbody>
         <% votes = Vote.where(work_id: @work.id) %>
+
         <% votes.each do |vote| %>
           <tr>
             <td>
@@ -39,6 +49,7 @@
             </td>
           </tr>
         <% end %>
+
       </tbody>
     </table>
   </article>
