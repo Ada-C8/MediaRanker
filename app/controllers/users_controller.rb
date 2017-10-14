@@ -1,14 +1,17 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
+
   def index
     @users = User.all
   end
 
   def show
     redirect_to users_path unless @user
+
   end
 
   def new
-    @user = user.new
+    @user = User.new
   end
 
   def create
