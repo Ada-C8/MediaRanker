@@ -1,29 +1,14 @@
 class SessionsController < ApplicationController
   # def create
-  #   @user = User.new(name: params[:name])
-  #   @user.save
-  #   return @user
+  #   user_data = {
+  #     user: {
+  #       name: params[:name]
+  #     }
+  #   }
+  #   redirect_to user_path(user_data), method: post
   # end
 
-  def login
-    name = params[:name]
-    user = User.find_by(name: name)
 
-    if user
-      session[:logged_in_session] = user.id
-      flash[:logged_in] = "Successfully logged in as existing user #{user.name}"
-      redirect_to root_path
-    else
-      redirect_to user_path(user: name), method: post
-    end
-  end
-
-  def logout
-    session[:logged_in_session] = nil
-    flash[:logged_out] = "Successfully Logged Out"
-    redirect_to root_path
-  end
-end
 
 # if !user
 #   new_user = create

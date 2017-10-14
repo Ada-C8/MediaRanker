@@ -17,25 +17,11 @@ class VotesController < ApplicationController
       # work_id: params[:vote][:work_id]
     if @vote.save
       flash[:status] = :success
-      redirect_to works_path(vote.work_id)
+      redirect_to works_path(@vote.work_id)
     else
       flash.now[:status] = :failure
     end
   end
-
-  # def edit
-  #   @vote = Vote.find(params[:id])
-  # end
-
-  # def update
-  #   @vote = Vote.find(params[:id])
-  #   # Do we use the update method for vote?
-  # end
-
-  # def destroy
-  #   @vote = Vote.find(params[:id])
-  #   # We do not need the destroy method for vote
-  # end
 
   private
 
