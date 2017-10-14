@@ -23,6 +23,18 @@ def create
     return
   end
 
+  def login
+    user_id = params[:user][:user_id]
+
+    user = find_user_by_id
+    if user
+      session[:logged_in_user] = user_id
+      flash[:success] = "Successfully logged in as #{ user.name }!"
+      redirect_to root_path
+    end
+
+  end
+
   private
 
   def user_params
