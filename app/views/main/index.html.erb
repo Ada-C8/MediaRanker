@@ -7,7 +7,9 @@
         <%= link_to works.first.title, work_path(works.first.id) %> by <%= works.first.creator %>
       </h3>
       <p>
-        <%= works.first.votes.count %> of Votes
+        <% if !works %>
+          <%= works.first.votes.count %> of Votes
+        <% end %>
       </p>
     </div>
   </section>
