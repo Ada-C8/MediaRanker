@@ -26,28 +26,30 @@
       </th>
     </tr>
   </thead>
+  <% @user.votes.each do |vote| %>
   <tbody>
     <tr>
       <td>
-        <!-- work title -->
+        <%= link_to "#{vote.work.title}", work_path(vote.work.id) %>
       </td>
       <td>
-        <!-- work creator  -->
+        <%= vote.work.creator %>
       </td>
       <td>
-        <!-- work published year  -->
+        <%= vote.work.publication_year %>
       </td>
       <td>
-        <!-- category -->
+        <%= vote.work.category %>
       </td>
       <td>
-        <!--date the work was voted on  -->
+        <%= vote.created_at.strftime("%b %d,%Y") %>
       </td>
     </tr>
   </tbody>
+  <% end %>
 </table>
 
 
-<%= link_to "See all users", users_path, method: :get%>
+<%= link_to "See all users", users_path, method: :get %>
 
 <%= link_to "Back to Media List", '/', method: :get %>
