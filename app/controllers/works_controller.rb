@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update, :delete]
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def index
     @books = Work.where(category: "book")
@@ -30,12 +30,23 @@ class WorksController < ApplicationController
   end
 
   def update
+    redirect_to works_path unless @work
+    if @work.update_attributes work_params
+      redirect_to works_path
+    else
+      render :edit
+    end
   end
 
-  def delete
+  def destroy
+    @work.destroy
+    redirect_to root_path
   end
 
   def home
+    @top_books
+    @top_albums
+    @top_movies
   end
 
   private

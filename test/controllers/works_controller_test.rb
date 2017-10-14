@@ -12,7 +12,7 @@ describe WorksController do
   end
 
   it "should get show" do
-    get work_path(1)
+    get work_path(works(:album).id)
     must_respond_with :success
   end
 
@@ -30,19 +30,32 @@ describe WorksController do
     must_redirect_to works_path
   end
 
-  # it "should get edit" do
-  #   get works_edit_url
-  #   value(response).must_be :success?
+  it "should get edit" do
+    get edit_work_path(works(:book).id)
+    must_respond_with :success
+  end
+
+  it "should update a post" do
+    put work_path(works(:movie).id), params: {work: {title: "Eat Drink Man Woman", description: "A chef and father makes elaborate meals for his three daughters every Sunday"} }
+
+    movie = Work.find_by(id: works(:movie).id)
+    movie.title.must_equal "Eat Drink Man Woman"
+    movie.description.must_equal "A chef and father makes elaborate meals for his three daughters every Sunday"
+
+    must_respond_with :redirect
+  end
+
+  # it "requires update data to be valid" do
+  #   put work_path(works(:book).id), params: { {work: {title: nil}} }
+  #
   # end
   #
-  # it "should get update" do
-  #   get works_update_url
-  #   value(response).must_be :success?
-  # end
-  #
-  # it "should get delete" do
-  #   get works_delete_url
-  #   value(response).must_be :success?
-  # end
+  it "should delete a record" do
+    proc {
+      delete work_path(works(:album).id)
+    }.must_change 'Work.count', -1
+
+    must_redirect_to root_path
+  end
 
 end
