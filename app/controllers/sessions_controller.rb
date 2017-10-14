@@ -4,8 +4,17 @@ class SessionsController < ApplicationController
   end
 
   def login
-    #if username exists, add user to sessions
-    #if not create new user and add to session
-
+    if User.find_by(username: params[:name])
+      session[:user] = params[:name]
+    else
+      user = User.new(username: params[:name])
+      if user.save
+        flash[:success] = "Successfully created new user #{user.username} with ID #{user.id}"
+        redirect_to root_path
+      else
+        flash.now[:error] = "A problem occurred: Could not log in"
+        render login_path, status: bad_request
+      end
+    end
   end
 end

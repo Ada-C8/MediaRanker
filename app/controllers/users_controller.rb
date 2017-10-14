@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  #TODO add statuses to renders and test them
 
   def index
     @users = User.order(:username)
