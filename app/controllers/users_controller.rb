@@ -46,6 +46,9 @@ class UsersController < ApplicationController
   #   redirect_to root_path
   # end
 
+  # def reset_session
+  #   @_request.reset_session
+  # end
 
   private
 
@@ -55,7 +58,7 @@ class UsersController < ApplicationController
 
   def find_user_by_id
     puts "<<<<<<<<<<<<<<<<<< running the test"
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: params[:user][:id])
     puts "<<<<<after user find by"
     unless @user
       puts "<<<< made it past the unless statement"
