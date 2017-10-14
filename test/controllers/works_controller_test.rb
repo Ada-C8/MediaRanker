@@ -118,21 +118,21 @@ end
         work.title.must_equal work_data[:work][:title]
     end
 
-    # it "returns not found if the book ID is invalid" do
-    #   invalid_work_id = Work.last.id + 1
-    #     work_data = {
-    #       work: {
-    #         title: "Purple Hibiscus",
-    #         category: "book",
-    #         publication_year: 2003,
-    #         creator: "Chimamanda Ngozi Adichie"
-    #       }
-    #     }
-    #
-    #     patch work_path(invalid_work_id), params: work_data
-    #
-    #     must_respond_with :not_found
-    # end
+    it "returns not found if the book ID is invalid" do
+      invalid_work_id = Work.last.id + 1
+        work_data = {
+          work: {
+            title: "Purple Hibiscus",
+            category: "book",
+            publication_year: 2003,
+            creator: "Chimamanda Ngozi Adichie"
+          }
+        }
+
+        patch work_path(invalid_work_id), params: work_data
+
+        must_respond_with :not_found
+    end
   #
   #   it "returns bad request if the change is invalid" do
   #     work = Work.first
