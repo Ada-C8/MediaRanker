@@ -21,6 +21,7 @@
         <div class="large-4 small-12 columns button-group">
           <% if session[:logged_in_user] %>
             <p> <%= link_to "Logged in as #{User.find(session[:logged_in_user]).name}", users_path(@user)%> </p>
+            <p> <%= link_to "Log out", reset_session_path, method: :patch %>
             <%else%>
             <%= link_to "Log in", login_path %>
           <%end%>

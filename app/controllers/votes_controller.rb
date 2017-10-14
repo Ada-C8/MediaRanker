@@ -6,7 +6,9 @@ class VotesController < ApplicationController
 
   def create
     user = User.find_by(id: params[:user][:id])
-
+    # current_user = nil
+    # if session[:logged_in_user]
+    #   current_user = User.find_by[id:session[:logged_in_user]]
     if user == nil
       flash[:status] = :failure
       flash[:message] = "Sorry, you must be logged in to vote."
