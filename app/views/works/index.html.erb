@@ -16,16 +16,16 @@
     </tr>
     <% works.each do |work| %>
       <tr>
-        <td><%= "Votes" %></td>
+        <td><%= work.votes.count %></td>
         <td><%= link_to work.title, work_path(work.id) %></td>
         <td><%= work.creator %></td>
         <td><%= work.publication_year %></td>
-        <td><%= "Upvote" %></td>
+        <td><%= link_to "Upvote", votes_path(:work_id => work.id), method: :post %></td>
       </tr>
     <% end %>
   </table>
 </section>
 <% end %>
 
-<p>View top media</p>
-<p><%= link_to "Add a new record", new_work_path %></p>
+<%= link_to "View top media", root_path, class: "button" %>
+<%= link_to "Add a new record", new_work_path, class: "button" %>

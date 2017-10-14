@@ -6,5 +6,14 @@ class Work < ApplicationRecord
 
   CATEGORIES = ["Album", "Book", "Movie"]
 
+  def self.top_work
+    Work.all.sort_by { |work| -work.votes.count }.first
+  end
+
+  def top_ten(array)
+    array.sort_by { |work| -work.votes.count }.limit(10)
+  end
+
+
 
 end

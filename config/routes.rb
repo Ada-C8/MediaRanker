@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   post 'logout', to: 'users#logout', as: 'logout'
 
+  resources :votes, :only => [:create]
+
 end

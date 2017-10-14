@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     else
       @user = User.new(name: name)
       if @user.save
+        session[:logged_in_user] = @user.id
         flash[:status] = :success
         flash[:notice] = "Successfully created new user #{name} with ID #{@user.id}"
         redirect_to works_path
