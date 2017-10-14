@@ -58,7 +58,7 @@ class UsersController < ApplicationController
 
   def find_user_by_id
     puts "<<<<<<<<<<<<<<<<<< running the test"
-    @user = User.find_by(id: params[:user][:id])
+    @user = User.find_by(id: params[:id])
     puts "<<<<<after user find by"
     unless @user
       puts "<<<< made it past the unless statement"

@@ -18,11 +18,10 @@
   <tbody>
     <% Vote.votes_by_user(@user).each do |vote| %>
         <tr>
-          <td> TBD </td>
-          <td> <%= link_to "#{vote.work.title}", work_path(work) %> </td>
-          <td> <%= vote.work.creator %> </td>
-          <td> <%= vote.work.publication_year %> </td>
-          <td> <%= vote.work.category %> </td>
+          <td> <%= link_to "Title", "work_path(work_id)" %> </td>
+          <td> <%= "creator" %> </td>
+          <td> <%= "pub" %> </td>
+          <td> <%= "cat" %> </td>
           <td> <%= vote.created_at %> </td>
         </tr>
     <% end %>
