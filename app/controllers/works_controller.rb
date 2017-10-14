@@ -71,9 +71,9 @@ class WorksController < ApplicationController
       @book_work = Work.where(category: "book").order(:title)
       @movie_work = Work.where(category: "movie").order(:title)
       @album_work = Work.where(category: "album").order(:title)
-      if @book_work.empty? || @movie_work.empty? || @album_work.empty?
-        render :not_found
-      end
+      # if @book_work.empty? || @movie_work.empty? || @album_work.empty?
+      #   render :not_found
+      # end
     # end
   end
 

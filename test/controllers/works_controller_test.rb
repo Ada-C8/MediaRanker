@@ -14,13 +14,15 @@ describe WorksController do
       must_respond_with :not_found
     end
 
-    it "returns an error when there are no books, albums or movies" do
-
-    end
-
   end
 
   describe "show" do
+    it "returns a success status" do
+      get work_path
+      must_respond_with :success
+    end
+
+    
 
   end
 
