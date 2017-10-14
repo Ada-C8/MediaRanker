@@ -1,19 +1,70 @@
 <h1>this is the main index page</h1>
 
 <p>
-  This page needs to include a media spotlight section
+<% spotlight = Work.all.sort_by {|work| - work.votes.count}.first %>
+<%= "#{spotlight.title} by #{spotlight.creator} with #{spotlight.votes.count} votes" %>
+
 </p>
 
-<section>
-  It will then also have top 10 movies
-</section>
+
+<h2>Top Movies</h2>
+<% movie = Work.where(category: 'movie') %>
+<% movie_sort = movie.sort_by {|work| - work.votes.count } %>
+<ol>
+  <% if movie_sort.count <= 10 %>
+    <% movie_sort.each do |work| %>
+      <li>
+        <%= "#{work.title} by #{work.creator} with #{work.votes.count} votes " %>
+      </li>
+      <% end %>
+  <% else %>
+    <% 10.times do |item| %>
+        <li>
+          <% work = movie_sort.shift %>
+          <%= "#{work.title} by #{work.creator} with #{work.votes.count} votes " %>
+        </li>
+    <% end %>
+  <% end %>
+</ol>
 
 
-<section>
-  It will then also have top 10 books
-</section>
+<h2>Top Books</h2>
+<% book = Work.where(category: 'book') %>
+<% book_sort = book.sort_by {|work| - work.votes.count } %>
+<ol>
+  <% if book_sort.count <= 10 %>
+    <% book_sort.each do |work| %>
+      <li>
+        <%= "#{work.title} by #{work.creator} with #{work.votes.count} votes " %>
+      </li>
+      <% end %>
+  <% else %>
+    <% 10.times do |item| %>
+        <li>
+          <% work = book_sort.shift %>
+          <%= "#{work.title} by #{work.creator} with #{work.votes.count} votes " %>
+        </li>
+    <% end %>
+  <% end %>
+</ol>
 
 
-<section>
-  It will then also have top 10 albums 
-</section>
+<h2>Top Albums</h2>
+<% album = Work.where(category: 'album') %>
+<% album_sort = album.sort_by {|work| - work.votes.count } %>
+<ol>
+  <% if album_sort.count <= 10 %>
+    <% album_sort.each do |work| %>
+      <li>
+        <%= "#{work.title} by #{work.creator} with #{work.votes.count} votes " %>
+      </li>
+    <% end %>
+    <% else %>
+    <% 10.times do |item| %>
+    <li>
+      <% work = album_sort.shift %>
+      <%= "#{work.title} by #{work.creator} with #{work.votes.count} votes " %>
+        </li>
+        <%end%>
+  <% end %>
+</ol>
