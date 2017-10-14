@@ -1,15 +1,24 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h3>
+  List of Users
+</h3>
+<table>
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Votes</th>
+          <th>Joined</th>
+        </tr>
+      </thead>
 
+      <tbody>
+        <% @users.each do |t| %>
+          <tr>
+            <td><%= link_to(t.name, user_path(t.id)) %></td>
+            <td> <%=  %></td>
+            <td> <%= t.created_at.strftime("%b %d, %Y") %></td>
+          </tr>
 
-<h1>Users</h1>
-<ul>
-  <% @users.each do |user| %>
-  <li>
-    <%= link_to(user.id, user_path(user.id), alt:'User ID')%>
-  </li>
-  <li>
-    <%= link_to(user.name, user_path(user.id), alt:'User Name')%>
-  </li>
-  <% end %>
-</ul>
+        <% end %>
+
+      </tbody>
+    </table>

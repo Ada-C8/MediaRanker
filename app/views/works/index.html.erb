@@ -1,30 +1,30 @@
 <h1>Works#index</h1>
 
-<h1>Book</h1>
-<ul>
-  <% @book_work.each do |work| %>
-  <li>
-    <%= link_to(work.title, work_path(work.id), alt:'Book title')%>
-  </li>
-  <% end %>
-</ul>
+  <h1>Book</h1>
+  <ul>
+    <% @book_work.each do |work| %>
+    <li>
+      <%= link_to(work.title, work_path(work.id), alt:'Book title')%>
+    </li>
+    <% end %>
+  </ul>
 
-<h1>Movies</h1>
-<ul>
-  <% @movie_work.each do |work| %>
-  <li>
-    <%= link_to(work.title, work_path(work.id), alt:'Movie title')%>
-  </li>
-  <% end %>
-</ul>
+  <h1>Movies</h1>
+  <ul>
+    <% @movie_work.each do |work| %>
+    <li>
+      <%= link_to(work.title, work_path(work.id), alt:'Movie title')%>
+    </li>
+    <% end %>
+  </ul>
 
-<h1>Albums</h1>
-<ul>
-  <% @album_work.each do |work| %>
-  <li>
-    <%= link_to(work.title, work_path(work.id), alt:'Album title')%>
-  </li>
-  <% end %>
-</ul>
+  <h1>Albums</h1>
+  <ul>
+    <% @album_work.each do |work| %>
+    <li>
+      <%= link_to(work.title, work_path(work.id), alt:'Album title')%>
+    </li>
+    <% end %>
+  </ul>
 
 <p>Find me in app/views/works/index.html.erb</p>

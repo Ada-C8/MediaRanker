@@ -53,10 +53,7 @@ class WorksController < ApplicationController
 
 
   def index
-    # @work = Work.find_by(id: params[:id])
-    # @book_work = @work.where(category: "book").order(:title)
-    # @movie_work = @work.where(category: "movie").order(:title)
-    # @album_work = @work.where(category: "album").order(:title)
+    @work = Work.all
 
     #if work_id on params is truthy
     # if params[:work_id]
