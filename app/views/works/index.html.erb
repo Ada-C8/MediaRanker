@@ -1,5 +1,7 @@
 <h1>Welcome to Media Ranker</h1>
 
+<h2>Media Spotlight: Link to Top Vote Getter</h2>
+
 <table>
 
 <tr>
@@ -20,6 +22,9 @@
   </th>
   <th>
     Description
+  </th>
+  <th>
+    VOTE!
   </th>
 </tr>
 
@@ -44,7 +49,7 @@
     <%= work.description %>
   </td>
   <td>
-    UpVote Button will Go Here
+    <%= link_to "Vote", new_vote_path %>
   </td>
 </tr>
 <% end %>

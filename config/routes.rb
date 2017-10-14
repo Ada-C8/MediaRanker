@@ -1,7 +1,28 @@
 Rails.application.routes.draw do
+  # get '/', to: 'work#index', as: 'root'
+  root 'main#index'
+
+
+  # resources :works
+  # post '/work/:id/voted_for', to: 'work#voted_for', as: 'vote_counted'
+
+
+  # resources :authors, only: [:index, :new, :create] do
+  #   resources :books, only: [:index, :new]
+  # end
+
+  get 'login', to: 'users#login_form', as: 'login'
+  post 'login', to: 'users#login'
+
   get 'votes/index'
 
   get '/users/index'
+
+  get '/votes/new', to: 'votes#new', as: 'new_vote'
+
+  get '/votes', to: 'votes#create', as: 'votes'
+
+
 
   get '/users/new', to: 'users#new', as: 'new_user'
 

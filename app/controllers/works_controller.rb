@@ -13,8 +13,12 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
-    @work.save
-    redirect_to works_index_path
+    if @work.save
+      flash[:success] = "Saved!"
+      redirect_to works_index_path
+    else
+      render :new
+    end
   end
 
   def edit
