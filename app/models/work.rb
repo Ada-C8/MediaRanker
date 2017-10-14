@@ -1,5 +1,5 @@
 class Work < ApplicationRecord
-  has_many :votes
+  has_many :votes, dependent: :destroy
   validates :title, presence: true
   #the below validation is necessary for books that are turned into movies of the same name!
   validates :title, uniqueness: {scope: :category, message: "The title should be unique within this category"}
