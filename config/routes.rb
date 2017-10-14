@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   ### LOGIN ###
 
-  get '/login', to: 'sessions#login_form'
+  get '/login', to: 'sessions#login_form', as: 'login' #login_path
 
   post '/login', to: 'sessions#login'
 
