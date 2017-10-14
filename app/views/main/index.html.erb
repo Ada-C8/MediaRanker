@@ -1,9 +1,10 @@
-<main>
+<main class="row">
   <section>
     <div>
       <h3> <%# REMEMBER YOU CAN ACCESS THE NUMBER VOTES SIMPLY BY CALLING THE NAME OF THE OTHER CLASS WORK.VOTES %>
         <% works = Work.all.sort_by { |work| -work.votes.count} %>
-        Media Spotlight: <%= works.first.title %>
+        Media Spotlight:
+        <%= link_to works.first.title, work_path(works.first.id) %> by <%= works.first.creator %>
       </h3>
       <p>
         <%= works.first.votes.count %> of Votes
@@ -11,42 +12,59 @@
     </div>
   </section>
 
-  <section>
-    <h3>Top Movies</h3>
+  <hr>
+
+  <section class="large-4 columns">
+    <h3 class="border-bottom">Top Movies</h3>
     <% works = Work.where(category: "movie") %>
     <% works.sort_by { |work| -work.votes.count } %>
     <ul>
       <% works.each do |work| %>
       <li>
-        <h4><%= work.title %></h4>
+        <h4>
+          <%= work.title %>
+          <small>
+            by <%= works.first.creator %>
+          </small>
+        </h4>
         <p><%= work.votes.count %> Votes</p>
       </li>
       <% end %>
     </ul>
   </section>
 
-  <section>
-    <h3>Top Books</h3>
+  <section class="large-4 columns">
+    <h3 class="border-bottom">Top Books</h3>
     <% works = Work.where(category: "book") %>
     <% works.sort_by { |work| -work.votes.count } %>
     <ul>
       <% works.each do |work| %>
       <li>
-        <h4><%= work.title %></h4>
+        <h4>
+          <%= work.title %>
+          <small>
+            by <%= works.first.creator %>
+          </small>
+        </h4>
         <p><%= work.votes.count %> Votes</p>
       </li>
       <% end %>
     </ul>
   </section>
 
-  <section>
-    <h3>Top Albums</h3>
+  <section class="large-4 columns">
+    <h3 class="border-bottom">Top Albums</h3>
     <% works = Work.where(category: "album") %>
     <% works.sort_by { |work| -work.votes.count } %>
     <ul>
       <% works.each do |work| %>
       <li>
-        <h4><%= work.title %></h4>
+        <h4>
+          <%= work.title %>
+          <small>
+            by <%= works.first.creator %>
+          </small>
+        </h4>
         <p><%= work.votes.count %> Votes</p>
       </li>
       <% end %>

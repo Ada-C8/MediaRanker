@@ -1,12 +1,12 @@
-<main>
+<main class="row">
   <h3>List of Users</h3>
   <table>
 
     <thead>
       <tr>
         <th>Username</th>
-        <th>Votes</th>
-        <th>Joined</th>
+        <th class="width">Votes</th>
+        <th class="more-width">Joined</th>
       </tr>
     </thead>
 
@@ -15,11 +15,11 @@
         <tr>
           <td><%= link_to user.name, user_path(user.id)%></td>
           <td><%= Vote.where(user_id: user.id).count %></td>
-          <td><%= user.created_at %></td>
+          <td><%= user.created_at.to_date %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 
-  <%= link_to "Back to Media List", works_path %>
+  <%= link_to "Back to Media List", works_path, class:"button" %>
 </main>

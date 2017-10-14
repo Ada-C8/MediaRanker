@@ -11,16 +11,16 @@ Rails.application.routes.draw do
 
   get '/', to: 'main#index', as: 'root'
 
-  resources :users
+  resources :users, except: [:update, :destroy, :new]
 
-  resources :votes, except: [:index, :show]
+  resources :votes, only: :create
 
   resources :works
 
-  resources :sessions
+  resources :sessions, only: [:login,:logout]
 
   get '/login', to: 'sessions#login', as: 'login'
-  post '/login', to: 'sessions#login'
+  post '/login', to: 'sessions#create'
 
   get '/logout', to: 'sessions#logout', as: 'logout'
   post '/logout', to: 'sessions#logout'

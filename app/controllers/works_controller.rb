@@ -16,6 +16,7 @@ class WorksController < ApplicationController
 
   def create # Add strong params
     @work = Work.new(
+      id: params[:work][:id],
       category: params[:work][:category],
       title: params[:work][:title],
       creator: params[:work][:creator],
@@ -36,6 +37,7 @@ class WorksController < ApplicationController
 
   def update
     @work = Work.find_by(id: params[:id])
+
     unless @work
       head :not_found
       return
@@ -48,8 +50,6 @@ class WorksController < ApplicationController
     @work.creator = work_updates[:creator]
     @work.publication_year = work_updates[:publication_year]
     @work.description = work_updates[:description]
-
-    @work.save
 
     if @work.save
       redirect_to work_path(@work)
