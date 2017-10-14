@@ -8,9 +8,12 @@
   # end
 
   def create
-    @user = User.find(session[:user_id])
+    @user = User.find_by(id: session[:user_id])
 
-    if Work.already_voted?(params[:work_id], @user.id)
+    if @user == nil
+      flash[:error] = "You must be logged in to vote!"
+      redirect_to work_path(params[:work_id])
+    elsif Work.already_voted?(params[:work_id], @user.id)
       flash[:error] = "Sorry, you already voted for that one."
       redirect_to work_path(params[:work_id])
     else
