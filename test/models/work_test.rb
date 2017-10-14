@@ -53,6 +53,7 @@ describe Work do
 
   end
 
+  #Don't need this test as it is in a private method
   # describe "sort_by_most_votes method" do
   #
   #   it "returns an Array of Work objects" do

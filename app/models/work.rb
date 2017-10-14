@@ -19,6 +19,29 @@ class Work < ApplicationRecord
     return top_ten
   end
 
+  def self.work_sorted_by_votes(work_category)
+    sorted_works = sort_by_most_votes
+    work_sorted_by_votes = sorted_works.find_all {|work| work.category == work_category}
+
+    return work_sorted_by_votes
+  end
+
+  # def self.books_sorted_by_votes
+  #   sorted_works = sort_by_most_votes
+  #   albums_sorted_by_votes = sorted_works.find_all {|work| work.category == "album"}
+  #
+  #   return albums_sorted_by_votes
+  #
+  # end
+  #
+  # def self.movies_sorted_by_votes
+  #   sorted_works = sort_by_most_votes
+  #   albums_sorted_by_votes = sorted_works.find_all {|work| work.category == "book"}
+  #
+  #   return albums_sorted_by_votes
+  #
+  # end
+
   private
 
   def self.sort_by_most_votes
