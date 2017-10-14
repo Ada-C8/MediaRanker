@@ -15,7 +15,7 @@
 */
 
 *= require ./foundation.css
-/**= require_tree .*/
+*= require_tree .
 
 
 /* Small only */
