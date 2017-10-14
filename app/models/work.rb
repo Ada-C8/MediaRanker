@@ -55,7 +55,7 @@ class Work < ApplicationRecord
 
   # formats num votes + description based on presence / absence
   # of description
-  def spotlight_caption(num_votes = nil)
+  def caption(num_votes = nil)
     # if work has a description, concatenate to votes and format
     if description.to_s != ""
       return "#{num_votes_to_s(num_votes)} - #{description}"

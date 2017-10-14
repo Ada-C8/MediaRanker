@@ -177,25 +177,25 @@ describe Work do
       end
     end
 
-    describe "#spotlight_caption" do
+    describe "#caption" do
       let(:with_description) { works(:lego) } # no votes, has description
       let(:no_description) { works(:nonsense) } # no votes
 
       it "must return a String" do
-        with_description.spotlight_caption.must_be_instance_of String
+        with_description.caption.must_be_instance_of String
       end
 
       it "must only display num votes if no description" do
         expected = no_description.num_votes_to_s
-        no_description.spotlight_caption.must_equal expected
+        no_description.caption.must_equal expected
 
         expected = with_description.num_votes_to_s
-        with_description.spotlight_caption.must_equal "#{expected} - #{with_description.description}"
+        with_description.caption.must_equal "#{expected} - #{with_description.description}"
       end
 
       it "must take num_votes as optional parameter" do
         expected = no_description.num_votes_to_s
-        no_description.spotlight_caption(0).must_equal expected
+        no_description.caption(0).must_equal expected
       end
     end
 

@@ -1,21 +1,26 @@
 <%#render partial: "success" %>
 
 <section class="row spotlight">
-  <h3><span class="media-spotlight-header"> Media Spotlight: </span>
-    <%= link_to(@spotlight.title, work_path(@spotlight.id)) %> by <%= @spotlight.creator %> </h3>
-  <p>
-    <%= "#{@spotlight.num_votes} - #{@spotlight.description}" %>
-  </p>
+  <div>
+    <h3><span class="media-spotlight-header"> Media Spotlight: </span>
+      <%= link_to(@spotlight.title, work_path(@spotlight.id)) %> by <%= @spotlight.creator %> </h3>
+    <p>
+      <%= @spotlight.caption(@spotlight.num_votes) %>
+    </p>
+  </div>
 </section>
 
 <% ["movies", "books", "albums"].each do |type| %>
-  <section class="<%=type%>">
+  <section class="top-ten columns large-4 small-12">
     <h3> Top <%=type.capitalize%></h3>
     <% @top_ten = @media[type] %>
     <% @top_ten.each do |work| %>
     <ul>
       <li>
-        <%= "#{work.title} by #{work.creator}" %>
+        <h4><%= link_to work.title, work_path(work) %><small> by <%= work.creator %></small></h4>
+        <p>
+          <%= work.num_votes_to_s %>
+        </p>
       </li>
     </ul>
     <% end %>

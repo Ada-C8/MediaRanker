@@ -6,7 +6,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
 
-    render_404 unless @user
+    head :not_found unless @user
+
+    # render_404 unless @user
   end
 
   # def new
@@ -14,20 +16,11 @@ class UsersController < ApplicationController
   # end
 
   def create
-    # @user = User.new(user_params)
-    #
-    # if @user.save
-    #   flash[:success] = "Successfully created new user #{@user.name} with ID #{@user.id}"
-    #   redirect_to root_path
-    # else
-    #   render :new
-    # end
 
   end
 
   def login_form
     @user = User.new
-    # does nothing; renders view only
   end
 
   # creates a user if doesn't already exist

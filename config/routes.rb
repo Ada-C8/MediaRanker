@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/users', to: 'users#index', as: 'users' # users_path
 
-  get '/users/:id/show', to: 'users#show', as: 'user' # user_path
+  get '/users/:id', to: 'users#show', as: 'user' # user_path
 
   get '/login', to: 'users#login_form', as: 'login' # login_path
 
