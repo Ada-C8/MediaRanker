@@ -44,6 +44,8 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    render_404 and return if @work.nil?
+
     @work.destroy
     redirect_to root_path
   end

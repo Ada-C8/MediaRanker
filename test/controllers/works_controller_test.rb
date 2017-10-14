@@ -132,8 +132,25 @@ describe WorksController do
 
 
   describe 'destroy' do
-    it 'returns success status' do
+    it 'deletes work and redirects to root' do
+      work = works(:baby)
 
+      proc {
+        delete work_path(work.id)
+      }.must_change 'Work.count', -1
+
+      must_respond_with :redirect
+      must_redirect_to root_path
+    end
+
+    it 'should return not found if invalid work' do
+      bad_id = Work.last.id + 1
+
+      proc {
+        delete work_path(bad_id)
+      }.must_change 'Work.count', 0
+
+      must_respond_with :not_found
     end
   end
 end
