@@ -18,11 +18,18 @@
         <%= link_to "View all users", users_path, method: :get%>
       </div>
       <div>
-        <h2>Session</h2>
-        <%= "logged in as #{session[:username]}" %>
+        <% if session[:username] == nil %>
+        <%= link_to "Log In", login_path, method: :get %>
+        <% else %>
+        <%= link_to "#{session[:username]}", user_path(:id), method: :get %>
+        <% end %>
+      </div>
+      <div>
+        <!-- <h2>Session</h2> -->
+        <!-- <%= "logged in as #{session[:username]}" %> -->
 <div>
 
-       <%= "username id number is  #{session[:user_id]}" %>
+       <!-- <%= "username id number is  #{session[:user_id]}" %> -->
 </div>
       </div>
     </nav>

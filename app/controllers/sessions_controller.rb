@@ -15,6 +15,8 @@ class SessionsController < ApplicationController
     else
       user = User.create(username: params[:username])
       flash[:success] = "successfully created new user #{user.username} with ID #{user.id}"
+      session[:user_id] = user.id
+      session[:username] = user.username
       redirect_to root_path
     end
   end

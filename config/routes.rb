@@ -8,7 +8,7 @@ resources :users
 
 resources :votes
 
-get '/login', to: 'sessions#login_form'
+get '/login', to: 'sessions#login_form', as: 'login'
 post '/login', to: 'sessions#login'
 
 end
