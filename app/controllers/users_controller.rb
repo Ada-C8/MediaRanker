@@ -13,5 +13,14 @@ class UsersController < ApplicationController
   end
 
   def login
+    name = params[:user][:name]
+    user = User.find_by(name: name)
+
+    if user
+      session[:logged_in_user] = user.id
+      redirect_to users_path
+    else
+      head :not_found
+    end
   end
 end

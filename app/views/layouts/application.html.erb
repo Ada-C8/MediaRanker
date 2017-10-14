@@ -11,12 +11,21 @@
   <body>
     <header>
       <div class="header_link">
+        <% if session[:logged_in_user] %>
+            <p class="button">
+              Logged in as
+              <%= Author.find(session[:logged_in_user]).name %>
+            </p>
+            <%= link_to "Log out", logout_path, class: "button" %>
+          <% else %>
+            <%= link_to "Log in", login_path, class: "button" %>
+          <% end %>
         <%=link_to "All Works", works_path, method: :get%>
         <%=link_to "Add New Work", new_work_path, method: :get%>
       </div>
     </header>
 
-    <main>      
+    <main>
       <section class="flash <%= flash[:status] %>">
         <p>
           <%= flash[:message] %>
