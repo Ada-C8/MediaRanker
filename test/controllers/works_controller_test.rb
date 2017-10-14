@@ -133,7 +133,7 @@ end
 
         must_respond_with :not_found
     end
-  
+
     it "returns bad request if the change is invalid" do
       work = Work.first
       invalid_work_data = {
