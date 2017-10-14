@@ -18,10 +18,7 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
-    unless @work
-      head :not_found
-    end
+    find_work_by_params_id
   end
 
   def update
@@ -35,10 +32,7 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
-    unless @work
-      head :not_found
-    end
+    find_work_by_params_id
   end
 
   def destroy
@@ -49,8 +43,14 @@ class WorksController < ApplicationController
   end
 
   private
-  def work_params
-    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
-  end
+    def work_params
+      return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+    end
 
+    def find_work_by_params_id
+      @work = Work.find_by(id: params[:id])
+      unless @work
+        head :not_found
+      end
+    end
 end
