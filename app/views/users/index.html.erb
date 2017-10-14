@@ -1,25 +1,4 @@
-<header>
-  <nav>
-    <h2>
-      Media Ranker
-    </h2>
-
-    <small>
-      Ranking the Best of Everything
-    </small>
-  </nav>
-
-  <nav>
-    <%= link_to 'View top media', works_path %>
-    <a href='/works'>View all media </a>
-    <a href='/works/new'>Add a new work </a>
-    <a href='/users'>View all users </a>
-  </nav>
-
-  <div>
-    <a href='/login'> Log In </a>
-  </div>
-</header>
+<%= render partial: 'layouts/header' %>
 
 <h3> List of Users </h3>
 <table>
@@ -32,7 +11,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td> <%= user.name %> </td>
+        <td> <%= link_to user.name, user_path(user) %> </td>
         <td> <%= votes_for_users(user) %></td>
         <td> <%= user.joined_on %> </td>
       </tr>

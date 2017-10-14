@@ -1,0 +1,28 @@
+<header>
+  <nav>
+    <h2>
+      Media Ranker
+    </h2>
+
+    <small>
+      Ranking the Best of Everything
+    </small>
+  </nav>
+
+  <nav>
+    <a href='/'>View top media </a>
+    <a href='/works'>View all media </a>
+    <a href='/works/new'>Add a new work </a>
+    <a href='/users'>View all users </a>
+  </nav>
+
+  <div>
+    <% if user_signed_in %>
+      <%= link_to 'Logout', logout_path %>
+      <%= link_to 'Logged in as '+ get_user_name, user_path(get_user_id) %>
+    <% else %>
+      <%= link_to 'Log In', login_path %>
+    <% end %>
+
+  </div>
+</header>

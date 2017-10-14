@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/works', to: 'works#index', as: 'works'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destory', as: 'logout'
+  get 'signup', to: 'users#new', as: 'signup'
   get '/works/new', to: 'works#new', as: 'new_work'
   post '/works', to: 'works#create'
   post '/works/:id/upvote', to: 'works#upvote', as: 'upvote_work'
