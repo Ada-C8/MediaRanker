@@ -22,7 +22,7 @@
 
 
 <!-- NOT SURE IF THIS IS WORKING -->
-  <li><%= link_to("Up Vote", votes_path, alt: "Vote") %></li>
+  <li><%= link_to("Up Vote", work_votes_path(@work.id), method: :post) %></li>
     <%# button_to("View Top Media", home_index_path, method: :get) %>
 
 

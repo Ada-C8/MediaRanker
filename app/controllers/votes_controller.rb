@@ -5,31 +5,30 @@ class VotesController < ApplicationController
   end
 
   def create
-    params
-    @vote = Vote.new vote_params
-    puts @vote.as_json
+    @current_user = User.find_by(id: session[:user_id])
+    @work = Work.find_by(id: params[:work_id].to_i)
 
-    if @vote.save
-      # redirect_to work_path(@vote.work_id)
-
-    else
-      puts @vote.errors.to_s
-      # work_path(@work.id)
+    if @current_user == nil || @work ==nil
+      flash[:error] = "Could not vote"
+      return redirect_to root_path
     end
+
+    @current_user.vote(@work)
+    redirect_to work_path(@work.id)
   end
 
   # def index
   # end
-  #
+
   # def show
   # end
-  #
+
   # def update
   # end
-  #
+
   # def destroy
   # end
-  #
+
   # def edit
   # end
 
