@@ -8,7 +8,7 @@ class VotesController < ApplicationController
       redirect_to user_path(@user.id)
     else
       flash.now[:error] = "A problem occurred: Could not create User #{@user.username}"
-      render :new, status: bad_request
+      render :new
     end
   end
 end
