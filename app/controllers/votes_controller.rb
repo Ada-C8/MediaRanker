@@ -15,7 +15,6 @@ class VotesController < ApplicationController
     else
       redirect_to work_path(params[:id])
       flash[:failure] = "You cannot upvote twice!"
-    #   redirect_to work_path(params[:id])
     end
   end
 
