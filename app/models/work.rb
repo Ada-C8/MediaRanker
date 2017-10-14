@@ -33,13 +33,6 @@ class Work < ApplicationRecord
     return albums_sorted_by_votes
   end
 
-  def self.albums_top_ten
-    sorted_works = albums_sorted_by_votes
-    top_ten = sorted_works[0..9]
-    return top_ten
-  end
-
-
   def self.books_sorted_by_votes
     sorted_works = sort_by_most_votes
     books_sorted_by_votes = sorted_works.find_all {|work| work.category == "book"}

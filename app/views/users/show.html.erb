@@ -1,7 +1,7 @@
 <section>
   <h3>User Summary: <%= @user.name %></h3>
   <p>
-    Joined site: <%= @user.joined %>
+    Joined site: <%= @user.created_at.strftime("%b %d, %Y") %>
   </p>
 
   <article>
@@ -14,27 +14,26 @@
         <th>Voted On</th>
       </tr>
 
+      <% @user.votes.each do |vote| %>
       <tr>
-        <td><%= %></td>
-        <td><%= %></td>
-        <td><%= %></td>
-        <td><%= %></td>
-        <td><%= %></td>
+        <td><%= link_to vote.work.title, work_path(vote.work.id) %></td>
+        <td><%= vote.work.creator %></td>
+        <td><%= vote.work.publication_year %></td>
+        <td><%= vote.work.category %></td>
+        <td><%= vote.work.created_at.strftime("%b %d, %Y") %></td>
       </tr>
+
+      <% end %>
 
     </table>
   </article>
 </section>
 
-<nav>
-  <ul>
-    <li>
-      <%= link_to "See all Users", users_path %>
-    </li>
-    <li>
-      <%= link_to "Back to Media List", root_path %>
-    </li>
-  </ul>
+<nav class="row">
+  <div class="large-8 small-12 columns button-group">
+    <%= link_to "See all Users", users_path, class: "button" %>
+    <%= link_to "Back to Media List", root_path, class: "button" %>
+  </div>
 </nav>
       <%#<% @users.each do |user| %>
         <%#<tr>

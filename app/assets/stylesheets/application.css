@@ -13,9 +13,15 @@
  *= require_tree .
  *= require_self
  */
- nav div {
-   padding: 0px;
-   box-sizing: border-box;
+
+header a {
+  padding-right: 25px;
+  border-right: 2px solid white;
+ }
+
+nav div {
+  padding: 0px;
+  box-sizing: border-box;
  }
 
  nav div .button {
