@@ -5,9 +5,9 @@
 <ul>
   <% @votes.each do |vote| %>
   <li>
-    Vote ID:<%=vote.id%>,
-    Work ID:<%= vote.work_id%><%=Work.find_by_id(vote.work_id)%>
-    User ID:<%= vote.user_id%>
+    Vote ID: <%=vote.id%>,
+    Work ID: <%= vote.work_id%>- "<%=Work.find_by_id(vote.work_id).title%>",
+    User ID: <%= vote.user_id%>- "<%=User.find_by_id(vote.user_id).name%>"
   </li>
   <% end %>
 </ul>

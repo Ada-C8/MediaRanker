@@ -7,22 +7,10 @@ class VotesController < ApplicationController
   def create
   end
 
-  def update
-  end
-
-  def edit
-  end
-
-  def destroy
-  end
-
   def index
     @votes = Vote.order(:created_at)
     @vote = Vote.find_by_id(:id)
-    @work = Work.find_by_id(@vote)
-  end
-
-  def show
+    @work = Work.find_by_id(vote.work_id)
   end
 
   private
