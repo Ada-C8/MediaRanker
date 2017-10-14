@@ -1,17 +1,8 @@
-#valid data
 
-vote:
+vote1:
   user: tanja
   work: baby
 
-
-# incomplete data for votes :
-
-
-nowork:
+vote2:
   user: tanja
-  work:
-
-nouser:
-  user:
-  work: baby
+  work: relaxer

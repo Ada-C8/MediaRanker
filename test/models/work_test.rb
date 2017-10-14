@@ -29,10 +29,5 @@ describe Work do
       work.save.must_equal false
       work.errors.messages[:creator].must_equal ["can't be blank"]
     end
-
-    it "creator can't be set to nil" do
-      work = Work.new(category: "book", title: "WAT?", publication_year: 2017, creator: nil)
-      work.save.must_equal false
-    end
   end
 end

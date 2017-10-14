@@ -14,3 +14,7 @@
  *= require_self
  */
  @import url('foundation');
+
+.button p {
+  color: white;
+}

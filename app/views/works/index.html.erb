@@ -1,0 +1,33 @@
+<h1>All Media </h1>
+
+<section>
+  <% @works_by_category.each do |category, works| %>
+    <h3><%= category.pluralize.capitalize%></h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th>Released</th>
+          <th>Vote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% works.each do |work|%>
+          <tr>
+            <td>Votes</td>
+            <td><%= work.title%></td>
+            <td> <%=work.creator%> </td>
+            <td> <%=work.publication_year%> </td>
+            <td class = "button">Upvote</td>
+          </tr>
+        <% end %>
+      </tbody>
+      </table>
+  <% end %>
+
+  <%=link_to "Back to Media Ranks", root_path, :class => "button"%>
+  <%=link_to "Add new", new_work_path, :class => "button"%>
+</section>

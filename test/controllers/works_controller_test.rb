@@ -1,8 +1,38 @@
 require "test_helper"
 
 describe WorksController do
-  # it "should get index" do
-  #   get home_index_url
-  #   value(response).must_be :success?
-  # end
+  describe 'index' do
+    it 'returns success status' do
+      get works_path
+      must_respond_with :success
+    end
+  end
+
+  describe 'index' do
+    it 'returns success status' do
+
+    end
+  end
+
+
+  describe 'index' do
+    it 'returns success status' do
+
+    end
+  end
+
+
+  describe 'index' do
+    it 'returns success status' do
+
+    end
+  end
+
+
+  describe 'index' do
+    it 'returns success status' do
+
+    end
+  end
+
 end

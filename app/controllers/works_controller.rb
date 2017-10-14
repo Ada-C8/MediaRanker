@@ -2,7 +2,10 @@ class WorksController < ApplicationController
   before_action :find_by_id, only: [:show, :edit, :update, :destroy]
 
   def index
-    @works = Work.all
+    @works_by_category = {}
+    Work::CATEGORIES.each do |cat|
+    @works_by_category[cat] = Work.where(category: cat)
+    end
   end
 
   def show
