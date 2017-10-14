@@ -67,4 +67,10 @@ describe UsersController do
       must_respond_with :not_found
     end
   end
+
+  describe "login" do
+    it "" do
+
+    end
+  end
 end

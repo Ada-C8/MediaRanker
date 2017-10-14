@@ -3,19 +3,43 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      redirect_to users_path
-    else
-      render :login_form, status: :bad_request
-    end
-  end
+
 
   def show
     find_user_by_params_id
   end
 
+  def login
+    # get username from for_tag/browser and see if it exists already
+    user = User.find_by(username: params[:username])
+
+
+    if user
+      # if user exists already
+      session[:logged_in_user] = user.id
+      flash[:status] = :success
+      flash[:message] = "Successfully logged in as existing user #{user.username}"
+      redirect_to root_path
+    else
+      # create new user
+      create
+    end
+  end
+
+  def create
+    user = User.new(username: params[:username])
+    if user.save
+      session[:logged_in_user] = user.id
+      flash[:status] = :success
+      flash[:message] = "Successfully created new user #{user.username} with ID #{user.id}"
+      redirect_to root_path
+    else
+      flash[:status] = :failure
+      flash[:message] = "A problem occurred: Could not log in"
+      flash[:details] = user.errors.messages
+      render :login_form, status: :bad_request
+    end
+  end
   # no need for an edit, update, or destroy actions for user controller!
 
 private
