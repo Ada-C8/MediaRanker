@@ -28,6 +28,7 @@ class WorksController < ApplicationController
   end
 
   def edit
+    render_404 if @work.nil?
   end
 
   def update

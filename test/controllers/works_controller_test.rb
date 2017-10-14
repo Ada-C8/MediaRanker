@@ -72,6 +72,20 @@ describe WorksController do
   end
 
   describe 'edit' do
+    it 'returns success status if valid work item' do
+      work = works(:baby)
+      get edit_work_path(work.id)
+      must_respond_with :success
+    end
+
+    it 'returns not found status if invalid work item' do
+      bad_id = Work.last.id + 1
+      get edit_work_path(bad_id)
+      must_respond_with :not_found
+    end
+  end
+
+  describe 'destroy' do
     it 'returns success status' do
 
     end
