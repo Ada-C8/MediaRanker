@@ -13,6 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+ header {
+   max-width: 100%;
+   background-color: #B2DFDB;
+   margin-bottom: 10px;
+   padding: 25px 20px 10px 20px;
+   border-bottom: 1px, solid #EEEEEE;
+ }
+
+ main {
+   max-width: 75%;
+ }
  .flash.success {
     color: green;
   }
@@ -20,3 +32,7 @@
   .flash.failure {
     color: red;
   }
+
+.button {
+  background-color: #26A69A;
+}

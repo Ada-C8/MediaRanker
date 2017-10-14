@@ -1,1 +1,9 @@
 <h1> User Summary: <%= @user.name %> </h1>
+
+<p>
+  Joined site <%= @user.join_date %>
+
+  <% @user.votes.each do |vote| %>
+
+  <%= Work.find(vote.work_id).title %>
+  <% end %>
