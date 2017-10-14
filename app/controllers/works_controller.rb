@@ -23,7 +23,7 @@ class WorksController < ApplicationController
       redirect_to root_path
     else
       flash.now[:error] = "Couldn't add, try again."
-      render :new
+      render :new, status: :bad_request
     end
   end
 
@@ -36,7 +36,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
     else
       flash.now[:error] = "Couldn't update, please try again."
-      render :edit
+      render :edit, status: :bad_request
     end
   end
 

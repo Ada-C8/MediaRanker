@@ -28,7 +28,6 @@ describe WorksController do
     end
   end
 
-
   describe 'new' do
     it 'returns success status' do
       get new_work_path
@@ -36,18 +35,45 @@ describe WorksController do
     end
   end
 
+  describe 'create' do
+    it 'should successfully create work data and redirect to root' do
+      work_data = {
+        work: {
+          category: "book",
+          title: "Superbook",
+          creator: "Me",
+          publication_year: 1982
+        }
+      }
 
-  describe 'index' do
+      proc {
+        post works_path, params: work_data
+      }.must_change 'Work.count', 1
+
+      must_respond_with :redirect
+      must_redirect_to root_path
+    end
+
+    it 'should return bad request if data invalid' do
+      work_data = {
+        work: {
+          category: "book",
+          title: "Superbook",
+          creator: "Me"
+        }
+      }
+
+      proc {
+        post works_path, params: work_data
+      }.must_change 'Work.count', 0
+
+      must_respond_with :bad_request
+    end
+  end
+
+  describe 'edit' do
     it 'returns success status' do
 
     end
   end
-
-
-  describe 'index' do
-    it 'returns success status' do
-
-    end
-  end
-
 end
