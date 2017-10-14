@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  
+
   root 'main#index'
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show, :new]
+  get 'login', to: 'users#login_form', as:'login'
+  post 'login', to: 'users#login'
   resources :works, only: [:index, :show, :new, :edit, :update, :create, :destroy]
   # resources :votes
 

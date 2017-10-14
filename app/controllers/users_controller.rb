@@ -24,13 +24,16 @@ def create
   end
 
   def login
-    name = params[:author][:name]
+    name = params[:user][:name]
     user = User.find_by(name: name)
 
     if user
       session[:logged_in_user] = user.id
       flash[:success] = "Successfully logged in as #{ user.name }!"
       redirect_to root_path
+    else
+      user = User.create(name: name)
+      session[:logged_in_user] = user.id
     end
 
   end

@@ -22,7 +22,7 @@
           <% if session[:logged_in_user] %>
             <p> <%= link_to "Logged in as #{User.find(session[logged_in_user]).name}"%> </p>
             <%else%>
-            <%= link_to "Log in" %>
+            <%= link_to "Log in", login_path %>
           <%end%>
         </div>
       </nav>
