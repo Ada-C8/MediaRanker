@@ -1,14 +1,19 @@
 class VotesController < ApplicationController
 
   def create
-    @vote = Vote.new(user_params)
+    @vote = Vote.new(vote_params)
 
-    if @user.save
-      flash[:success] = "Successfully created User #{@user.username}!"
-      redirect_to user_path(@user.id)
+    if @vote.save
+      flash[:success] = "Successfully upvoted!"
+      redirect_back(fallback_location: root_path)
     else
-      flash.now[:error] = "A problem occurred: Could not create User #{@user.username}"
-      render :new
+      flash.now[:error] = "Could not upvote"
+      #re-direct necessary?
     end
+  end
+
+  private
+  def vote_params
+    return params.require(:vote).permit(:user, :work)
   end
 end
