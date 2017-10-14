@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get '/login', to: 'users#login_form', as: 'login' # login_path
 
-  post '/login', to: 'users#login', as: 'create_login' # create_login_path
+  post '/login', to: 'users#login' # login_path
 
   post '/logout', to: 'users#logout', as: 'logout' # logout_path
 

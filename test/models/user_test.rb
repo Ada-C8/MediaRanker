@@ -15,6 +15,14 @@ describe User do
       dup_user.name = "New name"
       dup_user.valid?.must_equal true
     end
+
+    it "must require username" do
+      no_name = User.new(name: nil)
+      no_name.valid?.must_equal false
+
+      no_name = User.new(name: "")
+      no_name.valid?.must_equal false
+    end
   end
 
   describe "relations" do

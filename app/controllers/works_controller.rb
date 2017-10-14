@@ -12,9 +12,10 @@ class WorksController < ApplicationController
   def show
     @work = Work.find_by(id: params[:id])
 
-    unless @work
-      render_404
-    end
+    head :not_found unless @work
+    # unless @work
+    #   render_404
+    # end
   end
 
   def new
@@ -40,14 +41,18 @@ class WorksController < ApplicationController
 
   def edit
     @work = Work.find_by(id: params[:id])
-    render_404 unless @work
+    # render_404 unless @work
+    head :not_found unless @work
   end
 
   def update
+    # what do you do if category changed to invalid selection?
+    # can it be changed if using a drop-down / form?
     @work = Work.find_by(id: params[:id])
 
     unless @work
-      render_404 unless @work
+      head :not_found
+      # render_404 unless @work
       return
     end
 
@@ -66,6 +71,12 @@ class WorksController < ApplicationController
 
   def destroy
     @work = Work.find_by(id: params[:id])
+
+    unless @work
+      head :not_found
+      return
+    end
+
     @work.destroy
 
     if @work.destroyed?

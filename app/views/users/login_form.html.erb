@@ -1,7 +1,7 @@
 <main class="row">
   <h3>Log In</h3>
 
-  <%= form_for @user, url: create_login_path(@user) do |f| %>
+  <%= form_for @user, url: login_path(@user) do |f| %>
     <%= f.label "Username" %>
     <%= f.text_field :name %>
 

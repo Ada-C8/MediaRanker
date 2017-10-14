@@ -15,9 +15,8 @@ class UsersController < ApplicationController
   #   @user = User.new
   # end
 
-  def create
-
-  end
+  # def create
+  # end
 
   def login_form
     @user = User.new
@@ -25,12 +24,14 @@ class UsersController < ApplicationController
 
   # creates a user if doesn't already exist
   def login
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(name: params[:user][:name])
 
     if @user
       session[:user_id] = @user.id
       flash[:status] = :success
       flash[:message] = "Successfully logged in as existing user #{@user.name}"
+
+      redirect_to root_path
 
     else
       @user = User.new(user_params)
@@ -41,12 +42,13 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
 
         redirect_to root_path
+
       else
         flash.now[:status] = :failure
         flash.now[:message] = "Unable to create user"
         flash.now[:details] = @user.errors.messages
 
-        render :new, status: :bad_request
+        render :login_form, status: :bad_request
       end
     end
 

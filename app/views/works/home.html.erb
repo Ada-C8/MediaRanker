@@ -3,10 +3,16 @@
 <section class="row spotlight">
   <div>
     <h3><span class="media-spotlight-header"> Media Spotlight: </span>
-      <%= link_to(@spotlight.title, work_path(@spotlight.id)) %> by <%= @spotlight.creator %> </h3>
-    <p>
-      <%= @spotlight.caption(@spotlight.num_votes) %>
-    </p>
+      <% if @spotlight %>
+        <%= link_to(@spotlight.title, work_path(@spotlight.id)) %> by <%= @spotlight.creator %> </h3>
+        <p>
+          <%= @spotlight.caption(@spotlight.num_votes) %>
+        </p>
+      <% else %>
+        <p>
+          No media yet. <%= link_to "Add a new work to start", new_work_path %>
+        </p>
+      <% end %>
   </div>
 </section>
 
