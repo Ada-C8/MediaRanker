@@ -50,8 +50,40 @@ describe Work do
     it "returns a Work object" do
       Work.top_work.must_be_instance_of Work
     end
-
   end
+
+  describe "albums_sorted_by_votes method" do
+    it "returns an Array of work objects whose category is 'albums'" do
+      Work.albums_sorted_by_votes.must_be_instance_of Array
+      Work.albums_sorted_by_votes[0].must_be_instance_of Work
+      Work.albums_sorted_by_votes[0].category.must_equal "album"
+    end
+  end
+
+  describe "books_sorted_by_votes method" do
+    it "returns an Array of work objects whose category is 'books'" do
+      Work.books_sorted_by_votes.must_be_instance_of Array
+      Work.books_sorted_by_votes[0].must_be_instance_of Work
+      Work.books_sorted_by_votes[0].category.must_equal "book"
+    end
+  end
+
+  describe "movies_sorted_by_votes method" do
+    it "returns an Array of work objects whose category is 'movies'" do
+      Work.movies_sorted_by_votes.must_be_instance_of Array
+      Work.movies_sorted_by_votes[0].must_be_instance_of Work
+      Work.movies_sorted_by_votes[0].category.must_equal "movie"
+    end
+  end
+
+  # describe "work_sorted_by_votes method" do
+  #   it "returns an Array of Work objects" do
+  #     work_category = "album"
+  #     Work.work_sorted_by_votes(work_category).must_be_instance_of Array
+  #
+  #     Work.work_sorted_by_votes(work_category)[0].must_be_instance_of Work
+  #   end
+  # end
 
   #Don't need this test as it is in a private method
   # describe "sort_by_most_votes method" do

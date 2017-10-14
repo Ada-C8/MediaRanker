@@ -3,9 +3,12 @@ class WorksController < ApplicationController
   #TODO: dry this up.
   def index
     @works = Work.all
-    @albums_sorted_by_votes = Work.work_sorted_by_votes("album")
-    @books_sorted_by_votes = Work.work_sorted_by_votes("book")
-    @movies_sorted_by_votes = Work.work_sorted_by_votes("movie")
+    # @albums_sorted_by_votes = Work.work_sorted_by_votes("album")
+    # @books_sorted_by_votes = Work.work_sorted_by_votes("book")
+    # @movies_sorted_by_votes = Work.work_sorted_by_votes("movie")
+    @albums_sorted_by_votes = Work.albums_sorted_by_votes
+    @books_sorted_by_votes = Work.books_sorted_by_votes
+    @movies_sorted_by_votes = Work.movies_sorted_by_votes
   end
 
   def new
