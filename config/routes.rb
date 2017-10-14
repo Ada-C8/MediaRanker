@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+
   root 'main#index'
   resources :users, only: [:index, :show, :new]
   get 'login', to: 'users#login_form', as:'login'
