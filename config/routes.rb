@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   #root 'home#index'
   get '/works', to: 'works#index', as: 'works'
+  get '/login', to: 'login#index', as: 'login'
   get '/works/new', to: 'works#new', as: 'new_work'
   post '/works', to: 'works#create'
   post '/works/:id/upvote', to: 'works#upvote', as: 'upvote_work'
