@@ -1,8 +1,5 @@
 class SessionsController < ApplicationController
 
-  # def new
-  # end
-
   def login_form
   end
 
@@ -21,7 +18,7 @@ class SessionsController < ApplicationController
   end
 
   def logout
-    session[:user_id] == nil
+    session[:user_id] = nil
     redirect_to root_path
   end
 

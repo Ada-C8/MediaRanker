@@ -26,7 +26,7 @@
             <div class= "logged-in">
             <% @user = User.find(session[:user_id]) %>
             <li class="button">Logged in as <%= @user.username %></li>
-            <li class="button"><%= link_to "Logout", login_path %></li>
+            <li class="button"><%= link_to "Logout", logout_path, method: :delete %></li>
           </div>
 
           <% else %>
