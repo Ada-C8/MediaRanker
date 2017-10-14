@@ -52,6 +52,7 @@ class UsersController < ApplicationController
   def logout
     session[:logged_in_user] = nil
     redirect_to users_path
+    flash[:success] = "You've been logged out"
   end
 
 private
