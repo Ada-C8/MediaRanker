@@ -21,8 +21,9 @@ class SessionsController < ApplicationController
     end
   end
 
-  # def logout
-  #   session[:user_id] = nil
-  # end
+  def logout
+    session[:username] = nil
+    redirect_to root_path
+  end
 
 end
