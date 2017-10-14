@@ -1,14 +1,18 @@
 class VotesController < ApplicationController
 
   def create
-    @vote = Vote.new(vote_params)
+    if session[:logged_in_as_user]
+      @vote = Vote.new(vote_params)
 
-    if @vote.save
-      flash[:success] = "Successfully upvoted!"
-      redirect_back(fallback_location: root_path)
+      if @vote.save
+        flash[:success] = "Successfully upvoted!"
+        redirect_back(fallback_location: root_path)
+      else
+        flash.now[:error] = "Could not upvote"
+        #re-direct necessary?
+      end
     else
-      flash.now[:error] = "Could not upvote"
-      #re-direct necessary?
+      flash.now[:error] = "You must log in to do that"
     end
   end
 
