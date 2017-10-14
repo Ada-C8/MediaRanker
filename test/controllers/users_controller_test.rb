@@ -94,18 +94,40 @@ describe UsersController do
     it "for a user that does not exist it will create and login a new user if given valid data" do
       # # Arrange
       before_count = User.count
-      new_user_name = "new username"
+      new_username = "new username"
       # # Act
-      post login_path, params: { username: new_user_name }
+      post login_path, params: { username: "new username" }
       # # Assert
-      session[:logged_in_user].username.must_equal new_user_name
+      session[:logged_in_user].username.must_equal new_username
       must_respond_with :found
       must_redirect_to root_path
       User.count.must_equal before_count + 1
     end
 
     it "for a user that does not exist it will not create and login a new user if given bad data" do
+      # # Arrange
+      before_count = User.count
+      bad_new_username = ""
+      # # Act
+      post login_path, params: { username: bad_new_username }
+      # # Assert
+      must_respond_with :bad_request
+      User.count.must_equal before_count
+      session[:logged_in_user].must_be :nil?
+    end
+  end
 
+  describe "logout" do
+    it "logs a user out form a session and redirects to root_path" do
+      # # Arrange
+      new_username = "new username"
+      post login_path, params: { username: new_username }
+      session[:logged_in_user].username.must_equal new_username
+      # # Act
+      post logout_path
+      # # Assert
+      session[:logged_in_user].must_be :nil?
+      must_respond_with :found
     end
   end
 end
