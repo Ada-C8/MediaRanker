@@ -6,17 +6,15 @@ class VotesController < ApplicationController
 
   def create
     user = User.find_by(id: session[:logged_in_user])
-    # current_user = nil
-    # if session[:logged_in_user]
-    #   current_user = User.find_by[id:session[:logged_in_user]]
+
     if user == nil
       flash[:status] = :failure
       flash[:message] = "Sorry, you must be logged in to vote."
-      redirect_to work_path, status: :bad_request
+      redirect_to request.referrer, status: :bad_request
       return
     end
 
-    work = Work.find_by(params[:id])
+    work = Work.find_by(id: params[:vote][:work_id])
 
     if work == nil
       flash[:status] = :failure
@@ -25,13 +23,13 @@ class VotesController < ApplicationController
       return
     end
 
-    @vote = Vote.new(user_id: user.id, work_id: work.id)
+    @vote = Vote.new(work_id: params[:vote][:work_id], user_id: session[:logged_in_user])
 
     Vote.votes_by_user(user).each do |vote|
       if vote.work_id == work.id
         flash[:status] = :failure
-        flash[:message] = "You have already voted on this work - you can only vote once."
-        redirect_to work_path, status: :bad_request
+        flash[:message] = "You have already voted on #{work.title} - you can only vote once per media."
+        redirect_to request.referrer, status: :bad_request
         return
       end
     end
@@ -39,12 +37,12 @@ class VotesController < ApplicationController
     if @vote.save
       flash[:status] = :success
       flash[:message] = "Thank you for your vote!"
-      redirect_to work_path
+      redirect_to request.referrer
       return
     else
       flash[:status] = :failure
       flash[:message] = "Sorry, your vote could not be processed."
-      redirect_to work_path, status: :bad_request
+      redirect_to request.referrer, status: :bad_request
       return
     end
 

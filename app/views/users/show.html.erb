@@ -4,7 +4,7 @@
 </p>
 
 <h4> Votes </h4>
-  Put this code in the vote model??
+
 <table>
   <thead>
     <tr>
@@ -17,11 +17,12 @@
   </thead>
   <tbody>
     <% Vote.votes_by_user(@user).each do |vote| %>
+      <% @work = Work.find_by(id: vote.work_id) %>
         <tr>
-          <td> <%= link_to "Title", "work_path(work_id)" %> </td>
-          <td> <%= "creator" %> </td>
-          <td> <%= "pub" %> </td>
-          <td> <%= "cat" %> </td>
+          <td> <%= link_to "#{@work.title}", work_path(@work.id) %> </td>
+          <td> <%= @work.creator %> </td>
+          <td> <%= @work.publication_year %> </td>
+          <td> <%= @work.category %> </td>
           <td> <%= vote.created_at %> </td>
         </tr>
     <% end %>

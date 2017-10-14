@@ -2,14 +2,14 @@
 <% work = Work.top %>
 <h3>
 <%= "Media Spotlight: #{work.title} by #{work.creator}" %>
-<p> <%= "Votes: #{work.votes.count}" %> </p>
+<p> <%= "#{work.votes.count} votes" %> </p>
 </h3>
 
 
 <h3> Top Albums </h3>
   <ol>
     <% Work.top_ten_albums.each do |work| %>
-    <li> <%= link_to "#{work.title}", works_path(work)%>
+    <li> <%= link_to "#{work.title}", works_path(work.id)%>
       <%= "by #{work.creator} category: #{work.category} Votes: #{work.votes.count}" %> </li>
     <% end %>
   </ol>
@@ -17,13 +17,15 @@
 <h3> Top Books </h3>
   <ol>
     <% Work.top_ten_books.each do |work| %>
-    <li> <%= "#{work.title} by #{work.creator} category: #{work.category} Votes: #{work.votes.count}" %> </li>
+    <li> <%= link_to "#{work.title}", works_path(work.id)%>
+      <%= "by #{work.creator} category: #{work.category} Votes: #{work.votes.count}" %> </li>
     <% end %>
   </ol>
 
 <h3> Top Movies </h3>
   <ol>
     <% Work.top_ten_movies.each do |work| %>
-    <li> <%= "#{work.title} by #{work.creator} category: #{work.category} Votes: #{work.votes.count}" %> </li>
+    <li> <%= link_to "#{work.title}", works_path(work.id)%>
+      <%= "by #{work.creator} category: #{work.category} Votes: #{work.votes.count}" %> </li>
     <% end %>
   </ol>
