@@ -13,14 +13,14 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :votes, only: [:create]
+  resources :votes, only: :create
 
   resources :works
 
-  resources :sessions
+  resources :sessions, only: [:create, :new]
 
   get '/login', to: 'sessions#login', as: 'login'
-  post '/login', to: 'sessions#login'
+  post '/login', to: 'sessions#create'
 
   get '/logout', to: 'sessions#logout', as: 'logout'
   post '/logout', to: 'sessions#logout'

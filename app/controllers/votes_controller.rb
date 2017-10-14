@@ -12,23 +12,25 @@ class VotesController < ApplicationController
   # end
 
   def create # Add strong params
-    vote = Vote.new(
-      user_id: params[:vote][:user_id],
-      work_id: params[:vote][:work_id]
-    )
-    vote.save
-    redirect_to works_path(vote.work_id)
-    # Add redirect_to
+    @vote = Vote.new(votes_params)
+      # user_id: params[:vote][:user_id],
+      # work_id: params[:vote][:work_id]
+    if @vote.save
+      flash[:status] = :success
+      redirect_to works_path(vote.work_id)
+    else
+      flash.now[:status] = :failure
+    end
   end
 
-  def edit
-    @vote = Vote.find(params[:id])
-  end
+  # def edit
+  #   @vote = Vote.find(params[:id])
+  # end
 
-  def update
-    @vote = Vote.find(params[:id])
-    # Do we use the update method for vote?
-  end
+  # def update
+  #   @vote = Vote.find(params[:id])
+  #   # Do we use the update method for vote?
+  # end
 
   # def destroy
   #   @vote = Vote.find(params[:id])
@@ -38,6 +40,6 @@ class VotesController < ApplicationController
   private
 
   def votes_params
-    # params.require(:vote).permit(:user_id, :work_id)
+    params.require(:vote).permit(:user_id, :work_id)
   end
 end

@@ -17,6 +17,9 @@ class UsersController < ApplicationController
       username: params[:user][:username]
     )
     @user.save
+    flash[:status] = :success
+    flash[:message] = "Successfully "
+    redirect_to root_path
     # Add redirect_to
   end
 

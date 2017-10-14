@@ -1,12 +1,14 @@
-<main>
+<main class="row">
   <article>
-    <h3><%= link_to @work.title, work_path(@work) %></h3>
+    <h3>
+      <%= link_to @work.title, work_path(@work) %>
+    </h3>
     <p>Created by: <%= @work.creator %></p>
     <p>Published:</p>
     <section>
       <%= link_to "Back to media ranks", works_path %>
       <%= link_to "Edit", edit_work_path %>
-      <%= link_to "Upvote", works_path %> <%# dont forget this %>
+      <%= link_to "Upvote", works_path(vote: user_id: session[:logged_in_session], work_id: @work.id) %>
       <%= link_to "Delete", user_path, method: :delete %>
     </section>
   </article>
@@ -19,7 +21,7 @@
           <th>Date</th>
         </tr>
       </thead>
-      
+
       <tbody>
         <% votes = Vote.where(work_id: @work.id) %>
         <% votes.each do |vote| %>
