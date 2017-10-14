@@ -23,7 +23,7 @@
             <p> <%= link_to "Logged in as #{User.find(session[logged_in_user]).name}"%> </p>
             <%else%>
             <%= link_to "Log in" %>
-
+          <%end%>
         </div>
       </nav>
     </header>
