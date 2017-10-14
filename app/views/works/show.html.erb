@@ -13,7 +13,7 @@
     <%= link_to "back to media ranks", root_path, class: "button" %>
     <%= link_to "Edit", edit_work_path(@work), class: "button" %>
     <%= link_to "Upvote", upvote_work_path(@work), method: :post, class: "button" %>
-    <%= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Would you like to delete this work?"} %>
+    <%= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Would you like to delete this work?"}, class: "button allert" %>
   </section>
 </article>
 <article class="voting users columns large-6 small-12">
