@@ -11,10 +11,10 @@
     <p>
     </p>
     <section>
-      <%=link_to "Back to media ranks", root_path, class: "link" %>
-      <%= link_to "Edit", edit_work_path, class: "link" %>
-      <%= "Upvote button here" %>
-      <%= "Delete button here" %>
+      <%=link_to "Back to media ranks", root_path, class: "button" %>
+      <%= link_to "Edit", edit_work_path, class: "button" %>
+      <%#=link_to("Upvote", work_votes_path(@work.id), method: :post, class: "button") %>
+      <%= link_to("Delete", work_path(@work.id), method: :delete, class: "alert button", data: {confirm: "Are you sure?"}) %>
     </section>
   </article>
 </article>
@@ -33,7 +33,7 @@
   <%if user %>
     <tr>
       <td><%=link_to user.name, user_path(user)%></td>
-      <td><%= vote.created_at %></td>
+      <td><%= vote.created_at.strftime("%b, %d %Y") %></td>
     </tr>
     <%end%>
   <%end %>

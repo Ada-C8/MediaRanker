@@ -50,30 +50,9 @@ class UsersController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
-
-  #do not need these?
-  # def create
-  # end
-  # def update
-  # end
-  # def destroy
-  # end
-  # def edit
-  # end
-
   private
   def user_params
     return params.require(:user).permit(:name)
   end
-
-
-  # def find_user_by_params_id
-  #   @user= User.find_by(id: params[:id])
-  #   unless @user
-  #     head :not_found
-  #   end
-  # end
-
-
 
 end

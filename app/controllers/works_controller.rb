@@ -40,8 +40,14 @@ class WorksController < ApplicationController
   end
 
   def destroy
-      @work.destroy
+     if @work.destroy
+      flash.now[:status] = :success
+      flash.now[:message] = "Successfully destroyed #{@work.category} #{@work.id}"
       redirect_to works_path
+    else
+      flash.now[:status] = :failure
+      flash.now[:message] = "Problem encountered when attempting to destroy #{@work.category} #{@work.id}"
+    end
   end
 
   private

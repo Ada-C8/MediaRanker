@@ -17,7 +17,7 @@
         <%=Vote.all.where(work_id: type.id).count %>
       </td>
       <td>
-        <%=type.title %>
+        <%=link_to type.title, work_path(type)%>
       </td>
       <td>
         <%=type.creator %>
