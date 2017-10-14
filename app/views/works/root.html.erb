@@ -1,12 +1,12 @@
-<section class="row-spotlight">
+<section class="row spotlight">
   <div>
     <% if @spotlight %>
       <h3>
-        <span class="media-spotlight-header">Media Spotlight: No data </span>
+        <span class="media-spotlight-header">Media Spotlight:</span> No data
       </h3>
     <% else %>
       <h3>
-        <span class="media-spotlight-header">Media Spotlight: <%= @top.title %> by: <%= @top.creator %></span>
+        <span class="media-spotlight-header">Media Spotlight:</span> <%= link_to @top.title, works_path(@top.id) %> by: <%= @top.creator %>
       </h3>
       <p>
         <%= @top.votes.count %> votes - <%= @top.description %>
