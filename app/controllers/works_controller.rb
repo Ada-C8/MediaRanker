@@ -30,7 +30,7 @@ class WorksController < ApplicationController
 
     @work = Work.create work_params
     if @work.id != nil
-      flash[:success] = "Successfully created #{work.category} #{work.id}"
+      flash[:success] = "Successfully created #{@work.category} #{@work.id}"
       redirect_to works_path
     else
       flash[:error] = "A problem occurred. Coult not create work"

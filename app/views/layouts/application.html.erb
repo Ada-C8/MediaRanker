@@ -7,6 +7,7 @@
 
     <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="/css/normalize.css">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -32,12 +33,28 @@
       </nav>
     </header>
 
-    <% flash.each do |name, message| %>
-      <section class="<%= name %>">
-        <div class="<%= name %>"><%= message %></div>
+    <% if flash[:failure] %>
+      <section class = "row status failure">
+        <h3 class="<%= :failure %>"><%= flash[:failure] %></h3>
+        <% if flash[:errors] %>
+          <ul class = "errors">
+            <% flash[:errors].each do |column, message| %>
+              <li>
+                <%= column.capitalize %>: <%= message %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
       </section>
-    <% end %>
+    <% end  %>
 
+    <% if flash[:success] %>
+      <section class = "row status success">
+        <% flash.each do |name, message| %>
+          <h3 class="<%= name %>"><%= message %></h3>
+        <% end %>
+      </section>
+    <% end  %>
 
     <%= yield %>
   </body>
