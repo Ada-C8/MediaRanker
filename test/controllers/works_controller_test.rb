@@ -187,16 +187,16 @@ end
       Work.find_by(id: work_id).must_be_nil
     end
 
-  #   it "returns not_found when given an invalid work ID" do
-  #    invalid_work_id = Work.last.id + 1
-   #
-  #    start_work_count = Work.count
-   #
-  #    delete work_path(invalid_work_id)
-   #
-  #    must_respond_with :not_found
-  #    Work.count.must_equal start_work_count
-  #  end
+    it "returns not_found when given an invalid work ID" do
+     invalid_work_id = Work.last.id + 1
+   
+     start_work_count = Work.count
+
+     delete work_path(invalid_work_id)
+
+     must_respond_with :not_found
+     Work.count.must_equal start_work_count
+   end
 
   end
 end
