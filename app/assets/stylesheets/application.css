@@ -14,6 +14,20 @@
  *= require_self
  */
 
+ .success{
+   border-radius: 5px;
+   background-color: #e6e6e6;
+   padding: 20px 25px;
+   margin-top: 30px;
+
+ }
+
+.success h3{
+  font-weight: normal;
+  font-size: 1em;
+  color: #8a8a8a;
+}
+
  header {
    background-color: #B2DfDB;
    max-width: 100%;
@@ -44,6 +58,8 @@ h1, h2, h3, h4{
 nav{
   width: 100%;
 }
+
+
 
 .columns{
   float:left;

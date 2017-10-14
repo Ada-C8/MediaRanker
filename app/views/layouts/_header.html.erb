@@ -27,8 +27,9 @@
   </nav>
 </header>
 
-<section>
+
   <% flash.each do |key, value|%>
-  <h3> <%= value %> </h3>
+    <section class='success'>
+      <h3> <%= value %> </h3>
+    </section>
   <% end %>
-</section>
