@@ -36,6 +36,28 @@ class WorksController < ApplicationController
 
   def upvote
     @work = Work.find(params[:id])
+    @user_id = session[:user_id]
+    if session[:user_id] == nil
+      flash[:notice] = 'You must log in to do that'
+
+    else
+      @check = Vote.where(user_id: session[:user_id], work_id: @work.id)
+      if @check == nil
+        @vote = Vote.new(category: @work.category,
+                        work_id: @work.id,
+                        date: Date.today,
+                        user_id: session[:user_id])
+        @vote.save
+
+
+      else
+        flash[:notice] = "You have already voted for this work"
+
+      end
+
+      redirect_to works_path
+    end
+
     @vote = Vote.new(category: @work.category,
                     work_id: @work.id,
                     date: Date.today,

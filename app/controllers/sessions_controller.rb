@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if user
       flash[:notice] = 'Logged in as existing user'
       session[:user_id] = user.id
-      redirect_to root_path, notice: "Successfully logged in as existing user test"
+      redirect_to root_path, notice: "Successfully logged in as existing user #{user.name}"
     else
       @new_user = User.new
       @new_user.joined_on = Date.today

@@ -26,3 +26,9 @@
 
   </div>
 </header>
+
+<section>
+  <% flash.each do |key, value|%>
+  <h3> <%= value %> </h3>
+  <% end %>
+</section>
