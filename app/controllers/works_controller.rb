@@ -50,10 +50,13 @@ class WorksController < ApplicationController
 
       else
         flash[:notice] = "You have already voted for this work"
+
       end
+
     end
 
     redirect_to work_path
+
   end
 
   def update
