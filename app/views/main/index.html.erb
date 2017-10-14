@@ -1,8 +1,8 @@
 <main class="row">
   <section>
-    
+
     <% works = Work.all.sort_by { |work| -work.votes.count} %>
-    <% if !works %>
+    <% if works == nil %>
     <div>
       <h3>
         Media Spotlight:
