@@ -14,8 +14,8 @@
 *= require_self
 */
 
-*= require '/stylesheets/foundation'
-*= require_tree .
+*= require ./foundation.css
+/**= require_tree .*/
 
 
 /* Small only */
