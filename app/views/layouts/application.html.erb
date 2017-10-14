@@ -44,15 +44,21 @@
       </nav>
     </header>
 
-    <%# When session is logged in, will flash success %>
-    <%############## STYLE THIS %>
+    <%# Flash log in message %>
     <% if session[:logged_in_session] %>
-      <section>
-        <h3><%= flash[:logged_in] %></h3>
+      <section class="row">
+        <h3>
+          <%= flash[:message] %>
+        </h3>
       </section>
-    <% else %>
-      <section>
-        <h3><%= flash[:logged_out] %></h3>
+    <% end %>
+
+    <%# Flash log out message %>
+    <% if session[:logged_in_session] == nil %>
+      <section class="row">
+        <h3>
+          <%= flash.now[:message] %>
+        </h3>
       </section>
     <% end %>
 

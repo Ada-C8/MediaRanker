@@ -6,10 +6,15 @@
     <p>Created by: <%= @work.creator %></p>
     <p>Published:</p>
     <section>
-      <%= link_to "Back to media ranks", works_path %>
-      <%= link_to "Edit", edit_work_path %>
-      <%= link_to "Upvote", works_path(vote: user_id: session[:logged_in_session], work_id: @work.id) %>
-      <%= link_to "Delete", user_path, method: :delete %>
+      <%= link_to "Back to media ranks", works_path, class: "button" %>
+      <%= link_to "Edit", edit_work_path, class: "button" %>
+      <%= link_to "Upvote", votes_path(
+        :vote => {
+          user_id: session[:logged_in_session],
+          work_id: @work.id
+        }
+      ), method: :post, class:"button" %>
+      <%= link_to "Delete", work_path, method: :delete, class: "button" %>
     </section>
   </article>
   <article>

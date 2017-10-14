@@ -5,6 +5,7 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find_by(id: params[:id])
+
     unless @work
       head :not_found
     end
@@ -15,18 +16,21 @@ class WorksController < ApplicationController
   end
 
   def create # Add strong params
-    @work = Work.new(
-      id: params[:work][:id],
-      category: params[:work][:category],
-      title: params[:work][:title],
-      creator: params[:work][:creator],
-      publication_year: params[:work][:publication_year],
-      description: params[:work][:description]
-    )
+    @work = Work.new(works_params)
+      # id: params[:work][:id],
+    #   category: params[:work][:category],
+    #   title: params[:work][:title],
+    #   creator: params[:work][:creator],
+    #   publication_year: params[:work][:publication_year],
+    #   description: params[:work][:description]
+    # )
 
-    if @work.save
+    if @work.save!
+      flash[:status] = :success
+      flash[:message] = "Successfully created #{@work.category @work.id}"
       redirect_to works_path
     else
+      flash[:status] = :failure
       render :new, status: :bad_request
     end
   end
@@ -51,7 +55,7 @@ class WorksController < ApplicationController
     @work.publication_year = work_updates[:publication_year]
     @work.description = work_updates[:description]
 
-    if @work.save
+    if @work.save!
       redirect_to work_path(@work)
     else
       render :edit, status: :bad_request
@@ -69,5 +73,17 @@ class WorksController < ApplicationController
     @work.destroy
 
     redirect_to works_path
+  end
+
+  private
+
+  def works_params
+    params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+
+    # category: params[:work][:category],
+    # title: params[:work][:title],
+    # creator: params[:work][:creator],
+    # publication_year: params[:work][:publication_year],
+    # description: params[:work][:description]
   end
 end

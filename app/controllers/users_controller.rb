@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def create # Add Strong Params
-    create_user(params[:user][:name])
+    # create_user(params[:user][:name])
   end
 
   def login_form
@@ -23,16 +23,25 @@ class UsersController < ApplicationController
 
     if @user
       session[:logged_in_session] = @user.id
-      flash[:logged_in] = "Successfully logged in as existing user #{@user.name}"
+      flash[:success] = :success
+      flash[:message] = "Successfully logged in as existing user #{@user.name}"
+
       redirect_to root_path
     else
       create_user(name)
+
+      session[:logged_in_session] = @user.id
+      # flash[:status] = :success
+      flash.now[:message] = "Successfully created new user #{@user.name} with ID #{@user.id}"
+
+      redirect_to root_path
     end
   end
 
   def logout
     session[:logged_in_session] = nil
-    flash[:logged_out] = "Successfully Logged Out"
+    flash[:message] = "Successfully Logged Out"
+
     redirect_to root_path
   end
 
@@ -46,12 +55,6 @@ private
     @user = User.new(name: name)
 
     @user.save!
-
-    session[:logged_in_session] = @user.id
-    flash[:status] = :success
-    flash[:message] = "Successfully created new user #{@user.name} with ID #{@user.id}"
-
-    redirect_to root_path
   end
 
 end
