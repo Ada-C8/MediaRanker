@@ -11,6 +11,11 @@
     Title: <%= link_to work.title, work_path(work.id) %>
     Created by: <%=work.creator %>
     Published: <%=work.year%>
+  <%= form_for Vote.new(work_id: work.id) do |f| %>
+    <%= f.hidden_field :work_id %>
+    <%= f.submit "Upvote" %>
+  <% end %>
+
   </li>
 
   <% end %>
