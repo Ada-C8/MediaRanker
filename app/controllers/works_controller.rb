@@ -26,13 +26,21 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find(params[:id])
-    result = @work.update(work_params)
-    if result
-      redirect_to work_path(@work.id)
-    else
-      render :edit
+    if find_work_by_params_id
+      @work.update_attributes(work_params)
+      if @work.save
+        redirect_to work_path(@work)
+      else
+        render :edit, status: :bad_request
+      end
     end
+    # @work = Work.find(params[:id])
+    # result = @work.update(work_params)
+    # if result
+    #   redirect_to work_path(@work.id)
+    # else
+    #   render :edit
+    # end
   end
 
   def show
