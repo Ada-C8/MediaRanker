@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get 'works/:id', to: 'works#show', as: 'work'
 
-  patch 'works/:id', to: 'works#update', as: 'update_path'
+  patch 'works/:id', to: 'works#update', as: 'update_work'
 
   post 'works', to: 'works#create', as: 'create_work'
 

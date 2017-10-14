@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user.id)
     else
       flash.now[:error] = "A problem occurred: Could not create User #{@user.username}"
-      render :new
+      render :new, status: :bad_request
     end
   end
 

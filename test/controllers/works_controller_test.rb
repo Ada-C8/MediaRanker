@@ -48,7 +48,6 @@ describe WorksController do
 
     describe "edit" do
       it "should display an edit form if id is valid" do
-        #true
         get edit_work_path(book1.id)
         must_respond_with :success
       end
@@ -61,7 +60,7 @@ describe WorksController do
 
     describe "update" do
       it "will render 404 page if id isn't found" do
-        get edit_work_path(Work.last.id + 1)
+        get update_work_path(Work.last.id + 1)
         must_respond_with :not_found
       end
 

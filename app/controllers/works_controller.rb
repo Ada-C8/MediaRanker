@@ -17,7 +17,6 @@ class WorksController < ApplicationController
 
   def new
     @work = Work.new
-    render_404 unless @work
   end
 
   def create
