@@ -92,6 +92,8 @@ describe Work do
         end
         works.length.must_be :<=, 10
       end
+
+      #TEST FOR 0 BOOKS, TEST FOR 10 BOOKS, TEST FOR MORE THAN 10 BOOKS
     end
 
     describe "self.top_ten_music" do
