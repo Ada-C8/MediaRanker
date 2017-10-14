@@ -19,6 +19,10 @@ class WorksController < ApplicationController
 
   def edit
     find_work_by_params_id
+    # @work = Work.find_by(id: params[:id])
+    # unless @work
+    #   head :not_found
+    # end
   end
 
   def update
@@ -33,13 +37,21 @@ class WorksController < ApplicationController
 
   def show
     find_work_by_params_id
+    # @work = Work.find_by(id: params[:id])
+    # unless @work
+    #   head :not_found
+    # end
   end
 
   def destroy
-    work = Work.find(params[:id])
-    work.destroy
-
-    redirect_to works_path
+    if find_work_by_params_id
+      @work.destroy
+      redirect_to works_path
+    end
+    # work = Work.find(params[:id])
+    # work.destroy
+    #
+    # redirect_to works_path
   end
 
   private
@@ -52,5 +64,6 @@ class WorksController < ApplicationController
       unless @work
         head :not_found
       end
+      return @work
     end
 end
