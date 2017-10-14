@@ -35,4 +35,16 @@ module ApplicationHelper
   def user_cast_votes(user)
     return Vote.where(user_id: user.id)
   end
+
+  def get_title(id)
+    return Work.find(id).title
+  end
+
+  def get_published(id)
+    return Work.find(id).published
+  end
+
+  def get_creator(id)
+    return Work.find(id).creator
+  end
 end

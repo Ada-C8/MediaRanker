@@ -33,7 +33,7 @@
     <tbody>
       <% @votes.each do |vote| %>
        <tr>
-         <td><%= find_user(vote.user_id)%> </td>
+         <td><%= link_to find_user(vote.user_id), user_path(vote.user_id)%> </td>
          <td><%= vote.date %></td>
         </tr>
       <% end %>
