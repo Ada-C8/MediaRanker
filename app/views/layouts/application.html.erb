@@ -17,6 +17,14 @@
         <%= link_to "Add a new work", new_work_path, method: :get%>
         <%= link_to "View all users", users_path, method: :get%>
       </div>
+      <div>
+        <h2>Session</h2>
+        <%= "logged in as #{session[:username]}" %>
+<div>
+
+       <%= "username id number is  #{session[:user_id]}" %>
+</div>
+      </div>
     </nav>
   </header>
 
@@ -26,6 +34,7 @@
 <div class= "<%= name %>" > <%= message %> </div>
   <% end %>
 </section>
+
 
     <%= yield %>
 

@@ -8,5 +8,7 @@ resources :users
 
 resources :votes
 
+get '/login', to: 'sessions#login_form'
+post '/login', to: 'sessions#login'
 
 end
