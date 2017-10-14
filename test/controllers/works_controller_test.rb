@@ -133,25 +133,25 @@ end
 
         must_respond_with :not_found
     end
-  #
-  #   it "returns bad request if the change is invalid" do
-  #     work = Work.first
-  #     invalid_work_data = {
-  #       work: {
-  #         title: ""
-  #       }
-  #     }
-  #     # Check that the update is actually invalid
-  #     work.update_attributes(invalid_work_data[:work])
-  #     work.wont_be :valid?
-  #
-  #     patch work_path(work), params: invalid_work_data
-  #
-  #     must_respond_with :bad_request
-  #
-  #     work.reload
-  #     work.title.wont_equal invalid_work_data[:work][:title]
-  #   end
+  
+    it "returns bad request if the change is invalid" do
+      work = Work.first
+      invalid_work_data = {
+        work: {
+          title: ""
+        }
+      }
+      # Check that the update is actually invalid
+      work.update_attributes(invalid_work_data[:work])
+      work.wont_be :valid?
+
+      patch work_path(work), params: invalid_work_data
+
+      must_respond_with :bad_request
+
+      work.reload
+      work.title.wont_equal invalid_work_data[:work][:title]
+    end
   end
 
   describe "show" do
