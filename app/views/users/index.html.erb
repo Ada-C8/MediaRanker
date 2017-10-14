@@ -8,7 +8,7 @@
   </tr>
   <% @users.each do |user| %>
   <tr>
-    <td><%= user.name %></td>
+    <td><%= link_to user.name, user_path(user.id) %></td>
     <td><%= user.votes.size %></td>
     <td><%= user.created_at.strftime('%b %d, %Y') %></td>
   </tr>

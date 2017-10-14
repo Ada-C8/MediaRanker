@@ -7,7 +7,7 @@ describe UsersController do
   end
 
   it "should get show" do
-    get user_path(1)
+    get user_path(users(:one).id)
     must_respond_with :success
   end
 
