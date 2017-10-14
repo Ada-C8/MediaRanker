@@ -17,6 +17,10 @@
  /*    General       */
  /*******************/
 @import url("https://fonts.googleapis.com/css?family=Gudea");
+
+.button:hover {
+  background-color: #176B63;
+  }
 /*******************/
 /*    HEADER       */
 /*******************/
@@ -62,5 +66,5 @@
   font-size: 1em;
   color: #8a8a8a;
   /*background-color: #EFEDED;*/
-  padding: 5% 0% 5% 0%;
+  /*padding: 5% 0% 5% 0%;*/
 }
