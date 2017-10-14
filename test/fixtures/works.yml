@@ -5,11 +5,18 @@ hellodolly:
   creator: "Gene Kelly"
   title: "Hello, Dolly"
   pub_year: 1969
-  description: Hello, Dolly! is a 1969 American romantic comedy musical film based on the Broadway production of the same name.
+  description: "Hello, Dolly! is a 1969 American romantic comedy musical film based on the Broadway production of the same name."
 
 lemonade:
   category: "album"
   creator: "Beyonce"
   title: "Lemonade"
   pub_year: 2016
-  description: Lemonade is the sixth studio album by American singer Beyoncé.
+  description: "Lemonade is the sixth studio album by American singer Beyoncé."
+
+indianajones:
+  category: "movie"
+  title: "Indian Jones and the Temple of Doom"
+  creator: "la la la"
+  pub_year: "1989"
+  description: "he keeps losing his hat"
