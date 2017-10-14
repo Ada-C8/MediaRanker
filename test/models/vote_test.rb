@@ -22,6 +22,15 @@ describe Vote do
       vote.errors.messages.must_include :work_id
     end
 
+    it "is invalid when the user_id and work_id pairing is not unique" do
+      work = Work.create!(category: "album", title: "title", creator: "creator")
+      user = User.create!(name: "name")
+      vote1 = Vote.new(user_id: work.id, work_id: user.id)
+      vote1.save
+      vote2 = Vote.new(user_id: work.id, work_id: user.id)
+
+      vote2.wont_be :valid?
+    end
   end
 
   describe "relations" do
