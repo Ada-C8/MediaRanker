@@ -46,6 +46,19 @@ describe WorksController do
       end
     end #create
 
+    describe "edit" do
+      it "should display an edit form if id is valid" do
+        #true
+        get edit_work_path(book1.id)
+        must_respond_with :success
+      end
+
+      it "will render 404 page if id isn't found" do
+        get edit_work_path(Work.last.id + 1)
+        must_respond_with :not_found
+      end
+    end #edit
+
     describe "update" do
       it "should update the Work if the input is valid" do
         old_title = book1.title
@@ -60,20 +73,7 @@ describe WorksController do
         book2.category.must_equal "book"
         must_respond_with :bad_request
       end
-    end # Update
-
-    describe "edit" do
-      it "should display an edit form" do
-        #true
-        get edit_work_path(book1.id)
-        must_respond_with :success
-
-        #false
-        book1.destroy
-        get edit_work_path(book1.id)
-        must_respond_with :not_found
-      end
-    end #edit
+    end #update
 
     describe "destroy" do
       it "should destroy a Work" do
