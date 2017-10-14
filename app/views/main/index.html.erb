@@ -1,18 +1,27 @@
 <main class="row">
   <section>
+    
+    <% works = Work.all.sort_by { |work| -work.votes.count} %>
+    <% if !works %>
     <div>
-      <h3> <%# REMEMBER YOU CAN ACCESS THE NUMBER VOTES SIMPLY BY CALLING THE NAME OF THE OTHER CLASS WORK.VOTES %>
-        <% works = Work.all.sort_by { |work| -work.votes.count} %>
-        <% if !works %>
-          Media Spotlight:
-        <% else %>
-          <%= link_to works.first.title, work_path(works.first.id) %> by <%= works.first.creator %>
+      <h3>
+        Media Spotlight:
       </h3>
-      <p>
-          <%= works.first.votes.count %> of Votes
-      </p>
-      <% end %>
     </div>
+
+    <% else %>
+
+    <div>
+      <h3>
+        Media Spotlight:
+        <%= link_to works.first.title, work_path(works.first.id) %> by <%= works.first.creator %>
+      <p>
+        <%= works.first.votes.count %> of Votes
+      </p>
+    </div>
+
+    <% end %>
+
   </section>
 
   <hr>
