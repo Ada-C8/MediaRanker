@@ -16,10 +16,7 @@
           <td> <%= link_to "#{work.title}", work_path(work) %> </td>
           <td> <%= work.creator %> </td>
           <td> <%= work.publication_year %> </td>
-          <td> <%= form_for Vote.new(work_id: work.id) do |f| %>
-              <%= f.hidden_field :work_id %>
-              <%= f.submit "Upvote" %>
-            <% end %> </td>
+          <td> <%= render partial: 'form_upvote', locals: { work: work } %> </td>
         </tr>
 
     <% end %>
