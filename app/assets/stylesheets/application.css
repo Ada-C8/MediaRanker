@@ -19,6 +19,7 @@
 /*********** ALL STYLES *********/
 /********************************/
 
+
 .bg-color {
   background-color: #B2DFDB;
   max-width: 100%;
@@ -36,6 +37,33 @@
 main {
   margin-top: 2em;
 }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+.border-bottom {
+  border-bottom: 2px solid #B2DFDB;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Gudea', sans-serif;
+  font-weight: bold;
+  /*color: #26A69A;*/*/
+}
+/*
+.width {
+  width: 10%;
+}
+
+.mid-width {
+  width: 15%;
+}
+
+.more-width {
+  width: 20%;
+}*/
 
 /********************************/
 /*********** HEADER *************/

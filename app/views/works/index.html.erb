@@ -1,4 +1,4 @@
-<main>
+<main class="row">
   <h3>List of Works </h3>
 
   <section>
@@ -38,11 +38,11 @@
     <table>
       <thead>
         <tr>
-          <th>Votes</th>
+          <th class="width">Votes</th>
           <th>Title</th>
           <th>Created By</th>
-          <th>Published</th>
-          <th>Upvote</th>
+          <th class="width">Published</th>
+          <th class="width">Upvote</th>
         </tr>
       </thead>
       <tbody>
@@ -55,7 +55,7 @@
             <td>
               <%= link_to "Upvote", votes_path(:vote => {
               user_id: session[:logged_in_session], work_id: work.id
-              }), method: :post %>
+              }), method: :post, class: "button" %>
             </td>
           </tr>
         <% end %>
@@ -63,16 +63,16 @@
     </table>
   </section>
 
-  <section>
+  <section >
     <h4>Movies</h4>
     <table>
       <thead>
         <tr>
-          <th>Votes</th>
+          <th class="width">Votes</th>
           <th>Title</th>
           <th>Created By</th>
-          <th>Published</th>
-          <th>Upvote</th>
+          <th class="width">Published</th>
+          <th class="width">Upvote</th>
         </tr>
       </thead>
       <tbody>
@@ -85,7 +85,7 @@
             <td>
               <%= link_to "Upvote", votes_path(:vote => {
               user_id: session[:logged_in_session], work_id: work.id
-              }), method: :post %>
+              }), method: :post, class: "button" %>
             </td>
           </tr>
         <% end %>
