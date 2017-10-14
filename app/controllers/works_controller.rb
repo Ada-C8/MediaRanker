@@ -26,6 +26,7 @@ class WorksController < ApplicationController
 
   def destroy
     @work = Work.find(params[:id].to_i).destroy
+    flash[:success] = "Deleted the work"
     redirect_to works_path
   end
 
@@ -40,6 +41,7 @@ class WorksController < ApplicationController
     @work.update_attributes work_params
     if @work.update_attributes work_params
       redirect_to works_path
+      flash[:success] = "Updated #{@work.tile}"
     else
       render :edit
     end

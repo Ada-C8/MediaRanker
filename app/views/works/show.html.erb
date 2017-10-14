@@ -34,7 +34,7 @@
       <%@work.votes.each do |vote| %>
         <tr>
           <td>
-            <%=vote.user.name%>
+            <%= link_to vote.user.name, user_path(vote.user.id)%>
           </td>
           <td>
             <%=vote.created_at%> <%#need to get this to be the date in english%>

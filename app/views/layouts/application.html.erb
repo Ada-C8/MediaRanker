@@ -10,21 +10,21 @@
 
   <body>
     <header>
-      <nav>
-        <%= link_to "View top meida", top_works_path %>
-        <%= link_to "View all media", works_path %>
-        <%= link_to "Add a new work", new_work_path %>
-        <%= link_to "View all users", users_path %>
+      <nav class="columns small-12">
+        <%= link_to "View top meida", top_works_path, class:"button" %>
+        <%= link_to "View all media", works_path, class:"button"  %>
+        <%= link_to "Add a new work", new_work_path, class:"button"  %>
+        <%= link_to "View all users", users_path, class:"button"  %>
       </nav>
-      <nav>
+      <div class="float-right">
         <% if session[:logged_in_user]%>
-        <% @user = session[:logged_in_user]['name'] %>
-          <%= link_to "Logged in as #{@user}" %>
-          <%= link_to "Log out", logout_path, method: :post %>
+        <% @user = session[:logged_in_user]%>
+          <%= link_to "Logged in as #{@user['name']}", user_path(@user['id']), class:"button" %>
+          <%= link_to "Log out", logout_path, method: :post, class:"button" %>
         <%else%>
-          <%= link_to "Log in", login_path%>
+          <%= link_to "Log in", login_path, class:"button"%>
         <%end%>
-      </nav>
+      </div>
 
       <section>
         <h2>Media Ranker |<small>Ranking the best of everything</small></h2>

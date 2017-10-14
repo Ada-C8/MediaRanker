@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       redirect_to users_path
+      flash[:success] = "Successfully added #{@user.name} to the database"
     else
       render :new
     end
@@ -44,6 +45,8 @@ class UsersController < ApplicationController
     else
       create
     end
+
+    flash[:success] = "Successfully logged in as #{@user['name']}"
   end
 
   def logout

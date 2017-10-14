@@ -25,7 +25,7 @@ Name: <%=user.name %>
     <% @users.each do |user| %>
     <tr>
       <td>
-        <%=user.name %>
+        <%= link_to user.name, user_path(user.id) %>
       </td>
       <td>
         <%= user.votes.count %>
