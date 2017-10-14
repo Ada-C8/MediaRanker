@@ -3,11 +3,15 @@ Rails.application.routes.draw do
 
   get '/home', to: 'works#home', as: 'home'
 
-  get '/works', to: 'works#index', as: 'works'
+  resources :works
 
-  get '/works/:id/edit', to: 'works#edit', as: 'edit_work'
+  resources :users
 
-  get '/works/:id', to: 'works#show', as: 'work'
+  # get '/works', to: 'works#index', as: 'works'
+  #
+  # get '/works/:id/edit', to: 'works#edit', as: 'edit_work'
+  #
+  # get '/works/:id', to: 'works#show', as: 'work'
 
 
 
