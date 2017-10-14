@@ -1,6 +1,8 @@
 <h1>Works#show</h1>
 <p>Find me in app/views/works/show.html.erb</p>
 
+<!-- <%= params %> -->
+
 <ul>
   <li><h3><%= @work.title %></h3></li>
   <li>Category: <%= @work.category %></li>
@@ -17,13 +19,21 @@
     <%# button_to("Delete work", work_path, method: :delete) %>
   <li><%= link_to("Back To Media Ranks", home_index_path, alt: "View Top Media")%></li>
     <%# button_to("View Top Media", home_index_path, method: :get) %>
-  <li><%= link_to("Up Vote", alt: "Vote") %></li>
+
+
+<!-- NOT SURE IF THIS IS WORKING -->
+  <li><%= link_to("Up Vote", votes_path, alt: "Vote") %></li>
     <%# button_to("View Top Media", home_index_path, method: :get) %>
+
+
 </ul>
+
+<%= params %>
+
 
 
 <!-- LOOP FOR VOTES GOES IN THIS TABLE -->
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>User</th>
@@ -35,4 +45,4 @@
       <td></td>
     </tr>
   </tbody>
-</table>
+</table> -->
