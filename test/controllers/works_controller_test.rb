@@ -6,6 +6,12 @@ describe WorksController do
       get works_path
       must_respond_with :success
     end
+
+    it 'is successful if NO data' do
+      Work.destroy_all
+      get works_path
+      must_respond_with :success
+    end
   end
 
   describe 'index' do
