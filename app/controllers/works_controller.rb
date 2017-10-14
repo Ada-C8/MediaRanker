@@ -15,16 +15,15 @@ class WorksController < ApplicationController
   end
 
   def create # Add strong params
-    work = Work.new(
-      id: params[:work][:id],
+    @work = Work.new(
       category: params[:work][:category],
       title: params[:work][:title],
       creator: params[:work][:creator],
       publication_year: params[:work][:publication_year],
       description: params[:work][:description]
     )
-    work.save
-    if work.save
+
+    if @work.save
       redirect_to works_path
     else
       render :new, status: :bad_request

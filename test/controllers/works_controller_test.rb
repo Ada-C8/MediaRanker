@@ -21,9 +21,12 @@ describe WorksController do
   end # Describe
 
   describe "#show" do
+    # The ID corresponds to a model in the DB
+    # The ID is not found in the DB
     it "returns success when the work_id exists" do
-      work = Work.first.id
+      work = Work.first
 
+      work.must_be :valid?
       get work_path(work)
 
       must_respond_with :success
@@ -39,7 +42,9 @@ describe WorksController do
   end # Des
 
   # describe "#new" do
-  #   it "Creates an instance work" do
+  #   # The data was valid
+  #   # The data was bad and validations failed
+  #   it "Creates an instance of work" do
   #
   #   end
   #
@@ -48,12 +53,11 @@ describe WorksController do
   # end
 
   describe "#create" do
-    it "returns success when all parameters are created" do
+    it "returns success when all parameters are created and data is valid" do
       # Arrange
       # Create a new hash of all the data and add that to a new instance
       work_data = {
         work: {
-          id: 1,
           category: "book",
           title: "Harry Potter",
           creator: "J.K. Rowling",
@@ -65,7 +69,7 @@ describe WorksController do
       Work.new(work_data[:work]).must_be :valid?
       start_work_count = Work.count
 
-      # Act # Why does this work?
+      # Act
       post works_path, params: work_data
 
       # Assert
@@ -74,11 +78,10 @@ describe WorksController do
       Work.count.must_equal start_work_count + 1
     end
 
-    it "returns something if the parameters are invalid" do
+    it "returns a bad_request if one parameter is invalid" do
       # Arrange
       invalid_data = {
         work: {
-          id: 1,
           category: "book",
           title: "",
           creator: "J.K. Rowling",
@@ -107,7 +110,7 @@ describe WorksController do
       work_data = {
         work: {
           category: "book",
-          title: "Changed Title",
+          title: "I am changing the title of this book",
           creator: "J.K. Rowling",
           publication_year: 2001,
           description: "A boy to has a scar",
@@ -181,14 +184,14 @@ describe WorksController do
       Work.count.must_equal before_count - 1
     end
 
-    it "returns not found when a given work ID is invalid" do
+    it "returns not found when a given work ID does not exist" do
       invalid_work_id = Work.last.id + 1
 
       delete work_path(invalid_work_id)
 
       must_respond_with :not_found
     end
-  end
+  end # Des
 end # Des
 
 

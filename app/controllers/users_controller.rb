@@ -12,11 +12,10 @@ class UsersController < ApplicationController
   end
 
   def create # Add Strong Params
-    user = User.new(
-      id: params[:user][:id],
-      username: params[:user][:username]
+    @user = User.new(
+      name: params[:user][:name]
     )
-    user.save
+    @user.save
     # Add redirect_to
   end
 
