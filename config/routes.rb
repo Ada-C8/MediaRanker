@@ -17,12 +17,12 @@ Rails.application.routes.draw do
 
   resources :works
 
-  resources :sessions, only: [:login,:logout, :create]
+  resources :sessions, only: [:create, :destroy, :login_form]
 
-  get '/login', to: 'users#login_form', as: 'login'
-  post '/login', to: 'users#login'
+  get '/login', to: 'sessions#login_form', as: 'login'
+  post '/login', to: 'sessions#create'
 
-  get '/logout', to: 'users#logout', as: 'logout'
-  post '/logout', to: 'users#logout'
+  get '/logout', to: 'sessions#destroy', as: 'logout'
+  # post '/logout', to: 'sessions#destroy'
 
 end

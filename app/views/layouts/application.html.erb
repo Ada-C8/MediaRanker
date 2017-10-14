@@ -27,7 +27,7 @@
         <%# When session is logged in, will add a Log Out button to the navigation %>
         <% if session[:logged_in_session] %>
           <div class="float-right">
-            <%= link_to "Log Out", logout_path, method: :post, class: "button" %>
+            <%= link_to "Log Out", logout_path, class: "button" %>
           </div>
 
           <div class="float-right">
@@ -49,6 +49,20 @@
       <section class="row">
         <h3>
           <%= flash[:message] %>
+          <% if flash[:details] %>
+          <ul>
+            <% flash[:details].each do |field, problems| %>
+              <% problems.each do |problem| %>
+                <li>
+                  <strong>
+                    <%= field %>:
+                  </strong>
+                  <%= problem %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+          <% end %>
         </h3>
       </section>
     <% end %>
@@ -57,7 +71,21 @@
     <% if session[:logged_in_session] == nil %>
       <section class="row">
         <h3>
-          <%= flash.now[:message] %>
+          <%= flash[:message] %>
+          <% if flash[:details] %>
+          <ul>
+            <% flash[:details].each do |field, problems| %>
+              <% problems.each do |problem| %>
+                <li>
+                  <strong>
+                    <%= field %>:
+                  </strong>
+                  <%= problem %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+          <% end %>
         </h3>
       </section>
     <% end %>

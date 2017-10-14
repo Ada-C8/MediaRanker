@@ -48,19 +48,9 @@
         </tr>
       </thead>
       <tbody>
-        <% @works.where(category: "book").each do |work| %>
-          <tr>
-            <td><%= Vote.where(work_id: work.id).count %></td>
-            <td><%= work.title %></td>
-            <td><%= work.creator %></td>
-            <td><%= work.publication_year %></td>
-            <td>
-              <%= link_to "Upvote", votes_path(:vote => {
-              user_id: session[:logged_in_session], work_id: work.id
-              }), method: :post, class: "button" %>
-            </td>
-          </tr>
-        <% end %>
+
+
+
       </tbody>
     </table>
   </section>
@@ -78,19 +68,9 @@
         </tr>
       </thead>
       <tbody>
-        <% @works.where(category: "movie").each do |work| %>
-          <tr>
-            <td><%= Vote.where(work_id: work.id).count %></td>
-            <td><%= work.title %></td>
-            <td><%= work.creator %></td>
-            <td><%= work.publication_year %></td>
-            <td>
-              <%= link_to "Upvote", votes_path(:vote => {
-              user_id: session[:logged_in_session], work_id: work.id
-              }), method: :post, class: "button" %>
-            </td>
-          </tr>
-        <% end %>
+
+
+
       </tbody>
     </table>
   </section>
