@@ -91,22 +91,21 @@ describe Work do
         w4.votes.create(user_id: u.id, work_id: w4.id)
         top = Work.top_work
 
-        top.must_equal w3.title
+        top.title.must_equal w3.title
       end # return the top work
     end # top_work
 
 
     describe "top_ten" do
       it "will return the top ten works of a category" do
-        ten = Work.top_ten("album")
+        ten_works = Work.top_ten("album")
 
-        length = ten.length
+        length = ten_works.length
         i = 0
         while i < length
-          work.votes[i].must_be :>=, work.votes[i - 1].votes
+          ten_works.votes[i].count.must_be :>=, ten_work.votes[i - 1].count
+          ten_works[i].category.must_equal 'album'
         end
-
-        ten.first.category.must_equal "album"
       end # return the top ten works for a category
     end # top_ten
 
@@ -116,7 +115,7 @@ describe Work do
 
         j = all_books.length
         i = 0
-        while i < length
+        while i < j
           all_books[i].category.must_equal "book"
           all_books.votes[i].must_be :>=, all_books.votes[i - 1].votes
         end # while

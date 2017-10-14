@@ -7,8 +7,7 @@ class Work < ApplicationRecord
 
 
   def self.sort_by_vote_count
-    sorted = Work.all.sort_by{|work| -work.votes.count}
-    return sorted
+    return Work.all.sort_by{|work| -work.votes.count}
   end
 
   def self.top_work
@@ -20,7 +19,7 @@ class Work < ApplicationRecord
       raise ArgumentError.new("Invalid category #{category}")
     end
 
-    return Work.all.where(category: category).sort_by{|work| -work.votes.count}[0..9]
+    return Work.category_sort(category)[0..9]
   end
 
   def self.category_sort(category)

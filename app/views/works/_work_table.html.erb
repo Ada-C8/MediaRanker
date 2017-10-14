@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @works.where(category: type ).each do |work| %>
+      <% model.each do |work| %>
       <tr>
         <td>
           <%= work.votes.count %>
