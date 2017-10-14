@@ -32,4 +32,12 @@ describe "Validations" do
   end # uniqueness
 end # describe "Validations" do
 
+describe "methods" do
+  describe "logged_in_user" do
+    it "will return the logged in user" do
+      # NOTE: Can't test this yet cause I wold need to access session
+    end # return the logged ....
+  end # logged_in_user
+end # methods
+
 end # User do

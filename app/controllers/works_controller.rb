@@ -11,7 +11,7 @@ class WorksController < ApplicationController
 
   def index
     @works = Work.all
-    
+
   end # index
 
   def show
@@ -25,7 +25,7 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
 
-    if @work.save
+    if save_flash(@work)
       redirect_to works_path
     else
       render :new, status: :bad_request
