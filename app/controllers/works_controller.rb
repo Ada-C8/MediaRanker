@@ -32,6 +32,8 @@ class WorksController < ApplicationController
   end
 
   def update
+    render_404 and return if @work.nil?
+
     if @work.update(work_params)
       flash[:success] = "Successfully updated #{@work.category}."
       redirect_to work_path(@work.id)

@@ -85,6 +85,52 @@ describe WorksController do
     end
   end
 
+  describe 'update' do
+    it 'should successfully update work data and redirect to work path' do
+      work_data = {
+        work: {
+          title: "Superbaby"
+        }
+      }
+      work = works(:baby)
+
+      patch work_path(work.id), params: work_data
+
+      must_respond_with :redirect
+      must_redirect_to work_path(work.id)
+      Work.find(work.id).title.must_equal "Superbaby"
+    end
+
+    it 'should return bad request if invalid update is made' do
+      work_data = {
+        work: {
+          title: ""
+        }
+      }
+      work = works(:baby)
+      original_title = work.title
+
+      patch work_path(work.id), params: work_data
+
+      must_respond_with :bad_request
+      Work.find(work.id).title.must_equal original_title
+    end
+
+    it "should return not found if work doesn't exist" do
+      work_data = {
+        work: {
+          title: "Superbaby"
+        }
+      }
+      bad_id = Work.last.id + 1
+
+      patch work_path(bad_id), params: work_data
+
+      must_respond_with :not_found
+    end
+  end
+
+
   describe 'destroy' do
     it 'returns success status' do
 
