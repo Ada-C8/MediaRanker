@@ -21,16 +21,12 @@ describe VotesController do
       post create_vote_path(work_id)
       post create_vote_path(work_id)
       Vote.count.must_equal vote_count + 1
-      # b = Vote.new(work_id)
-      # b1 = Vote.new(work_id)
-      # b.must_be :valid?
-      # b1.wont_be :valid?
     end
 
     it "will not allow a user to vote unless logged in" do
       work_id = Work.first.id
       vote_count = Vote.count
-      # implicitly not logged in 
+      # implicitly not logged in
       post create_vote_path(work_id)
 
       Vote.count.must_equal vote_count

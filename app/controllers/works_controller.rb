@@ -2,9 +2,11 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
   def index
     @works = Work.all
-    @movies = Work.where(category: "movie").sort_by{|work| -work.votes.count}
-    @books = Work.where(category: "book").sort_by{|work| -work.votes.count}
-    @albums = Work.where(category: "album").sort_by{|work| -work.votes.count}
+
+    @movies = Work.sort_by_category("movie")
+    @books = Work.sort_by_category("book")
+    @albums = Work.sort_by_category("album")
+    #
     unless @works
       # how to trigger this and make this actually occur?
       head :not_found

@@ -15,6 +15,10 @@ describe WorksController do
       get works_path
       must_respond_with :success
     end
+
+    it "sorts the categories correctly" do
+      # not sure how to test that @movies is only showing the category movie
+    end
   end
 
   describe "show" do
@@ -111,14 +115,14 @@ describe WorksController do
     end
 
     it "returns not_found if work id is invalid" do
-      # work_data = {
-      #   work: {
-      #     title: " title"
-      #   }
-      # }
-      # bad_work_id = Work.last.id + 1
-      # patch work_path(bad_work_id), params: work_data
-      # must_respond_with :not_found
+      bad_work_id = Work.last.id + 1
+      work_data = {
+        work: {
+          title: " title"
+        }
+      }
+      patch work_path(bad_work_id), params: work_data
+      must_respond_with :not_found
     end
 
     it "returns bad_request when change is invalid" do
@@ -141,14 +145,6 @@ describe WorksController do
 
   describe "destroy" do
     it "success when book is deleted" do
-      # work_data = {
-      #   work: {
-      #     creator: "lauren",
-      #     category: "book",
-      #     title: "Changed title"
-      #   }
-      # }
-
       work_count = Work.count
       delete work_path(Work.first)
       must_respond_with :redirect
@@ -158,11 +154,11 @@ describe WorksController do
 
     # no scenario in which a deletion does not happen in this project
     # it "test negative delete" do
-      # work_count = Work.count
-      # delete work_path(Work.first)
-      # must_respond_with :redirect
-      # must_redirect_to works_path
-      # work_count.must_equal Work.count
+    # work_count = Work.count
+    # delete work_path(Work.first)
+    # must_respond_with :redirect
+    # must_redirect_to works_path
+    # work_count.must_equal Work.count
     # end
 
   end
