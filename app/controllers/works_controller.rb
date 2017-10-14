@@ -38,6 +38,11 @@ class WorksController < ApplicationController
     redirect_to works_index_path
   end
 
+  def topten
+  end
+
+
+
   private
 
   def work_params

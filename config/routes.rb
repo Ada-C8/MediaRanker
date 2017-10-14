@@ -16,13 +16,12 @@ Rails.application.routes.draw do
 
   get 'votes/index'
 
-  get '/users/index'
-
   get '/votes/new', to: 'votes#new', as: 'new_vote'
 
   get '/votes', to: 'votes#create', as: 'votes'
 
 
+  get '/users/index'
 
   get '/users/new', to: 'users#new', as: 'new_user'
 
@@ -41,6 +40,8 @@ Rails.application.routes.draw do
 
   get '/works/new', to: 'works#new', as: 'new_work'
 
+  get '/works/topten', to: 'works#topten', as: 'topten'
+
   get '/works/:id/edit', to: 'works#edit', as: 'edit_work'
 
   post '/works', to: 'works#create', as: 'works'
@@ -50,6 +51,8 @@ Rails.application.routes.draw do
   get 'works/:id', to: 'works#show', as: 'work'
 
   delete '/works/:id', to: 'works#destroy'
+
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

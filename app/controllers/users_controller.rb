@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.save
-    redirect_to login_path
+    session[:logged_in_user] = @user.id
+    redirect_to works_index_path
     # if @user.save
     #   flash[:success] = "Welcome New User!"
     #   redirect_to works_index_path
@@ -41,6 +42,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+
+  # def upvote
+  #   @work = Work.find(params[:id])
+  #   @work.votes.create
+  #   redirect_to works_index_path
+  # end
 
   private
 
