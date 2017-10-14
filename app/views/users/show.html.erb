@@ -1,2 +1,8 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>User Summary: <%= @user.username %></h1>
+<p>Joined site <%= @user.created_at %></p>
+<h3>Votes</h3>
+<h4>Votes table</h4>
+
+
+<%= button_to("See all Users", users_path, method: :get) %>
+<%= button_to("Back to Media List", works_path, method: :get) %>
