@@ -30,8 +30,11 @@ def create
   end
 
   def find_user_by_id
+    puts "<<<<<<<<<<<<<<<<<< running the test"
     @user = User.find_by(id: params[:id])
+    puts "<<<<<after user find by"
     unless @user
+      puts "<<<< made it past the unless statement"
       head :not_found
     end
     return @user

@@ -1,0 +1,31 @@
+
+<h3> User Summary <%= @user.name %>
+<p> Joined site <%= @user.created_at %>
+</p>
+
+<h4> Votes </h4>
+  Put this code in the vote model??
+<table>
+  <thead>
+    <tr>
+      <th>Media Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Category</th>
+      <th>Voted On</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% User.votes.each do |vote| %>
+        <tr>
+          <td> TBD </td>
+          <td> <%= link_to "#{vote.work.title}", work_path(work) %> </td>
+          <td> <%= vote.work.creator %> </td>
+          <td> <%= vote.work.publication_year %> </td>
+          <td> <%= vote.work.category %> </td>
+          <td> <%= vote.created_at </td>
+        </tr>
+
+    <% end %>
+  </tbody>
+</table>
