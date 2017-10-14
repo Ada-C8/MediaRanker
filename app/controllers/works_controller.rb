@@ -4,7 +4,9 @@ class WorksController < ApplicationController
   end
 
   def new
-    
+    if params[:id]
+
+    end
   end
 
   def create
