@@ -14,9 +14,17 @@ describe WorksController do
     end
   end
 
-  describe 'index' do
-    it 'returns success status' do
+  describe 'show' do
+    it 'returns success status if valid work item' do
+      work = works(:baby)
+      get work_path(work.id)
+      must_respond_with :success
+    end
 
+    it 'returns not found status if invalid work item' do
+      bad_id = Work.last.id + 1
+      get work_path(bad_id)
+      must_respond_with :not_found
     end
   end
 
