@@ -36,6 +36,9 @@ class UsersController < ApplicationController
 
     if @user
       session[:user_id] = @user.id
+      flash[:status] = :success
+      flash[:message] = "Successfully logged in as existing user #{@user.name}"
+
     else
       @user = User.new(user_params)
 
@@ -56,6 +59,15 @@ class UsersController < ApplicationController
 
   end
 
+  def logout
+    session[:user_id] = nil
+    reset_session
+
+    flash[:status] = :success
+    flash[:message] = "Succesfully logged out"
+    redirect_to root_path
+
+  end
 
   private
 

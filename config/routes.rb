@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   post '/login', to: 'users#login', as: 'create_login' # create_login_path
 
+  post '/logout', to: 'users#logout', as: 'logout' # logout_path
+
   # get '/users/new', to: 'users#new', as: 'new_user' # new_user_path
 
   # post '/users', to: 'users#create', as: 'create_user' # create_user_path
