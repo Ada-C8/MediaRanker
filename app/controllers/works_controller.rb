@@ -22,8 +22,13 @@ class WorksController < ApplicationController
     strong_params = work_params
     @work = Work.new(strong_params)
     if @work.save
+      flash[:status] = :success #successs here is an english word
+      flash[:message] = "Successfully created #{@work.category}"
       redirect_to works_path
     else
+      flash.now[:status] = :failure
+      flash.now[:message] = "Failed to create #{@work.category}"
+      flash.now[:details] = @work.errors.messages
       render :new, status: :bad_request
     end
   end

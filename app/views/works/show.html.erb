@@ -43,7 +43,7 @@
         <%votes = Vote.where(work_id: @work.id)%>
         <% votes.each do |vote| %>
       <th>
-        <%= User.find(vote.user_id).name %>
+        <%= link_to User.find(vote.user_id).name, user_path(vote.user_id) %>
       </th>
       <th>
         <%= vote.created_at%>

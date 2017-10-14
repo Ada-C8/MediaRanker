@@ -9,14 +9,14 @@
     <th>Voted On</th>
   </tr>
   <tr>
-    <%# votes = Vote.all.where(user.id)works = Work.all.where()%>
-      <% Vote.all.each do |vote| %>
+    <% votes = Vote.where(user_id: @user.id) %>
+      <% votes.each do |vote| %>
 
     <th>
-      <%= link_to Work.find_by_id(vote.work_id).name, work_path(vote.work_id), class: "link"%>
+      <%= link_to Work.find_by_id(vote.work_id).title, work_path(vote.work_id), class: "link"%>
     </th>
     <th>
-      <%= Work.find_by_id(vote.work_id).creator%>
+      <% Work.find_by_id(vote.work_id).creator%>
     </th>
     <th>
       <%= Work.find_by_id(vote.work_id).pub_year%>
@@ -25,7 +25,7 @@
       <%= Work.find_by_id(vote.work_id).category%>
     </th>
     <th>
-      <%=  %>
+      <%= vote.updated_at %>
     </tr>
     <%end%>
 
