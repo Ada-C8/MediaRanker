@@ -4,8 +4,8 @@ describe Work do
   let(:w) { Work.first }
   let(:u) { User.new(name: "Mira") }
   let(:v) { Vote.new(user_id: u.id) }
-  let(:w3) {Work.new(category: "Book", title: "Harry Potter and the Prisoner of Azkaban", creator: "J.K. Rowling", publication_year: 2001, description: "The third Harry Potter book")}
-  let(:w4) {Work.new(category: "Movie", title: "Singing in the rain", creator: "Gene Kelly", publication_year: 2001, description: "Amazing musical")}
+  let(:w3) {Work.new(category: "book", title: "Harry Potter and the Prisoner of Azkaban", creator: "J.K. Rowling", publication_year: 2001, description: "The third Harry Potter book")}
+  let(:w4) {Work.new(category: "movie", title: "Singing in the rain", creator: "Gene Kelly", publication_year: 2001, description: "Amazing musical")}
 
 
   describe "validations" do
@@ -27,7 +27,9 @@ describe Work do
     end # it "requires a title" do
 
     it "will create an instance of Work when all fields are present" do
-      w3.must_be :valid?
+      is_valid = w3.valid?
+      is_valid.must_equal true
+      # w3.must_be :valid?
     end # it "will create an instance of Work when all fields are present" do
 
     it "requires a category" do
