@@ -24,7 +24,7 @@
             <td>
               <%= link_to "Upvote", votes_path(:vote => {
               user_id: session[:logged_in_session], work_id: work.id
-              }), method: :post %>
+              }), method: :post, class:"button" %>
             </td>
           </tr>
         <% end %>

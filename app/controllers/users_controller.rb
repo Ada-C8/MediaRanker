@@ -12,11 +12,11 @@ class UsersController < ApplicationController
   end
 
   def create # Add Strong Params
-    user = User.new(
+    @user = User.new(
       id: params[:user][:id],
       username: params[:user][:username]
     )
-    user.save
+    @user.save
     # Add redirect_to
   end
 
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:id])
-    user.destroy
+    @user = User.find(params[:id])
+    @user.destroy
   end
 end

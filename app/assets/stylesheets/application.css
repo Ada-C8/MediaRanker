@@ -1,18 +1,90 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
- .border {
-   border: 2px solid black;
- }
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+@import url('https://fonts.googleapis.com/css?family=Gudea');
+
+/********************************/
+/*********** ALL STYLES *********/
+/********************************/
+
+.bg-color {
+  background-color: #B2DFDB;
+  max-width: 100%;
+  padding: 0 1em 0 1em;
+}
+
+.float-right {
+  float: right;
+}
+
+.button {
+  background-color: #26A69A;
+}
+
+main {
+  margin-top: 2em;
+}
+
+/********************************/
+/*********** HEADER *************/
+/********************************/
+
+small {
+  color: white;
+}
+
+h2.align {
+  text-align: center;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+/*nav.padding-bottom {
+  padding-bottom: 1em;
+}*/
+
+.brand-style {
+  color: #FF5722;
+  border-right: 2px solid white;
+  padding-right: 1em;
+}
+
+nav.padding {
+  padding: 0 1em 1em 1em;
+}
+
+
+/******************************/
+/*********** BODY *************/
+/******************************/
+
+body {
+  font-family: 'Gudea', sans-serif;
+}
+
+/********************************/
+/*********** CLEARFIX ***********/
+/********************************/
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */

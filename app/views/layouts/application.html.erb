@@ -9,37 +9,39 @@
   </head>
 
   <body>
-    <header class="row">
-      <h2 class="small-12-columns"><%= link_to "Media Ranker", root_path %></h2>
-      <small>Rank the Best of Everything</small>
+    <header class="row bg-color">
+      <h2 class="small-12 columns align">
+        <%= link_to "Media Ranker", root_path, class: "brand-style" %>
+        <small>
+          Rank the Best of Everything
+        </small>
+      </h2>
+
       <%# Must fix these %>
-      <nav class="row">
-        <%= link_to "View top media", root_path %>
-          <%= link_to "View all media", works_path %>
-          <%= link_to "Add a new work", new_work_path %>
-          <%= link_to "View all users", users_path %>
+      <nav class="small-12 columns clearfix padding">
+        <%= link_to "View top media", root_path, class: "button" %>
+        <%= link_to "View all media", works_path, class: "button" %>
+        <%= link_to "Add a new work", new_work_path, class: "button" %>
+        <%= link_to "View all users", users_path, class: "button" %>
 
         <%# When session is logged in, will add a Log Out button to the navigation %>
         <% if session[:logged_in_session] %>
-        <%############## MAKE INTO A BUTTON %>
-          <div>
-            <%= link_to "Logged in as #{User.find(session[:logged_in_session]).name}", user_path(session[:logged_in_session]) %>
+          <div class="float-right">
+            <%= link_to "Log Out", logout_path, method: :post, class: "button" %>
           </div>
 
-          <%############## MAKE INTO A BUTTON %>
-          <div>
-            <%= link_to "Log Out", logout_path, method: :post %>
+          <div class="float-right">
+            <%= link_to "Logged in as #{User.find(session[:logged_in_session]).name}", user_path(session[:logged_in_session]), class: "button" %>
           </div>
-        <% end %>
 
-        <%############## MAKE INTO A BUTTON %>
-        <% if session[:logged_in_session] == nil %>
-          <div>
-            <%= link_to "Log In", login_path %>
+        <% else %>
+
+          <div class="float-right">
+            <%= link_to "Log In", login_path, class: "button" %>
           </div>
+
         <% end %>
       </nav>
-
     </header>
 
     <%# When session is logged in, will flash success %>

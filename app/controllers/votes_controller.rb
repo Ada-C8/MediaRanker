@@ -3,13 +3,13 @@ class VotesController < ApplicationController
   #   @votes = Vote.all
   # end
 
-  def show
-    @vote = Vote.find(params[:id])
-  end
+  # def show
+  #   @vote = Vote.find(params[:id])
+  # end
 
-  def new
-    @vote = Vote.new
-  end
+  # def new
+  #   @vote = Vote.new
+  # end
 
   def create # Add strong params
     vote = Vote.new(
@@ -30,10 +30,10 @@ class VotesController < ApplicationController
     # Do we use the update method for vote?
   end
 
-  def destroy
-    @vote = Vote.find(params[:id])
-    # We do not need the destroy method for vote
-  end
+  # def destroy
+  #   @vote = Vote.find(params[:id])
+  #   # We do not need the destroy method for vote
+  # end
 
   private
 

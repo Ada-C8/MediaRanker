@@ -1,4 +1,4 @@
-<main>
+<main class="row">
   <section>
     <div>
       <h3> <%# REMEMBER YOU CAN ACCESS THE NUMBER VOTES SIMPLY BY CALLING THE NAME OF THE OTHER CLASS WORK.VOTES %>
@@ -11,7 +11,9 @@
     </div>
   </section>
 
-  <section>
+  <hr>
+
+  <section class="large-4 columns">
     <h3>Top Movies</h3>
     <% works = Work.where(category: "movie") %>
     <% works.sort_by { |work| -work.votes.count } %>
@@ -25,7 +27,7 @@
     </ul>
   </section>
 
-  <section>
+  <section class="large-4 columns">
     <h3>Top Books</h3>
     <% works = Work.where(category: "book") %>
     <% works.sort_by { |work| -work.votes.count } %>
@@ -39,7 +41,7 @@
     </ul>
   </section>
 
-  <section>
+  <section class="large-4 columns">
     <h3>Top Albums</h3>
     <% works = Work.where(category: "album") %>
     <% works.sort_by { |work| -work.votes.count } %>
