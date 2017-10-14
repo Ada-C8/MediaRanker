@@ -18,7 +18,7 @@
             <li> <%= link_to "Books", new_user_path , class: "button" %> </li>
             <li><%= link_to "Movies", new_user_path, class: "button" %>  </li>
             <li><%= link_to "News", new_user_path,  class: "button"  %> </li>
-            <li><%= link_to "Add Media",  new_user_path,  class: "button"  %> </li>
+            <li><%= link_to "Add Media",  new_media_instance_path(media_type: "book"),  class: "button"  %> </li>
           </ul>
         </nav>
         <nav class = "large-8, small-12 columns button-group row">

@@ -4,12 +4,15 @@ class MediaInstancesController < ApplicationController
   end
 
   def show
+    binding.pry
     @media_instance = MediaInstance.find(params[:id])
   end
+
 
   def new
 
     # use strong params to limit the fields that the user can populate with data
+    @media_instances = MediaInstance.all
     @media_instance = MediaInstance.new
     if @media_instance.save
       flash[:status] = :success
@@ -25,6 +28,7 @@ class MediaInstancesController < ApplicationController
   end
 
   def create
+    @media_instances = MediaInstance.all
     @media_instance = MediaInstance.new(media_instance_params)
     if @media_instance.save
       flash[:status] = :success
@@ -41,6 +45,7 @@ class MediaInstancesController < ApplicationController
   end
 
   def edit
+    @media_instances = MediaInstance.all
     @media_instance = MediaInstance.find(params[:id])
   end
 
@@ -71,27 +76,27 @@ class MediaInstancesController < ApplicationController
     redirect_to media_instances_path
   end
 
-  def get_music
-    MediaInstance.where(media_type: "music")
+  def self.get_music
+      @media_instances = MediaInstance.where(media_type: "music")
   end
 
-  def ten_music
+  def self.ten_music
     get_music.first(10).order(@media_instance.votes.length)
   end
 
-  def get_news
-    MediaInstance.where(media_type: "news")
+  def self.get_news
+    @media_instances = MediaInstance.where(media_type: "news")
   end
 
-  def ten_news
+  def self.ten_news
     get_news.first(10).order(@media_instance.votes.length)
   end
 
   def get_books
-    MediaInstance.where(media_type: "book")
+    @media_instances = MediaInstance.where(media_type: "book")
   end
 
-  def ten_books
+  def self.ten_books
     get_books.first(10).order(@media_instance.votes.length)
   end
 
@@ -101,7 +106,8 @@ class MediaInstancesController < ApplicationController
   private
 
   def media_instance_params
-    return params.permit(:media_type, :title, :creator, :pub_yr, :details)
+    return params.require(:media_instance).permit(:media_type, :title, :creator, :pub_yr, :details)
   end
+
 
 end

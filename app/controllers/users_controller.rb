@@ -45,14 +45,6 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
-
-  private
-
-  def user_params
-    return params.permit(:name, :email)
-  end
-
-
   def login
     user_id = params[:user][:user_id]
     user = User.find_by(id: user_id)
@@ -61,8 +53,19 @@ class UsersController < ApplicationController
       session[:logged_in_user] = user_id
       redirect_to root_path
     else
+      
       head :not_found
     end
   end
+
+  private
+
+  # def user_params
+  #   return params.permit(:name, :email)
+  # end
+def user_params
+return params.require(:user).permit(:name, :email)
+end
+
 
 end

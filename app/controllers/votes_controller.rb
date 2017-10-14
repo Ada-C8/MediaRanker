@@ -1,21 +1,23 @@
-class VoteController < ApplicationController
+class VotesController < ApplicationController
 
-  def new
-    @vote = Vote.new
-    if params[:media_instance_id, :user_id]
-      @vote.media_instance_id = params[:media_instance_id]
-      @vote.user_id = params[:user_id]
-    else
-      render media_instances_path
-    end
-  end
+  # def new
+  #   @vote = Vote.new
+  #   if params[:media_instance_id, :user_id]
+  #     @vote.media_instance_id = params[:media_instance_id]
+  #     @vote.user_id = params[:user_id]
+  #   else
+  #     render media_instances_path
+  #   end
+  # end
 
   def create
+    #binding.pry
+    #stubbed_params = {user_id: 1, media_instance_id: 1}
     @vote = Vote.new(vote_params)
     if @vote.save
       flash[:status] = :success
       flash[:message] = "Successfully created vote #{@vote.id}"
-      redirect_to media_instance_path(@vote.media_instance_id)
+      redirect_to media_instances_path(@vote.media_instance_id)
     else
       # Tell the user what went wrong
       flash.now[:status] = :failure
@@ -40,7 +42,7 @@ class VoteController < ApplicationController
       end
 
       @vote.destroy
-      lash[:status] = :success
+      flash[:status] = :success
       flash[:message] = "Deleted vote #{@vote.id}"
       redirect_to votes_path
     end
@@ -49,8 +51,8 @@ class VoteController < ApplicationController
   end
   private
 
-  def trip_params
-    return params.require(:trip).permit(:driver_id, :passenger_id, :date, :rating, :cost)
-  end # trip_params
+  def vote_params
+    params.permit(:user_id, :media_instance_id)
+  end
 
 end

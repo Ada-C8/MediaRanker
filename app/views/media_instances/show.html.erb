@@ -4,10 +4,10 @@
   <section>
     <nav>
       <li>
-      <%= link_to "Edit", edit_media_instance_path(@media_instance) %>
+      <%#= link_to "Edit", edit_media_instance_path(@media_instance) %>
     </li>
     <li>
-      <%= link_to "Delete", media_instances_path(@media_instance), method: :delete, data: {confirm: "Are you sure you want to delete this driver?"} %>
+      <%#= link_to "Delete", media_instances_path(@media_instance), method: :delete, data: {confirm: "Are you sure you want to delete this driver?"} %>
     </li>
     </nav>
 
@@ -32,6 +32,6 @@
       Total Votes:
       <%= @media_instance.votes.length %>
       </li>
-
+      <li><%= link_to "Upvote", votes_path %></li>
     </ul>
   </div>

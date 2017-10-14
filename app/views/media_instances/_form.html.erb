@@ -4,7 +4,7 @@
 <%= form_for @media_instance,  :html => {:class => 'form'}  do |f| %>
 <div>
     <%= f.label :media_type %>
-  <%= f.collection_select( :media_type, @media_instances, :id, :title) %>
+  <%= f.collection_select( :media_type, @media_instances, :id, :media_type) %>
 </div>
 <div>
     <%= f.label :title %>
