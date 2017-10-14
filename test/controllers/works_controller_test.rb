@@ -26,7 +26,7 @@ describe WorksController do
       id = works(:hellodolly).id
       delete work_path(id)
       get work_path(id)
-      must_respond_with :error
+      must_respond_with :not_found
       # must_redirect_to works_path
     end
 

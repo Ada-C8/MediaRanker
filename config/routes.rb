@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login_form'
   post '/login', to: 'sessions#login'
 
-  delete '/works/destroy/:id', to: 'works#destroy', as: 'delete_work'
+  # delete '/works/destroy/:id', to: 'works#destroy', as: 'delete_work'
 
 end

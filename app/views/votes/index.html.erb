@@ -1,2 +1,13 @@
 <h1>Votes#index</h1>
 <p>Find me in app/views/votes/index.html.erb</p>
+
+<h1>All Votes</h1>
+<ul>
+  <% @votes.each do |vote| %>
+  <li>
+    Vote ID:<%=vote.id%>,
+    Work ID:<%= vote.work_id%><%=Work.find_by_id(vote.work_id)%>
+    User ID:<%= vote.user_id%>
+  </li>
+  <% end %>
+</ul>
