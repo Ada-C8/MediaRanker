@@ -53,15 +53,12 @@ describe WorksController do
 
         book1_updated = Work.find(book1.id)
         book1_updated.title.must_equal "#{old_title} Updated"
-
-        #false - invalid without category
-        patch work_path(book2.id), params: { work: { category: nil } }
-        book2.category.must_equal "book"
-        must_respond_with :success
       end
 
       it "re-renders the edit form if input is invalid" do
-
+        patch work_path(book2.id), params: { work: { category: nil } }
+        book2.category.must_equal "book"
+        must_respond_with :bad_request
       end
     end # Update
 

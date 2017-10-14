@@ -46,7 +46,7 @@ class WorksController < ApplicationController
       redirect_to work_path(params[:id])
     else
       flash.now[:error] = "A problem occurred: Could not update Media ID#{@work.id}"
-      render :edit
+      render :edit, status: :bad_request
     end
   end
 
