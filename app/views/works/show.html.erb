@@ -12,7 +12,7 @@
   <section>
     <%= link_to "back to media ranks", root_path, class: "button" %>
     <%= link_to "Edit", edit_work_path(@work), class: "button" %>
-    <p>Replace this p with a link to Upvote</p>
+    <%= link_to "Upvote", upvote_work_path(@work), method: :post, class: "button" %>
     <%= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Would you like to delete this work?"} %>
   </section>
 </article>

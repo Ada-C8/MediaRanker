@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+
+  
   def save_flash(model)
     saved = model.save
 
@@ -12,6 +14,6 @@ class ApplicationController < ActionController::Base
       flash[:details] = model.errors.messages
     end # if/else
 
-    return saved 
+    return saved
   end # save_flash
 end
