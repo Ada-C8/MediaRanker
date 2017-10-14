@@ -10,7 +10,7 @@ class Work < ApplicationRecord
 
   def self.popular_works(category)
     top_works = Work.sort_by_category(category)
-    return top_works.sort_by{|work| -work.votes.count}[0..9]
+    return top_works[0..9]
   end
 
   def self.sorted_all_works_together

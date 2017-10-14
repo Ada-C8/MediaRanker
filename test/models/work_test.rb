@@ -45,13 +45,28 @@ describe Work do
         b.wont_be :valid?
         b.errors.messages.must_include :description
       end
+
     end
 
     describe 'relations' do
-      it " can have a vote " do
+      it "can have a vote" do
         b = Work.new(title: title)
         b.must_respond_to :votes
       end
     end
+
+
+    describe 'sort_by_category' do
+      # need to seed album with a vote connected to it for this to work
+      let :album {Work.sort_by_category("album")}
+
+      it "sorts the categories" do
+        # album1 = Work.sort_by_category("album").first
+        album.first.must_be_kind_of Work
+
+        album.first.category.must_equal "album"
+      end
+    end
+
 
   end

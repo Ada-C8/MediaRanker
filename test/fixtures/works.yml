@@ -22,3 +22,10 @@ StarWars:
   creator: Some dude
   publication_year: 1995
   description: a great film
+
+ablumtitletest:
+    category: album
+    title: song
+    creator: band
+    publication_year: 1993
+    description: a great listen

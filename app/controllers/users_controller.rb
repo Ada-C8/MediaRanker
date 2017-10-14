@@ -28,19 +28,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    if User.create(name: params[:name])
-      user = User.find_by(name: params[:name])
-      session[:user_id] = user.id
-      flash[:status] = :success
-      flash[:message] = "Successfully created new user #{params[:name]} with ID #{user.id}"
-      redirect_to root_path
-    else
-      flash[:status] = :failure
-      flash[:message] = "Username #{params[:name]} was not created"
-      render :login_form, status: :bad_request
+    unless params {name.blank?}
+      if User.create(name: params[:name])
+        user = User.find_by(name: params[:name])
+        session[:user_id] = user.id
+        flash[:status] = :success
+        flash[:message] = "Successfully created new user #{params[:name]} with ID #{user.id}"
+        redirect_to root_path
+      else
+        flash[:status] = :failure
+        flash[:message] = "Username #{params[:name]} was not created"
+        render :login_form, status: :bad_request
+      end
     end
   end
-
   def logout
     if session[:user_id]
       session[:user_id] = nil

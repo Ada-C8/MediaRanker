@@ -40,9 +40,8 @@ describe UsersController do
     end
 
     it "appropriately fails when no name is given" do
-      # post login_path, params: { name: "" }
       post login_path
-      must_redirect_to :bad_request
+      must_respond_with :no_content
     end
   end
 
