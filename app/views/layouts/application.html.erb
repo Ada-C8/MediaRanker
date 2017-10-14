@@ -20,7 +20,7 @@
         </div>
         <div class="large-4 small-12 columns button-group">
           <% if session[:logged_in_user] %>
-            <p> <%= link_to "Logged in as #{User.find(session[logged_in_user]).name}"%> </p>
+            <p> <%= link_to "Logged in as #{User.find(session[logged_in_user]).name}", user_path%> </p>
             <%else%>
             <%= link_to "Log in", login_path %>
           <%end%>
