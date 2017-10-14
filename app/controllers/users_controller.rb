@@ -36,6 +36,13 @@ class UsersController < ApplicationController
     end # if/else
   end # login
 
+  def logout
+    session.clear
+    flash[:status] = :success
+    flash[:message] = "Successfully logged out"
+    redirect_to root_path
+  end # logout
+
 
   private
   def user_params
