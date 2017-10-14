@@ -18,12 +18,14 @@ class WorksController < ApplicationController
   def create # Add strong params
     @work = Work.new(works_params)
 
-    if @work.save!
+    if @work.save
       flash[:status] = :success
       flash[:message] = "Successfully created #{@work.category @work.id}"
       redirect_to works_path
     else
       flash[:status] = :failure
+      flash[:message] = "A problem occured: Could not create #{@work.category}"
+      flash[:details] = @work.errors.messages
       render :new, status: :bad_request
     end
   end
@@ -72,11 +74,5 @@ class WorksController < ApplicationController
 
   def works_params
     params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
-
-    # category: params[:work][:category],
-    # title: params[:work][:title],
-    # creator: params[:work][:creator],
-    # publication_year: params[:work][:publication_year],
-    # description: params[:work][:description]
   end
 end

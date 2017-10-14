@@ -12,7 +12,7 @@ class VotesController < ApplicationController
       flash[:message] = "Could not upvote"
       flash[:details] = @vote.errors.messages
 
-      render :new, status: :bad_request
+      redirect_to works_path
     end
   end
 

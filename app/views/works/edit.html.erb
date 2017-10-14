@@ -1,4 +1,4 @@
-<main>
+<main class="row">
   <h3>Edit this Album</h3>
   <section>
     <%= form_for @work do |f| %>
@@ -12,7 +12,7 @@
       <%= f.text_field :publication_year %>
       <%= f.label :description %>
       <%= f.text_field :description %>
-      <%= f.submit "Update Work" %>
+      <%= f.submit "Update Work", class: "button" %>
     <% end %>
   </section>
 </main>
