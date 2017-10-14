@@ -24,27 +24,47 @@
   </tbody>
 </table>
 
-
-
-
-
-
 <h3>Movies</h3>
-<ul>
-  <% @works.each do |work| %>
-    <% if work.category == "movie" %>
-      <li><%=link_to(work.title, work_path(work.id)) %></li>
-    <% end%>
-  <% end %>
-</ul>
 
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+    </tr>
+  </thead>
+    <% @works.each do |work| %>
+      <% if work.category == "movie" %>
+        <tbody>
+          <td><%=link_to(work.title, work_path(work.id)) %></td>
+          <td><%=work.creator%></td>
+          <td><%=work.publication_year%></td>
+        </tbody>
+      <% end%>
+    <% end %>
+</table>
 
 
 <h3>Books</h3>
-<ul>
-  <% @works.each do |work| %>
-    <% if work.category == "book" %>
-      <li><%=link_to(work.title, work_path(work.id)) %></li>
-    <% end%>
-  <% end %>
-</ul
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+    </tr>
+  </thead>
+
+
+    <% @works.each do |work| %>
+      <% if work.category == "book" %>
+      <tbody>
+        <td><%=link_to(work.title, work_path(work.id)) %></td>
+        <td><%=work.creator%></td>
+        <td><%=work.publication_year%></td>
+      <% end%>
+    <% end %>
+    </tbody>
+</table>
