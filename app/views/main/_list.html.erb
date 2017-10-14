@@ -1,0 +1,15 @@
+<% works[0..9].each do |work| %>
+  <ul>
+    <li>
+      <h4>
+        <%= link_to work.title, work_path(work.id) %>
+      </h4>
+      <h5>
+        by: <%= work.creator %>
+      </h5>
+      <p>
+        <%= work.votes.count %> votes
+      </p>
+    </li>
+  </ul>
+<% end %>

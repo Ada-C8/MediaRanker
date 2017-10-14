@@ -1,3 +1,26 @@
-<h2>Media Spotlight</h2>
+<section>
+  <h2>Media Spotlight:
+    <%= link_to @top_work.title, work_path(@top_work.id) %>
+    by <%= @top_work.creator %>
+  </h2>
+  <p>
+    Total of: <%= @top_work.votes.count %> votes
+  </p>
+</section>
 
-<%= link_to @top_work.title, work_path(@top_work.id) %>
+<section class="row">
+  <article class="small-12 large-4 columns">
+    <h3>Top Albums</h3>
+    <%= render partial: "list", locals: {works: @albums_sorted_by_votes} %>
+  </article>
+
+  <article class="small-12 large-4 columns">
+    <h3>Top Books</h3>
+    <%= render partial: "list", locals: {works: @books_sorted_by_votes} %>
+  </article>
+
+  <article class="small-12 large-4 columns">
+    <h3>Top Movies</h3>
+    <%= render partial: "list", locals: {works: @movies_sorted_by_votes} %>
+  </article>
+</section>
