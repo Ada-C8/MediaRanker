@@ -18,14 +18,14 @@ describe VotesController do
 
   it "should be able to create a new vote" do
     post votes_path params: {vote: {work: works(:greys), user: users(:west)}}
-    must_respond_with :redirect
-    must_redirect_to votes_path
+    must_respond_with :success
+    # must_redirect_to :new
   end
 
   it "should be able to destroy a vote" do
     delete vote_path(votes(:one))
     must_respond_with :redirect
-    # must_redirect_to
+    must_redirect_to work_path(works(:greys))
   end
 
 end

@@ -41,7 +41,7 @@ class WorksController < ApplicationController
     @work.update_attributes work_params
     if @work.update_attributes work_params
       redirect_to works_path
-      flash[:success] = "Updated #{@work.tile}"
+      flash[:success] = "Updated #{@work.title}"
     else
       render :edit
     end
