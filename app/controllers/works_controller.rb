@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
   def home
+    #will this be related to my votes table?can I just use the same info from @works?
   end
 
   def index
