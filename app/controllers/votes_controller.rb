@@ -3,7 +3,7 @@ class VotesController < ApplicationController
     if session[:logged_in_user]
       current_work_id = params[:id]
       user_id = session[:logged_in_user]
-      # user = User.find_by(id: user_id)
+
       vote = Vote.new(user_id: user_id, work_id: current_work_id)
       if vote.save
         flash[:status] = :success

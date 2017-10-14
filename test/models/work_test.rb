@@ -42,6 +42,8 @@ describe Work do
 
       Work.top_ten[0].must_be_instance_of Work
     end
+
+    #TODO: check that object at first index has more votes than object at second index and last index
   end
 
   describe "top_work method" do
