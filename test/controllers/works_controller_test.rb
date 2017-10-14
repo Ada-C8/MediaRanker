@@ -8,6 +8,16 @@ describe WorksController do
     end # it "will return success status" do
   end # index
 
+  describe "root" do
+    # check that the index page works
+    it "returns success status" do
+      # act
+      get root_path
+      # assert
+      must_respond_with :success
+    end
+  end # index
+
   describe "new" do
     it "will return a success status" do
       get new_work_path

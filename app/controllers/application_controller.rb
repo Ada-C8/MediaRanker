@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  
+
   def save_flash(model)
     saved = model.save
 
@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
       flash[:message] = "Successfully saved #{model.class} #{model.id}"
     else
       flash[:status] = :failure
-      flash[:message] = "Failed to save #{model.class}"
+      flash[:message] = "A problem occurred: Could not create #{model.class}"
       flash[:details] = model.errors.messages
     end # if/else
 

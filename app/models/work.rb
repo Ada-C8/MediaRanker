@@ -3,7 +3,9 @@ class Work < ApplicationRecord
   has_many :votes
 
   validates :title, presence: true
-  validates :category, presence: true, inclusion: { in: %w( album book movie )}
+  # TODO: figure out what is going on with create and this validation
+  # validates :category, presence: true
+  # validates :category, inclusion: { in: %w( album book movie )}
 
 
   def self.sort_by_vote_count
@@ -25,6 +27,9 @@ class Work < ApplicationRecord
   def self.category_sort(category)
     return Work.all.where(category: category).sort_by{|work| -work.votes.count}
   end # all_category
+
+  def category
+  end
 
 
 

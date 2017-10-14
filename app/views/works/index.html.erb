@@ -7,6 +7,6 @@
 <h4>Albums</h4>
 <%= render partial: "work_table", locals: {type: "album", model: @albums}%>
 
-<%= link_to "View top media", root_path, :html => { :class => "button" } %>
+<%= link_to "View top media", root_path, class: "button" %>
 
-<%= link_to "Add a new work", new_work_path, :html => {:class => "button"} %>
+<%= link_to "Add a new work", new_work_path, class: "button"  %>
