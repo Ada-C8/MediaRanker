@@ -15,4 +15,8 @@ module ApplicationHelper
     end
     return result
   end
+
+  def votes_for_users(user)
+    return Vote.where(user_id: user.id).count
+  end
 end

@@ -21,69 +21,161 @@
   </div>
 </header>
 
-<section>
-    <h3>
-      Media Spotlight: <%= @top_work.title %> by <%= @top_work.creator%>
-    </h3>
-    <p>
-      <%= @top_work_votes.count %> votes - <%= @top_work.description %>
-    </p>
-</section>
+
+<h3> List of works </h3>
 
 <section>
-  <h3>
-    Top Albums
-  </h3>
+  <h4>
+    Albums
+  </h4>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Votes
+        </th>
+        <th>
+          Title
+        </th>
+        <th>
+          Created By
+        </th>
+        <th>
+          Published
+        </th>
+        <th>
+          Upvote
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @albums.each do |album| %>
+      <tr>
+        <td>
+          <%= votes_for_work(album) %>
+        </td>
 
-  <ul>
-    <% top_10('album').each do |album| %>
-      <li>
-        <h4>
-            <%= link_to album.title, work_path(album) %>
-            <small> by <%= album.creator %> </small>
-        </h4>
-        <p>
-          <%= votes_for_work(album) %> votes
-        </p>
-      </li>
-    <% end %>
-  </ul>
-</section>
+        <td>
+          <%= link_to album.title, work_path(album) %>
+        </td>
 
-<section>
-  <h3> Top Movies </h3>
-    <ul>
-      <%  top_10('movie').each do |movie| %>
-        <li>
-          <h4>
-              <%= link_to movie.title, work_path(movie) %>
-              <small> by <%= movie.creator %> </small>
-          </h4>
-          <p>
-            <%= votes_for_work(movie) %> votes
-          </p>
-        </li>
+        <td>
+          <%= album.creator %>
+        </td>
+
+        <td>
+          <%= album.published %>
+        </td>
+
+        <td>
+          <%= link_to 'Upvote', upvote_work_path(album), method: :post %>
+        </td>
+      </tr>
       <% end %>
-    </ul>
+    </tbody>
+  </table>
 </section>
 
+<section>
+  <h4>
+    books
+  </h4>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Votes
+        </th>
+        <th>
+          Title
+        </th>
+        <th>
+          Created By
+        </th>
+        <th>
+          Published
+        </th>
+        <th>
+          Upvote
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+      <tr>
+        <td>
+          <%= votes_for_work(book) %>
+        </td>
+
+        <td>
+          <%= link_to book.title, work_path(book) %>
+        </td>
+
+        <td>
+          <%= book.creator %>
+        </td>
+
+        <td>
+          <%= book.published %>
+        </td>
+
+        <td>
+          <%= link_to 'Upvote', upvote_work_path(book), method: :post %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
 
 <section>
-  <h3>
-    Top Books
-  </h3>
+  <h4>
+    Movie
+  </h4>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Votes
+        </th>
+        <th>
+          Title
+        </th>
+        <th>
+          Created By
+        </th>
+        <th>
+          Published
+        </th>
+        <th>
+          Upvote
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @movies.each do |movie| %>
+      <tr>
+        <td>
+          <%= votes_for_work(movie) %>
+        </td>
 
-  <ul>
-    <%   top_10('book').each do |book| %>
-      <li>
-        <h4>
-            <%= link_to book.title, work_path(book) %>
-            <small> by <%= book.creator %> </small>
-        </h4>
-        <p>
-          <%= votes_for_work(book) %> votes
-        </p>
-      </li>
-    <% end %>
-  </ul>
+        <td>
+          <%= link_to movie.title, work_path(movie) %>
+        </td>
+
+        <td>
+          <%= movie.creator %>
+        </td>
+
+        <td>
+          <%= movie.published %>
+        </td>
+
+        <td>
+          <%= link_to 'Upvote', upvote_work_path(movie), method: :post %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </section>
