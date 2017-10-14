@@ -18,7 +18,7 @@
         <%= link_to "View top media", root_path, class: "button" %>
         <%= link_to "View all media", works_path, class: "button" %>
         <%= link_to "Add a new work", new_work_path, class: "button" %>
-        <%= link_to "View all users FIX ME", users_path, class: "button" %>
+        <%= link_to "View all users", users_path, class: "button" %>
         <div class="float-right">
           <% if session[:logged_in_as_user] %>
             <%= link_to "Logged in as #{User.find(session[:logged_in_as_user]).username}", user_path(session[:logged_in_as_user]), class: "button float-right" %>
