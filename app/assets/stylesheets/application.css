@@ -18,36 +18,6 @@
 *= require_tree .
 
 
-/* Small only */
-@media screen and (max-width: 39.9375em) {}
-
-/* Medium and up */
-@media screen and (min-width: 40em) {
-  /*.column, .columns {
-      padding-right: 0.9375rem;
-      padding-left: 0.9375rem;
-  }*/
-}
-  h2 {
-      font-size: 2.5rem;
-  }
-
-}
-
-/* Medium only */
-@media screen and (min-width: 40em) and (max-width: 63.9375em) {
-  .column, .columns {
-      padding-right: 0.9375rem;
-      padding-left: 0.9375rem;
-  }
-
-}
-
-/* Large and up */
-@media screen and (min-width: 64em) {}
-
-/* Large only */
-@media screen and (min-width: 64em) and (max-width: 74.9375em) {}
 
 /*header styling*/
 .page-header {
