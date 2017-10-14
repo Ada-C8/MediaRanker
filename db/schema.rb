@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171013165648) do
+ActiveRecord::Schema.define(version: 20171014005155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20171013165648) do
     t.date "voted_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "work_id"], name: "index_votes_on_user_id_and_work_id", unique: true
   end
 
   create_table "works", force: :cascade do |t|
