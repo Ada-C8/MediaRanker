@@ -1,6 +1,7 @@
 class Work < ApplicationRecord
 
   has_many :votes
+  has_many :votes, dependent: :destroy
 
   #validates presence of category, title, creator
   validates :category, presence: {message: "The category must be present"}

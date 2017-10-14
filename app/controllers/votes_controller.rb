@@ -17,6 +17,13 @@ class VotesController < ApplicationController
       flash[:message] = "You must be logged in to vote"
     end
 
-    redirect_to works_path
+    #TODO: not working, always redirecting to works_path
+
+    if request.referer.include?(works_path)
+      redirect_back(fallback_location: works_path)
+    else
+      redirect_back(fallback_location: work_path(current_work_id))
+    end
+
   end
 end

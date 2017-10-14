@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     find_user_by_params_id
+
   end
 
   def login_form
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
       flash[:message] = "Please enter a username"
       render :login_form
     else
-      user = User.new(name: params[:user][:name], joined: Date.today)
+      user = User.new(name: params[:user][:name])
       user.save
       session[:logged_in_user] = user.id
       flash[:status] = :success

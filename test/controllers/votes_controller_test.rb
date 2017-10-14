@@ -15,6 +15,13 @@ describe VotesController do
       must_redirect_to works_path
     end
 
+    #PROBLEM: how to test which page a user is coming from?
+      it "returns a redirect_to the works_path, if user is coming from works_path page" do
+      end
+
+      it "returns a redirect_to the work_path(work.id), if user is coming from work_path(work.id)" do
+      end
+
     #PROBLEM: Can't get this test to work. Unable to set session in controller test.
     #Tried a few things, including having class SessionsControllerTest < ActionDispatch::IntegrationTest
     #Without being able to set session, I can only test the failure case when a user is not logged in
