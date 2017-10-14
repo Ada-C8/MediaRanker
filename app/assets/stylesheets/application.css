@@ -15,7 +15,9 @@
  *= require_tree .
  *= require_self
  */
-
+* {
+  box-sizing: inherit;
+}
 
 main {
   padding-top: 2rem;
@@ -68,6 +70,19 @@ ul, ol, dl {
   line-height: 1.6;
 }
 
+row {
+   margin-right: auto;
+ }
+
+.row {
+   max-width: 75rem;
+   margin-right: auto;
+   margin-left: auto;
+ }
+
+.columns {
+  float: left;
+}
 
 .button {
   display: inline-block;
@@ -81,6 +96,10 @@ ul, ol, dl {
   line-height: 1;
   color: #fefefe;
 
+}
+
+.button:hover {
+  background-color: #00796B;
 }
 
 .float_right {
@@ -106,32 +125,35 @@ ul, ol, dl {
    border-right: white 2px solid;
  }
 
- .page-header h2 small {
+.page-header h2 small {
    color: white;
  }
 
- row {
-   margin-right: auto;
- }
 
- .row {
-   max-width: 75rem;
-   margin-right: auto;
-   margin-left: auto;
- }
 
- .status {
+.small-12 {
+  width: 100%;
+}
+
+.status {
    border-radius: 5px;
    background-color: #e6e6e6;
    padding: 20px 25px;
    margin-top: 30px;
  }
 
- .status.failure h3, .status.success h3 {
+.status.failure h3, status.success h3 {
    font-weight: normal;
    font-size: 1em;
  }
 
- .status.failure h3 {
+.status.failure h3 {
    color: #C70039;
+ }
+
+ @media print, screen and (min-width: 40em)
+
+ .columns {
+   padding-right: 0.9375rem;
+   padding-left: 0.9375rem;
  }

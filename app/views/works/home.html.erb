@@ -1,26 +1,23 @@
 <main>
-<section>
-  <h3>Media Spotlight:
-    <%= link_to(@top_work.title, work_path(@top_work.id)) %> by <%= @top_work.creator %>
-  </h3>
-  <p>
-    <%= @top_work.votes.count %> votes -
-    <%= @top_work.description %>
-  </p>
-</section>
-<section>
-  <article>
-    <h3>Top Movies</h3>
-    <%= render partial: "ulhome", locals: {works: @movies} %>
+  <section class = "row spotlight">
+    <h3>Media Spotlight:
+      <%= link_to(@top_work.title, work_path(@top_work.id)) %> by <%= @top_work.creator %>
+    </h3>
+    <p>
+      <%= @top_work.votes.count %> votes -
+      <%= @top_work.description %>
+    </p>
+  </section>
+  <section>
+    <article>
+      <h3>Top Movies</h3>
+      <%= render partial: "ulhome", locals: {works: @movies} %>
 
-    <h3>Top Books</h3>
-    <%= render partial: "ulhome", locals: {works: @books} %>
+      <h3>Top Books</h3>
+      <%= render partial: "ulhome", locals: {works: @books} %>
 
-    <h3>Top Albums</h3>
-    <%= render partial: "ulhome", locals: {works: @albums} %>
-  </article>
-</section>
-
-
-
+      <h3>Top Albums</h3>
+      <%= render partial: "ulhome", locals: {works: @albums} %>
+    </article>
+  </section>
 </main>

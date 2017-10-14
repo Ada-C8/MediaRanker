@@ -14,7 +14,7 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find( params[:id].to_i )
+    @work = Work.find_by(id: params[:id].to_i )
 
     unless @work
       render_404
