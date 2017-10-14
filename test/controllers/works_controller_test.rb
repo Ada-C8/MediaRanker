@@ -60,6 +60,11 @@ describe WorksController do
     end #edit
 
     describe "update" do
+      it "will render 404 page if id isn't found" do
+        get edit_work_path(Work.last.id + 1)
+        must_respond_with :not_found
+      end
+
       it "should update the Work if the input is valid" do
         old_title = book1.title
         patch work_path(book1.id), params: {work: {title: "#{book1.title} Updated"}}
@@ -93,5 +98,7 @@ describe WorksController do
 
       #TODO flesh out when you decide where which methods live between Controller and Model
     end
+
+    #TODO Ask if we ever test strong params
   end
 end

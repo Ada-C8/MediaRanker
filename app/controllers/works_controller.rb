@@ -1,7 +1,6 @@
 class WorksController < ApplicationController
   #TODO dry out with controller filter
   #TODO setup work model method for sorting, etc (take out of controller)
-  #TODO add statuses to renders and test them
   #TODO test index without any works (Work.destroy_all)
   def index
     books = Work.where(category: "book")
@@ -23,6 +22,7 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
+    render_404 unless @work
 
     if @work.save
       flash[:success] = "Successfully created #{@work.category} #{@work.id}!"
