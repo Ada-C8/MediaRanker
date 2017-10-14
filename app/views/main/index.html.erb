@@ -3,16 +3,15 @@
     <div>
       <h3> <%# REMEMBER YOU CAN ACCESS THE NUMBER VOTES SIMPLY BY CALLING THE NAME OF THE OTHER CLASS WORK.VOTES %>
         <% works = Work.all.sort_by { |work| -work.votes.count} %>
-        <% if !works || works %>
+        <% if !works %>
           Media Spotlight:
+        <% else %>
           <%= link_to works.first.title, work_path(works.first.id) %> by <%= works.first.creator %>
-        <% end %>
       </h3>
       <p>
-        <% if !works || works %>
           <%= works.first.votes.count %> of Votes
-        <% end %>
       </p>
+      <% end %>
     </div>
   </section>
 
