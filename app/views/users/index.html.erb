@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Users</th>
+    <th>Username</th>
     <th>Votes</th>
     <th>Joined</th>
 
@@ -10,15 +10,11 @@
   <tr>
       <%users = User.all%>
       <% users.each do |user| %>
-
-      <th>
-      Votes!
+    <th>
+      <%= link_to user.name, users_path(params[:id]), class: "link"%>
     </th>
     <th>
-      <%= link_to user.name, user_path(user.id), class: "link"%>
-    </th>
-    <th>
-      <%= Vote.all.where(user.id).length%>
+      <%=user.vote.count%>
     </th>
     <th>
       <%= user.created_at %>

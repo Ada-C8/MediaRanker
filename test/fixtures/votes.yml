@@ -1,13 +1,77 @@
 # # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 #
 # one:
-#   user_id: MyString
+#   user: MyString
 #   integer: MyString
-#   work_id: MyString
+#   work: MyString
 #   integer: MyString
 #
 # two:
-#   user_id: MyString
+#   user: MyString
 #   integer: MyString
-#   work_id: MyString
+#   work: MyString
 #   integer: MyString
+
+one:
+  user: diane
+  work: lalaland
+
+two:
+  user: diane
+  work: lalaland
+
+three:
+  user: diane
+  work: lalaland
+
+four:
+  user: diane
+  work: lalaland
+
+five:
+  user: diane
+  work: moonrise
+
+six:
+  user: diane
+  work: moonrise
+
+seven:
+  user: diane
+  work: moonrise
+
+eight:
+  user: diane
+  work: Walk
+
+nine:
+  user: diane
+  work: HP
+
+ten:
+  user: diane
+  work: HP
+
+eleven:
+  user: diane
+  work: HP
+
+twelve:
+  user: diane
+  work: HP
+
+thirteen:
+  user: diane
+  work: bedouine
+
+fourteen:
+  user: diane
+  work: bedouine
+
+fifteen:
+  user: diane
+  work: boymeets
+
+sixteen:
+  user: diane
+  work: Walk

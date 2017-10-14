@@ -19,3 +19,51 @@
 #   integer: MyString
 #   description: MyString
 #   string: MyString
+
+lalaland:
+  title: lalaland
+  category: Movie
+  pub_year: 2016
+  creator: idk
+
+boymeets:
+  title: boymeets
+  category: Movie
+  pub_year: 1992
+  creator: notsure
+
+moonrise:
+  title: moonrise
+  category: Movie
+  pub_year: 2013
+  creator: wes
+
+bedouine:
+  title: bedouine
+  category: Music
+  pub_year: 2013
+  creator: bedouine
+
+hazel:
+  title: fine
+  category: Music
+  pub_year: 2015
+  creator: hazel
+
+yowler:
+  title: yowler
+  category: Music
+  pub_year: 2010
+  creator: yowler
+
+HP:
+  title: HP
+  category: Book
+  pub_year: 1996
+  creator: JK
+
+Walk:
+  title: WalkTwoMoons
+  category: Book
+  pub_year: 1992
+  creator: SharonCreech

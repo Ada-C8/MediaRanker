@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :users
   resources :votes
 
+
+
   root 'main#index'
 
   get('works/:id/votes', to:'votes#create', as: 'work_vote')

@@ -1,3 +1,5 @@
+<h1>User Info</h1>
+<h2><%=@user.name%></h2>
 <table>
   <tr>
     <th>Media Title</th>
@@ -7,8 +9,8 @@
     <th>Voted On</th>
   </tr>
   <tr>
-    <%# vote = Vote.all.where(user.id)works = Work.all.where()%>
-      <% votes.each do |vote| %>
+    <%# votes = Vote.all.where(user.id)works = Work.all.where()%>
+      <% Vote.all.each do |vote| %>
 
     <th>
       <%= link_to Work.find_by_id(vote.work_id).name, work_path(vote.work_id), class: "link"%>

@@ -20,42 +20,92 @@ describe Work do
     end
 
 
-    # describe "description" do
-    #   it "requires description to have maximum of 500 characters"
-    #     desc = "a" * 501
-    #     b = Book.create(description: desc)
-    #
-    #     b.wont_be :valid?
-    #     b.errors.messages.must_include :description
-    #   end
-    #
-    #   it "allows descriptions <= 500 characters" do
-    #     descriptions = [
-    #       "a" * 500,
-    #       "a" * 10,
-    #       "a" * 0
-    #     ]
-    #
-    #     descriptions.each do |desc|
-    #       b = Book.new(title: "test", author: author, description: desc)
-    #       b.must_be :valid?
-    #     end
-    #   end
-    # end
-
-
-
-
   describe "relations" do
 
     it "has a collection of votes" do
-      w = Work.new
-      w.must_respond_to :votes
-      w.votes.must_be :empty
-
-      v = Vote.create!(name: "test vote")
-      w.votes  << v
-      w.votes.must_include v
+      w = Work.create!(category: "Book", title: "test work")
+      w.must_respond_to :vote
+      w.vote.must_be :empty?
+      u = User.create!(name: "di")
+      v = Vote.create!(user_id: u.id, work_id: w.id)
+      w.vote  << v
+      w.vote.must_include v
     end
   end
-end
+
+
+  describe "custom methods" do
+
+    describe "self.sorted" do
+      it "sorts all the works by vote number" do
+        works = Work.sorted
+        work_votes = works.first.vote.length + 1
+        works.each do |work|
+          work.vote.length.must_be :<=, work_votes
+          votes = work.vote
+        end
+      end
+    end
+
+    describe "self.top" do
+      it "returns the work with the most votes with no ties" do
+        works = Work.all
+        top = Work.top
+        works.each do |work|
+          work.vote.length.must_be :<=, top.vote.length
+        end
+      end
+    end
+
+    describe "self.top_ten_movies" do
+      it "returns a list of up to ten movies that have the most votes with more than 0 movies" do
+        works = Work.top_ten_movies
+        movie_votes = works.first.vote.length + 1
+        works.each do |work|
+          work.category.must_equal "Movie"
+          work.vote.length.must_be :<=, movie_votes
+        end
+        works.length.must_be :<=, 10
+      end
+
+      # it "returns a list of up to ten movies that have the most votes with 0 movies" do
+      #   Work.destroy_all
+      #   works = Work.top_ten_movies
+      #   puts ">>>>>>>>>>>>>>>WORKS: #{works}"
+      #   movie_votes = works.first.vote.length + 1
+      #   works.each do |work|
+      #     work.category.must_equal "Movie"
+      #     work.vote.length.must_be :<=, movie_votes
+      #   end
+      #   works.length.must_be :<=, 10
+      # end
+
+    end
+
+    describe "self.top_ten_books" do
+      it "returns a list of up to ten books that have the most votes with more than 0 movies" do
+        works = Work.top_ten_books
+        book_votes = works.first.vote.length + 1
+        works.each do |work|
+          work.category.must_equal "Book"
+          work.vote.length.must_be :<=, book_votes
+        end
+        works.length.must_be :<=, 10
+      end
+    end
+
+    describe "self.top_ten_music" do
+      it "returns a list of up to ten books that have the most votes with more than 0 movies" do
+        works = Work.top_ten_music
+        music_votes = works.first.vote.length + 1
+        works.each do |work|
+          work.category.must_equal "Music"
+          work.vote.length.must_be :<=, music_votes
+        end
+        works.length.must_be :<=, 10
+      end
+    end
+
+  end #end of describe custom methods
+
+end #end of describe work

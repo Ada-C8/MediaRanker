@@ -5,7 +5,7 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find(params[:id])
+    find_work_by_params_id
   end
 
 
@@ -15,39 +15,53 @@ class WorksController < ApplicationController
 
 
   def edit
-    @work = Work.find(params[:id])
+    find_work_by_params_id
   end
 
   def create
     strong_params = work_params
     @work = Work.new(strong_params)
-    @work.save
-
     if @work.save
       redirect_to works_path
     else
-      render :new
+      render :new, status: :bad_request
     end
   end
 
   def update
     strong_params = work_params
-    @work = Work.find(params[:id])
-    @work.update_attributes(strong_params)
-    @work.save
-    redirect_to works_path
+    find_work_by_params_id
+    unless @status == true
+      @work.update_attributes(strong_params)
+      if @work.save
+        redirect_to work_path(params[:id])
+        return
+      else
+        render :edit, status: :bad_request
+        return
+      end
+    end
   end
 
   def destroy
-    work = Work.find(params[:id])
-    work.destroy
-    redirect_to works_path
+    find_work_by_params_id
+    unless @status == true
+      work = Work.find(params[:id])
+      work.destroy
+      redirect_to works_path
+    end
   end
 
 private
-def work_params
-  return params.require(:work).permit(:title, :category, :creator, :pub_year)
-end
+  def work_params
+    return params.require(:work).permit(:title, :category, :creator, :pub_year, :description)
+  end
 
-
+  def find_work_by_params_id
+    @work = Work.find_by(id: params[:id])
+    unless @work
+      head :not_found
+      @status = true
+    end
+  end
 end

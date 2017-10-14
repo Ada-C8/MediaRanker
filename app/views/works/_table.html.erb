@@ -1,33 +1,37 @@
 <table>
+  <thead>
+
   <tr>
-    <th>Votes</th>
-    <th>Title</th>
-    <th>Created By</th>
-    <th>Published</th>
-    <th>Upvote</th>
+    <th width = 80> Votes</th>
+    <th >Title</th>
+    <th>Created By
+    <th width = 100>Published
+    <th width = 100>Upvote
   </tr>
+</thead>
+<tbody>
+
   <tr>
       <%works = Work.all%>
       <% works.each do |work| %>
       <% if work.category == @cat %>
-      <th>
+    <td>
       <%=work.vote.count %>
-    </th>
+    </td>
     <th>
       <%= link_to work.title, work_path(work.id), class: "link"%>
-    </th>
-    <th>
+    </td>
+    <td>
       <%= work.creator%>
-    </th>
-    <th>
+    </td>
+    <td>
       <%= work.pub_year %>
-    </th>
-    <th>
+    </td>
+    <td>
       <%= link_to "Upvote!", work_vote_path(work.id), class: "button"%>
-    </tr>
+    </td>
+  </tr>
     <%end%>
-
     <%end%>
-
-
+  </tbody>
 </table>
