@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def show
     redirect_to users_path unless @user
-
   end
 
   def new
@@ -49,4 +48,5 @@ class UsersController < ApplicationController
   def find_user
     @user = User.find_by_id(params[:id])
   end
+
 end
