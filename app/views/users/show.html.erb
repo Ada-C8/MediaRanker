@@ -1,1 +1,53 @@
-<h2>ind user details page</h2>
+<h2><%= "User Summary: #{@user.username}" %></h2>
+
+<section>
+  <%= "Joined site #{@user.created_at.strftime("%b %d, %Y")}" %>
+</section>
+
+<h3>Votes</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Media Title
+      </th>
+      <th>
+        Created By
+      </th>
+      <th>
+        Published
+      </th>
+      <th>
+        Category
+      </th>
+      <th>
+        Voted on
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <!-- work title -->
+      </td>
+      <td>
+        <!-- work creator  -->
+      </td>
+      <td>
+        <!-- work published year  -->
+      </td>
+      <td>
+        <!-- category -->
+      </td>
+      <td>
+        <!--date the work was voted on  -->
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<%= link_to "See all users", users_path, method: :get%>
+
+<%= link_to "Back to Media List", '/', method: :get %>
