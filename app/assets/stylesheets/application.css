@@ -14,7 +14,9 @@
 *= require_self
 */
 
-@import url('/stylesheets/foundation');
+*= require '/stylesheets/foundation'
+*= require_tree .
+
 
 /* Small only */
 @media screen and (max-width: 39.9375em) {}
@@ -85,6 +87,15 @@
 
 .media-spotlight-header {
     color: #424242;
+}
+
+/*flash styling*/
+
+.status {
+    border-radius: 5px;
+    background-color: #e6e6e6;
+    padding: 20px 25px;
+    margin-top: 30px;
 }
 
 /*body styling*/
