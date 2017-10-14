@@ -56,12 +56,12 @@ end
       Work.count.must_equal start_work_count + 1
     end
 
-    it "does something when the work data is bogus" do
+    it "sends bad request when the work data is bogus" do
       # Arrange
       invalid_work_data = {
         work: {
-          title: "Purple Hibiscus",
           publication_year: 2003,
+          category: "book",
           creator: "Chimamanda Ngozi Adichie"
         }
       }
@@ -69,7 +69,7 @@ end
       Work.new(invalid_work_data[:book]).wont_be :valid?
 
       start_work_count = Work.count
-      
+
       # Act
       post works_path, params: invalid_work_data
 
@@ -88,6 +88,26 @@ end
   end
 
   describe "show" do
+      it "returns success when given a valid work id" do
+        # Arrange
+        work_id = Work.first.id #pull id out of db,doesn't matter which bbok
+
+        # Act
+        get work_path(work_id)
+
+        # Assert
+        must_respond_with :success
+      end
+
+      it "returns not found when given an invalid work ID" do
+        invalid_work_id = Work.last.id + 1
+        get work_path(invalid_work_id)
+        must_respond_with :not_found
+      end
+
+     it "goes to the works details page" do
+
+      end
   end
 
   describe "destroy" do
