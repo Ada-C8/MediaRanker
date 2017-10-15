@@ -3,7 +3,15 @@
 </h1>
 
 <h2>
-  Top Movies
-  Top Books
   Top Albums
 </h2>
+<ul>
+  <% Work.top_ten("album").each do |album| %>
+    <li>
+      <%= album.title %>
+      <%= album.votes.count %>
+    </li>
+
+  <% end %>
+
+</ul>

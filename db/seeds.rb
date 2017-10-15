@@ -39,7 +39,6 @@ puts "Loading raw user data from #{USER_FILE}"
 user_failures = []
 CSV.foreach(USER_FILE, :headers => true) do |row|
   user = User.new
-
   user.name = row['name']
 
   puts "Created user: #{user.inspect}"
