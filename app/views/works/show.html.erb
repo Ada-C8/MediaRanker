@@ -1,52 +1,56 @@
 <%= render partial: 'layouts/header' %>
 
-<article>
-  <h3>
-    <%= @work.title %>
-  </h3>
+<main class ='row'>
+  <article class='media-details columns large-6 small-12'>
+    <h3>
+      <%= @work.title %>
+    </h3>
 
-  <p>
-    Created by <%= @work.creator %>
-  </p>
+    <p>
+      Created by <%= @work.creator %>
+    </p>
 
-  <p>
-    Published: <%= @work.published %>
-  </p>
+    <p>
+      Published: <%= @work.published %>
+    </p>
 
-  <p>
-    <%= @work.description %>
-  </p>
-</article>
+    <p>
+      <%= @work.description %>
+    </p>
 
-<section>
-  <h3>
-    <%= @votes.count %> Votes for this work
-  </h3>
+    <nav>
+      <%= link_to 'Back to media ranks', works_path, :class => 'button' %>
+      <%= link_to 'Edit', edit_work_path, :class => 'button' %>
+      <%= link_to 'Upvote', upvote_work_path(@work), method: :post, :class => 'button' %>
+      <%= link_to 'Delete', work_path(@work), :class => 'red_button', method: :delete, data: { confirm: "Are you sure?" } %>
+    </nav>
+  </article>
 
-  <table>
+  <article class= 'columns large-6 small-12'>
+    <h3>
+      <%= @votes.count %> Votes for this work
+    </h3>
 
-      <tr>
-        <th>User</th>
-        <th>Date</th>
-      </tr>
+    <table>
 
-    <tbody>
-      <% @votes.each do |vote| %>
-       <tr>
-         <td><%= link_to find_user(vote.user_id), user_path(vote.user_id)%> </td>
-         <td><%= vote.date %></td>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
         </tr>
-      <% end %>
 
-    </tbody>
-  </table>
-</section>
+      <tbody>
+        <% @votes.each do |vote| %>
+         <tr>
+           <td><%= link_to find_user(vote.user_id), user_path(vote.user_id)%> </td>
+           <td><%= vote.date %></td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </section>
 
 
 
-<nav>
-  <%= link_to 'Back to media ranks', works_path %>
-  <%= link_to 'Edit', edit_work_path %>
-  <%= link_to 'Upvote', upvote_work_path(@work), method: :post %>
-  <%= link_to 'Delete', work_path(@work), method: :delete, data: { confirm: "Are you sure?" } %>
-</nav>
+
+</main>
