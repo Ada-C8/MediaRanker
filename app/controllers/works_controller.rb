@@ -75,6 +75,14 @@ class WorksController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: params[:id])
+    @work_votes = Vote.where(work_id: params[:id])
+    @users = []
+
+    @work_votes.each do |vote|
+      @users << User.find(vote.id)
+    end
+    
     unless @work
       render_404
     end

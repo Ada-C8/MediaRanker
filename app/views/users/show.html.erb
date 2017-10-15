@@ -7,7 +7,7 @@
   Joined site <%=@user.created_at.strftime("%b %d, %Y")%>
 </p>
 <h3>
-  Votes
+  <%=@user.total_votes_for_user%> Votes
 </h3>
 <table>
       <thead>
@@ -21,13 +21,14 @@
       </thead>
 
       <tbody>
-        <% @user_votes.each do |t| %>
+        <!-- Find all votes for a given user AND then for each vote get the details for the associated work -->
+        <% @works.each_with_index do |t, index| %>
           <tr>
-            <td><%=link_to(t.work_id, work_path(t.work_id)) %></td>
-            <td> <%=  %></td>
-            <td> <%=  %></td>
-            <td> <%=  %></td>
-            <td> <%= t.created_at.strftime("%b %d, %Y") %></td>
+            <td><%=link_to(t.title, work_path(t.id)) %></td>
+            <td> <%=t.creator %></td>
+            <td> <%=t.pub_year%></td>
+            <td> <%=t.category  %></td>
+            <td> <%=@user_votes[index].created_at.strftime("%b %d, %Y") %></td>
           </tr>
 
         <% end %>

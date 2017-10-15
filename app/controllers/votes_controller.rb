@@ -5,6 +5,16 @@ class VotesController < ApplicationController
   end
 
   def create
+    @vote = Vote.new
+    @vote.user_id = session[:name]
+    @vote.work_id = params[:id]
+    if @vote.save
+      flash[:success] = "Vote added successfully"
+      redirect_to work_path(params[:id])
+    else
+      flash.now[:error] = "Vote not recorded successfully"
+      redirect_to works_path
+    end
   end
 
   def index

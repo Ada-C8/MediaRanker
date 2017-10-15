@@ -4,6 +4,8 @@ class Vote < ApplicationRecord
   validates :user_id, presence: true, uniqueness: { scope: :work_id, message: "duplicate vote record; a vote record must be unique (a user cannot vote for the same work twice)" }
   validates :work_id, presence: true
 
+
+
 # In addition to the validation, should I also add this migration?:
 #   class AddUniqueIndexToVotes < ActiveRecord::Migration
 #   def change

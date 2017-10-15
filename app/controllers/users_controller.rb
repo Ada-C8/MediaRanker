@@ -6,7 +6,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @user_votes = Vote.where(user_id: params[:id])
-    @works = Work.all
+    @works = []
+
+    @user_votes.each do |vote|
+      @works << Work.find(vote.id)
+    end
+
   end
 
 end
