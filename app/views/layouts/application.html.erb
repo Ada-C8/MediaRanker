@@ -19,7 +19,7 @@
           <% if session[:user_id].nil? %>
             <%= link_to "Log in", login_path %>
           <% else %>
-            <%= link_to "Logged in as #{User.find(session[:user_id]).username}", root_path %>
+            <%= link_to "Logged in as #{User.find(session[:user_id]).username}", user_path(session[:user_id]) %>
           <% end %>
           <%= link_to "Logout", logout_path, method: :post %>
         </div>
