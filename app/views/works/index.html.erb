@@ -8,17 +8,21 @@
 <table>
   <thead>
     <tr>
+      <th>Votes</th>
       <th>Title</th>
       <th>Created By</th>
       <th>Published</th>
+      <th>Upvote</th>
     </tr>
   </thead>
     <% @works.each do |work| %>
       <% if work.category == "album" %>
       <tbody>
+        <td><%=work.votes.count %></td>
         <td><%=link_to(work.title, work_path(work.id)) %></td>
         <td><%=work.creator%></td>
         <td><%=work.publication_year%></td>
+        <td> <%=link_to("Up Vote", work_votes_path(work), method: :post)%> </td>
       <% end%>
     <% end %>
   </tbody>
@@ -29,14 +33,17 @@
 <table>
   <thead>
     <tr>
+      <th>Votes</th>
       <th>Title</th>
       <th>Created By</th>
       <th>Published</th>
+      <th>Upvote</th>
     </tr>
   </thead>
     <% @works.each do |work| %>
       <% if work.category == "movie" %>
         <tbody>
+          <td><%=work.votes.count %></td>
           <td><%=link_to(work.title, work_path(work.id)) %></td>
           <td><%=work.creator%></td>
           <td><%=work.publication_year%></td>
@@ -51,16 +58,17 @@
 <table>
   <thead>
     <tr>
+      <th>Votes</th>
       <th>Title</th>
       <th>Created By</th>
       <th>Published</th>
+      <th>Upvote</th>
     </tr>
   </thead>
-
-
     <% @works.each do |work| %>
       <% if work.category == "book" %>
       <tbody>
+        <td><%=work.votes.count %></td>
         <td><%=link_to(work.title, work_path(work.id)) %></td>
         <td><%=work.creator%></td>
         <td><%=work.publication_year%></td>
