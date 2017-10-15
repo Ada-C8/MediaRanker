@@ -24,7 +24,7 @@ class WorksController < ApplicationController
   def create
     @work= Work.new(work_params)
     if save_and_flash(@work)
-      redirect_to works_path
+      redirect_to work_path(@work)
     else
       render :new, status: :bad_request
     end
@@ -43,7 +43,7 @@ class WorksController < ApplicationController
      if @work.destroy
       flash.now[:status] = :success
       flash.now[:message] = "Successfully destroyed #{@work.category} #{@work.id}"
-      redirect_to works_path
+      redirect_to root_path
     else
       flash.now[:status] = :failure
       flash.now[:message] = "Problem encountered when attempting to destroy #{@work.category} #{@work.id}"

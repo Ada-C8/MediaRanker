@@ -33,7 +33,7 @@
   <%if user %>
     <tr>
       <td><%=link_to user.name, user_path(user)%></td>
-      <td><%= vote.created_at.strftime("%b, %d %Y") %></td>
+      <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
     </tr>
     <%end%>
   <%end %>
