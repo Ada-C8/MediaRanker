@@ -5,5 +5,5 @@
 # below each fixture, per the syntax in the comments below
 #
 test_vote:
-  user_id: 99
-  work_id: 999
+  user_id: 2
+  work_id: 6
