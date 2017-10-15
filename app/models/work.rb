@@ -1,6 +1,6 @@
 class Work < ApplicationRecord
   belongs_to :user, optional: true
-  has_many :votes
+  has_many :votes, dependent: :destroy
   validates :publication_year, numericality: { only_integer: true, allow_blank: true }
   validates :title, presence: true
   validates :creator, presence: true

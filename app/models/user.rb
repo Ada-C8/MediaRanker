@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :votes
-  has_many :works
+  has_many :votes, dependent: :destroy
+  has_many :works, dependent: :destroy
   validates :username, uniqueness: true
 end
