@@ -49,6 +49,10 @@ describe WorksController do
     must_respond_with :success
   end
 
+  it "should respond with a 404 page if book not found" do
+    get work_path(9080948)
+    must_respond_with :missing
+  end
 
 
 
