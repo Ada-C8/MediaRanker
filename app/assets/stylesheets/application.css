@@ -52,6 +52,15 @@ h1, h2, h3, h4, h5 {
   font-weight: bold;
   /*color: #26A69A;*/
 }
+
+.status {
+  background-color: #e6e6e6;
+  border-radius: 5px;
+  padding: 20px 25px;
+  margin-top: 30px;
+  font-weight: normal;
+  font-size: 1em;
+}
 /*
 .width {
   width: 10%;

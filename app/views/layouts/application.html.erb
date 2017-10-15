@@ -46,7 +46,7 @@
 
     <%# Flash log in message %>
     <% if session[:logged_in_session] %>
-      <section class="row">
+      <section class="row status">
         <h3>
           <%= flash[:message] %>
           <% if flash[:details] %>
@@ -69,7 +69,7 @@
 
     <%# Flash log out message %>
     <% if session[:logged_in_session] == nil %>
-      <section class="row">
+      <section class="row status">
         <h3>
           <%= flash[:message] %>
           <% if flash[:details] %>
