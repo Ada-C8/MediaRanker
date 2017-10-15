@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-
+/*
  /*TABLE STYLING*/
 .table th{
    background-color: #f5f5f5;
@@ -25,3 +25,12 @@ tbody:nth-child(even) {
 tbody:nth-child(odd) {
   background-color: #ebebeb;
 }
+
+/*-------------HEADER-------------*/
+.page-header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 10px;
+    padding: 25px 20px 10px 20px;
+  }*/

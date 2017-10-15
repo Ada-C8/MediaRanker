@@ -9,33 +9,28 @@
   </head>
 
   <body>
-    <header>
+    <header class="page-header">
       <h1>Media Ranker Ranking the Best of Everything</h1>
       <nav>
-        <%= link_to("View Top Media", home_index_path) %>
+        <div>
+          <%= link_to("View Top Media", home_index_path) %>
+          <%= link_to("View All Media", works_path) %>
+          <%= link_to "Add New Work", new_work_path %>
+          <%= link_to("View All Users",users_path) %>
+        </div>
 
-        <%= link_to("View All Media", works_path) %>
-        <%= link_to "Add New Work", new_work_path %>
-
-        <%= link_to("View All Users",users_path) %>
-        <%# link_to("Log In", login_path) %>
-
-        <!-- TODO -->
-        <%# link_to("Log out",login_path, method: :delete) %>
-
-
-      <% if session[:user_id]%>
-        <% @user = User.find(session[:user_id]) %>
-          <%= "Logged in as #{@user.username}" %>
-          <%= link_to "Log out", login_path, method: :delete%>
-      <%else%>
-          <%= link_to "Log in", login_path %>
-      <%end%>
-
-
-
+        <div>
+          <%if session[:user_id]%>
+            <%@user = User.find(session[:user_id]) %>
+              <%="Logged in as #{@user.username}" %>
+              <%=link_to "Log out", login_path, method: :delete%>
+          <%else%>
+              <%= link_to "Log in", login_path %>
+          <%end%>
+        </div>
       </nav>
     </header>
+
     <section class="flash">
       <% flash.each do |name, message| %>
         <div class="<%= name %>"><%= message %></div>

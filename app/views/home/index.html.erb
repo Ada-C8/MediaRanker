@@ -28,7 +28,7 @@
 <h3>Top books</h3>
 <ul>
   <% @books.each do |book| %>
-    <li><%=link_to(book.title, work_path(book.id)) %> by: <%= book.creator %></li>
+    <li><%= link_to(book.title, work_path(book.id)) %> by: <%= book.creator %></li>
     <li><%= book.votes.count %></li>
   <%end%>
 </ul>
