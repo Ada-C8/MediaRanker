@@ -5,6 +5,7 @@
 
 <ul>
   <li><h3><%= @work.title %></h3></li>
+
   <li>Category: <%= @work.category %></li>
   <li>Creator: <%= @work.creator %></li>
   <li>Publication Year: <%= @work.publication_year %></li>
@@ -19,16 +20,17 @@
     <%# button_to("Delete work", work_path, method: :delete) %>
   <li><%= link_to("Back To Media Ranks", home_index_path, alt: "View Top Media")%></li>
     <%# button_to("View Top Media", home_index_path, method: :get) %>
-
-
-<!-- NOT SURE IF THIS IS WORKING -->
   <li><%= link_to("Up Vote", work_votes_path(@work.id), method: :post) %></li>
     <%# button_to("View Top Media", home_index_path, method: :get) %>
-
-
 </ul>
 
-<%= params %>
+<ul>
+  <% @work.votes.each do |vote| %>
+      <li><%= vote.user_id %></li>
+      <li><%= vote.created_at %></li>
+  <% end %>
+</ul>
+<%# params %>
 
 
 

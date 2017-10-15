@@ -33,6 +33,11 @@ puts "Added #{Work.count} work records"
 puts "#{work_failures.length} works failed to save"
 
 
+# will always have one user with one vote in seeding
+user = User.create(username: "marisa")
+user.vote(Work.first)
+
+
 # Since we set the primary key (the ID) manually on each of the
 # tables, we've got to tell postgres to reload the latest ID
 # values. Otherwise when we create a new record it will try

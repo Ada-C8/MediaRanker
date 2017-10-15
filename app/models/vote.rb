@@ -15,6 +15,7 @@ class Vote < ApplicationRecord
     # returns a hash that has work_id as a key and associated count as the value.
     work_hash = Vote.group(:work_id).count
 
+
    # using max_by to find the key value pair to find the max value
     media_max = work_hash.max_by{ |k,v| v}
 
