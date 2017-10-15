@@ -3,9 +3,9 @@ require "test_helper"
 describe User do
   let(:user) { User.new }
 
-  # it "must be valid" do
-  #   value(user).must_be :valid?
-  # end
+  it "must be valid" do
+    value(user).must_be :valid?
+  end
 
   describe "vote method" do
     it "Should create a vote" do
