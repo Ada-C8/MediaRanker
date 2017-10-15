@@ -23,23 +23,18 @@ class WorksController < ApplicationController
   end
 
   def edit
-    # find_work_by_params_id
   end
 
   def show
-    # find_work_by_params_id
   end
 
   def update
-    # if find_work_by_params_id
-
-      @work.update_attributes(work_params)
-      if save_and_flash(@work)
-        redirect_to(work_path(@work))
-      else
-        render :edit, status: :bad_request
-      end
-    # end
+    @work.update_attributes(work_params)
+    if save_and_flash(@work)
+      redirect_to(work_path(@work))
+    else
+      render :edit, status: :bad_request
+    end
   end
 
   def destroy
