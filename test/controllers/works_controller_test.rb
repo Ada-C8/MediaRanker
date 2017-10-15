@@ -103,10 +103,6 @@ describe WorksController do
 
       must_respond_with :success
     end
-
-    it "displays a max of ten works per category" do
-
-    end 
   end
 
 end
