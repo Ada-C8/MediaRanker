@@ -32,6 +32,12 @@ describe UsersController do
     must_respond_with :success
   end
 
+  it "should get update" do
+    patch user_path(users(:west).id), params: {user: {name: "Update User"}}
+    must_respond_with :redirect
+    must_redirect_to user_path
+  end
+
   it "should get a login form" do
     get login_path
     must_respond_with :success
@@ -49,12 +55,11 @@ describe UsersController do
     session[:logged_in_user][:name].must_equal "New User!"
     must_respond_with :redirect
     must_redirect_to users_path
-
   end
 
   it "should log a user out when prompted to do so" do
     post logout_path
+    session[:logged_in_user].must_equal nil
     must_respond_with :redirect
   end
-
 end
