@@ -96,14 +96,10 @@ describe Vote do
       u_id = users(:one).id
       w_id = works(:album).id
 
-      vote = Vote.new(user_id: u_id, work_id: w_id)
+      vote = Vote.create(user_id: u_id, work_id: w_id)
 
-      # ActiveRecord::RecordInvalid: Validation failed: User has already been taken
-
-      # puts "This is the user id: #{user.id}"
-      # puts "This is the work id: #{work.id}"
-      puts "This is the #{vote}"
-      puts "This is the errors #{vote.errors.messages}"
+      vote.wont_be :valid?
+      vote.errors.messages.must_include :user_id
     end
   end
 end # Des

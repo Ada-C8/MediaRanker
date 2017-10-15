@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+
   def index
     @works = Work.all
   end
@@ -50,7 +51,7 @@ class WorksController < ApplicationController
     @work.publication_year = work_updates[:publication_year]
     @work.description = work_updates[:description]
 
-    if @work.save!
+    if @work.save
       redirect_to work_path(@work)
     else
       render :edit, status: :bad_request

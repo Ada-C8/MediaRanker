@@ -1,6 +1,7 @@
 require "test_helper"
 
 describe UsersController do
+  
   describe "#index" do
     it "returns success when all Users are valid" do
       get users_path

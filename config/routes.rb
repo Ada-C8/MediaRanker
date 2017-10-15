@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get '/', to: 'main#index', as: 'root'
 
-  resources :users
+  resources :users, only: [:index, :show]
 
   resources :votes, only: :create
 
@@ -23,6 +23,5 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
 
   get '/logout', to: 'sessions#destroy', as: 'logout'
-  # post '/logout', to: 'sessions#destroy'
 
 end

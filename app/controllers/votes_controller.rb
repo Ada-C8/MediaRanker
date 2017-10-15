@@ -8,12 +8,12 @@ class VotesController < ApplicationController
 
       redirect_to work_path(@vote.work_id)
     else
-      # If the @vote was not saved because the user already has voted on the same work or the user is not signed in 
+      # If the @vote was not saved because the user already has voted on the same work or the user is not signed in
       flash[:status] = :failure
       flash[:message] = "Could not upvote"
       flash[:details] = @vote.errors.messages
 
-      redirect_to works_path
+      redirect_to work_path(@vote.work_id)
     end
   end
 

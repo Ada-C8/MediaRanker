@@ -40,28 +40,25 @@ describe VotesController do
 
     it "returns as a redirect to the works_path if the vote could not be created" do
       before_count = Vote.count
-      # User an existing work
-      work = Work.first
-
-      work.must_be :valid?
 
       # Use an existing user
-      user_id = User.first.id
-      User.first.must_be :valid?
+      user_id = users(:one).id
+
+      # User an existing work
+      work_id = works(:album).id
 
       vote_data = {
         vote: {
         user_id: user_id,
-        work_id: work.id
+        work_id: work_id
         }
       }
 
       post votes_path, params: vote_data
 
       must_respond_with :redirect
-      must_redirect_to works_path
+      must_redirect_to work_path(vote_data[:vote][:work_id])
       Vote.count.must_equal before_count
-      @vote.errors.messages.must_include vote
     end
 
   end # Des
