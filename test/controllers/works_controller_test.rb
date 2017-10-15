@@ -15,14 +15,14 @@ describe WorksController do
   end
 
   describe "new" do
-    it "works with " do
-    #interesting cases:
-    #valid data vs invalid data
+    it "returns a success status" do
+      get new_work_path
+      must_respond_with :success
     end
   end
 
   describe "create" do
-    it "redirects to works_path when the work data is valid" do
+    it "redirects to works_path when the work data is valid and adds a work" do
       work_data = {
         work: {
           title: "test work",
@@ -40,7 +40,7 @@ describe WorksController do
       Work.count.must_equal work_count + 1
     end
 
-    it "redirects to works_path when the work data is not valid" do
+    it "redirects to works_path when the work data is not valid and doesn't add a work" do
       work_data = {
         work: {
           title: nil,

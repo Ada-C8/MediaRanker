@@ -21,14 +21,9 @@ class WorksController < ApplicationController
   def create
     strong_params = work_params
     @work = Work.new(strong_params)
-    if @work.save
-      flash[:status] = :success #successs here is an english word
-      flash[:message] = "Successfully created #{@work.category}"
+    if save_and_flash(@work)
       redirect_to works_path
     else
-      flash.now[:status] = :failure
-      flash.now[:message] = "Failed to create #{@work.category}"
-      flash.now[:details] = @work.errors.messages
       render :new, status: :bad_request
     end
   end
@@ -38,15 +33,10 @@ class WorksController < ApplicationController
     find_work_by_params_id
     unless @status == true
       @work.update_attributes(strong_params)
-      if @work.save
-        flash[:status] = :success #successs here is an english word
-        flash[:message] = "Successfully edited #{@work.category}"
+      if save_and_flash(@work)
         redirect_to work_path(params[:id])
         return
       else
-        flash.now[:status] = :failure
-        flash.now[:message] = "Failed to create #{@work.category}"
-        flash.now[:details] = @work.errors.messages
         render :edit, status: :bad_request
         return
       end

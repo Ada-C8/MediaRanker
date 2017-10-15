@@ -1,12 +1,7 @@
 
 <main class = "row">
   <section class = "row spotlight">
-    <% if @top == nil %>
-      <h3>
-        <span class = "media-spotlight-header"> <strong>Media Spotlight:</strong> </span>
-        by
-      </h3>
-    <% else %>
+
       <div>
         <h3>
           <span class = "media-spotlight-header"> <strong>Media Spotlight:</strong> </span>
@@ -15,7 +10,7 @@
         </h3>
         <p> <%= @top.vote.count %> votes <%=@top.description %> </p>
       </div>
-    <%end %>
+
 </section>
 
 <hr class = "root-hr">
@@ -23,7 +18,7 @@
 
 <section class = "top-ten columns large-4 small-12">
   <h3>Top Movies</h3>
-  <% unless @top == nil %>
+  <%# unless @top == nil %>
   <ul>
     <% @top_ten_movies.each do |movie|  %>
     <li>
@@ -33,12 +28,12 @@
     </li>
     <% end %>
   </ul>
-  <% end %>
+  <%# end %>
 </section>
 
 <section class = "top-ten columns large-4 small-12">
   <h3>Top Albums</h3>
-  <% unless @top == nil %>
+  <%# unless @top == nil %>
   <ul>
     <% @top_ten_music.each do |music|  %>
     <li>
@@ -48,12 +43,12 @@
     </li>
     <% end %>
   </ul>
-  <% end %>
+  <%# end %>
 </section>
 
 <section class = "top-ten columns large-4 small-12">
   <h3>Top Books</h3>
-  <% if Work.all != nil %>
+  <%# if Work.all != nil %>
   <ul>
     <% @top_ten_books.each do |book|  %>
     <li>
@@ -63,7 +58,7 @@
     </li>
     <% end %>
   </ul>
-  <% end %>
+  <%# end %>
 
 </section>
 </main>

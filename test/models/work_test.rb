@@ -68,17 +68,17 @@ describe Work do
         works.length.must_be :<=, 10
       end
 
-      # it "returns a list of up to ten movies that have the most votes with 0 movies" do
-      #   Work.destroy_all
-      #   works = Work.top_ten_movies
-      #   puts ">>>>>>>>>>>>>>>WORKS: #{works}"
-      #   movie_votes = works.first.vote.length + 1
-      #   works.each do |work|
-      #     work.category.must_equal "Movie"
-      #     work.vote.length.must_be :<=, movie_votes
-      #   end
-      #   works.length.must_be :<=, 10
-      # end
+      it "returns a list of up to ten movies that have the most votes with 0 movies" do
+        Work.destroy_all
+        works = Work.top_ten_movies
+        puts ">>>>>>>>>>>>>>>WORKS: #{works}"
+        movie_votes = works.first.vote.length + 1
+        works.each do |work|
+          work.category.must_equal "Movie"
+          work.vote.length.must_be :<=, movie_votes
+        end
+        works.length.must_be :<=, 10
+      end
 
     end
 

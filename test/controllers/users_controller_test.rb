@@ -15,10 +15,8 @@ describe UsersController do
   end
 
   describe "show" do
-    #YAML DATA MESSING THIS TEST UP!
     it "returns a success status when passed a valid id" do
       user_id = User.first.id
-      puts ">>>>>>>>>>>>>>>USER ID: #{user_id}"
       get user_path(user_id)
       must_respond_with :success
     end
