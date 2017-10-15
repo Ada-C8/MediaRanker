@@ -1,11 +1,12 @@
 class WorksController < ApplicationController
+  before_action :find_work_by_params_id, only:[:show, :update, :destroy]
 
   def index
     @works = Work.all
   end
 
   def show
-    find_work_by_params_id
+    # find_work_by_params_id
   end
 
 
@@ -30,7 +31,7 @@ class WorksController < ApplicationController
 
   def update
     strong_params = work_params
-    find_work_by_params_id
+    # find_work_by_params_id
     unless @status == true
       @work.update_attributes(strong_params)
       if save_and_flash(@work)
@@ -44,7 +45,7 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    find_work_by_params_id
+    # find_work_by_params_id
     unless @status == true
       work = Work.find(params[:id])
       votes = Vote.where(work_id: work.id)
