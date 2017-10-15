@@ -53,6 +53,22 @@ describe UsersController do
       must_redirect_to root_path
     end
 
+    it "creates a new user if any other name given" do
+      login_data = {
+        user: {
+        name: "new person"
+        }
+      }
+      User.new(login_data[:user]).must_be :valid?
+      start_count = User.all.count
+
+      post login_path, params: login_data
+      must_respond_with :redirect
+      must_redirect_to root_path
+      User.all.count.must_equal start_count + 1
+
+    end
+
     it "sends error if no name given" do
       login_data = {
         user: {
