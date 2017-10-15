@@ -34,7 +34,11 @@
       <% if flash[:message] %>
       <section class="row flash">
         <div>
-          <p class="error">
+          <% if flash[:status] == :failure %>
+            <p class="error">
+          <% else %>
+            <p>
+          <% end %>
             <%= flash[:message] %>
           </p>
           <% if flash[:details] %>
