@@ -14,10 +14,7 @@
 *= require_self
 */
 
-*= require ./foundation.css;
-*= require_tree .;
-
-
+@import url('foundation');
 
 /*header styling*/
 
@@ -27,7 +24,7 @@
   margin-left: auto;
 }
 
-*, *::before, *::after {
+*::before, *::after {
   box-sizing: inherit;
 }
 
@@ -127,8 +124,6 @@ h1, h2, h3, h4, h5 {
   font-weight: bold;
 }
 
-
-
 div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
   margin: 0;
   padding: 0;
@@ -141,8 +136,6 @@ a, h3 {
 body small {
     color: slategrey;
 }
-
-
 
 body {
   margin: 0;
@@ -222,16 +215,3 @@ ul {
     border-bottom: 2px solid;
     border-bottom-color: #B2DFDB;
 }
-
-/*home page styling */
-
-/*.column, .columns {
-    width: 100%;
-    float: left;
-    padding-right: 0.625rem;
-    padding-left: 0.625rem;
-}*/
-/*.flash .success {
-background-color: lightgreen;
-display: block;
-}*/

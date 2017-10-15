@@ -5,8 +5,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    unless @user
+      render_404
+    end
   end
 
-  
+
 
 end
