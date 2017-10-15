@@ -9,8 +9,8 @@
 }
 
 body, h1, h2, h3, h4 {
-  font-family: "Gudea", sans-serif;
-  font-weight: bold;
+  /*font-family: "Gudea", sans-serif;*/
+  /*font-weight: bold;*/
 }
 
 span {
@@ -69,9 +69,9 @@ body small {
 }
 
 p {
-font-weight: normal;
 color: #0a0a0a;
 margin-bottom: 1rem;
 font-size: inherit;
 line-height: 1.6;
+font-weight: lighter;
 }

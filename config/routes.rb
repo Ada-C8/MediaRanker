@@ -7,8 +7,7 @@ post '/works/:id/upvote', to: 'votes#upvote', as: 'work_upvote'
 
 
 resources :users
-
-# resources :votes
+#only show and index 
 
 get '/login', to: 'sessions#login_form', as: 'login'
 post '/login', to: 'sessions#login'

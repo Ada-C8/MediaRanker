@@ -16,9 +16,9 @@
     <% movie_sort.each do |work| %>
       <li>
         <%= link_to "#{work.title}", work_path(work.id) %><small> by <%= "#{work.creator}" %></small>
-        <div>
+        <p>
           <%= "#{work.votes.count} votes" %>
-        </div>
+        </p>
       </li>
       <% end %>
   <% else %>
@@ -26,9 +26,9 @@
         <li>
           <% work = movie_sort.shift %>
           <%= link_to "#{work.title}", work_path(work.id) %> <small>by <%= "#{work.creator}" %></small>
-          <div>
+          <p>
             <%= "#{work.votes.count} votes" %>
-          </div>
+          </p>
         </li>
     <% end %>
   <% end %>
@@ -44,9 +44,9 @@
     <% book_sort.each do |work| %>
     <li>
       <%= link_to "#{work.title}", work_path(work.id) %> <small>by <%= "#{work.creator}" %></small>
-      <div>
+      <p>
         <%= "#{work.votes.count} votes" %>
-      </div>
+      </p>
     </li>
       <% end %>
   <% else %>
@@ -54,9 +54,9 @@
         <li>
           <% work = book_sort.shift %>
           <%= link_to "#{work.title}", work_path(work.id) %><small> by <%= "#{work.creator}" %></small>
-          <div>
+          <p>
             <%= "#{work.votes.count} votes" %>
-          </div>
+          </p>
         </li>
     <% end %>
   <% end %>
@@ -72,19 +72,19 @@
     <% album_sort.each do |work| %>
     <li>
       <%= link_to "#{work.title}", work_path(work.id) %><small>by <%= "#{work.creator}" %></small>
-      <div>
+      <p>
         <%= "#{work.votes.count} votes" %>
-      </div>
+      </p>
     </li>
     <% end %>
     <% else %>
     <% 10.times do |item| %>
     <li>
       <% work = album_sort.shift %>
-      <%= link_to "#{work.title}", work_path(work.id) %><small> by <%= "#{work.creator}" %></small> 
-      <div>
+      <%= link_to "#{work.title}", work_path(work.id) %><small> by <%= "#{work.creator}" %></small>
+      <p>
         <%= "#{work.votes.count} votes" %>
-      </div>
+      </p>
     </li>
         <%end%>
   <% end %>
