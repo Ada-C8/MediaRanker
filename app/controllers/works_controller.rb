@@ -76,22 +76,11 @@ class WorksController < ApplicationController
 
   def upvote
     user_id = session[:logged_in_user]
-    user = User.find_by(id: user_id)
     @work = Work.find(params[:id])
     if !(session[:logged_in_user])
       flash[:status] = :failure
       flash[:message] = "You must be logged in to do that!"
       redirect_to root_path
-      # elsif session[:logged_in_user] && (user.voted?(@work) == false)
-      #   vote = Vote.new(work_id: @work.id, user_id: user_id, date: Date.today)
-      #   vote.save
-      #   flash[:status] = :success
-      #   flash[:message] = "Successfuly upvoted #{@work.title}!"
-      #   redirect_to root_path
-      # elsif user.voted?(@work)
-      #   flash[:status] = :failure
-      #   flash[:message] = "Could not upvote. User has already voted for #{@work.title}"
-      #   redirect_to root_path
     elsif session[:logged_in_user]
       vote = Vote.new(work_id: @work.id, user_id: user_id, date: Date.today)
       if vote.save
@@ -103,10 +92,6 @@ class WorksController < ApplicationController
         flash[:message] = "Could not upvote. User has already voted for #{@work.title}"
         flash[:details] = vote.errors.messages
         redirect_to root_path
-        # else
-        #   vote = Vote.new(work_id: @work.id, user_id: user_id, date: Date.today)
-        #   vote.save
-        #   flash.now[:details] = vote.errors.messages
       end
     end
 

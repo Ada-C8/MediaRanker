@@ -22,6 +22,7 @@ describe Vote do
       v1.save
       works(:book8).votes.count.must_equal 1
       v2 = Vote.new(date: Date.today, user: users(:user8), work: works(:book8))
+      v2.wont_be :valid?
       v2.save
       v2.errors.messages.values.must_include ["has already voted for this work."]
 
