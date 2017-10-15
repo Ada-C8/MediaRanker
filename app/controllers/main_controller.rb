@@ -1,9 +1,9 @@
 class MainController < ApplicationController
 
   def index
-    @books = MediaInstance.ten_books
-    @movies = MediaInstance.ten_movie
-    @music = MediaInstance.ten_music
+    @books = MediaInstance.ten_by_type("book")
+    @movies = MediaInstance.ten_by_type("movie")
+    @music = MediaInstance.ten_by_type("music")
     @feature = MediaInstance.all.sample
   end
 

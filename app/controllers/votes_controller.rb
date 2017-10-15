@@ -1,23 +1,12 @@
 class VotesController < ApplicationController
 
-  # def new
-  #   @vote = Vote.new
-  #   if params[:media_instance_id, :user_id]
-  #     @vote.media_instance_id = params[:media_instance_id]
-  #     @vote.user_id = params[:user_id]
-  #   else
-  #     render media_instances_path
-  #   end
-  # end
-
+  
   def create
-    binding.pry
-    #stubbed_params = {user_id: 1, media_instance_id: 1}
     @vote = Vote.new(vote_params)
     if @vote.save
       flash[:status] = :success
       flash[:message] = "Successfully created vote #{@vote.id}"
-      redirect_to media_instances_path(@vote.media_instance_id)
+      redirect_to root_path
     else
       # Tell the user what went wrong
       flash.now[:status] = :failure

@@ -32,6 +32,10 @@
       Total Votes:
       <%= @media_instance.votes.length %>
       </li>
-      <li><%= link_to "Upvote", media_instance_user_votes_path %></li>
+      <li>
+        <%= form_for [@media_instance, User.find(session[:user_id]), Vote.new] do |f| %>
+          <%= f.submit "Upvote", class:'success button' %>
+        <% end %>
+      </li>
     </ul>
   </div>

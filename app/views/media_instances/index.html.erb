@@ -12,7 +12,7 @@
         <%= instance.creator %>
       </li>
       <li>
-        <%= form_for [instance, User.find(1), Vote.new] do |f| %>
+        <%= form_for [instance, User.find(session[:user_id]), Vote.new] do |f| %>
           <%= f.submit "Upvote", class:'success button' %>
         <% end %>
         <!-- so I'm in the index page.  instance has the variables that I need as well as the logged in user.  How do I grab these two variables and put them in the  vote.create route -->

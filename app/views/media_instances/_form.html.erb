@@ -4,7 +4,13 @@
 <%= form_for @media_instance,  :html => {:class => 'form'}  do |f| %>
 <div>
     <%= f.label :media_type %>
-  <%= f.collection_select( :media_type, @media_instances, :id, :media_type) %>
+  <%#= f.collection_select( :media_type, @media_instances, :id, :media_type) %>
+  <select name="media_instance[media_type]" id="media_instance_media_type">
+    <option value="book">book</option>
+    <option value="movie">movie</option>
+    <option value="music">music</option>
+  </select>
+
 </div>
 <div>
     <%= f.label :title %>

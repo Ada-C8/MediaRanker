@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:status] = :success
       flash[:message] = "Successfully created user #{@user.id}"
+      session[:user_id] = @user.id
       redirect_to root_path
     else
       # Tell the user what went wrong
@@ -68,6 +69,11 @@ class UsersController < ApplicationController
 
       head :not_found
     end
+  end
+
+  def logout
+  session[:user_id] = nil
+  redirect_to root_path
   end
 
   private
