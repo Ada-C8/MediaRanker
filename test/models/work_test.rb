@@ -35,4 +35,12 @@ describe Work do
 
   end
 
+  describe "self.top_ten method" do
+    it "returns a max of ten works per category" do
+      ((Work.all).top_ten("movie").count).must_be :<=, 10
+      ((Work.all).top_ten("album").count).must_be :<=, 10
+      ((Work.all).top_ten("book").count).must_be :<=, 10 
+    end
+  end
+
 end

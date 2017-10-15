@@ -3,51 +3,66 @@
     <div>
       <h3>
         <span class="media-spotlight-header">Media Spotlight: </span>
-        <%= "eventual link_to to work's show page"%> by <%= "top work's creator"%>
+        <%spotlight = @works.top_work %>
+        <%= link_to "#{spotlight.title}", work_path(spotlight.id)%> by <%= "#{spotlight.creator}"%>
       </h3>
       <p>
-        <%= "Work.votes"%>
+        <%= "#{spotlight.votes.count}"%> votes
       </p>
     </div>
+
+    <!-- <%top_albums = (((@works.where(category: "album")).sort{ |x,y| x.votes.count <=> y.votes.count }).reverse).take(10)%> -->
+
+
+
 
   </section>
 
   <hr class="root-hr">
 
   <section class="top-ten columns large-4 small-12">
+    <% top_movies = @works.top_ten("movie")%>
     <h3>Top Movies</h3>
+    <% top_movies.each do |movie| %>
     <ul>
       <li>
-        <h4> <small> by </small></h4>
+        <h4> <%=link_to "#{movie.title}", work_path(movie.id)%><small> by <%=movie.creator%></small></h4>
       </li>
       <p>
-        num votes
+        <%=movie.votes.count%> votes
       </p>
     </ul>
+    <% end %>
   </section>
 
   <section class="top-ten columns large-4 small-12">
+    <% top_books = @works.top_ten("book")%>
     <h3>Top Books</h3>
+    <% top_books.each do |book| %>
     <ul>
       <li>
-        <h4> <small> by </small></h4>
+        <h4> <%=link_to "#{book.title}", work_path(book.id)%><small> by <%=book.creator%></small></h4>
       </li>
       <p>
-        num votes
+        <%=book.votes.count%> votes
       </p>
     </ul>
+    <% end %>
   </section>
 
   <section class="top-ten columns large-4 small-12">
+    <% top_albums = @works.top_ten("album")%>
     <h3>Top Albums</h3>
+    <% top_albums.each do |album| %>
     <ul>
       <li>
-        <h4> <small> by </small></h4>
+        <h4> <%=link_to "#{album.title}", work_path(album.id)%><small> by <%=album.creator%></small></h4>
       </li>
       <p>
-        num votes
+        <%=album.votes.count%> votes
       </p>
     </ul>
+    <% end %>
   </section>
 
 </main>

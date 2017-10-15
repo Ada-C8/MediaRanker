@@ -166,6 +166,11 @@
    .failure h3 {
      color: #C70039;
     }
+
+    .top-ten ul {
+    list-style-type: none;
+    margin-left: 0px;
+    }
   /*@media print, screen and (min-width: 40em) h3 {
     font-size: 1.9375rem;
   }*/

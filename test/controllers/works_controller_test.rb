@@ -9,12 +9,6 @@ describe WorksController do
 
   end
 
-  it " pulls up the main top ten page" do
-    get root_path
-
-    must_respond_with :success
-  end
-
   it "should be able to visit a work's detail page" do
     #Arrange
 
@@ -101,6 +95,18 @@ describe WorksController do
       must_respond_with :redirect
       must_redirect_to root_path
     end
+  end
+
+  describe "The main, top works page" do
+    it " pulls up the main top ten page" do
+      get root_path
+
+      must_respond_with :success
+    end
+
+    it "displays a max of ten works per category" do
+
+    end 
   end
 
 end

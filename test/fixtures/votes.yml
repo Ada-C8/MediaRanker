@@ -14,4 +14,5 @@ vote_two:
   created_at: 2017-10-13
   user: users(:user_two)
   work: works(:movie_one)
+
 # column: value
