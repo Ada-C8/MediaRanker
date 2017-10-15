@@ -1,22 +1,19 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update]
   def index
     @works = Work.all
   end
 
   def show
-    @works = Work.find_by(id: params[:id].to_i)
   end
 
   def edit
-    @work = Work.find_by(id: params[:id].to_i)
-
     unless @work
       redirect_to works_path
     end
   end
 
   def update
-    @work = Work.find_by(id: params[:id].to_i)
     redirect_to works_path unless @work
 
     if @work.update_attributes work_params
@@ -48,13 +45,13 @@ class WorksController < ApplicationController
 
   private
 
+  def find_work
+    @work = Work.find_by(id: params[:id].to_i)
+  end
+
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 
-  def upvote
-    @work = Work.find(params[:id])
-    @work.votes.create
-    redirect_to works_path
-  end
+
 end

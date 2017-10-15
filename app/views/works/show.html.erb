@@ -1,11 +1,13 @@
-<h2><%= @works[:title] %></h2>
-<p>Created by: <%= @works[:creator] %></p>
-<p>Published: <%= @works[:publication_year] %></p>
-<p>Description: <%= @works[:description] %></p>
+<%= params %>
+
+<h2><%= @work.title %></h2>
+<p>Created by: <%= @work.creator %></p>
+<p>Published: <%= @work.publication_year %></p>
+<p>Description: <%= @work.description %></p>
 
 
 <ul>
   <li><%= link_to "Back to media ranks", root_path %></li>
   <li><%= link_to "Edit", edit_work_path %></li>
-  <li><%= link_to "Delete", work_path(@works.id), method: :delete, data: { confirm: "Are you sure you want to delete #{@works.title}?" } %></li>
+  <li><%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure you want to delete #{@work.title}?" } %></li>
 </ul>
