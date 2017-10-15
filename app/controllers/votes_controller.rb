@@ -5,7 +5,7 @@ class VotesController < ApplicationController
 
   def create
     if session[:logged_in_user] == nil
-      redirect_back(fallback_location: work_path(params[:id]))
+      redirect_back(fallback_location: works_path)
       flash[:error] = "You must be logged in to vote!"
     else
 
@@ -19,7 +19,7 @@ class VotesController < ApplicationController
         redirect_back(fallback_location: work_path(params[:id]))
       else
         flash[:failure] = "You cannot upvote twice!"
-        redirect_back(fallback_location: work_path(params[:id]))
+        redirect_back(fallback_location: works_path)
       end
     end
 

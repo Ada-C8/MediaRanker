@@ -3,9 +3,7 @@
 <%= form_tag do %>
   <%= label :user, :name, "username" %>
   <%= text_field :user, :name %>
-  <%= submit_tag "Login" %>
+  <%= submit_tag "Login", class:"button" %>
 <% end %>
-
-<%=params%>
 
 #form_for is a rails generator that allows us to create a new instance from the model
