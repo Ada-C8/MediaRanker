@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   resources :votes
 
 
-  get 'login', to: 'users#login_form', as: 'login'
-  post 'login', to: 'users#login'
-  get 'logout', to: 'users#logout', as: 'logout'
+  get 'login', to: 'sessions#login_form', as: 'login'
+  post 'login', to: 'sessions#login'
+  get 'logout', to: 'sessions#logout', as: 'logout'
 
 
 
