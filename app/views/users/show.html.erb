@@ -1,6 +1,6 @@
 <h3>User summary: <%= @user.name %></h3>
 <p>
-  Joined site <%= @user.created_at %>
+  Joined site <%= @user.created_date %>
 </p>
 
 <h4>Votes</h4>
@@ -22,7 +22,7 @@
         <td><%= vote.work.creator %></td>
         <td><%= vote.work.publication_year %></td>
         <td><%= vote.work.category %></td>
-        <td><%= vote.created_at %><%# work.vote_by(@user).created_at %></td>
+        <td><%= vote.created_date %><%# work.vote_by(@user).created_at %></td>
         <!-- Sandy doesn't like this table -->
       </tr>
     <% end %>

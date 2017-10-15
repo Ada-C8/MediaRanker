@@ -11,7 +11,7 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if save_and_flash(@work)
-      redirect_to works_path
+      redirect_to work_path(@work)
     else
       render :new, status: :bad_request
     end
@@ -30,7 +30,7 @@ class WorksController < ApplicationController
 
   def update
     @work.update_attributes(work_params)
-    if save_and_flash(@work)
+    if save_and_flash(@work, edit:"updated")
       redirect_to(work_path(@work))
     else
       render :edit, status: :bad_request
@@ -38,30 +38,8 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    current_user = nil
-    if session[:logged_in_user]
-      current_user = User.find_by(id: session[:logged_in_user])
-    #   current_user = User.find(session[:logged_in_user])
-
-    # else
-    #   flash[:status] = :failure
-    #   flash[:message] = "You must be logged in to do that."
-    #   redirect_to works_path
-    #   return
-    end
-
-    # if find_work_by_params_id
-      # if current_user =! @book.author
-      #   flash[:status] = :failure
-      #   flash[:message] = "Only author can"
-      #   redirect_to works_path
-      #   return
-      # end
-      @work.destroy
-      flash[:status] = :success
-      flash[:message] = "Successfully deleted."
-      redirect_to works_path
-    # end
+    save_and_flash(@work, edit: "destroyed", save: @work.destroy)
+    redirect_to root_path
   end
 
 private
@@ -72,6 +50,5 @@ private
   def find_work_by_params_id
     @work = Work.find_by(id: params[:id])
     head :not_found unless @work
-    # return @work
   end
 end

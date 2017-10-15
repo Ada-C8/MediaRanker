@@ -37,24 +37,24 @@
 
       </nav>
     </header>
-    <main class="row">
-      <section class="<%= 'status' if flash[:message] %> <%= flash[:status] %>">
-        <h3>
-          <%= flash[:message] %>
-        </h3>
+    <section class="<%= 'status' if flash[:message] %> <%= flash[:status] %>">
+      <h3>
+        <%= flash[:message] %>
+      </h3>
 
-        <% if flash[:details] %>
-          <ul>
-            <% flash[:details].each do |field, problems| %>
-              <% problems.each do |problem| %>
-                <li>
-                  <strong><%= field %>:</strong> <%= problem %>
-                </li>
-              <% end %>
-            <% end %>
-          </ul>
+      <% if flash[:details] %>
+      <ul>
+        <% flash[:details].each do |field, problems| %>
+        <% problems.each do |problem| %>
+        <li>
+          <strong><%= field %>:</strong> <%= problem %>
+        </li>
         <% end %>
-      </section>
+        <% end %>
+      </ul>
+      <% end %>
+    </section>
+    <main class="row">
 
       <%= yield %>
     </main>

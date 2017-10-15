@@ -6,7 +6,7 @@
   </p>
 
   <p>
-    Votes: <%= @work.votes.count %>
+    Published: <%= @work.publication_year %>
   </p>
 
   <p>
@@ -36,8 +36,8 @@
     <tbody>
       <% @work.votes.each do |vote| %>
       <tr>
-        <td><%= vote.user.name %></td>
-        <td><%= vote.created_at %></td>
+        <td><%= link_to vote.user.name, user_path(vote.user) %></td>
+        <td><%= vote.created_date %></td>
       </tr>
       <% end %>
     </tbody>
