@@ -23,9 +23,14 @@ class WorksController < ApplicationController
     if find_work_by_params_id
       @work.update_attributes(work_params)
       if @work.save
+        flash[:status] = :success
+        flash[:message] = "Successfully edited: #{@work.title}"
         redirect_to work_path(@work.id)
         return
       else
+        flash.now[:status] = :failure
+        flash.now[:message] = "Failed to edit work"
+        flash.now[:details] = @work.errors.messages
         render :edit, status: :bad_request
       end
     end
@@ -53,6 +58,8 @@ class WorksController < ApplicationController
   def destroy
     if find_work_by_params_id
       @work.destroy
+      flash[:status] = :success
+      flash[:message] = "Successfully deleted: #{@work.title}"
       redirect_to works_path
     end
   end

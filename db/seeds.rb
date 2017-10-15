@@ -37,8 +37,8 @@ user_failures = []
 CSV.foreach(USER_FILE, :headers => true) do |row|
   user = User.new
   user.name = row['name']
-  puts "Created user: #{user.inspect}"
   successful = user.save
+  puts "Created user: #{user.inspect}"
   if !successful
     user_failures << user
   end
@@ -57,8 +57,8 @@ CSV.foreach(VOTES_FILE, :headers => true) do |row|
   vote.user_id = row['user_id']
   vote.work_id = row['work_id']
 
-  puts "Created vote: #{vote.inspect}"
   successful = vote.save
+  puts "Created vote: #{vote.inspect}"
   if !successful
     vote_failures << vote
   end
