@@ -9,7 +9,7 @@
 <h3> Top Albums </h3>
   <ol>
     <% Work.top_ten_albums.each do |work| %>
-    <li> <%= link_to "#{work.title}", works_path(work.id)%>
+    <li> <%= link_to "#{work.title}", work_path(work.id)%>
       <%= "by #{work.creator} category: #{work.category} Votes: #{work.votes.count}" %> </li>
     <% end %>
   </ol>
@@ -17,7 +17,7 @@
 <h3> Top Books </h3>
   <ol>
     <% Work.top_ten_books.each do |work| %>
-    <li> <%= link_to "#{work.title}", works_path(work.id)%>
+    <li> <%= link_to "#{work.title}", work_path(work.id)%>
       <%= "by #{work.creator} category: #{work.category} Votes: #{work.votes.count}" %> </li>
     <% end %>
   </ol>
@@ -25,7 +25,7 @@
 <h3> Top Movies </h3>
   <ol>
     <% Work.top_ten_movies.each do |work| %>
-    <li> <%= link_to "#{work.title}", works_path(work.id)%>
+    <li> <%= link_to "#{work.title}", work_path(work.id)%>
       <%= "by #{work.creator} category: #{work.category} Votes: #{work.votes.count}" %> </li>
     <% end %>
   </ol>
