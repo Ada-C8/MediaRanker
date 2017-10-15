@@ -1,2 +1,36 @@
-<h1>Works#show</h1>
+<h3><%=@work.title %></h3>
+<p>
+  Created by: <%=@work.creator %>
+</p>
+<p>
+  Published <%=@work.publication_year %>
+</p>
+<p>
+  <%=@work.description %>
+</p>
+<%=link_to 'Back to media ranks', root_path %>
+<%= link_to 'Edit', edit_work_path(@work.id) %>
+<%= link_to 'Upvote', edit_work_path(@work.id), method: :patch%>
+<%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "are u sure"} %>
+<h3><%= @work.votes.length %> Votes for this <%=@work.category.capitalize%></h3>
+<table>
+  <tr>
+    <th>
+      User
+    </th>
+    <th>
+      Date
+    </th>
+  </tr>
+  <% @work.votes.each do |vote| %>
+  <tr>
+    <td>
+      <%= vote.user.name %>
+    </td>
+    <td>
+      <%= "#{vote.created_at}"[0..10] %>
+    </td>
+  </tr>
+  <% end %>
+</table>
 <p>Find me in app/views/works/show.html.erb</p>
