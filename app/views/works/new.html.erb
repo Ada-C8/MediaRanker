@@ -2,21 +2,4 @@
 <!-- Future me: locals:{ model: @work} means we are passing in a local variable into the partial form. As for each component of the code, I am unsure -->
 <%= render partial: 'layouts/error_messages', locals:{ model: @work} %>
 
-<%= form_for @work do |f| %>
-  <%= f.label :category %>
-  <%= f.text_field :category %>
-
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label :creator %>
-  <%= f.text_field :creator %>
-
-  <%= f.label :publication_year %>
-  <%= f.text_field :publication_year %>
-
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-
-  <%= f.submit "Create Media" %>
-<% end %>
+<%= render partial: 'form', locals: { button_text: "Create Media" } %>

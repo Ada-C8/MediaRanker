@@ -7,10 +7,8 @@
       <% model.errors.messages.each do |field, problems| %>
         <% problems.each do |problem| %>
           <ul>
-            <strong>
-              <%= field %>:
-            </strong>
-            <%= problem %>
+            <strong><%= field.capitalize %>:</strong> <%= problem %>
+
           </ul>
         <% end %>
       <% end %>

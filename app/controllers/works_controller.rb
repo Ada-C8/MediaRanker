@@ -27,7 +27,14 @@ class WorksController < ApplicationController
   def edit ; end
 
   def update
-
+    @work.update_attributes(work_params)
+    if save_and_flash(@work)
+      redirect_to work_path(@work)
+      return
+    else
+      render :edit, status: :bad_request
+      return
+    end
   end
 
   def destroy
