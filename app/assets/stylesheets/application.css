@@ -14,15 +14,11 @@
  *= require_self
  */
 
-/* Using inspect indicates the font should be Gudea, but my screen is showing sans-serif so I will use that.  If I were to use Gudea, I would put in the following code:
-
- @import url('https://fonts.googleapis.com/css?family=Gudea');
-body {
-font-family: "Gudea", sans-serif;}
+/* This attempt at changing the font is not working and I do not know why.
  */
-
+ @import url('https://fonts.googleapis.com/css?family=Gudea');
 body, h1, h2, h3, h4, h5 {
-    font-family: sans-serif;
+    font-family: "Gudea", sans-serif;
 
 
   }
