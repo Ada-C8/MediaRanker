@@ -61,9 +61,13 @@
   body {
     font-family: "Gudea", sans-serif;
   }
-/*@media print, screen and (min-width: 40em) h3 {
-  font-size: 1.9375rem;
-}*/
+
+  main {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: block;
+  }
+
   a, h3 {
     color: #26A69A;
   }
@@ -84,13 +88,7 @@
    background-color: #26A69A;
  }
 
- .page-header {
-     max-width: 100%;
-     background-color: #B2DFDB;
-     border-bottom: 1px solid #EEEEEE;
-     margin-bottom: 10px;
-     padding: 25px 20px 10px 20px;
-   }
+
 
   .page-header h2 a {
     color: #FF5722;
@@ -103,6 +101,52 @@
     color: white;
   }
 
+  .media-spotlight-header {
+      color: #424242;
+  }
 
+  .spotlight div {
+    padding: 0 2rem 2rem 2rem;
+  }
+
+  hr {
+    clear: both;
+    max-width: 75rem;
+    height: 0;
+    margin: 1.25rem auto;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #cacaca;
+    border-left: 0;
+    overflow: visible;
+    box-sizing: content-box;
+  }
+
+  .row {
+    max-width: 75rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .root-hr {
+    margin: 0px auto 75px auto;
+    color: #EEEEEE;
+  }
+
+  .page-header {
+      max-width: 100%;
+      background-color: #B2DFDB;
+      border-bottom: 1px solid #EEEEEE;
+      margin-bottom: 10px;
+      padding: 25px 20px 10px 20px;
+  }
+
+  .top-ten h3 {
+    border-bottom: 2px solid;
+    border-bottom-color: #B2DFDB;
+  }
+  /*@media print, screen and (min-width: 40em) h3 {
+    font-size: 1.9375rem;
+  }*/
 
 /*  background-color: #26A69A;*/
