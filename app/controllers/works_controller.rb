@@ -1,4 +1,8 @@
 class WorksController < ApplicationController
+  def main
+    @works = Work.all
+  end
+
   def index
     @albums = Work.albums
     @books = Work.books
