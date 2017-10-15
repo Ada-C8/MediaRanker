@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20171013185000) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "vote_count", default: 0
+    t.integer "votes_count", default: 0
   end
 
   add_foreign_key "votes", "users"

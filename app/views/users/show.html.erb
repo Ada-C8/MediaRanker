@@ -1,6 +1,6 @@
 <article class="user-details">
-  <h3>User Summary: <%= link_to @result_user.name, user_path(@result_user.id) %></h3>
-  <p>Joined site <%= @result_user.created_at.to_date.strftime("%B %d, %Y") %></p>
+  <h3>User Summary: <%= link_to @user.name, user_path(@user.id) %></h3>
+  <p>Joined site <%= @user.created_at.to_date.strftime("%B %d, %Y") %></p>
 </article>
 <article class="votes-media">
   <h4>Votes</h4>

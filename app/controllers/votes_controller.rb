@@ -7,10 +7,11 @@ class VotesController < ApplicationController
     else
       @vote = Vote.new
       @vote.work_id = params[:work_id]
-      @vote.user_id = @user.id
+      @vote.user_id = @current_user.id
       if @vote.save
         flash[:success] = "Upvoted!"
         redirect_back(fallback_location: root_path)
+        return
       else
         flash[:failure] = "You may only vote once"
       end
