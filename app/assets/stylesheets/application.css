@@ -17,6 +17,8 @@
 
  .row {
    max-width: 85rem;
+   margin-right: auto;
+   margin-left: auto;
  }
 
  body, h1, h2, h3, h4, h5 {
@@ -179,6 +181,21 @@ td {
 td a {
   color: #26A69A;
 
+}
+
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+    max-width:100%;
+white-space:nowrap;
+}
+
+
+
+table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 0;
 }
 
 label {
