@@ -29,7 +29,7 @@
             <%= work.publication_year %>
           </td>
           <td data-label="Upvote">
-            UPVOTE
+            <%= link_to "Upvote", upvote_path(work.id), method: :post %>
           </td>
         </tr>
         <% end %>
@@ -62,7 +62,7 @@
             <%= work.publication_year %>
           </td>
           <td data-label="Upvote">
-            UPVOTE
+            <%= link_to "Upvote", upvote_path(work.id), method: :post %>
           </td>
         </tr>
         <% end %>
@@ -95,7 +95,7 @@
             <%= work.publication_year %>
           </td>
           <td data-label="Upvote">
-            UPVOTE
+            <%= link_to "Upvote", upvote_path(work.id), method: :post %>
           </td>
         </tr>
         <% end %>
