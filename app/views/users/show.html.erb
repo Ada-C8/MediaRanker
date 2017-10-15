@@ -19,17 +19,17 @@
       <th>Voted On</th>
     </tr>
   </thead>
-  <tbody>
     <% @user.votes.each do |vote| %>
-    <tr>
-      <td><%= vote.work.title %></td>
-      <td><%= vote.work.creator %></td>
-      <td><%= vote.work.publication_year %></td>
-      <td><%= vote.work.category %></td>
-      <td><%= vote.created_at %></td>
-    </tr>
+    <tbody>
+      <tr>
+        <td><%= vote.work.title %></td>
+        <td><%= vote.work.creator %></td>
+        <td><%= vote.work.publication_year %></td>
+        <td><%= vote.work.category %></td>
+        <td><%= vote.created_at %></td>
+      </tr>
     <% end %>
-  </tbody>
+    </tbody>
 </table>
 
 

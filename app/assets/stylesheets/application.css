@@ -15,6 +15,20 @@
  */
 
  /*TABLE STYLING*/
- .table th{
-   background-color: lightgray;
+.table th{
+   background-color: #f5f5f5;
  }
+
+tbody:nth-child(even) {
+   background-color: white;
+ }
+tbody:nth-child(odd) {
+  background-color: #ebebeb;
+}
+
+/*tr:nth-child(even) {
+   background-color: white;
+ }
+tr:nth-child(odd) {
+  background-color: #ebebeb;
+}*/

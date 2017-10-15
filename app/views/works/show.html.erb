@@ -20,8 +20,8 @@
       <th>Date</th>
     </tr>
   </thead>
+  <% @work.votes.each do |vote| %>
   <tbody>
-    <% @work.votes.each do |vote| %>
     <tr>
       <td><%= vote.user.username %></td>
       <td><%= vote.created_at %></td>
