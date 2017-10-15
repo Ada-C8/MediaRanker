@@ -1,9 +1,9 @@
-<h1>this is the main index page</h1>
 
-<p>
 <% spotlight = Work.all.sort_by {|work| - work.votes.count}.first %>
-<%= "#{spotlight.title} by #{spotlight.creator} with #{spotlight.votes.count} votes" %>
-
+<h2>Media Spotlight: <%= link_to spotlight.title, work_path(spotlight.id) %> by <%= "#{spotlight.creator}"%></h2>
+<p>
+<%= "#{spotlight.votes.count} votes" %>
+</p>
 </p>
 
 
