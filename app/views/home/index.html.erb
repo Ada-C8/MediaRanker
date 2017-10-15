@@ -1,1 +1,5 @@
-"hola"
+
+<h3> Most voted </h3>
+<% most = @works.sort_all.first %>
+
+<%= most.title %>

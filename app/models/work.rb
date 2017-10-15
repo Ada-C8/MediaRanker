@@ -4,4 +4,8 @@ class Work < ApplicationRecord
   validates :title, presence: true
   validates :category, presence: true, inclusion: { in: %w(book album movie)}
 
+
+  def self.sort_all
+    Work.all.sort_by{ |work| -work.votes.count }
+  end
 end
