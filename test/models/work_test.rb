@@ -137,6 +137,13 @@ describe Work do
 
       Work.works_by_type_hash.must_equal works_hash
     end
+
+    it "must return a hash with values as empty arrays if no works" do
+      Work.destroy_all
+      expected_hash = { "books" => [], "movies" => [], "albums" => [] }
+
+      Work.works_by_type_hash.must_equal expected_hash
+    end
   end
 
   describe "#spotlight" do
