@@ -8,9 +8,19 @@ class WorksController < ApplicationController
   end
 
   def edit
+    find_work
   end
 
   def update
+    find_work
+    redirect_to works_path unless @work
+    if @work.update_attributes work_params
+      redirect_to work_path(@work.id)
+      flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
+    else
+      flash.now[:error] = "Media was not updated successfully"
+      render :edit
+    end
   end
 
   def new
@@ -48,4 +58,8 @@ end
 
 def work_params
   return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+end
+
+def find_work
+  @work = Work.find_by(id: params[:id])
 end

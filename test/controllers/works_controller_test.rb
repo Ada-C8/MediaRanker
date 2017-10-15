@@ -29,7 +29,13 @@ describe WorksController do
     patch work_path(works(:bonito).id), params: {work: {title: "updated title"}}
     updated_work = Work.find( works(:bonito).id)
     updated_work.title.must_equal "updated title"
-    must_redirect_to books_path
+    must_redirect_to work_path(works(:bonito).id)
+  end
+
+  it "should render edit page if not successful" do
+    # patch work_path(works(:bonito).id), params: {work: {id: 9000}}
+    # get :edit
+    # # must_respond_with :error
 
   end
 
