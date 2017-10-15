@@ -19,6 +19,7 @@ class Work < ApplicationRecord
     return top_ten
   end
 
+  #QUESTION: What's better design? To have one generic method that you can use for all categories(but that then takes an argument that other classes will need to know about), or to have three separate methods for each category, which isn't very DRY?
   # def self.work_sorted_by_votes(work_category)
   #   sorted_works = sort_by_most_votes
   #   work_sorted_by_votes = sorted_works.find_all {|work| work.category == work_category}
