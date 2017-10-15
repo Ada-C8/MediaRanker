@@ -13,7 +13,7 @@ class VotesController < ApplicationController
       redirect_to work_path(params[:id])
     else
       flash.now[:error] = "Vote not recorded successfully"
-      redirect_to works_path
+      redirect_to works_path, alert: "You're stuck here!"
     end
   end
 

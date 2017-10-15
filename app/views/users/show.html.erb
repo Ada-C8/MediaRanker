@@ -22,16 +22,16 @@
 
       <tbody>
         <!-- Find all votes for a given user AND then for each vote get the details for the associated work -->
-        <% @works.each_with_index do |t, index| %>
-          <tr>
-            <td><%=link_to(t.title, work_path(t.id)) %></td>
-            <td> <%=t.creator %></td>
-            <td> <%=t.pub_year%></td>
-            <td> <%=t.category  %></td>
-            <td> <%=@user_votes[index].created_at.strftime("%b %d, %Y") %></td>
-          </tr>
-
-        <% end %>
+        <% @user.votes.each do |vote| %>
+        <tr>
+          <td><%= link_to vote.work.title, work_path(vote.work_id) %></td>
+          <td><%= vote.work.creator %></td>
+          <td><%= vote.work.pub_year %></td>
+          <td><%= vote.work.category %></td>
+          <td><%= vote.created_at.to_date.strftime("%B %d, %Y") %></td>
+        </tr>
+      <% end %>
+]
 
       </tbody>
     </table>

@@ -10,6 +10,11 @@
 
   <body>
     <header>
+      <div>Params<%=params%></div>
+      <div>Params.inspect<%=params.inspect%></div>
+      <!-- <div>session.inspect<%=session.inspect%></div> -->
+      <div>Params[session]<%=%></div>
+      <div>Session[user_id]<%=session[:user_id]%></div>
       <strong><h2><%= link_to("Media Ranker", home_path, alt:'homepage')%></h2></strong>
       <nav>
         <ul>
@@ -26,8 +31,20 @@
             <%= link_to("View All Users", users_path) %>
           </li>
         </ul>
+        <ul>
+          <li>
+            <%= link_to("Login", login_form_path) %>
+          </li>
+          <li>
+            Logged in as <%=session[:user_id]%>
+          </li>
+          <li>
+            Log Out
+          </li>
+        </ul>
       </nav>
     </header>
+
     <section class="flash">
       <% flash.each do |name, message| %>
         <div class="<%= name %>"><%= message %></div>

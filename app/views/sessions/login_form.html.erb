@@ -1,7 +1,15 @@
 <h1>Login Form</h1>
+<%=params%>
+
 
 <%= form_tag do%>
   <%= label_tag(:name, "Username")%>
   <%= text_field_tag(:name)%>
   <%= submit_tag("Log in", class:"button")%>
+<% end %>
+
+<%= form_for(:session, url: login_path) do |f| %>
+  <%= f.label "Username" %>
+  <%= f.text_field :name%>
+  <%= f.submit "Log in"%>
 <% end %>
