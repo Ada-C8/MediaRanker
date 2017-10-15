@@ -6,6 +6,16 @@ class Vote < ApplicationRecord
   validates :work, presence: true
 
   def create
-    Vote.create(user: (something), work: (some work))
+    user = User.find_by(id: session[:logged_in_as_user])
+
+    vote = Vote.new(user: user, work: params[:work])
+
+    if vote.save
+      flash[:success] = "Successfully upvoted!"
+      redirect_back(fallback_location: root_path)
+    # else
+    #   flash.now[:error] = "You have already voted for this work"
+    #   redirect_back(fallback_location: root_path)
+    end
   end
 end
