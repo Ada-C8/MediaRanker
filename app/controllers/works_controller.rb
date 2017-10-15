@@ -6,6 +6,9 @@ class WorksController < ApplicationController
 
   def show
     find_work
+    if !@work
+      render_404
+    end
   end
 
   def edit
@@ -63,4 +66,8 @@ end
 
 def find_work
   @work = Work.find_by(id: params[:id])
+end
+
+def render_404
+  render file: "/public/404.html", status: 404
 end

@@ -54,6 +54,13 @@ describe WorksController do
     must_respond_with :missing
   end
 
+  it "should be able to successfully delete a work" do
+    proc {
+      (delete work_path(works(:bonito).id))
+    }.must_change 'Work.count', -1
+    must_redirect_to root_path
+  end
+
 
 
 
