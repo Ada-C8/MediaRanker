@@ -9,6 +9,22 @@
   </head>
 
   <body>
-    <%= yield %>
+    <main>
+      <section class="flash <%= flash[:status] %>">
+        <p><%= flash[:message] %></p>
+        <ul>
+          <% if flash[:details] %>
+            <% flash[:details].each do |field, problems| %>
+              <% problems.each do |problem| %>
+                <li> <strong><%= field.capitalize %> </strong> <%= problem %></li>
+                <% end %>
+              <% end %>
+            <% end %>
+        </ul>
+      </section>
+
+      <%= yield %>
+    </main>
+
   </body>
 </html>

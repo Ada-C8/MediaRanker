@@ -12,6 +12,6 @@ class Work < ApplicationRecord
 
   validates :creator, presence: true
 
-  validates :publication_year, presence: true, numericality: { only_integer: true, less_than: DateTime.now.year }, length: { is: 4 }
+  validates :publication_year, presence: true, numericality: { only_integer: true, less_than: (DateTime.now.year + 1) }, length: { is: 4 }
 
 end

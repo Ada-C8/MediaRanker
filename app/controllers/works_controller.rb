@@ -19,9 +19,14 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
+      flash[:status] = :success
+      flash[:message] = "#{@work.category.capitalize} added successfully"
       redirect_to work_path(@work.id)
     else
-      render :new
+      flash[:status] = :failure
+      flash[:message] = "#{@work.category.capitalize} failed to be added"
+      flash[:details] = @work.errors.messages
+      render :new, status: :bad_request
     end
   end
 

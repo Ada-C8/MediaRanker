@@ -1,11 +1,12 @@
 <h1>Add a new work</h1>
 
-<% if @work.errors.any? %>
+<!-- <% if @work.errors.any? %>
+<p><%= flash[:messages] %></p>
   <ul class="errors">
     <% @work.errors.each do |column, message| %>
     <li> <strong><%= column.capitalize %> </strong> <%= message %></li>
     <% end %>
   </ul>
-<% end %>
+<% end %> -->
 
 <%= render partial: "form", locals: { submit_name: "Create Work" }%>

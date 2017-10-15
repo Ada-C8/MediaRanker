@@ -10,15 +10,17 @@ class VotesController < ApplicationController
   end
 
   def new
-    @vote = Vote.new(work_id: params[:pass_id])
+    @vote = Vote.new(work_id: params[:pass_work_id])
   end
 
   def create
-    @vote = Vote.new(work_id: params[:vote][:work_id])
+    @vote = Vote.new(work_id: params[:pass_work_id])
+    @vote.user_id = 1
     if @vote.save
-      redirect_to work_path(@work.id)
+      redirect_to works_path
     else
-      render :new
+      redirect_to users_path
+      # render :new
     end
   end
 
