@@ -18,11 +18,23 @@
       <%= link_to("Add New Work", new_work_path, class: "button") %>
       <%= link_to("View All Users", users_path, class: "button") %>
       <div class="float-right">
-        <%= link_to("Login", class: "button") %>
+        <% if session[:user_id] %>
+          <%= link_to "Logged in as #{User.find_by(id: session[:user_id]).name}", user_path(session[:user_id]), class: "button" %>
+          <%= link_to "Log Out", logout_path, class: "button", method: :post %>
+        <% else %>
+        <%= link_to("Login", login_path, class: "button") %>
+        <% end %>
       </div>
     </nav>
   </header>
   <main class="row">
+    <h2>session</h2>
+    <%= session[:user_id] %>
+    <section class="flash">
+      <% flash.each do |name, message| %>
+      <div class="<%= name %>"><%= message %></div>
+      <% end %>
+    </section>
     <%= yield %>
   </main>
 </body>
