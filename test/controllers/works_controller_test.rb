@@ -12,6 +12,7 @@ describe WorksController do
       Work.destroy_all
       get works_path
       must_respond_with :success
+
     end
   end
 
@@ -67,7 +68,7 @@ describe WorksController do
        Work.count.must_equal start_work_count + 1
     end
 
-    it "sends bad_request when the work data is bogus" do
+    it "sends bad_request when the work data is bogus and does not add a work" do
       bogus_work_data = {
         work: {
           #no title
