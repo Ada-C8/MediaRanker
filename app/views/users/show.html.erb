@@ -16,7 +16,7 @@
       <%= link_to Work.find_by_id(vote.work_id).title, work_path(vote.work_id), class: "link"%>
     </th>
     <th>
-      <% Work.find_by_id(vote.work_id).creator%>
+      <%= Work.find_by_id(vote.work_id).creator%>
     </th>
     <th>
       <%= Work.find_by_id(vote.work_id).pub_year%>

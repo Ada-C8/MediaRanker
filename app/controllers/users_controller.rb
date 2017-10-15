@@ -30,6 +30,27 @@ class UsersController < ApplicationController
     end
   end
 
+  def login_form
+  end
+
+  def login
+    user_name = params[:user][:name]
+    user = User.find_by(name: user_name)
+    if user
+      session[:logged_in_user] = user.id
+    else
+      user = User.create!(name: params[:user][:name])
+      session[:logged_in_user] = user.id
+    end
+    redirect_to root_path
+  end
+
+  def logout
+    session[:logged_in_user] = nil
+    redirect_to root_path
+    return
+  end
+
   # def update
   #
   #

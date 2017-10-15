@@ -39,9 +39,14 @@ class WorksController < ApplicationController
     unless @status == true
       @work.update_attributes(strong_params)
       if @work.save
+        flash[:status] = :success #successs here is an english word
+        flash[:message] = "Successfully edited #{@work.category}"
         redirect_to work_path(params[:id])
         return
       else
+        flash.now[:status] = :failure
+        flash.now[:message] = "Failed to create #{@work.category}"
+        flash.now[:details] = @work.errors.messages
         render :edit, status: :bad_request
         return
       end

@@ -15,7 +15,7 @@
   <ul>
     <% @top_ten_movies.each do |movie|  %>
     <li>
-      <h4> <%= movie.title %> <small>by <%=movie.creator%></small>
+      <h4> <%= link_to movie.title, work_path(movie.id) %> <small>by <%=movie.creator%></small>
     </h4>
     <p><%=movie.vote.count%> votes</p>
     </li>
@@ -28,7 +28,7 @@
   <ul>
     <% @top_ten_music.each do |music|  %>
     <li>
-      <h4> <%= music.title %> <small>by <%=music.creator%></small>
+      <h4> <%= link_to music.title, work_path(music.id) %> <small>by <%=music.creator%></small>
     </h4>
     <p><%=music.vote.count%> votes</p>
     </li>
@@ -41,7 +41,7 @@
   <ul>
     <% @top_ten_books.each do |book|  %>
     <li>
-      <h4> <%= book.title %> <small>by <%=book.creator%></small>
+      <h4> <%= link_to book.title, work_path(book.id) %> <small>by <%=book.creator%></small>
     </h4>
     <p><%=book.vote.count%> votes</p>
     </li>

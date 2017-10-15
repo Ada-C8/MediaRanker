@@ -15,9 +15,11 @@
  */
 
 .flash.success {
-  color: green
+  color: green;
+  background-color: lightgrey;
 }
 
 .flash.failure{
-  color: red
+  color: red;
+  background-color: lightgrey;
 }

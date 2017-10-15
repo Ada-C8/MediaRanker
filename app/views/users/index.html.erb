@@ -11,7 +11,7 @@
       <%users = User.all%>
       <% users.each do |user| %>
     <th>
-      <%= link_to user.name, users_path(params[:id]), class: "link"%>
+      <%= link_to user.name, user_path(user.id), class: "link"%>
     </th>
     <th>
       <%=user.vote.count%>
@@ -19,6 +19,7 @@
     <th>
       <%= user.created_at %>
     </th>
+  </tr>
 
     <%end%>
 
