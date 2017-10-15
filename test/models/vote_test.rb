@@ -1,9 +1,7 @@
 require "test_helper"
 
 describe Vote do
-  let(:vote) { Vote.new }
+  it "is valid if it has a user_id and work_id" do
 
-  it "must be valid" do
-    value(vote).must_be :valid?
   end
 end

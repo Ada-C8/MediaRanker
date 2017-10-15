@@ -17,7 +17,6 @@ class Work < ApplicationRecord
       Work.find_by(id: a_work).votes.each do |vote|
         users << vote.user_id
       end
-
       return users.include?(a_user)
     end
   end

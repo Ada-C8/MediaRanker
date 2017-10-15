@@ -75,6 +75,4 @@ describe WorksController do
       delete work_path(works(:another_test).id)
     }.must_change 'Work.count', -1
   end
-
-
 end

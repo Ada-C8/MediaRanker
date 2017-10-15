@@ -1,13 +1,5 @@
 require "test_helper"
 
-# 1984:
-#   category: "book"
-#   title: "1984"
-#   creator: "George Orwell"
-#   publication_year: 1950
-#   description: "A book that is turning out to be kind of true."
-
-
 describe Work do
   let(:book) {works(:test_book)}
 
@@ -59,5 +51,5 @@ describe Work do
     book.valid?.must_equal true
   end
 
-  
+
 end
