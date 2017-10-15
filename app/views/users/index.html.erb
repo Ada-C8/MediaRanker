@@ -15,7 +15,7 @@
           <%= link_to user.username, user_path(user.id) %>
         </td>
         <td data-label="Votes">
-          VOTES
+          <%= user.votes.size %>
         </td>
         <td data-label="Joined">
           <%= user.created_at.strftime("%B %d, %Y") %>
