@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @works.each do |work| %>
+        <% @works.where(category: :album).each do |work| %>
         <tr>
           <td data-label="Votes">
             NUM VOTES
@@ -35,7 +35,72 @@
         <% end %>
       </tbody>
     </table>
-
+    <h4>Books</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th>Published</th>
+          <th>Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @works.where(category: :book).each do |work| %>
+        <tr>
+          <td data-label="Votes">
+            NUM VOTES
+          </td>
+          <td data-label="Title">
+            <%= link_to work.title, work_path(work.id) %>
+          </td>
+          <td data-label="Created By">
+            <%= work.creator %>
+          </td>
+          <td data-label="Published">
+            <%= work.publication_year %>
+          </td>
+          <td data-label="Upvote">
+            UPVOTE
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <h4>Movies</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th>Published</th>
+          <th>Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @works.where(category: :movie).each do |work| %>
+        <tr>
+          <td data-label="Votes">
+            NUM VOTES
+          </td>
+          <td data-label="Title">
+            <%= link_to work.title, work_path(work.id) %>
+          </td>
+          <td data-label="Created By">
+            <%= work.creator %>
+          </td>
+          <td data-label="Published">
+            <%= work.publication_year %>
+          </td>
+          <td data-label="Upvote">
+            UPVOTE
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </section>
 </main>
 <%= link_to "Add new media", new_work_path %>
