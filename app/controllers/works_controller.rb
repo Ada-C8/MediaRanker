@@ -36,7 +36,7 @@ class WorksController < ApplicationController
         flash[:success] = "Successfully added #{@work.title}"
         redirect_to works_path
       else
-        flash[:error] = "A problem occured. Could not create #{@work.category}"
+        flash.now[:error] = "A problem occured. Could not create #{@work.category}"
         render :new
       end
   end
