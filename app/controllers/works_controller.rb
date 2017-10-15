@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def home
     @albums = Work.top10albums
     @books = Work.top10books
@@ -11,7 +13,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(id: params[:id].to_i)
     unless @work
       render_404
     end
@@ -24,6 +25,7 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(works_params)
   if @work.save
+    flash[:success] = "Successfully added #{@work.title}!"
     redirect_to root_path
   else
     render :new
@@ -31,12 +33,11 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id].to_i)
   end
 
   def update
-    @work = Work.find_by(id: params[:id].to_i)
     if @work.update_attributes works_params
+      flash[:success] = "Successfully edited #{@work.title}!"
       redirect_to root_path
     else
       render :edit
@@ -44,7 +45,8 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    Work.find_by(id: params[:id]).destroy
+    @work.destroy
+    flash[:success] = "Successfully deleted media."
     redirect_to root_path
   end
 
@@ -52,6 +54,10 @@ class WorksController < ApplicationController
 
   def works_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id].to_i)
   end
 
 end

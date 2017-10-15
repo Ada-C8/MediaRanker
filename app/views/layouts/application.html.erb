@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MediaRanker</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>MediaRanker</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
-    <header class="page-header row">
-      <h2 class="columns small-12"><%=link_to "Media Ranker", root_path %><small>Ranking the Best of Everything</small></h2>
-      <nav class="columns small-12">
-        <%= link_to "View top media", root_path %>
-        <%= link_to "View all media", works_path %>
-        <%= link_to "Add new media", new_work_path %>
-        <%= link_to "View all users", users_path %>
-        <div class="float right">
-          <% if session[:user_id].nil? %>
-            <%= link_to "Log in", login_path %>
-          <% else %>
-            <%= link_to "Logged in as #{User.find(session[:user_id]).username}", user_path(session[:user_id]) %>
-          <% end %>
-          <%= link_to "Logout", logout_path, method: :post %>
-        </div>
-      </nav>
-    </header>
-    <section class="flash">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <header class="page-header row">
+    <h2 class="columns small-12"><%=link_to "Media Ranker", root_path %><small>Ranking the Best of Everything</small></h2>
+    <nav class="columns small-12">
+      <%= link_to "View top media", root_path %>
+      <%= link_to "View all media", works_path %>
+      <%= link_to "Add new media", new_work_path %>
+      <%= link_to "View all users", users_path %>
+      <div class="float right">
+        <% if session[:user_id].nil? %>
+        <%= link_to "Log in", login_path %>
+        <% else %>
+        <%= link_to "Logged in as #{User.find(session[:user_id]).username}", user_path(session[:user_id]) %>
+        <% end %>
+        <%= link_to "Logout", logout_path, method: :post %>
+      </div>
+    </nav>
+  </header>
+  <section class="flash">
     <% flash.each do |name, message| %>
-      <div class="<%= name %>"><%= message %></div>
+    <div class="<%= name %>"><%= message %></div>
     <% end %>
   </section>
-    <%= yield %>
-  </body>
+  <%= yield %>
+</body>
 </html>
