@@ -1,6 +1,7 @@
 class VotesController < ApplicationController
 
   def create
+    current_user
     if !@current_user
       flash[:failure] = "Must be logged in to vote."
     else
