@@ -14,7 +14,7 @@
         <% if session[:logged_in_user] %>
             <p class="button">
               Logged in as
-              <%= User.find(session[:logged_in_user]).username %>
+              <%= User.find(session[:logged_in_user]).name %>
             </p>
             <%= link_to "Log out", logout_path, class: "button" %>
           <% else %>

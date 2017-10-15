@@ -1,1 +1,10 @@
 <h3> List of Users </h3>
+<ol>
+  <% @users.each do |user| %>
+    <div class="user">
+        <strong>
+          <li><%= link_to user.name, user_path(user.id) %></li>
+        </strong>
+    </div>
+  <% end %>
+</ol>

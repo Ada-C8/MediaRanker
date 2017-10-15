@@ -3,14 +3,7 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def new
-  end
-
-  def create
-  end
-
   def login_form
-    @user = User.new
   end
 
   def login
@@ -19,9 +12,23 @@ class UsersController < ApplicationController
 
     if user
       session[:logged_in_user] = user.id
-      redirect_to root
+      flash[:status] = :success
+      flash[:message] = "Successfully logged in as an existing user #{name}"
+      redirect_to root_path
     else
-      head :not_found
+      user = User.new(name: name, created_at: Date.today)
+      user.save
+      flash[:status] = :success
+      flash[:message] = "Successfully created new user #{name} with ID #{user.id}"
+      session[:logged_in_user] = user.id
+      redirect_to root_path
     end
+  end
+
+  def logout
+    session[:logged_in_user] = nil
+    flash[:status] = :success
+    flash[:message] = "Successfully logged out"
+    redirect_to root_path
   end
 end
