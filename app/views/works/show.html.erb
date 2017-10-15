@@ -1,11 +1,9 @@
   <main class = "row">
-  <h1>
-    <%= @work.title %>
+  <h1><%= @work.title %></h1>
     <%= link_to "Edit", edit_work_path(@work.id), class: "button"%>
     <%= link_to "Delete", work_path(@work.id), method: :delete,  data: {confirm: "Are you sure?"}, class: "button"%>
-    <%= link_to "Upvote", vote_path(@work.id), method: :post , class: "button"%>
+    <%= link_to "Upvote", vote_path(@work.id), method: :post , class: "button"%></td>
 
-  </h1>
   <table>
       <tr>
         <th>Title</th>
