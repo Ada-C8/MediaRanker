@@ -14,6 +14,14 @@
 
 
 <ul>
+  <% @work.votes.each do |vote| %>
+      <li><%= vote.user.username %></li>
+      <li><%= vote.created_at %></li>
+  <% end %>
+</ul>
+
+
+<ul>
   <li><%= link_to("Edit work", edit_work_path, alt: "Edit work form")%></li>
     <%# button_to("Edit work", edit_work_path, method: :get) %>
   <li><%= link_to "Delete", work_path(@work[:id]), method: :delete %></li>
@@ -24,13 +32,7 @@
     <%# button_to("View Top Media", home_index_path, method: :get) %>
 </ul>
 
-<ul>
-  <% @work.votes.each do |vote| %>
-      <li><%= vote.user_id %></li>
-      <li><%= vote.created_at %></li>
-  <% end %>
-</ul>
-<%# params %>
+
 
 
 

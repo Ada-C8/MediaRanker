@@ -28,7 +28,15 @@
 
 
 
-
+<ul>
+  <% @user.votes.each do |vote| %>
+      <li><%= vote.work.title %></li>
+      <li><%= vote.work.creator %></li>
+      <li><%= vote.work.publication_year %></li>
+      <li><%= vote.work.category %></li>
+      <li><%= vote.created_at %></li>
+  <% end %>
+</ul>
 
 <%= link_to("See All Users",users_path) %>
 <%= link_to("Back to Media List", works_path) %>
