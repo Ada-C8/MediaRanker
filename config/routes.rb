@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
+
+
   root to: "welcome#index"
 
   resources :works
   resources :users
+  resources :votes
 
   get '/login', to: 'sessions#login_form' #method name is login_form *login form
   post '/login', to: 'sessions#login' # something to actually log us in
