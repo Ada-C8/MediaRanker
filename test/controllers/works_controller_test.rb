@@ -61,6 +61,13 @@ describe WorksController do
     must_redirect_to root_path
   end
 
+  it "should respond with 404 if book up for deletion does not exist" do
+    proc {
+      (delete work_path(3908))
+    }.must_change 'Work.count', 0
+    must_respond_with :missing
+  end
+
 
 
 
