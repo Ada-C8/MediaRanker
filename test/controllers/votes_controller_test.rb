@@ -1,18 +1,11 @@
 require "test_helper"
 
 describe VotesController do
-  describe "#new" do
-    it "returns success if the an instance of Vote is made" do
-      get new_vote_path
-
-      must_respond_with :success
-    end
-  end
 
   describe "#create" do
-    it "returns success if a vote is created" do
+    it "returns as found if a vote is created" do
       before_vote_count = Vote.count
-      # Create a work
+      # Create a work and make sure it is valid
         work_data = {
           work: {
             category: "book",
@@ -29,6 +22,7 @@ describe VotesController do
 
         # Use an existing user
         user_id = User.first.id
+        User.first.must_be :valid?
 
         vote_data = {
           vote: {
@@ -42,6 +36,32 @@ describe VotesController do
         must_respond_with :redirect
         must_redirect_to work_path(vote_data[:vote][:work_id])
         Vote.count.must_equal before_vote_count + 1
+    end
+
+    it "returns as a redirect to the works_path if the vote could not be created" do
+      before_count = Vote.count
+      # User an existing work
+      work = Work.first
+
+      work.must_be :valid?
+
+      # Use an existing user
+      user_id = User.first.id
+      User.first.must_be :valid?
+
+      vote_data = {
+        vote: {
+        user_id: user_id,
+        work_id: work.id
+        }
+      }
+
+      post votes_path, params: vote_data
+
+      must_respond_with :redirect
+      must_redirect_to works_path
+      Vote.count.must_equal before_count
+      @vote.errors.messages.must_include vote
     end
 
   end # Des
