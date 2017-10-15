@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   root to: "welcome#index"
 
-  resources :works
+  resources :works do
+    post 'upvote'
+  end
   resources :users
   resources :votes
 

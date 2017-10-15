@@ -11,7 +11,6 @@ class VotesController < ApplicationController
 
     if @vote.save
       flash[:success] = "Successfully upvoted!"
-      redirect_to works_path
     end
   end
 end

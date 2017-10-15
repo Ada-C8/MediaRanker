@@ -1,14 +1,11 @@
 require "test_helper"
 
 describe VotesController do
-  it "should get new" do
-    get votes_new_url
-    value(response).must_be :success?
-  end
+  it "should create a vote" do
+    proc {
+      post votes_path, params: { vote: {user_id: 2, work_id: 9 }}
+    }.must_change 'Vote.count', 1
 
-  it "should get create" do
-    get votes_create_url
-    value(response).must_be :success?
+    must_respond_with :success
   end
-
 end
