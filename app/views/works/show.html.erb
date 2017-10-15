@@ -1,7 +1,9 @@
-    <h1>
+  <main class = "row">
+  <h1>
     <%= @work.title %>
-    <%= link_to "Edit", edit_work_path(@work.id) %>
-    <%= link_to "Delete", work_path(@work.id), method: :delete,  data: {confirm: "Are you sure?"}  %>
+    <%= link_to "Edit", edit_work_path(@work.id), class: "button"%>
+    <%= link_to "Delete", work_path(@work.id), method: :delete,  data: {confirm: "Are you sure?"}, class: "button"%>
+    <%= link_to "Upvote", vote_path(@work.id), method: :post , class: "button"%>
 
   </h1>
   <table>
@@ -17,8 +19,9 @@
         <td> <%=@work.creator%> </td>
         <td> <%=@work.description%> </td>
         <td> <%=@work.publication_year%> </td>
-        <td>Votes</td>
+        <td> <%=@work.votes.size%> </td>
       </tr>
   </table>
 
 <%= link_to "Back to Media Ranks", root_path %>
+</main>

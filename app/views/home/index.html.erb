@@ -1,9 +1,8 @@
-<h1> Media Ranker </h1>
 
 <%if @spotlight != nil%>
   <h2>Media Spotlight: <%= link_to @spotlight.title, work_path(@spotlight.id)%></h2>
   <p>
-    <%= "num votes" %>
+    <%=@spotlight.votes.size%>
   </p>
 <%end%>
 

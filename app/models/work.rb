@@ -9,7 +9,8 @@ class Work < ApplicationRecord
   validates :publication_year, numericality: { only_integer: true, greater_than: 0, less_than: 9999 } #rework this, or set up proper error
 
 
-  # def self.spotlight
-  #   return all.order(total_votes: :desc).first
-  # end
+  def self.spotlight
+    return all.order(vote_count: :desc).first
+  end
+
 end

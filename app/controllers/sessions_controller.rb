@@ -1,10 +1,15 @@
 class SessionsController < ApplicationController
 
+  def login_form
+    @user = User.new
+  end
+
   def login
     user = User.find_by_name(params[:name])
 
-    if user = User.authenticate(params[:name])
-      flash[:notice] = "Welcome #{user.name}!"
+    if user
+      session[:user_id] = user.id
+      flash[:success] = "Welcome #{user.name}!"
       redirect_to root_path
     else
       user = User.create(name: params[:name])
@@ -22,8 +27,7 @@ class SessionsController < ApplicationController
 
   def logout
     session.delete(:user_id)
-    flash[:notice] = "Goodbye!"
+    flash[:success] = "Goodbye!"
     redirect_to root_path
   end
-
 end

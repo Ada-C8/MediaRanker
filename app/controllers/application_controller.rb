@@ -5,8 +5,10 @@ class ApplicationController < ActionController::Base
     render file: "/public/404.html", status: 404
   end
 
-  def user_name
-    @current_user = User.find_by_id(session[:user_id])
+private
+
+  def current_user
+    @current_user = User.find_by(id: session[:user_id])
   end
 
 end
