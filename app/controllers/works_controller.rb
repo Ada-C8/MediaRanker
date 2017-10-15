@@ -3,6 +3,7 @@ class WorksController < ApplicationController
     @albums = Work.albums
     @books = Work.books
     @movies = Work.movies
+    # Will this still work?  Should I do @works = Work.all...  Incessent debate.
   end
 
   def show
@@ -21,5 +22,11 @@ class WorksController < ApplicationController
   end
 
   def destroy
+  end
+
+
+  private
+  def work_params
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 end
