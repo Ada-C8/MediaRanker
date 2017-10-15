@@ -3,9 +3,7 @@ require "test_helper"
 describe Work do
   let(:work) { Work.new }
   describe "validations" do
-    # it "create work with all fields" do
-    #
-    # end
+    it "create work with all fields" do
       # work = Work.new(
       #   category: "album",
       #   title: "test work",
@@ -13,8 +11,10 @@ describe Work do
       #   desciption: "",
       #   creator: "me",
       # )
-
+      #
       # work.must_be :valid?
+    end
+
 
 
     # it "requires category" do
@@ -27,5 +27,4 @@ describe Work do
     #
     # end
   end
-
 end

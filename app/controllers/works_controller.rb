@@ -15,10 +15,10 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params
     )
-    if @work.save
+    if save_and_flash(@work)
       redirect_to works_path
     else
-      render :new
+      render :new, status: :bad_request
     end
   end
 
