@@ -4,10 +4,12 @@
     <div>
       <h3>
         <span class = "media-spotlight-header"> <strong>Media Spotlight:</strong> </span>
+        <% if Work.all != nil %>
         <%= link_to @top.title, work_path(@top.id) %>
         by <%=@top.creator%>
       </h3>
       <p> <%= @top.vote.count %> votes <%=@top.description %> </p>
+      <% end %>
     </div>
 </section>
 
@@ -16,6 +18,7 @@
 
 <section class = "top-ten columns large-4 small-12">
   <h3>Top Movies</h3>
+  <% if Work.all != nil %>
   <ul>
     <% @top_ten_movies.each do |movie|  %>
     <li>
@@ -25,10 +28,12 @@
     </li>
     <% end %>
   </ul>
+  <% end %>
 </section>
 
 <section class = "top-ten columns large-4 small-12">
   <h3>Top Albums</h3>
+  <% if Work.all != nil %>
   <ul>
     <% @top_ten_music.each do |music|  %>
     <li>
@@ -38,11 +43,14 @@
     </li>
     <% end %>
   </ul>
+  <% end %>
 </section>
 
 <section class = "top-ten columns large-4 small-12">
   <h3>Top Books</h3>
+  <% if Work.all != nil %>
   <ul>
+
     <% @top_ten_books.each do |book|  %>
     <li>
       <h4> <%= link_to book.title, work_path(book.id) %> <small>by <%=book.creator%></small>
@@ -51,5 +59,7 @@
     </li>
     <% end %>
   </ul>
+  <% end %>
+
 </section>
 </main>
