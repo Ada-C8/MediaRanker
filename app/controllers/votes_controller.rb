@@ -14,7 +14,7 @@ class VotesController < ApplicationController
   end
 
   def create
-    @vote = Vote.new(work_id: params[:pass_work_id])
+    @vote = Vote.new(work_id: params[:pass_work_id], user_id: session[:logged_in_user])
     @vote.user_id = 1
     if @vote.save
       redirect_to works_path

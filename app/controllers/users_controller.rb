@@ -5,6 +5,30 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def login_form
+  end
+
+  def login
+    user = User.find_by(username: params[:username].capitalize)
+    if user == nil
+      user = User.new(username: params[:username].capitalize)
+      user.save
+      session[:logged_in_user] = user.id
+      flash[:success] = "#{ user.username } is successfully logged in"
+      redirect_to works_path
+    else
+      session[:logged_in_user] = user.id
+      flash[:success] = "#{ user.username } is successfully logged in"
+      redirect_to works_path
+    end
+    # user_id = params[:user][:user_id]
+    # user = User.find_by(id: user_id)
+    # if user
+    #   session[:logged_in_user] = user_id
+    #   redirect_to users_path
+    # end
+  end
+
   def show
     redirect_to users_path unless @user
   end

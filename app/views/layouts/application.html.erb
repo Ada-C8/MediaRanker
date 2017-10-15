@@ -9,6 +9,13 @@
   </head>
 
   <body>
+    <header>
+      <% if session[:logged_in_user] %>
+        <p>Logged in as <%= User.find(session[:logged_in_user]).username %></p>
+      <% else %>
+        <p>Not logged in.</p>
+      <% end %>
+    </header>
     <main>
       <section class="flash <%= flash[:status] %>">
         <p><%= flash[:message] %></p>
