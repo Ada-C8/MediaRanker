@@ -1,7 +1,7 @@
 class WorksController < ApplicationController
-  #TODO dry out with controller filter
+  before_action :find_work, only: [:show, :edit, :update]
   #TODO setup work model method for sorting, etc (take out of controller)
-  #TODO test index without any works (Work.destroy_all)
+
   def index
     books = Work.where(category: "book")
     movies = Work.where(category: "movie")
@@ -11,7 +11,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
     render_404 unless @work
   end
 
@@ -33,13 +32,10 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
     render_404 unless @work
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
-
     if @work.update_attributes(work_params)
       flash[:success] = "Successfully updated Media ID#{@work.id}!"
       redirect_to work_path(params[:id])
@@ -62,6 +58,10 @@ class WorksController < ApplicationController
   end
 
   private
+  def find_work
+    @work = Work.find_by(id: params[:id])
+  end
+
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
