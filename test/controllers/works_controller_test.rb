@@ -14,8 +14,8 @@ describe WorksController do
 
   it "should be able to create a work" do
     proc {
-      post works_path, params: {work: {title: "bury me at makeout creek", creator: "mitski", category: "album", publication_year: 2014, description: "i dont smoke"}}
-    }
+      post works_path, params: {work: {category: "album", title: "bury me at makeout creek", creator: "mitski", publication_year: 2014, description: "i dont smoke"}}
+    }.must_change 'Work.count', 1
     must_respond_with :redirect
     must_redirect_to works_path
   end

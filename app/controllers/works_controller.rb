@@ -1,3 +1,4 @@
+require 'pry'
 class WorksController < ApplicationController
   def index
     @works = all_works_by_category
@@ -17,6 +18,14 @@ class WorksController < ApplicationController
   end
 
   def create
+    @work = Work.new work_params
+    if @work.save
+      flash[:success] = "Work added successfully"
+      redirect_to works_path
+    else
+      flash.now[:error] = "Work not added successfully"
+      render :new
+    end
   end
 
   def destroy
@@ -35,4 +44,8 @@ def all_works_by_votes
     works[key] = (values.sort_by {|value| value.votes.length}).reverse
   end
   return works
+end
+
+def work_params
+  return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
 end
