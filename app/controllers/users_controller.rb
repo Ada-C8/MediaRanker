@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to users_path
       flash[:success] = "Successfully added #{@user.name} to the database"
+      session[:logged_in_user] = @user
     else
       render :new
     end
