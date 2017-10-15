@@ -17,11 +17,20 @@ describe UsersController do
     end
   end
 
+  describe 'show' do
 
-  it "should get show" do
-    get users_show_url
-    value(response).must_be :success?
+    it "should get show" do
+      get users_show_url
+      value(response).must_be :success?
+    end
+
+    it "show user should show one user" do
+      get user_path(users(:cat))
+      must_respond_with :success
+    end
+
   end
+
 
   it "should get new" do
     get users_new_url
