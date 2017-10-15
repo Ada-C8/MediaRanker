@@ -45,8 +45,8 @@
     </header>
 
     <%# Flash log in message %>
-    <% if session[:logged_in_session] %>
-      <section class="row status">
+    <section class="row">
+      <% if session[:logged_in_session] %>
         <h3>
           <%= flash[:message] %>
           <% if flash[:details] %>
@@ -64,12 +64,12 @@
           </ul>
           <% end %>
         </h3>
-      </section>
-    <% end %>
+      <% end %>
+    </section>
 
     <%# Flash log out message %>
     <% if session[:logged_in_session] == nil %>
-      <section class="row status">
+      <section class="row">
         <h3>
           <%= flash[:message] %>
           <% if flash[:details] %>
@@ -87,8 +87,9 @@
           </ul>
           <% end %>
         </h3>
-      </section>
-    <% end %>
+    </section>
+  <% end %>
+
 
     <%= yield %>
 

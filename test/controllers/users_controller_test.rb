@@ -9,16 +9,12 @@ describe UsersController do
     end
 
     it "returns success when there are no Users" do
+      before_count = User.count
+      User.destroy_all
 
-      # # ArgumentError: wrong number of arguments (given 0, expected 1)
-      #
-      # users = User.all
-      # users.destroy
-      #
-      # get users_path
-      #
-      # User.count.must_equal 0
-      # must_respond_with :success
+      get users_path
+
+      must_respond_with :success
     end
   end # Des
 
