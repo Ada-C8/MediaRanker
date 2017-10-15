@@ -13,7 +13,7 @@ describe UsersController do
   end
 
 
-  #TODO
+
   it "should be able to successfully CREATE a user" do
     proc  {
       post users_path, params: {user: {username: "Sample Username"}} }.must_change 'User.count', 1

@@ -15,3 +15,7 @@ two:
 three:
   user: three
   work: three
+
+four:
+    user: four
+    work: two
