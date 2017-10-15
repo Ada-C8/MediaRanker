@@ -1,0 +1,18 @@
+<br><br><h1>Need to work on UpVote and displaying the users who voted for this work.</h1><br><br>
+
+
+<h3>
+  <strong><%= @work.title %></strong>
+</h3>
+<div class="">
+  <p>Created by: <%= @work.creator %></p>
+  <p>Published: <%= @work.publication_year %></p>
+  <!-- <p><%= @user %></p> -->
+</div>
+
+<section>
+  <%= link_to "Home", works_path %>
+  <%= link_to "Edit", edit_work_path %>
+  <%= link_to "UpVote" %>
+  <%= link_to "Delete", work_path, method: :destroy, data: { confirm: "Are you sure?" } %>
+</section>

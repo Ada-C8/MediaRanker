@@ -1,5 +1,5 @@
 <h1>
-  Media spotlight: <%= link_to Work.spotlight %>
+  Media spotlight: <%= link_to Work.spotlight.title, work_path(Work.spotlight.id) %>
 </h1>
 
 <h2>
@@ -8,7 +8,7 @@
 <ul>
   <% Work.top_ten("album").each do |album| %>
     <li>
-      <%= album.title %>
+      <%= link_to album.title %>
       <%= album.votes.count %>
     </li>
 

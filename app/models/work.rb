@@ -2,13 +2,13 @@ class Work < ApplicationRecord
   has_many :votes
 
   validates :category, presence: { message: "Must have category" }
-  validates :title, presence: { message: "Must have a title" } 
+  validates :title, presence: { message: "Must have a title" }
 
   def self.spotlight
     works = Work.all
     spotlight = works.max_by {|work| work.votes.count}
 
-    return spotlight.title
+    return spotlight
   end
 
   def self.sort(category)

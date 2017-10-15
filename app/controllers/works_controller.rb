@@ -26,9 +26,13 @@ class WorksController < ApplicationController
 
   def edit ; end
 
-  def update ; end
+  def update
 
-  def destroy ; end
+  end
+
+  def destroy
+
+  end
 
   private
 
