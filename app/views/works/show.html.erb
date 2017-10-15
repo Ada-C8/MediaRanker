@@ -13,7 +13,7 @@
 </article>
 
 <article class="voting-users columns large-6 small-12">
-  <h3> Votes for this <%= @work.category %></h3>
+  <h3><%= "#{@work.votes.count} Votes for this work" %></h3>
   <table>
     <thead>
       <tr>
@@ -22,8 +22,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr>........
+      <tr>
+        <% @work.votes.each do |vote| %>
+        <td><a><%= link_to vote.user.username, user_path(vote.user_id)  %></a></td>
+        <td> <%= vote.created_at.strftime("%b %d, %Y") %> </td>
       </tr>
-    <tbody>
+      <% end %>
+    </tbody>
   </table>
 </article>
