@@ -13,14 +13,19 @@ class UsersController < ApplicationController
 
     else
       user = User.new(username: username, date_joined: Date.today)
-      user.save
-      flash[:status] = :success
-      flash[:message] = "Successfuly logged in as new user #{username}"
-      session[:logged_in_user] = user.id
-      redirect_to root_path
-      # flash.now[:status] = :failure
-      # flash.now[:message] = "No user found with username #{username}"
-      # render :login_form, status: :bad_request
+      if user.save
+        flash[:status] = :success
+        flash[:message] = "Successfuly logged in as new user #{username}"
+        session[:logged_in_user] = user.id
+        redirect_to root_path
+      else
+        flash.now[:status] = :failure
+        flash[:message] = "A problem occurred: Could not log in"
+        flash[:details] = user.errors.messages
+        # flash.now[:status] = :failure
+        # flash.now[:message] = "No user found with username #{username}"
+        render :login_form, status: :bad_request
+      end
     end
   end
 
