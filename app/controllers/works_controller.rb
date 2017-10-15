@@ -51,4 +51,10 @@ class WorksController < ApplicationController
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
+
+  def upvote
+    @work = Work.find(params[:id])
+    @work.votes.create
+    redirect_to works_path
+  end
 end
