@@ -32,7 +32,14 @@
 }
 
 .small-12 {
+  width: 100%;
+}
+
+.column, .columns {
     width: 100%;
+    float: left;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
 }
 
 body {
@@ -101,4 +108,35 @@ article, aside, footer, header, nav, section {
 
 a, h3 {
     color: #26A69A;
+}
+
+h3 {
+  line-height: 1.4;
+margin-top: 0;
+margin-bottom: 0.5rem;
+}
+
+section.spotlight>div {
+    padding: 0 2rem 2rem 2rem;
+}
+
+.media-spotlight-header {
+    color: #424242;
+}
+
+.top-ten h3 {
+    border-bottom: 2px solid;
+    border-bottom-color: #B2DFDB;
+}
+
+@media print, screen and (min-width: 40em)
+application-033…82025955.css:1
+h3 {
+    font-size: 1.9375rem;
+}
+
+@media print, screen and (min-width: 64em)
+application-033…82025955.css:1
+.large-4 {
+    width: 33.33333%;
 }
