@@ -25,10 +25,3 @@ tbody:nth-child(even) {
 tbody:nth-child(odd) {
   background-color: #ebebeb;
 }
-
-/*tr:nth-child(even) {
-   background-color: white;
- }
-tr:nth-child(odd) {
-  background-color: #ebebeb;
-}*/

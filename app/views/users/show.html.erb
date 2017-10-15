@@ -22,7 +22,7 @@
     <% @user.votes.each do |vote| %>
     <tbody>
       <tr>
-        <td><%= vote.work.title %></td>
+        <td><%=link_to(vote.work.title, work_path) %></td>
         <td><%= vote.work.creator %></td>
         <td><%= vote.work.publication_year %></td>
         <td><%= vote.work.category %></td>

@@ -2,10 +2,9 @@
 <p>Find me in app/views/works/show.html.erb</p>
 
 <!-- <%= params %> -->
+<h3><%= @work.title %></h3>
 
 <ul>
-  <li><h3><%= @work.title %></h3></li>
-
   <li>Category: <%= @work.category %></li>
   <li>Creator: <%= @work.creator %></li>
   <li>Publication Year: <%= @work.publication_year %></li>
@@ -41,5 +40,3 @@
   <li><%= link_to("Up Vote", work_votes_path(@work.id), method: :post) %></li>
     <%# button_to("View Top Media", home_index_path, method: :get) %>
 </ul>
-
-<!-- LOOP FOR VOTES GOES IN THIS TABLE -->
