@@ -2,7 +2,8 @@ class Vote < ApplicationRecord
   belongs_to :user
   belongs_to :work
 
-  validates :user_id, presence: true, uniqueness: true
+  validates :user_id, presence: true
+  validates :user, uniqueness: {message: "has already voted for this work"}
   validates :work_id, presence: true
 
 end
