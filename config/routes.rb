@@ -16,10 +16,12 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login_page'
 
   post '/login', to: 'sessions#login'
-  
+
   delete '/login', to: 'sessions#logout'
 
+  post '/works/:id/votes', to: 'votes#create', as: 'new_vote'
 
+  resources :votes, only: [:show, :new]
 
   # get '/works', to: 'works#index', as: 'works'
   #

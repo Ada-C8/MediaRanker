@@ -1,3 +1,39 @@
-<h1><%= @work.title %></h1>
 
-<p></p>
+  <main class="row">
+    <article class="media-details columns large-6 small-12">
+  <h3><%= @work.title %></h3>
+  <p>Created by: <%= @work.creator %></p>
+  <p>Published: <%= @work.publication_year %></p>
+  <p> <%= @work.description %></p>
+  <section>
+    <a <%= link_to "Back to media ranks", home_path, method: :get, class: "button" %></a>
+    <a <%= link_to "Edit", edit_work_path(@work.id), method: :get, class: "button" %></a>
+    <a <%= link_to "Upvote", new_vote_path(@work.id), method: :post, class: "button" %></a>
+    <a <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure?"}, class: "button alert" %></a>
+  </section>
+</article>
+
+<article class="voting-users columns large-6 small-12">
+  <h3><%= @work.votes.count %> Votes for this <%= @work.category %></h3>
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @work.votes.each do |v| %>
+         <tr>
+           <td>
+             <%= link_to v.user.username, user_path(vote.user.id) %>
+           </td>
+           <td>
+             <%= v.created_at.strftime("%b %d, %Y") %>
+           </td>
+         </tr>
+       <% end %>
+     </tbody>
+</article>
+
+  </main>
