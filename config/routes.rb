@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/index'
+
   # get 'works/index'
 
 resources :works
@@ -12,4 +14,7 @@ get 'login', to: 'users#login_form', as: 'login'
 post 'login', to: 'users#login'
 
 post 'logout', to: 'users#logout'
+
+root 'home#index'
+
 end

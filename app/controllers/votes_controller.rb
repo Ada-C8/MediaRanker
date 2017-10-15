@@ -9,8 +9,10 @@ class VotesController < ApplicationController
       flash[:status]= :success
     else
       flash[:status] = :failure
-      flash[:message] = "You should log in to vote"
-    end 
+      flash[:message] = "Could not upvote"
+      flash[:details] = @vote.errors.messages
+      redirect_to works_path
+    end
   end
 
 end
