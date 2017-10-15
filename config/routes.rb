@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :works do
     resources :votes, only: [:create]
-  end 
+  end
 
   resources :users
 
@@ -12,6 +12,6 @@ Rails.application.routes.draw do
 
   get '/login', to: 'sessions#login_form'
   post '/login', to: 'sessions#login'
-  get '/logout', to: 'sessions#logout', as: 'logout'
+  post '/logout', to: 'sessions#logout', as: 'logout'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
