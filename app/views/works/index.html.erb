@@ -38,8 +38,8 @@
 <% @works.each do |work| %>
 <tr>
   <td>
-    <%= work.id %>
-
+    <%#= work.id %>
+    <%= work.count %>
   </td>
   <td>
     <%= work.category %>
@@ -57,7 +57,6 @@
     <%= work.description %>
   </td>
   <td>
-    VOTES
     <%= form_for Vote.new do |f| %>
     <%= f.hidden_field :work_id, value: work.id %>
     <%= f.hidden_field :user_id, value: session[:logged_in_user] %>

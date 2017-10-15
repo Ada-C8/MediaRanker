@@ -40,14 +40,20 @@ class UsersController < ApplicationController
       session[:logged_in_user] = user.id
       redirect_to works_path
     else
-      flash.now[:status] = :failure
-      flash.now[:message] = "No such user exists."
+      flash.now[:status] = :not_found
+      flash.now[:message] = "No such user exists. Please sign up as a new user."
       redirect_to new_user_path
     end
   end
 
+
+
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
+    unless @user
+      head :not_found
+    end
+    return @user
   end
 
 
