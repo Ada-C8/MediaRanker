@@ -1,7 +1,7 @@
 <section class="flash">
   <% flash.each do |name, message| %>
     <div class="<%= name %>">
-      <%= message %>
+      <h3><%= message %></h3>
       <ul class="errors">
         <% if @work %>
           <% @work.errors.each do |column, message| %>
