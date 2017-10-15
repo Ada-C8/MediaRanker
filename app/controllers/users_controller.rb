@@ -7,44 +7,53 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
-  def login_form
+  # def create
+  #   @user = User.create(name: params[:name])
+  #   # @user = User.new(user_params)
+  #   # if @user.save
+  #   unless @user.id == nil
+  #     session[:user_id] = @user.id
+  #     flash[:status] = :success
+  #     flash[:message] = "Successfully created new user #{@user.name} with ID #{@user.id}"
+  #     redirect_to root_path
+  #   else
+  #     flash[:status] = :error
+  #     flash[:message] = "did not succesfully login"
+  #     render "login" #should go back to login page
+  #   end
+  # end
 
+  def login_form
   end
 
   def login
-    input = params[:name]
-    @user  = User.find_by(name: input)
-    if @user
-    # login_input = params[:name]
-    #
-    # @user = User.find_by(name: login_input)
-    # user_id = params[:id]
-    #
-    # #if user is true mean user != nil, returns a user id
-    # if @user
-      session[:logged_in] = @user
+    if User.find_by_name(params[:name]) != nil
+      @user = User.find_by_name(params[:name])
       flash[:status] = :success
-      flash[:message] = "Successfully logged in as existing user #{@user.name},#{@user.id}"
+      flash[:message] = "Successfully logged in as existing user #{@user.name}"
+      session[:user_id] = @user.id
       redirect_to root_path
     else
-      create_user_path
-    end
-
-    def create
-      # @user = User.create! name: params[:name]
-      @user = User.new(user_params)
-      # if @user != nil
-
-        session[:logged_in] = @user.id
+      @user = User.create(name: params["name"])
+      # @user = User.new(user_params)
+      # if @user.save
+      unless @user.id == nil
+        session[:user_id] = @user.id
         flash[:status] = :success
-        flash[:message] = "Successfully created new user #{@user.name} with ID #{@user.id} "
+        flash[:message] = "Successfully created new user #{@user.name} with ID #{@user.id}"
         redirect_to root_path
-      # end
+      else
+        flash[:status] = :error
+        flash[:message] = "did not succesfully login"
+        render "login"
+      end
+
     end
   end
+
 
   private
-  def user_params
-    return params.require(:user).permit(:id, :name, :created_at)
-  end
+    def user_params
+      params.require(:user).permit(:name)
+    end
 end
