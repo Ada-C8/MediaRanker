@@ -11,7 +11,7 @@ class VotesController < ApplicationController
   # end
 
   def create
-    #binding.pry
+    binding.pry
     #stubbed_params = {user_id: 1, media_instance_id: 1}
     @vote = Vote.new(vote_params)
     if @vote.save

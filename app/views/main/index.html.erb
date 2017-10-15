@@ -1,25 +1,33 @@
 <!-- this is the main page and should have the top ten of each style of media -->
+<atricle class = "small-12 medium-12 large 12 columns">
+<h2>Feature</h2>
+<%= @feature.title %> by <%= @feature.creator %>
+</article>
+<article class="small-12 medium-12 large-4 columns">
+  <h2>Books</h2>
 
-<article class="small-1, medium-2, large-4 columns">
-  <h2>Music</h2>
- <%# @media_instances.ten_music.each do |instance| %>
- <%# if instance? %>
- <ul>
-   <li>
-     words
-   </li>
-   <li><%#= instance.title %></li>
- </ul>
-  <%# end%>
- <%#end %>
+ <ol>
+  <% @books.each do |instance| %>
+   <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id) %>, Votes: <%= instance.votes.count %></li>
+    <%end %>
+ </ol>
+
 </article>
 
-<article class="small-1, medium-2, large-4 columns">
+<article class="small-12 medium-12 large-4 columns">
   <h2>Movies</h2>
-logic that gets top ten of Movies
+  <ol>
+   <% @movies.each do |instance| %>
+    <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id)%>, Votes: <%= instance.votes.count %> </li>
+     <%end %>
+  </ol>
 </article>
 
-<article class="small-1, medium-2, large-4 columns">
-  <h2>News</h2>
-logic that gets top 10 of News
+<article class="small-12 medium-12 large-4 columns">
+  <h2>Music</h2>
+  <ol>
+   <% @music.each do |instance| %>
+    <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id) %>, Votes: <%= instance.votes.count %></li>
+     <%end %>
+  </ol>
 </article>

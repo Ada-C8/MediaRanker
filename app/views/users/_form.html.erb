@@ -1,11 +1,15 @@
 <%= form_for @user,  :html => {:class => 'form'}  do |f| %>
+  <% if flash.now[:status] == :failure %>
+    <%= flash.now[:details] %>
+    <%= flash.now[:message] %>
+  <%end %>
 
 <div>
-    <%= f.label :name %>
+  <%= f.label :name %>
   <%= f.text_field :name, size: "50" %>
 </div>
 <div>
-    <%= f.label :email %>
+  <%= f.label :email %>
   <%= f.text_field :email, size: "50" %>
 </div>
 
@@ -14,6 +18,6 @@
 </div>
 
 <div>
-<%#= link_to "Delete", destroy_users_path %>
+  <%#= link_to "Delete", destroy_users_path %>
 </div>
 <% end %>

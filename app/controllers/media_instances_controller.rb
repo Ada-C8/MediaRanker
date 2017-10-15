@@ -1,10 +1,10 @@
 class MediaInstancesController < ApplicationController
   def index
     @media_instances = MediaInstance.all
+
   end
 
   def show
-    binding.pry
     @media_instance = MediaInstance.find(params[:id])
   end
 
@@ -76,28 +76,18 @@ class MediaInstancesController < ApplicationController
     redirect_to media_instances_path
   end
 
-  def self.get_music
+  def get_music
       @media_instances = MediaInstance.where(media_type: "music")
   end
 
-  def self.ten_music
-    get_music.first(10).order(@media_instance.votes.length)
-  end
-
-  def self.get_news
-    @media_instances = MediaInstance.where(media_type: "news")
-  end
-
-  def self.ten_news
-    get_news.first(10).order(@media_instance.votes.length)
+  def get_movies
+    @media_instances = MediaInstance.where(media_type: "movie")
   end
 
   def get_books
-    @media_instances = MediaInstance.where(media_type: "book")
-  end
 
-  def self.ten_books
-    get_books.first(10).order(@media_instance.votes.length)
+    @media_instances = MediaInstance.where(media_type: "book")
+
   end
 
   def num_votes

@@ -1,0 +1,13 @@
+<h1>Books</h1>
+
+<section>
+
+  <ul>
+    <% @media_instances.each do |book| %>
+    <li>
+        <%= link_to book.title, media_instance_path(book.media_type, book.id) %>
+    </li>
+    <% end %>
+  </ul>
+
+</section>
