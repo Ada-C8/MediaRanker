@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MediaRanker</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>MediaRanker</title>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'owl' %
+  <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <header class="page-header">
+    <h2><%= link_to "Media Ranker", root_path %><small>Ranking the Best of Everything</small></h2>
+    <nav>
+      <%= link_to "View top media", root_path, class: "button" %>
+      <%= link_to "View all media", works_path, class: "button" %>
+      <%= link_to "Add a new work", new_work_path, class: "button" %>
+      <%= link_to "View all users", root_path, class: "button" %>
+    </nav>
+  </header>
+  <%= yield %>
+</body>
 </html>

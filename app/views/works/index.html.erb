@@ -8,8 +8,8 @@
   <li>
     <h4><%= work.title %> <small>by <%= work.creator%></small></h4>
     <!-- <p> # of votes </p> -->
-    <%= link_to "Edit", work_path(work.id), method: :edit %>
-    <%= link_to "Delete", work_path(work.id), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' } %>
+    <%= link_to "Edit", work_path(@work.id), method: :edit %>
+    <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' } %>
   </li>
   <% end %>
 </ul>
