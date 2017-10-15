@@ -27,7 +27,12 @@
         <a class="button" href="/works/new">Add a new work</a>
         <a class="button" href="/users">View all users</a>
         <div class="float-right">
-
+          <% if session[:user_id] %>
+          <a class="button" <%=link_to "Logged in as #{(User.find(session[:user_id])).name}", user_path(session[:user_id])%></a>
+          <a class="button" href="/logout">Log Out</a>
+          <%else%>
+          <a class="button" href="/login">Log In</a>
+          <% end %>
         </div>
       </nav>
     </header>
