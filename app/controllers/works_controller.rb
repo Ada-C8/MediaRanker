@@ -57,16 +57,16 @@ class WorksController < ApplicationController
     end
   end
 
-    #could use for create update etc.
-    # if find_work_by_params_id
-      # if current_user != @work.user_id
-        # flash[:status] = :failure
-        # flash[:message] = "You must be logged in to do that!"
-        # redirect_to works_path
-        # # redirect will not return need to explicitly return
-        # return
-      # end
-    # end
+  #could use for create update etc.
+  # if find_work_by_params_id
+  # if current_user != @work.user_id
+  # flash[:status] = :failure
+  # flash[:message] = "You must be logged in to do that!"
+  # redirect_to works_path
+  # # redirect will not return need to explicitly return
+  # return
+  # end
+  # end
   #   @work = Work.find(params[:id])
   #   @work.destroy
   #   flash[:status] = :success
@@ -82,16 +82,32 @@ class WorksController < ApplicationController
       flash[:status] = :failure
       flash[:message] = "You must be logged in to do that!"
       redirect_to root_path
-    elsif session[:logged_in_user] && (user.voted?(@work) == false)
+      # elsif session[:logged_in_user] && (user.voted?(@work) == false)
+      #   vote = Vote.new(work_id: @work.id, user_id: user_id, date: Date.today)
+      #   vote.save
+      #   flash[:status] = :success
+      #   flash[:message] = "Successfuly upvoted #{@work.title}!"
+      #   redirect_to root_path
+      # elsif user.voted?(@work)
+      #   flash[:status] = :failure
+      #   flash[:message] = "Could not upvote. User has already voted for #{@work.title}"
+      #   redirect_to root_path
+    elsif session[:logged_in_user]
       vote = Vote.new(work_id: @work.id, user_id: user_id, date: Date.today)
-      vote.save
-      flash[:status] = :success
-      flash[:message] = "Successfuly upvoted #{@work.title}!"
-      redirect_to root_path
-    elsif user.voted?(@work)
-      flash[:status] = :failure
-      flash[:message] = "Could not upvote. User has already voted for #{@work.title}"
-      redirect_to root_path
+      if vote.save
+        flash[:status] = :success
+        flash[:message] = "Successfuly upvoted #{@work.title}!"
+        redirect_to root_path
+      else
+        flash[:status] = :failure
+        flash[:message] = "Could not upvote. User has already voted for #{@work.title}"
+        flash[:details] = vote.errors.messages
+        redirect_to root_path
+        # else
+        #   vote = Vote.new(work_id: @work.id, user_id: user_id, date: Date.today)
+        #   vote.save
+        #   flash.now[:details] = vote.errors.messages
+      end
     end
 
   end
