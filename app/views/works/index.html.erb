@@ -22,7 +22,7 @@
         <td><%=link_to(work.title, work_path(work.id)) %></td>
         <td><%=work.creator%></td>
         <td><%=work.publication_year%></td>
-        <td> <%=link_to("Up Vote", work_votes_path(work), method: :post)%> </td>
+        <td><%=link_to("Up Vote", work_votes_path(work), method: :post)%></td>
       <% end%>
     <% end %>
   </tbody>
@@ -47,6 +47,7 @@
           <td><%=link_to(work.title, work_path(work.id)) %></td>
           <td><%=work.creator%></td>
           <td><%=work.publication_year%></td>
+          <td><%=link_to("Up Vote", work_votes_path(work), method: :post)%></td>
         </tbody>
       <% end%>
     <% end %>
@@ -72,6 +73,7 @@
         <td><%=link_to(work.title, work_path(work.id)) %></td>
         <td><%=work.creator%></td>
         <td><%=work.publication_year%></td>
+        <td><%=link_to("Up Vote", work_votes_path(work), method: :post)%></td>
       <% end%>
     <% end %>
     </tbody>
