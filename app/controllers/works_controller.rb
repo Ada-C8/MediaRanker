@@ -28,17 +28,15 @@ class WorksController < ApplicationController
 
   def new
     @work = Work.new
-    @work_categories = Work.all.map do |work|
-      work.category
-    end
-    @work_categories.uniq!
   end
 
   def create
     @work = Work.new work_params
       if @work.save
+        flash[:success] = "Successfully added #{@work.title}"
         redirect_to works_path
       else
+        flash[:error] = "A problem occured. Could not create #{@work.category}"
         render :new
       end
   end
