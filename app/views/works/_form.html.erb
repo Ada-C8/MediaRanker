@@ -1,7 +1,7 @@
 <%= form_for @work do |f| %>
   <p>
     <%= f.label :category%>
-    <%= f.text_field :category %>
+    <%= f.select :category, ['album','book','movie'], :prompt => 'Select One of the 3 Categories' %>
   </p>
 
   <p>
