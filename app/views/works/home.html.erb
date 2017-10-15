@@ -3,7 +3,9 @@
     <div>
       <h3>
         <span class="media-spotlight-header">Media Spotlight: </span>
-        <%= Work.find(@topwork.id).title %>
+        <% if @topwork %>
+          <%= Work.find(@topwork.id).title %>
+        <% end %>
       </h3>
       <p>
         <%= @topwork.votes.size %> votes
