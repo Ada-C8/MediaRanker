@@ -77,6 +77,22 @@ li{
 
 }
 
+.failure{
+  border-radius: 5px;
+  background-color: #e6e6e6;
+  padding: 20px 25px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+
+}
+
+.failure h3{
+  font-weight: normal;
+  font-size: 1em;
+  color: #c70039;
+
+}
+
 .success h3{
  font-weight: normal;
  font-size: 1em;

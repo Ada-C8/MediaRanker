@@ -9,9 +9,15 @@ class WorksController < ApplicationController
 
   def destroy
     @work = Work.find(params[:id])
-    @work.destroy
+    @votes = Vote.where(work_id: @work.id)
 
-    redirect_to works_path
+    @votes.each do |vote|
+      vote.destory
+    end
+
+    @work.destroy
+    flash[:deleted] = "Successfully destoryed #{@work.category} #{@work.id}"
+    redirect_to root_path
   end
 
   def show
@@ -38,7 +44,7 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
     @user_id = session[:user_id]
     if session[:user_id] == nil
-      flash[:notice] = 'You must log in to do that'
+      flash[:failure] = 'You must log in to do that'
     else
       @check = Vote.where(user_id: session[:user_id], work_id: @work.id)
       if @check == nil
