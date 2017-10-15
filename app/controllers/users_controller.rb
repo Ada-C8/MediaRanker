@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   #     flash[:success] = "Successfully created new user #{@user.username} with ID #{@user.id}"
   #     redirect_to root_path
   #   else
-  #     flash[:error] = "User not created"
+  #     flash[:failure] = "User not created"
   #     render :new
   #   end
   #

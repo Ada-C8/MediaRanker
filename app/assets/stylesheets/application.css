@@ -79,10 +79,11 @@
     font-size: 1.9375rem;
   }
 
-  .flash .success {
+  /*.flash .success {
    background-color: lightgreen;
    display:block;
- }
+ }*/
+
 
  .button {
    background-color: #26A69A;
@@ -145,6 +146,26 @@
     border-bottom: 2px solid;
     border-bottom-color: #B2DFDB;
   }
+
+  .status {
+     border-radius: 5px;
+     background-color: #e6e6e6;
+     padding: 20px 25px;
+     margin-top: 30px;
+   }
+
+  .status h3 {
+     font-weight: normal;
+     font-size: 1em;
+   }
+
+   .success h3 {
+     color: #8a8a8a;
+   }
+
+   .failure h3 {
+     color: #C70039;
+    }
   /*@media print, screen and (min-width: 40em) h3 {
     font-size: 1.9375rem;
   }*/

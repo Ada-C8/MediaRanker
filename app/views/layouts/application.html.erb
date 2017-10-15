@@ -32,11 +32,21 @@
       </nav>
 
     </header>
-    <section class="flash">
-      <% flash.each do |name, message| %>
-      <div class="<%= name %>"><%= message %></div>
-      <% end %>
-    </section>
+
+    <% flash.each do |name, message| %>
+
+      <section class = " row status <%= name%> " >
+        <h3><%= message %></h3>
+        <% if params[:notice] %>
+          <ul class="errors">
+              <li>
+                <%= params[:notice] %>
+              </li>
+          </ul>
+        <% end %>
+
+      </section>
+    <% end %>
     <%= yield %>
   </body>
 </html>

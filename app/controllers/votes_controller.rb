@@ -18,10 +18,19 @@ class VotesController < ApplicationController
       #TODO: redirect to the same page you were on
       redirect_back(fallback_location: root_path)
     else
-      flash[:error] = "Could not upvote"
+
+      if logged_in?
+        flash[:failure] = "Could not upvote" #if already voted, then display error message
+        @errors = @vote.errors
+        # flash[:errors] = "#{@errors.first[1]}"
+        redirect_back(fallback_location: root_path, notice: "#{@errors.first[1]}")
+      else
+        flash[:failure] = "You must log in to do that"
+        redirect_back(fallback_location: root_path)
+      end
+
     end
 
   end
-
 
 end
