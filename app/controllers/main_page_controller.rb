@@ -1,22 +1,26 @@
 class MainPageController < ApplicationController
   def index
     # top_voted = []
-    @works = Work.order(:title).group_by { |work| work.category }
-    @works = @works.each do |key, values|
-      @works[key] = (values.sort_by {|value| value.votes.length}).reverse
-      # top_voted << @works[key].first
-    end
+    @works = all_works_by_votes
     @spotlight_work = Work.spotlight
   end
 end
 
 private
 
-# def all_works_by_title
-#   works = Work.order(:title).group_by { |work| work.category }
-#   return works
-# end
-#
+def all_works_by_category
+  works = Work.order(:title).group_by { |work| work.category }
+  return works
+end
+
+def all_works_by_votes
+  works = all_works_by_category
+  works = works.each do |key, values|
+    works[key] = (values.sort_by {|value| value.votes.length}).reverse
+  end
+  return works
+end
+
 # def spotlight
 #   top_voted = []
 #   all_works = all_works_by_title
