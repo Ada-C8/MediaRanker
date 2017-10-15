@@ -1,6 +1,6 @@
 class Work < ApplicationRecord
   CATEGORIES = ['album', 'book', 'movie']
-  has_many :votes
+  has_many :votes, :dependent => :delete_all 
 
   validates :title, presence: true
   # NOTE: When I leave these validations in the rails app doesn't recognize that it received a title from the collection.sort drop down.
