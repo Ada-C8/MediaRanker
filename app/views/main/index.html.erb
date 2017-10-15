@@ -3,12 +3,14 @@
   <section class = "row spotlight">
 
       <div>
+        <% if @top %>
         <h3>
           <span class = "media-spotlight-header"> <strong>Media Spotlight:</strong> </span>
           <%= link_to @top.title, work_path(@top.id) %>
           by <%=@top.creator%>
         </h3>
         <p> <%= @top.vote.count %> votes <%=@top.description %> </p>
+        <% end %>
       </div>
 
 </section>
