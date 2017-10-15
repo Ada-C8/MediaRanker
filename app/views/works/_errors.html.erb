@@ -1,0 +1,15 @@
+
+    <% flash.each do |name, message| %>
+    <section class="row status <%= name %>">
+      <h3><%= message %></h3>
+      <% if @work.errors %>
+        <ul class="errors">
+            <% @work.errors.each do |column, message| %>
+              <li>
+                <%= "#{column}: #{message}" %>
+              </li>
+            <% end %>
+        </ul>
+      <% end %>
+    </section>
+    <% end %>
