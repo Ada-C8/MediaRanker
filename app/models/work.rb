@@ -3,7 +3,6 @@ class Work < ApplicationRecord
 
   validates :category, presence: true
   validates :title, presence: true
+  # I do not want to restrict title presence as more than one work can have the exact same title
   validates :creator, presence: true
-  validates :publication_year, presence: true
-  # validates :description, presence: true
 end
