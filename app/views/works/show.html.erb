@@ -13,12 +13,22 @@
 </ul>
 
 
-<ul>
-  <% @work.votes.each do |vote| %>
-      <li><%= vote.user.username %></li>
-      <li><%= vote.created_at %></li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @work.votes.each do |vote| %>
+    <tr>
+      <td><%= vote.user.username %></td>
+      <td><%= vote.created_at %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
 
 <ul>
@@ -32,21 +42,4 @@
     <%# button_to("View Top Media", home_index_path, method: :get) %>
 </ul>
 
-
-
-
-
 <!-- LOOP FOR VOTES GOES IN THIS TABLE -->
-<!-- <table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td></td>
-    </tr>
-  </tbody>
-</table> -->
