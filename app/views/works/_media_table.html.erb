@@ -26,7 +26,7 @@
         <%=type.publication_year %>
       </td>
       <td>
-        put upvote button here
+        <%=link_to("Upvote", work_votes_path(type), method: :post, class: "button") %>
       </td>
       </tr>
       <% end %>

@@ -5,14 +5,14 @@ Rails.application.routes.draw do
   get "main/index"
 
   resources :works do
-    #resources :votes, only: [:create]
-    post '/votes', to: 'work#vote'
-    # resources :votes, only: [:new]
-  end
+     resources :votes, only: [:create]
+   #post '/votes', to: 'work#vote'
+  #   # resources :votes, only: [:new]
+   end
 
   # resources :works
   resources :users
-  resources :votes, except: [:create]
+  resources :votes
 
 
   get 'login', to: 'users#login_form', as: 'login'
