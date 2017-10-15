@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   root to: "works#home", as: "root"
 
-  resources :users do
+  resources :users, only: [:index, :show, :create] do
     resources :votes, only: [:create]
   end
 
-  resources :votes
+  resources :votes, only: [:create]
 
   resources :works do
     resources :votes, only: [:create]
