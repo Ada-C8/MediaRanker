@@ -8,7 +8,9 @@
         <% end %>
       </h3>
       <p>
-        <%= @topwork.votes.size %> votes
+        <% if @topwork %>
+          <%= @topwork.votes.size %> votes
+        <% end %>
       </p>
     </div>
   </section>
