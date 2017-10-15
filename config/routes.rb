@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'main#index'
   resources :works
   resources :user
-
+  
   resources :works do
     resources :user, only: [:show, :edit, :delete]
   end

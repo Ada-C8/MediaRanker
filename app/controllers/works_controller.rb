@@ -26,6 +26,7 @@ class WorksController < ApplicationController
 
   def edit ; end
 
+# "success" message from the #save_and_flash method is not working. however database is updated.
   def update
     @work.update_attributes(work_params)
     if save_and_flash(@work)
@@ -38,6 +39,8 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    @work.destroy
+    redirect_to works_path
 
   end
 
