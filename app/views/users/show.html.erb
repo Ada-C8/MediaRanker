@@ -2,7 +2,7 @@
   <h1>User Summary: <%= @user.username %></h1>
   <p>Joined site <%= @user.created_at %></p>
 
-<h2>Votes</h2>
+  <h2>Votes</h2>
   <table>
     <tr>
       <th>Media Title</th>
@@ -12,13 +12,13 @@
       <th>Voted On</th>
     </tr>
     <% @user.votes.each do |vote| %>
-      <tr>
-        <td><%= link_to vote.work.title, work_path(vote.work.id) %></td>
-        <td><%= vote.work.creator %> </td>
-        <td><%= vote.work.publication_year %> </td>
-        <td><%= vote.work.category %> </td>
-        <td><%= vote.created_at %> </td>
-      </tr>
-  <% end %>
+    <tr>
+      <td><%= link_to vote.work.title, work_path(vote.work.id) %></td>
+      <td><%= vote.work.creator %> </td>
+      <td><%= vote.work.publication_year %> </td>
+      <td><%= vote.work.category %> </td>
+      <td><%= vote.created_at %> </td>
+    </tr>
+    <% end %>
   </table>
 </section>

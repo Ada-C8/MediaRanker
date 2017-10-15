@@ -2,3 +2,6 @@
 
 test_user:
   username: justatest
+
+no_username:
+  username:

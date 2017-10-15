@@ -7,25 +7,25 @@
   </ul>
 
   <ul>
-    <li><%= link_to "Back to Media Ranks", root_path %></li>
-    <li><%= link_to "Edit", edit_work_path(@work.id) %></li>
+    <li><%= link_to "Back to Media Ranks", root_path, alt: "Link to top works" %></li>
+    <li><%= link_to "Edit", edit_work_path(@work.id), alt: "Link to edit this work" %></li>
     <li><%= link_to "Upvote", work_votes_path(@work.id), method: :post, alt: "Link to Upvote this Work" %></li>
-    <li><%= link_to "Delete", work_path(@work.id), method: :delete %></li>
+    <li><%= link_to "Delete", work_path(@work.id), method: :delete, alt: "Link to delete this work"%></li>
   </ul>
 </section>
 
 <section class="votes">
   <h1><%= @work.votes.count %> Votes for this <%= @work.category %></h1>
   <table>
-  <tr>
-  <th>User</th>
-  <th>Date</th>
-  </tr>
-  <% @work.votes.each do |vote| %>
-  <tr>
-  <td><%= link_to vote.user.username, user_path(vote.user.id) %></td>
-  <td><%= vote.created_at %> </td>
-  </tr>
-  <% end %>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
+    <% @work.votes.each do |vote| %>
+    <tr>
+      <td><%= link_to vote.user.username, user_path(vote.user.id), alt: "Link to user"%></td>
+      <td><%= vote.created_at %> </td>
+    </tr>
+    <% end %>
   </table>
 </section>
