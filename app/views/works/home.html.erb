@@ -3,10 +3,10 @@
     <div>
       <h3>
         <span class="media-spotlight-header">Media Spotlight: </span>
-        Top Media
+        <%= Work.find(@topwork.id).title %>
       </h3>
       <p>
-        VOTES
+        <%= @topwork.votes.size %> votes
       </p>
     </div>
   </section>
@@ -18,7 +18,7 @@
         <li>
           <h4><%= link_to Work.find(movie.id).title, work_path(movie.id) %> <small>by <%Work.find(movie.id).creator%></small></h4>
           <p>
-            <%= movie.votes.length %> votes
+            <%= movie.votes.size %> votes
           </p>
         </li>
         <% end %>
@@ -31,7 +31,7 @@
       <li>
         <h4><%= link_to Work.find(book.id).title, work_path(book.id) %> <small>by <%Work.find(book.id).creator%></small></h4>
         <p>
-          <%= book.votes.length %> votes
+          <%= book.votes.size %> votes
         </p>
       </li>
       <% end %>
@@ -44,7 +44,7 @@
       <li>
         <h4><%= link_to Work.find(album.id).title, work_path(album.id) %> <small>by <%Work.find(album.id).creator%></small></h4>
         <p>
-          <%= album.votes.length %> votes
+          <%= album.votes.size %> votes
         </p>
       </li>
       <% end %>

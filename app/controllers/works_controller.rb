@@ -3,6 +3,7 @@ class WorksController < ApplicationController
     @albums = Work.top10albums
     @books = Work.top10books
     @movies = Work.top10movies
+    @topwork = Work.topwork[0]
   end
 
   def index

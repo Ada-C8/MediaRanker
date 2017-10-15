@@ -13,4 +13,7 @@ class Work < ApplicationRecord
   scope :top10albums, -> {
     where(category: "album").select("works.id, count(votes.id) AS votes_count").left_joins(:votes).group("works.id").order("votes_count DESC").limit(10)
   }
+  scope :topwork, -> {
+    select("works.id, count(votes.id) AS votes_count").joins(:votes).group("works.id").order("votes_count DESC").limit(1)
+  }
 end
