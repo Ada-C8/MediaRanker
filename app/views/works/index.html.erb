@@ -24,7 +24,7 @@
       <% work_headers.each do |key| %>
       <td>
         <% if key == "Votes" %>
-          <%= "This will be # of votes" %>
+          <%= "#{(album.votes).count}" %>
         <% elsif key == "Title" %>
           <%= link_to "#{album.title}", work_path(album.id) %>
         <% elsif key == "Created By" %>
@@ -32,7 +32,7 @@
         <% elsif key == "Published" %>
           <%= "#{album.publication_year}" %>
         <% elsif key == "Upvote" %>
-          <%= "This will be a button" %>
+          <%= link_to "Upvote", upvote_path(album.id), method: :post %>
         <% end %>
       </td>
       <% end %>
@@ -56,7 +56,7 @@
       <% work_headers.each do |key| %>
       <td>
         <% if key == "Votes" %>
-          <%= "This will be # of votes" %>
+          <%= "#{(book.votes).count}" %>
         <% elsif key == "Title" %>
           <%= link_to "#{book.title}", work_path(book.id) %>
         <% elsif key == "Created By" %>
@@ -64,7 +64,7 @@
         <% elsif key == "Published" %>
           <%= "#{book.publication_year}" %>
         <% elsif key == "Upvote" %>
-          <%= "This will be a button" %>
+          <%= link_to "Upvote", upvote_path(book.id), method: :post %>
         <% end %>
       </td>
       <% end %>
@@ -88,7 +88,7 @@
       <% work_headers.each do |key| %>
       <td>
         <% if key == "Votes" %>
-          <%= "This will be # of votes" %>
+          <%= "#{(movie.votes).count}" %>
         <% elsif key == "Title" %>
           <%= link_to "#{movie.title}", work_path(movie.id) %>
         <% elsif key == "Created By" %>
@@ -96,7 +96,7 @@
         <% elsif key == "Published" %>
           <%= "#{movie.publication_year}" %>
         <% elsif key == "Upvote" %>
-          <%= "This will be a button" %>
+          <%= link_to "Upvote", upvote_path(movie.id), method: :post %>
         <% end %>
       </td>
       <% end %>

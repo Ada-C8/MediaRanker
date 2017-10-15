@@ -22,7 +22,7 @@
       </thead>
       <tbody>
         <% if @work.votes.count > 0%>
-          <%= @work.votes.each do |vote|%>
+          <% @work.votes.each do |vote|%>
             <tr>
               <td><%= link_to "#{vote.user.username}", user_path(vote.user.id)%></td>
               <td><%= "#{(vote.created_at).to_date} "%></td>

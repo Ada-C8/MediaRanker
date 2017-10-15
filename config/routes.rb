@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   ### VOTE ###
 
-  post 'votes/', to: 'votes#create', as: 'create_vote' #create_vote_path
+  post 'works/:id/upvote', to: 'votes#create', as: 'upvote' #upvote_path
 
   get 'votes/create'
 
