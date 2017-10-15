@@ -12,12 +12,16 @@ class SessionsController < ApplicationController
         @user = User.create(username: params[:username])
         if @user
           session[:user_id] = @user.id
-          flash[:success] = "Successfully created user: #{@user.username}"
-          redirect_to root_path
-        else
-          flash.now[:error] = "No user found by that username #{params[:username]}"
+          flash[:success] = "Successfully created user #{@user.username}"
           redirect_to root_path
         end
       end
+  end
+
+  def log_out
+    @user = User.find_by(username: params[:username])
+    session[:user_id] = nil
+    flash[:success] = "Successfully logged out"
+    redirect_to root_path
   end
 end

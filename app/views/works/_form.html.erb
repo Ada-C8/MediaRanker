@@ -1,7 +1,7 @@
 <%= form_for @work do |f| %>
 
   <%= f.label :category %>
-  <%= f.select :category, options_for_select(['album', 'book', 'movie']) %>
+  <%= f.select :category, options_for_select(@work_categories) %>
 
   <%= f.label :title %>
   <%= f.text_field :title %>

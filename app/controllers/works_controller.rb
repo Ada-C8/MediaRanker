@@ -28,6 +28,10 @@ class WorksController < ApplicationController
 
   def new
     @work = Work.new
+    @work_categories = Work.all.map do |work|
+      work.category
+    end
+    @work_categories.uniq!
   end
 
   def create
