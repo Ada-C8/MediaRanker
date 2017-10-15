@@ -25,6 +25,14 @@ describe WorksController do
     must_respond_with :success
   end
 
+  it "should be able to edit a work" do
+    patch work_path(works(:bonito).id), params: {work: {title: "updated title"}}
+    updated_work = Work.find( works(:bonito).id)
+    updated_work.title.must_equal "updated title"
+    must_redirect_to books_path
+
+  end
+
   it "should get new" do
     get new_work_path
     must_respond_with :success
