@@ -17,6 +17,7 @@ describe Work do
         description: "An album description"
       )
       w.must_be :valid?
+      w.save!
       w.errors.messages.wont_include :category
       w.errors.messages.wont_include :title
       w.errors.messages.wont_include :creator
@@ -26,12 +27,11 @@ describe Work do
 
     it "will raise an error if category, title, creator, description, publication_year is invalid" do
       w = Work.new
-      is_valid = w.valid?
-      is_valid.must_equal false
+
+      w.wont_be :valid?
       w.errors.messages.must_include :category
       w.errors.messages.must_include :title
       w.errors.messages.must_include :creator
-      w.errors.messages.must_include :description
       w.errors.messages.must_include :publication_year
     end
   end # Describe
