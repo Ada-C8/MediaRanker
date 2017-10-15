@@ -9,6 +9,5 @@ class Vote < ApplicationRecord
     return Vote.where(user_id: user.id)
   end
 
-  # def self.votes_by_work(work)
-  # end
+
 end

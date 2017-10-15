@@ -25,4 +25,18 @@ describe UsersController do
       must_respond_with :success
     end
   end
+
+  #THis test won't work... doesn't recognize login as a method?!
+  # describe "login" do
+  #   u = User.create!(name: "someone")
+  #   user_data = {
+  #     user: {
+  #       name: u.name
+  #     }
+  #   }
+  #   login
+  #
+  #   must_redirect_to root_path
+  #   must_respond_with :success
+  # end
 end

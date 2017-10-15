@@ -10,7 +10,10 @@ class VotesController < ApplicationController
     if user == nil
       flash[:status] = :failure
       flash[:message] = "Sorry, you must be logged in to vote."
-      redirect_to request.referrer, status: :bad_request
+      if request.referrer != nil
+        redirect_to request.referrer, status: :bad_request
+      else redirect_to works_path
+      end
       return
     end
 
@@ -29,7 +32,10 @@ class VotesController < ApplicationController
       if vote.work_id == work.id
         flash[:status] = :failure
         flash[:message] = "You have already voted on #{work.title} - you can only vote once per media."
-        redirect_to request.referrer, status: :bad_request
+        if request.referrer != nil
+          redirect_to request.referrer, status: :bad_request
+        else redirect_to works_path
+        end
         return
       end
     end
@@ -42,7 +48,10 @@ class VotesController < ApplicationController
     else
       flash[:status] = :failure
       flash[:message] = "Sorry, your vote could not be processed."
-      redirect_to request.referrer, status: :bad_request
+      if request.referrer != nil
+        redirect_to request.referrer, status: :bad_request
+      else redirect_to works_path
+      end
       return
     end
 
