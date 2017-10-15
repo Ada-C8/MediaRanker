@@ -19,7 +19,7 @@
               <li>
                 <h4><%=link_to work.title, work_path(work.id)%> <small>by <%=work.creator%></small></h4>
                 <%= work.votes.count %> votes
-                <%= link_to "Upvote" %>
+                <%= link_to "Upvote", vote_path(work.id), method: :post %>
               </li>
           <%end%>
       </ul>
