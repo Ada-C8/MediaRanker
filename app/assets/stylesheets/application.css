@@ -15,12 +15,12 @@
 */
 
 *= require ./foundation.css;
-/**= require_tree .;*/
+*= require_tree .;
 
 
 
 /*header styling*/
-.page-header {
+.page-header row {
   max-width: 100%;
   background-color: #B2DFDB;
   border-bottom: 1px solid #EEEEEE;

@@ -1,7 +1,7 @@
 <main class="row">
   <section>
     <% if @work.errors.any? %>
-  <ul class="error">
+  <ul class="error row">
     <% @work.errors.each do |column, message| %>
       <li>
         <%= column.capitalize %>: <%= message %>

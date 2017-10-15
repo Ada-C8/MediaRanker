@@ -26,7 +26,8 @@
       <%= button_to("View all users", users_path, method: :get, alt: "link to user index", class: "button") %>
       <div class="float-right">
         <%= button_to((session[:user_id] == nil ? "Log In" : "Logged in as #{session[:name]}"), (session[:user_id] == nil ? login_path : user_path((session[:user_id]))), method: :get, alt: "link to user summary", class: "button") %>
-        <%= button_to("Log Out", logout_path, method: :get, alt: "link to log out", class: "button") %>
+        <% if session[:user_id] != nil %> <%= button_to("Log Out", logout_path, method: :get, alt: "link to log out", class: "button") %>
+        <% end %>
       </div>
     </nav>
   </header>
