@@ -2,4 +2,9 @@
   <h3>User Summary: <%= @user.username %></h3>
   <p>Joined site on <%= @user.created_at.strftime("%B %d, %Y") %></p>
   <h4>Votes</h4>
+  <table>
+
+  </table>
+  <%= link_to "See all users", users_path %>
+  <%= link_to "Back to top media", root_path %>
 </main>
