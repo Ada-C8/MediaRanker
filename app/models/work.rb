@@ -3,10 +3,10 @@ class Work < ApplicationRecord
   has_many :votes
 
   validates :title, presence: true
-  # TODO: figure out what is going on with create and this validation
+  # NOTE: When I leave these validations in the rails app doesn't recognize that it received a title from the collection.sort drop down.
+  # TODO: figure out what is going on with create and this validation to make it not recognize the category given in the drop down...
   # validates :category, presence: true
   # validates :category, inclusion: { in: %w( album book movie )}
-
 
   def self.sort_by_vote_count
     return Work.all.sort_by{|work| -work.votes.count}
