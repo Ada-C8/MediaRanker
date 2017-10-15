@@ -20,12 +20,33 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
-      flash[:success] = "Saved!"
+      flash[:status] = :success
+      flash[:message] = "Successfully created work #{@work.id}"
       redirect_to works_path
     else
-      render :new
+      flash.now[:status] = :failure
+      flash.now[:message] = "Failed to create new work"
+      render :new, status: :bad_request
     end
   end
+
+  # @book = Book.new(book_params)
+
+  # if @book.save
+  #   flash[:status] = :success
+  #   flash[:message] = "Successfully created book #{@book.id}"
+  #   redirect_to books_path
+  # else
+    # Tell the user what went wrong
+    # flash.now[:status] = :failure
+    # flash.now[:message] = "Failed to create book"
+    # flash.now[:details] = @work.errors.messages
+    # render :new, status: :bad_request
+  # end
+# end
+
+
+
 
   def edit
     # @work = Work.find(params[:id])

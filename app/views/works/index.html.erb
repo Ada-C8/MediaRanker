@@ -38,7 +38,7 @@
 <% @works.each do |work| %>
 <tr>
   <td>
-    <%= work.testing(work.id) %>
+     work.testing(work.id)
   </td>
   <td>
     <%= work.category %>
@@ -57,14 +57,13 @@
   </td>
   <td>
     VOTES
-    <%= form_for(Vote.new) do |f| %>
+    <%= form_for Vote.new do |f| %>
+    <%= f.hidden_field :work_id, value: 1 %>
     <%= f.submit %>
     <% end %>
   </td>
   <% end %>
 
-  <td>
-    VOTERS
     <%# @vote = Vote.new %>
     <%#= form_for @vote url {action: create}
 
@@ -77,7 +76,7 @@
 
 
     <%#= link_to "Vote", new_work_vote_path(work.id) %>
-  </td>
+
 </tr>
 
 

@@ -2,7 +2,11 @@ class Work < ApplicationRecord
   has_many :votes, dependent: :destroy
 
 # must provide a title
-validates :title, presence: {message: "%{value} must be given"}
+validates :title, presence: {message: "Title is Required"}
+validates :title, uniqueness: {message: "Someone Else has Already Added that Work"}
+
+
+
 
 def testing(input)
   @votes = Vote.all

@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   resources :users
 
   resources :works
-  resources :votes
+    resources :votes
 
+  
   get 'upvote', to: 'votes#new', as: 'upvote'
   post 'upvote', to: 'votes#create'
 
