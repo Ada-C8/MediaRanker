@@ -25,4 +25,8 @@ describe User do
       u.must_respond_to :votes
     end
   end
+
+  describe "voted_works" do
+
+  end
 end

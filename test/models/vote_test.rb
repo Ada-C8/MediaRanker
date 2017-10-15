@@ -21,6 +21,11 @@ describe Vote do
       v.wont_be :valid?
       v.errors.messages.must_include :work_id
     end
+
+    it "isn't valid if user has voted before" do
+      vote.save
+      vote.wont_be :valid?
+    end
   end
 
   describe "relationships" do
