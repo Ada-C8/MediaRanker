@@ -21,6 +21,14 @@ describe Vote do
       v.wont_be :valid?
       v.errors.messages.must_include :work_id
     end
+
+    it "is invalid if the user_id and work_id are not unique" do
+      vote.save
+      v = Vote.new(work: work, user: user)
+      v.wont_be :valid?
+      v.errors.messages.must_include :user_id
+
+    end
   end
 
   describe "relations" do
