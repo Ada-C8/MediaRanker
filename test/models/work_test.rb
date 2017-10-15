@@ -50,6 +50,4 @@ describe Work do
     book.save
     book.valid?.must_equal true
   end
-
-
 end
