@@ -1,6 +1,7 @@
 <h1>List of Works</h1>
 <h2>Albums</h2>
 <table>
+  <thead>
   <tr>
     <th>
       Votes
@@ -18,11 +19,13 @@
       Upvote
     </th>
   </tr>
+</thead>
+
   <% @works.each do |work| %>
   <% if work.category == "album" %>
     <tr>
       <td>
-
+        <%= work.votes.count %>
       </td>
       <td>
         <%=link_to work.title, work_path(work.id)%>
@@ -44,6 +47,7 @@
 <h2>Books</h2>
 
 <table>
+  <thead>
   <tr>
     <th>
       Votes
@@ -61,11 +65,13 @@
       Upvote
     </th>
   </tr>
+</thead>
+
   <% @works.each do |work| %>
   <% if work.category == "book" %>
     <tr>
       <td>
-
+        <%= work.votes.count %>
       </td>
       <td>
         <%= link_to work.title, work_path(work.id)%>
@@ -88,6 +94,8 @@
 
 <h2> Movies</h2>
 <table>
+  <thead>
+
   <tr>
     <th>
       Votes
@@ -105,11 +113,12 @@
       Upvote
     </th>
   </tr>
+</thead>
   <% @works.each do |work| %>
   <% if work.category == "movie" %>
     <tr>
       <td>
-
+        <%= work.votes.count %>
       </td>
       <td>
         <%= link_to work.title, work_path(work.id)%>

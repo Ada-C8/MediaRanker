@@ -37,19 +37,19 @@
       <p>
         <%= flash[:message] %>
       </p>
+    </section>
       <% if flash[:details] %>
       <ul>
         <% flash[:details].each do |field, problems| %>
         <% problems.each do |problem| %>
-
-        <h3><%= field.capitalize %> <%= problem %></h3>
-
+        <li>
+          <%= field %>: <%= problem %>
+        </li>
         <% end %>
         <%end%>
 
       </ul>
       <% end %>
-    </section>
   </main>
   <%= yield %>
 </body>

@@ -4,6 +4,7 @@
 </p>
 <h3>Votes</h3>
 <table>
+  <thead>
   <tr>
     <th>
       Media Title
@@ -21,6 +22,7 @@
       Voted On
     </th>
   </tr>
+</thead>
   <% @user.votes.each do |vote| %>
   <tr>
     <td>
@@ -41,3 +43,6 @@
   </tr>
   <% end %>
 </table>
+
+<%=link_to "See all Users", users_path, class: "button" %>
+<%=link_to "Back to Media List", works_path, class: "button" %>

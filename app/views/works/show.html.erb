@@ -1,13 +1,41 @@
 <h1><%= @work.title %></h1>
 <p>
-   Created by: <%= @work.creator %>
+  Created by: <%= @work.creator %>
 </p>
 <p>
   Published: <%= @work.publication_year %>
 </p>
 <p>
-<%= @work.description %>
+  <%= @work.description %>
 </p>
 
-<%= link_to "Edit", edit_work_path(@work.id) %>
-<%= link_to "Delete", work_path(@work.id), method: :delete, data: {:confirm => "Are you sure you want to delete this #{@work.category}?"} %>
+<%= link_to "Back to media ranks", root_path, class:"button" %>
+<%= link_to "Edit", edit_work_path(@work.id), class:"button" %>
+<%= link_to "Upvote", upvote_path(@work.id), method: :post, class: "button"  %>
+<%= link_to "Delete", work_path(@work.id), method: :delete, data: {:confirm => "Are you sure you want to delete this #{@work.category}?"}, class: "alert button"  %>
+
+<h2><%=@work.votes.count%> votes for this <%=@work.category%></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        User
+      </th>
+      <th>
+        Date
+      </th>
+    </tr>
+  </thead>
+
+  <% @work.votes.each do |vote|%>
+  <tr>
+    <td>
+      <%=link_to vote.user.username, user_path(vote.user_id)%>
+    </td>
+    <td>
+      <%=vote.date.strftime('%b %d, %Y') %>
+    </td>
+  </tr>
+  <%end%>
+</table>

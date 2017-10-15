@@ -9,7 +9,8 @@ protected
       flash[:message] = "Successfully #{message_variation}d #{model.title}"
     else
       flash.now[:status] = :failure
-      flash.now[:message] = "Failed to #{message_variation} #{model.title}"
+      # flash.now[:message] = "Failed to #{message_variation} #{model.title}"
+      flash.now[:message] = "A problem occurred: Could not #{message_variation} album"
       flash.now[:details] = model.errors.messages
     end
 

@@ -47,3 +47,24 @@ nav div button {
     margin-right: auto;
     margin-left: auto;
 }
+
+
+body small {
+    color: slategrey;
+}
+
+a, h3 {
+    color: #26A69A;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: bold;
+}
+
+body, h1, h2, h3, h4, h5 {
+    font-family: "Gudea", sans-serif;
+  }
+
+ul {
+  list-style-type: none;
+}

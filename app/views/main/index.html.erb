@@ -1,137 +1,54 @@
-<h1>Media Spotlight:
-  <% if Work.top_work %>
-  <% link_to Work.top_work.title, work_path(Work.top_work.id)%> by <% Work.top_work.creator%></h1>
-<p>
-  <%Work.top_work.votes.count%>-<%Work.top_work.description%>
-</p>
-<%end%>
-<h2>ORDER BY VOTES!</h2>
-<h2>Top Albums</h2>
-<table>
-  <tr>
-    <th>
-      Votes
-    </th>
-    <th>
-      Title
-    </th>
-    <th>
-      Created By
-    </th>
-    <th>
-      Published
-    </th>
-    <th>
-      Upvote
-    </th>
-  </tr>
-  <% @works.each do |work| %>
-  <% if work.category == "album" %>
-    <tr>
-      <td>
-        <%= work.votes.count %>
-      </td>
-      <td>
-        <%=link_to work.title, work_path(work.id)%>
-      </td>
-      <td>
-        <%=work.creator%>
-      </td>
-      <td>
-        <%=work.publication_year%>
-      </td>
-      <td>
-        <%=link_to "Upvote", upvote_path(work.id), method: :post, class: "button"  %>
-      </td>
-    </tr>
-  <% end %>
-  <% end %>
+<section class="row spotlight">
+  <h3>
+    <span class="media-spotlight">
+      Media Spotlight:
+    </span>
+    <% if Work.top_work %>
+    <%= link_to Work.top_work.title, work_path(Work.top_work.id)%> by <%= Work.top_work.creator%></h3>
+  <p>
+    <%=Work.top_work.votes.count%>-<%=Work.top_work.description%>
+  </p>
+  <%end%>
 
-</table>
-<h2>Top Books</h2>
+</section>
+<section class="top-ten columns large-4 small-12">
+  <h3>Top Movies</h3>
+  <ul>
+    <% unless Work.top_ten("movie").empty? %>
+    <% Work.top_ten("movie").each do |work| %>
+      <li>
+        <h4> <%= link_to work.title, work_path(work.id)%><small> by <%=work.creator%></small></h4>
+        <p><%=work.votes.count%> votes</p>
+      </li>
+    <%end%>
+    <%end%>
 
-<table>
-  <tr>
-    <th>
-      Votes
-    </th>
-    <th>
-      Title
-    </th>
-    <th>
-      Created By
-    </th>
-    <th>
-      Published
-    </th>
-    <th>
-      Upvote
-    </th>
-  </tr>
-  <% @works.each do |work| %>
-  <% if work.category == "book" %>
-    <tr>
-      <td>
-        <%= work.votes.count %>
-      </td>
-      <td>
-        <%= link_to work.title, work_path(work.id)%>
-      </td>
-      <td>
-        <%=work.creator%>
-      </td>
-      <td>
-        <%=work.publication_year%>
-      </td>
-      <td>
-        <%=link_to "Upvote", upvote_path(work.id), method: :post, class: "button"  %>
-      </td>
-    </tr>
-  <% end %>
-  <% end %>
+  </ul>
+</section>
+<section class="top-ten columns large-4 small-12">
+  <h3>Top Books</h3>
+  <ul>
+    <% unless Work.top_ten("book").empty? %>
+    <% Work.top_ten("book").each do |work| %>
+      <li>
+        <h4> <%= link_to work.title, work_path(work.id)%><small> by <%=work.creator%></small></h4>
+        <p><%=work.votes.count%> votes</p>
+      </li>
+    <%end%>
+    <%end%>
+  </ul>
+</section>
+<section class="top-ten columns large-4 small-12">
+  <h3>Top Albums</h3>
+  <ul>
+    <% unless Work.top_ten("album").empty? %>
 
-</table>
-
-
-<h2> Top Movies</h2>
-<table>
-  <tr>
-    <th>
-      Votes
-    </th>
-    <th>
-      Title
-    </th>
-    <th>
-      Created By
-    </th>
-    <th>
-      Published
-    </th>
-    <th>
-      Upvote
-    </th>
-  </tr>
-  <% @works.each do |work| %>
-  <% if work.category == "movie" %>
-    <tr>
-      <td>
-        <%= work.votes.count %>
-      </td>
-      <td>
-        <%= link_to work.title, work_path(work.id)%>
-      </td>
-      <td>
-        <%=work.creator%>
-      </td>
-      <td>
-        <%=work.publication_year%>
-      </td>
-      <td>
-        <%=link_to "Upvote", upvote_path(work.id), method: :post, class: "button"  %>
-      </td>
-    </tr>
-  <% end %>
-  <% end %>
-
-</table>
+    <% Work.top_ten("album").each do |work| %>
+      <li>
+        <h4> <%= link_to work.title, work_path(work.id)%><small> by <%=work.creator%></small></h4>
+        <p><%=work.votes.count%> votes</p>
+      </li>
+    <%end%>
+    <%end%>
+  </ul>
+</section>
