@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :users, only:[:index, :show, :new, :create]
 
+  post 'works/:id/upvote', to: 'votes#create', as: 'upvote'
+
   get '/login', to: 'sessions#login_form'
 
   post '/login', to: 'sessions#login'
