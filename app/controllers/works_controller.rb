@@ -22,6 +22,7 @@ class WorksController < ApplicationController
     if @work.save
       redirect_to root_path
     else
+      flash.now[:error] = "Could not create new Media"
       render :new
     end
   end
@@ -43,7 +44,7 @@ class WorksController < ApplicationController
   def destroy
     # cannot delete work do to foreign keys in votes table
     @work = Work.find_by(id: params[:id].to_i)
-    
+
     @work.destroy
     redirect_to root_path
   end

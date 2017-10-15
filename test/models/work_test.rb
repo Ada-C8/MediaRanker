@@ -22,4 +22,15 @@ describe Work do
     work.valid?.must_equal false
   end
 
+  it "Should require a publication year that is an integer" do
+    work.publication_year = "sample"
+    work.valid?.must_equal false
+  end
+
+  it "Should require a publication year" do
+    work.publication_year = nil
+    work.valid?.must_equal false
+  end
+
+
 end
