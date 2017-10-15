@@ -1,8 +1,8 @@
-<br><br><h1>Need to work on UpVote and displaying the users who voted for this work.
-
+<br><br><h1>Need to work on UpVote.</h1><br><br>
+<h3>
 <%= params %>
-</h1><br><br>
-
+<br><br>
+</h3>
 
 <h3>
   <strong><%= @work.title %></strong>
@@ -17,7 +17,7 @@
   <%= link_to "Home", root_path %>
   <%= link_to "Edit", edit_work_path %>
   <%= link_to "UpVote" %>
-  <%= link_to "Delete", work_path, method: :destroy, data: { confirm: "Are you sure?" } %>
+  <%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure?" } %>
 </section>
 <table>
   <tr>
