@@ -44,6 +44,11 @@ describe WorksController do
     must_respond_with :success
   end
 
+  it "should be able to visit an individual work show page" do
+    get work_path(work(:gatsby).id)
+    must_respond_with :success
+  end
+
 
 
 
