@@ -15,12 +15,12 @@
  */
 
 
-header {
-  background-color: #B2DfDB;
-  max-width: 100%;
-  border-bottom: 1px solid #EEEEEE;
-  padding: 25px 20px 10px 20px;
-}
+ .header {
+   background-color: #B2DfDB;
+   border-bottom: 1px solid #EEEEEE;
+   max-width: 100%;
+   padding: 25px 20px 25px 20px;
+ }
 
 
 
@@ -31,13 +31,6 @@ body{
 
 
 
- header {
-
-   background-color: #B2DfDB;
-   max-width: 100%;
-   border-bottom: 1px solid #EEEEEE;
-   padding: 25px 20px 10px 20px;
- }
 
  header h2 {
    margin-left: 15%;
@@ -69,13 +62,6 @@ a, h3{
   color: #26a69a;
 }
 
-main{
-  max-width: 75rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
 
 li{
   list-style: none;

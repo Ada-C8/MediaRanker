@@ -1,36 +1,39 @@
 <%= render partial: 'layouts/header' %>
 
-<h3> User Summary:
-  <%= link_to @user.name, user_path(@user) %>
-</h3>
+<main class='row'>
+  <h3> User Summary:
+    <%= link_to @user.name, user_path(@user) %>
+  </h3>
 
-<p>
-  Joined site <%= @user.joined_on %>
-</p>
+  <p>
+    Joined site <%= @user.joined_on %>
+  </p>
 
-<h4>Votes</h4>
+  <h4>Votes</h4>
 
-<table>
-  <thead>
-    <tr>
-      <th> Media Title </th>
-      <th> Created By </th>
-      <th> Published </th>
-      <th> Category </th>
-      <th> Voted On </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% user_cast_votes(@user).each do |vote| %>
+  <table>
+    <thead>
       <tr>
-        <td> <%= link_to get_title(vote.work_id), work_path(vote.work_id) %></td>
-        <td> <%= get_creator(vote.work_id) %> </td>
-        <td> <%- get_published(vote.work_id) %></td>
-        <td> <%= vote.category %> </td>
-        <td> <%= vote.date %></td>
+        <th> Media Title </th>
+        <th> Created By </th>
+        <th> Published </th>
+        <th> Category </th>
+        <th> Voted On </th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% user_cast_votes(@user).each do |vote| %>
+        <tr>
+          <td> <%= link_to get_title(vote.work_id), work_path(vote.work_id) %></td>
+          <td> <%= get_creator(vote.work_id) %> </td>
+          <td> <%- get_published(vote.work_id) %></td>
+          <td> <%= vote.category %> </td>
+          <td> <%= vote.date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'Back to Media List', root_path %>
+  <%= link_to 'See all Users', users_path, :class => 'button'%>
+  <%= link_to 'Back to Media List', root_path, :class => 'button' %>
+</main>
