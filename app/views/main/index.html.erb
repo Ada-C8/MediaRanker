@@ -1,8 +1,8 @@
-
+<!--
 <main class = "row">
   <section class = "row spotlight">
     <div>
-      <% if Work.all %>
+      <% unless @top == nil %>
       <h3>
         <span class = "media-spotlight-header"> <strong>Media Spotlight:</strong> </span>
         <%= link_to @top.title, work_path(@top.id) %>
@@ -50,7 +50,6 @@
   <h3>Top Books</h3>
   <% if Work.all != nil %>
   <ul>
-
     <% @top_ten_books.each do |book|  %>
     <li>
       <h4> <%= link_to book.title, work_path(book.id) %> <small>by <%=book.creator%></small>
@@ -62,4 +61,4 @@
   <% end %>
 
 </section>
-</main>
+</main> -->
