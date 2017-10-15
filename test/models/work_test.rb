@@ -69,7 +69,22 @@ describe Work do
     end
   end #end description
 
-  describe " " do
-    
+  describe "custom methods" do
+    it "spotlight returns highest media based of num votes" do
+      Work.spotlight.title.must_be "Can't Buy a Thrill"
+    end
+
+    it "top_ten returns top_ten works in each category" do
+      works = Work.top_ten("album")
+
+      works.must_be_kind_of []
+
+      works.first.must_be_instance_of Work
+      works.last.must_be_instance_of Work
+
+      works.first.title.must_be "Can't Buy a Thrill"
+      works.last.title.must_be "No Regrets"
+
+    end
   end
 end
