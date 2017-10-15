@@ -144,6 +144,15 @@ describe Work do
 
       Work.works_by_type_hash.must_equal expected_hash
     end
+
+    it "must return a hash with the works if no votes" do
+      Vote.destroy_all
+      new_hash = Work.works_by_type_hash
+
+      new_hash["books"].must_include (works(:hp) && works(:dune))
+      new_hash["movies"].must_equal [works(:lego)]
+      new_hash["albums"].must_equal [works(:nonsense)]
+    end
   end
 
   describe "#spotlight" do
