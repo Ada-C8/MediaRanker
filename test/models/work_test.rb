@@ -5,19 +5,19 @@ describe Work do
 
 
   describe "validations" do
-      it "can be created with all fields" do
-        c = "Movie"
-        w = Work.new(category: c, title: "test work")
-        w.must_be :valid?
-      end
-
-      it "requires a title" do
-        w = Work.new
-        is_valid = w.valid?
-        is_valid.must_equal false
-        w.errors.messages.must_include :title
-      end
+    it "can be created with all fields" do
+      c = "Movie"
+      w = Work.new(category: c, title: "test work")
+      w.must_be :valid?
     end
+
+    it "requires a title" do
+      w = Work.new
+      is_valid = w.valid?
+      is_valid.must_equal false
+      w.errors.messages.must_include :title
+    end
+  end
 
 
   describe "relations" do
@@ -60,54 +60,42 @@ describe Work do
     describe "self.top_ten_movies" do
       it "returns a list of up to ten movies that have the most votes with more than 0 movies" do
         works = Work.top_ten_movies
-        movie_votes = works.first.vote.length + 1
+        first_work = works[0]
+        movie_votes = first_work.vote.length + 1
+
         works.each do |work|
           work.category.must_equal "Movie"
           work.vote.length.must_be :<=, movie_votes
         end
         works.length.must_be :<=, 10
       end
-
-      it "returns a list of up to ten movies that have the most votes with 0 movies" do
-        Work.destroy_all
-        works = Work.top_ten_movies
-        puts ">>>>>>>>>>>>>>>WORKS: #{works}"
-        movie_votes = works.first.vote.length + 1
-        works.each do |work|
-          work.category.must_equal "Movie"
-          work.vote.length.must_be :<=, movie_votes
-        end
-        works.length.must_be :<=, 10
-      end
-
     end
 
-    describe "self.top_ten_books" do
-      it "returns a list of up to ten books that have the most votes with more than 0 movies" do
-        works = Work.top_ten_books
-        book_votes = works.first.vote.length + 1
-        works.each do |work|
-          work.category.must_equal "Book"
-          work.vote.length.must_be :<=, book_votes
-        end
-        works.length.must_be :<=, 10
+  describe "self.top_ten_books" do
+    it "returns a list of up to ten books that have the most votes with more than 0 books" do
+      works = Work.top_ten_books
+      book_votes = works.first.vote.length + 1
+      works.each do |work|
+        work.category.must_equal "Book"
+        work.vote.length.must_be :<=, book_votes
       end
-
-      #TEST FOR 0 BOOKS, TEST FOR 10 BOOKS, TEST FOR MORE THAN 10 BOOKS
+      works.length.must_be :<=, 10
     end
 
-    describe "self.top_ten_music" do
-      it "returns a list of up to ten books that have the most votes with more than 0 movies" do
-        works = Work.top_ten_music
-        music_votes = works.first.vote.length + 1
-        works.each do |work|
-          work.category.must_equal "Music"
-          work.vote.length.must_be :<=, music_votes
-        end
-        works.length.must_be :<=, 10
-      end
-    end
+  end
 
-  end #end of describe custom methods
+  describe "self.top_ten_music" do
+    it "returns a list of up to ten music that have the most votes with more than 0 music" do
+      works = Work.top_ten_music
+      music_votes = works.first.vote.length + 1
+      works.each do |work|
+        work.category.must_equal "Music"
+        work.vote.length.must_be :<=, music_votes
+      end
+      works.length.must_be :<=, 10
+    end
+  end
+
+end #end of describe custom methods
 
 end #end of describe work

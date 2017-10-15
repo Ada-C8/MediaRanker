@@ -38,7 +38,6 @@ class Work < ApplicationRecord
       end
     end
     return top_ten
-
   end
 
   def self.top_ten_books

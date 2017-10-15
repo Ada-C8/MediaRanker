@@ -25,28 +25,28 @@ describe Vote do
       end
     end
 
-    # describe "relationships" do
-    #
-    #   it "has a one user" do
-    #     w = Work.create!(category: "Movie", title: "Stick It")
-    #     v = Vote.new(work_id: w)
-    #     v.must_respond_to :user
-    #     v.user_id.must_equal nil
-    #
-    #     u = User.create!(name: "Diane")
-    #     v.user_id = u
-    #     v.user.must_equal u
-    #   end
-    #
-    #   it "has a one work" do
-    #     v = Vote.create
-    #     v.must_respond_to :work
-    #     v.work_id.must_be nil
-    #
-    #     w = Work.create!(category: "Movie", title: "Stick It")
-    #     v.user_id = w
-    #     v.user.must_equal w
-    #   end
-    #
-    # end
+    describe "relationships" do
+
+      it "has a one user" do
+        w = Work.create!(category: "Movie", title: "Stick It")
+        v = Vote.new(work_id: w)
+        v.must_respond_to :user
+        v.user_id.must_equal nil
+
+        u = User.create!(name: "Diane")
+        v.user_id = u.id
+        v.user_id.must_equal u.id
+      end
+
+      it "has a one work" do
+        v = Vote.create
+        v.must_respond_to :work
+        assert_nil(v.work_id)
+
+        w = Work.create!(category: "Movie", title: "Stick It")
+        v.work_id = w.id
+        v.work_id.must_equal w.id
+      end
+
+    end
 end
