@@ -1,6 +1,6 @@
 class Vote < ApplicationRecord
-  belongs_to :user
-  belongs_to :work
+  belongs_to :user, required: false
+  belongs_to :work, required: false
 
   validates :user_id, presence: :true
   validates :work_id, presence: :true

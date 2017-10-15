@@ -6,5 +6,5 @@ class Work < ApplicationRecord
   validates :creator, presence: true
   # validates :publication_year, numericality: true
 
-  has_many :votes
+  has_many :votes, :dependent => :nullify
 end

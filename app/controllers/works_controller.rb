@@ -41,7 +41,9 @@ class WorksController < ApplicationController
 
 
   def destroy
+    # cannot delete work do to foreign keys in votes table
     @work = Work.find_by(id: params[:id].to_i)
+    
     @work.destroy
     redirect_to root_path
   end

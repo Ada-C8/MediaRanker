@@ -8,8 +8,8 @@ class VotesController < ApplicationController
     @current_user = User.find_by(id: session[:user_id])
     @work = Work.find_by(id: params[:work_id].to_i)
 
-    if @current_user == nil || @work ==nil
-      flash[:error] = "Could not vote"
+    if @current_user == nil || @work == nil
+      flash[:error] = "Please log in to vote"
       return redirect_to root_path
     end
 
