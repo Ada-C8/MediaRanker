@@ -25,8 +25,6 @@ class UsersController < ApplicationController
   end
 
   def login
-    # user_id = params[:user][:user_id]
-    # user = User.find_by(id: user_id)
     name = params[:user][:name]
 
     @user = User.find_by(name: name)
@@ -34,16 +32,19 @@ class UsersController < ApplicationController
     if @user
       session[:logged_in_user] = @user.id
       redirect_to root_path
-      # add flash success message
+      flash[:status] = :success
+      flash[:message] = "Successfully logged in as existing user #{@user.name}"
     else
       create
+      # Successfully created new user aweoituwelgnweb with ID 425
     end
   end
 
   def logout
     session[:logged_in_user] = nil
     redirect_to root_path
-    # add flash success message
+    flash[:status] = :success
+    flash[:message] = "Successfully logged out"
   end
 
 end

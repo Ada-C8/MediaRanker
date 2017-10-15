@@ -1,14 +1,17 @@
-<h2>Login</h2>
+<h2>Log In</h2>
 
 <%= form_tag do %>
   <%# collection_select(:user, :user_id, User.all, :id, :name) %>
   <!-- take all the Users, display their name, and send back the id. -->
-  <%= label_tag "User Name" %>
+  <%= label_tag "Username" %>
   <%= text_field :user, :name %>
 
-  <%= submit_tag "Login" %>
+  <%= submit_tag "Login", class:'button'%>
 <% end %>
 
+<h4>
+  A note about logins
+</h4>
 <p>
-  A note about logins lol
+  This is a note about logins.
 </p>

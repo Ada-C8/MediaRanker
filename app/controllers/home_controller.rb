@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    # @spotlight = Work.most_popular
+    @spotlight = Work.most_popular
     unless @spotlight
       @no_data = "Not Found"
     end

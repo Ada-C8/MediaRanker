@@ -1,28 +1,30 @@
-<h3>Media Spotlight:
-  <span>
-    <% if @no_data %>
+<section class='row spotlight'>
+  <h3><span id='media-spotlight'>Media Spotlight:</span>
+    <span>
+      <% if @no_data %>
       <%=@no_data %> </span></h3>
-    <% else %>
+      <% else %>
       <%= link_to "#{@spotlight.title}", work_path(@spotlight)%> by <%= @spotlight.creator %>
-  </span>
-</h3>
-<p>
-  <%= @spotlight.votes.count %> votes - <%= @spotlight.description %>
-</p>
-    <% end %>
+    </span>
+  </h3>
+  <p>
+    <%= @spotlight.votes.count %> votes - <%= @spotlight.description %>
+  </p>
+  <% end %>
+</section>
+<hr class="root-hr" />
 
-<!-- some kind of line break thing -->
-<section class='small-12 large-4 columns'>
+<section class='top-ten small-12 large-4 columns'>
   <h3>Top Movies</h3>
   <%= render partial: 'top_media_column', locals: { media: @movies } %>
 </section>
 
-<section class='small-12 large-4 columns'>
+<section class='top-ten small-12 large-4 columns'>
   <h3>Top Books</h3>
   <%= render partial: 'top_media_column', locals: { media: @books } %>
 </section>
 
-<section class='small-12 large-4 columns'>
+<section class='top-ten small-12 large-4 columns'>
   <h3>Top Albums</h3>
   <%= render partial: 'top_media_column', locals: { media: @albums } %>
 </section>
