@@ -20,7 +20,7 @@ class WorksController < ApplicationController
 
     if @work.save
       flash[:status] = :success
-      flash[:message] = "Successfully created #{@work.category @work.id}"
+      flash[:message] = "Successfully created #{@work.category} #{@work.id}"
       redirect_to works_path
     else
       flash[:status] = :failure
@@ -73,6 +73,6 @@ class WorksController < ApplicationController
   private
 
   def works_params
-    params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+    params.require(:work).permit(:category, :title, :creator, :publication_year)
   end
 end
