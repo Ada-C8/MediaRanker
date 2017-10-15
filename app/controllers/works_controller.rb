@@ -5,6 +5,7 @@ class WorksController < ApplicationController
   end
 
   def show
+    find_work
   end
 
   def edit
