@@ -55,6 +55,8 @@ before_action :find_work_by_params, only: [:show, :edit, :destroy, :update]
   def destroy
     @work.destroy
     redirect_to works_path
+    flash[:status] = :success
+    flash[:message] = "Sucessfully deleted #{@work.title}"
     return
   end # destroy
 
