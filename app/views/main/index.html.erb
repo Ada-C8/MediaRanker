@@ -2,7 +2,7 @@
   <section>
 
     <% works = Work.all.sort_by { |work| -work.votes.count} %>
-    <% if !works %>
+    <% if works.empty? %>
     <div>
       <h3>
         Media Spotlight:
