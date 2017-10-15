@@ -1,16 +1,17 @@
-
+<section class="row spotlight">
 <% spotlight = Work.all.sort_by {|work| - work.votes.count}.first %>
-<h2>Media Spotlight: <%= link_to spotlight.title, work_path(spotlight.id) %> by <%= "#{spotlight.creator}"%></h2>
+<h3><span class="media-spotlight-header">Media Spotlight:</span> <%= link_to spotlight.title, work_path(spotlight.id) %> by <%= "#{spotlight.creator}"%></h3>
 <p>
-<%= "#{spotlight.votes.count} votes" %>
+<%= "#{spotlight.votes.count} votes -" %>
 </p>
-</p>
+</section>
+<hr class="root-hr">
 
-
-<h2>Top Movies</h2>
+<section class="top-ten columns large-4 small-12">
+<h3>Top Movies</h3>
 <% movie = Work.where(category: 'movie') %>
 <% movie_sort = movie.sort_by {|work| - work.votes.count } %>
-<ol>
+<ul>
   <% if movie_sort.count <= 10 %>
     <% movie_sort.each do |work| %>
       <li>
@@ -25,13 +26,14 @@
         </li>
     <% end %>
   <% end %>
-</ol>
+</ul>
+</section>
 
-
-<h2>Top Books</h2>
+<section class="top-ten columns large-4 small-12">
+<h3>Top Books</h3>
 <% book = Work.where(category: 'book') %>
 <% book_sort = book.sort_by {|work| - work.votes.count } %>
-<ol>
+<ul>
   <% if book_sort.count <= 10 %>
     <% book_sort.each do |work| %>
       <li>
@@ -46,13 +48,14 @@
         </li>
     <% end %>
   <% end %>
-</ol>
+</ul>
+</section>
 
-
-<h2>Top Albums</h2>
+<section class="top-ten columns large-4 small-12">
+<h3>Top Albums</h3>
 <% album = Work.where(category: 'album') %>
 <% album_sort = album.sort_by {|work| - work.votes.count } %>
-<ol>
+<ul>
   <% if album_sort.count <= 10 %>
     <% album_sort.each do |work| %>
       <li>
@@ -67,4 +70,5 @@
         </li>
         <%end%>
   <% end %>
-</ol>
+</ul>
+</section>
