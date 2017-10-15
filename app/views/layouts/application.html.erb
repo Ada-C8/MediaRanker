@@ -10,22 +10,25 @@
 
   <body>
     <header class="page-header">
-      <h1>Media Ranker Ranking the Best of Everything</h1>
+      <h1 class="orange">Media Ranker</h1>
+      <h1 class="pipe">|</h1>
+      <h1>Ranking the Best of Everything</h1>
+
       <nav>
         <div>
-          <%= link_to("View Top Media", home_index_path) %>
-          <%= link_to("View All Media", works_path) %>
-          <%= link_to "Add New Work", new_work_path %>
-          <%= link_to("View All Users",users_path) %>
+          <li class="button"><%= link_to("View Top Media", home_index_path) %></li>
+          <li class="button"><%= link_to("View All Media", works_path) %></li>
+          <li class="button"><%= link_to "Add New Work", new_work_path %></li>
+          <li class="button"><%= link_to("View All Users",users_path) %></li>
         </div>
 
         <div>
           <%if session[:user_id]%>
             <%@user = User.find(session[:user_id]) %>
-              <%="Logged in as #{@user.username}" %>
-              <%=link_to "Log out", login_path, method: :delete%>
+              <li class="button"><%="Logged in as #{@user.username}" %></li>
+              <li class="button"><%=link_to "Log out", login_path, method: :delete%></li>
           <%else%>
-              <%= link_to "Log in", login_path %>
+              <li class="button"><%= link_to "Log in", login_path %></li>
           <%end%>
         </div>
       </nav>
