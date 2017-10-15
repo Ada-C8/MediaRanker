@@ -1,8 +1,8 @@
 class MainController < ApplicationController
   def index
-    @media_spotlight = Work.first
-    @top_movies = Work.top_movies
-    @top_books = Work.where(category: "book").limit(10)
-    @top_albums = Work.where(category: "album").limit(10)
+    @media_spotlight = Work.work_with_the_most_votes
+    @top_movies = Work.top_ten("movie")
+    @top_books = Work.top_ten("book")
+    @top_albums = Work.top_ten("album")
   end
 end

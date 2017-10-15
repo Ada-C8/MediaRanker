@@ -2,8 +2,7 @@ class WorksController < ApplicationController
   before_action :find_work_by_params_id, only: [:show, :edit, :update, :destroy]
 
   def index
-    all_work = Work.left_outer_joins(:votes).distinct.select('works.*, COUNT(votes.*) AS votes_count').group('works.id').order('votes_count')
-
+    all_work = Work.all_with_vote_count
     @movies = all_work.where(category: "movie")
     @books = all_work.where(category: "book")
     @albums = all_work.where(category: "album")

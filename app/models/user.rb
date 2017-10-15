@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :votes #, dependent: :destroy
+  has_many :votes 
 
   validates :username, presence: true
 end

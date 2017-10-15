@@ -6,13 +6,16 @@ class UsersController < ApplicationController
 
   def login_form
     @user = User.new
-    # if params[:user_id]
-    #   @user.user_id = params[:user_id]
-    # end
   end
 
   def login
     username = params[:user][:username]
+    if username == ''
+      flash[:status] = :failure
+      flash[:message] = "Username can not be empty"
+      redirect_to login_path
+      return
+    end
     user = User.find_by(username: username)
 
     if user # Logs in as an existing user
