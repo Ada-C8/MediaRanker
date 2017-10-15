@@ -20,6 +20,10 @@
         <%= link_to 'log in', new_user_path %>
       </nav>
     </header>
+    <section class="flash">
+<% flash.each do |name, message| %>
+    <div class="<%= name %>"><%= message %></div>
+  <% end %>
 
     <%= yield %>
   </footer>
