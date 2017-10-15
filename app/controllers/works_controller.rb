@@ -39,7 +39,7 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work.destroy if work
+    @work.destroy if @work
     redirect_to root_path
   end
 
