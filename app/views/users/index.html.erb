@@ -1,10 +1,14 @@
-<h3> List of Users </h3>
-<ol>
+<h1> List of Users </h1>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Votes</th>
+    <th>Joined</th>
+  </tr>
   <% @users.each do |user| %>
-    <div class="user">
-        <strong>
-          <li><%= link_to user.name, user_path(user.id) %></li>
-        </strong>
-    </div>
+  <tr>
+    <td><%= link_to user.name, user_path(user.id) %></td>
+  </tr>
   <% end %>
-</ol>
+</table>
