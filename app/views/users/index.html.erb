@@ -22,7 +22,7 @@
     <%= link_to user.username, user%>
   </td>
   <td>
-    Votes
+    <%= (user.list_votes(user.id)).length %>
   </td>
   <td>
     <%= user.created_at %>

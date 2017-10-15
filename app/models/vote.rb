@@ -8,8 +8,7 @@ class Vote < ApplicationRecord
 
 
 
-def list_votes(user)
-end
+
 
 
 

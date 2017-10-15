@@ -1,10 +1,16 @@
 class WorksController < ApplicationController
+  before_action :get_work , only: [:show, :edit, :update, :destroy]
+
+  def get_work
+    @work = Work.find(params[:id])
+  end
+
   def index
     @works = Work.all.order(:category, :title)
   end
 
   def show
-    @work = Work.find(params[:id])
+    # @work = Work.find(params[:id])
   end
 
   def new
@@ -22,18 +28,18 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find(params[:id])
+    # @work = Work.find(params[:id])
   end
 
   def update
-    @work = Work.find(params[:id])
+    # @work = Work.find(params[:id])
     @work.update_attributes(work_params)
     @work.save
     redirect_to works_path
   end
 
   def destroy
-    @work = Work.find(params[:id])
+    # @work = Work.find(params[:id])
     @work.destroy
     redirect_to works_path
   end

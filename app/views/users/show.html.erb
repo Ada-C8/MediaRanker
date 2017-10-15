@@ -6,12 +6,8 @@
 
 <h4>Works Voted On</h4>
 
-<p>
-  <% votes = @votes.where(user_id: @user.id)  %>
 
-  <% votes.each do |vote| %>
-    <%  work = @works.find(vote.work_id) %>
-    <h4><%= work.title %></h4>
-  <% end %>
-
-</p>
+<% list_works = @user.list_votes(@user.id) %>
+<% list_works.each do |w| %>
+  <h4><%= w %></h4>
+<% end %>

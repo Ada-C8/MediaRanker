@@ -10,6 +10,17 @@ def testing(input)
   return total
 end
 
+def list_users(work)
+  @votes = Vote.all
+  @users = User.all
+  work_voters = []
+  votes = @votes.where(work_id: work)
+  votes.each do |vote|
+    work_voters << @users.find(vote.user_id).username
+  end
+  return work_voters
+end
+
 # def score
 #   @work = Work.find(params[:id])
 #   @votes = Vote.all

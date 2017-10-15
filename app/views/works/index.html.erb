@@ -4,9 +4,7 @@
 <p>
   Rank by category and then number of votes
 </p>
-<p>
-  List of all media, votes, title, creator, year, upvote
-</p>
+
 
 <table>
 
@@ -35,7 +33,7 @@
 </tr>
 <%# @votes.where(work_id: work.id).count
 %>
-<% @votes = Vote.all %>
+<%# @votes = Vote.all %>
 
 <% @works.each do |work| %>
 <tr>
