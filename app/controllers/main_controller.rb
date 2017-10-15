@@ -2,9 +2,9 @@ class MainController < ApplicationController
 
 def index
    @works = Work
-   @albums = Work.top_ten("album")
-   @books = Work.top_ten("book")
-   @movies = Work.top_ten("movie")
+   @albums = Work.top_ten_albums
+   @books = Work.top_ten_books
+   @movies = Work.top_ten_movies
    @top_work = Work.top_work
 
 end
