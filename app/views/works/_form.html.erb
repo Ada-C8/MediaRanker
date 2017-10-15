@@ -2,10 +2,8 @@
   <%= form_for @work do |f| %>
     <li>
       <%= f.label :category%>
-      <%# f.text_field :category %>
       <%# collection_select(:user, :user_id, User.all, :id, :name) %>
-      <!-- take all the Users, display their name, and send back the id. -->
-      <%# f.collection_select(:category, Work.all, :category, :category )%>
+      <!-- matches the user field, as found by user_id, take all the Users, display their name, and send back the id. -->
       <%= f.select :category, [['album'], ['book'], ['movie']] %>
     </li>
     <li>
