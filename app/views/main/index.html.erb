@@ -15,14 +15,20 @@
   <% if movie_sort.count <= 10 %>
     <% movie_sort.each do |work| %>
       <li>
-        <%= "#{work.title} by #{work.creator} with #{work.votes.count} votes " %>
+        <%= link_to "#{work.title}", work_path(work.id) %><small> by <%= "#{work.creator}" %></small>
+        <div>
+          <%= "#{work.votes.count} votes" %>
+        </div>
       </li>
       <% end %>
   <% else %>
     <% 10.times do |item| %>
         <li>
           <% work = movie_sort.shift %>
-          <%= "#{work.title} by #{work.creator} with #{work.votes.count} votes " %>
+          <%= link_to "#{work.title}", work_path(work.id) %> <small>by <%= "#{work.creator}" %></small>
+          <div>
+            <%= "#{work.votes.count} votes" %>
+          </div>
         </li>
     <% end %>
   <% end %>
@@ -36,15 +42,21 @@
 <ul>
   <% if book_sort.count <= 10 %>
     <% book_sort.each do |work| %>
-      <li>
-        <%= "#{work.title} by #{work.creator} with #{work.votes.count} votes " %>
-      </li>
+    <li>
+      <%= link_to "#{work.title}", work_path(work.id) %> <small>by <%= "#{work.creator}" %></small>
+      <div>
+        <%= "#{work.votes.count} votes" %>
+      </div>
+    </li>
       <% end %>
   <% else %>
     <% 10.times do |item| %>
         <li>
           <% work = book_sort.shift %>
-          <%= "#{work.title} by #{work.creator} with #{work.votes.count} votes " %>
+          <%= link_to "#{work.title}", work_path(work.id) %><small> by <%= "#{work.creator}" %></small>
+          <div>
+            <%= "#{work.votes.count} votes" %>
+          </div>
         </li>
     <% end %>
   <% end %>
@@ -58,16 +70,22 @@
 <ul>
   <% if album_sort.count <= 10 %>
     <% album_sort.each do |work| %>
-      <li>
-        <%= "#{work.title} by #{work.creator} with #{work.votes.count} votes " %>
-      </li>
+    <li>
+      <%= link_to "#{work.title}", work_path(work.id) %><small>by <%= "#{work.creator}" %></small>
+      <div>
+        <%= "#{work.votes.count} votes" %>
+      </div>
+    </li>
     <% end %>
     <% else %>
     <% 10.times do |item| %>
     <li>
       <% work = album_sort.shift %>
-      <%= "#{work.title} by #{work.creator} with #{work.votes.count} votes " %>
-        </li>
+      <%= link_to "#{work.title}", work_path(work.id) %><small> by <%= "#{work.creator}" %></small> 
+      <div>
+        <%= "#{work.votes.count} votes" %>
+      </div>
+    </li>
         <%end%>
   <% end %>
 </ul>

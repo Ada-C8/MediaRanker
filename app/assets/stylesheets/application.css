@@ -8,22 +8,31 @@
   padding: 25px 20px 10px 20px;
 }
 
-
-body {
+body, h1, h2, h3, h4 {
   font-family: "Gudea", sans-serif;
-}
-
-h3 {
-  color: #26A69A;
+  font-weight: bold;
 }
 
 span {
   color: black;
 }
 
+a, h3 {
+  color: #26A69A;
+}
+
 h3 a {
+  color: #26A69A;
   border-bottom: 2px solid;
 }
+
+
+
+
+body small {
+  color: slategray;
+}
+
 
 .top-ten h3 {
   border-bottom: 2px solid;
@@ -57,4 +66,12 @@ h3 a {
 .success {
   display: block;
   background-color: lightgreen;
+}
+
+p {
+font-weight: normal;
+color: #0a0a0a;
+margin-bottom: 1rem;
+font-size: inherit;
+line-height: 1.6;
 }
