@@ -1,5 +1,9 @@
+<!-- the code for work title, creator and votes could be DRYer. come back later to clean it up -->
+
 <h1>
-  Media spotlight: <%= link_to Work.spotlight.title, work_path(Work.spotlight.id) %>
+  Media spotlight: <%= link_to Work.spotlight.title, work_path(Work.spotlight.id) %> by:
+  <%= Work.spotlight.creator %>
+  <%= Work.spotlight.votes.count %> votes
 </h1>
 
 <h2>
@@ -8,8 +12,8 @@
 <ul>
   <% Work.top_ten("album").each do |album| %>
     <li>
-      <%= link_to album.title %>
-      <%= album.votes.count %>
+      <%= link_to album.title, work_path(album.id)%> by: <%= Work.spotlight.creator %>
+      <%= album.votes.count %> votes
     </li>
 
   <% end %>
