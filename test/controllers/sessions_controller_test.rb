@@ -1,6 +1,12 @@
 require "test_helper"
 
 describe SessionsController do
+
+  it "should successfully get to login" do
+    get login_path
+    must_respond_with :success
+  end
+
   it "allows a user to login" do
     @user = users(:test_user)
     post login_path

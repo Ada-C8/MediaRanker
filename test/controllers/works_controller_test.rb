@@ -2,7 +2,7 @@ require "test_helper"
 
 describe WorksController do
 
-  it "successful gets home page" do
+  it "successfully gets home page" do
     get root_path
     must_respond_with :success
   end
