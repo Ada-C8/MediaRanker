@@ -1,11 +1,16 @@
-<h2>Works</h2>
+<h1>List of Works</h1>
 
-<ol>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+  </tr>
   <% @works.each do |work| %>
-    <div class="work">
-        <strong>
-          <li><%= link_to work.title, work_path(work.id) %></li>
-        </strong>
-    </div>
+  <tr>
+    <td><%= link_to work.title, work_path(work.id) %></td>
+    <td><%= link_to work.creator, work_path(work.id) %></td>
+    <td><%= link_to work.publication_year, work_path(work.id) %></td>
+  </tr>
   <% end %>
-</ol>
+</table>
