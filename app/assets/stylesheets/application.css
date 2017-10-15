@@ -16,9 +16,7 @@
  */
 
  @import url('foundation');
-* {
-  box-sizing: inherit;
-}
+
 .page-header {
   min-width: 100%;
   background-color: #B2DFDB;
@@ -75,10 +73,6 @@ article, aside, footer, header, nav, section {
     margin: 25px auto 40px auto;
 }
 
-.button {
-    background-color: #26A69A;
-}
-
 .float-right {
     float: right !important;
 }
@@ -96,6 +90,15 @@ article, aside, footer, header, nav, section {
     line-height: 1;
     text-align: center;
     cursor: pointer;
-    background-color: #1779ba;
+    background-color: #26A69A;
     color: #fefefe;
+}
+
+.button:hover,
+.button:focus {
+    background-color: #186860;
+}
+
+a, h3 {
+    color: #26A69A;
 }
