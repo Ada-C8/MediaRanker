@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def home
     media_hash = Work.works_by_type_hash
     @media = Work.top_ten(media_hash)
@@ -10,8 +12,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
-
     head :not_found unless @work
     # unless @work
     #   render_404
@@ -40,19 +40,14 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
-    # render_404 unless @work
     head :not_found unless @work
   end
 
   def update
     # what do you do if category changed to invalid selection?
     # can it be changed if using a drop-down / form?
-    @work = Work.find_by(id: params[:id])
-
     unless @work
       head :not_found
-      # render_404 unless @work
       return
     end
 
@@ -70,8 +65,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
-
     unless @work
       head :not_found
       return
@@ -96,6 +89,10 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:title, :creator, :publication_year, :description, :category_id)
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
   end
 
 end

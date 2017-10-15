@@ -12,10 +12,11 @@ class VotesController < ApplicationController
 
     # if not logged in
     if !logged_in?
+
       flash[:status] = :failure
       flash[:message] = "You must be logged in to upvote"
-
-      redirect_back fallback_location: root_path, status: :unauthorized
+      redirect_back fallback_location: root_path
+      #, status: :unauthorized
       return
     end
 
@@ -33,9 +34,10 @@ class VotesController < ApplicationController
       flash[:message] = "Unable to upvote"
       flash[:details] = new_vote.errors.messages
 
-      redirect_back fallback_location: root_path, status: :bad_request
+      redirect_back fallback_location: root_path
+      #, status: :bad_request
     end
-    
+
   end
 
 end
