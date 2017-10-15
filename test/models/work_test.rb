@@ -64,7 +64,12 @@ describe Work do
 
   describe "relations" do
     it "has many votes" do
-
+      work =  Work.new(title: "test")
+      work.must_respond_to :votes
     end
+  end #end description
+
+  describe " " do
+    
   end
 end

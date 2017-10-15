@@ -10,7 +10,7 @@ work_one:
   creator: me
   desciption: stuff
   publication_year: 2017
-  vote: vote_two
+
 #
 work_two:
   category: movie
@@ -18,4 +18,4 @@ work_two:
   create: speilberg
   description: action-adventure
   publication_year: 1987
-  vote: vote_one
+  
