@@ -4,8 +4,7 @@ class Work < ApplicationRecord
 # must provide a title
 validates :title, presence: {message: "Title is Required"}
 validates :title, uniqueness: {message: "Someone Else has Already Added that Work"}
-
-
+validates :description, length: { maximum: 200, message: "The description is too long" }
 
 
 def testing(input)

@@ -8,10 +8,10 @@ class VotesController < ApplicationController
   def create
     # user_id = session[:logged_in_user]
 
-    @vote = Vote.new
+    @vote = Vote.new(vote_params)
 
-    @vote.user_id = session[:logged_in_user]
-    @vote.work_id = params[:work_id]
+    # @vote.user_id = session[:logged_in_user]
+    # @vote.work_id = params[:work_id]
     @vote.save
     redirect_to works_path
   end
@@ -21,11 +21,11 @@ class VotesController < ApplicationController
   # session[:logged_in_user] = @user.id
   # redirect_to works_path
 
-  # private
-  #
-  # def vote_params
-  #   return params.require(:vote).permit(:user_id, :work_id)
-  # end
+  private
+
+  def vote_params
+    return params.require(:vote).permit(:user_id, :work_id)
+  end
 
 
 end

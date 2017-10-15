@@ -33,12 +33,13 @@
 </tr>
 <%# @votes.where(work_id: work.id).count
 %>
-<%# @votes = Vote.all %>
+<%# @votes = Vote.all    work.testing(work.id)%>
 
 <% @works.each do |work| %>
 <tr>
   <td>
-     work.testing(work.id)
+    <%= work.id %>
+
   </td>
   <td>
     <%= work.category %>
@@ -58,7 +59,8 @@
   <td>
     VOTES
     <%= form_for Vote.new do |f| %>
-    <%= f.hidden_field :work_id, value: 1 %>
+    <%= f.hidden_field :work_id, value: work.id %>
+    <%= f.hidden_field :user_id, value: session[:logged_in_user] %>
     <%= f.submit %>
     <% end %>
   </td>
