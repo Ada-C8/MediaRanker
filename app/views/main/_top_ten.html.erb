@@ -3,9 +3,10 @@
   <li>
     <h4>
       <%=link_to work.title, work_path(work)%>
+      <small>by <%= work.creator%></small>
     </h4>
     <p>
-      <%=work.vote.count%>
+      <%=work.vote.count%> votes
     </p>
   </li>
   <%end %>
