@@ -21,10 +21,10 @@
         <%= link_to "View all users", users_path, class: "button" %>
         <div class="float-right">
           <% if session[:logged_in_as_user] %>
+            <%= link_to "Log Out", logout_path, class: "button float-right" %>
             <%= link_to "Logged in as #{User.find(session[:logged_in_as_user]).username}", user_path(session[:logged_in_as_user]), class: "button float-right" %>
-            <%= link_to "Log Out FIX", root_path, class: "button float-right" %>
           <% else %>
-            <%= link_to "Log In", login_ path, class: "button float-right", method: :post %>
+            <%= link_to "Log In", login_path, class: "button float-right"%>
           <% end %>
         </div>
       </nav>
