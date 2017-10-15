@@ -2,9 +2,9 @@
 <main class = "row">
   <section class = "row spotlight">
     <div>
+      <% if Work.all %>
       <h3>
         <span class = "media-spotlight-header"> <strong>Media Spotlight:</strong> </span>
-        <% if Work.all != nil %>
         <%= link_to @top.title, work_path(@top.id) %>
         by <%=@top.creator%>
       </h3>
