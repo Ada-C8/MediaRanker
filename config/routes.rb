@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   #
   # delete "/work/:id", to: "works#destroy"
   root :to => "main#index"
+  post "works/:id/upvote", to: "works#upvote", as:"upvote"
   resources :works
-  get "upvote", to: "works#upvote" 
   resources :users
   get "login", to: "users#login_form", as: "login"
   post "login", to: "users#login"

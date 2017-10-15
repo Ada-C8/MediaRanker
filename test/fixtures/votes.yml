@@ -1,10 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  work_id: MyString
-  user_id: MyString
+vote:
+  work_id: HP
+  user_id: sa
 
 
 two:
-  work_id: MyString
-  user_id: MyString
+  work_id: 12
+  user_id: 123

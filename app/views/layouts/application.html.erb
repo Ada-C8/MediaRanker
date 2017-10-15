@@ -3,11 +3,10 @@
   <head>
     <title>MediaRanker</title>
     <%= csrf_meta_tags %>
-
+    <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header class="page-header row">
       <h2 class="columns small-12">
@@ -20,12 +19,10 @@
         <%= link_to "View all media", works_path, class: "button" %>
         <%= link_to "Add a new work", new_work_path, class: "button" %>
         <%= link_to "View all users", users_path, class: "button" %>
-
-        <div class="large-4 small-12 columns button-group">
+        <div class="float-right">
           <% if session[:logged_in_user] %>
             <p class="button">
-              Logged in as
-              <%= User.find(session[:logged_in_user]).username %>
+              Logged in as <%= User.find(session[:logged_in_user]).username %>
             </p>
             <%= link_to "Log out", logout_path, class: "button" %>
           <% else %>

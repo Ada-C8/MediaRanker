@@ -55,18 +55,19 @@ class WorksController < ApplicationController
     if !user_id
       flash[:status] = :failure
       flash[:message] = "You must log in to do that"
-      redirect_to works_path
     elsif
       Vote.find_by_user_id_and_work_id(user_id,work_id)
       flash[:status] = :failure
       flash[:message] = "Coud not upvote. User has already voted for this work"
-      redirect_to works_path
     elsif
-      # vote = Vote.new(vote_params)
-      @vote.save
+      vote = Vote.new
+      vote.user_id = user_id
+      vote.work_id = work_id
+      vote.save
       flash[:status] = :success
-      flash[:message] = "Successfully upvoted"
+      flash[:message] = "Successfully upvoted #{user_id}/#{work_id} "
     end
+    redirect_back fallback_location:works_path
   end
 private
 

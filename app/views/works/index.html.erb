@@ -1,31 +1,28 @@
-
-<h3> List of works</h3>
-<h4> Albums </h4>
-
-<table>
-  <thead>
-    <tr>
-      <th width=80>Votes</th>
-      <th>Title</th>
-      <th>Created By</th>
-      <th width=100>Published</th>
-      <th width=100>Upvote</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @albums.each do |work|%>
+<main class = "row">
+  <h3> List of works</h3>
+  <h4> Albums </h4>
+  <table>
+    <thead>
       <tr>
-        <td><%= work.votes_count %></td>
-        <td><%= link_to work.title, work_path(work.id) %></td>
-        <td><%= work.creator%></td>
-        <td> <%= work.publication_year%></td>
-        <td><a class="button upvote" rel="nofollow" data-method="post" href="/works/246/upvote">Upvote</a></td>
+        <th width=80>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th width=100>Published</th>
+        <th width=100>Upvote</th>
       </tr>
-    <% end %>
-  </tbody>
-
-</table>
+    </thead>
+    <tbody>
+      <% @albums.each do |work|%>
+        <tr>
+          <td><%= work.votes_count %></td>
+          <td><%= link_to work.title, work_path(work.id) %></td>
+          <td><%= work.creator%></td>
+          <td> <%= work.publication_year%></td>
+          <td><%= link_to "Upvote", upvote_path(work.id), class: "button upvote", method: :post%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
 <h3> Books </h3>
 
@@ -47,7 +44,7 @@
       <td><%= link_to work.title, work_path(work.id) %></td>
       <td><%= work.creator%></td>
       <td>  <%= work.publication_year%></td>
-      <td><a class="button upvote" rel="nofollow" data-method="post" href="/works/246/upvote">Upvote</a></td>
+      <td><%= link_to "Upvote", upvote_path(work.id), class: "button upvote", method: :post%></td>
     </tr>
     <% end %>
   </tbody>
@@ -74,7 +71,7 @@
       <td><%= link_to work.title, work_path(work.id) %></td>
       <td><%= work.creator%></td>
       <td>  <%= work.publication_year%></td>
-      <td><a class="button upvote" rel="nofollow" data-method="post" href="/works/246/upvote">Upvote</a></td>
+      <td><%= link_to "Upvote", upvote_path(work.id), class: "button upvote", method: :post%></td>
     </tr>
     <% end %>
   </tbody>

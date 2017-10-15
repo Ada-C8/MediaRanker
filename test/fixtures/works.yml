@@ -9,3 +9,18 @@ movie:
   publication_year: 1994
   creator: Steven Spielberg
   category: movie
+  description: cool movie
+
+book:
+  title: Harry Potter
+  publication_year: 1993
+  creator: Rowling
+  category: book
+  description: great book
+
+album:
+  title: Countdown to Ecstasy
+  publication_year: 1973
+  creator: Steely Dan
+  category: album
+  description: good
