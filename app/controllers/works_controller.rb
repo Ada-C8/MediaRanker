@@ -6,9 +6,7 @@ class WorksController < ApplicationController
 
   def show
     find_work
-    if !@work
-      render_404
-    end
+    render_404 if !@work
   end
 
   def edit
@@ -43,6 +41,19 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    find_work
+    if !@work
+      render_404
+      return
+    end
+    deleted_work = "#{@work.category} #{@work.id}"
+    if @work.destroy
+      flash[:notice] = "Successfully destroyed #{deleted_work}"
+      redirect_to root_path
+    else
+      flash.now[:error] = "Work was not successfully destroyed"
+      render :show
+    end
   end
 end
 
