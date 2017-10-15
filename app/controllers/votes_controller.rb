@@ -8,11 +8,11 @@ class VotesController < ApplicationController
         flash[:success] = "Successfully upvoted!"
         redirect_back(fallback_location: root_path)
       else
-        flash[:error] = "Could not upvote"
+        flash[:failure] = "Could not upvote"
         redirect_back(fallback_location: root_path)
       end
     else
-      flash.now[:error] = "You must log in to do that"
+      flash.now[:failure] = "You must log in to do that"
     end
   end
 end
