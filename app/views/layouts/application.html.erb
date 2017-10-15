@@ -22,7 +22,12 @@
         <%= link_to "Add a New Work", new_work_path, class: :button %>
         <%= link_to "View all users", users_path, class: :button %>
         <div class = "float-right">
-          <%= link_to "Log in", login_path, class: :button %>
+          <% if logged_in? %>
+            <%= link_to "Logged in as #{@current_user.username}", user_path(@current_user.id), class: :button%>
+            <%= link_to "Log Out", logout_path, method: :delete, class: :button%>
+          <% else %>
+            <%= (link_to "Log in", login_path, class: :button) %>
+          <% end %>
         </div>
       </nav>
 
