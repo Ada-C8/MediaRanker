@@ -8,4 +8,5 @@ class Work < ApplicationRecord
 
     return works_of_category
   end
+
 end

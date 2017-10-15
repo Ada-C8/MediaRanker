@@ -5,9 +5,9 @@ class WorksController < ApplicationController
   def index
     @works = Work.order(:title)
 
-    @movies = Work.sort_by_category("movie")
-    @books = Work.sort_by_category("book")
     @albums = Work.sort_by_category("album")
+    @books = Work.sort_by_category("book")
+    @movies = Work.sort_by_category("movie")
   end
 
   def new
