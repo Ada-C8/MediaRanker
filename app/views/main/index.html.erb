@@ -17,13 +17,13 @@
       </div>
     <%end %>
 </section>
-<!--
+
 <hr class = "root-hr">
 
 
 <section class = "top-ten columns large-4 small-12">
   <h3>Top Movies</h3>
-  <% if Work.all != nil %>
+  <% unless @top == nil %>
   <ul>
     <% @top_ten_movies.each do |movie|  %>
     <li>
@@ -38,7 +38,7 @@
 
 <section class = "top-ten columns large-4 small-12">
   <h3>Top Albums</h3>
-  <% if Work.all != nil %>
+  <% unless @top == nil %>
   <ul>
     <% @top_ten_music.each do |music|  %>
     <li>
@@ -65,5 +65,5 @@
   </ul>
   <% end %>
 
-</section> -->
+</section>
 </main>
