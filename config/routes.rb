@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :works
 
-  resources :users, only:[:index, :new, :create]
+  resources :users, only:[:index, :show, :new, :create]
 
   get '/login', to: 'sessions#login_form'
 

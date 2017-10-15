@@ -14,6 +14,7 @@
         <%= link_to "View top media", root_path %>
         <%= link_to "View all media", works_path %>
         <%= link_to "Add new media", new_work_path %>
+        <%= link_to "View all users", users_path %>
         <div class="float right">
           <% if session[:user_id].nil? %>
             <%= link_to "Log in", login_path %>
