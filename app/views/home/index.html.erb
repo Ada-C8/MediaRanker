@@ -2,15 +2,16 @@
 
 <section class='spotlight'>
     <h3>
-      <span class='spotlight_text'> Media Spotlight:</span> <%= @top_work.title %> by <%= @top_work.creator%>
+      <span class='spotlight_text'> Media Spotlight: </span>
+      <%= link_to @top_work.title, work_path(@top_work)%> by <%= @top_work.creator%>
     </h3>
     <p>
       <%= @top_work_votes.count %> votes - <%= @top_work.description %>
     </p>
 </section>
 
-<main>
-  <section class='top_10'>
+<main class = 'row'>
+  <section class='columns large-4 small-12 top_10'>
     <h3 class= 'top_10_header'>
       Top Albums
     </h3>
@@ -30,7 +31,7 @@
     </ul>
   </section>
 
-  <section class='top_10'>
+  <section class='columns large-4 small-12 top_10'>
     <h3> Top Movies </h3>
       <ul>
         <%  top_10('movie').each do |movie| %>
@@ -48,7 +49,7 @@
   </section>
 
 
-  <section class='top_10'>
+  <section class='columns large-4 small-12 top_10'>
     <h3>
       Top Books
     </h3>

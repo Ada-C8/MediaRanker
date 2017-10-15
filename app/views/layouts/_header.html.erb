@@ -1,6 +1,6 @@
-<header>
+<header class='row'>
 
-    <h2>
+    <h2 class = 'columns small-12'>
       <%= link_to 'Media Ranker', root_path %>
       <small>
         Ranking the Best of Everything
@@ -9,7 +9,7 @@
 
 
 
-  <nav class='column'>
+  <nav class= 'columns small-12'>
     <%= link_to 'View top media', root_path, :class => 'button' %>
     <%= link_to 'View all media', works_path, :class => 'button' %>
     <%= link_to 'Add a new work', new_work_path, :class => 'button' %>
@@ -23,13 +23,13 @@
     <% else %>
       <%= link_to 'Log In', login_path, :class => 'button-right'%>
     <% end %>
-
   </nav>
+
 </header>
 
 
   <% flash.each do |key, value|%>
-    <section class='success'>
+    <section class='row success'>
       <h3> <%= value %> </h3>
     </section>
   <% end %>

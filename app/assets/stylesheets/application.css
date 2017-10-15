@@ -14,26 +14,25 @@
  *= require_self
  */
 
+
+header {
+  background-color: #B2DfDB;
+  max-width: 100%;
+  border-bottom: 1px solid #EEEEEE;
+  padding: 25px 20px 10px 20px;
+}
+
+
+
 body{
   font-family: 'Gudea', sans-serif;
   font-size: 1.5rem;
 }
 
- .success{
-   border-radius: 5px;
-   background-color: #e6e6e6;
-   padding: 20px 25px;
-   margin-top: 30px;
 
- }
-
-.success h3{
-  font-weight: normal;
-  font-size: 1em;
-  color: #8a8a8a;
-}
 
  header {
+
    background-color: #B2DfDB;
    max-width: 100%;
    border-bottom: 1px solid #EEEEEE;
@@ -41,7 +40,9 @@ body{
  }
 
  header h2 {
-   margin: 25px auto 40px auto;
+   margin-left: 15%;
+   margin-bottom: 40px;
+
 
  }
  header h2 a {
@@ -76,9 +77,27 @@ main{
   padding-bottom: 2rem;
 }
 
+.success{
+  border-radius: 5px;
+  background-color: #e6e6e6;
+  padding: 20px 25px;
+  margin-top: 30px;
+
+}
+
+.success h3{
+ font-weight: normal;
+ font-size: 1em;
+ color: #8a8a8a;
+}
+
 .spotlight{
   padding: 32px;
   border-bottom: 1px solid gray;
+}
+
+.spotlight p{
+  font-size: 1rem;
 }
 
 .spotlight_text{
@@ -133,5 +152,12 @@ main{
 
 .top_10 h3{
   border-bottom: 2px solid #26A69A;
+}
 
+.top_10 small{
+  color: slategray;
+}
+
+.top_10 p{
+  font-size: 1rem;
 }
