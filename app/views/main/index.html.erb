@@ -1,18 +1,24 @@
-<!--
+
 <main class = "row">
   <section class = "row spotlight">
-    <div>
-      <% unless @top == nil %>
+    <% if @top == nil %>
       <h3>
         <span class = "media-spotlight-header"> <strong>Media Spotlight:</strong> </span>
-        <%= link_to @top.title, work_path(@top.id) %>
-        by <%=@top.creator%>
+        by
       </h3>
-      <p> <%= @top.vote.count %> votes <%=@top.description %> </p>
-      <% end %>
-    </div>
+    <% else %>
+      <div>
+        <h3>
+          <span class = "media-spotlight-header"> <strong>Media Spotlight:</strong> </span>
+          <%= link_to @top.title, work_path(@top.id) %>
+          by <%=@top.creator%>
+        </h3>
+        <p> <%= @top.vote.count %> votes <%=@top.description %> </p>
+        <% end %>
+      </div>
+    <%end %>
 </section>
-
+<!--
 <hr class = "root-hr">
 
 
@@ -60,5 +66,5 @@
   </ul>
   <% end %>
 
-</section>
-</main> -->
+</section> -->
+</main>
