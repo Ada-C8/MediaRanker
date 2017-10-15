@@ -33,14 +33,14 @@
     VOTE!
   </th>
 </tr>
-
+<%# @votes.where(work_id: work.id).count
+%>
 <% @votes = Vote.all %>
 
 <% @works.each do |work| %>
 <tr>
   <td>
-    <%= @votes.where(work_id: work.id).count
-    %>
+    <%= work.testing(work.id) %>
   </td>
   <td>
     <%= work.category %>

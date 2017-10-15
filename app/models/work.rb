@@ -4,12 +4,17 @@ class Work < ApplicationRecord
 # must provide a title
 validates :title, presence: {message: "%{value} must be given"}
 
-def score
-  @work = Work.find(params[:id])
+def testing(input)
   @votes = Vote.all
-  @votes.where(work_id: @work.id).count
-  return scores
+  total = @votes.where(work_id: input).count
+  return total
 end
 
-# validates :title, uniqueness: {message: "%{value} already exists"}
+# def score
+#   @work = Work.find(params[:id])
+#   @votes = Vote.all
+#   @votes.where(work_id: @work.id).count
+#   return scores
+# end
+
 end

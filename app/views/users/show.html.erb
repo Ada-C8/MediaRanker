@@ -11,10 +11,7 @@
 
   <% votes.each do |vote| %>
     <%  work = @works.find(vote.work_id) %>
-    <%= work.title %>
+    <h4><%= work.title %></h4>
   <% end %>
 
-  Books this person voted for
-  go through votes associated with each user, then find title associated with vote (through works table)
-  if no votes, put not yet voted.
 </p>

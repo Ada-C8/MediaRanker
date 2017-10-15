@@ -5,4 +5,13 @@ class Vote < ApplicationRecord
 
   validates :work, uniqueness: { scope: :user }
   validates :user, uniqueness: { scope: :work }
+
+
+
+def list_votes(user)
+end
+
+
+
+
 end
