@@ -13,3 +13,10 @@ harry_potter:
   creator: JK Rowling
   publication_year: 1997
   description: Young Adult Wizard Fic
+
+  # music_album:
+  #   category: album
+  #   title: songs
+  #   creator: Prince
+  #   publication_year: 2010
+  #   description: musically stuff
