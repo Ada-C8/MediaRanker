@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   resources :works
 
   resources :works do
-    resources :user, only: [:show]
+    resources :user, only: [:show, :edit, :delete]
   end
 end
