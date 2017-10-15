@@ -62,7 +62,9 @@ describe Work do
     end
   end # end description
 
-  describe "" do
+  describe "relations" do
+    it "has many votes" do
 
+    end
   end
 end
