@@ -9,7 +9,7 @@ protected
       flash[:message] = "Successfully saved #{model.class} #{model.id}"
     else
       flash.now[:status] = :failure
-      flash.now[:message] = "Failed to save #{model.class}"
+      flash.now[:message] = "A problem occurred: Could not create #{model.class}"
       flash.now[:details] = model.errors.messages
     end
     return result

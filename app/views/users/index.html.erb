@@ -4,9 +4,9 @@
 <table>
   <thead>
     <tr>
-      <th>Username</th>
-      <th width="100">Votes</th>
-      <th width="200">Joined</th>
+      <th> Username </th>
+      <th width="100">Votes </th>
+      <th width="200">Joined </th>
     </tr>
   </thead>
   <% @users.each do |user| %>
@@ -14,7 +14,7 @@
     <tr>
       <td><%= link_to user.name, user_path(user), class: "link"%></td>
       <td><%= user.vote.count %></td>
-      <td><%= user.created_at.strftime("%b, %d %Y") %></td>
+      <td><%= user.created_at.strftime("%b %d, %Y") %></td>
     </tr>
     <% end %>
   </tbody>>

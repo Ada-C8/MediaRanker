@@ -1,7 +1,7 @@
 <main>
   <h3> User Summary: <%=@user.name%> </h3>
   <p>
-    Joined site <%=@user.created_at.strftime("%b, %d %Y")%>
+    Joined site <%=@user.created_at.strftime("%b %d, %Y")%>
   </p>
   <h4>Votes</h4>
   <table>
@@ -33,7 +33,7 @@
           <%=work.category%>
         </td>
         <td>
-          <%=vote.created_at.strftime("%b, %d %Y")%>
+          <%=vote.created_at.strftime("%b %d, %Y")%>
         </td>
         <%end%>
       </tbody>
