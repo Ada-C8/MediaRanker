@@ -35,11 +35,11 @@
     <table>
       <thead>
         <tr>
-          <th>Vote </th>
+          <th width="80">Vote </th>
           <th>Title</th>
           <th>Created By</th>
-          <th>Published</th>
-          <th>Upvote</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
         </tr>
       </thead>
       <tbody>
@@ -49,7 +49,7 @@
             <td><%= link_to(work.title, work_path(work.id), alt: "link to work show page") %></td>
             <td><%= work.creator %></td>
             <td><%= work.publication_year %></td>
-            <td><%= link_to("Upvote", work_votes_path(work.id), method: :post, alt: "link to upvote this work")%></td>
+            <td><%= link_to("Upvote", work_votes_path(work.id), method: :post, alt: "link to upvote this work", class: "button upvote")%></td>
           </tr>
           <% end %>
       </tbody>
@@ -63,11 +63,11 @@
     <table>
       <thead>
         <tr>
-          <th>Vote </th>
+          <th width="80">Vote </th>
           <th>Title</th>
           <th>Created By</th>
-          <th>Published</th>
-          <th>Upvote</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
         </tr>
       </thead>
       <tbody>
@@ -77,7 +77,7 @@
             <td><%= link_to(work.title, work_path(work.id), alt: "link to work show page") %></td>
             <td><%= work.creator %></td>
             <td><%= work.publication_year %></td>
-            <td><%= link_to("Upvote", work_votes_path(work.id), method: :post, alt: "link to upvote this work")%></td>
+            <td><%= link_to("Upvote", work_votes_path(work.id), method: :post, alt: "link to upvote this work", class: "button upvote")%></td>
           </tr>
           <% end %>
       </tbody>

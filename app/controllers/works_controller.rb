@@ -3,7 +3,6 @@ class WorksController < ApplicationController
   def home
     @works = Work.order(:category)
     @winner = @works.max_by {|work| work.votes.length}
-    # @movies = @works.where(category: "movie").sort_by { |work| work.votes.length }
   end
 
   def index
@@ -11,7 +10,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
     unless @work
       render_404
     end
@@ -33,14 +31,12 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
     unless @work
       redirect_to works_path
     end
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
     result = @work.update( work_params )
     if result
       flash.now[:success] = "Successfully updated #{@work.category} #{@work.id}"
@@ -52,7 +48,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
     if @work.destroy
       flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
       redirect_to works_path
@@ -65,6 +60,10 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
   end
 
 end

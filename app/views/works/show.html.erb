@@ -6,13 +6,13 @@
     <p><%= @work.publication_year %></p>
     <p><%= @work.description %></p>
 
-  </article>
-  <article class="voting-users columns large-6 small-12">
     <a><%= link_to("Back to media ranks", root_path, alt: "link to media ranker home page", class: "button") %></a>
     <a><%= link_to("Edit", edit_work_path(@work.id), alt: "link to edit work", class: "button") %></a>
     <a><%= link_to("Upvote", work_votes_path(@work.id), method: :post, alt: "link to upvote this work", class: "button") %></a>
     <a><%= link_to("Delete", work_path(@work.id), method: :delete, alt: "link to delete this work", class: "alert button", data: {confirm: "Are you sure you want to delete this work?"}) %></a>
-
+  </article>
+  
+  <article class="voting-users columns large-6 small-12">
   <h3><%= "#{@work.votes.length} Votes for this #{@work.category.capitalize}"%></h3>
   <table>
     <thead>

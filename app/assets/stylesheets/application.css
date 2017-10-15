@@ -20,7 +20,22 @@
 
 
 /*header styling*/
-.page-header row {
+
+.row {
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+article, aside, footer, header, nav, section {
+  display: block;
+}
+
+.page-header {
   max-width: 100%;
   background-color: #B2DFDB;
   border-bottom: 1px solid #EEEEEE;
@@ -127,19 +142,7 @@ body small {
     color: slategrey;
 }
 
-.row {
-  max-width: 75rem;
-  margin-right: auto;
-  margin-left: auto;
-}
 
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-
-article, aside, footer, header, nav, section {
-  display: block;
-}
 
 body {
   margin: 0;
@@ -177,6 +180,10 @@ body {
 
 .button:hover {
     background-color: #00796B;
+}
+
+.media-table .upvote.button {
+    margin: 0;
 }
 
 .spotlight a {
