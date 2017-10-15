@@ -2,10 +2,15 @@ class VotesController < ApplicationController
   def new
     @vote = Vote.new
     # if params[:user_id]
-      @vote.user_id = session[:logged_in_user]
-      @vote.work_id = params[:work_id]
-      @vote.save
-      redirect_to works_path
+
+  end
+
+  def create
+    @vote = Vote.new
+    @vote.user_id = session[:logged_in_user]
+    @vote.work_id = params[:work_id]
+    @vote.save
+    redirect_to works_path
   end
 
   private

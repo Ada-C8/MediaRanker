@@ -56,9 +56,29 @@
     <%= work.description %>
   </td>
   <td>
-    <%= link_to "Vote", new_work_vote_path(work.id) %>
+    VOTES
+    <%= form_for(Vote.new) do |f| %>
+    <%= f.submit %>
+    <% end %>
+  </td>
+  <% end %>
+
+  <td>
+    VOTERS
+    <%# @vote = Vote.new %>
+    <%#= form_for @vote url {action: create}
+
+    <%# orm_for (:thing, url:{:controller=>'thing', :action=>'update'}, html:{method:'put'}). %>
+    <%#{}= form_for(:vote, url:  {:controller => votes, action: create} do |f| %>
+    <%#= form_tag("/upvote", method: :post) do %>
+    <%#= text_field :user_id, work.id %>
+    <%#= submit_tag "Vote" %>
+
+
+
+    <%#= link_to "Vote", new_work_vote_path(work.id) %>
   </td>
 </tr>
-<% end %>
+
 
 </table>
