@@ -1,0 +1,17 @@
+# Keep things in order; Album, Books, Movies.
+<%= link_to("New", new_work_path)  %>
+<header>
+  <h1>List of Works</h1>
+</header>
+<ul>
+  <% @works.each do |work| %>
+  <li>
+    <h4><%= work.title %> <small>by <%= work.creator%></small></h4>
+    <!-- <p> # of votes </p> -->
+  </li>
+  <% end %>
+</ul>
+<footer>
+  <h3>Top Media</h3>
+  <h3>Add New</h3>
+</footer>
