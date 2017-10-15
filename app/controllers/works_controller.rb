@@ -57,8 +57,13 @@ class WorksController < ApplicationController
     find_work_by_params_id
     unless @status == true
       work = Work.find(params[:id])
+      votes = Vote.where(work_id: work.id)
+      votes.each do |vote|
+        vote.destroy
+      end
       work.destroy
-      redirect_to works_path
+      redirect_to root_path
+      return
     end
   end
 

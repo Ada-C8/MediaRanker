@@ -1,14 +1,18 @@
-<h1>This is the main page!</h1>
 
 <main class = "row">
   <section class = "row spotlight">
-    <h3>
-    <span class = "media-spotlight-header"> Media Spotlight: </span>
-    <%= link_to @top.title, works_path(params[:id]) %>
-    by <%=@top.creator%>
-  </section>
-  </h3>
-  <p> <%= @top.vote.count %> votes <%=@top.description %> </p>
+    <div>
+      <h3>
+        <span class = "media-spotlight-header"> <strong>Media Spotlight:</strong> </span>
+        <%= link_to @top.title, work_path(@top.id) %>
+        by <%=@top.creator%>
+      </h3>
+      <p> <%= @top.vote.count %> votes <%=@top.description %> </p>
+    </div>
+</section>
+
+<hr class = "root-hr">
+
 
 <section class = "top-ten columns large-4 small-12">
   <h3>Top Movies</h3>

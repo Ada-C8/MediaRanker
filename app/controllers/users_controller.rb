@@ -38,17 +38,30 @@ class UsersController < ApplicationController
     user = User.find_by(name: user_name)
     if user
       session[:logged_in_user] = user.id
+      flash[:status] = :success
+      flash[:message] = "Successfully logged in as #{user.name}"
     else
       user = User.create!(name: params[:user][:name])
       session[:logged_in_user] = user.id
+      flash[:status] = :success
+      flash[:message] = "Successfully created #{user.name}"
     end
     redirect_to root_path
   end
 
   def logout
     session[:logged_in_user] = nil
-    redirect_to root_path
-    return
+    if session[:logged_in_user] == nil
+      flash[:status] = :success
+      flash[:message] = "Successfully logged out"
+      redirect_to root_path
+      return
+    else
+      flash[:status] = :failure
+      flash[:message] = "Could not log you out"
+      redirect_to root_path
+      return
+    end
   end
 
   # def update

@@ -1,6 +1,11 @@
-<h1>User Info</h1>
-<h2><%=@user.name%></h2>
+<main class = "user row">
+
+<h3>User summary: <%=@user.name%></h3>
+<p>Joined Site <%=@user.created_at.strftime("%b %d, %Y")%></p>
+<h4>Votes</h4>
 <table>
+  <thead>
+
   <tr>
     <th>Media Title</th>
     <th>Created By</th>
@@ -8,6 +13,7 @@
     <th>Category</th>
     <th>Voted On</th>
   </tr>
+</thead>
   <tr>
     <% votes = Vote.where(user_id: @user.id) %>
       <% votes.each do |vote| %>
@@ -25,9 +31,17 @@
       <%= Work.find_by_id(vote.work_id).category%>
     </th>
     <th>
-      <%= vote.updated_at %>
+      <%= vote.updated_at.strftime("%b %d, %Y") %>
+    </th>
     </tr>
     <%end%>
+  </table>
 
+<div class="buttons">
 
-</table>
+    <%= link_to "View all Media",   works_path,   class: "button"%>
+    <%= link_to "View all users", users_path, class: "button"%>
+
+  </div>
+
+  </main>

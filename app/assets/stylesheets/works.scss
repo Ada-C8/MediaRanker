@@ -1,3 +1,24 @@
 // Place all the styles related to the Works controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+th {
+  text-align: left;
+  font-weight: normal;
+}
+
+.row h3 {
+  font-size: 1.9375rem;
+}
+
+.voting h3, .media-details h3 {
+  font-size: 1.1875rem;
+}
+
+.row h4 {
+  color: black;
+}
+
+.button.alert {
+  background-color: #cc4b37;
+}

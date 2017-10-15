@@ -7,7 +7,7 @@
 <h3>List of Works</h3>
 
 <section class = "media-table">
-  <h4>Music</h4>
+  <h4>Albums</h4>
   <% @cat = "Music" %>
   <%= render partial: 'table' %>
 </section>
@@ -24,5 +24,11 @@
   <% @cat = "Book" %>
     <%= render partial: 'table' %>
 </section>
+
+<div class="buttons">
+<%= link_to "View Top Media", root_path,   class: "button"%>
+<%= link_to "Add a new work", new_work_path, class: "button"%>
+</div>
+
 
 </main>

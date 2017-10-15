@@ -1,36 +1,29 @@
-<h2>This is the show page</h2>
+<main class = "row">
 
-<div class="work-info">
-  <h2> <%= @work.title %> </h2>
+<article class="media-details columns large-6 small-12">
+  <h3> <%= @work.title %> </h3>
   <p>Created By: <%=@work.creator %> </p>
   <p>Published: <%=@work.pub_year %> </p>
   <p> <%=@work.description %> </p>
-</div>
+</article>
 
-<div class="buttons">
-    <ul>
-      <li>
+<section class="buttons">
         <%= link_to "Edit", edit_work_path(@work.id), class: "button"%>
-      </li>
-      <li>
         <%= link_to "Upvote!", work_vote_path(params[:id]), class: "button"%>
-      </li>
-      <li>
         <%= link_to "Back to Media Ranks", root_path, class: "button" %>
-      </li>
-      <li>
-        <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you want to delete #{@work.title} from the database? You can not undo this action."}, class: "button"%>
-      </li>
-    </ul>
-  </div>
+        <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you want to delete #{@work.title} from the database? You can not undo this action."}, class: "alert button"%>
+  </section>
 
 <div class="voting">
-   Votes for this <%= @work.category %>
+   <h3> <%=@work.vote.count %>Votes for this <%= @work.category %> </h3>
   <table>
+    <thead>
+
     <tr>
       <th>User</th>
       <th>Date</th>
     </tr>
+  </thead>
     <tr>
         <%votes = Vote.where(work_id: @work.id)%>
         <% votes.each do |vote| %>
@@ -38,7 +31,7 @@
         <%= link_to User.find(vote.user_id).name, user_path(vote.user_id) %>
       </th>
       <th>
-        <%= vote.created_at%>
+        <%= vote.created_at.strftime("%b %d, %Y")%>
       </th>
 
       </tr>
@@ -46,3 +39,4 @@
 
   </table>
 </div>
+</main>
