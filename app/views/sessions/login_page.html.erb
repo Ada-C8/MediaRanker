@@ -1,0 +1,10 @@
+<h2 class="login">Log In</h2>
+
+ <%= form_tag login_path do %>
+
+ <%= label_tag(:name, "User Name") %>
+ <%= text_field_tag :name, params[:name], required: true %>
+
+ <input type="submit" class="button"<%= submit_tag("Login") %>
+
+ <% end %>

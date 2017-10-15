@@ -5,7 +5,21 @@ Rails.application.routes.draw do
 
   resources :works
 
-  resources :users
+  get '/users/', to: 'users#index', as: 'users' #users_path
+
+  get '/users/new', to: 'users#new', as: 'new_user'
+
+  get '/users/:id', to: 'users#show', as: 'user'
+
+  post '/users', to: 'users#create', as: 'create_user'
+
+  get '/login', to: 'sessions#login_page'
+
+  post '/login', to: 'sessions#login'
+  
+  delete '/login', to: 'sessions#logout'
+
+
 
   # get '/works', to: 'works#index', as: 'works'
   #

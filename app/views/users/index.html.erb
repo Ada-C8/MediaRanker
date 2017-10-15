@@ -1,2 +1,23 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h3>List of Users</h3>
+
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th width="100">Votes</th>
+        <th width="200">Joined</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |u| %>
+      <tr>
+        <td><%= link_to u.name, user_path(u.id) %></td>
+        <td> <%= u.votes.count %> </td>
+        <td> <%= u.created_at.strftime("%b %d, %Y") %> </td>
+      </tr>
+        <% end %>
+
+    </tbody>
+  </table>
