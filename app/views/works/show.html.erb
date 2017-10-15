@@ -1,28 +1,36 @@
-<h1><%= @work[:title]  %></h1>
-<p>Works#show</p>
+<main class="row">
+    <article class="media-details columns large-6 small-12">
+      <h3><%= @work[:title]  %></h3>
+      <p>Created by: <%= @work[:title]  %></p>
+      <p>Published: <%= @work[:publication_year] %></p>
+      <p><%= @work[:description] %></p>
 
-<p>Created by: <%= @work[:creator] %></p>
-<p>Published: <%= @work[:publication_year] %></p>
+      <section>
+        <a class="button" <%= link_to "Back to media ranks", root_path %></a>
 
-<p><%= @work[:description] %></p>
+        <a class="button" <%= link_to "Edit", edit_work_path(@work) %></a>
 
-<section>
-  <ul>
-    <li>
-      Back to Media ranks
-    </li>
-    <li>
-      Edit
-    </li>
-    <li>
-      Upvote
-    </li>
-    <li>
-      <%= link_to("Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"}) %>
-    </li>
-  </ul>
-</section>
+        <p class="button">UPVOTE</p>
 
-<section>
-<h2>[#{Total}] Votes for this <%= @work[:category] %></h2>
-</section>
+        <a class="alert button" data-confirm="Are you sure?" rel="nofollow" data-method="delete" <%= link_to 'Delete',
+        work_path(@work),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %> </a>
+      </section>
+    </article>
+
+    <article class="voting-users columns large-6 small-12">
+      <h3><%= "#{@work.votes.count} Votes for this work" %></h3>
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </article>
+</main>

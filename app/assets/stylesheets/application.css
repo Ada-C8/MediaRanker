@@ -36,11 +36,12 @@
 }
 
 .column, .columns {
-    width: 100%;
-    float: left;
-    padding-right: 0.625rem;
-    padding-left: 0.625rem;
+  width: 100%;
+  float: left;
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
 }
+
 
 body {
   margin: 0;
@@ -129,14 +130,28 @@ section.spotlight>div {
     border-bottom-color: #B2DFDB;
 }
 
-@media print, screen and (min-width: 40em)
-application-033…82025955.css:1
+@media print, screen and (min-width: 40em) {
 h3 {
     font-size: 1.9375rem;
 }
 
-@media print, screen and (min-width: 64em)
-application-033…82025955.css:1
+.column, .columns {
+    padding-right: 0.9375rem;
+    padding-left: 0.9375rem;
+}
+
+.column:last-child:not(:first-child), .columns:last-child:not(:first-child) {
+    float: right;
+}
+}
+
+
+@media print, screen and (min-width: 64em) {
 .large-4 {
-    width: 33.33333%;
+  width: 33.33333%;
+}
+.large-6 {
+  width: 50%;
+
+}
 }
