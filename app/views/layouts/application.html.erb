@@ -9,12 +9,37 @@
   </head>
 
   <body>
+    <header>
+      <h1>Media Ranker</h1> <h2>Ranking the Best of Everything</h2>
+    </header>
+    <nav>
+      <ul>
+        <li>View top media</li>
+        <li>View all media</li>
+        <li>Add a new work</li>
+        <li>View all users</li>
+      </ul>
+      <ul>
+      <% if session[:user] %>
+        <li>
+          <%= link_to("Logged in as #{session[:user]["username"]}", user_path(session[:user]["id"])) %>
+        </li>
+        <li>
+          <%= link_to("Log Out", logout_path, method: :post) %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to("Log In", login_path) %>
+        </li>
+      <% end %>
+      </ul>
+    </nav>
     <section class="flash">
       <% flash.each do |name, message| %>
         <div class="<%= name %>"><%= message %></div>
       <% end %>
     </section>
-    
+
     <%= yield %>
   </body>
 </html>
