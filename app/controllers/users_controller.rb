@@ -18,12 +18,14 @@ class UsersController < ApplicationController
     end
     user = User.find_by(username: username)
 
-    if user # Logs in as an existing user
+    # Logs in as an existing user
+    if user
       session[:logged_in_user] = user.id
       flash[:status] = :success
       flash[:message] = "Successfully logged in as an existing user #{username}"
       redirect_to root_path
-    else # Creates new user
+    # Creates new user
+    else
       user = User.new(username: username, created_at: Date.today)
       user.save
       flash[:status] = :success
