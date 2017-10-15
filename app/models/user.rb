@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :votes, dependent: :destroy
 
   validates :username, presence: {message: "%{value} must be given"}
+  validates :username, uniqueness: {message: "Username already exists/"}
 
   def list_votes(user)
     @votes = Vote.all
@@ -14,7 +15,7 @@ class User < ApplicationRecord
     return user_works
   end
 
-  
+
 
 
 

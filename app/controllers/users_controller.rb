@@ -9,15 +9,22 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
     @user.save
     session[:logged_in_user] = @user.id
-    redirect_to works_path
-    # if @user.save
-    #   flash[:success] = "Welcome New User!"
-    #   redirect_to works__path
-    # else
-    #   render :new
-    # end
+
+    if @user.save
+      flash[:status] = :success
+      flash[:message] = "Welcome New User!"
+      redirect_to users_path
+      return
+    else
+      flash.now[:status] = :failure
+      flash.now[:message] = "Failed to create new user"
+      flash.now[:details] = @user.errors.messages
+      render :new, status: :bad_request
+      # render :new
+    end
   end
 
   def login_form
@@ -42,13 +49,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
-
-
-
-  # votes_index GET    /votes/index(.:format)              votes#index
-  # user_votes POST   /users/:user_id/votes(.:format)     votes#create
-  # new_user_vote GET    /users/:user_id/votes/new(.:format) votes#new
-
 
 
 
