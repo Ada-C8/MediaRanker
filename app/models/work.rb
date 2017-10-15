@@ -8,11 +8,11 @@ class Work < ApplicationRecord
   validates :title, presence: true
   validates :publication_year, numericality: { only_integer: true, greater_than: 0, less_than: 9999 } #rework this, or set up proper error
 
-  # default_scope { order(votes_count: :desc) }
-  #
-  # scope :movies, -> { where(category: 'movie') }
-  # scope :albums, -> { where(category: 'album') }
-  # scope :books, -> { where(category: 'book') }
+  default_scope { order(votes_count: :desc) }
+
+  scope :movies, -> { where(category: 'movie') }
+  scope :albums, -> { where(category: 'album') }
+  scope :books, -> { where(category: 'book') }
 
   def self.spotlight
     return all.order(votes_count: :desc).first
