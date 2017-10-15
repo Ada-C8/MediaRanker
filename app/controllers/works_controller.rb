@@ -1,4 +1,7 @@
 class WorksController < ApplicationController
+
+before_action :find_work_by_params, only: [:show, :edit, :destroy, :update]
+
   def root
     @movies = Work.top_ten("movie")
     @albums = Work.top_ten("album")
@@ -17,9 +20,7 @@ class WorksController < ApplicationController
 
   end # index
 
-  def show
-  find_work_by_params
-  end # show
+  def show; end # show
 
   def new
     @work = Work.new
@@ -35,12 +36,11 @@ class WorksController < ApplicationController
     end # if/else
   end # create
 
-  def edit
-    find_work_by_params
-  end # edit
+  def edit; end # edit
 
   def update
-    if find_work_by_params
+    # NOTE: don't need the if because we are using before_action
+    # if find_work_by_params
       @work.update_attributes(work_params)
       if @work.save
         redirect_to work_path(@work)
@@ -49,15 +49,13 @@ class WorksController < ApplicationController
         render :edit, status: :bad_request
         return
       end # if/else
-    end # else
+    # end # else
   end # update
 
   def destroy
-    if find_work_by_params
-      @work.destroy
-      redirect_to works_path
-      return
-    end # if
+    @work.destroy
+    redirect_to works_path
+    return
   end # destroy
 
   def upvote
