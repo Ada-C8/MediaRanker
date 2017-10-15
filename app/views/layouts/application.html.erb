@@ -15,14 +15,14 @@
       <h1>Ranking the Best of Everything</h1>
 
       <nav>
-        <div>
+        <div class="row">
           <li class="button"><%= link_to("View Top Media", home_index_path) %></li>
           <li class="button"><%= link_to("View All Media", works_path) %></li>
           <li class="button"><%= link_to "Add New Work", new_work_path %></li>
           <li class="button"><%= link_to("View All Users",users_path) %></li>
         </div>
 
-        <div>
+        <div class="row">
           <%if session[:user_id]%>
             <%@user = User.find(session[:user_id]) %>
               <li class="button"><%="Logged in as #{@user.username}" %></li>
@@ -32,6 +32,7 @@
           <%end%>
         </div>
       </nav>
+      
     </header>
 
     <section class="flash">

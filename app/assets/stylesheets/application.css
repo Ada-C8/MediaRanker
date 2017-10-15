@@ -16,6 +16,21 @@
  *= require_self
  */
 /*
+
+
+/*--------GRID STYLING--------*/
+.row {
+  max-width: 100%;
+}
+
+.column {
+  column: 200px;
+}
+
+/*----------------------------*/
+
+
+
  /*TABLE STYLING*/
 .table th{
    background-color: #f5f5f5;
@@ -51,7 +66,7 @@ h1 {
 
 .button {
   background-color: #26A69A;
-  font-size: 10%;
+  /*font-size: 14%;*/
 }
 
 .button:hover {
@@ -62,3 +77,12 @@ h1 {
 .button a {
   color: white;
 }
+
+
+/*.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}*/
