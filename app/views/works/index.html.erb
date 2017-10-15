@@ -34,10 +34,13 @@
   </th>
 </tr>
 
+<% @votes = Vote.all %>
+
 <% @works.each do |work| %>
 <tr>
   <td>
-    Votes Will Go Here
+    <%= @votes.where(work_id: work.id).count
+    %>
   </td>
   <td>
     <%= work.category %>

@@ -6,20 +6,7 @@ class VotesController < ApplicationController
       @vote.work_id = params[:work_id]
       @vote.save
       redirect_to works_path
-    # end
   end
-
-  # def create
-  #   @vote = Vote.new(vote_params)
-  #   @vote.save
-  #   redirect_to works_path
-  # end
-  # def create
-  #   @vote = Vote.new(vote_params)
-  #   @vote.work = Work.find(params[:work_id])
-  #   @vote.save
-  # end
-
 
   private
 

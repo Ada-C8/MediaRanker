@@ -41,6 +41,8 @@ class WorksController < ApplicationController
   def topten
   end
 
+
+
   # def upvote
   #   @work = Work.find(params[:id])
   #   @work.votes.create
