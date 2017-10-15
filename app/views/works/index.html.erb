@@ -17,7 +17,7 @@
         <% @works.where(category: :album).each do |work| %>
         <tr>
           <td data-label="Votes">
-            NUM VOTES
+            <%= work.votes.size %>
           </td>
           <td data-label="Title">
             <%= link_to work.title, work_path(work.id) %>
@@ -50,7 +50,7 @@
         <% @works.where(category: :book).each do |work| %>
         <tr>
           <td data-label="Votes">
-            NUM VOTES
+            <%= work.votes.size %>
           </td>
           <td data-label="Title">
             <%= link_to work.title, work_path(work.id) %>
@@ -83,7 +83,7 @@
         <% @works.where(category: :movie).each do |work| %>
         <tr>
           <td data-label="Votes">
-            NUM VOTES
+            <%= work.votes.size %>
           </td>
           <td data-label="Title">
             <%= link_to work.title, work_path(work.id) %>
