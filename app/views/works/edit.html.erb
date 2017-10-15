@@ -1,3 +1,8 @@
-<h1>Edit this movie</h1>
+<main class="row">
+  <h3>Edit this <%= @work.category %></h3>
 
-<%= render partial: "form", locals: {some_var: "Update Work"}  %>
+  <section>
+  <%= render partial: "form", locals: {some_var: "Update Work"}  %>
+  </section>
+
+</main>
