@@ -77,6 +77,7 @@ describe Work do
       #assert
       Vote.all.wont_include vote1
       Vote.all.wont_include vote2
+      w.votes.count.must_equal 0
     end
   end
 
