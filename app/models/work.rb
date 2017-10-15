@@ -4,6 +4,9 @@ class Work < ApplicationRecord
 # must provide a title
 validates :title, presence: {message: "%{value} must be given"}
 
-# must provide a vin
+# def score
+#   votes.count
+# end
+
 # validates :title, uniqueness: {message: "%{value} already exists"}
 end

@@ -55,7 +55,7 @@
     <%= work.description %>
   </td>
   <td>
-    <%= link_to "Vote", new_vote_path %>
+    <%= link_to "Vote", new_work_vote_path(work.id) %>
   </td>
 </tr>
 <% end %>

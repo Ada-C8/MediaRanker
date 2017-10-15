@@ -14,45 +14,62 @@ Rails.application.routes.draw do
   get 'login', to: 'users#login_form', as: 'login'
   post 'login', to: 'users#login'
 
-  get 'votes/index'
-
-  get '/votes/new', to: 'votes#new', as: 'new_vote'
-
-  get '/votes', to: 'votes#create', as: 'votes'
 
 
-  get '/users/index'
 
-  get '/users/new', to: 'users#new', as: 'new_user'
+  # get '/votes/new', to: 'votes#new', as: 'new_vote'
+  #
+  # get '/votes', to: 'votes#create', as: 'votes'
 
-  get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
-
-  post '/users', to: 'users#create', as: 'users'
-
-  patch '/users/:id', to: 'users#update'
-
-  get '/users/:id', to: 'users#show', as: 'user'
-
-  delete '/users/:id', to: 'users#destroy'
+  resources :users
 
 
-  get 'works/index'
+  resources :works do
+    resources :votes
+  end
 
-  get '/works/new', to: 'works#new', as: 'new_work'
+  # get 'works/:id/upvote', to: 'works#upvote', as: 'upvote_work'
+  # get '/works/topten', to: 'works#topten', as: 'topten'
+  #
+  # get '/votes/new', to: 'votes#new', as: 'new_vote'
+  # post '/votes', to: 'votes#create', as: 'votes'
+end
 
-  get '/works/topten', to: 'works#topten', as: 'topten'
 
-  get '/works/:id/edit', to: 'works#edit', as: 'edit_work'
+  # get '/works/:id/upvote', to: 'works#upvote, '
 
-  post '/works', to: 'works#create', as: 'works'
-
-  patch '/works/:id', to: 'works#update'
-
-  get 'works/:id', to: 'works#show', as: 'work'
-
-  delete '/works/:id', to: 'works#destroy'
+  # get 'works/index'
+  #
+  # get '/works/new', to: 'works#new', as: 'new_work'
+  #
+  #
+  #
+  # get '/works/:id/edit', to: 'works#edit', as: 'edit_work'
+  #
+  # post '/works', to: 'works#create', as: 'works'
+  #
+  # patch '/works/:id', to: 'works#update'
+  #
+  # get 'works/:id', to: 'works#show', as: 'work'
+  #
+  # delete '/works/:id', to: 'works#destroy'
 
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
+
+
+#
+# get '/users/index'
+#
+# get '/users/new', to: 'users#new', as: 'new_user'
+#
+# get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
+#
+# post '/users', to: 'users#create', as: 'users'
+#
+# patch '/users/:id', to: 'users#update'
+#
+# get '/users/:id', to: 'users#show', as: 'user'
+#
+# delete '/users/:id', to: 'users#destroy'

@@ -11,10 +11,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.save
     session[:logged_in_user] = @user.id
-    redirect_to works_index_path
+    redirect_to works_path
     # if @user.save
     #   flash[:success] = "Welcome New User!"
-    #   redirect_to works_index_path
+    #   redirect_to works__path
     # else
     #   render :new
     # end
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
     if user
       session[:logged_in_user] = user.id
-      redirect_to works_index_path
+      redirect_to works_path
     else
       flash.now[:status] = :failure
       flash.now[:message] = "No such user exists."
@@ -43,11 +43,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # def upvote
-  #   @work = Work.find(params[:id])
-  #   @work.votes.create
-  #   redirect_to works_index_path
-  # end
+
+
+  # votes_index GET    /votes/index(.:format)              votes#index
+  # user_votes POST   /users/:user_id/votes(.:format)     votes#create
+  # new_user_vote GET    /users/:user_id/votes/new(.:format) votes#new
+
+
+
 
   private
 
