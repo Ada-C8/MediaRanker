@@ -1,3 +1,4 @@
+<%if collection_of_media.length != 0%>
 <ul>
   <% collection_of_media.each do |work|%>
   <li>
@@ -9,5 +10,6 @@
       <%=work.vote.count%> votes
     </p>
   </li>
-  <%end %>
+  <%end%>
 </ul>
+<%end%>
