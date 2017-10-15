@@ -1,17 +1,228 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
 
 @import url('foundation');
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+body, h1, h2, h3, h4, h5 {
+  font-family: "Gudea", sans-serif;
+}
+
+a, h3 {
+    color: #26A69A;
+}
+
+
+.page-header h2 {
+  text-align: center;
+  margin: 25px auto 40px auto;
+}
+
+.page-header h2 {
+  text-align: center;
+  margin: 25px auto 40px auto;
+}
+
+.small-12 {
+  width: 100%;
+}
+
+.column, .columns {
+  width: 100%;
+  float: left;
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+}
+
+.small-12 {
+  width: 100%;
+}
+
+.column, .columns {
+  width: 100%;
+  float: left;
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+
+body, h1, h2, h3, h4, h5 {
+  font-family: "Gudea", sans-serif;
+}
+
+h2 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+    font-size: 1.1875rem;
+    line-height: 1.4;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: inherit;
+  text-rendering: optimizeLegibility;
+}
+
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+  line-height: 0;
+  color: #cacaca;
+}
+
+
+h2 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+small {
+  font-size: 80%;
+  line-height: inherit;
+}
+
+small-12 {
+  width: 100%;
+}
+
+a {
+    line-height: inherit;
+    color: #1779ba;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a, h3 {
+    color: #26A69A;
+}
+
+body small {
+  color: slategrey;
+}
+
+p {
+    margin-bottom: 1rem;
+    font-size: inherit;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+}
+
+.row {
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.column, .columns {
+  width: 100%;
+  float: left;
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+}
+
+.page-header h2 {
+  text-align: center;
+  margin: 25px auto 40px auto;
+}
+
+.page-header h2 small {
+  color: white;
+}
+
+.page-header h2 a {
+  color: #FF5722;
+  padding-right: 25px;
+  margin-right: 15px;
+  border-right: white 2px solid;
+}
+
+.page-header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 10px;
+    padding: 25px 20px 10px 20px;
+  }
+
+
+.button {
+        background-color: #26A69A;
+    }
+
+
+h4 {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  }
+
+/*top works page*/
+.media-spotlight-header {
+    color: #424242;
+  }
+
+.spotlight a {
+  border-bottom: 2px solid;
+}
+
+
+.spotlight p {
+    margin-bottom: 0px;
+}
+
+section.spotlight>div {
+    padding: 0 2rem 2rem 2rem;
+}
+
+.top-ten h3 {
+    border-bottom: 2px solid;
+    border-bottom-color: #B2DFDB;
+}
+
+.top-ten ul {
+    list-style-type: none;
+    margin-left: 0px;
+}

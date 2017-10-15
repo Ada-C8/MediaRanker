@@ -1,21 +1,23 @@
-
+<section class="row spotlight">
 <div>
   <%@top_work = Work.top%>
-  <h3>Media Spotlight: <%= link_to @top_work.title, work_path(@top_work.id) %> by: <%= @top_work.creator %></h3>
+  <h3><span class="media-spotlight-header">Media Spotlight:</span> <%= link_to @top_work.title, work_path(@top_work.id) %> by: <%= @top_work.creator %></h3>
   <p>
     <%=@top_work.votes.count%> votes <%= @top_work.description%>
   </p>
 </div>
+</section>
 
+<hr class="root-hr" />
 
 <% @types.each do |type| %>
-  <section>
-    <h4>Top <%= type.capitalize %>s</h4>
+  <section class="top-ten columns large-4 small-12">
+    <h3>Top <%= type.capitalize %>s</h3>
     <section>
       <ul>
           <% Work.top_ten(type.to_sym).each do |work| %>
               <li>
-                <h4><%=link_to work.title, work_path(work.id)%> by <small><%=work.creator%></small></h4>
+                <h4><%=link_to work.title, work_path(work.id)%> <small>by <%=work.creator%></small></h4>
                 <%= work.votes.count %> votes
                 <%= link_to "Upvote" %>
               </li>

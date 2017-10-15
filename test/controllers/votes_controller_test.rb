@@ -17,15 +17,10 @@ describe VotesController do
   end
 
   it "should be able to create a new vote" do
-    post votes_path params: {vote: {work: works(:greys), user: users(:west)}}
-    must_respond_with :success
+    session[:logged_in_user] = users(:west)
+    post votes_path(params: {vote: {work: works(:greys), user: users(:west)}})
+    must_respond_with :failure
     # must_redirect_to :new
-  end
-
-  it "should be able to destroy a vote" do
-    delete vote_path(votes(:one))
-    must_respond_with :redirect
-    must_redirect_to work_path(works(:greys))
   end
 
 end

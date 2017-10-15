@@ -6,7 +6,7 @@ class VotesController < ApplicationController
   def create
     work = params[:id].to_i
     user = session[:logged_in_user]['id']
-    @vote = Vote.new(user_id: user, work_id: work )
+    @vote = Vote.new(user_id: user, work_id: work)
 
     @vote.save
     if @vote.save

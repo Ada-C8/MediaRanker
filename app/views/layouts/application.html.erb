@@ -3,14 +3,23 @@
   <head>
     <title>MediaRanker</title>
     <%= csrf_meta_tags %>
+    <link rel="stylesheet" media="screen" href="/assets/application-0338439e9a7e99f56d844ee54a97af49fa77e63fbafd7054c630594f82025955.css">
+    <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One">
+    <link rel="stylesheet" media="all" href="/assets/application-0338439e9a7e99f56d844ee54a97af49fa77e63fbafd7054c630594f82025955.css" data-turbolinks-track="reload">
 
+    <link rel="stylesheet" media="all" href="/assets/application-0338439e9a7e99f56d844ee54a97af49fa77e63fbafd7054c630594f82025955.css" data-turbolinks-track="reload">
+
+    <script src="/assets/application-acf35f2eda959e19835276b6ab695a4529b77e663b5d3b69a7685f02900c9c71.js" data-turbolinks-track="reload"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-910822ff6cd5f6d37119171c4b716f1d4e5fe0e8ad5e408627659ebf8d7f16b1.ico">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta class="foundation-mq">
   </head>
 
   <body>
     <header class="page-header row">
-      <h2 class="columns small-12">Media Ranker |<small>Ranking the best of everything</small></h2>
+      <h2 class="columns small-12"><%= link_to "Media Ranker", root_path %> <small> | Ranking the best of everything</small></h2>
+    
       <nav class="columns small-12">
         <%= link_to "View top meida", top_works_path, class:"button" %>
         <%= link_to "View all media", works_path, class:"button"  %>
