@@ -11,10 +11,10 @@ class VotesController < ApplicationController
     @vote.save
     if @vote.save
       flash[:success] = "Successfully upvoted!"
-      redirect_to work_path(@vote.work_id)
+      redirect_back(fallback_location: work_path(params[:id]))
     else
-      redirect_to work_path(params[:id])
       flash[:failure] = "You cannot upvote twice!"
+      redirect_back(fallback_location: work_path(params[:id]))
     end
   end
 

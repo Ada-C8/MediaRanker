@@ -16,21 +16,13 @@
 
 @import url('foundation');
 
-html {
-  box-sizing: border-box;
-  font-size: 100%;
-}
-
-html {
-  font-family: sans-serif;
-  line-height: 1.15;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
 
 body, h1, h2, h3, h4, h5 {
   font-family: "Gudea", sans-serif;
+}
+
+h2, h3, h4, h5 {
+    font-weight: bold;
 }
 
 a, h3 {
@@ -38,52 +30,14 @@ a, h3 {
 }
 
 
-.page-header h2 {
-  text-align: center;
-  margin: 25px auto 40px auto;
-}
-
-.page-header h2 {
-  text-align: center;
-  margin: 25px auto 40px auto;
-}
-
-.small-12 {
-  width: 100%;
-}
-
-.column, .columns {
-  width: 100%;
-  float: left;
-  padding-right: 0.625rem;
-  padding-left: 0.625rem;
-}
-
-.small-12 {
-  width: 100%;
-}
-
-.column, .columns {
-  width: 100%;
-  float: left;
-  padding-right: 0.625rem;
-  padding-left: 0.625rem;
-}
-
-h1, h2, h3, h4, h5 {
-  font-weight: bold;
-}
-
-body, h1, h2, h3, h4, h5 {
-  font-family: "Gudea", sans-serif;
-}
-
+/*this is messing with the Media Ranker heading.*/
 h2 {
-  font-size: 1.25rem;
+  font-size: 3vw;
   line-height: 1.4;
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
+
 
 h3 {
     font-size: 1.1875rem;
@@ -92,74 +46,34 @@ h3 {
     margin-bottom: 0.5rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  color: inherit;
-  text-rendering: optimizeLegibility;
+h3 {
+    display: block;
+    font-size: 1.17em;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
 }
 
-div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
-  margin: 0;
-  padding: 0;
-}
-
-h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
-  line-height: 0;
-  color: #cacaca;
-}
-
-
-h2 {
-  font-size: 1.25rem;
+h4 {
+  font-size: 1.125rem;
   line-height: 1.4;
   margin-top: 0;
   margin-bottom: 0.5rem;
-}
-
-small {
-  font-size: 80%;
-  line-height: inherit;
-}
+  }
 
 small-12 {
   width: 100%;
 }
 
-a {
-    line-height: inherit;
-    color: #1779ba;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-a, h3 {
-    color: #26A69A;
-}
-
-body small {
-  color: slategrey;
-}
-
-p {
-    margin-bottom: 1rem;
+li {
     font-size: inherit;
-    line-height: 1.6;
-    text-rendering: optimizeLegibility;
 }
 
-.row {
-  max-width: 75rem;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.column, .columns {
-  width: 100%;
-  float: left;
-  padding-right: 0.625rem;
-  padding-left: 0.625rem;
+form {
+    display: block;
+    margin-top: 0em;
 }
 
 .page-header h2 {
@@ -178,26 +92,18 @@ p {
   border-right: white 2px solid;
 }
 
+.button {
+    background-color: #26A69A;
+  }
+
+
 .page-header {
     max-width: 100%;
     background-color: #B2DFDB;
     border-bottom: 1px solid #EEEEEE;
     margin-bottom: 10px;
     padding: 25px 20px 10px 20px;
-  }
-
-
-.button {
-        background-color: #26A69A;
     }
-
-
-h4 {
-  font-size: 1.125rem;
-  line-height: 1.4;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  }
 
 /*top works page*/
 .media-spotlight-header {
@@ -225,4 +131,33 @@ section.spotlight>div {
 .top-ten ul {
     list-style-type: none;
     margin-left: 0px;
+}
+
+
+/*all works*/
+
+table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 0;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
 }

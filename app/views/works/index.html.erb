@@ -1,12 +1,13 @@
 <h3>List of works</h3>
 
+
 <% @types.each do |type| %>
-  <section>
+<section class="media-table">
     <h4><%= type.capitalize %>s</h4>
     <table>
       <thead>
         <tr>
-          <th>
+          <th width="80">
             Votes
           </th>
           <th>
@@ -15,10 +16,10 @@
           <th>
             Created By
           </th>
-          <th>
+          <th width="100">
             Published
           </th>
-          <th>
+          <th width="100">
             Upvote
           </th>
         </tr>
@@ -41,7 +42,7 @@
                 <%=work.year%>
               </td>
               <td>
-                <%= link_to "Upvote" %>
+                <%= link_to "Upvote", vote_path(work.id),  method: :post, class:"button" %>
               </td>
             </tr>
           <%end%>

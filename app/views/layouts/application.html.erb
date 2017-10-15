@@ -18,34 +18,35 @@
 
   <body>
     <header class="page-header row">
-      <h2 class="columns small-12"><%= link_to "Media Ranker", root_path %> <small> | Ranking the best of everything</small></h2>
-    
+      <h2 class="columns small-12"><%= link_to "Media Ranker", root_path %> <small> Ranking the best of everything</small></h2>
+
       <nav class="columns small-12">
         <%= link_to "View top meida", top_works_path, class:"button" %>
         <%= link_to "View all media", works_path, class:"button"  %>
         <%= link_to "Add a new work", new_work_path, class:"button"  %>
         <%= link_to "View all users", users_path, class:"button"  %>
+        <div class="float-right">
+          <% if session[:logged_in_user]%>
+            <% @user = session[:logged_in_user]%>
+            <%= link_to "Logged in as #{@user['name']}", user_path(@user['id']), class:"button" %>
+            <%= link_to "Log out", logout_path, method: :post, class:"button" %>
+          <%else%>
+            <%= link_to "Log in", login_path, class:"button"%>
+          <%end%>
+        </div>
       </nav>
-      <div class="float-right">
-        <% if session[:logged_in_user]%>
-        <% @user = session[:logged_in_user]%>
-          <%= link_to "Logged in as #{@user['name']}", user_path(@user['id']), class:"button" %>
-          <%= link_to "Log out", logout_path, method: :post, class:"button" %>
-        <%else%>
-          <%= link_to "Log in", login_path, class:"button"%>
-        <%end%>
-      </div>
     </header>
 
-    <main class="row">
-      <%flash.each do |name, message| %>
+    <%flash.each do |name, message| %>
+    <div class="row flash <%=name%>">
         <section class="row status <%= name%> ">
           <h3><%= message %></h3>
         </section>
       <%end%>
+    </div>
 
+    <main>
       <%= yield %>
-
     </main>
   </body>
 </html>
