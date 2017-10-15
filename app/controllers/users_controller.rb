@@ -21,12 +21,6 @@ class UsersController < ApplicationController
       flash[:success] = "#{ user.username } is successfully logged in"
       redirect_to works_path
     end
-    # user_id = params[:user][:user_id]
-    # user = User.find_by(id: user_id)
-    # if user
-    #   session[:logged_in_user] = user_id
-    #   redirect_to users_path
-    # end
   end
 
   def show

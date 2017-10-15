@@ -1,7 +1,8 @@
 <h1>Medias</h1>
 
-<h3>Media Spotlight: title by Creator</h3>
-<p>Number of votes - description</p>
+<h3>Media Spotlight: <%= link_to(Work.top_title, work_path(Work.top_work.id)) %>
+ by <%=  Work.top_creator %> </h3>
+<p> <%=  Work.top_votes %> votes - <%=  Work.top_description %> </p>
 <hr>
 
 <h3>Top Movies</h3>
@@ -11,7 +12,7 @@
 <% else %>
   <ul>
     <% @movies.each do |movie| %>
-      <li><%= link_to(movie.title, work_path(movie.id)) %> by <%= movie.creator %> <br /> x votes </li>
+      <li><%= link_to(movie.title, work_path(movie.id)) %> by <%= movie.creator %> <br /> <%= movie.number_of_vote %> votes </li>
 
     <% end %>
   </ul>
@@ -24,7 +25,7 @@
 <% else %>
   <ul>
     <% @albums.each do |album| %>
-      <li><%= link_to(album.title, work_path(album.id)) %> by <%= album.creator %> <br /> x votes </li>
+      <li><%= link_to(album.title, work_path(album.id)) %> by <%= album.creator %> <br /> <%= album.number_of_vote %> votes </li>
 
     <% end %>
   </ul>
@@ -37,7 +38,7 @@
 <% else %>
   <ul>
     <% @books.each do |book| %>
-      <li><%= link_to(book.title, work_path(book.id)) %> by <%= book.creator %> <br /> x votes </li>
+      <li><%= link_to(book.title, work_path(book.id)) %> by <%= book.creator %> <br /> <%= book.number_of_vote %> votes </li>
     <% end %>
   </ul>
 <% end %>
