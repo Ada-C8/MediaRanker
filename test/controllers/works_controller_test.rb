@@ -77,6 +77,16 @@ describe WorksController do
     must_redirect_to work_path(works(:lotr).id)
   end
 
+  it "should not upvote a work if user has already upvoted it once" do
+    proc {
+      post login_path, params: {username: users(:crisco).name}
+      post upvote_path(works(:anti).id)
+    }.must_change 'Vote.count', 0
+    must_respond_with :redirect
+    must_redirect_to work_path(works(:anti).id)
+    flash[:error].must_equal "You've already upvoted this!"
+  end
+
 
 
 

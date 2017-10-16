@@ -104,8 +104,9 @@ def render_404
 end
 
 def does_vote_exist(input_work)
-  session_id = session[:user_id].to_s.to_sym
-  input_work_id = input_work.id.to_s.to_sym
+  # binding.pry
+  session_id = session[:user_id]
+  input_work_id = input_work.id
   all_votes = Vote.all.group_by{|vote| vote.user_id}
   if all_votes[session_id]
     user_votes = all_votes[session_id].group_by {|vote| vote.work_id}
@@ -115,6 +116,7 @@ def does_vote_exist(input_work)
       return false
     end
   end
+  return false
 end
 
 # def destroy_votes(input_work)
