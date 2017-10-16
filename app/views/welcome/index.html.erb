@@ -1,7 +1,7 @@
-<h2> Media Spotlight</h2>
-
-<li><%= link_to @rand_work.title, work_path(@rand_work.id) %></li>
-<p>by <%= @rand_work.creator %></p>
+<section class="spotlight row">
+  <h3> Media Spotlight: <%= link_to @rand_work.title, work_path(@rand_work.id)%> by <%= @rand_work.creator %></h3>
+  <p><%= "#{@rand_work.votes.count} votes" %></p>
+</section>
 
 <h3> Top Albums </h3>
 
