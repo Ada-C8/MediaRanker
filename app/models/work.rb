@@ -20,7 +20,7 @@ class Work < ApplicationRecord
     Work.where(category: category).sort_by{|w| -w.votes.count}[0...10]
   end
 
-  def also_liked
+  def recs
     works = Hash.new(0)
 
     votes.each do |v|
@@ -29,8 +29,12 @@ class Work < ApplicationRecord
         works[work.title] += 1
       end
     end
+    works
+  end
 
-    works.keys.sort_by{|t| -works[t]}
+  def rec_list
+    works = recs
+    works.keys.sort_by{|t| -works[t]}[0..3]
   end
 
   private
