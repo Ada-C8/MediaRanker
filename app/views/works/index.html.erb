@@ -1,13 +1,75 @@
-<h1>Works#index</h1>
-<p>Find me in app/views/works/index.html.erb</p>
+<h1>List of Works</h1>
 <section>
-    <% @works.each do |work| %>
-    <article>
-      <p>Title: <%= link_to(work.title, work_path(work.id)) %></p>
-      <p>Category: <%= work.category %></p>
-      <%= link_to("Edit", edit_work_path(work.id)) %>
-      <%= link_to("Delete", work_path(work.id), method: :delete) %>
-      <hr>
-    </article>
-    <% end %>
+  <h2>Albums</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @albums.each do |work| %>
+      <tr><!-- For each vote a user has  -->
+        <td><%= work.votes.length %></td>
+        <td><%= link_to(work.title, work_path(work.id)) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td><%= link_to("Upvote") %></td>
+      </tr><!-- End loop  -->
+      <% end %>
+    </tbody>
+  </table>
+
+  <h2>Books</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |work| %>
+      <tr><!-- For each vote a user has  -->
+        <td><%= work.votes.length %></td>
+        <td><%= link_to(work.title, work_path(work.id)) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td><%= link_to("Upvote") %></td>
+      </tr><!-- End loop  -->
+      <% end %>
+    </tbody>
+  </table>
+
+  <h2>Movies</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @movies.each do |work| %>
+      <tr><!-- For each vote a user has  -->
+        <td><%= work.votes.length %></td>
+        <td><%= link_to(work.title, work_path(work.id)) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td><%= link_to("Upvote") %></td>
+      </tr><!-- End loop  -->
+      <% end %>
+    </tbody>
+  </table>
+
 </section>

@@ -15,13 +15,15 @@
       </tr>
     </thead>
     <tbody>
+      <% @user.votes.each do |vote| %>
       <tr><!-- For each vote a user has  -->
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><%= vote.work.title %></td>
+        <td><%= vote.work.creator %></td>
+        <td><%= vote.work.publication_year %></td>
+        <td><%= vote.work.category %></td>
+        <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
       </tr><!-- End loop  -->
+      <% end %>
     </tbody>
   </table>
 </section>
