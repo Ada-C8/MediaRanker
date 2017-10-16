@@ -7,8 +7,8 @@ class VotesController < ApplicationController
     if session[:logged_in_user] == nil
       redirect_back(fallback_location: works_path)
       flash[:error] = "You must be logged in to vote!"
-    else
 
+    else
       work = params[:id].to_i
       user = session[:logged_in_user]['id']
       @vote = Vote.new(user_id: user, work_id: work)
