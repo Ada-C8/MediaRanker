@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'users/index'
+  resources :works
+  resources :users, only: [:index, :show]
+  root 'main#index'
 
-root 'main#index'
-
-resources :works
-resources :users, only: [:index, :show, :create]
+  get 'login', to: 'users#login_form', as: 'login'
+  post 'login', to: 'users#login'
 end
