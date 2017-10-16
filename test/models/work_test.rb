@@ -36,4 +36,19 @@ describe "all_works_by_title" do
     end
   end
 end
+  describe  "self.spotlight" do
+    it "should return a work" do
+      output = Work.spotlight(Work.all_works_by_title)
+      output.must_be_instance_of Work
+    end
+    it "should return nil if there are no works" do
+      output = Work.spotlight(Hash.new)
+      output.must_equal nil
+    end
+    it "should raise an error if input hash does not include works" do
+      proc {
+        Work.spotlight({one: [1,2,3], two: [1,2,3]})
+      }.must_raise ArgumentError
+    end
+  end
 end

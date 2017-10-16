@@ -2,7 +2,7 @@ class MainPageController < ApplicationController
   def index
     # top_voted = []
     @works = all_works_by_votes
-    @spotlight_work = Work.spotlight
+    @spotlight_work = Work.spotlight(@works)
   end
 end
 
