@@ -17,7 +17,6 @@
         </small>
       </h2>
 
-      <%# Must fix these %>
       <nav class="small-12 columns clearfix padding">
         <%= link_to "View top media", root_path, class: "button" %>
         <%= link_to "View all media", works_path, class: "button" %>
@@ -25,7 +24,6 @@
         <%= link_to "View all users", users_path, class: "button" %>
 
         <%# When session is logged in, will add a Log Out button to the navigation %>
-
         <% if session[:logged_in_session] != nil %>
 
           <div class="float-right">

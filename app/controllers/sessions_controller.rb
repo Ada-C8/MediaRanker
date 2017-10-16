@@ -31,19 +31,11 @@ class SessionsController < ApplicationController
   def new_user_for_session(name)
     @user = User.new(name: name)
 
-    if @user.save
-      session[:logged_in_session] = @user.id
-      flash[:status] = :success
-      flash[:message] = "Successfully created new user #{@user.name} with ID #{@user.id}"
-
+    if save_and_flash(@user)
       redirect_to root_path
     else
-      flash[:status] = :failure
-      flash[:details] = @user.errors.messages
-
       render :login_form, status: :bad_request
     end
-  end # Des
-end # Des
+  end # Def
 
-# <!-- <%= link_to "Logged in as #{User.find(session[:logged_in_session]).name}", user_path(session[:logged_in_session]), class: "button" %> -->
+end # Des

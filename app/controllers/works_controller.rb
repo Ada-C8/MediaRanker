@@ -1,12 +1,12 @@
 class WorksController < ApplicationController
 
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def index
     @works = Work.all
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
-
     unless @work
       head :not_found
     end
@@ -19,43 +19,31 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(works_params)
 
-    if @work.save
-      flash[:status] = :success
-      flash[:message] = "Successfully created #{@work.category} #{@work.id}"
+    if save_and_flash(@work)
       redirect_to works_path
     else
-      flash.now[:status] = :failure
-      flash.now[:message] = "A problem occured: Could not create #{@work.category}"
-      flash.now[:details] = @work.errors.messages
       render :new, status: :bad_request
     end
   end
 
-  def edit
-    @work = Work.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @work = Work.find_by(id: params[:id])
+    unless @work
+      head :not_found
+      return
+    end
 
     if session[:logged_in_session] != nil
-      unless @work
-        head :not_found
-        return
-      end
+      @work.update_attributes(works_params)
 
-      result = @work.update_attributes(works_params)
-
-      if result
-        flash[:status] = :success
-        flash[:message] = "Successfully updated #{@work.category} #{@work.id}"
+      if save_and_flash(@work)
         redirect_to work_path(@work)
       else
-        flash.now[:status] = :failure
-        flash.now[:details] = @work.errors.messages
         render :edit, status: :bad_request
       end
-      # This logic if the user is not logged in
+      
+    # This logic if the user is not logged in
     else
       flash.now[:status] = :failure
       flash.now[:message] = "You must be logged in to do that"
@@ -64,8 +52,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
-
     if session[:logged_in_session] != nil
       unless @work
         head :not_found
@@ -77,10 +63,11 @@ class WorksController < ApplicationController
       flash[:status] = :success
       flash[:message] = "Successfully destroyed #{@work.category} #{@work.id}"
       redirect_to works_path
+    # This logic if the user is not logged in
     else
       flash[:status] = :failure
       flash[:message] = "You must be logged in to do that"
-      redirect_to work_path(@work.id)
+      redirect_to work_path(@work)
     end
   end
 
@@ -88,6 +75,10 @@ class WorksController < ApplicationController
 
   def works_params
     params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by_id(params[:id])
   end
 
 end

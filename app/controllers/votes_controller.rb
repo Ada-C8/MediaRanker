@@ -2,6 +2,8 @@ class VotesController < ApplicationController
 
   def create # Add strong params
     @vote = Vote.new(votes_params)
+
+    # Did not place in save_and_flash due to flash not showing up on redirect
     if @vote.save # Only save if the work was not previously voted on
       flash[:status] = :success
       flash[:message] = "Successfully Upvoted!"
