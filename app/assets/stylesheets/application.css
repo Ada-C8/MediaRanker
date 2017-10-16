@@ -27,10 +27,6 @@
   --rust: #cc4b37;
 }
 
-* {
-  /*border: 1px solid lawngreen;*/
-}
-
 .right {
   float: right;
 }
@@ -67,15 +63,11 @@ h1 {
   text-align: center;
 }
 
-h1 a {
+h1 a, h1 a:hover {
   border-right: 2px solid white;
   color: var(--red);
   padding-right: 1.5rem;
   margin-right: 1rem;
-}
-
-h1 a:hover {
-  color: var(--red);
 }
 
 h2 {
@@ -111,11 +103,6 @@ main {
   padding: 2rem 0;
 }
 
-section {
-  margin: auto;
-  /*max-width: 75rem;*/
-}
-
 /**********/
 /* HEADER */
 /**********/
@@ -130,7 +117,7 @@ header.header {
 .header small {
   color: white;
   font-size: 2rem;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 /************/
