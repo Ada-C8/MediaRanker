@@ -3,7 +3,7 @@ require "test_helper"
 describe WorksController do
 
   describe "index" do
-    it "return a success status" do
+    it "gets a list of works" do
       get works_path
       must_respond_with :success
     end
