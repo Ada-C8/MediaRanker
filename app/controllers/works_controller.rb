@@ -1,13 +1,19 @@
 class WorksController < ApplicationController
+
   def homepage
+    @top_work = Work.top_spot
+    @albums = Work.select_top_ten_of_category("album")
+    @books = Work.select_top_ten_of_category("book")
+    @movies = Work.select_top_ten_of_category("movie")
+
   end
 
   def index
     @works = Work.order(:title)
 
-    @albums = Work.sort_by_category("album")
-    @books = Work.sort_by_category("book")
-    @movies = Work.sort_by_category("movie")
+    @albums = Work.filter_by_category("album")
+    @books = Work.filter_by_category("book")
+    @movies = Work.filter_by_category("movie")
   end
 
   def new
