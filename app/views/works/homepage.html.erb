@@ -1,41 +1,55 @@
-<h2>Media Spotlight:
-  <%= link_to(@has_highest_votes.title, work_path(@has_highest_votes.id)) %> by <%= @has_highest_votes.creator %>
-</h2>
-<p><%= @has_highest_votes.votes.length %> votes</p>
+<div class="row" id="media-spotlight">
+  <div class="large-12 columns">
+    <h2>Media Spotlight:
+      <%= link_to(@has_highest_votes.title, work_path(@has_highest_votes.id)) %> by <%= @has_highest_votes.creator %>
+    </h2>
+    <p><%= @has_highest_votes.votes.length %> votes</p>
+    <hr>
+  </div>
+</div>
 
-<hr>
+
 
 <div class="row">
-  <div class="small-12 medium-12 large-4 columns">
-    <h2>Movies</h2>
+  <div class="small-12 medium-12 large-4 columns top-works">
+    <h2>Top Movies</h2>
     <ul>
       <% @movies.each do |movie| %>
       <li>
-        <h3><%= link_to(movie.title, work_path(movie.id)) %> by <%= movie.creator %></h3>
+        <h3>
+          <%= link_to(movie.title, work_path(movie.id)) %>
+          <small>by <%= movie.creator %></small>
+        </h3>
         <p><%= movie.votes.length %> votes</p>
       </li>
       <% end %>
     </ul>
   </div>
 
-  <div class="small-12 medium-12 large-4 columns">
-    <h2>Books</h2>
+  <div class="small-12 medium-12 large-4 columns top-works">
+    <h2>Top Books</h2>
     <ul>
       <% @books.each do |book| %>
       <li>
-        <h3><%= link_to(book.title, work_path(book.id)) %> by <%= book.creator %></h3>
+        <h3>
+          <%= link_to(book.title, work_path(book.id)) %>
+          <small>by <%= book.creator %></small>
+        </h3>
         <p><%= book.votes.length %> votes</p>
       </li>
       <% end %>
     </ul>
   </div>
 
-  <div class="small-12 medium-12 large-4 columns">
-    <h2>Albums</h2>
+  <div class="small-12 medium-12 large-4 columns top-works">
+    <h2>Top Albums</h2>
     <ul>
       <% @albums.each do |album| %>
       <li>
-        <h3><%= link_to(album.title, work_path(album.id)) %> by <%= album.creator %></h3>
+        <h3>
+          <%= link_to(album.title, work_path(album.id)) %>
+          <small>by <%= album.creator %></small>
+        </h3>
         <p><%= album.votes.length %> votes</p>
       </li>
       <% end %>

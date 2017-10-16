@@ -7,10 +7,10 @@
       <p>Published: <%= @work.publication_year %></p>
       <p>Description: <%= @work.description %></p>
 
-      <%= link_to("Back to media ranks", root_path) %>
-      <%= link_to("Edit", edit_work_path(@work.id)) %>
-      <%= link_to("Upvote", upvote_work_path(@work.id), method: :post) %>
-      <%= link_to("Delete", work_path(@work.id), method: :delete) %>
+      <%= link_to("Back to media ranks", root_path, class: "button") %>
+      <%= link_to("Edit", edit_work_path(@work.id), class: "button") %>
+      <%= link_to("Upvote", upvote_work_path(@work.id), method: :post, class: "button") %>
+      <%= link_to("Delete", work_path(@work.id), method: :delete, class: "button alert") %>
     </section>
   </div>
 

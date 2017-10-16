@@ -1,8 +1,8 @@
 class WorksController < ApplicationController
   def index
-    @albums = Work.where("category = 'album'")
-    @books = Work.where("category = 'book'")
-    @movies = Work.where("category = 'movie'")
+    @albums = Work.where("category = 'album'").order(vote_count: :desc).limit(10)
+    @books = Work.where("category = 'book'").order(vote_count: :desc).limit(10)
+    @movies = Work.where("category = 'movie'").order(vote_count: :desc).limit(10)
 
   end
 
@@ -15,9 +15,9 @@ class WorksController < ApplicationController
       end
     end
 
-    @albums = Work.where("category = 'album'").limit(10)
-    @books = Work.where("category = 'book'").limit(10)
-    @movies = Work.where("category = 'movie'").limit(10)
+    @albums = Work.where("category = 'album'").order(vote_count: :desc).limit(10)
+    @books = Work.where("category = 'book'").order(vote_count: :desc).limit(10)
+    @movies = Work.where("category = 'movie'").order(vote_count: :desc).limit(10)
   end
 
   def show
