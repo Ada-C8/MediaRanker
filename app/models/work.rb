@@ -6,7 +6,10 @@ class Work < ApplicationRecord
   validates :creator,presence: {message: "Enter a creator"}
   validates :publication_year, presence: {message: "Enter publication_year year"}
 
-  def self.upvote(id)
-    self.where(:id => id).update_all("upvotes = upvotes + 1")
+  def self.media_spotlight
+    works = Work.all
+    works.max_by do |work|
+      work.votes.count
+    end
   end
 end
