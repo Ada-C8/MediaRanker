@@ -12,11 +12,11 @@
 
   <% @albums.each do |work| %>
     <tr>
-      <td>tbd</td>
+      <td><%= work.votes.count %></td>
       <td><%= link_to work.title, work_path(work.id) %></td>
       <td><%= work.creator %></td>
       <td><%= work.publication_year %></td>
-      <td>tbd</td>
+      <td><%= link_to "Upvote", work_upvote_path(work.id), method: :post %>
     </tr>
   <% end %>
 </table>
@@ -33,11 +33,11 @@
 
   <% @books.each do |work| %>
     <tr>
-      <td>tbd</td>
+      <td><%= work.votes.count %></td>
       <td><%= link_to work.title, work_path(work.id) %></td>
       <td><%= work.creator %></td>
       <td><%= work.publication_year %></td>
-      <td>tbd</td>
+      <td><%= link_to "Upvote", work_upvote_path(work.id), method: :post %>
     </tr>
   <% end %>
 </table>
@@ -54,11 +54,11 @@
 
   <% @movies.each do |work| %>
     <tr>
-      <td>tbd</td>
+      <td><%= work.votes.count %></td>
       <td><%= link_to work.title, work_path(work.id) %></td>
       <td><%= work.creator %></td>
       <td><%= work.publication_year %></td>
-      <td>tbd</td>
+      <td><%= link_to "Upvote", work_upvote_path(work.id), method: :post %>
     </tr>
   <% end %>
 </table>
