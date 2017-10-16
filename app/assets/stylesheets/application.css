@@ -1,48 +1,42 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
- @import url('foundation');
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+@import url('foundation');
 
- .row {
-   max-width: 85rem;
-   margin-right: auto;
-   margin-left: auto;
- }
+.row {
+  max-width: 85rem;
+  margin-right: auto;
+  margin-left: auto;
+}
 
- body, h1, h2, h3, h4, h5 {
+ul {
+  list-style: none;
+}
+
+body {
+  display: block;
+}
+
+body, h1, h2, h3, h4, h5 {
   font-family: "Gudea", sans-serif;
- }
-
- body {
-   display: block;
- }
+}
 
 h3, h3 a, h4 {
   font-weight: bold;
   color: #26A69A;
   font-size: 2.5rem;
- }
-
- h4 a {
-   font-weight: bold;
-   color: #26A69A;
-   font-size: 2rem;
- }
-
-h2 {
-  font-size: 3.25rem;
 }
 
 h1 {
@@ -51,21 +45,30 @@ h1 {
   font-size: 2rem;
 }
 
- .header {
-    min-width: 100%;
-    min-height: 230px;
-    background-color: #B2DFDB;
-    border-bottom: 1px solid #EEEEEE;
-    margin-bottom: 10px;
-    padding: 25px 20px 10px 20px;
-    text-align: center;
-  }
+h2 {
+  font-size: 3.25rem;
+}
+
+h4 a {
+  font-weight: bold;
+  color: #26A69A;
+  font-size: 2rem;
+}
+
+.header {
+  min-width: 100%;
+  min-height: 230px;
+  background-color: #B2DFDB;
+  border-bottom: 1px solid #EEEEEE;
+  margin-bottom: 10px;
+  padding: 25px 20px 10px 20px;
+  text-align: center;
+}
 
 .header h2 {
   margin-bottom: 3rem;
   margin-top: 3rem;
 }
-
 
 .header span a{
   color: #FF5722;
@@ -77,46 +80,26 @@ h1 {
 
 .header h2 small {
   color: white;
-}
-
-.header h2 small {
-  color: white;
   font-weight: bold;
-}
-
-/*nav ul {
-  display: inline-block;
-}*/
-
-.nav .button{
-  float: left;
 }
 
 .button, .extra{
   display: inline-block;
   float: left;
-
   background-color: #26A69A;
   transition: background-color 0.25s ease-out, color 0.25s ease-out;
   vertical-align: middle;
-margin: 0 0 1rem .75rem;
-padding: 0.85em 1em;
+  margin: 0 0 1rem .75rem;
+  padding: 0.85em 1em;
 }
 
 .button li {
- float: left;
-
+  float: left;
 }
 
-.logged-in {
+.logged-in, .logged-out {
   float: right;
 }
-
-.button:last-child {
- float: right;
-
-}
-
 
 .button a {
   color: white;
@@ -157,8 +140,6 @@ section.spotlight p {
 
 }
 
-
-
 body small {
   color: slategrey;
 }
@@ -176,6 +157,7 @@ th {
 
 td {
   font-size: 1.15rem;
+
 }
 
 td a {
@@ -184,25 +166,39 @@ td a {
 }
 
 td, th {
-    display: table-cell;
-    vertical-align: inherit;
-    max-width:100%;
-white-space:nowrap;
+  display: table-cell;
+  vertical-align: inherit;
+  max-width:100%;
+  white-space:nowrap;
 }
 
-
-
 table {
-    width: 100%;
-    margin-bottom: 1rem;
-    border-radius: 0;
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 0;
 }
 
 label {
-    display: block;
-    margin: 0;
-    font-size: 1.15rem;
-    font-weight: normal;
-    line-height: 1.8;
-    color: #0a0a0a;
+  display: block;
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: normal;
+  line-height: 1.8;
+  color: #0a0a0a;
+}
+
+.flash {
+  border-radius: 5px;
+  background-color: #e6e6e6;
+  padding: 20px 25px;
+  margin-top: 30px;
+}
+
+.details {
+  display: block;
+  text-align: left;
+}
+
+.delete {
+  background-color: red;
 }

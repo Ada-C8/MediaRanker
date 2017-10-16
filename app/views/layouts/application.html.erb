@@ -27,16 +27,18 @@
             <li class="button"><%= link_to "Logout", logout_path, method: :delete, alt: "Link to logout" %></li>
         </div>
         <% else %>
-          <li class="button"><%= link_to "Login", login_path, alt: "Link to login" %></li>
+          <li class="logged-out button"><%= link_to "Login", login_path, alt: "Link to login" %></li>
         <% end %>
       </nav>
     </header>
 
-    <section class="flash">
-     <% flash.each do |name, message| %>
-       <div class="<%= name %>"><%= message %></div>
-     <% end %>
-    </section>
+    <% if flash.count > 0 %>
+      <section class="row flash">
+       <% flash.each do |name, message| %>
+         <div class="<%= name %>"><%= message %></div>
+       <% end %>
+      </section>
+    <% end %>
 
     <%= yield %>
   </body>

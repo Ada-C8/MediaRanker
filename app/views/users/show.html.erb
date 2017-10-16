@@ -1,4 +1,4 @@
-<section class="details">
+<section class="row details">
   <h1>User Summary: <%= @user.username %></h1>
   <p>Joined site <%= @user.created_at %></p>
 
@@ -17,7 +17,7 @@
       <td><%= vote.work.creator %> </td>
       <td><%= vote.work.publication_year %> </td>
       <td><%= vote.work.category %> </td>
-      <td><%= vote.created_at %> </td>
+      <td><%= vote.created_at.strftime("%b %d, %Y") %> </td>
     </tr>
     <% end %>
   </table>
