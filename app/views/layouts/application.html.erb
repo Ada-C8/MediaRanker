@@ -29,8 +29,6 @@
     </nav>
   </header>
   <main class="row">
-    <h2>session</h2>
-    <%= session[:user_id] %>
     <% unless flash.empty? %>
     <section class="row status">
       <% flash.each do |name, message| %>
