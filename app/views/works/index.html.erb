@@ -2,15 +2,17 @@
 <h3>List of Works</h3>
 
 <article>
+
+<section class="media-table">
 <h4>Albums</h4>
   <table>
     <thead>
       <tr>
-        <th>Votes</th>
+        <th width=80>Votes</th>
         <th>Title</th>
         <th>Created By</th>
-        <th>Published</th>
-        <th>Upvote</th>
+        <th width=100>Published</th>
+        <th width=100>Upvote</th>
       </tr>
     </thead>
     <tbody>
@@ -32,11 +34,11 @@
   <table>
     <thead>
       <tr>
-        <th>Votes</th>
+        <th width=80>Votes</th>
         <th>Title</th>
         <th>Created By</th>
-        <th>Published</th>
-        <th>Upvote</th>
+        <th width=100>Published</th>
+        <th width=100>Upvote</th>
       </tr>
     </thead>
     <tbody>
@@ -58,11 +60,11 @@
 <table>
   <thead>
     <tr>
-      <th>Votes</th>
+      <th width=80>Votes</th>
       <th>Title</th>
       <th>Created By</th>
-      <th>Published</th>
-      <th>Upvote</th>
+      <th width=100>Published</th>
+      <th width=100>Upvote</th>
     </tr>
   </thead>
   <tbody>
@@ -79,5 +81,8 @@
     <% end %>
   </tbody>
 </table>
+</section>
 
+<%= link_to "View top media" %>
+<%= link_to "Add a new work", new_work_path %>
 </article>

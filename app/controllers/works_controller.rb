@@ -68,25 +68,6 @@ class WorksController < ApplicationController
         redirect_back(fallback_location: :root)
       end
     end
-  # end
-  #   user = User.find_by(id: session[:user_id])
-  #   work = Work.find_by(id: params[:work_id])
-  #   if session[:user_id] != nil
-  #     if work.voted?(user) == true
-  #       flash[:status] = :error
-  #       flash[:message] = "user has already voted for this work"
-  #       redirect_back(fallback_location: root_path)
-  #     else
-  #       @vote = Vote.create!(user_id: user.id, work_id: work.id)
-  #       flash[:status] = :success
-  #       flash[:message] = "Successfully upvoted!"
-  #       redirect_back(fallback_location: root_path)
-  #     end
-  #   else
-  #     flash[:status] = :error
-  #     flash[:message] = "You must log in to do that"
-  #     redirect_back(fallback_location: root_path)
-  #   end
   end
 
   private
