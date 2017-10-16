@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe User do
-  let :user {users(:one) }
+  let :user {users(:user1) }
 
   describe "validations" do
     it "should be valid" do
@@ -17,8 +17,8 @@ describe User do
 
     it "requires a unique username" do
       username = "user1"
-      u1 = User.login!(username: username)
-      u2 = User.login_form(username: username)
+      u1 = User.create!(username: username)
+      u2 = User.new(username: username)
 
       u2.wont_be :valid?
     end
