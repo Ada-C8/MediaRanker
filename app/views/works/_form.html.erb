@@ -1,28 +1,20 @@
 <%= form_for @work do |f| %>
-<ul>
-  <li>
+
 <%= f.label :category %>
 <%= f.select :category, ['book', 'album', 'movie']%>
-<%# f.collection_select(:id, Author.all, :id, :name) %>
-<%# f.text_field :category, class: "form-field"%>
-</li>
-<li>
+
 <%= f.label :title %>
 <%= f.text_field :title, class: "form-field"%>
-</li>
-<li>
+
 <%= f.label :creator %>
 <%= f.text_field :creator, class: "form-field"%>
-</li>
-<li>
+
 <%= f.label :publication_year %>
 <%= f.text_field :publication_year, class: "form-field"%>
-</li>
-<li>
+
 <%= f.label :description %>
 <%= f.text_field :description, class: "form-field"%>
-</li>
-<%= f.submit class: "submit"%>
 
-</ul>
+<%= f.submit class: "submit button"%>
+
 <% end %>

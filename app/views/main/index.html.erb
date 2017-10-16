@@ -1,16 +1,20 @@
 <section class="row spotlight">
+  <div>
   <h3>
     <span class="media-spotlight">
       Media Spotlight:
     </span>
     <% if Work.top_work %>
-    <%= link_to Work.top_work.title, work_path(Work.top_work.id)%> by <%= Work.top_work.creator%></h3>
+    <%= link_to Work.top_work.title, work_path(Work.top_work.id)%> by <%= Work.top_work.creator%>
+  </h3>
   <p>
     <%=Work.top_work.votes.count%>-<%=Work.top_work.description%>
   </p>
   <%end%>
+</div>
 
 </section>
+<hr class="root-hr">
 <section class="top-ten columns large-4 small-12">
   <h3>Top Movies</h3>
   <ul>

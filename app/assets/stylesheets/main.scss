@@ -3,11 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.top-ten h3 {
-    border-bottom: 2px solid;
-    border-bottom-color: #B2DFDB;
-}
 
+// spotlight
 .media-spotlight {
     color: #424242;
     font-weight: bold;
@@ -15,4 +12,19 @@
 
 .spotlight a {
     border-bottom: 2px solid;
+}
+
+.spotlight div {
+  padding: 0 2rem 2rem 2rem;
+}
+
+// hr
+.root-hr {
+    margin: 0px auto 75px auto;
+    color: #EEEEEE;
+}
+
+.top-ten h3 {
+    border-bottom: 2px solid;
+    border-bottom-color: #B2DFDB;
 }
