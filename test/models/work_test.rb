@@ -53,9 +53,11 @@ describe Work do
 
   describe "works_by_category" do
     it "can find all the works in a category" do
-
+      puts Work.works_by_category.keys
     end
 
-    it "can return a hash of works with "
+    it "can return a hash of works with " do
+
+    end
   end
 end

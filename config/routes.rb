@@ -18,11 +18,7 @@ Rails.application.routes.draw do
 
   get 'users', to: 'users#index', as: 'users'
 
-  get 'users/new', to: 'users#new', as: 'new_user'
-
   get 'users/:id', to: 'users#show', as: 'user'
-
-  post 'users', to: 'users#create', as: 'create_user'
 
   get 'login', to: 'sessions#login_form', as: 'login'
 
