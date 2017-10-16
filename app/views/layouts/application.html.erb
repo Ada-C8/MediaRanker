@@ -8,37 +8,36 @@
   </head>
 
   <body>
-    <header class="row">
+    <header class="page-header row">
       <h2 class="small-12 columns">
         <%= link_to "Media Ranker", root_path %>
         <small>Ranking the Best of Everything</small>
       </h2>
 
-      <nav class="row">
-        <div class="large-8 small-12 columns button-group">
+      <nav class="small-12 columns">
           <%= link_to "View top media", root_path, class: "button"%>
           <%= link_to "View all media", works_path, class: "button" %>
           <%= link_to "Add a new work", new_work_path, class: "button" %>
           <%= link_to "View all users", users_path, class: "button" %>
-        </div>
 
-        <div class="large-4 small-12 columns button-group row">
+        <div class="float-right">
           <% if session[:logged_in_user] %>
           <%# is there a better way to set current_user, without having this view need to call the User class? %>
             <% current_user = User.find_by(id: session[:logged_in_user])%>
-              <%= link_to "Logged in as #{current_user.name}", user_path(session[:logged_in_user]), class: "button small-6 large-3" %>
-              <%= link_to "Logout", logout_path, class: "button small-6 large-3" %>
+              <%= link_to "Logged in as #{current_user.name}", user_path(session[:logged_in_user]), class: "button" %>
+              <%= link_to "Logout", logout_path, class: "button" %>
           <% else %>
-            <%= link_to "Login", login_path, class: "button small-6 large-3" %>
+            <%= link_to "Login", login_path, class: "button float-right" %>
           <% end %>
         </div>
       </nav>
     </header>
 
-    <section class="flash <%= flash[:status] %>">
-      <p>
+    <% if flash[:status] %>
+    <section class="row status <%= flash[:status] %>">
+      <h3>
         <%= flash[:message] %>
-      </p>
+      </h3>
       <% if flash[:details] %>
         <ul>
           <% flash[:details].each do |field, problems| %>
@@ -54,7 +53,10 @@
         </ul>
       <% end %>
     </section>
+    <% end %>
 
-    <%= yield %>
+    <main class="row">
+      <%= yield %>
+    </main>
   </body>
 </html>

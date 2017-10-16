@@ -1,3 +1,56 @@
 // Place all the styles related to the Main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.row {
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.top-ten h3 {
+  border-bottom: 2px solid rgb(178, 223, 219);
+}
+
+.top-ten ul {
+  list-style-type: none;
+  margin-left: 0px;
+}
+
+.root-hr {
+  margin: opx auto 75px auto;
+  color: #EEEEEE;
+}
+
+.row::after {
+  clear: both;
+}
+
+.row {
+  max-width: 75rem;
+}
+
+.row::before, .row::after {
+  display: table;
+  content: " ";
+}
+
+li {
+  font-size: inherit;
+}
+
+a, h3 {
+  color: rgb(38, 166, 154);
+}
+
+.spotlight a {
+  border-bottom: 2px solid;
+}
+
+span.media-spotlight-header {
+  color: black;
+}
+
+section.spotlight > div {
+  padding: 0px 2rem 2rem;
+}
