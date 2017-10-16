@@ -3,11 +3,7 @@ class WorksController < ApplicationController
   #TODO setup work model method for sorting, etc (take out of controller)
 
   def index
-    books = Work.where(category: "book")
-    movies = Work.where(category: "movie")
-    albums = Work.where(category: "album")
-
-    @works = {Albums: albums, Books: books, Movies: movies}
+    @works = Work.works_by_category
   end
 
   def show
