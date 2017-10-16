@@ -30,7 +30,7 @@
   <tbody>
     <tr>
       <td>
-        <%= link_to "#{vote.work.title}", work_path(vote.work.id) %>
+        <%= link_to "#{vote.work.title}", work_path(vote.work.id), method: :get %>
       </td>
       <td>
         <%= vote.work.creator %>
