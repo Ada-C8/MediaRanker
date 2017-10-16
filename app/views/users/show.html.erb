@@ -22,11 +22,11 @@
       </tr>
     </thead>
     <tbody>
-      <% user_cast_votes(@user).each do |vote| %>
+      <% ApplicationHelper.user_cast_votes(@user).each do |vote| %>
         <tr>
-          <td> <%= link_to get_title(vote.work_id), work_path(vote.work_id) %></td>
-          <td> <%= get_creator(vote.work_id) %> </td>
-          <td> <%- get_published(vote.work_id) %></td>
+          <td> <%= link_to ApplicationHelper.get_title(vote.work_id), work_path(vote.work_id) %></td>
+          <td> <%= ApplicationHelper.get_creator(vote.work_id) %> </td>
+          <td> <%- ApplicationHelper.get_published(vote.work_id) %></td>
           <td> <%= vote.category %> </td>
           <td> <%= vote.date %></td>
         </tr>

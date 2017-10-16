@@ -33,9 +33,16 @@
       <section class='row success'>
         <h3> <%= value %> </h3>
       </section>
-    <% elsif key == 'deleted' %>
+    <% elsif key == 'login' %>
       <section class = 'row failure'>
         <h3> <%= value %> </h3>
+        <ul>
+          <li> username: can't be blank </li>
+        </ul>
       </section>
+    <% else %>
+    <section class = 'row failure'>
+      <h3> <%= value %> </h3>
+    </section>
     <% end %>
   <% end %>

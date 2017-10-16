@@ -17,14 +17,14 @@
     </h3>
 
     <ul>
-      <% top_10('album').each do |album| %>
+      <% ApplicationHelper.top_10('album').each do |album| %>
         <li>
           <h4>
               <%= link_to album.title, work_path(album) %>
               <small> by <%= album.creator %> </small>
           </h4>
           <p>
-            <%= votes_for_work(album) %> votes
+            <%= ApplicationHelper.votes_for_work(album) %> votes
           </p>
         </li>
       <% end %>
@@ -34,14 +34,14 @@
   <section class='columns large-4 small-12 top_10'>
     <h3> Top Movies </h3>
       <ul>
-        <%  top_10('movie').each do |movie| %>
+        <%  ApplicationHelper.top_10('movie').each do |movie| %>
           <li>
             <h4>
                 <%= link_to movie.title, work_path(movie) %>
                 <small> by <%= movie.creator %> </small>
             </h4>
             <p>
-              <%= votes_for_work(movie) %> votes
+              <%= ApplicationHelper.votes_for_work(movie) %> votes
             </p>
           </li>
         <% end %>
@@ -55,14 +55,14 @@
     </h3>
 
     <ul>
-      <%   top_10('book').each do |book| %>
+      <% ApplicationHelper.top_10('book').each do |book| %>
         <li>
           <h4>
               <%= link_to book.title, work_path(book) %>
               <small> by <%= book.creator %> </small>
           </h4>
           <p>
-            <%= votes_for_work(book) %> votes
+            <%= ApplicationHelper.votes_for_work(book) %> votes
           </p>
         </li>
       <% end %>

@@ -1,15 +1,42 @@
 require './test/test_helper'
 
-class WorkControllerTest < ActionDispatch::IntegrationTest
 
-  test "should get work index" do
-    get works_url
+describe WorksController do
+  it "should get work home page" do
+    get works_path
     assert_response :success
   end
 
-  test "can see welcome page" do
-    get '/'
-    assert_select
+  describe 'works validations' do
+    it "get specified valid work id" do
+      get works_path(works(:one).id)
+      must_respond_with :success
+    end
+
+    it "get specified invalid work" do
+      get work_path(1321321)
+      must_respond_with :missing
+    end
+  end
+
+  describe 'new works validation' do
+    it 'adds a new valid work' do
+      post works_path, params: {
+        work: {
+          title: 'john',
+          creator: 'creator 1',
+          published: 2010,
+          category: 'album',
+          description: 'some description'
+        }
+      }
+      must_respond_with :redirect
+
+    end
+  end
+
+  it 'should call custom function' do
+    t = find_user()
   end
 
 end

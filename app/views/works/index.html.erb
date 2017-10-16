@@ -32,7 +32,7 @@
         <% @albums.each do |album| %>
         <tr>
           <td>
-            <%= votes_for_work(album) %>
+            <%= ApplicationHelper.votes_for_work(album) %>
           </td>
 
           <td>
@@ -84,7 +84,7 @@
         <% @books.each do |book| %>
         <tr>
           <td>
-            <%= votes_for_work(book) %>
+            <%= ApplicationHelper.votes_for_work(book) %>
           </td>
 
           <td>
@@ -136,7 +136,7 @@
         <% @movies.each do |movie| %>
         <tr>
           <td>
-            <%= votes_for_work(movie) %>
+            <%= ApplicationHelper.votes_for_work(movie) %>
           </td>
 
           <td>

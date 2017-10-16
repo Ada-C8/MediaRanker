@@ -21,6 +21,7 @@ class WorksController < ApplicationController
   end
 
   def show
+
     @work = Work.find(params[:id])
     @votes = Vote.where(work_id: @work.id)
   end
@@ -30,14 +31,21 @@ class WorksController < ApplicationController
   end
 
   def create
-    @work = Work.new(title: params[:work][:title],
-                    description: params[:work][:description],
-                    category: params[:work][:category],
-                    creator: params[:work][:creator],
-                    published: params[:work][:published])
-    @work.save
+    if params[:work][:title] == ""
+      flash[:failed] = "title can't be blank"
+      redirect_to new_work_path
+    else
 
-    redirect_to works_path
+      @work = Work.new(title: params[:work][:title],
+                      description: params[:work][:description],
+                      category: params[:work][:category],
+                      creator: params[:work][:creator],
+                      published: params[:work][:published])
+      @work.save
+
+      flash[:success] = "Successfully created #{@work.category} #{@work.id}"
+      redirect_to work_path(@work.id)
+    end
   end
 
   def upvote

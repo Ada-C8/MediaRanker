@@ -1,13 +1,13 @@
 module ApplicationHelper
-  def find_user(id)
+  def self.find_user(id)
     return User.find(id.to_i).name
   end
 
-  def votes_for_work(work)
+  def self.votes_for_work(work)
     return Vote.where(work_id: work.id).count
   end
 
-  def top_10(category)
+  def self.top_10(category)
     result = []
     @top_works =  Vote.limit(10).where("category= '#{category}'").group(:work_id).count
     @top_works.keys.each do |work|
@@ -16,35 +16,25 @@ module ApplicationHelper
     return result
   end
 
-  def votes_for_users(user)
-    return Vote.where(user_id: user.id).count
-  end
 
-  def user_signed_in
-    return session[:user_id] != nil
-  end
 
-  def get_user_id
-    return session[:user_id]
-  end
 
-  def get_user_name
-    return User.find(session[:user_id]).name
-  end
 
-  def user_cast_votes(user)
+
+
+  def self.user_cast_votes(user)
     return Vote.where(user_id: user.id)
   end
 
-  def get_title(id)
+  def self.get_title(id)
     return Work.find(id).title
   end
 
-  def get_published(id)
+  def self.get_published(id)
     return Work.find(id).published
   end
 
-  def get_creator(id)
+  def self.get_creator(id)
     return Work.find(id).creator
   end
 end
