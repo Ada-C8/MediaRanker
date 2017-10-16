@@ -28,7 +28,11 @@
 }
 
 .right {
-  float: right;
+  float: right !important;
+}
+
+.left {
+  float: left !important;
 }
 
 .button {
@@ -170,9 +174,9 @@ table .button {
 /*******************/
 
 .recs {
-  display: inline-block;
   border: 2px solid var(--mint);
-  margin: 1rem 0;
+  display: inline-block;
+  margin-bottom: 1rem;
   padding: 1rem;
   width: auto;
 }
