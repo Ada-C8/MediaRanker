@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.row {
-  max-width: 75rem;
-  margin-right: auto;
-  margin-left: auto;
-}
 
 .top-ten h3 {
   border-bottom: 2px solid rgb(178, 223, 219);
@@ -20,23 +15,6 @@
 .root-hr {
   margin: opx auto 75px auto;
   color: #EEEEEE;
-}
-
-.row::after {
-  clear: both;
-}
-
-.row {
-  max-width: 75rem;
-}
-
-.row::before, .row::after {
-  display: table;
-  content: " ";
-}
-
-li {
-  font-size: inherit;
 }
 
 a, h3 {

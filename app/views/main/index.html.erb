@@ -15,15 +15,15 @@
   </div>
 </section>
 <hr class="root-hr">
-<section class="top-ten large-4 small-12 columns">
+<section class="top-ten small-12 large-4 columns">
   <h3>Top Albums</h3>
   <%= render partial: "list", locals: {works: @albums_sorted_by_votes} %>
 </section>
-<section class="top-ten large-4 small-12 columns">
+<section class="top-ten small-12 large-4 columns">
   <h3>Top Books</h3>
   <%= render partial: "list", locals: {works: @books_sorted_by_votes} %>
 </section>
-<section class="top-ten large-4 small-12 columns">
+<section class="top-ten small-12 large-4 columns">
   <h3>Top Movies</h3>
   <%= render partial: "list", locals: {works: @movies_sorted_by_votes} %>
 </section>

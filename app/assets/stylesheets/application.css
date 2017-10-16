@@ -15,8 +15,6 @@
  */
 
  body {
-   font-weight: normal;
-   line-height: 1.5;
    color: slategrey;
  }
 
@@ -25,16 +23,8 @@
    font-weight: bold;
  }
 
- *, ::before, ::after {
-   box-sizing: inherit;
- }
-
  .float-right {
    float: right;
- }
-
- div {
-   display: block;
  }
 
 .page-header {
@@ -43,16 +33,6 @@
   border-bottom: 1px solid #EEEEEE;
   margin-bottom: 10px;
   padding: 25px 20px 10px 20px;
-}
-
-.row {
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.row::before, .row::after {
-  display: table;
-  content: " ";
 }
 
 .page-header h2 {
@@ -71,23 +51,12 @@
   border-right: 2px solid white;
 }
 
-a {
-  line-height: inherit;
-  cursor: pointer;
-  text-decoration: none;
-  background-color: transparent;
-}
-
 .button {
   background-color: rgb(38, 166, 154);
 }
 
 body small {
   color: slategrey;
-}
-
-.small-12 {
-  width: 100%;
 }
 
 header a {

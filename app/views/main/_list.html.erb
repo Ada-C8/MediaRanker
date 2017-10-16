@@ -1,5 +1,5 @@
-<% works[0..9].each do |work| %>
-  <ul>
+<ul>
+  <% works[0..9].each do |work| %>
     <li>
       <h4>
         <%= link_to work.title, work_path(work.id) %>
@@ -11,5 +11,5 @@
         <%= work.votes.count %> votes
       </p>
     </li>
-  </ul>
-<% end %>
+  <% end %>
+</ul>

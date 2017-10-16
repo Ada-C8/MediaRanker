@@ -15,9 +15,12 @@ class VotesController < ApplicationController
     else
       flash[:status] = :failure
       flash[:message] = "You must be logged in to vote"
+
+      redirect_to works_path
+      return
     end
 
     redirect_back(fallback_location: work_path(current_work_id))
-    
+
   end
 end

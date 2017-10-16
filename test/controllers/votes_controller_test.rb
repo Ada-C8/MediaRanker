@@ -32,11 +32,13 @@ describe VotesController do
       must_redirect_to work_path(@work.id)
     end
 
-    it "sets a flash variable to be equal to :failure and the message to indicate to the user must be logged in to vote" do
+    it "sets a flash variable to be equal to :failure and the message to indicate to the user must be logged in to vote, and redirects to works_path" do
 
       post upvote_path(@work.id)
       flash[:status].must_equal :failure
       flash[:message].must_equal "You must be logged in to vote"
+      must_respond_with :redirect
+      must_redirect_to works_path
     end
 
     #PROBLEM: Can't get this test to work. Unable to set session in controller test.
