@@ -21,7 +21,7 @@
           <% if session[:logged_in_user] %>
 
               <%= link_to "Logged in as #{session[:logged_in_user]["username"]}", user_path(session[:logged_in_user]["id"]), class: "button"  %>
-            <%= link_to "Log out", logout_path, method: "button"%>
+            <%= link_to "Log out", logout_path, class: "button",  method: :post%>
           <% else %>
           <!-- login_path -->
             <%= link_to "Log in", login_path, class: "button"%>
