@@ -1,60 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MediaRanker</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>MediaRanker</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <header>
-      <div class="header_link">
+<body>
+  <header>
+    <h1 class="row">Media Ranker | Ranking the Best of Everything</h1>
+    <nav class="row">
+      <div class="large-8 small-12 columns button-group">
+        <%= link_to "View top media", root_path, class: "button" %>
+        <%= link_to "View all media", works_path, class: "button" %>
+        <%= link_to "Add a new work", new_work_path, class: "button" %>
+        <%= link_to "View all users", users_path, class: "button" %>
+      </div>
+      <div class="large-4 small-2 columns button-group">
         <% if session[:logged_in_user] %>
-            <p class="button">
-              Logged in as
-              <%= User.find(session[:logged_in_user]).name %>
-            </p>
-            <%= link_to "Log out", logout_path, class: "button" %>
-          <% else %>
-            <%= link_to "Log in", login_path, class: "button" %>
-          <% end %>
-        <%=link_to "All Works", works_path, method: :get%>
-        <%=link_to "Add New Work", new_work_path, method: :get%>
-        <%=link_to "Add Users", users_path %>
-      </div>
-    </header>
-
-    <main>
-      <section class="flash <%= flash[:status] %>">
-        <p>
-          <%= flash[:message] %>
+        <p class="button">
+          Logged in as
+          <%= User.find(session[:logged_in_user]).name %>
         </p>
-        <% if flash[:details] %>
-          <ul>
-            <% flash[:details].each do |field, problems| %>
-              <% problems.each do |problem| %>
-                <li>
-                  <strong>
-                    <%= field %>:
-                  </strong>
-                  <%= problem %>
-                </li>
-              <% end %>
-            <% end %>
-          </ul>
+        <%= link_to "Log out", logout_path, class: "button" %>
+        <% else %>
+        <%= link_to "Log in", login_path, class: "button" %>
         <% end %>
-      </section>
-
-      <%= yield %>
-    </main>
-
-    <footer>
-      <div>
-          copyright 2017
       </div>
+    </nav>
+  </header>
 
-    </footer>
-  </body>
+  <main>
+    <section class="flash <%= flash[:status] %>">
+      <p>
+        <%= flash[:message] %>
+      </p>
+      <% if flash[:details] %>
+      <ul>
+        <% flash[:details].each do |field, problems| %>
+        <% problems.each do |problem| %>
+        <li>
+          <strong>
+            <%= field %>:
+          </strong>
+          <%= problem %>
+        </li>
+        <% end %>
+        <% end %>
+      </ul>
+      <% end %>
+    </section>
+
+    <%= yield %>
+  </main>
+
+  <footer>
+    <div>
+      copyright 2017
+    </div>
+
+  </footer>
+</body>
 </html>
