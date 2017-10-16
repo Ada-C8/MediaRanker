@@ -31,24 +31,11 @@ body, h1, h2, h3, h4, h5 {
   font-family: "Gudea", sans-serif;
 }
 
-h2 {
-  line-height: 1.4;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-h3 {
-  line-height: 1.4;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
 a, h3 {
   color: #26A69A;
 }
 
 li {
-  font-size: inherit;
   margin: 0;
   padding: 0;
   display: list-item;
@@ -63,17 +50,12 @@ body small {
   color: slategrey;
 }
 
+select, textarea {
+  margin-bottom: 1rem;
+}
+
 .button {
-  display: inline-block;
   background-color: #26A69A;
-  margin: 0 0 1rem 0;
-  padding: 0.85rem 1em;
-  border: 1px solid transparent;
-  border-radius: 0;
-  font-size: 0.9rem;
-  text-align: center;
-  line-height: 1;
-  color: #fefefe;
 }
 
 .button:hover {
