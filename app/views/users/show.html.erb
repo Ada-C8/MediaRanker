@@ -57,9 +57,13 @@
           Based on their voting history, we think this user would enjoy:
         </strong>
       </p>
-      <% @recs.each do |rec| %>
-      <%= link_to rec.title, work_path(rec) %>
-      <% end %>
+      <ul>
+        <% @recs.each do |rec| %>
+          <li>
+            <%= link_to rec.title, work_path(rec) %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
 
