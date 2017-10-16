@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    find_user
+    render_404 if !@user
   end
 
   def edit
@@ -19,4 +21,14 @@ class UsersController < ApplicationController
 
   def destroy
   end
+end
+
+private
+
+def find_user
+  @user = User.find_by(id: params[:id])
+end
+
+def render_404
+  render file: "/public/404.html", status: 404
 end
