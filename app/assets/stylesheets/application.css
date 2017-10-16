@@ -176,8 +176,28 @@
     list-style-type: none;
     margin-left: 0px;
     }
-  /*@media print, screen and (min-width: 40em) h3 {
-    font-size: 1.9375rem;
-  }*/
+
+    .spotlight a {
+    border-bottom: 2px solid;
+    }
+
+    table {
+      width: 100%;
+      margin-bottom: 1rem;
+      border-radius: 0;
+    }
+
+  @media print, screen and (min-width: 40em) {
+    h3 {
+      font-size: 1.9375rem;
+    }
+
+    .column, .columns {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem;
+    }
+  }
+
+
 
 /*  background-color: #26A69A;*/
