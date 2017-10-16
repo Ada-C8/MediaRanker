@@ -8,6 +8,9 @@ class WorksController < ApplicationController
   end
 
   def show
+    if @work
+      @recs = @work.rec_list
+    end
   end
 
   def new
@@ -17,7 +20,7 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     result = @work.save
-    
+
     if result
       flash[:status] = :success
       flash[:message] = "Created #{@work.category} #{@work.title}."

@@ -18,6 +18,24 @@
       <%= @work.description %>
     </p>
     <% end %>
+
+    <% unless @recs.empty? %>
+      <div class="recs">
+        <p>
+          <strong>
+            Users who enjoy this work often enjoy:
+          </strong>
+        </p>
+        <ul>
+          <% @recs.each do |rec| %>
+            <li>
+              <%= link_to rec.title, work_path(rec) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <nav>
       <%= link_to "Back to media ranks", works_path, class: 'button' %>
       <%= link_to "Edit", edit_work_path(@work.id), class: 'button' %>
@@ -53,4 +71,5 @@
       </tbody>
     </table>
   </section>
+
 </div>
