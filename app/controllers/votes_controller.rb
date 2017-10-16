@@ -4,18 +4,23 @@ class VotesController < ApplicationController
     @vote = Vote.new(votes_params)
 
     # Did not place in save_and_flash due to flash not showing up on redirect
-    if @vote.save # Only save if the work was not previously voted on
-      flash[:status] = :success
-      flash[:message] = "Successfully Upvoted!"
+    if session[:logged_in_session] != nil
+      if @vote.save # Only save if the work was not previously voted on
+        flash[:status] = :success
+        flash[:message] = "Successfully Upvoted!"
 
-      redirect_to work_path(@vote.work_id)
+        redirect_to work_path(@vote.work_id)
+      else
+        # If the @vote was not saved because the user already has voted on the same work or the user is not signed in
+        flash[:status] = :failure
+        flash[:message] = "Could not upvote"
+        flash[:details] = @vote.errors.messages
+
+        redirect_to work_path(@vote.work_id)
+      end
     else
-      # If the @vote was not saved because the user already has voted on the same work or the user is not signed in
-      flash[:status] = :failure
-      flash[:message] = "Could not upvote"
-      flash[:details] = @vote.errors.messages
-
-      redirect_to work_path(@vote.work_id)
+      flash.now[:status] = :failure
+      flash.now[:message] = "You must be logged in to do that"
     end
   end
 
