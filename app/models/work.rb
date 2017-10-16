@@ -21,12 +21,12 @@ class Work < ApplicationRecord
   # end
 
   def self.top_ten_albums
-    works = Work.all.sort_by {|work| -work.vote.count}
+    albums = Work.all.sort_by {|work| -work.vote.count}
     top_albums = []
-    if works
-      works.each do |work|
-        if work.category == "album"
-          top_albums << work
+    if albums
+      albums.each do |album|
+        if album.category == "album"
+          top_albums << album
         end
       end
     end
