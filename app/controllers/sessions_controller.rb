@@ -22,9 +22,19 @@ class SessionsController < ApplicationController
       end
     end
   end
-  
+
   def logout
+    if session[:user_id]
+      session[:user_id] = nil
+      flash[:success] = "Successfully logged out"
+      redirect_to root_path
+    else
+      flash[:error] = "User was not logged out successfully"
+      redirect_to :back
+    end
   end
+
+
 end
 
 
