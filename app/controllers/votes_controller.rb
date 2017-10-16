@@ -22,6 +22,8 @@ class VotesController < ApplicationController
     # else
       @vote = Vote.new(work_id: params[:pass_work_id], user_id: session[:logged_in_user])
       if @vote.save
+        flash[:status] = :success
+        flash[:message] = "Successfully upvoted!"
         redirect_to request.referrer, notice: "You're being redirected"
       else
         flash[:status] = :failure
