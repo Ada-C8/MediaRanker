@@ -5,6 +5,6 @@ class VotesController < ApplicationController
     vote.work_id = params[:id]
     vote.save
     flash[:success] = "You have successfully voted for this work"
-    redirect_to work_path
+    redirect_to works_path
   end
 end
