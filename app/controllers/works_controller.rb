@@ -65,7 +65,7 @@ class WorksController < ApplicationController
   end
 
 def topten
-
+  @works = Work.group(:category)
 end
 
 
