@@ -15,11 +15,9 @@ describe Work do
       w.must_be :valid?
       w.save!
 
-      w.errors.messages.wont_include :category
-      w.errors.messages.wont_include :title
-      w.errors.messages.wont_include :creator
-      w.errors.messages.wont_include :publication_year
-      w.errors.messages.wont_include :description
+      w.errors.messages.wont_include :category, :title
+      w.errors.messages.wont_include :title, :creator
+      w.errors.messages.wont_include :publication_year, :description
     end
 
     it "will raise an error if no entries are present" do
@@ -27,11 +25,9 @@ describe Work do
       w.save
       w.wont_be :valid?
 
-      w.errors.messages.must_include :category
-      w.errors.messages.must_include :title
+      w.errors.messages.must_include :category, :title
       w.errors.messages.must_include :creator
-      w.errors.messages.wont_include :publication_year
-      w.errors.messages.wont_include :description
+      w.errors.messages.wont_include :publication_year, :description
     end
 
     it "will raise an error if one of required entry is not present" do
@@ -40,10 +36,8 @@ describe Work do
 
       work.wont_be :valid?
       work.errors.messages.must_include :title
-      work.errors.messages.wont_include :category
-      work.errors.messages.wont_include :creator
-      work.errors.messages.wont_include :publication_year
-      work.errors.messages.wont_include :description
+      work.errors.messages.wont_include :category, :creator
+      work.errors.messages.wont_include :publication_year, :description
     end
   end # Describe
 

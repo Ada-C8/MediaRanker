@@ -19,10 +19,16 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(works_params)
 
-    if save_and_flash(@work)
-      redirect_to works_path
+    if session[:logged_in_session] != nil
+      if save_and_flash(@work)
+        redirect_to works_path
+      else
+        render :new, status: :bad_request
+      end
     else
-      render :new, status: :bad_request
+      flash.now[:status] = :failure
+      flash.now[:message] = "You must be logged in to do that"
+      render :new
     end
   end
 
@@ -38,11 +44,11 @@ class WorksController < ApplicationController
       @work.update_attributes(works_params)
 
       if save_and_flash(@work)
-        redirect_to work_path(@work)
+        redirect_to work_path(@work.id)
       else
         render :edit, status: :bad_request
       end
-      
+
     # This logic if the user is not logged in
     else
       flash.now[:status] = :failure
@@ -52,12 +58,12 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    if session[:logged_in_session] != nil
-      unless @work
-        head :not_found
-        return
-      end
+    unless @work
+      head :not_found
+      return
+    end
 
+    if session[:logged_in_session] != nil
       @work.destroy
 
       flash[:status] = :success

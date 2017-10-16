@@ -19,8 +19,8 @@ describe Vote do
     end
 
     it "has a user_id as an integer" do
-      new_user = User.create(name: "This is a new User")
-      vote = Vote.create(user_id: new_user.id, work_id: work.id)
+      new_user = User.create!(name: "This is a new User")
+      vote = Vote.create!(user_id: new_user.id, work_id: work.id)
 
       vote.must_respond_to :user
       vote.user_id.must_be_kind_of Integer
@@ -41,14 +41,14 @@ describe Vote do
     end
 
     it "has a work_id as an integer" do
-      work = Work.create(
+      work = Work.create!(
         category: "book",
         title: "Changed Title",
         creator: "J.K. Rowling",
         publication_year: 2001,
         description: "A boy who has a scar"
       )
-      vote = Vote.create(user_id: user.id, work_id: work.id)
+      vote = Vote.create!(user_id: user.id, work_id: work.id)
 
       vote.must_respond_to :work
       vote.work_id.must_be_kind_of Integer

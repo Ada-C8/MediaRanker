@@ -2,6 +2,8 @@ require "test_helper"
 
 describe SessionsController do
 
+  let(:before_count) { User.count }
+
   describe "#login_form" do
     it "returns success if the user form is requested" do
       get login_path
@@ -12,9 +14,8 @@ describe SessionsController do
 
   describe "#create" do
     it "redirects to the root path if the user is found" do
-      before_count = User.count
+      before_count
       user_name = User.first.name
-
       user_data = {
         name: user_name
       }
@@ -28,8 +29,7 @@ describe SessionsController do
     end
 
     it "must create a new user if the login name is not found" do
-      before_count = User.count
-
+      before_count
       user_data = {
         name: "This user does not exist yet!"
       }
@@ -42,7 +42,7 @@ describe SessionsController do
     end
 
     it "returns a bad_request if the user is not found and the user attributes are invalid" do
-      before_count = User.count
+      before_count
       user_data = {
         name: ""
       }
@@ -64,13 +64,11 @@ describe SessionsController do
 
     it "returns a blank session when logged out" do
       user_name = User.first.name
-
       user_data = {
         name: user_name
       }
 
       post login_path, params: user_data
-
       get logout_path
 
       session[:logged_in_session].must_equal nil

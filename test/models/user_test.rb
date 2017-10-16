@@ -2,10 +2,11 @@ require "test_helper"
 
 describe User do
   let :user { User.new }
+  let :before_count { User.count }
 
   describe "validations" do
     it "can be created with all valid fields" do
-      before_count = User.count
+      before_count
       user.wont_be :valid?
       user[:name] = "Test First User Name"
 
@@ -16,7 +17,7 @@ describe User do
     end
 
     it "should be invalid if username is has no entry" do
-      before_count = User.count
+      before_count
       user.save
 
       user.wont_be :valid?
