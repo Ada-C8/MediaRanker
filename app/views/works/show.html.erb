@@ -1,42 +1,45 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
+<!-- <h1>Works#show</h1>
+<p>Find me in app/views/works/show.html.erb</p> -->
 
 <!-- <%= params %> -->
-<h3><%= @work.title %></h3>
 
-<ul>
-  <li>Category: <%= @work.category %></li>
-  <li>Creator: <%= @work.creator %></li>
-  <li>Publication Year: <%= @work.publication_year %></li>
-  <li>Description: <%= @work.description %></li>
-</ul>
+<main class="large-9 columns, small-3 columns">
+  <h3><%= @work.title %></h3>
 
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-  <% @work.votes.each do |vote| %>
-  <tbody>
-    <tr>
-      <td><%= vote.user.username %></td>
-      <td><%= vote.created_at %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+  <ul>
+    <li>Category: <%= @work.category %></li>
+    <li>Creator: <%= @work.creator %></li>
+    <li>Publication Year: <%= @work.publication_year %></li>
+    <li>Description: <%= @work.description %></li>
+  </ul>
 
 
-<ul>
-  <li><%= link_to("Edit work", edit_work_path, alt: "Edit work form")%></li>
-    <%# button_to("Edit work", edit_work_path, method: :get) %>
-  <li><%= link_to "Delete", work_path(@work[:id]), method: :delete %></li>
-    <%# button_to("Delete work", work_path, method: :delete) %>
-  <li><%= link_to("Back To Media Ranks", home_index_path, alt: "View Top Media")%></li>
-    <%# button_to("View Top Media", home_index_path, method: :get) %>
-  <li><%= link_to("Up Vote", work_votes_path(@work.id), method: :post) %></li>
-    <%# button_to("View Top Media", home_index_path, method: :get) %>
-</ul>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <% @work.votes.each do |vote| %>
+    <tbody>
+      <tr>
+        <td><%= vote.user.username %></td>
+        <td><%= vote.created_at.strftime('%m/%d/%Y') %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  <ul>
+    <li><%= link_to("Edit work", edit_work_path, alt: "Edit work form")%></li>
+      <%# button_to("Edit work", edit_work_path, method: :get) %>
+    <li><%= link_to "Delete", work_path(@work[:id]), method: :delete %></li>
+      <%# button_to("Delete work", work_path, method: :delete) %>
+    <li><%= link_to("Back To Media Ranks", home_index_path, alt: "View Top Media")%></li>
+      <%# button_to("View Top Media", home_index_path, method: :get) %>
+    <li><%= link_to("Up Vote", work_votes_path(@work.id), method: :post) %></li>
+      <%# button_to("View Top Media", home_index_path, method: :get) %>
+  </ul>
+</main>

@@ -1,10 +1,10 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<!-- <h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p> -->
 
-
+<main class="large-9 columns, small-3 columns">
 <ul>
   <li>Username: <%= @user.username %></li>
-  <li>joined Site: <%= @user.created_at %></li>
+  <li>joined Site: <%= @user.created_at.strftime('%m/%d/%Y') %></li>
 </ul>
 
 
@@ -26,7 +26,7 @@
         <td><%= vote.work.creator %></td>
         <td><%= vote.work.publication_year %></td>
         <td><%= vote.work.category %></td>
-        <td><%= vote.created_at %></td>
+        <td><%= vote.created_at.strftime('%m/%d/%Y') %></td>
       </tr>
     <% end %>
     </tbody>
@@ -36,6 +36,7 @@
 <%= link_to("See All Users",users_path) %>
 <%= link_to("Back to Media List", works_path) %>
 
+</main>
 
 
 
