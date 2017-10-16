@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :find_user_by_params_id, only: [:show]
 
   def index
     @users = User.all_users_with_vote_count
@@ -7,6 +8,7 @@ class UsersController < ApplicationController
   def login_form
     @user = User.new
   end
+
 
   def login
     username = params[:user][:username]
@@ -24,7 +26,7 @@ class UsersController < ApplicationController
       flash[:status] = :success
       flash[:message] = "Successfully logged in as an existing user #{username}"
       redirect_to root_path
-    # Creates new user
+      # Creates new user
     else
       user = User.new(username: username, created_at: Date.today)
       user.save
@@ -42,14 +44,10 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def show
-    if find_user_by_params_id
-      redirect_to user_path
-    end
-  end
+  def show ; end
 
 
-private
+  private
 
   def user_params
     return params.require(:user).permit(:username)

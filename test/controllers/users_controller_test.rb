@@ -25,24 +25,23 @@ describe UsersController do
     it "will send an error if no name given" do
       login_user = {
         user: {
-          username: ""
+          username: ''
         }
       }
       User.new(login_user[:user]).wont_be :valid?
 
       post login_path, params: login_user
-      must_respond_with :bad_request
+      must_respond_with :redirect
+      must_redirect_to login_path
     end
-  end
 
-  describe "login" do
     it " will successfully log in as an existing user" do
       login_user = {
         user: {
         username: "sa"
         }
       }
-      User.find_by(username: login_user[:user][:username]).must_equal users(:sa)
+      User.find_by(username: login_user[:user][:username]).must_equal users(:user1)
 
       post login_path, params: login_user
       must_respond_with :redirect
@@ -71,17 +70,10 @@ describe UsersController do
       get user_path(User.first.id)
       must_respond_with :success
     end
+
     it "does not show a user that does not exist" do
       get user_path(User.last.id + 1)
       must_respond_with :not_found
     end
   end
-
-  # describe "logout" do
-  #   it "successfully logs out a user" do
-  #     post login_path, params: { username: User.first.username }
-  #     get logout_path
-  #     must_redirect_to root_path
-  #   end
-  # end
 end
