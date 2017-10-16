@@ -83,11 +83,10 @@ h4 a {
   font-weight: bold;
 }
 
-.button, .extra{
+.button, .extra, input[type=submit] {
   display: inline-block;
   float: left;
   background-color: #26A69A;
-  transition: background-color 0.25s ease-out, color 0.25s ease-out;
   vertical-align: middle;
   margin: 0 0 1rem .75rem;
   padding: 0.85em 1em;
