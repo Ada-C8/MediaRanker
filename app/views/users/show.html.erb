@@ -1,15 +1,10 @@
-<div class="row">
-<h2 class="small-3 columns"> User Summary: <%= @users[:username] %></h2>
-<p class="small-3 columns">Joined site: <%= @users[:created_at].strftime("%B %d, %Y") %></p>
+<main class="row">
+<h3> User Summary: <%= @users[:username] %></h3>
+<p>Joined site <%= @users[:created_at].strftime("%B %d, %Y") %></p>
 
-<ul>
-  <li><%= link_to "See all Users", users_path %></li>
-  <li><%= link_to "Back to Media List", root_path %></li>
-</ul>
+<h4>Votes</h4>
 
-<h2 class="small-3 row">Votes</h2>
-
-<table class="small-6 columns">
+<table>
   <thead>
     <tr>
       <th>Media Title</th>
@@ -31,3 +26,9 @@
     </tr>
   </tbody>
 </table>
+
+<ul>
+  <li class="button"><%= link_to "See all Users", users_path %></li>
+  <li class="button"><%= link_to "Back to Media List", root_path %></li>
+</ul>
+</main>
