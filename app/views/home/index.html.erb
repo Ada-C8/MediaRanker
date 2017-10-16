@@ -8,7 +8,7 @@
 
   <% items = @works.sort_all(category)[0..9] %>
 
-<h2> Top <%= items.first.category %> </h2> 
+<h2> Top <%= items.first.category %> </h2>
   <% items.each do |work| %>
   <li>
     Title: <%= link_to work.title, work_path(work.id) %>

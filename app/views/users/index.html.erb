@@ -1,9 +1,16 @@
-<h1> List of Users </h1>
+<h3> List of Users </h3>
 
-<ul>
+<table>
+  <tr>
+    <th> Username</th>
+    <th> Votes</th>
+    <th> Joined </th>
+  </tr>
  <% @users.each do |user| %>
- <li> Name:<%= link_to user.name, user_path(user.id) %>
-    Joined: <%= user.join_date %>
-  </li>
+ <tr>
+  <th><%= link_to user.name, user_path(user.id) %></th>
+  <th><%= user.votes.count %></th>
+  <th><%= user.join_date %></th>
+  </tr>
   <% end %>
-</ul>
+</table>
