@@ -12,10 +12,10 @@ Rails.application.routes.draw do
       resources :votes,  only: [ :create, :destroy]
     end
   end
-
+  get '/auth/:provider/callback', to: 'users#login'
   root 'main#index'
 
-  get '/login', to: 'users#new', as: 'login'
+  # get '/login', to: 'users#new', as: 'login'
   post '/login', to:'users#login'
   get '/logout', to: 'users#logout'
 end

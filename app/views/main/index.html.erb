@@ -2,7 +2,7 @@
 <atricle class="small-12 medium-12 large-12 columns">
 <h2>Feature</h2>
 <feature class="small-12 columns center">
-<%= @feature.title %> by <%= @feature.creator %>
+<%= link_to @feature.title, media_instance_path(@feature.media_type, @feature.id) %> by <%= @feature.creator %>
 </feature>
 </article>
 <article class="small-12 medium-12 large-4 columns">

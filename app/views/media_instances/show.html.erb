@@ -33,9 +33,7 @@
       <%= @media_instance.votes.length %>
       </li>
       <li>
-        <%= form_for [@media_instance, User.find(session[:user_id]), Vote.new] do |f| %>
-          <%= f.submit "Upvote", class:'success button' %>
-        <% end %>
+         <%= vote_button(@media_instance, session[:user_id]) %>
       </li>
     </ul>
   </div>
