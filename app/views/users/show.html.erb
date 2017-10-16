@@ -1,6 +1,6 @@
 <section>
-  <h1>User Summary: <%= link_to(@user.username, user_path(user.id)) %></h1>
-  <p>Joined site <%= user.created_at.strftime("%b %d, %Y") %></p>
+  <h1>User Summary: <%= link_to(@user.username, user_path(@user.id)) %></h1>
+  <p>Joined site <%= @user.created_at.strftime("%b %d, %Y") %></p>
 </section>
 <section>
   <h2>Votes</h2>
