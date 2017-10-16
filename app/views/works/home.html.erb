@@ -4,7 +4,7 @@
       <h3>
         <span class="media-spotlight-header">Media Spotlight: </span>
         <% if @topwork %>
-          <%= Work.find(@topwork.id).title %>
+          <%= link_to Work.find(@topwork.id).title, work_path(@topwork.id) %> by <%= Work.find(@topwork.id).creator %>
         <% end %>
       </h3>
       <p>
@@ -20,7 +20,7 @@
     <ul>
       <% @movies.each do |movie| %>
         <li>
-          <h4><%= link_to Work.find(movie.id).title, work_path(movie.id) %> <small>by <%Work.find(movie.id).creator%></small></h4>
+          <h4><%= link_to Work.find(movie.id).title, work_path(movie.id) %> <small>by <%=Work.find(movie.id).creator%></small></h4>
           <p>
             <%= movie.votes.size %> votes
           </p>
@@ -33,7 +33,7 @@
     <ul>
       <% @books.each do |book| %>
       <li>
-        <h4><%= link_to Work.find(book.id).title, work_path(book.id) %> <small>by <%Work.find(book.id).creator%></small></h4>
+        <h4><%= link_to Work.find(book.id).title, work_path(book.id) %> <small>by <%=Work.find(book.id).creator%></small></h4>
         <p>
           <%= book.votes.size %> votes
         </p>
@@ -46,7 +46,7 @@
     <ul>
       <% @albums.each do |album| %>
       <li>
-        <h4><%= link_to Work.find(album.id).title, work_path(album.id) %> <small>by <%Work.find(album.id).creator%></small></h4>
+        <h4><%= link_to Work.find(album.id).title, work_path(album.id) %> <small>by <%=Work.find(album.id).creator%></small></h4>
         <p>
           <%= album.votes.size %> votes
         </p>

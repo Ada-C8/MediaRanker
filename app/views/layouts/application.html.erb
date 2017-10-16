@@ -31,11 +31,17 @@
       </div>
     </nav>
   </header>
-  <section class="flash">
+  <% if flash[:success] %>
+  <section class="row status success">
+    <% elsif flash[:failure] %>
+    <section class="row status failure">
+      <% end %>
+
     <% flash.each do |name, message| %>
     <div class="<%= name %>"><%= message %></div>
     <% end %>
-  </section>
-  <%= yield %>
-</body>
-</html>
+    </section>
+
+    <%= yield %>
+  </body>
+  </html>

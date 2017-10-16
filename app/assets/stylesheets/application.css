@@ -21,6 +21,11 @@ body h1, h2, h3, h4, h5 {
 h1, h2, h3, h4, h5 {
   font-weight: bold;
 }
+
+a, h3 {
+  color: #26A69A;
+}
+
 .page-header {
   max-width: 100%;
   background-color: #B2DFDB;
@@ -68,4 +73,50 @@ h1, h2, h3, h4, h5 {
 
 .button a {
   color: white;
+}
+
+.status {
+  border-radius: 5px;
+    background-color: #e6e6e6;
+    padding: 20px 25px;
+    margin-top: 30px;
+}
+
+.status.success h3, .status.failure h3 {
+  font-weight: normal;
+  font-size: 1em;
+}
+
+.status.success {
+  color: #8a8a8a;
+}
+
+.status.failure {
+  color: #C70039;
+}
+
+section.spotlight>div {
+  padding: 0 2rem 0 2rem;
+}
+
+.media-spotlight-header {
+  color: #424242;
+}
+
+.spotlight a {
+  border-bottom: 2px solid;
+}
+
+.top-ten h3 {
+  border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB;
+}
+
+.top-ten ul {
+  list-style-type: none;
+  margin-left: 0px;
+}
+
+body small {
+  color: slategrey;
 }
