@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   post '/logout', to: 'sessions#logout'
 
+  post '/works/:id/upvote', to: 'works#upvote', as: 'upvote_work'
+
   resources :works
 
   # directs non-valid pages to 404.html
