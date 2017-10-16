@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <header class = "row">
+  <header class = "header">
     <h1 class="small-12 columns"> <%= link_to("Media Ranker", root_path) %>
       <small>Ranking the Best of Everything</small>
     </h1>
@@ -18,10 +18,12 @@
         <%= link_to("View top media", root_path, :class => "button") %>
         <%= link_to("View all media", works_path, :class => "button") %>
         <%= link_to("Add a new work", new_work_path, :class => "button") %>
-        <%= link_to "Log In", login_path %>
-        <%= link_to "Log Out", root_path %>
+        <%= link_to("View all users", users_path, :class => "button") %>
+        <div class = second-link>
+        <%= link_to "Log In", login_path, :class => "button" %>
+        <%= link_to "Log Out", root_path, :class => "button" %>
+        </div>
         <!-- double check log in/out presence on each screen -->
-
       </div>
     </header>
 
