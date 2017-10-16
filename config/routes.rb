@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root to: 'works#home'
+
+  get 'works/home'
 
   get 'users/index'
 
@@ -30,9 +33,11 @@ Rails.application.routes.draw do
 
   get 'homes/index'
 
-  root to: 'works#index'
+
   # this code is the same as all of the down below code :D
   #   Rails.application.routes.draw do
+  get 'works/home'
+
   get 'users/index'
 
   get 'users/new'
