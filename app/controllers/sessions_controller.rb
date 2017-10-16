@@ -37,7 +37,7 @@ class SessionsController < ApplicationController
       flash[:message] = "Successfully logged in as existing user #{@user.name}"
       redirect_to root_path
     else
-      flash[:status] = :failure
+      flash.now[:status] = :failure
       render :login_form, status: :bad_request
     end
   end # Def
