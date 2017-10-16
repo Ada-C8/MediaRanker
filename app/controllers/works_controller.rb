@@ -1,6 +1,9 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.order(:id)
+    # @works = Work.order(:id)
+    @works = Work.order(:id).sort_by { |work| work.votes.length}.reverse
+
+
   end
 
 

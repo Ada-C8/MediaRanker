@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def index
-    @users = User.order(:id)
+    # @users = User.order(:id)
+    @users = User.order(:id).sort_by { |user| user.votes.length}.reverse
   end
 
   def show
