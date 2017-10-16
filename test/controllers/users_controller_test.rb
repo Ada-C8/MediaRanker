@@ -59,4 +59,8 @@ describe UsersController do
       User.count.must_equal start_user_count
     end
   end
+
+  describe "logout" do
+    
+  end
 end
