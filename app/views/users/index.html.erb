@@ -15,7 +15,7 @@
         <tr>
           <td><%= link_to user.name, user_path(user.id)%></td>
           <td class="black"><%= Vote.where(user_id: user.id).count %></td>
-          <td class="black"><%= user.created_at.to_date %></td>
+          <td class="black"><%= user.created_at.strftime("%b %d, %Y")%></td>
         </tr>
       <% end %>
     </tbody>
