@@ -1,24 +1,79 @@
-<h1>List of Works</h1>
+<h2>List of Works</h2>
 
 <table>
-  <tr>
-    <th>Votes</th>
-    <th>Title</th>
-    <th>Created By</th>
-    <th>Published</th>
-    <th>Upvote</th>
-  </tr>
+  <h3> Albums </h3>
+  <thead>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @albums.each do |work|%>
+      <tr>
+        <td><%= Vote.all.where(work_id: work.id).count %></td>
+        <td><%= link_to work.title, work_path(work.id) %></td>
+        <td><%= link_to work.creator, work_path(work.id) %></td>
+        <td><%= link_to work.publication_year, work_path(work.id) %></td>
+        <td>
+          <%= button_to "Upvote", create_vote_path(work.id), method: :post %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-  <% @works.each do |work| %>
-  <tr>
-    <td><%= Vote.all.where(work_id: work.id).count %></td>
-    <td><%= link_to work.title, work_path(work.id) %></td>
-    <td><%= link_to work.creator, work_path(work.id) %></td>
-    <td><%= link_to work.publication_year, work_path(work.id) %></td>
-    <td><%= link_to work.publication_year, work_path(work.id) %></td>
-    <td>
-      <%= button_to "Upvote", create_vote_path(work.id), method: :post %>
-    </td>
-  </tr>
-  <% end %>
+    <h3> Books </h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th>Published</th>
+          <th>Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% @books.each do |work|%>
+          <tr>
+            <td><%= Vote.all.where(work_id: work.id).count %></td>
+            <td><%= link_to work.title, work_path(work.id) %></td>
+            <td><%= link_to work.creator, work_path(work.id) %></td>
+            <td><%= link_to work.publication_year, work_path(work.id) %></td>
+            <td>
+              <%= button_to "Upvote", create_vote_path(work.id), method: :post %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    <h3> Movies </h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th>Published</th>
+          <th>Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% @movies.each do |work|%>
+          <tr>
+            <td><%= Vote.all.where(work_id: work.id).count %></td>
+            <td><%= link_to work.title, work_path(work.id) %></td>
+            <td><%= link_to work.creator, work_path(work.id) %></td>
+            <td><%= link_to work.publication_year, work_path(work.id) %></td>
+            <td>
+              <%= button_to "Upvote", create_vote_path(work.id), method: :post %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
 </table>
