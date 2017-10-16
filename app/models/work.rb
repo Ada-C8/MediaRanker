@@ -5,4 +5,8 @@ class Work < ApplicationRecord
   validates :title, presence: {message: "Enter a title"}
   validates :creator,presence: {message: "Enter a creator"}
   validates :publication_year, presence: {message: "Enter publication_year year"}
+
+  def self.upvote(id)
+    self.where(:id => id).update_all("upvotes = upvotes + 1")
+  end
 end

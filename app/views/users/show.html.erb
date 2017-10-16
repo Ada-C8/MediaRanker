@@ -22,6 +22,7 @@ Show user's details
       <td><%= work.creator %></td>
       <td><%= work.publication_year %></td>
       <td><%= work.category %></td>
+      <td><%= vote.updated_at.strftime("%b %d, %Y") %></td>
     <% end %>
   <% end %>
   </tr>
