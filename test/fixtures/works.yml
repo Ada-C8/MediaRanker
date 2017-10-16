@@ -8,14 +8,13 @@ work_one:
   category: album
   title: test_record
   creator: me
-  desciption: stuff
+  description: stuff
   publication_year: 2017
 
 #
 work_two:
   category: movie
   title: indiana jones
-  create: speilberg
+  creator: speilberg
   description: action-adventure
   publication_year: 1987
-  
