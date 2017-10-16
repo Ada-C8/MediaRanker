@@ -108,6 +108,7 @@
 
 .button {
   background-color: #26a69a;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
 }
 
 body small {
