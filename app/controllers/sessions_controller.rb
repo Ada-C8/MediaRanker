@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
   end
 
   def logout
-    session[@user_id] = nil
+    session[:user_id] = nil
     redirect_to home_path
   end
 end
