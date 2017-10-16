@@ -14,7 +14,7 @@
  *= require_tree .
  *= require_self
  */
- @import url('https://fonts.googleapis.com/css?family=Gudea');
+ /*@import url('https://fonts.googleapis.com/css?family=Gudea');*/
 
 
  body {
@@ -28,6 +28,10 @@
    text-decoration: underline;
  }
  h3 {
+   color: #26A69A
+ }
+
+ a {
    color: #26A69A
  }
  p {
