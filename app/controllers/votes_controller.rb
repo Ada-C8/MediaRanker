@@ -6,7 +6,7 @@ class VotesController < ApplicationController
 
   def create
     @vote = Vote.new
-    @vote.user_id = session[:name]
+    @vote.user_id = session[:user_id]
     @vote.work_id = params[:id]
     if @vote.save
       flash[:success] = "Vote added successfully"

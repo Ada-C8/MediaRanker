@@ -26,9 +26,9 @@
 
       <tbody>
           <tr>
-            <% @users.each_with_index do |user, index| %>
-            <td><%=user.name %></td>
-            <td><%=@work_votes[index].created_at.strftime("%b %d, %Y") %></td>
+            <%@work.votes.each do |vote| %>
+            <td><%=vote.user.name%></td>
+            <td><%=vote.created_at.strftime("%b %d, %Y") %></td>
           </tr>
           <% end %>
       </tbody>
