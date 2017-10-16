@@ -135,3 +135,13 @@ table {
   border-spacing: 2px;
   border-color: grey;
 }
+
+input {
+  overflow: visible;
+}
+
+input {
+  background: none;
+  border: none;
+  color: white;
+}
