@@ -1,9 +1,6 @@
 
 <section>
-<% if work.top == nil %>
-    <% work = nil %>
-  <% else work = Work.top %>
-  <% end %>
+<% work = Work.top %>
 <h3>
   <span class="media-spotlight-header">
   Media Spotlight:
@@ -12,7 +9,7 @@
     <%= link_to "#{work.title}", work_path(work.id) %> <%= "by #{work.creator}" %>
     <p> <%= "#{work.votes.count} votes" %> </p>
   <% else %>
-    <%= "No Media Yet" %>
+      <%= "No Media Yet" %>
   <% end %>
 </h3>
 
