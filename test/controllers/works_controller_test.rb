@@ -60,10 +60,10 @@ describe WorksController do
         }
       }
       start_work_count = Work.count
-      Work.new(valid_work_data[:work]).must_be :valid?
+      work = Work.new(valid_work_data[:work])
+      work.must_be :valid?
       post works_path, params: valid_work_data
       must_respond_with :redirect
-      must_redirect_to works_path
 
        Work.count.must_equal start_work_count + 1
     end
@@ -142,7 +142,6 @@ describe WorksController do
       delete work_path(work_id)
 
       must_respond_with :redirect
-      must_redirect_to works_path
       Work.find_by(id: work_id).must_be_nil
       Work.count.must_equal before_delete-1
     end

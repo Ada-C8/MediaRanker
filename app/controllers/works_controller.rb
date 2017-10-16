@@ -42,7 +42,7 @@ class WorksController < ApplicationController
   def destroy
 
     unless find_work_by_params_id
-      votes = Vote.where(work_id: work.id)
+      votes = Vote.where(work_id: @work.id)
       votes.each do |vote|
         vote.destroy
       end

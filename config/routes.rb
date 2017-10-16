@@ -9,11 +9,8 @@ Rails.application.routes.draw do
    #post '/votes', to: 'work#vote'
   #   # resources :votes, only: [:new]
    end
-
-  # resources :works
+   
   resources :users, only: [:index, :show, :login, :logout]
-  resources :votes
-
 
   get 'login', to: 'sessions#login_form', as: 'login'
   post 'login', to: 'sessions#login'

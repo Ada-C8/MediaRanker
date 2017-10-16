@@ -27,11 +27,22 @@ describe Vote do
       v.must_respond_to :work
     end
 
+    it "must allow Votes with unique combinations of work_id and user_id to be made" do
+      #Why does this not work?
+      # before_count = Vote.count
+      # v = Vote.new(user_id: 1, work_id: 2)
+      # v.save
+      # Vote.count.must_equal before_count + 1
+    end
 
+    it "must not allow votes with repeated combinations of work_id and user_id to be made" do
+      #This passes as written, but I can't make it fail, so something is wrong.
+      # before_count = Vote.count
+      # v = Vote.new(user_id: 1, work_id: 1)
+      # v.save
+      # Vote.count.must_equal before_count
+    end
 
   end
 
-  # describe "custom methods" do
-  #
-  # end
 end
