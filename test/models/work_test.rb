@@ -68,4 +68,20 @@ describe Work do
       b.must_equal []
     end
   end
+
+  describe '#recs' do
+    it 'returns a hash of recommended works' do
+      recs = w.recs
+
+      recs.must_be_kind_of Hash
+
+      Work.find_by(title: recs.keys.first).wont_be :nil?
+    end
+
+    it 'does not recommend itself' do
+      recs = w.recs
+
+      recs.keys.wont_include "Blade Runner"
+    end
+  end
 end
