@@ -18,11 +18,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:status] = :success
-      flash[:message] = "Successfully created new user #{params[:username]} with ID #{user.id}"
+      flash[:success] = "Successfully created new user #{params[:username]} with ID #{@user.id}"
+      session[:user_id] = @user.id
+      session[:user] = @user.username
       redirect_to root_path
     else
-      flash.now[:error] = "Oops! Username #{params[:username]} was not added successfully"
+      flash.now[:error] = "Oops! Username #{params[:username]} could not be logged in successfully"
       render :login_form
     end
   end
@@ -31,16 +32,22 @@ class UsersController < ApplicationController
   end
 
   def login
-    if session[:user_id] == nil
-      user = User.find_by(username: params[:username])
-      if user
-        flash[:message] = "Successfully logged in as existing user #{ user.username }"
-        session[:user_id] = user.id
+    @user = User.find_by(username: params[:username])
+      if @user
+        flash[:success] = "Successfully logged in as existing user #{ @user.username }"
+        session[:user_id] = @user.id
+        session[:user] = @user.username
         redirect_to root_path
       else
         create
       end
-    end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    session[:user] = nil
+    flash[:success] = "Successfully Logged Out"
+    redirect_to root_path
   end
 
   private
@@ -50,6 +57,11 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    return params.require(:user).permit(:username)
+    return params.permit(:username)
+
+    #Bug: return params.require(:user).permit(:username)
+    #Fix: https://stackoverflow.com/questions/30825735/param-is-missing-or-the-value-is-empty-parametermissing-in-resultscontrollerup
+
+    #Why remove require? will that still make it a strong params?
   end
 end
