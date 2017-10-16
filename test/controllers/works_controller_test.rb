@@ -26,11 +26,70 @@ describe WorksController do
   end # end describe
 
   describe "new" do
-    it "works with a valid work id" do
-      get
+    it "works successfully" do
+      get new_work_path
+      must_respond_with :success
     end
   end
 
+  describe "create" do
+    it "saves new work to DB and redirect_to works_path" do
+      work_data = {
+        work: {
+          category: "movie",
+          title: "test movie"
+        }
+      }
+
+      work = Work.new(work_data[:work]).must_be :valid?
+
+      start_work_count = Work.count
+
+      #act
+      post works_path, params: work_data
+
+      #Assert
+      must_respond_with :redirect
+      must_redirect_to works_path
+
+      Work.count.must_equal start_book_count + 1
+    end
+
+    it "renders to new page and responds with bad_request" do
+      invalid_work_data = {
+        work: {
+          #no catergory
+          title: "test work"
+        }
+      }
+
+      #double check the data is invalid
+
+      Book.new(invalid_work_data[:work]).wowont_be :valid?
+
+      start_work_count = Work.count
+
+      post works_path, params: invalid_work_data
+
+      must_respond_with :bad_request
+
+      Work.count.must_equal start_work_count
+    end
+  end #end create
+
+  describe "show" do
+    it "returns success when given a valid book id" do
+      work_id = Work.first.id
+
+      get work_path(work_id)
+
+      must_respond_with :success
+    end
+
+    it "returns not_found when given an invalid_book_id" do
+      invalid_work_id = Work.last.id + 1 
+    end
+  end #end show
 end
 
 
