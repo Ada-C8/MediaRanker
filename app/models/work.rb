@@ -39,7 +39,7 @@ class Work < ApplicationRecord
   end
 
   def self.top_creator
-    return Work.top_work.title
+    return Work.top_work.creator
   end
 
   def self.top_votes

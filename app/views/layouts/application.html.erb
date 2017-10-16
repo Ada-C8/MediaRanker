@@ -14,12 +14,13 @@
     <header class="row">
       <h1 class="small-12 column"><span class="title">Media Ranker </span> <span class="title-separator"></span>
         <span class="subtitle"> Ranking the Best of Everything</span></h1>
-        <div class="navigation small-12 columns">
+        <div class="navigation small-12 column">
           <ul class="nav">
             <li><%= button_to("View top media", root_path, method: :get) %></li>
             <li><%= button_to("View all media", works_path, method: :get) %></li>
             <li><%= button_to("Add a new work", new_work_path, method: :get) %></li>
             <li><%= button_to("View all users", users_path, method: :get) %></li>
+
           </ul>
           <ul class="log">
             <% if session[:logged_in_user] %>
@@ -30,10 +31,6 @@
             <% end %>
           </ul>
         </div>
-
-
-
-
 
     </header>
     <main class="row">

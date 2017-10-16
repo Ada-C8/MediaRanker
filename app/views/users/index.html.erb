@@ -1,3 +1,7 @@
+<section class="">
+
+</section>
+
 <h2>List of Users</h2>
 
 <% if @users.count == 0 %>
@@ -12,8 +16,8 @@
     <%  @users.each do |user| %>
       <tr>
         <td><%= link_to(user.username, user_path(user.id)) %></td>
-        <td><%= user.number_of_vote %></td>
-        <td><%= user.created_at.strftime('%a %d %b %Y') %></td>
+        <td class="vote-col"><%= user.number_of_vote %></td>
+        <td class="created-col"><%= user.created_at.strftime('%a %d %b %Y') %></td>
       </tr>
     <%  end %>
   </table>
