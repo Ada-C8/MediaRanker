@@ -56,7 +56,7 @@ describe User do
 
         list.must_be_kind_of Array
 
-        Work.find_by(id: list.first).wont_be :nil?
+        list.first.must_be_kind_of Work
         list.length.must_equal 3
       end
 

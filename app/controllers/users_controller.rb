@@ -5,9 +5,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    # @recs = @user.rec_list
 
-    unless @user
+    if @user
+      @recs = @user.rec_list
+    else
       return head :not_found
     end
   end

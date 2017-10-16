@@ -100,11 +100,12 @@ describe Work do
   end
 
   describe '#rec_list' do
-    it 'returns an array of up to 3 ids' do
+    it 'returns an array of up to 3 works' do
       list = w.rec_list
 
       list.must_be_kind_of Array
       list.count.must_equal 3
+      list.first.must_be_kind_of Work
     end
 
     it 'returns a shorter list if there are not enough other works to recommend' do

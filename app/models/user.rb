@@ -21,8 +21,16 @@ class User < ApplicationRecord
   end
 
   def rec_list
-    works = recs
-    works.sort_by{|k| -works[k]}[0...3]
+    ids = recs
+    ids = ids.keys.sort_by{|k| -ids[k]}[0...3]
+
+    works = []
+
+    ids.each do |id|
+      works << Work.find(id)
+    end
+
+    works
   end
 
 end

@@ -50,6 +50,19 @@
     </tbody>
   </table>
 
+  <% unless @recs.empty? %>
+    <div class="recs">
+      <p>
+        <strong>
+          Based on their voting history, we think this user would enjoy:
+        </strong>
+      </p>
+      <% @recs.each do |rec| %>
+      <%= link_to rec.title, work_path(rec) %>
+      <% end %>
+    </div>
+  <% end %>
+
   <%= link_to 'See all Users', users_path, class: 'button' %>
   <%= link_to 'Back to Media List', works_path, class: 'button' %>
 </section>

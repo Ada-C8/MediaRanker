@@ -29,12 +29,21 @@ class Work < ApplicationRecord
         works[work.id] += 1 unless work.id == id
       end
     end
+
     works
   end
 
   def rec_list
-    works = recs
-    works.keys.sort_by{|t| -works[t]}[0...3]
+    ids = recs
+    ids = ids.keys.sort_by!{|t| -ids[t]}[0...3]
+
+    works = []
+
+    ids.each do |id|
+      works << Work.find(id)
+    end
+
+    works
   end
 
   private
