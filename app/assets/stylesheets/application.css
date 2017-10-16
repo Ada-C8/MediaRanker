@@ -14,7 +14,7 @@
 *= require_self
 */
 
-body h1, h2, h3, h4, h5 {
+body, h1, h2, h3, h4, h5 {
   font-family: 'Gudea', sans-serif;
 }
 
@@ -71,6 +71,10 @@ a, h3 {
   background-color: #00796B;
 }
 
+a:hover {
+  color: #00796B;
+}
+
 .button a {
   color: white;
 }
@@ -119,4 +123,15 @@ section.spotlight>div {
 
 body small {
   color: slategrey;
+}
+
+/*.media-table .button {
+  margin: .5rem;
+}*/
+
+table {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: grey;
 }
