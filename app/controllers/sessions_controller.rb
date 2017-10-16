@@ -4,6 +4,10 @@ class SessionsController < ApplicationController
   end
 
   def create
+    if params[:name] == ""
+      redirect_to :back
+    end
+
     user = User.find_by(name: params[:name])
 
     if user

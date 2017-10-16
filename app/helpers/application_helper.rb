@@ -1,6 +1,6 @@
 module ApplicationHelper
   def find_user(id)
-    return User.find(id).name
+    return User.find(id.to_i).name
   end
 
   def votes_for_work(work)
@@ -9,9 +9,9 @@ module ApplicationHelper
 
   def top_10(category)
     result = []
-    @top_works =  Vote.limit(10).select('work_id, count(*) as count').where(category: category).group('work_id').order('count DESC')
-    @top_works.each do |work|
-      result << Work.find(work.work_id)
+    @top_works =  Vote.limit(10).where("category= '#{category}'").group(:work_id).count
+    @top_works.keys.each do |work|
+      result << Work.find(work)
     end
     return result
   end
