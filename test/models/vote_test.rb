@@ -1,9 +1,27 @@
 require "test_helper"
 
 describe Vote do
-  let(:vote) { Vote.new }
+  let :movie { works(:movie) }
+  let :user { users(:one) }
+  let :vote { Vote.new(movie: work, user: user)}
 
-  it "must be valid" do
-    value(vote).must_be :valid?
+
+  describe "validations" do
+    it "requires user_id" do
+      b = Vote.new
+      b.wont_be :valid?
+      b.errors.messages.must_include :user_id
+    end
+
+    it "requires work_id" do
+      b = Vote.new
+      b.wont_be :valid?
+      b.errors.messages.must_include :work_id
+    end
   end
+
+  # describe "relations" do
+  #   it" belongs to "do
+  #   end
+  # end
 end

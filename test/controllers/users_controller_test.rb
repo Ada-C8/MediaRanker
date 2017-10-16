@@ -6,7 +6,7 @@ describe UsersController do
       get users_path
       must_respond_with :success
     end
-    it "should return success when theere are no users" do
+    it "should return success when there are no users" do
       User.destroy_all
       get users_path
       must_respond_with :success
@@ -21,20 +21,49 @@ describe UsersController do
   end
 
   describe "login" do
+
+    it "will send an error if no name given" do
+      login_user = {
+        user: {
+          username: ""
+        }
+      }
+      User.new(login_user[:user]).wont_be :valid?
+
+      post login_path, params: login_user
+      must_respond_with :bad_request
+    end
+  end
+
+  describe "login" do
     it " will successfully log in as an existing user" do
-      post login_path, params: { username: User.first.username }
+      login_user = {
+        user: {
+        username: "sa"
+        }
+      }
+      User.find_by(username: login_user[:user][:username]).must_equal users(:sa)
+
+      post login_path, params: login_user
+      must_respond_with :redirect
       must_redirect_to root_path
+
     end
 
     it " successfully creates new username if username doesn't exist" do
-      post login_path, params: { username: User.last.username }
-      must_redirect_to root_path
-    end
+      new_username = {
+        user: {
+        username: "new_user"
+        }
+      }
+      User.new(new_username[:user]).must_be :valid?
+      start_count = User.all.count
 
-    # it "should fail when no name is given" do
-    #   post login_path
-    #   must_respond_with :no_content
-    # end
+      post login_path, params: new_username
+      must_respond_with :redirect
+      must_redirect_to root_path
+      User.all.count.must_equal start_count + 1
+    end
   end
 
   describe "show" do
@@ -48,11 +77,11 @@ describe UsersController do
     end
   end
 
-  describe "logout" do
-    it "successfully logs out a user" do
-      post login_path, params: { name: User.first.name }
-      get logout_path
-      must_redirect_to root_path
-    end
-  end
+  # describe "logout" do
+  #   it "successfully logs out a user" do
+  #     post login_path, params: { username: User.first.username }
+  #     get logout_path
+  #     must_redirect_to root_path
+  #   end
+  # end
 end

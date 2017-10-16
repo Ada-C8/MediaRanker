@@ -1,10 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-vote:
-  work_id: HP
-  user_id: sa
+vote1:
+  work: movie1
+  user: user1
 
 
-two:
-  work_id: 12
-  user_id: 123
+vote2:
+  work: album1
+  user: user1
+
+vote3:
+  work: album1
+  user: user2
+
+vote4:
+  work: album2
+  user: user1
+
+vote5:
+  work: album4
+  user: user2

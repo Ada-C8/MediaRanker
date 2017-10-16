@@ -4,8 +4,8 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-movie:
-  title: Jurassic Park
+movie1:
+  title: Jurassic_Park
   publication_year: 1994
   creator: Steven Spielberg
   category: movie
@@ -18,9 +18,21 @@ book:
   category: book
   description: great book
 
-album:
+album1:
   title: Countdown to Ecstasy
   publication_year: 1973
   creator: Steely Dan
   category: album
   description: good
+
+album2:
+  title: Countdown to Ecstasy 2
+  category: album
+
+album3:
+  title: Countdown to Ecstasy 3
+  category: album
+
+album4:
+  title: Countdown to Ecstasy 4
+  category: album
