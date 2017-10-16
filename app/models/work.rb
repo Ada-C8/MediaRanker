@@ -14,14 +14,14 @@ class Work < ApplicationRecord
   #   end
   # end
 
-  def self.sort
-    # if Work.all.count != 0
-      Work.all.sort_by { |work| -work.vote.count}
-    # end
-  end
+  # def sort
+  #   works = Work.all
+  #   sorted = works.sort_by {|work| -work.vote.count}
+  #   return sorted
+  # end
 
   def self.top_ten_albums
-    works =  Work.sort
+    works = Work.all.sort_by {|work| -work.vote.count}
     top_albums = []
     if works
       works.each do |work|
@@ -34,7 +34,7 @@ class Work < ApplicationRecord
   end
 
   def self.top_ten_books
-    works =  Work.sort
+    works = Work.all.sort_by {|work| -work.vote.count}
     top_books = []
     if works
       works.each do |work|
@@ -48,7 +48,7 @@ class Work < ApplicationRecord
 
 
   def self.top_ten_movies
-    works =  Work.sort
+    works = Work.all.sort_by {|work| -work.vote.count}
     top_movie = []
     if works
       works.each do |work|
