@@ -1,16 +1,16 @@
-<main>
+<main class = "row">
   <h3>List of Users</h3>
   <table>
     <thead>
       <tr>
         <th>Username</th>
-        <th>Votes</th>
-        <th>Joined</th>
+        <th width="100">Votes</th>
+        <th width="200">Joined</th>
       </tr>
       <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td><%= user.name %></td>
+            <td><%= link_to user.name, user_path(user.id) %></td>
             <td><%= user.votes.count %></td>
             <td><%= user.created_at.strftime("%B %d, %Y")%></td>
           </tr>
@@ -18,5 +18,5 @@
       </tbody>
     </thead>
   </table>
-  <%= link_to("Back to Media List", root_path) %>
+  <%= link_to("Back to Media List", root_path, :class => "button") %>
 </main>

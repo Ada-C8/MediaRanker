@@ -112,6 +112,10 @@ section.spotlight>div {
   margin-bottom: 0;
 }
 
+.spotlight a {
+  border-bottom: 2px solid;
+}
+
 .top-ten h3 {
   border-bottom: 2px solid #B2DFDB;
 }
@@ -137,10 +141,6 @@ section.spotlight>div {
    color: white;
  }
 
-.small-12 {
-  width: 100%;
-}
-
 .status {
    border-radius: 5px;
    background-color: #e6e6e6;
@@ -164,10 +164,4 @@ section.spotlight>div {
 .root-hr {
   margin: 0px auto 75px auto;
   color: #EEEEEE;
- }
-
- @media print, screen and (min-width: 64em) {
- .large-4 {
-   width: 33.33333%;
- }
  }

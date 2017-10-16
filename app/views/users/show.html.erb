@@ -1,7 +1,4 @@
-<main>
-  <article>
-
-  </article>
+<main class = "row">
   <h3>User Summary: <%= @user.name %></h3>
   <p>Joined site <%= @user.created_at.strftime("%B %d, %Y")%></p>
   <h4>Votes</h4>
@@ -18,7 +15,7 @@
     <tbody>
       <% @user.votes.each do |vote| %>
       <tr>
-        <td><%= vote.work.title %></td>
+        <td><%= link_to vote.work.title, work_path(vote.work.id) %></td>
         <td><%= vote.work.creator %></td>
         <td><%= vote.work.publication_year %></td>
         <td><%= vote.work.category %></td>

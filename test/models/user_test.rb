@@ -20,14 +20,14 @@ describe User do
     proc {User.create(name: "Jake")}.must_change 'User.count', 0
   end
 
-  it "returns true for include_work? if the user already has a vote for that work" do
-    # work = Work.create(title: "News", category: "movie")
-    Vote.create(user: jake, work: work)
+  # it "returns true for include_work? if the user already has a vote for that work" do
+  #   # work = Work.create(title: "News", category: "movie")
+  #   Vote.create(user: jake, work: work)
+  #
+  #   jake.include_work?(work).must_equal true
+  # end
 
-    jake.include_work?(work).must_equal true
-  end
-
-  it "returns false for include_work? if the user already has a vote for that work" do
-    jake.include_work?(work2).must_equal false
-  end
+  # it "returns false for include_work? if the user already has a vote for that work" do
+  #   jake.include_work?(work2).must_equal false
+  # end
 end

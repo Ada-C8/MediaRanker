@@ -1,33 +1,20 @@
-<h2>In the partial</h2>
-
 <%= form_for @work do |f| %>
-  <section>
-    <%= f.label :category  %>
-    <%= f.select :category, options_for_select(Work.categories) %>
-  </section>
 
-  <section>
+    <%= f.label :category  %>
+    <%= f.select :category, options_for_select(Work.categories, :selected => @work.category) %>
+
     <%= f.label :title %>
     <%= f.text_field :title %>
-  </section>
 
-  <section>
     <%= f.label :creator %>
     <%= f.text_field :creator %>
-  </section>
 
-  <section>
     <%= f.label :publication_year %>
     <%= f.text_field :publication_year %>
-  </section>
 
-  <section>
     <%= f.label :description %>
     <%= f.text_area :description %>
-  </section>
 
-  <section>
-    <%= f.submit %>
-  </section>
+    <%= f.submit :class => "button" %>
 
 <% end %>
