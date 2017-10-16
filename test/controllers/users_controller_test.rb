@@ -26,4 +26,37 @@ describe UsersController do
     end
   end
 
+  describe "login" do
+    it "redirects to root_path when user is valid" do
+      user_data = {
+        user: {
+          name: "test-user"
+        }
+      }
+      User.new(user_data[:user]).must_be :valid?
+
+      start_user_count = User.count
+
+      post "/login", params: user_data
+      must_respond_with :redirect
+      must_redirect_to root_path
+
+      User.count.must_equal start_user_count + 1
+    end
+    it "sends a bad request when user data is invalid" do
+      invalid_user_data = {
+        user: {
+          name: ""
+        }
+      }
+      User.new(invalid_user_data[:user]).wont_be :valid?
+
+      start_user_count = User.count
+
+      post "/login", params: invalid_user_data
+      must_respond_with :bad_request
+
+      User.count.must_equal start_user_count
+    end
+  end
 end
