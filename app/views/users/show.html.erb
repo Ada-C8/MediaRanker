@@ -13,4 +13,16 @@ Show user's details
     <th>Category</th>
     <th>Voted On</th>
   </tr>
+  <% votes = Vote.all.where(user_id: @user) %>
+  <% votes.each do |vote| %>
+  <% work = Work.find_by(id: vote.work_id) %>
+    <% if work %>
+  <tr>
+      <td><%= work.title %></td>
+      <td><%= work.creator %></td>
+      <td><%= work.publication_year %></td>
+      <td><%= work.category %></td>
+    <% end %>
+  <% end %>
+  </tr>
 </table>
