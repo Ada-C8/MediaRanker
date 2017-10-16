@@ -20,19 +20,15 @@ class UsersController < ApplicationController
         redirect_to root_path
       else
         flash.now[:status] = :failure
-        flash[:message] = "A problem occurred: Could not log in"
-        flash[:details] = user.errors.messages
-        # flash.now[:status] = :failure
-        # flash.now[:message] = "No user found with username #{username}"
+        flash.now[:message] = "A problem occurred: Could not log in"
+        flash.now[:details] = user.errors.messages
         render :login_form, status: :bad_request
       end
     end
   end
 
   def logout
-    # session[:logged_in_user] = false
     session[:logged_in_user] = nil
-    # flash[:message] = "Successfuly logged out"
     redirect_to root_path, notice: "You have successfully logged out."
   end
 
@@ -42,5 +38,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    unless @user
+      head :not_found
+    end
   end
 end
