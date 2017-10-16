@@ -16,7 +16,16 @@
       <%=link_to "View all media", works_path%>
       <%=link_to "Add a new work", new_work_path%>
       <%=link_to "View all users", users_path%>
-      <%=link_to "Log In", login_path%>
+
+      <div class="float-right">
+        <% if session[:logged_in_user] %>
+          <%=link_to "Logged in as #{User.find_by(id: session[:logged_in_user]).name}", user_path(session[:logged_in_user]) %>
+          <%= link_to "Log out", logout_path %>
+        <% else %>
+          <%= link_to "Log In", login_path %>
+        <% end %>
+      </div>
+
     </header>
 
     <main>
