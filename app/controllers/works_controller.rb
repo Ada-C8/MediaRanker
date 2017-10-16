@@ -8,7 +8,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    # find_work_by_params
   end
 
   def new
@@ -18,7 +17,7 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     result = @work.save
-
+    
     if result
       flash[:status] = :success
       flash[:message] = "Created #{@work.category} #{@work.title}."
@@ -32,11 +31,11 @@ class WorksController < ApplicationController
   end
 
   def edit
-    # find_work_by_params
   end
 
   def update
     result = @work.update(work_params)
+
     if result
       flash[:status] = :success
       flash[:message] = "Created #{@work.category} #{@work.title}."
@@ -50,18 +49,10 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
-
-    if @work
-      @work.destroy
-      flash[:status] = :success
-      flash[:message] = "Deleted #{@work.category} #{@work.title}."
-      return redirect_to works_path
-    else
-      flash[:status] = :failure
-      flash[:message] = "Unable to find work to delete."
-      return redirect_to works_path
-    end
+    @work.destroy
+    flash[:status] = :success
+    flash[:message] = "Deleted #{@work.category} #{@work.title}."
+    return redirect_to works_path
   end
 
   def upvote
