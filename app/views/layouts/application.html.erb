@@ -25,13 +25,16 @@
         <%= link_to "View all users", users_path, class: "button" %>
 
         <%# When session is logged in, will add a Log Out button to the navigation %>
-        <% if session[:logged_in_session]  %>
+
+        <% if session[:logged_in_session] != nil %>
+
           <div class="float-right">
             <%= link_to "Log Out", logout_path, class: "button" %>
           </div>
 
+          <% user = User.find(session[:logged_in_session]) %>
           <div class="float-right logged-in-padding">
-            <%= link_to "Logged in as #{User.find(session[:logged_in_session]).name}", user_path(session[:logged_in_session]), class: "button" %>
+            <%= link_to "Logged in as #{user.name}", user_path(session[:logged_in_session]), class: "button" %>
           </div>
 
         <% else %>
@@ -41,6 +44,7 @@
           </div>
 
         <% end %>
+
       </nav>
     </header>
 
