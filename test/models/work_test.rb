@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe Work do
-  # let :author { Author.first }
+  let :user {User.first}
   describe "validations" do
     it "can be created with all fields" do
       w = Work.new(title: "new_work", category:"album", creator:"yo", year:2017, description:"nice album")
@@ -21,6 +21,18 @@ describe Work do
       is_valid.must_equal false
       w.errors.messages.must_include :category
     end
+  end
+
+  describe "ralations" do
+    it 'can set the vote' do
+      w = works(:work1)
+      u = users(:user1)
+      w.must_respond_to :votes
+      w.votes.count.must_equal 0
+      v = Vote.create!(work_id: w.id, user_id: u.id)
+      w.votes.count.must_equal 1
+    end
+    
   end
 
 
