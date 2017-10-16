@@ -3,6 +3,9 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def new
+  end
+
   def login_form
   end
 
@@ -31,4 +34,16 @@ class UsersController < ApplicationController
     flash[:message] = "Successfully logged out"
     redirect_to root_path
   end
+
+  def show
+    find_user_by_params_id
+  end
+end
+
+def find_user_by_params_id
+  @user = User.find_by(id: params[:id])
+  unless @user
+    head :not_found
+  end
+  return @user
 end
