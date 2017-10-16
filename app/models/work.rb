@@ -10,7 +10,7 @@ class Work < ApplicationRecord
   end
 
   def self.select_top_ten_of_category(category)
-    top_ten = Work.where(category:category).joins("LEFT JOIN votes ON works.id = votes.work_id").group(:id).order("count(votes.id) DESC").limit(10)
+    top_ten = Work.filter_by_category(category).joins("LEFT JOIN votes ON works.id = votes.work_id").group(:id).order("count(votes.id) DESC").limit(10)
 
     return top_ten
   end
@@ -28,9 +28,9 @@ class Work < ApplicationRecord
   end
 
   def self.top_spot
-    top_spot = Work.all.max_by{|id, count| count}
+    top_spot = Work.all.joins("LEFT JOIN votes ON works.id = votes.work_id").group(:id).order("count(votes.id) DESC")
 
-    return top_spot
+    return top_spot.first
   end
 
 end
