@@ -1,6 +1,7 @@
 <h1>Media Spotlight</h1>
 <%= link_to @media_spotlight.title, work_path(@media_spotlight.id) %> by <%= @media_spotlight.creator %>
 
+<section class="top-ten columns large-4 small-12">
 <h2>Top Movies</h2>
 
 <ul>
@@ -8,7 +9,9 @@
     <li><%= link_to movie.title, work_path(movie.id) %> by <%= movie.creator %></li>
   <% end %>
 </ul>
+</section>
 
+<section class="top-ten columns large-4 small-12">
 <h2>Top Albums</h2>
 
 <ul>
@@ -16,7 +19,9 @@
     <li><%= link_to album.title, work_path(album.id) %> by <%= album.creator %></li>
   <% end %>
 </ul>
+</section>
 
+<section class="top-ten columns large-4 small-12">
 <h2>Top Books</h2>
 
 <ul>
@@ -24,3 +29,4 @@
     <li><%= link_to book.title, work_path(book.id) %> by <%= book.creator %></li>
   <% end %>
 </ul>
+</section>
