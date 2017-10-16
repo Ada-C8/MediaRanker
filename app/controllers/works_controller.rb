@@ -1,12 +1,11 @@
 class WorksController < ApplicationController
+  before_action :find_work_by_id, only: [:show, :edit, :update, :destroy]
 
   def index
     @works = Work.all
   end
 
-  def show
-    find_work_by_id
-  end
+  def show ; end
 
   def new
     @work = Work.new
@@ -27,32 +26,26 @@ class WorksController < ApplicationController
     end
   end
 
-  def edit
-    find_work_by_id
-  end
+  def edit ; end
 
   def update
-    if find_work_by_id
-      @work.update_attributes(work_params)
-      if @work.save
-        flash[:status] = :success
-        flash[:notice] = "Successfully updated #{@work.category} #{@work.title}"
-        redirect_to work_path(@work.id)
-      else
-        flash[:status] = :failure
-        flash[:notice] = "Failed to update the work"
-        render :edit, status: :bad_request
-      end
+    @work.update_attributes(work_params)
+    if @work.save
+      flash[:status] = :success
+      flash[:notice] = "Successfully updated #{@work.category} #{@work.title}"
+      redirect_to work_path(@work.id)
+    else
+      flash[:status] = :failure
+      flash[:notice] = "Failed to update the work"
+      render :edit, status: :bad_request
     end
   end
 
     def destroy
-      if find_work_by_id
-        @work.destroy
-        flash[:status] = :success
-        flash[:notice] = "Successfully destroyed #{@work.category} #{@work.title}"
-        redirect_to works_path
-      end
+      @work.destroy
+      flash[:status] = :success
+      flash[:notice] = "Successfully destroyed #{@work.category} #{@work.title}"
+      redirect_to works_path
     end
 
   private
