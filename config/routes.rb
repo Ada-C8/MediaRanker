@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   get "work/:id/votes", to: "votes#create", as: "create_vote"
   post "work/:id/votes", to: "votes#create"
+
 end
