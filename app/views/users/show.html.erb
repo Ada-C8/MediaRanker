@@ -28,18 +28,19 @@
     </thead>
     <tbody>
       <% @user.votes.each do |vote| %>
+        <% work = vote.work %>
         <tr>
           <td>
-            <%= link_to vote.work.title, work_path(vote.work.id) %>
+            <%= link_to work.title, work_path(work.id) %>
           </td>
           <td>
-            <%= vote.work.creator %>
+            <%= work.creator %>
           </td>
           <td>
-            <%= vote.work.publication_year %>
+            <%= work.publication_year %>
           </td>
           <td>
-            <%= vote.work.category.capitalize %>
+            <%= work.category.capitalize %>
           </td>
           <td>
             <%= vote.created %>

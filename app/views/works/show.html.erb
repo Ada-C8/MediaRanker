@@ -40,9 +40,10 @@
       </thead>
       <tbody>
         <% @work.votes.each do |vote| %>
+        <% user = vote.user %>
         <tr>
           <td>
-            <%= link_to vote.user.name, user_path(vote.user.id) %>
+            <%= link_to user.name, user_path(user.id) %>
           </td>
           <td>
             <%= vote.created %>
