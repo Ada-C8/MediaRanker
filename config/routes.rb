@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  root to: "works#top_media"
   resources :users
   resources :works
+  get "top_media", to: "works#top_media", as: "top_media"
+
   resources :votes
 
   get "login", to: "users#login_form", as: "login"

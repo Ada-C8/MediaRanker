@@ -12,6 +12,13 @@ class WorksController < ApplicationController
     redirect_to works_path unless @work
   end
 
+  def top_media
+      @works = Work.all
+      @albums = Work.where(category: "album").all.limit(10)
+      @books = Work.where(category: "book").all.limit(10)
+      @movies = Work.where(category: "movie").all.limit(10)
+  end
+
   def new
     @work = Work.new
   end
@@ -47,9 +54,10 @@ class WorksController < ApplicationController
     redirect_to works_path
   end
 
-  def votework
-    @vote = Vote.create(work_id: params[:pass_id])
-  end
+  # def votework
+  #   @vote = Vote.create(work_id: params[:pass_id])
+  #   redirect_to :back
+  # end
 
   private
 

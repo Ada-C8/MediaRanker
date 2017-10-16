@@ -15,11 +15,11 @@ class UsersController < ApplicationController
       user.save
       session[:logged_in_user] = user.id
       flash[:success] = "#{ user.username } is successfully logged in"
-      redirect_to works_path
+      redirect_to root_path
     else
       session[:logged_in_user] = user.id
       flash[:success] = "#{ user.username } is successfully logged in"
-      redirect_to works_path
+      redirect_to root_path
     end
   end
 

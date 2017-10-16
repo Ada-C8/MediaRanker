@@ -1,0 +1,44 @@
+<h1>Medias</h1>
+
+<h3>Media Spotlight: <%= link_to(Work.top_title, work_path(Work.top_work.id)) %>
+ by <%=  Work.top_creator %> </h3>
+<p> <%=  Work.top_votes %> votes - <%=  Work.top_description %> </p>
+<hr>
+
+<h3>Top Movies</h3>
+<hr>
+<% if @movies.count == 0 %>
+  <p>Nothing to show yet!</p>
+<% else %>
+  <ul>
+    <% @movies.each do |movie| %>
+      <li><%= link_to(movie.title, work_path(movie.id)) %> by <%= movie.creator %> <br /> <%= movie.number_of_vote %> votes </li>
+
+    <% end %>
+  </ul>
+<% end %>
+
+<h3>Top Albums</h3>
+<hr>
+<% if @albums.count == 0 %>
+  <p>Nothing to show yet!</p>
+<% else %>
+  <ul>
+    <% @albums.each do |album| %>
+      <li><%= link_to(album.title, work_path(album.id)) %> by <%= album.creator %> <br /> <%= album.number_of_vote %> votes </li>
+
+    <% end %>
+  </ul>
+<% end %>
+
+<h3>Top Books</h3>
+<hr>
+<% if @books.count == 0 %>
+  <p>Nothing to show yet!</p>
+<% else %>
+  <ul>
+    <% @books.each do |book| %>
+      <li><%= link_to(book.title, work_path(book.id)) %> by <%= book.creator %> <br /> <%= book.number_of_vote %> votes </li>
+    <% end %>
+  </ul>
+<% end %>
