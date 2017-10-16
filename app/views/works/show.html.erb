@@ -1,15 +1,28 @@
-<h1><%= @work.title %></h1>
+<h3><%= @work.title %></h3>
 <article class="columns small-12">
 <p>Created by: <%= @work.creator %></p>
 <p>Published: <%= @work.publication_year %></p>
 
-<!-- waiting for working root path -->
 <%= link_to "Back to media ranks", root_path %>
 <%= link_to "Edit", edit_work_path(@work.id) %>
-<%= link_to "Upvote" %>
+<%= link_to "Upvote", upvote_path(@work.id), method: :patch %>
 <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %>
 </article>
 
 <article class="media-details columns large-6 small-12">
-<p>hello there</p>
+<h3><%= @work.votes.count %> for this <%= @work.category %></h3>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @work.votes.each do |vote| %>
+    <tr>
+      <td><%= link_to vote.user.name, user_path(vote.user.id) %></td>
+      <td><%= vote.created_at.strftime("%B %d, %Y") %></td>
+    </tr>
+    <% end %>
 </article>

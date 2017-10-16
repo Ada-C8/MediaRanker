@@ -16,10 +16,10 @@
       <% @users.each do |u| %>
       <tr>
         <td><%= link_to u.name, user_path(u.id) %></td>
-        <td><%= link_to u.name, user_path(u.id) %></td>
-        <td><%= link_to u.name, user_path(u.id) %></td>
+        <td><%= u.votes.count %></td>
+        <td><%= u.created_at.strftime("%b %d, %Y") %></td>
       </tr>
-        <% end %>
       <% end %>
+  <% end %>
     </tbody>
   </table>

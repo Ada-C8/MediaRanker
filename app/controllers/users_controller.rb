@@ -7,22 +7,6 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
-  # def create
-  #   @user = User.create(name: params[:name])
-  #   # @user = User.new(user_params)
-  #   # if @user.save
-  #   unless @user.id == nil
-  #     session[:user_id] = @user.id
-  #     flash[:status] = :success
-  #     flash[:message] = "Successfully created new user #{@user.name} with ID #{@user.id}"
-  #     redirect_to root_path
-  #   else
-  #     flash[:status] = :error
-  #     flash[:message] = "did not succesfully login"
-  #     render "login" #should go back to login page
-  #   end
-  # end
-
   def login_form
   end
 
@@ -35,8 +19,6 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       @user = User.create(name: params["name"])
-      # @user = User.new(user_params)
-      # if @user.save
       unless @user.id == nil
         session[:user_id] = @user.id
         flash[:status] = :success
@@ -47,7 +29,6 @@ class UsersController < ApplicationController
         flash[:message] = "did not succesfully login"
         render "login"
       end
-
     end
   end
 

@@ -17,11 +17,11 @@
       <% @works.each do |w| %>
       <% if w.category == "album" %>
       <tr>
-        <td>#</td>
+        <td><%= w.votes.count %></td>
         <td><%= link_to w.title, work_path(w.id) %></td>
         <td><%= w.creator %></td>
         <td><%= w.publication_year %></td>
-        <td><%= link_to "Upvote" %></td>
+        <td><%= link_to "Upvote", upvote_path(w.id), method: :patch %></td>
       </tr>
         <% end %>
       <% end %>
@@ -43,11 +43,11 @@
       <% @works.each do |w| %>
       <% if w.category == "book" %>
       <tr>
-        <td>#</td>
+        <td><%= w.votes.count %></td>
         <td><%= link_to w.title, work_path(w.id) %></td>
         <td><%= w.creator %></td>
         <td><%= w.publication_year %></td>
-        <td><%= link_to "Upvote" %></td>
+        <td><%= link_to "Upvote", upvote_path(w.id), method: :patch %></td>
       </tr>
         <% end %>
       <% end %>
@@ -69,11 +69,11 @@
     <% @works.each do |w| %>
     <% if w.category == "movie" %>
     <tr>
-      <td>#</td>
+      <td><%= w.votes.count %></td>
       <td><%= link_to w.title, work_path(w.id) %></td>
       <td><%= w.creator %></td>
       <td><%= w.publication_year %></td>
-      <td><%= link_to "Upvote" %></td>
+      <td><%= link_to "Upvote", upvote_path(w.id), method: :patch %></td>
     </tr>
       <% end %>
     <% end %>

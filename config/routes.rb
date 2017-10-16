@@ -3,6 +3,12 @@ Rails.application.routes.draw do
 
   get '/home', to: 'works#home', as: 'home'
 
+  # get '/votes/', to: 'votes#index'
+
+
+  patch '/works/:id/upvote', to: 'works#upvote', as: 'upvote'
+
+
   get '/works', to: 'works#index', as: 'works'
 
   get '/works/:id/edit', to: 'works#edit', as: 'edit_work'
@@ -22,12 +28,12 @@ Rails.application.routes.draw do
 
   get '/users/:id', to: 'users#show', as: 'user'
 
-  # post '/users', to: 'users#create', as: 'create_user'
+
 
   get '/login', to: 'users#login_form', as: 'login_form'
 
   post '/login', to: 'users#login', as: 'login'
 
-
+  delete '/login', to: 'users#logout', as: 'logout'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
