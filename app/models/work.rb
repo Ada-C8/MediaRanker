@@ -2,7 +2,7 @@ class Work < ApplicationRecord
   has_many :votes
 
   validates :category, presence: true
-  validates :title, presence: true
+  validates :title,  presence: { message: "Please enter a title" }
   # I do not want to restrict title presence as more than one work can have the exact same title
-  validates :creator, presence: true
+  validates :creator,  presence: { message: "Please enter the creator" }
 end

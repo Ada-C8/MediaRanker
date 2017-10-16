@@ -24,9 +24,9 @@ class WorksController < ApplicationController
       flash[:message] = "Successfully created #{@work.category} #{@work.id}"
       redirect_to works_path
     else
-      flash[:status] = :failure
-      flash[:message] = "A problem occured: Could not create #{@work.category}"
-      flash[:details] = @work.errors.messages
+      flash.now[:status] = :failure
+      flash.now[:message] = "A problem occured: Could not create #{@work.category}"
+      flash.now[:details] = @work.errors.messages
       render :new, status: :bad_request
     end
   end
@@ -46,8 +46,12 @@ class WorksController < ApplicationController
     result = @work.update_attributes(works_params)
 
     if result
+      flash[:status] = :success
+      flash[:message] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path(@work)
     else
+      flash.now[:status] = :failure
+      flash.now[:details] = @work.errors.messages
       render :edit, status: :bad_request
     end
   end
@@ -62,6 +66,8 @@ class WorksController < ApplicationController
 
     @work.destroy
 
+    flash[:status] = :success
+    flash[:message] = "Successfully destroyed #{@work.category} #{@work.id}"
     redirect_to works_path
   end
 
@@ -70,5 +76,5 @@ class WorksController < ApplicationController
   def works_params
     params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
-  
+
 end

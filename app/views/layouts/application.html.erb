@@ -30,7 +30,7 @@
             <%= link_to "Log Out", logout_path, class: "button" %>
           </div>
 
-          <div class="float-right">
+          <div class="float-right logged-in-padding">
             <%= link_to "Logged in as #{User.find(session[:logged_in_session]).name}", user_path(session[:logged_in_session]), class: "button" %>
           </div>
 
@@ -44,52 +44,25 @@
       </nav>
     </header>
 
-    <%# Flash log in message %>
-    <section class="row">
-      <% if session[:logged_in_session] %>
-        <h3>
-          <%= flash[:message] %>
-          <% if flash[:details] %>
-          <ul>
-            <% flash[:details].each do |field, problems| %>
-              <% problems.each do |problem| %>
-                <li>
-                  <strong>
-                    <%= field %>:
-                  </strong>
-                  <%= problem %>
-                </li>
-              <% end %>
-            <% end %>
-          </ul>
+    <section class="flash <%= flash[:status] %> row">
+      <p class="no-margin">
+        <%= flash[:message] %>
+      </p>
+      <% if flash[:details] %>
+      <ul>
+        <% flash[:details].each do |field, problems| %>
+          <% problems.each do |problem| %>
+          <li>
+            <!-- <strong>
+              <%= field.capitalize %>:
+            </strong> -->
+            <%= problem.capitalize %>
+          </li>
           <% end %>
-        </h3>
+        <% end %>
+      </ul>
       <% end %>
     </section>
-
-    <%# Flash log out message %>
-    <% if session[:logged_in_session] == nil %>
-      <section class="row">
-        <h3>
-          <%= flash[:message] %>
-          <% if flash[:details] %>
-          <ul>
-            <% flash[:details].each do |field, problems| %>
-              <% problems.each do |problem| %>
-                <li>
-                  <strong>
-                    <%= field %>:
-                  </strong>
-                  <%= problem %>
-                </li>
-              <% end %>
-            <% end %>
-          </ul>
-          <% end %>
-        </h3>
-    </section>
-  <% end %>
-
 
     <%= yield %>
 

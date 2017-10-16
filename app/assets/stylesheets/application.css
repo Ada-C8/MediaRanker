@@ -16,15 +16,33 @@
 @import url('https://fonts.googleapis.com/css?family=Gudea');
 
 /********************************/
-/*********** ALL STYLES *********/
+/*********** FLASH **************/
 /********************************/
 
-
-.bg-color {
-  background-color: #B2DFDB;
-  max-width: 100%;
-  padding: 0 1em 0 1em;
+.failure {
+  border-radius: 5px;
+  background-color: #E6E6E6;
+  padding: 20px 25px;
+  margin-top: 30px;
+  color: red;
 }
+
+.success {
+  border-radius: 5px;
+  background-color: #E6E6E6;
+  padding: 20px 25px;
+  margin-top: 30px;
+  color: #8A8A8A;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+
+/********************************/
+/*********** ALL STYLES *********/
+/********************************/
 
 .float-right {
   float: right;
@@ -56,15 +74,6 @@ h1, h2, h3, h4, h5 {
   font-weight: bolder
 }
 
-/*.status {
-  background-color: #e6e6e6;
-  border-radius: 5px;
-  padding: 20px 25px;
-  margin-top: 30px;
-  font-weight: normal;
-  font-size: 1em;
-}*/
-
 a:hover {
   color: #186860;
 }
@@ -72,6 +81,13 @@ a:hover {
 /********************************/
 /*********** HEADER *************/
 /********************************/
+
+.bg-color {
+  background-color: #B2DFDB;
+  max-width: 100%;
+  padding: 0 1em 0 1em;
+}
+
 
 header small {
   color: white;
@@ -117,6 +133,10 @@ p {
 body {
   font-family: 'Gudea', sans-serif;
   color: #26A69A;
+}
+
+.logged-in-padding {
+  padding-right: 5px;
 }
 
 /********************************/
