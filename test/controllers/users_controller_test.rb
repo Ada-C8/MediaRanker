@@ -1,18 +1,12 @@
 require "test_helper"
 
 describe UsersController do
-
+ let(:user) {users(:cat)}
   describe 'index' do
-
-    it "should display index page with users" do
-      User.count_must_be :>, 0
-      get users_path
-      must_respond_with :success
-    end
 
 
     it "should get index" do
-      get users_index_url
+      get users_path
       must_respond_with :success
     end
   end
@@ -20,26 +14,17 @@ describe UsersController do
   describe 'show' do
 
     it "should get show" do
-      get users_show_url
+      get users_path(user.id)
       value(response).must_be :success?
     end
 
-    it "show user should show one user" do
+    it "should show one user" do
       get user_path(users(:cat))
       must_respond_with :success
     end
 
+
   end
 
-
-  it "should get new" do
-    get users_new_url
-    value(response).must_be :success?
-  end
-
-  it "should get create" do
-    get users_create_url
-    value(response).must_be :success?
-  end
 
 end
