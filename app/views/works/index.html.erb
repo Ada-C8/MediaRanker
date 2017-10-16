@@ -52,7 +52,7 @@
           <tr>
             <td><p><%= Vote.where(work_id: work.id).count %></p></td>
             <td><%= link_to work.title, work_path(work.id)%></td>
-            <tdclass="black"><%= work.creator %></td>
+            <td class="black"><%= work.creator %></td>
             <td class="black"><%= work.publication_year %></td>
             <td>
               <%= link_to "Upvote", votes_path(

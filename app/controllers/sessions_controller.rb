@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
     @user = User.find_by(name: name)
 
     if @user
-      session[:status] = :logged_in
       session[:logged_in_session] = @user.id
       flash[:status] = :success
       flash[:message] = "Successfully logged in as existing user #{@user.name}"
@@ -33,7 +32,6 @@ class SessionsController < ApplicationController
     @user = User.new(name: name)
 
     if @user.save
-      session[:status] = :logged_in
       session[:logged_in_session] = @user.id
       flash[:status] = :success
       flash[:message] = "Successfully created new user #{@user.name} with ID #{@user.id}"

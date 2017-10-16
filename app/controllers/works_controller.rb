@@ -38,37 +38,50 @@ class WorksController < ApplicationController
   def update
     @work = Work.find_by(id: params[:id])
 
-    unless @work
-      head :not_found
-      return
-    end
+    if session[:logged_in_session] != nil
+      unless @work
+        head :not_found
+        return
+      end
 
-    result = @work.update_attributes(works_params)
+      result = @work.update_attributes(works_params)
 
-    if result
-      flash[:status] = :success
-      flash[:message] = "Successfully updated #{@work.category} #{@work.id}"
-      redirect_to work_path(@work)
+      if result
+        flash[:status] = :success
+        flash[:message] = "Successfully updated #{@work.category} #{@work.id}"
+        redirect_to work_path(@work)
+      else
+        flash.now[:status] = :failure
+        flash.now[:details] = @work.errors.messages
+        render :edit, status: :bad_request
+      end
+      # This logic if the user is not logged in
     else
       flash.now[:status] = :failure
-      flash.now[:details] = @work.errors.messages
-      render :edit, status: :bad_request
+      flash.now[:message] = "You must be logged in to do that"
+      render :new
     end
   end
 
   def destroy
     @work = Work.find_by(id: params[:id])
 
-    unless @work
-      head :not_found
-      return
+    if session[:logged_in_session] != nil
+      unless @work
+        head :not_found
+        return
+      end
+
+      @work.destroy
+
+      flash[:status] = :success
+      flash[:message] = "Successfully destroyed #{@work.category} #{@work.id}"
+      redirect_to works_path
+    else
+      flash[:status] = :failure
+      flash[:message] = "You must be logged in to do that"
+      redirect_to work_path(@work.id)
     end
-
-    @work.destroy
-
-    flash[:status] = :success
-    flash[:message] = "Successfully destroyed #{@work.category} #{@work.id}"
-    redirect_to works_path
   end
 
   private
