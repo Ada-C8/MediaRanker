@@ -24,7 +24,7 @@ class Work < ApplicationRecord
   end
 
   def self.top_ten_books
-  book = Work.where(category: "books")
+  book = Work.where(category: "book")
   return book.sort_by {|work| -work.votes.count }.take(10)
   end
 end
