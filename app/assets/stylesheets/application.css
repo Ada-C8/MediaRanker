@@ -21,8 +21,6 @@
 }
 
 
-
-
 body, h1, h2, h3, h4, h5 {
   font-family: "Gudea", sans-serif;
 }
@@ -36,6 +34,13 @@ a, h3 {
 }
 
 article, aside, footer, header, hgroup, main, nav, section {
+    display: block;
+}
+
+
+main {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     display: block;
 }
 
@@ -73,6 +78,19 @@ h4 {
   }
 
 
+.row {
+    max-width: 75rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.status {
+    border-radius: 5px;
+    background-color: #e6e6e6;
+    padding: 20px 25px;
+    margin-top: 30px;
+}
+
 .small-12 {
   width: 100%;
   display: block;
@@ -93,6 +111,15 @@ form {
     display: block;
     margin-top: 0em;
 }
+.page-header {
+    width: 100%;
+    height: 18vw;
+    min-height: 200px;
+    background-color: #B2DFDB;
+    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 10px;
+    padding: 25px 20px 10px 20px;
+}
 
 .page-header h2 {
   text-align: center;
@@ -112,16 +139,13 @@ form {
 
 .button {
     background-color: #26A69A;
+    size: 2vw;
   }
 
+.button:hover {
+  background-color: forest;
+}
 
-.page-header {
-    max-width: 100%;
-    background-color: #B2DFDB;
-    border-bottom: 1px solid #EEEEEE;
-    margin-bottom: 10px;
-    padding: 25px 20px 10px 20px;
-    }
 
 /*top works page*/
 .spotlight {
@@ -196,4 +220,10 @@ tr {
     display: table-row;
     vertical-align: inherit;
     border-color: inherit;
+}
+
+/*show work page*/
+
+.column:last-child:not(:first-child), .columns:last-child:not(:first-child) {
+    float: right;
 }

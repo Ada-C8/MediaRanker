@@ -1,21 +1,23 @@
 
-<h3> <%= @work.title %> </h3>
-<p>
-  Created by: <%=@work.creator%>
-</p>
-<p>
-  Published: <%=@work.year%>
-</p>
-<p>
-  <%=@work.description%>
-</p>
+<article class="media-details columns large-6 small-12">
+  <h3> <%= @work.title %> </h3>
+  <p>
+    Created by: <%=@work.creator%>
+  </p>
+  <p>
+    Published: <%=@work.year%>
+  </p>
+  <p>
+    <%=@work.description%>
+  </p>
 
-<section>
-  <%= link_to "Back to media ranks", top_works_path, class:"button" %> <%#links to top 10 list%>
-  <%= link_to "Edit", edit_work_path(@work.id), class:"button" %>
-  <%= link_to "Upvote", vote_path(@work.id), method: :post, class:"button" %>
-  <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"}, class:"alert button" %>
-</section>
+  <section>
+    <%= link_to "Back to media ranks", top_works_path, class:"button" %> <%#links to top 10 list%>
+    <%= link_to "Edit", edit_work_path(@work.id), class:"button" %>
+    <%= link_to "Upvote", vote_path(@work.id), method: :post, class:"button" %>
+    <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"}, class:"alert button" %>
+  </section>
+</article>
 
 <article class="voting-users columns large-6 small-12">
   <h3><%=@work.votes.count%> Votes for this <%=@work.category.capitalize%></h3>
@@ -32,15 +34,15 @@
     </thead>
     <tbody>
       <%@work.votes.each do |vote| %>
-        <tr>
-          <td>
-            <%= link_to vote.user.name, user_path(vote.user.id)%>
-          </td>
-          <td>
-            <%=vote.created_at%> <%#need to get this to be the date in english%>
-          </td>
-        </tr>
-        <%end%>
+      <tr>
+        <td>
+          <%= link_to vote.user.name, user_path(vote.user.id)%>
+        </td>
+        <td>
+          <%=vote.created_at%> <%#need to get this to be the date in english%>
+        </td>
+      </tr>
+      <%end%>
     </tbody>
   </table>
 </article>

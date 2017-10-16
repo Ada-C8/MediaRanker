@@ -19,9 +19,8 @@
   <body>
     <header class="page-header row">
       <h2 class="columns small-12"><%= link_to "Media Ranker", root_path %> <small> Ranking the best of everything</small></h2>
-
       <nav class="columns small-12">
-        <%= link_to "View top meida", top_works_path, class:"button" %>
+        <%= link_to "View top media", top_works_path, class:"button" %>
         <%= link_to "View all media", works_path, class:"button"  %>
         <%= link_to "Add a new work", new_work_path, class:"button"  %>
         <%= link_to "View all users", users_path, class:"button"  %>
@@ -36,16 +35,19 @@
         </div>
       </nav>
     </header>
+    <hr />
 
     <%flash.each do |name, message| %>
     <div class="row flash <%=name%>">
+      <::before>
         <section class="row status <%= name%> ">
           <h3><%= message %></h3>
         </section>
       <%end%>
+      </::after>
     </div>
 
-    <main>
+    <main class="row">
       <%= yield %>
     </main>
   </body>
