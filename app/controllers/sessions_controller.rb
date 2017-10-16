@@ -1,3 +1,4 @@
+require 'pry'
 class SessionsController < ApplicationController
 
   def login_form
@@ -5,9 +6,9 @@ class SessionsController < ApplicationController
 
   def login
     if find_user(params[:username])
-      flash[:success] = "Successfully loggin in as #{@user.name}"
-      session[:user_id] = @user.id
-      redirect_to root_path
+      # flash[:success] = "Successfully loggin in as #{@user.name}"
+      # session[:user_id] = @user.id
+      # redirect_to root_path
     else
       @user = User.new user_params
       if @user.save
@@ -24,9 +25,7 @@ end
 
 private
 def find_user(input_name)
-  @user = nil
-  all_users = User.all
-  all_users.each do |user|
+  User.all.each do |user|
     @user = user if user.name == input_name
   end
   if @user
