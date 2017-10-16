@@ -1,35 +1,40 @@
-<h1>Homepage</h1>
-
-<h2>Albums</h2>
-<ol>
-  <% @albums.each do |album| %>
-    <li>
-      <p>Title: <%= link_to(album.title, work_path(album.id)) %></p>
-      <p>Category: <%= album.category %></p>
-    </li>
-  <% end %>
-</ol>
-
-<hr>
-
-<h2>Books</h2>
-<ol>
-  <% @books.each do |book| %>
-    <li>
-      <p>Title: <%= link_to(book.title, work_path(book.id)) %></p>
-      <p>Category: <%= book.category %></p>
-    </li>
-  <% end %>
-</ol>
+<h2>Media Spotlight:
+  <%= link_to(@has_highest_votes.title, work_path(@has_highest_votes.id)) %> by <%= @has_highest_votes.creator %>
+</h2>
+<p><%= @has_highest_votes.votes.length %> votes</p>
 
 <hr>
 
 <h2>Movies</h2>
-<ol>
+<ul>
   <% @movies.each do |movie| %>
+  <li>
+    <h3><%= link_to(movie.title, work_path(movie.id)) %> by <%= movie.creator %></h3>
+    <p><%= movie.votes.length %> votes</p>
+  </li>
+  <% end %>
+</ul>
+
+<hr>
+
+<h2>Books</h2>
+<ul>
+  <% @books.each do |book| %>
+  <li>
+    <h3><%= link_to(book.title, work_path(book.id)) %> by <%= book.creator %></h3>
+    <p><%= book.votes.length %> votes</p>
+  </li>
+  <% end %>
+</ul>
+
+<hr>
+
+<h2>Albums</h2>
+<ul>
+  <% @albums.each do |album| %>
     <li>
-      <p>Title: <%= link_to(movie.title, work_path(movie.id)) %></p>
-      <p>Category: <%= movie.category %></p>
+      <h3><%= link_to(album.title, work_path(album.id)) %> by <%= album.creator %></h3>
+      <p><%= album.votes.length %> votes</p>
     </li>
   <% end %>
-</ol>
+</ul>
