@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :users, :works, :votes
   root to: 'main_page#index'
 
+  get '/login', to: 'sessions#login_form'
+  post '/login', to: 'sessions#login'
+
   # get 'main_page/index'
   #
   # get 'works/index'
