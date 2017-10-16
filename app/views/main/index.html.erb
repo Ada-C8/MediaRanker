@@ -10,9 +10,8 @@
 
  <ol>
   <% @books.each do |instance| %>
-   <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id) %>, Votes: <%= instance.votes.count %> <%= form_for [instance, User.find(session[:user_id]), Vote.new] do |f| %>
-     <%= f.submit "Upvote", class:'success button' %></li>
-     <% end %>
+   <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id) %>, Votes: <%= instance.votes.count %> <%= vote_button(instance, session[:user_id]) %>
+   </li>
     <% end %>
  </ol>
 
@@ -22,10 +21,9 @@
   <h2>Movies</h2>
   <ol>
    <% @movies.each do |instance| %>
-    <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id)%>, Votes: <%= instance.votes.count %> <%= form_for [instance, User.find(session[:user_id]), Vote.new] do |f| %>
-      <%= f.submit "Upvote", class:'success button' %> </li>
+    <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id)%>, Votes: <%= instance.votes.count %> <%= vote_button(instance, session[:user_id]) %>
+    </li>
      <% end %>
-      <% end %>
   </ol>
 </article>
 
@@ -33,9 +31,8 @@
   <h2>Music</h2>
   <ol>
    <% @music.each do |instance| %>
-    <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id) %>, Votes: <%= instance.votes.count %> <%= form_for [instance, User.find(session[:user_id]), Vote.new] do |f| %>
-      <%= f.submit "Upvote", class:'success button' %></li>
-     <% end %>
+    <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id) %>, Votes: <%= instance.votes.count %> <%= vote_button(instance, session[:user_id]) %>
+    </li>
       <% end %>
 
   </ol>
