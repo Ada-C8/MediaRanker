@@ -70,11 +70,11 @@ describe WorksController do
 
   it "should upvote a work" do
     proc {
-
-      # post upvote_path(works(:lotr).id)
+      post login_path, params: {username: users(:crisco).name}
+      post upvote_path(works(:lotr).id)
     }.must_change 'Vote.count', 1
     must_respond_with :redirect
-    must_redirect_to work
+    must_redirect_to work_path(works(:lotr).id)
   end
 
 

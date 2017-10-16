@@ -66,7 +66,11 @@ class WorksController < ApplicationController
     if does_vote_exist(@work)
       flash[:error] = "You've already upvoted this!"
       redirect_to work_path(@work.id)
+    elsif !(@session_user)
+      flash[:error] = "You must be logged in to upvote"
+      redirect_to root_path
     else
+      Vote.create(user_id: @session_user.id, work_id: @work.id)
       flash[:success] = "Successfully upvoted!"
       redirect_to work_path(@work.id)
     end
