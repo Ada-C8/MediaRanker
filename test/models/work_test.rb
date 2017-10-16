@@ -4,6 +4,7 @@ describe Work do
   let(:work) { Work.new }
   let(:twilight) { works(:twilight) }
   let(:harry_potter) { works(:harry_potter) }
+  let(:fanPerson) { users(:fanPerson) }
   let(:one) { votes(:one) }
 
   it "must have a category" do
@@ -33,24 +34,36 @@ describe Work do
     book_to_movie.valid?.must_equal true
   end
 
-  # TODO NEED TO FINISH THESE TWO TESTS
   it "can find the single work with the most votes" do
-    puts "TOTAL VOTES!!! #{twilight.votes.size}"
-    fanPerson = User.new({name: "fanPerson"})
-    vote = Vote.new(user_id: fanPerson.id, work_id: twilight.id)
+    vote_count = Vote.count
+    vote = Vote.new(user_id: users(:fanPerson).id, work_id: twilight.id)
     vote.save
-    puts "TOTAL VOTES!!! #{twilight.votes.size}"
-
     winner = Work.winner
     winner.id.must_equal twilight.id
-    winner.votes.size.must_equal 3
+    winner.votes.size.must_equal (vote_count + 1)
+  end
 
-
+  it "top ten finds fewer than 10 works if there are not 10" do
+    top_books = Work.top_ten("book")
+    top_books.size.must_equal 2
   end
 
   it "can find the top ten works by category" do
+    10.times do |i|
+      Work.create(category: "book", title: "#{i} book")
+    end
+    top_books = Work.top_ten("book")
+    top_books.size.must_equal 10
+    top_books.first.title.must_equal "Twilight"
+  end
 
-
+  it "top_ten generates works even when no works in category have any votes" do
+    10.times do |i|
+      Work.create(category: "movie", title: "#{i} book")
+    end
+    top_books = Work.top_ten("movie")
+    top_books.size.must_equal 10
+    top_books.first.votes.count.must_equal 0
   end
 
 end
