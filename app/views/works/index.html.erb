@@ -16,11 +16,11 @@
       <% @works.each do |w| %>
       <% if w.category == "album" %>
       <tr>
-        <td>#</td>
+        <td><%= w.votes.count %></td>
         <td><%= link_to w.title, work_path(w.id) %></td>
         <td><%= w.creator %></td>
         <td><%= w.publication_year %></td>
-        <td><%= link_to "Upvote" %></td>
+        <td><%= link_to "Upvote", new_vote_path(w.id), method: :post, class: "button" %></td>
       </tr>
         <% end %>
       <% end %>
@@ -42,11 +42,11 @@
       <% @works.each do |w| %>
       <% if w.category == "book" %>
       <tr>
-        <td>#</td>
+        <td><%= w.votes.count %></td>
         <td><%= link_to w.title, work_path(w.id) %></td>
         <td><%= w.creator %></td>
         <td><%= w.publication_year %></td>
-        <td><%= link_to "Upvote" %></td>
+        <td><%= link_to "Upvote", new_vote_path(w.id), method: :post, class: "button" %></td>
       </tr>
         <% end %>
       <% end %>
@@ -68,11 +68,11 @@
     <% @works.each do |w| %>
     <% if w.category == "movie" %>
     <tr>
-      <td>#</td>
+      <td><%= w.votes.count %></td>
       <td><%= link_to w.title, work_path(w.id) %></td>
       <td><%= w.creator %></td>
       <td><%= w.publication_year %></td>
-      <td><%= link_to "Upvote" %></td>
+      <td><%= link_to "Upvote", new_vote_path(w.id), method: :post, class: "button" %></td>
     </tr>
       <% end %>
     <% end %>

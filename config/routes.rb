@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   post '/users', to: 'users#create', as: 'create_user'
 
-  get '/login', to: 'sessions#login_page'
+  get '/login', to: 'sessions#login_page', as: 'login_page'
 
   post '/login', to: 'sessions#login'
 

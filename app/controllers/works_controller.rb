@@ -38,6 +38,14 @@ class WorksController < ApplicationController
     redirect_to works_path
   end
 
+  def home
+    @works = Work.all_works
+    @top_work = Work.top_work
+    @top_movies = Work.top_works("movie")
+    @top_books = Work.top_works("book")
+    @top_albums = Work.top_works("album")
+  end
+
   private
 
   def work_params

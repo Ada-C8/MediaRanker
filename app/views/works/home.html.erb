@@ -1,9 +1,10 @@
-<h1>Home Page?</h1>
 <main class="row">
       <section class="row spotlight">
     <div>
-      <h3><span class="media-spotlight-header">Media Spotlight</span> <a href="/works/281"><%= @work.title %></a> <%= @work.creator %></h3>
-      <p>18 votes - </p>
+      <h3> <% @top_work.title %></h3>
+
+      <h3><span class="media-spotlight-header">Media Spotlight</span> <%= link_to @top_work.title , work_path(@top_work.id) %> by: <% @top_work.creator %></h3>
+      <p><%= @top_work.votes.count %> - <%= @top_work.description %> </p>
     </div>
   </section>
 
@@ -12,41 +13,15 @@
 <section class="top-ten columns large-4 small-12">
   <h3>Top Movies</h3>
   <ul>
+    <% @top_movies.each do |w| %>
       <li>
         <h4>
-          <a href="/works/343">Fruit snacks are tasty</a>
-          <small>by Korica</small>
+          <%= link_to w[0].title, work_path(w[0].id) %>
+          <small>by <%= w[0].creator %></small>
         </h4>
-        <p>7 votes</p>
+        <p><%= w[1] %> votes</p>
       </li>
-      <li>
-        <h4>
-          <a href="/works/352">Movie</a>
-          <small>by </small>
-        </h4>
-        <p>2 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/289">HP2</a>
-          <small>by </small>
-        </h4>
-        <p>2 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/300">POODR</a>
-          <small>by Sand-Metz</small>
-        </h4>
-        <p>1 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/365">Has no votes :(</a>
-          <small>by sf</small>
-        </h4>
-        <p>0 votes</p>
-      </li>
+      <% end %>
   </ul>
   <!-- <a href="/works.movies">View More Movies</a> -->
 </section>
@@ -54,76 +29,15 @@
 <section class="top-ten columns large-4 small-12">
   <h3>Top Books</h3>
   <ul>
+    <% @top_books.each do |w| %>
       <li>
         <h4>
-          <a href="/works/250">HP2</a>
-          <small>by J. K. Rowling</small>
+          <%= link_to w[0].title, work_path(w[0].id) %>
+          <small>by <%= w[0].creator %></small>
         </h4>
-        <p>6 votes</p>
+        <p><%= w[1] %> votes</p>
       </li>
-      <li>
-        <h4>
-          <a href="/works/244">If on a Winter&#39;s Night a Traveler</a>
-          <small>by Calvino</small>
-        </h4>
-        <p>5 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/271">The Name of the Wind</a>
-          <small>by Patrick Rothfuss</small>
-        </h4>
-        <p>4 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/246">Death with Interruptions</a>
-          <small>by Saramago</small>
-        </h4>
-        <p>4 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/241">Ancillary Mercy</a>
-          <small>by Leckie</small>
-        </h4>
-        <p>4 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/279">Great Gatsby</a>
-          <small>by </small>
-        </h4>
-        <p>3 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/288">Vivir para contarla</a>
-          <small>by Gabriel Garcia Marquez</small>
-        </h4>
-        <p>2 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/243">The Catcher in the Rye</a>
-          <small>by Salinger</small>
-        </h4>
-        <p>2 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/313">animorphs</a>
-          <small>by k.a. applegate</small>
-        </h4>
-        <p>2 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/318">Cerulean</a>
-          <small>by Sapphire Blue</small>
-        </h4>
-        <p>2 votes</p>
-      </li>
+      <% end %>
   </ul>
   <!-- <a href="/works.books">View More Books</a> -->
 </section>
@@ -131,76 +45,15 @@
 <section class="top-ten columns large-4 small-12">
   <h3>Top Albums</h3>
   <ul>
+    <% @top_albums.each do |w| %>
       <li>
         <h4>
-          <a href="/works/281">The Picture Album</a>
-          <small>by Someone with a Camera</small>
+          <%= link_to w[0].title, work_path(w[0].id) %>
+          <small>by <%= w[0].creator %></small>
         </h4>
-        <p>18 votes</p>
+        <p><%= w[1] %> votes</p>
       </li>
-      <li>
-        <h4>
-          <a href="/works/287">testing validations :D</a>
-          <small>by </small>
-        </h4>
-        <p>13 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/295">ha</a>
-          <small>by </small>
-        </h4>
-        <p>7 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/314">The Purple Album</a>
-          <small>by Prince, Probably</small>
-        </h4>
-        <p>7 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/351">hello its me do you have flash messages tell me please?</a>
-          <small>by </small>
-        </h4>
-        <p>3 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/312">24</a>
-          <small>by </small>
-        </h4>
-        <p>3 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/296">carets steracCaReTs</a>
-          <small>by </small>
-        </h4>
-        <p>3 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/325">Another Album</a>
-          <small>by </small>
-        </h4>
-        <p>2 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/322">OH WOW AMAZING</a>
-          <small>by someone</small>
-        </h4>
-        <p>2 votes</p>
-      </li>
-      <li>
-        <h4>
-          <a href="/works/321">HP2</a>
-          <small>by </small>
-        </h4>
-        <p>2 votes</p>
-      </li>
+      <% end %>
   </ul>
   <!-- <a href="/works.albums">View More Albums</a> -->
 </section>
