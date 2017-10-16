@@ -6,11 +6,12 @@ class SessionsController < ApplicationController
 
   def login
     if find_user(params[:username])
-      # flash[:success] = "Successfully loggin in as #{@user.name}"
-      # session[:user_id] = @user.id
-      # redirect_to root_path
+      flash[:success] = "Successfully loggin in as #{@user.name}"
+      session[:user_id] = @user.id
+      redirect_to root_path
     else
-      @user = User.new user_params
+      @user = User.new
+      @user.name = (params[:username])
       if @user.save
         flash[:success] = "Successfully loggin in as #{@user.name}"
         session[:user_id] = @user.id
@@ -33,8 +34,4 @@ def find_user(input_name)
   else
     return nil
   end
-end
-
-def user_params
-  return params.require(:user).permit(:name)
 end

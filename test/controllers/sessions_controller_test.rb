@@ -8,7 +8,6 @@ it "going to the login_form page is successful" do
 end
 
 it "should be able to create a user" do
-  skip
   proc {
     post login_path, params: {username: "alyssa"}
   }.must_change 'User.count', 1
@@ -23,6 +22,14 @@ it "should be able to login as an existing user" do
   must_respond_with :redirect
   must_redirect_to root_path
   session[:user_id].must_equal users(:crisco).id
+end
+
+it "should not create a user if name is not given" do
+  proc {
+    post login_path, params: {username: nil}
+  }.must_change 'User.count', 0
+  flash[:error].must_equal "User not logged in successfully"
+
 end
 
 end
