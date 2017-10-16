@@ -2,7 +2,7 @@ require "test_helper"
 
 describe "UsersController" do
 
-  it "can successfully go to the works index page" do
+  it "can successfully go to the users index page" do
     get users_path
     must_respond_with :success
   end

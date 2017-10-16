@@ -21,6 +21,12 @@ describe "VotesController" do
     flash[:success].must_equal "Successfully upvoted!"
   end
 
+  it "cannot vote with invalid inputs" do
+    post login_path, params: {name: users(:fanGirl).name}
+    proc { post work_votes_path(-2)}.must_change 'Vote.count', 0
+    flash[:error].must_equal "Vote not recorded"
+  end
+
   it "same user can't vote for same work twice" do
     post login_path, params: {name: users(:fanGirl).name}
     post work_votes_path(works(:harry_potter).id)

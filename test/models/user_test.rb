@@ -11,6 +11,11 @@ describe User do
     fanGirl.save
     fanGirl.valid?.must_equal false
     fanGirl.errors[:name].must_equal ["can't be blank"]
+  end
 
+  it "cannot create a new user with the same name" do
+    new_user = User.new(name: "fanGirl")
+    new_user.save
+    new_user.valid?.must_equal false   
   end
 end

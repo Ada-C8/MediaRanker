@@ -21,7 +21,7 @@ describe Vote do
     two.errors[:work].must_equal ["must exist"]
   end
 
-  it "work must contain the proper number of votes" do
+  it "work must accurately reflect the number of votes" do
     twilight.votes.count.must_equal 2
     harry_potter.votes.count.must_equal 0
   end

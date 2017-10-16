@@ -38,10 +38,36 @@ describe "WorksController" do
 
   it "should be able to successfully update work title" do
     put work_path( works(:twilight).id ), params: { work: {title: "Twilight 2"} }
-
     updated_work = Work.find( works(:twilight).id )
     updated_work.title.must_equal "Twilight 2"
     must_redirect_to work_path( works(:twilight).id )
+  end
+
+  it "should be able to successfully update work creator" do
+    put work_path( works(:twilight).id ), params: { work: {creator: "Bob"} }
+    updated_work = Work.find( works(:twilight).id )
+    updated_work.creator.must_equal "Bob"
+    must_redirect_to work_path( works(:twilight).id )
+  end
+
+  it "should be able to successfully update work publication year" do
+    put work_path( works(:twilight).id ), params: { work: {publication_year: 2020} }
+    updated_work = Work.find( works(:twilight).id )
+    updated_work.publication_year.must_equal 2020
+    must_redirect_to work_path( works(:twilight).id )
+  end
+
+  it "should be able to successfully update work publication year" do
+    put work_path( works(:twilight).id ), params: { work: {description: "Updated description"} }
+    updated_work = Work.find( works(:twilight).id )
+    updated_work.description.must_equal "Updated description"
+    must_redirect_to work_path( works(:twilight).id )
+  end
+
+  it "should not save update with invalid input" do
+    put work_path( works(:twilight).id ), params: { work: {title: nil} }
+    updated_work = Work.find( works(:twilight).id )
+    updated_work.title.must_equal "Twilight"
   end
 
   it "should be able to delete a work" do

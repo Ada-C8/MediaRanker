@@ -12,7 +12,6 @@ describe Work do
     twilight.category = nil
     twilight.valid?.must_equal false
     twilight.errors[:category].must_equal ["can't be blank"]
-
   end
 
   it "must have a title" do
