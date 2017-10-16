@@ -32,4 +32,12 @@ it "should not create a user if name is not given" do
 
 end
 
+it "should logout" do
+  post login_path, params: {username: users(:crisco).name}
+  session[:user_id].must_equal users(:crisco).id
+  post logout_path
+  session[:user_id].must_equal nil
+  must_redirect_to root_path
+  flash[:success].must_equal "Successfully logged out"
+end
 end

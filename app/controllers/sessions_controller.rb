@@ -22,7 +22,12 @@ class SessionsController < ApplicationController
       end
     end
   end
+  
+  def logout
+  end
 end
+
+
 
 private
 def find_user(input_name)
