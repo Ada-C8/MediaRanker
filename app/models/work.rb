@@ -12,4 +12,19 @@ class Work < ApplicationRecord
       work.votes.count
     end
   end
+
+  def self.top_ten_albums
+  album = Work.where(category: "album")
+  return album.sort_by {|work| -work.votes.count }.take(10)
+  end
+
+  def self.top_ten_movies
+  movie = Work.where(category: "movie")
+  return movie.sort_by {|work| -work.votes.count }.take(10)
+  end
+
+  def self.top_ten_books
+  book = Work.where(category: "books")
+  return book.sort_by {|work| -work.votes.count }.take(10)
+  end
 end
