@@ -17,7 +17,12 @@ class Work < ApplicationRecord
       work.votes.count
     end
     top = top.reverse
-      return top.first
+      if top.first == nil
+        message = "No media yet"
+        return message
+      else
+        return top.first
+      end
   end
 
   def self.all_albums
