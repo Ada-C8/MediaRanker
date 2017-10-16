@@ -51,12 +51,20 @@ describe User do
     end
 
     describe "#rec_list" do
-      it 'returns an array of recommended works' do
+      it 'returns an array of 3 recommended works' do
         list = u1.rec_list
 
         list.must_be_kind_of Array
 
-        Work.find_by(title: list.keys.first).wont_be :nil?
+        Work.find_by(title: list.first).wont_be :nil?
+        list.length.must_equal 3
+      end
+
+      it 'returns a shorter array if there are fewer voted works' do
+        list = users(:eight).rec_list
+
+        list.must_be_kind_of Array
+        list.length.must_equal 2
       end
 
       it 'returns an empty array if users has no votes' do

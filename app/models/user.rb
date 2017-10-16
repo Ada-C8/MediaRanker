@@ -20,4 +20,9 @@ class User < ApplicationRecord
     works
   end
 
+  def rec_list
+    works = recs
+    works.sort_by{|k| -works[k]}[0...3]
+  end
+
 end
