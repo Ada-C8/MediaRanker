@@ -29,7 +29,7 @@ class WorksController < ApplicationController
       flash[:success] = "Work was successfully saved."
       redirect_to @work
     else
-      flash[:error] = "Work was unsuccessfully saved."
+      flash.now[:error] = "Work was unsuccessfully saved."
       render :new
     end
   end
@@ -59,8 +59,25 @@ class WorksController < ApplicationController
     if @work.update_attributes work_parameters
       redirect_to @work
     else
+      flash.now[:error] = "Work was unsuccessfully edited."
       render :new
     end
+  end
+
+  def upvote
+    work = Work.find_by(id: params[:id].to_i)
+    if session[:user] == nil # if user is already logged in
+      flash[:error] = "You must be logged in to upvote"
+    elsif work.users.find_by(id: session[:user]["id"]) != nil # if the user already upvoted
+      flash[:error] = "User #{session[:user]["username"]} already upvoted"
+    else # user is logged in
+      vote = Vote.new
+      vote.work_id = params[:id]
+      vote.user_id = session[:user]["id"]
+      vote.save
+      flash[:success] = "Successfully upvoted!"
+    end
+    redirect_to work
   end
 
   private
