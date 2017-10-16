@@ -7,6 +7,14 @@ class HomeController < ApplicationController
     @spotlight = Vote.media_spotlight
   end
 
+  # def index
+  #   @books = Work.where(category: "book")
+  #   @movies = Work.where(category: "movie")
+  #   @albums = Work.where(category: "album")
+  #   @spotlight = Vote.media_spotlight
+  # end
+
+
 
 
 end

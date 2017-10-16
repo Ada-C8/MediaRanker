@@ -27,5 +27,4 @@ describe Vote do
     Vote.media_spotlight.must_equal (works(:two))
   end
 
-
 end
