@@ -1,4 +1,6 @@
 class MainPageController < ApplicationController
+  skip_before_action :logged_in?, only: [:index]
+
   def index
     # top_voted = []
     @works = all_works_by_votes
