@@ -15,7 +15,7 @@
           <tr>
           <td><%= link_to(user.name, user_path(user.id), alt: "link to user show page")%></td>
           <td> # </td>
-          <td><%= (user.created_at).strftime('%d-%m-%Y') %></td>
+          <td><%= (user.created_at).strftime('%b %m, %Y') %></td>
         </tr>
         <% end %>
     </tbody>
