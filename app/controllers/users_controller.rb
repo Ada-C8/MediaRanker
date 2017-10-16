@@ -31,6 +31,9 @@ class UsersController < ApplicationController
         flash[:message] = "Successfully logged in new user #{@user.name}"
         redirect_to root_path
       else
+        flash[:status] = :failure
+        flash[:message] = "Please type in your username"
+
         render :login_form
       end
 
