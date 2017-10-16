@@ -6,12 +6,20 @@
 #
 user1:
   username: Becky
+  uid: 1
+  provider: "Ada"
 
 user2:
   username: Santiago
+  uid: 2
+  provider: "Ada"
 
 user3:
   username: Francesca
+  uid: 3
+  provider: "Ada"
 
 user4:
   username: jon559_pi
+  uid: 4
+  provider: "Ada"
