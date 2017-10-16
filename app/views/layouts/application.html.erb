@@ -6,7 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= favicon_link_tag 'owl.jpg' %>
+    <%= favicon_link_tag 'favicon.ico' %>
   </head>
 
   <body class="grid-container fluid">
@@ -20,45 +20,35 @@
             <%= link_to "Add a new work", new_work_path, class: "button" %>
             <%= link_to "View all users", users_path, class: "button" %>
           </section>
-          <%# if session[:logged_in_user]%>
-          <!-- <p>Logged in as -->
-          <%# User.find(session[:logged_in_user]).name%>
-          <!-- <button>Logged in as {name}</button>
-          <button>Log Out</button> -->
-          <!-- </p> -->
-          <%# else%>
-          <!-- <p>Not logged in</p> -->
-          <%# end %>
           <section class="login-buttons small-12 large-4 cell">
-            <%= link_to "Log In", login_path, class: "button" %>
+            <% if session[:logged_in_user] %>
+              <%= link_to "Logged in as #{ User.find(session[:logged_in_user]).name}", user_path(User.find(session[:logged_in_user]).id), class: "button"%>
+              <%= link_to "Log Out", logout_path, class: "button"%>
+            <% else %>
+              <%= link_to "Log In", login_path, class: "button" %>
+            <% end %>
           </section>
         </div>
       </nav>
     </header>
 
-    <section>
-      <p><%= flash[:status] %></p>
+    <section class="flash <%= flash[:status]%>">
       <p><%= flash[:message] %></p>
+      <% if flash[:details] %>
+        <ul>
+          <% flash[:details].each do |field, problems| %>
+            <% problems.each do |problem| %>
+            <li>
+              <strong>
+                <%= field %>:
+              </strong>
+              <%= problem %>
+            </li>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
     </section>
-
-    <!-- <section class="flash <%= flash[:status]%>">
-      <p><%# flash[:message]%></p>
-      <ul>
-        <%# flash[:details].each do |field, problems| %>
-          <%# problems.each do |problem| %>
-          <li>
-            <strong>
-              <%# field %>:
-            </strong>
-            <%# problem %>
-          </li>
-          <%# end %>
-        <%# end %>
-      </ul>
-      <%# flash.each do |name, message| %>
-        <div class="<%# name %>"><%# message %></div>
-      <%# end %>
-    </section> -->
 
     <%= yield %>
   </body>

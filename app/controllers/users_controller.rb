@@ -9,31 +9,38 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.join_date = DateTime.now
-    if save_and_flash(@user)
+    if @user.save
+      session[:user_id] = user.id
+      flash[:status] = :success
+      flash[:message] = "Successfully created a new user #{user.username} with ID #{user.id}"
       redirect_to root_path
     else
+      flash.now[:status] = :failure
+      flash.now[:message] = "Failed to log in"
       render :login_form, status: :bad_request
+      return
     end
   end
-
-  # def login_form
-  # end
 
   def login
     name = params[:user][:name]
     user = User.find_by(name: name)
     if user
       session[:logged_in_user] = user.id
-      flash[:success] = "#{ user.name } is successfully logged in"
-      redirect_to root_path
+      save_and_flash(user)
+      flash[:message] = "#{ user.name } has successfully logged in"
     else
       create
       session[:logged_in_user] = user.id
     end
+    redirect_to root_path
   end
 
   def logout
-  	session[:logged_in_user] = @user = nil
+  	session[:logged_in_user] = nil
+    flash[:status] = :success
+    flash[:message] = "Successfully logged out"
+    redirect_to root_path
   end
 
   def show ; end
