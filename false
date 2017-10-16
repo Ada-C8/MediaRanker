@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20171016111722_change_column_to_user.rb
