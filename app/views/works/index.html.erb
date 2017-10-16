@@ -1,6 +1,6 @@
 <h1>All Media </h1>
-
-<section>
+<main class="row">
+<section class="media-table">
   <% @works_by_category.each do |category, works| %>
     <h3><%= category.pluralize.capitalize%></h3>
 
@@ -31,3 +31,4 @@
   <%=link_to "Back to Media Ranks", root_path, :class => "button"%>
   <%=link_to "Add new", new_work_path, :class => "button"%>
 </section>
+</main>

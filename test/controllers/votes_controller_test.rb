@@ -27,7 +27,7 @@ describe VotesController do
   it "should be able to vote for a movie" do
     proc   {
       post login_path(name: "gogol bordello")
-      post vote_path(works(:conroy).id)
+      post vote_path(works(:baby).id)
     }.must_change 'Vote.all.count', 1
   end
 
@@ -41,7 +41,7 @@ describe VotesController do
   it "should be able to vote for a book" do
     proc   {
       post login_path(name: "gogol bordello")
-      post vote_path(works(:baby).id)
+      post vote_path(works(:conroy).id)
     }.must_change 'Vote.all.count', 1
   end
 end

@@ -33,7 +33,6 @@ describe User do
     it "can access votes" do
       u = users(:tanja)
       u.votes.count.must_equal 2
-      # I have set up 2 fixtures for votes
     end
 
   end
