@@ -43,6 +43,17 @@ describe UsersController do
   end
 
   describe "show" do
+    it "returns success with valid id" do
+      user_id = User.first.id
+      get user_path(user_id)
+      must_respond_with :success
+    end
+
+    it "returns not_found with invalid id" do
+      invalid_id = User.last.id + 1
+      get user_path(invalid_id)
+      must_respond_with :not_found
+    end
   end
 
   describe "edit" do

@@ -7,12 +7,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    @user.join_date = DateTime.now
-    if @user.save
+    user = User.new(user_params)
+    user.join_date = DateTime.now
+    if user.save
       session[:user_id] = user.id
       flash[:status] = :success
-      flash[:message] = "Successfully created a new user #{user.username} with ID #{user.id}"
+      flash[:message] = "Successfully created a new user #{user.name} with ID #{user.id}"
       redirect_to root_path
     else
       flash.now[:status] = :failure
