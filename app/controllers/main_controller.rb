@@ -1,7 +1,7 @@
 class MainController < ApplicationController
 
 def index
-   @works = Work
+   @works = Work.all
    @albums = Work.top_ten_albums
    @books = Work.top_ten_books
    @movies = Work.top_ten_movies
