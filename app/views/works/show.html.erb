@@ -1,20 +1,30 @@
 <!-- @work.title is broken here -->
 <h2> <%= @work.title %> details </h2>
 
+<p>Created by: <%= @work.creator %></p>
+
+<p>Published: <%= @work.publication_year %></p>
+
+<p><%= @work.description %></p>
+
+
+<%= link_to "Back to media ranks", root_path %>
 <%= link_to "Edit Work", edit_work_path %>
+<%= link_to "Upvote", work_upvote_path %>
 <%= link_to "Delete Work", work_path(@work), method: :delete %>
-<% if @work.title%>
-  <li>Title : <%= @work.title %></li>
-<% end %>
-<% if @work.creator%>
-  <li>Creator : <%= @work.creator %></li>
-<% end %>
-<% if @work.category%>
-  <li>Category : <%= @work.category %></li>
-<% end %>
-<% if @work.publication_year%>
-  <li> Publication year : <%= @work.publication_year %></li>
-<% end %>
-<% if @work.description%>
-  <li>Description : <%= @work.description %></li>
-<% end %>
+
+<h2><%= @work.votes.count%> votes for this work</h2>
+
+<!-- <table>
+  <tr>
+    <th>User</th>
+    <th>Date</th>
+  </tr> -->
+<!--
+  <%# @users.each do |user| %>
+    <tr>
+      <td>tbd</td>
+      <td>tbd</td>
+    </tr>
+  <%# end %>
+</table> -->
