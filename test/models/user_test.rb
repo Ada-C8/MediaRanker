@@ -27,12 +27,12 @@ describe User do
 
   describe 'recommendations' do
     describe '#recs' do
-      it 'returns a hash of recommended works' do
+      it 'returns a hash of recommended work ids' do
         recs = u1.recs
 
         recs.must_be_kind_of Hash
 
-        Work.find_by(title: recs.keys.first).wont_be :nil?
+        Work.find_by(id: recs.keys.first).wont_be :nil?
       end
 
       it 'returns an empty hash if users has no votes' do
@@ -56,7 +56,7 @@ describe User do
 
         list.must_be_kind_of Array
 
-        Work.find_by(title: list.first).wont_be :nil?
+        Work.find_by(id: list.first).wont_be :nil?
         list.length.must_equal 3
       end
 

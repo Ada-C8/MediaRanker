@@ -70,12 +70,12 @@ describe Work do
   end
 
   describe '#recs' do
-    it 'returns a hash of recommended works' do
+    it 'returns a hash of recommended work ids' do
       recs = w.recs
 
       recs.must_be_kind_of Hash
 
-      Work.find_by(title: recs.keys.first).wont_be :nil?
+      Work.find_by(id: recs.keys.first).wont_be :nil?
     end
 
     it 'does not recommend itself' do
@@ -100,7 +100,7 @@ describe Work do
   end
 
   describe '#rec_list' do
-    it 'returns an array of up to 3 titles' do
+    it 'returns an array of up to 3 ids' do
       list = w.rec_list
 
       list.must_be_kind_of Array

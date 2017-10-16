@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    # @recs = @user.rec_list
 
     unless @user
       return head :not_found

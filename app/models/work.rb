@@ -26,7 +26,7 @@ class Work < ApplicationRecord
     votes.each do |v|
       v.user.votes.each do |vote|
         work = vote.work
-        works[work.title] += 1 unless work.title == title
+        works[work.id] += 1 unless work.id == id
       end
     end
     works
