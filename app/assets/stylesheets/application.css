@@ -44,6 +44,11 @@ tbody:nth-child(odd) {
 }
 
 /*-------------HEADER-------------*/
+h2 {
+  text-align: center;
+  margin: 25px auto 40px auto;
+}
+
 .page-header {
     max-width: 100%;
     background-color: #B2DFDB;
@@ -52,21 +57,38 @@ tbody:nth-child(odd) {
     padding: 25px 20px 10px 20px;
   }
 
+.title {
+  text-align: center;
+  margin-bottom: 2%;
+}
+
 .orange {
+  max-width: 30%;
   color: #FF5722;
+  margin-right: 0;
+  font-size: 35px;
+  border-right: solid #ffffff;
 }
 
-h1 {
+.orange a{
+  color: #FF5722;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.white {
   color: white;
-}
+  text-decoration:none;
+  max-width: 50%;
+  margin:  0 0 0 10px;
+  font-size: 30px;
 
-.pipe {
-  font-size: 350%;
 }
 
 .button {
   background-color: #26A69A;
-  /*font-size: 14%;*/
+  height: ;
+  font-size: 70%;
 }
 
 .button:hover {
@@ -79,10 +101,15 @@ h1 {
 }
 
 
-/*.left {
-  float: left;
+/*--------nav bar--------*/
+
+.nav-right {
+  float: right;
 }
 
-.right {
-  float: right;
-}*/
+
+
+
+
+
+/**/

@@ -6,28 +6,34 @@
 <h3>Media Spotlight: <%= link_to(@spotlight.title, work_path(@spotlight.id)) %> by: <%=@spotlight.creator%> </h3>
 
 
-<h3>Top Albums</h3>
-<ul>
-  <% @albums.each do |album| %>
-    <li><%=link_to(album.title, work_path(album.id)) %> by: <%= album.creator %></li>
-    <li> <%= album.votes.count %> </li>
-  <%end%>
-</ul>
+<div class="middle">
+  <h3>Top Movies</h3>
+  <ul>
+    <% @movies.each do |movie| %>
+      <li><%=link_to(movie.title, work_path(movie.id)) %> by: <%= movie.creator %></li>
+      <li> <%= movie.votes.count %></li>
+    <%end%>
+  </ul>
+</div>
 
 
-<h3>Top Movies</h3>
-<ul>
-  <% @movies.each do |movie| %>
-    <li><%=link_to(movie.title, work_path(movie.id)) %> by: <%= movie.creator %></li>
-    <li> <%= movie.votes.count %></li>
-  <%end%>
-</ul>
+<div class="right">
+  <h3>Top books</h3>
+  <ul>
+    <% @books.each do |book| %>
+      <li><%= link_to(book.title, work_path(book.id)) %> by: <%= book.creator %></li>
+      <li><%= book.votes.count %></li>
+    <%end%>
+  </ul>
+</div>
 
 
-<h3>Top books</h3>
-<ul>
-  <% @books.each do |book| %>
-    <li><%= link_to(book.title, work_path(book.id)) %> by: <%= book.creator %></li>
-    <li><%= book.votes.count %></li>
-  <%end%>
-</ul>
+<div class="left">
+  <h3>Top Albums</h3>
+  <ul>
+    <% @albums.each do |album| %>
+      <li><%=link_to(album.title, work_path(album.id)) %> by: <%= album.creator %></li>
+      <li> <%= album.votes.count %> </li>
+    <%end%>
+  </ul>
+</div>
