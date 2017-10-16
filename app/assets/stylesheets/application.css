@@ -42,6 +42,10 @@
   margin-right: 15px;
 }
 
+.page-header {
+  max-width: 100%;
+}
+
 h2 small {
   font-size: 32px;
   font-weight: bold;
@@ -52,10 +56,6 @@ header {
   background-color: #B2DFDB;
   padding: 10px 20px;
 }
-
-/*.row header {
-  max-width: 100%;
-}*/
 
 .button {
   background-color: #26A69A;
