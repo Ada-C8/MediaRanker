@@ -32,6 +32,7 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new work_params
+    assign_user(@work)
     if @work.save
       flash[:success] = "Work added successfully"
       redirect_to works_path
@@ -127,6 +128,10 @@ def require_owner(input_work)
     redirect_to work_path(input_work.id)
 
   end
+end
+
+def assign_user(input_work)
+  input_work.id = @session_user.id
 end
 
 # def destroy_votes(input_work)
