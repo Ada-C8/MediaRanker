@@ -16,6 +16,27 @@
 
 @import url('foundation');
 
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+
+
+
+@media print, screen and (min-width: 40em)
+application-033…82025955.css:1
+.column, .columns {
+    padding-right: 0.9375rem;
+    padding-left: 0.9375rem;
+}
+
+@media print, screen and (min-width: 40em)
+application-033…82025955.css:1
+h3 {
+    font-size: 1.9375rem;
+}
+
+
 
 body, h1, h2, h3, h4, h5 {
   font-family: "Gudea", sans-serif;
@@ -29,6 +50,9 @@ a, h3 {
     color: #26A69A;
 }
 
+article, aside, footer, header, hgroup, main, nav, section {
+    display: block;
+}
 
 /*this is messing with the Media Ranker heading.*/
 h2 {
@@ -63,9 +87,18 @@ h4 {
   margin-bottom: 0.5rem;
   }
 
-small-12 {
+
+.small-12 {
   width: 100%;
+  display: block;
 }
+
+
+.large-4 {
+  width: 33%;
+  display: inline-block;
+  vertical-align: top;
+  }
 
 li {
     font-size: inherit;
@@ -106,8 +139,12 @@ form {
     }
 
 /*top works page*/
+.spotlight {
+  font-size: 1.7em;
+}
 .media-spotlight-header {
     color: #424242;
+
   }
 
 .spotlight a {
@@ -120,18 +157,32 @@ form {
 }
 
 section.spotlight>div {
-    padding: 0 2rem 2rem 2rem;
+  padding: 0 2rem 2rem 2rem;
 }
+
 
 .top-ten h3 {
-    border-bottom: 2px solid;
-    border-bottom-color: #B2DFDB;
+  border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB;
+  font-size: 2rem;
+  margin-left: 2vw;
 }
 
+.top-ten h4 {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-size: 1.6rem;
+}
 .top-ten ul {
     list-style-type: none;
     margin-left: 0px;
 }
+
+.top-ten ul li {
+  margin: 2vw;
+}
+
+
 
 
 /*all works*/
