@@ -14,52 +14,53 @@ class Work < ApplicationRecord
   #   end
   # end
 
-  def sort
+  def self.sort
     if Work.all.count != nil
-      Work.all.sort_by { |work| -work.vote.count}.first
+      Work.all.sort_by { |work| -work.vote.count}
     end
   end
 
   def self.top_ten_albums
-    works =  Work.all.count
+    works =  Work.sort
     top_albums = []
-    if works == 0
-      return top_albums
-    end
-    works.each do |work|
-      if work.category == "album"
-        top_albums << work
+    if works == []
+    else
+      works.each do |work|
+        if work.category == "album"
+          top_albums << work
+        end
       end
-      return top_albums
     end
+    return top_albums[0..9]
   end
 
   def self.top_ten_books
-    works =  Work.all.count
+    works =  Work.sort
     top_books = []
-    if works == 0
+    if works == []
       return top_books
     end
+
     works.each do |work|
       if work.category == "book"
         top_books << work
       end
-      return top_books
     end
+    return top_books[0..9]
   end
 
   def self.top_ten_movies
-    works =  Work.all.count
+    works =  Work.sort
     top_movie = []
-    if works == 0
+    if works == []
       return top_movie
     end
     works.each do |work|
       if work.category == "movie"
         top_movie << work
       end
-      return top_movie
     end
+    return top_movie[0..9]
   end
 
 
@@ -68,3 +69,4 @@ class Work < ApplicationRecord
       Work.all.sort_by { |work| -work.vote.count}.first
     end
   end
+end

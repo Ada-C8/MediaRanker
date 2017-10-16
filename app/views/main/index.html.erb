@@ -1,10 +1,33 @@
 <main class "row">
   <section class="row spotlight">
+  <div>
+    <%if @top_work %>
+    <h3>
+      <span class "media-spotlight-header">Media Spotlight:</span> <%=link_to @top_work.title, work_path(@top_work)%> by <%=@top_work.creator%>
+    </h3>
+    <p>
+      <%= @top_work.vote.count %> votes - <%=@top_work.description %>
+    </p>
+    <%end%>
+  </div>
 
   </section>
 
   <hr class="root-hr" />
 
-  WORK!
+  <section class="top-ten columns large-4 small-12">
+    <h3>Top Movies</h3>
+    <%= render partial: 'top_ten', locals: {collection_of_media: @movies} %>
+  </section>
+
+  <section class="top-ten columns large-4 small-12">
+    <h3>Top Books</h3>
+    <%= render partial: 'top_ten', locals: {collection_of_media: @books} %>
+  </section>
+
+  <section class="top-ten columns large-4 small-12">
+    <h3>Top Albums</h3>
+    <%= render partial: 'top_ten', locals: {collection_of_media: @albums} %>
+  </section>
 
 </main>
