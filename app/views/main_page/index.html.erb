@@ -1,8 +1,7 @@
-<h1>MainPage#index</h1>
-<article id="spotlight">
-
-  <h2>Media Spotlight: <%= link_to(@spotlight_work.title, work_path(@spotlight_work.id)) %> </h2>
-  <h3>
+<section class="row spotlight">
+<div>
+  <h3><span class="media-spotlight-header">Media Spotlight: <%= link_to(@spotlight_work.title, work_path(@spotlight_work.id)) %>
+  </span>
     <%= "by #{@spotlight_work.creator} " %>
   </h3>
   <p class="description">
@@ -11,25 +10,26 @@
   <p>
     <%= @spotlight_work.votes.length %> votes
   </p>
-</article>
+</div>
+</section>
+<hr class="root-hr" />
 
 <% @works.each do |category, works| %>
+<section class="top-ten columns large-4 small-12">
+
 <% i = 1 %>
-<article id= <%="top-#{category}" %> class="top-media">
-  <h2><%= "Top #{category.upcase}" %></h2>
+  <h3><%= "Top #{category.upcase}" %></h3>
   <ul>
     <% works.each do |work| %>
     <% break if i > 10 %>
     <li>
-      <%= link_to(work.title, work_path(work.id)) %> by <%=work.creator %>
-    </li>
-    <li>
-      <%=work.votes.length %> votes
+      <h4><%= link_to(work.title, work_path(work.id)) %> </h4><small>by <%=work.creator %></small>
+    </h4>
+      <p><%=work.votes.length %> votes</p>
     </li>
     <% i += 1 %>
     <% end %>
   </ul>
-  <hr />
-  <%end %>
 
-<p>Find me in app/views/main_page/index.html.erb</p>
+</section>
+  <%end %>

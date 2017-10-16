@@ -12,8 +12,8 @@
   <header class="page-header row">
     <h2 class="columns small-12">
       <%= link_to 'Media Ranker', root_path %>
-    </h2>
-    <small>Ranking the best of everything<small>
+      <small>Ranking the best of everything<small>
+      </h2>
       <nav class="columns small-12">
         <%= link_to 'top media', root_path, class: "button" %>
         <%= link_to 'view all media', works_path, class: "button" %>
@@ -25,19 +25,19 @@
           <%= link_to "Logged in as #{@session_user.name}", user_path(@session_user.id), class: "button" %>
           <%= link_to 'Log Out', logout_path, method: :post, class: "button" %>
           <% else %>
-          <%= link_to 'log in', login_path %>
+          <%= link_to 'log in', login_path, class: "button" %>
           <% end %>
         </div>
-        </nav>
-      </header>
-      <section class="flash">
-        <% flash.each do |name, message| %>
-        <div class="<%= name %>"><%= message %></div>
-        <% end %>
+      </nav>
+    </header>
+    <section class="flash">
+      <% flash.each do |name, message| %>
+      <div class="<%= name %>"><%= message %></div>
+      <% end %>
 
-        <main class="row">
-          <%= yield %>
-        </main>
-      </footer>
-    </body>
-    </html>
+      <main class="row">
+        <%= yield %>
+      </main>
+    </footer>
+  </body>
+  </html>
