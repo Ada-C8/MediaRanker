@@ -13,7 +13,6 @@ describe WorksController do
       get works_path
       must_respond_with :success
     end
-
   end
 
   describe "show" do
