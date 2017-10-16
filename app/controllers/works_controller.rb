@@ -47,6 +47,7 @@ class WorksController < ApplicationController
       return
     end
     deleted_work = "#{@work.category} #{@work.id}"
+    # destroy_votes(@work)
     if @work.destroy
       flash[:notice] = "Successfully destroyed #{deleted_work}"
       redirect_to root_path
@@ -54,6 +55,15 @@ class WorksController < ApplicationController
       flash.now[:error] = "Work was not successfully destroyed"
       render :show
     end
+  end
+
+  def upvote
+    # find_work
+    # if !@work
+    #   render_404
+    #   return
+    # end
+    #
   end
 end
 
@@ -82,3 +92,11 @@ end
 def render_404
   render file: "/public/404.html", status: 404
 end
+
+# def destroy_votes(input_work)
+#   all_votes = Vote.all.group_by{|vote| vote.work_id}
+#   input_id = input_work.id.to_s.to_sym
+#   if all_votes[input_id]
+#     all_votes[input_id]. each {|vote| vote.destroy}
+#   end
+# end

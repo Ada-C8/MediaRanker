@@ -56,7 +56,7 @@ describe WorksController do
 
   it "should be able to successfully delete a work" do
     proc {
-      (delete work_path(works(:bonito).id))
+      (delete work_path(works(:pride).id))
     }.must_change 'Work.count', -1
     must_redirect_to root_path
   end
@@ -67,6 +67,15 @@ describe WorksController do
     }.must_change 'Work.count', 0
     must_respond_with :missing
   end
+
+  it "should upvote a work" do
+    proc {
+      post upvote_path(works(:bonito).id)
+    }.must_change 'Vote.all', 1
+    must_respond_with :redirect
+    must_redirect_to work
+  end
+
 
 
 

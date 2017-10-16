@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   resources :users, :works, :votes
   root to: 'main_page#index'
-
+  post '/works/:id/upvote', to: 'works#upvote', as: 'upvote'
   get '/login', to: 'sessions#login_form'
   post '/login', to: 'sessions#login'
   post '/logout', to: 'sessions#logout'
+
+
 
   # get 'main_page/index'
   #
