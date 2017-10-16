@@ -18,8 +18,8 @@ class ApplicationController < ActionController::Base
   end
 
   def not_logged_in_msg
-    flash.now[:status] = :failure
-    flash.now[:message] = "You must be logged in to do that"
+    flash[:status] = :failure
+    flash[:message] = "You must be logged in to do that"
   end
 
 end
