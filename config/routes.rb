@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
+  get 'votes/create'
+
   root to: 'works#home'
 
   get '/works/home'
-  resources :works
+  resources :works do
+    resources :votes, only: [:create]
+  end
 
-  resources :users, only: [:index, :show, :new, :create]
-
-  resources :votes
+  resources :users, only: [:index, :show] do
+    resources :votes, only: [:create]
+  end
 
   get '/login', to: 'users#login_form', as: 'login'
   post '/login', to: 'users#login'

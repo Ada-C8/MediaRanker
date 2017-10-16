@@ -11,10 +11,6 @@ describe UsersController do
     must_respond_with :success
   end
 
-  # it "should get new" do
-  #   get new_user_path
-  #   value(response).must_be :success?
-  # end
   it "should get login_form" do
     get login_path
     must_respond_with :success
