@@ -12,7 +12,7 @@ describe WorksController do
       must_respond_with :success
     end
 
-    it "returns a success status when there are no books" do
+    it "returns a success status when there are no works" do
       Work.destroy_all
       get works_path
       must_respond_with :success
