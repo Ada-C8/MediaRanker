@@ -1,7 +1,9 @@
-<h1>Works#index</h1>
+<h3> List of works</h3>
+
 <% @works.each do |category, works| %>
+<section class="media-table">
 <article id= <%="top-#{category}" %> class="top-media">
-  <h2><%= "Top #{category.upcase}" %></h2>
+  <h4><%= "Top #{category.capitalize}" %></h4>
   <td>
     <table class="table">
   <tr>
@@ -36,12 +38,15 @@
       <%= work.publication_year %>
     </td>
     <td>
-      <%= link_to'upvote', edit_work_path(work.id), method: :patch%>
+      <%= link_to'Upvote', upvote_path(work.id), method: :post, class: "button upvote"%>
     </td>
   </tr>
     <% end %>
 </table>
-  <hr />
+</section>
   <%end %>
+<%= link_to 'View top media', root_path %>
+<%= link_to 'Add a new work', new_work_path %>
+
 
 <p>Find me in app/views/works/index.html.erb</p>
