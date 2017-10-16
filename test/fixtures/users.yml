@@ -6,8 +6,12 @@
 #
 user_one:
   username: plop
+  id: 1
+
 # column: value
 #
 user_two:
   username: 100luftredballoons
+  id: 2
+
 # column: value

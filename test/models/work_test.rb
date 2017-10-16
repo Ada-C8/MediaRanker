@@ -1,18 +1,25 @@
 require "test_helper"
+require 'pry'
 
 describe Work do
   describe 'validations' do
     let(:work) { Work.new }
-
-    # it "must be valid" do
-    #   value(work).must_be :valid?
-    # end
 
     it "is invalid without a title" do
       result = work.valid?
       result.must_equal false
 
       work.errors.messages.must_include :title
+    end
+
+    it "is valid with a title" do
+      movie = works(:movie_one)
+      movie.title = nil
+      (movie.valid?).must_equal false
+
+      movie.title = "New Movie Title"
+      (movie.valid?).must_equal true
+
     end
 
     it "is invalid with a title shared by another work in the same category" do
@@ -35,12 +42,38 @@ describe Work do
 
   end
 
-  describe "self.top_ten method" do
-    it "returns a max of ten works per category" do
-      ((Work.all).top_ten("movie").count).must_be :<=, 10
-      ((Work.all).top_ten("album").count).must_be :<=, 10
-      ((Work.all).top_ten("book").count).must_be :<=, 10 
+  describe "self.sorted_by_votes method" do
+    it "returns an array sorted by ascend" do
+      sorted_movies = ((Work.all).sorted_by_votes("movie"))
+      sorted_albums = ((Work.all).sorted_by_votes("album"))
+      sorted_books = ((Work.all).sorted_by_votes("book"))
+
+      sorted_movies.each do |movie|
+        movie.category.must_equal "movie"
+      end
+      sorted_albums.each do |album|
+        album.category.must_equal "album"
+      end
+      sorted_books.each do |book|
+        book.category.must_equal "book"
+      end
+
+      [sorted_movies, sorted_albums, sorted_books].each do |works|
+        ((works[0]).votes.count).must_be :>=, ((works[-1]).votes.count)
+      end
+
     end
+  end
+
+  it "can have votes" do
+    movie = works(:movie_one)
+    user = users(:user_two)
+    @vote = Vote.new
+    @vote.work = movie
+    @vote.user = user
+    @vote.save
+
+    ((movie.votes).last).id.must_equal @vote.id
   end
 
 end

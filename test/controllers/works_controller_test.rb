@@ -19,18 +19,32 @@ describe WorksController do
       must_respond_with :success
   end
 
+  describe "updating a work" do
+    before do
+      @work = works(:movie_one)
+    end
 
-  it "should stay on the add work page and display the error message banner if we are unsuccessful in creating or updating a work" do
+    it "should not update a work if missing a title" do
+      patch update_work_path(@work.id), params: { work: {category: "album", title: nil} }
 
+      (@work.title).must_equal "Rosemary's Baby"
+    end
+
+    it "should be able to update a work with valid data and redirect to show page" do
+
+      patch update_work_path(@work.id), params: { work: {category: "album", title: "new title"} }
+
+      work = Work.find_by(id: @work.id)
+
+      (work.title).must_equal "new title"
+
+      must_respond_with :redirect
+      must_redirect_to work_path(@work.id)
+
+    end
   end
 
-  it "should be able to update a work" do
 
-  end
-
-  it "should redirect to the show page if updated successfuly" do
-
-  end
 
   describe 'creating a new Work' do
     it "should be able to visit the 'Add New Work' page " do
@@ -48,10 +62,10 @@ describe WorksController do
       work.valid?.must_equal true
     end
 
-    it "raises an error if there is a Work that has the same category AND same title" do
-      # existing_book = works(:book_one)
-      #
-      # proc { post works_path, params: { work: {category: existing_book.category, title: existing_book.title} } }.must_raise ArugmentError.new
+    it "does not allow you to create a Work that has the same category AND same title" do
+      existing_book = works(:book_one)
+
+      proc { post works_path, params: { work: {category: existing_book.category, title: existing_book.title} } }.must_change 'Work.count', 0
 
     end
 
@@ -76,13 +90,6 @@ describe WorksController do
 
     end
 
-    it "should stay on the add work page and display the error message banner if we are unsuccessful in creating a work" do
-
-    end
-
-    it "should stay on the add work page if we are unsuccessful in creating a work" do
-
-    end
   end
 
   describe "Deleting a Work" do
