@@ -4,20 +4,23 @@ class SessionsController < ApplicationController
   end
 
   def login
-    user = User.find_by(username: params[:name])
+    @user = User.find_by(username: params[:name])
 
-    if user
-      flash[:success] = "Successfully logged in as existing user #{user.username}"
-      session[:logged_in_as_user] = user.id
+    if @user
+      flash[:success] = "Successfully logged in as existing user #{@user.username}"
+      session[:logged_in_as_user] = @user.id
+      session[:errors] = nil
       redirect_to root_path
     else
-      user = User.new(username: params[:name])
-      if user.save
-        session[:logged_in_as_user] = user.id
-        flash[:success] = "Successfully created new user #{user.username} with ID #{user.id}"
+      @user = User.new(username: params[:name])
+      if @user.save
+        session[:logged_in_as_user] = @user.id
+        session[:errors] = nil
+        flash[:success] = "Successfully created new user #{@user.username} with ID #{@user.id}"
         redirect_to root_path
       else
-        flash[:error] = "A problem occurred: Could not log in"
+        flash[:error] = "A problem occurred. Could not log in"
+        session[:errors] = @user.errors
         redirect_back(fallback_location: root_path)
         #BUG redirect_to login_path
         #BUG render :login_form, status: :no_content

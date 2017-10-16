@@ -2,9 +2,12 @@
 <html>
   <head>
     <title>MediaRanker</title>
-    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'favicon.ico' %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
+
+    <%= stylesheet_link_tag 'application', 'media': 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -30,19 +33,34 @@
       </nav>
     </header>
 
+<% if flash[:error] %>
     <% flash.each do |name, message| %>
     <section class="row status <%= name %>">
       <h3><%= message %></h3>
-      <% if flash[:errors] %>
+      <% if (params[:controller] == "works") && (@work.errors)%>
         <ul class="errors">
-            <% flash[:errors].each do |column, message| %>
+            <% @work.errors.each do |column, message| %>
               <li>
                 <%= "#{column}: #{message}" %>
               </li>
             <% end %>
         </ul>
       <% end %>
+
+      <% if (params[:controller] == "sessions") && (session[:errors])%>
+        <ul class="errors">
+            <% session[:errors].each do |column, messages| %>
+            <% messages.each do |m| %>
+              <li>
+                <%= "#{column}: #{m}" %>
+              </li>
+              <% end %>
+            <% end %>
+        </ul>
+      <% end %>
+
     </section>
+    <% end %>
     <% end %>
 
     <main class="row">
