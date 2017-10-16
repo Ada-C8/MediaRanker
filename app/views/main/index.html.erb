@@ -5,7 +5,10 @@
   <span class="media-spotlight-header">
   Media Spotlight:
   </span>
-  <%= link_to "#{work.title}", work_path(work.id) %> <%= "by #{work.creator}" %>
+  <% if work.title != nil %>
+    <%= link_to "#{work.title}", work_path(work.id) %> <%= "by #{work.creator}" %>
+      <% else %>
+      <%= "No Media Yet" %>
 <p> <%= "#{work.votes.count} votes" %> </p>
 </h3>
 
