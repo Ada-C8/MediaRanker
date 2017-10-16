@@ -103,6 +103,7 @@ main {
   padding: 2rem 0;
 }
 
+
 /**********/
 /* HEADER */
 /**********/
@@ -162,4 +163,25 @@ header.header {
 
 table .button {
   margin-bottom: 0;
+}
+
+/*******************/
+/* RECOMMENDATIONS */
+/*******************/
+
+.recs {
+  display: inline-block;
+  border: 2px solid var(--mint);
+  margin: 1rem 0;
+  padding: 1rem;
+  width: auto;
+}
+
+.recs strong {
+  font-style: italic;
+  font-weight: normal;
+}
+
+.recs ul {
+  list-style: none;
 }
