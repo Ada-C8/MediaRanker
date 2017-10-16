@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
 
+  def login_form
+  end
+
   def create
     name = params[:name]
     @user = User.find_by(name: name)
@@ -15,11 +18,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def login_form
-  end
-
   def destroy
-    #session[:logged_in_session] = nil
     reset_session
     flash[:message] = "Successfully Logged Out"
 

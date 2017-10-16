@@ -16,7 +16,7 @@ class WorksController < ApplicationController
     @work = Work.new
   end
 
-  def create # Add strong params
+  def create
     @work = Work.new(works_params)
 
     if @work.save
@@ -43,15 +43,9 @@ class WorksController < ApplicationController
       return
     end
 
-    work_updates = params[:work]
-    # This is the same as the create method params
-    @work.category = work_updates[:category]
-    @work.title = work_updates[:title]
-    @work.creator = work_updates[:creator]
-    @work.publication_year = work_updates[:publication_year]
-    @work.description = work_updates[:description]
+    result = @work.update_attributes(works_params)
 
-    if @work.save
+    if result
       redirect_to work_path(@work)
     else
       render :edit, status: :bad_request
@@ -74,6 +68,7 @@ class WorksController < ApplicationController
   private
 
   def works_params
-    params.require(:work).permit(:category, :title, :creator, :publication_year)
+    params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
+  
 end
