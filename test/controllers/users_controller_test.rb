@@ -61,6 +61,9 @@ describe UsersController do
   end
 
   describe "logout" do
-    
+    it "redirects to root_path when log out" do
+      # get "/logout"
+      # must_respond_with redirect
+    end
   end
 end
