@@ -98,7 +98,20 @@ h2 {
   color: white;
 }
 
+.button a:hover {
+  color: white;
+}
 
+
+.button.delete {
+  background-color: #f23e3e;
+  font-size: 70%;
+}
+
+.delete:hover {
+  background-color: #b52020;
+  font-size: 70%;
+}
 /*--------nav bar--------*/
 
 .nav-right {

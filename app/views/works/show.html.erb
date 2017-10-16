@@ -3,43 +3,50 @@
 
 <!-- <%= params %> -->
 
-<main class="large-9 columns, small-3 columns">
-  <h3><%= @work.title %></h3>
+<main>
+  <section class="top-info">
+    <h4><%= @work.title %></h4>
+    <ul>
+      <li>Category: <%= @work.category %></li>
+      <li>Creator: <%= @work.creator %></li>
+      <li>Publication Year: <%= @work.publication_year %></li>
+      <li>Description: <%= @work.description %></li>
+    </ul>
+  </section>
 
-  <ul>
-    <li>Category: <%= @work.category %></li>
-    <li>Creator: <%= @work.creator %></li>
-    <li>Publication Year: <%= @work.publication_year %></li>
-    <li>Description: <%= @work.description %></li>
-  </ul>
+  <section class="large-4 columns, small-3 columns">
+    <h4><%= @work.votes.count %> Votes for this <%= @work.category %> </h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <% @work.votes.each do |vote| %>
+      <tbody>
+        <tr>
+          <td><%= vote.user.username %></td>
+          <td><%= vote.created_at.strftime('%m/%d/%Y') %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
 
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Username</th>
-        <th>Date</th>
-      </tr>
-    </thead>
-    <% @work.votes.each do |vote| %>
-    <tbody>
-      <tr>
-        <td><%= vote.user.username %></td>
-        <td><%= vote.created_at.strftime('%m/%d/%Y') %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <section>
+    <ul>
+      <li class="button"><%= link_to("Edit work", edit_work_path, alt: "Edit work form")%></li>
+        <%# button_to("Edit work", edit_work_path, method: :get) %>
+      <li class="button"><%= link_to("Back To Media Ranks", home_index_path, alt: "View Top Media")%></li>
+        <%# button_to("View Top Media", home_index_path, method: :get) %>
+      <li class="button"><%= link_to("Up Vote", work_votes_path(@work.id), method: :post) %></li>
+        <%# button_to("View Top Media", home_index_path, method: :get) %>
+      <li class="button delete"><%= link_to "Delete", work_path(@work[:id]), method: :delete %></li>
+        <%# button_to("Delete work", work_path, method: :delete) %>
+    </ul>
+  </section>
 
 
-  <ul>
-    <li><%= link_to("Edit work", edit_work_path, alt: "Edit work form")%></li>
-      <%# button_to("Edit work", edit_work_path, method: :get) %>
-    <li><%= link_to "Delete", work_path(@work[:id]), method: :delete %></li>
-      <%# button_to("Delete work", work_path, method: :delete) %>
-    <li><%= link_to("Back To Media Ranks", home_index_path, alt: "View Top Media")%></li>
-      <%# button_to("View Top Media", home_index_path, method: :get) %>
-    <li><%= link_to("Up Vote", work_votes_path(@work.id), method: :post) %></li>
-      <%# button_to("View Top Media", home_index_path, method: :get) %>
-  </ul>
 </main>
