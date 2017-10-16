@@ -30,7 +30,7 @@
     <% @work.votes.each do |vote| %>
       <tr>
         <strong>
-          <td><%= link_to User.find(vote.user_id).name, work_user_path(:work_id) %></td>
+          <td><%= link_to User.find(vote.user_id).name, user_path(vote.user_id) %></td>
           <td><%= Vote.find(vote.user_id).updated_at %></td>
         </strong>
       </tr>
