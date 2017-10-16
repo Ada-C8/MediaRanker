@@ -7,10 +7,4 @@ class Vote < ApplicationRecord
   validates :user, uniqueness: { scope: :work }
 
 
-
-
-
-
-
-
 end

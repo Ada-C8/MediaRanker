@@ -1,9 +1,9 @@
 class WorksController < ApplicationController
-  # before_action :get_work , only: [:update, :destroy]
+  # before_action :get_work , only: [:show, :edit, :update, :destroy]
 
-  def get_work
-    @work = Work.find(params[:id])
-  end
+  # def get_work
+  #   @work = Work.find(params[:id])
+  # end
 
   def index
     @works = Work.all.order(:category, :title)
@@ -84,24 +84,3 @@ def find_work_by_params_id
 end
 
 end
-
-# def upvote
-#   @work = Work.find(params[:id])
-#   @work.votes.create
-#   redirect_to new_vote_path
-#
-#   # render :topten
-#   #want to create a vote, which includes this id as the work id and the logged in user id as the user-id
-#   # @work.votes.create
-#   # redirect_to works_index_path
-#   # get 'works/:id/upvote', to: 'works#upvote', as: 'upvote_work'
-#   #
-#
-# end
-
-#   def upvote
-#   @startup = Startup.find(params[:id])
-#   upvote = @startup.upvotes.find_or_create_by(user: current_user)
-#   upvote.save
-#   redirect_to startups_path
-# end
