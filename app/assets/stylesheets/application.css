@@ -1,4 +1,4 @@
-  @import url('foundation');
+  /*@import url('foundation');*/
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -12,15 +12,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+
  *= require_tree .
  *= require_self
  */
-
-
-
-* {
-  box-sizing: inherit;
-}
 
 main {
   padding-top: 2rem;
@@ -48,15 +43,8 @@ h3 {
   margin-bottom: 0.5rem;
 }
 
-body {
-  font-weight: normal;
-  line-height: 1.5;
-  color: #0a0a0a;
-}
-
-ul {
-  margin-left: 1.25rem;
-  list-style-type: disc;
+a, h3 {
+  color: #26A69A;
 }
 
 li {
@@ -66,21 +54,19 @@ li {
   display: list-item;
 }
 
-ul, ol, dl {
+ul {
   margin-bottom: 1rem;
   line-height: 1.6;
 }
 
+table {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 0;
+}
 
-
-.row {
-   max-width: 75rem;
-   margin-right: auto;
-   margin-left: auto;
- }
-
-.columns {
-  float: left;
+body small {
+  color: slategrey;
 }
 
 .button {
@@ -100,6 +86,10 @@ ul, ol, dl {
   background-color: #00796B;
 }
 
+a:hover {
+  color: #00796B;
+}
+
 .float_right {
   float: right;
 }
@@ -112,12 +102,33 @@ ul, ol, dl {
   padding: 25px 20px 10px 20px
  }
 
+.media-spotlight-header {
+  color: #424242;
+}
+
+section.spotlight>div {
+  padding: 0 2rem 2rem 2rem;
+}
+
+.spotlight p {
+  margin-bottom: 0;
+}
+
+.top-ten h3 {
+  border-bottom: 2px solid #B2DFDB;
+}
+
+.top-ten ul {
+  list-style-type: none;
+  margin-left: 0px;
+}
+
 .page-header h2 {
   text-align: center;
   margin: 25px auto 40px auto;
 }
 
- .page-header h2 a {
+.page-header h2 a {
    color: #FF5722;
    padding-right: 25px;
    margin-right: 15px;
@@ -139,11 +150,26 @@ ul, ol, dl {
    margin-top: 30px;
  }
 
-.status.failure h3, status.success h3 {
+.status.failure h3, .status.success h3 {
    font-weight: normal;
    font-size: 1em;
  }
 
 .status.failure h3 {
    color: #C70039;
+ }
+
+ .status.success h3 {
+   color: #8a8a8a;
+ }
+
+ .root-hr {
+  margin: 0px auto 75px auto;
+  color: #EEEEEE;
+ }
+
+ @media print, screen and (min-width: 64em) {
+ .large-4 {
+   width: 33.33333%;
+ }
  }

@@ -1,6 +1,6 @@
 <ul>
   <% works.each do |work| %>
-    <li><%= link_to(work.title, work_path(work.id)) %> by <%= work.creator %></li>
+    <li><h4><%= link_to(work.title, work_path(work.id)) %><small> by <%= work.creator %></small></h4></li>
     <p><%= work.votes.count %> votes </p>
   <% end %>
 </ul>
