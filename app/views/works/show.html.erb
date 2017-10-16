@@ -1,5 +1,5 @@
 <main class="row">
-  <article>
+  <article class="large-6 small-12 columns">
     <h3>
       <%= link_to @work.title, work_path(@work) %>
     </h3>
@@ -11,7 +11,7 @@
       Published:
     </p>
     <section>
-      
+
       <%= link_to "Back to media ranks", works_path, class: "button" %>
       <%= link_to "Edit", edit_work_path, class: "button" %>
       <%= link_to "Upvote", votes_path(
@@ -21,12 +21,12 @@
         }
       ), method: :post, class:"button" %>
 
-      <%= link_to "Delete", work_path, method: :delete, class: "button" %>
+      <%= link_to "Delete", work_path, method: :delete, data: {confirm: "Are you sure?" }, class: "button alert" %>
     </section>
   </article>
 
 
-  <article>
+  <article class="large-6 small-12 columns">
     <h3><%= Vote.where(work_id: @work.id).count %> Votes for this <%= @work.category %></h3>
     <table>
       <thead>
@@ -44,8 +44,8 @@
             <td>
               <%= link_to vote.user.name, work_path(@work)%>
             </td>
-            <td>
-              <%= vote.created_at %>
+            <td class="black">
+              <%= vote.created_at.to_date %>
             </td>
           </tr>
         <% end %>

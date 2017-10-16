@@ -34,6 +34,10 @@
   background-color: #26A69A;
 }
 
+.button:hover {
+  background-color: #186860;
+}
+
 main {
   margin-top: 2em;
 }
@@ -49,37 +53,29 @@ ul {
 
 h1, h2, h3, h4, h5 {
   font-family: 'Gudea', sans-serif;
-  font-weight: bold;
-  /*color: #26A69A;*/
+  font-weight: bolder
 }
 
-.status {
+/*.status {
   background-color: #e6e6e6;
   border-radius: 5px;
   padding: 20px 25px;
   margin-top: 30px;
   font-weight: normal;
   font-size: 1em;
-}
-/*
-.width {
-  width: 10%;
-}
-
-.mid-width {
-  width: 15%;
-}
-
-.more-width {
-  width: 20%;
 }*/
+
+a:hover {
+  color: #186860;
+}
 
 /********************************/
 /*********** HEADER *************/
 /********************************/
 
-small {
+header small {
   color: white;
+  padding-left: 1em;
 }
 
 h2.align {
@@ -87,10 +83,6 @@ h2.align {
   margin: 0 auto;
   padding: 1em;
 }
-
-/*nav.padding-bottom {
-  padding-bottom: 1em;
-}*/
 
 .brand-style {
   color: #FF5722;
@@ -102,13 +94,29 @@ nav.padding {
   padding: 0 1em 1em 1em;
 }
 
+.hover-orange:hover {
+  color: #FF5722;
+}
 
+a {
+  color: #26A69A;
+}
+
+p {
+  font-size: 16px;
+  color: #0A0A0A;
+}
+
+.black {
+  color: #424242;
+}
 /******************************/
 /*********** BODY *************/
 /******************************/
 
 body {
   font-family: 'Gudea', sans-serif;
+  color: #26A69A;
 }
 
 /********************************/

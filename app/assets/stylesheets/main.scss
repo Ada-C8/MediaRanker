@@ -1,6 +1,24 @@
 // Place all the styles related to the Main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+section.padding-top {
+  padding-top: 3em;
+}
+
+.spotlight-border {
+  border-bottom: 2px solid
+}
+
 h2 small {
   color: white;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+small.grey {
+  color: slategrey;
+  font-size: 80%;
 }

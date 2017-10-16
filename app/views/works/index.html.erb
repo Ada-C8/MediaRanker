@@ -2,24 +2,24 @@
   <h3>List of Works </h3>
 
   <section>
-    <h4>Albums</h4>
+    <h4 class="black">Albums</h4>
     <table>
       <thead>
         <tr>
-          <th>Votes</th>
+          <th width="80">Votes</th>
           <th>Title</th>
           <th>Created By</th>
-          <th>Published</th>
-          <th>Upvote</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
         </tr>
       </thead>
       <tbody>
         <% @works.where(category: "album").each do |work| %>
           <tr>
-            <td><%= Vote.where(work_id: work.id).count %></td>
+            <td><p><%= Vote.where(work_id: work.id).count %></p></td>
             <td><%= link_to work.title, work_path(work.id)%></td>
-            <td><%= work.creator %></td>
-            <td><%= work.publication_year %></td>
+            <td class="black"><%= work.creator %></td>
+            <td class="black"><%= work.publication_year %></td>
             <td>
               <%= link_to "Upvote", votes_path(
                 :vote => {
@@ -40,20 +40,20 @@
     <table>
       <thead>
         <tr>
-          <th class="width">Votes</th>
+          <th width="80">Votes</th>
           <th>Title</th>
           <th>Created By</th>
-          <th class="width">Published</th>
-          <th class="width">Upvote</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
         </tr>
       </thead>
       <tbody>
         <% @works.where(category: "book").each do |work| %>
           <tr>
-            <td><%= Vote.where(work_id: work.id).count %></td>
+            <td><p><%= Vote.where(work_id: work.id).count %></p></td>
             <td><%= link_to work.title, work_path(work.id)%></td>
-            <td><%= work.creator %></td>
-            <td><%= work.publication_year %></td>
+            <tdclass="black"><%= work.creator %></td>
+            <td class="black"><%= work.publication_year %></td>
             <td>
               <%= link_to "Upvote", votes_path(
                 :vote => {
@@ -73,20 +73,20 @@
     <table>
       <thead>
         <tr>
-          <th class="width">Votes</th>
+          <th width="80">Votes</th>
           <th>Title</th>
           <th>Created By</th>
-          <th class="width">Published</th>
-          <th class="width">Upvote</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
         </tr>
       </thead>
       <tbody>
         <% @works.where(category: "movie").each do |work| %>
           <tr>
-            <td><%= Vote.where(work_id: work.id).count %></td>
+            <td><p><%= Vote.where(work_id: work.id).count %></p></td>
             <td><%= link_to work.title, work_path(work.id)%></td>
-            <td><%= work.creator %></td>
-            <td><%= work.publication_year %></td>
+            <td class="black"><%= work.creator %></td>
+            <td class="black"><%= work.publication_year %></td>
             <td>
               <%= link_to "Upvote", votes_path(
                 :vote => {
@@ -99,5 +99,7 @@
         <% end %>
       </tbody>
     </table>
+    <%= link_to "View Top Media", works_path, class:"button" %>
+    <%= link_to "Add a new work", new_work_path, class: "button" %>
   </section>
 </main>

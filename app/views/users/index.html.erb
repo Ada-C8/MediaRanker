@@ -5,8 +5,8 @@
     <thead>
       <tr>
         <th>Username</th>
-        <th class="width">Votes</th>
-        <th class="more-width">Joined</th>
+        <th width="100">Votes</th>
+        <th width="200">Joined</th>
       </tr>
     </thead>
 
@@ -14,8 +14,8 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= link_to user.name, user_path(user.id)%></td>
-          <td><%= Vote.where(user_id: user.id).count %></td>
-          <td><%= user.created_at.to_date %></td>
+          <td class="black"><%= Vote.where(user_id: user.id).count %></td>
+          <td class="black"><%= user.created_at.to_date %></td>
         </tr>
       <% end %>
     </tbody>

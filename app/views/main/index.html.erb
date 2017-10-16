@@ -3,18 +3,18 @@
 
     <% works = Work.all.sort_by { |work| -work.votes.count} %>
     <% if works.empty? %>
-    <div>
+    <div class="bold">
       <h3>
-        Media Spotlight:
+        <span class="spotlight">Media Spotlight:</span>
       </h3>
     </div>
 
     <% else %>
 
-    <div>
+    <div class="bold">
       <h3>
-        Media Spotlight:
-        <%= link_to works.first.title, work_path(works.first.id) %> by <%= works.first.creator %>
+        <span class="black">Media Spotlight:</span>
+        <%= link_to works.first.title, work_path(works.first.id), class: "spotlight-border" %> by <%= works.first.creator %>
       <p>
         <%= works.first.votes.count %> of Votes
       </p>
@@ -26,7 +26,7 @@
 
   <hr>
 
-  <section class="large-4 columns">
+  <section class="large-4 columns padding-top">
     <h3 class="border-bottom">Top Movies</h3>
     <% works = Work.where(category: "movie") %>
     <% works.sort_by { |work| -work.votes.count } %>
@@ -34,8 +34,8 @@
       <% works.each do |work| %>
       <li>
         <h4>
-          <%= work.title %>
-          <small>
+          <%= link_to work.title, work_path(work.id) %>
+          <small class="grey">
             by <%= work.creator %>
           </small>
         </h4>
@@ -45,7 +45,7 @@
     </ul>
   </section>
 
-  <section class="large-4 columns">
+  <section class="large-4 columns padding-top">
     <h3 class="border-bottom">Top Books</h3>
     <% works = Work.where(category: "book") %>
     <% works.sort_by { |work| -work.votes.count } %>
@@ -53,8 +53,8 @@
       <% works.each do |work| %>
       <li>
         <h4>
-          <%= work.title %>
-          <small>
+          <%= link_to work.title, work_path(work.id) %>
+          <small class="grey">
             by <%= work.creator %>
           </small>
         </h4>
@@ -64,7 +64,7 @@
     </ul>
   </section>
 
-  <section class="large-4 columns">
+  <section class="large-4 columns padding-top">
     <h3 class="border-bottom">Top Albums</h3>
     <% works = Work.where(category: "album") %>
     <% works.sort_by { |work| -work.votes.count } %>
@@ -72,8 +72,8 @@
       <% works.each do |work| %>
       <li>
         <h4>
-          <%= work.title %>
-          <small>
+          <%= link_to work.title, work_path(work.id) %>
+          <small class="grey">
             by <%= work.creator %>
           </small>
         </h4>
