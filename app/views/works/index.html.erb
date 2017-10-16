@@ -62,7 +62,7 @@
         <% elsif key == "Published" %>
           <%= "#{book.publication_year}" %>
         <% elsif key == "Upvote" %>
-          <%= link_to "Upvote", upvote_path(book.id), method: :post %>
+          <%= link_to "Upvote", upvote_path(book.id), method: :post, class: :button %>
         <% end %>
       </td>
       <% end %>
@@ -94,7 +94,7 @@
         <% elsif key == "Published" %>
           <%= "#{movie.publication_year}" %>
         <% elsif key == "Upvote" %>
-          <%= link_to "Upvote", upvote_path(movie.id), method: :post %>
+          <%= link_to "Upvote", upvote_path(movie.id), method: :post, class: :button %>
         <% end %>
       </td>
       <% end %>
