@@ -49,7 +49,7 @@ class WorksController < ApplicationController
     deleted_work = "#{@work.category} #{@work.id}"
     # destroy_votes(@work)
     if @work.destroy
-      flash[:notice] = "Successfully destroyed #{deleted_work}"
+      flash[:success] = "Successfully destroyed #{deleted_work}"
       redirect_to root_path
     else
       flash.now[:error] = "Work was not successfully destroyed"
@@ -58,12 +58,18 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    # find_work
-    # if !@work
-    #   render_404
-    #   return
-    # end
-    #
+    find_work
+    if !@work
+      render_404
+      return
+    end
+    if does_vote_exist(@work)
+      flash[:error] = "You've already upvoted this!"
+      redirect_to work_path(@work.id)
+    else
+      flash[:success] = "Successfully upvoted!"
+      redirect_to work_path(@work.id)
+    end
   end
 end
 
@@ -91,6 +97,20 @@ end
 
 def render_404
   render file: "/public/404.html", status: 404
+end
+
+def does_vote_exist(input_work)
+  session_id = session[:user_id].to_s.to_sym
+  input_work_id = input_work.id.to_s.to_sym
+  all_votes = Vote.all.group_by{|vote| vote.user_id}
+  if all_votes[session_id]
+    user_votes = all_votes[session_id].group_by {|vote| vote.work_id}
+    if user_votes[input_work_id]
+      return true
+    else
+      return false
+    end
+  end
 end
 
 # def destroy_votes(input_work)
