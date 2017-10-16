@@ -78,7 +78,7 @@ describe WorksController do
   end #end create
 
   describe "show" do
-    it "returns success when given a valid book id" do
+    it "returns success when given a valid work id" do
       work_id = Work.first.id
 
       get work_path(work_id)
@@ -86,10 +86,43 @@ describe WorksController do
       must_respond_with :success
     end
 
-    it "returns not_found when given an invalid_book_id" do
-      invalid_work_id = Work.last.id + 1 
+    it "returns not_found when given an invalid_work_id" do
+      invalid_work_id = Work.last.id + 1
+      get work_path(invalid_work_id)
+      must_respond_with :not_found
     end
   end #end show
+
+  describe "edit" do
+    it "returns success when given a valid work id" do
+      work_id = Work.first.id
+
+      get work_path(work_id)
+
+      must_respond_with :success
+    end
+
+    it "returns not_found when given an invalid_work_id" do
+      invalid_work_id = Work.last.id + 1
+      get work_path(invalid_work_id)
+      must_respond_with :not_found
+    end
+  end #end edit
+
+  describe "update" do
+    it "successfully saves update to database and redirect_to work_path for updated work." do
+      work = Work.new(catergory: "album", title: "test")
+
+      patch work_path(work)
+
+      must_respond_with :success
+      must_redirect_to work_path()
+    end
+  end #end update
+
+  describe "destroy" do
+
+  end #end destroy
 end
 
 
