@@ -1,6 +1,6 @@
 <section>
   <h2>Media Spotlight</h2>
-  <%#= @works.first.title  %>
+  <%= link_to @works.sort_by {|work| -work.votes.count}.first.title, "#"  %>
 </section>
 
 <h2>Top Works</h2>
