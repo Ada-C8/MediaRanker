@@ -16,5 +16,6 @@ describe VotesController do
   #   }.must_change 'Vote.count', 0
   #
   #   must_respond_with :error
+  #   must_redirect_to works_path
   # end
 end
