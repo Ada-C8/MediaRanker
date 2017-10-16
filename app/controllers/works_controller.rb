@@ -43,6 +43,7 @@ class WorksController < ApplicationController
 
   def destroy
     find_work
+    return if require_owner(@work)
     if !@work
       render_404
       return
@@ -123,7 +124,8 @@ end
 def require_owner(input_work)
   if input_work.user != @session_user
     flash[:error] = "Works can only be deleted by their owners"
-    redirect_to :back
+    redirect_to work_path(input_work.id)
+
   end
 end
 
