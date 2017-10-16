@@ -3,24 +3,24 @@ class SessionsController < ApplicationController
   def login_form
   end
 
-  def login
-    if find_user(params[:username])
-      flash[:success] = "Successfully loggin in as #{@user.name}"
-      session[:user_id] = @user.id
-      redirect_to root_path
-    else
-      @user = User.new
-      @user.name = (params[:username])
-      if @user.save
-        flash[:success] = "Successfully loggin in as #{@user.name}"
-        session[:user_id] = @user.id
-        redirect_to root_path
-      else
-        flash.now[:error] = "User not logged in successfully"
-        render :login_form
-      end
-    end
-  end
+  # def login
+  #   if find_user(params[:username])
+  #     flash[:success] = "Successfully loggin in as #{@user.name}"
+  #     session[:user_id] = @user.id
+  #     redirect_to root_path
+  #   else
+  #     @user = User.new
+  #     @user.name = (params[:username])
+  #     if @user.save
+  #       flash[:success] = "Successfully loggin in as #{@user.name}"
+  #       session[:user_id] = @user.id
+  #       redirect_to root_path
+  #     else
+  #       flash.now[:error] = "User not logged in successfully"
+  #       render :login_form
+  #     end
+  #   end
+  # end
 
   def logout
     if session[:user_id]
@@ -35,7 +35,6 @@ class SessionsController < ApplicationController
 
   def create
     @auth_hash = request.env['omniauth.auth']
-    ap @auth_hash
     @user = User.find_by(uid: @auth_hash['uid'], provider: @auth_hash['provider'])
     if @user
       session[:user_id] = @user.id
@@ -49,6 +48,7 @@ class SessionsController < ApplicationController
         flash[:error] = "Unable to save user!!!"
       end
     end
+    redirect_to root_path
   end
 
 end

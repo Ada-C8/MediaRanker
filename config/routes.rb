@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   root to: 'main_page#index'
   get '/', to: 'main_page#index'
   post '/works/:id/upvote', to: 'works#upvote', as: 'upvote'
-  get '/login', to: 'sessions#login_form'
-  post '/login', to: 'sessions#login'
+  # get '/login', to: 'sessions#login_form'
+  # post '/login', to: 'sessions#login'
   post '/logout', to: 'sessions#logout'
+  get "/auth/github", as: 'login'
   get "/auth/:provider/callback", to: "sessions#create"
 
 
