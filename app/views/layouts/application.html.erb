@@ -57,9 +57,9 @@
         <% flash[:details].each do |field, problems| %>
           <% problems.each do |problem| %>
           <li>
-            <!-- <strong>
+            <strong>
               <%= field.capitalize %>:
-            </strong> -->
+            </strong>
             <%= problem.capitalize %>
           </li>
           <% end %>
