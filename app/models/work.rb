@@ -21,4 +21,15 @@ class Work < ApplicationRecord
     return sorted.reverse
   end
 
+  def self.limit_by(hash, num)
+    hash.each do |k, v|
+      hash[k] = v[0...num]
+    end
+
+    return hash
+  end
+
+  def self.most_votes
+    return sorted_by_vote(Work.all)[0]
+  end
 end

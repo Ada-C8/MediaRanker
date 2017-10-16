@@ -11,8 +11,6 @@ describe WorksController do
         get works_path
         must_respond_with :success
       end
-
-      #TODO: Write test when there's a model method used
     end #index
 
     describe "show" do
@@ -90,14 +88,11 @@ describe WorksController do
   end # CRUD Tests
 
   describe "Other Controller Methods" do
-    it "should display a root page" do
+    it "should display a root page (home)" do
       get root_path
       must_respond_with :success
-
-
-      #TODO flesh out when you decide where which methods live between Controller and Model
     end
 
-    #TODO Ask if we ever test strong params
+    #TODO Ask how to test strong params
   end
 end

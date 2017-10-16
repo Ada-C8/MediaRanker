@@ -1,16 +1,18 @@
+<% if @spotlight %>
 <section class="row spotlight">
   <div>
     <h3>
-      <span class="media-spotlight-header">Media Spotlight</span>:
-       <%= link_to "Most voted work... FIX" %>
+      <span class="media-spotlight-header">Media Spotlight</span>
+       <%= link_to @spotlight.title, work_path(@spotlight.id) %>
     </h3>
-    <p>Number of votes!</p>
+    <p><%= @spotlight.votes.count %> votes!</p>
   </div>
 </section>
 
 <hr class="root-hr">
+<% end %>
 
-<% @works.each do |key, array| %>
+<% @limited_works.each do |key, array| %>
 <section class="top-ten columns large-4 small-12">
   <h3><%= "Top #{key.capitalize}" %></h3>
   <ul>
@@ -23,6 +25,5 @@
     </li>
     <% end %>
   </ul>
-  !! IF there are more works than listed, link to them "View More Movies"??? Optional.
 </section>
 <% end %>

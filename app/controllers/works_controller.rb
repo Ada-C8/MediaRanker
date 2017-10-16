@@ -1,6 +1,5 @@
 class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update]
-  #TODO setup work model method for sorting, etc (take out of controller)
 
   def index
     @works = Work.works_by_category
@@ -45,12 +44,10 @@ class WorksController < ApplicationController
     redirect_back(fallback_location: works_path) if Work.find_by(id: params[:id]).destroy
   end
 
-  def home #same as index with limit, how to do?
-    books = Work.where(category: "book").joins(:votes).group('works.id').order('count(votes) DESC').limit(10)
-    movies = Work.where(category: "movie").joins(:votes).group('works.id').order('count(votes) DESC').limit(10)
-    albums = Work.where(category: "album").joins(:votes).group('works.id').order('count(votes) DESC').limit(10)
+  def home
+    @limited_works = Work.limit_by(Work.works_by_category, 10)
 
-    @works = {Albums: albums, Books: books, Movies: movies}
+    @spotlight = Work.most_votes
   end
 
   private
