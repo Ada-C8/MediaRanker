@@ -6,19 +6,23 @@
   <p><%= @work_top.votes.count %> votes - <%= @work_top.description %></p>
   <% else %>
   <h3><span>Media Spotlight:</span>
-  No entries founds
+  No records found
   <% end %>
 </div>
 
-<% @top.each do |type| %>
+<% @top.each do |category, top_works| %>
   <div class="top-ten large-4 small-12 columns">
-    <h3>Top <%=type.first.category.capitalize %>s</h3>
-    <% type.each do |work| %>
-      <h4>
-        <%= link_to work.title, work_path(work.id) %>
-        <small>by <%= work.creator %></small>
-      </h4>
-      <p><%= work.votes.count %> votes</p>
+    <h3>Top <%=category.capitalize %>s</h3>
+    <% if top_works.length != 0 %>
+      <% top_works.each do |work| %>
+        <h4>
+          <%= link_to work.title, work_path(work.id) %>
+          <small>by <%= work.creator %></small>
+        </h4>
+        <p><%= work.votes.count %> votes</p>
+      <% end %>
+    <% else %>
+      <p>No records found</p>
     <% end %>
   </div>
 <% end %>
