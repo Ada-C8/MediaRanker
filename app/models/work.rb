@@ -21,11 +21,4 @@ class Work < ApplicationRecord
   def self.sort
     Work.all.sort_by {|work| work.votes.count * -1}
   end
-
-  def get_description
-    if @description == "nil"
-      @description = "a #{@category}!"
-    end
-  end
-
 end

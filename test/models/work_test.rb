@@ -30,5 +30,19 @@ describe Work do
     work.valid?.must_equal false
   end
 
-  
+  it "can return a list of works ordered by vote, #self.sort" do
+    greatest = Work.sort[0]
+    second = Work.sort[1]
+    greatest.title.must_equal "Grey's Anatomy"
+    second.title.must_equal "Scandal"
+    greatest.votes.count.must_equal 1
+    second.votes.count.must_equal 0
+  end
+
+  it "can return the 'featured' work by returning the work with the greatest vote count, #self.top" do
+    top = Work.top
+    top.title.must_equal "Grey's Anatomy"
+  end
+
+
 end
