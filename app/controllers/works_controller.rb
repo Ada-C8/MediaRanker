@@ -57,7 +57,7 @@ class WorksController < ApplicationController
     elsif
       Vote.find_by_user_id_and_work_id(user_id,work_id)
       flash[:status] = :failure
-      flash[:message] = "Coud not upvote. User has already voted for this work"
+      flash[:message] = "Could not upvote. User has already voted for this work"
     elsif
       vote = Vote.new
       vote.user_id = user_id
@@ -74,9 +74,6 @@ private
     return params.require(:work).permit(:title, :creator, :publication_year, :category, :description)
   end
 
-  # def vote_params
-  #   return params.require(:vote).permit(:user_id, :work_id)
-  # end
 
   def find_work_by_params_id
     @work = Work.find_by(id: params[:id])

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.left_outer_joins(:votes).distinct.select('users.*, COUNT(votes.*) AS votes_count').group('users.id').order('votes_count')
+    @users = User.all_users_with_vote_count
   end
 
   def login_form

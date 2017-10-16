@@ -21,7 +21,7 @@ describe Vote do
   end
 
   # describe "relations" do
-  #   it" belongs to "do
+  #   it "can  belongs to "do
   #   end
   # end
 end
