@@ -40,6 +40,14 @@ class WorksController < ApplicationController
   end
 
   def destroy
+
+    unless find_work_by_params_id
+      votes = Vote.where(work_id: work.id)
+      votes.each do |vote|
+        vote.destroy
+      end
+    end
+
      if @work.destroy
       flash.now[:status] = :success
       flash.now[:message] = "Successfully destroyed #{@work.category} #{@work.id}"
@@ -57,6 +65,7 @@ class WorksController < ApplicationController
 
   def find_work_by_params_id
     @work = Work.find_by(id: params[:id])
+
     unless @work
       head :not_found
     end
