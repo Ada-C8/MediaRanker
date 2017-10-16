@@ -1,9 +1,13 @@
 <div class="media-spotlight small-12 columns">
+  <% if @work_top == nil %>
   <h3><span>Media Spotlight:</span>
-  <%= link_to @work_top.title + "~", work_path(@work_top.id) %>
-  by <%= @work_top.creator %>
+    <%= link_to @work_top.title + "~", work_path(@work_top.id) %> by <%= @work_top.creator %>
   </h3>
   <p><%= @work_top.votes.count %> votes - <%= @work_top.description %></p>
+  <% else %>
+  <h3><span>Media Spotlight:</span>
+  No entries founds
+  <% end %>
 </div>
 
 <% @top.each do |type| %>
