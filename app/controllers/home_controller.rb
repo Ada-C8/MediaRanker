@@ -1,20 +1,10 @@
 class HomeController < ApplicationController
 
   def index
-    @books = Work.where(category: "book").limit(10)
-    @movies = Work.where(category: "movie").limit(10)
-    @albums = Work.where(category: "album").limit(10)
+    @books = Work.where(category: "book").sort_by { |work| work.votes.length}.reverse
+    @movies = Work.where(category: "movie").sort_by { |work| work.votes.length}.reverse
+    @albums = Work.where(category: "album").sort_by { |work| work.votes.length}.reverse
+
     @spotlight = Vote.media_spotlight
   end
-
-  # def index
-  #   @books = Work.where(category: "book")
-  #   @movies = Work.where(category: "movie")
-  #   @albums = Work.where(category: "album")
-  #   @spotlight = Vote.media_spotlight
-  # end
-
-
-
-
 end

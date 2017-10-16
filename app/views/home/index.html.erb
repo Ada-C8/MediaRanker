@@ -10,7 +10,7 @@
   <div class="large-4 columns, small-3 columns">
     <h3>Top Movies</h3>
     <ul>
-      <% @movies.each do |movie| %>
+      <% @movies.first(10).each do |movie| %>
         <li><%=link_to(movie.title, work_path(movie.id)) %> by: <%= movie.creator %></li>
         <li> <%= movie.votes.count %> Votes</li>
       <%end%>
@@ -21,7 +21,7 @@
   <div class="large-4 columns, small-3 columns">
     <h3>Top books</h3>
     <ul>
-      <% @books.each do |book| %>
+      <% @books.first(10).each do |book| %>
         <li><%= link_to(book.title, work_path(book.id)) %> by: <%= book.creator %></li>
         <li><%= book.votes.count %> Votes</li>
       <%end%>
@@ -32,7 +32,7 @@
   <div class="large-4 columns, small-3 columns">
     <h3>Top Albums</h3>
     <ul>
-      <% @albums.each do |album| %>
+      <% @albums.first(10).each do |album| %>
         <li><%=link_to(album.title, work_path(album.id)) %> by: <%= album.creator %></li>
         <li> <%= album.votes.count %> Votes</li>
       <%end%>
