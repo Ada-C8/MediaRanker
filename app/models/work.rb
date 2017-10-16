@@ -23,8 +23,7 @@ class Work < ApplicationRecord
   def self.top_ten_albums
     works =  Work.sort
     top_albums = []
-    if works == []
-    else
+    if works
       works.each do |work|
         if work.category == "album"
           top_albums << work
@@ -37,32 +36,29 @@ class Work < ApplicationRecord
   def self.top_ten_books
     works =  Work.sort
     top_books = []
-    if works == []
-      return top_books
-    end
-
-    works.each do |work|
-      if work.category == "book"
-        top_books << work
+    if works
+      works.each do |work|
+        if work.category == "book"
+          top_books << work
+        end
       end
     end
     return top_books[0..9]
   end
 
+
   def self.top_ten_movies
     works =  Work.sort
     top_movie = []
-    if works == []
-      return top_movie
-    end
-    works.each do |work|
-      if work.category == "movie"
-        top_movie << work
+    if works
+      works.each do |work|
+        if work.category == "movie"
+          top_movie << work
+        end
       end
     end
     return top_movie[0..9]
   end
-
 
   def self.top_work
     if Work.all.count != 0
