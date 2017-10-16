@@ -44,6 +44,4 @@ class UsersController < ApplicationController
     session[:user] = nil
     return redirect_to root_path
   end
-
-  # private
 end
