@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   get "login", to: "users#login_form", as: "login"
   post "login", to: "users#login"
   get "logout", to: "users#logout", as: "logout"
+
+  get "work/:id/votes", to: "votes#create", as: "create_vote"
+  post "work/:id/votes", to: "votes#create"
 end
