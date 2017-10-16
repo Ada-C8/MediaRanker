@@ -197,4 +197,39 @@ describe WorksController do
       Work.count.must_equal before_count
     end
   end
+
+  describe 'upvote' do
+    it 'user can upvote a work if they are signed in' do
+      before_count = Vote.count
+      post login_path({ username: 'new' })
+
+      get upvote_path({id: good_id})
+      flash[:status].must_equal :success
+      must_respond_with :found
+
+      Vote.count.must_equal (before_count + 1)
+    end
+
+    it 'user can not upvote a work if they are not signed in' do
+      before_count = Vote.count
+
+      get upvote_path({id: good_id})
+      flash[:status].must_equal :failure
+      must_respond_with :found
+
+      Vote.count.must_equal (before_count)
+    end
+
+    it 'user can not upvote a work if they have already voted for it' do
+      post login_path({ username: 'new' })
+      get upvote_path({id: good_id})
+      before_count = Vote.count
+
+      get upvote_path({id: good_id})
+      flash[:status].must_equal :failure
+      must_respond_with :found
+
+      Vote.count.must_equal (before_count)
+    end
+  end
 end
