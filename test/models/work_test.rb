@@ -39,6 +39,7 @@ describe Work do
       w2.errors.messages.must_include :category
     end
 
+# NOTE: I left these tests as failing tests beccause I had to remove this validation from the Work model because it wasn't recognizing the categories from the drop down menu on the new_form as valid categories...
     it "recuires that the category be 'album, movie, or book'" do
       # can create a new work with category 'book'
       new_book = Work.new(title: "new book", category: 'book')
@@ -93,6 +94,31 @@ describe Work do
 
         top.title.must_equal w3.title
       end # return the top work
+
+      it "will return the the first work if there is a tie for the most votes" do
+        w3.save
+        w4.save
+        u2 = User.last
+
+        w3.votes.create(user_id: u.id, work_id: w3.id)
+        w3.votes.create(user_id: u2.id, work_id: w3.id)
+        w4.votes.create(user_id: u.id, work_id: w4.id)
+        w4.votes.create(user_id: u2.id, work_id: w4.id)
+        top = Work.top_work
+
+        top.title.must_equal w3.title
+      end # return the first in a tie
+
+      it "will return the first work if no works have votes" do
+        # TODO: why does this test fail even though the titles match???
+        w4.save
+        w3.save
+
+        top = Work.top_work
+
+        top.title.must_equal w4.title
+      end # return when no votes
+
     end # top_work
 
 
