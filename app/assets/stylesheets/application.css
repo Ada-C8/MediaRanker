@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  font-family: "Gudea", sans-serif;
+}
+
+.page-header {
+  background-color: #B2DFDB;
+  max-width: 100%;
+  border-bottom: 1px solid white;
+  margin-bottom: 10px;
+  padding: 25px 20px 10px 20px
+}
+
+.button {
+  background-color: #26A69A;
+}
