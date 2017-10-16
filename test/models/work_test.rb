@@ -13,7 +13,7 @@ describe Work do
     work.title = works(:bonito).title
     work.save.must_equal false
     work.errors.keys.must_include :title
-    work.errors[:title].must_equal ["has already been take"]
+    work.errors[:title].must_equal ["has already been taken"]
   end
 
 describe "all_works_by_title" do
