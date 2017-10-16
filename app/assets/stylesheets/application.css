@@ -138,8 +138,13 @@ main li a:hover {
 
 /*----------WORK INDEX PAGE-----------*/
 
+main h3 {
+  color: #26A69A;
+}
 
 /*----------USER INDEX PAGE-----------*/
 main h4 {
   color: #26A69A;
 }
+
+/*----------USER WORK PAGE-----------*/
