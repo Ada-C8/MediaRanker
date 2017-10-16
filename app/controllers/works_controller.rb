@@ -44,9 +44,9 @@ class WorksController < ApplicationController
   end
 
   def home
-    @top_books
-    @top_albums
-    @top_movies
+    @top_books = Work.where(category: "book").order('votes_count').limit(10)
+    @top_albums = Work.where(category: "album").order('votes_count').limit(10)
+    @top_movies = Work.where(category: "movie").order('votes_count').limit(10)
   end
 
   private

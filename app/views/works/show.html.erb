@@ -6,8 +6,8 @@
   <section>
     <%= link_to "Back to Media Ranks", root_path, class: "button" %>
     <%= link_to "Edit", edit_work_path(@work.id), class: "button" %>
-    <%= link_to "Upvote", class: "button" %>
-    <%= link_to "Delete", work_path(@work.id), class: "button", method: :delete %>
+    <%= link_to "Upvote", work_votes_path(@work.id), class: "button", method: :post %>
+    <%= link_to "Delete", work_path(@work.id), class: "button alert", method: :delete, data: { confirm: "Delete #{@work.category}?" } %>
   </section>
 </article>
 <article class="voting-users columns large-6 small-12">
