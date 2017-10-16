@@ -55,7 +55,7 @@ class WorksController < ApplicationController
       flash[:failure] = 'You must log in to do that'
     else
       @check = Vote.where(user_id: session[:user_id], work_id: @work.id)
-      if @check == nil
+      if @check[0] == nil
         @vote = Vote.new(category: @work.category,
                         work_id: @work.id,
                         date: Date.today,
