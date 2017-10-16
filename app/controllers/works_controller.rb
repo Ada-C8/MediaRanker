@@ -1,12 +1,11 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update]
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def index
     @works = Work.works_by_category
   end
 
   def show
-    render_404 unless @work
   end
 
   def new
@@ -27,7 +26,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    render_404 unless @work
   end
 
   def update
@@ -41,7 +39,13 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    redirect_back(fallback_location: works_path) if Work.find_by(id: params[:id]).destroy
+    if (@work.votes.count == 0) && @work.destroy
+      flash[:success] = "Successfully deleted Media ID#{@work.id}!"
+      redirect_to works_path
+    else
+      flash[:failure] = "Cannot delete a work with votes!"
+      redirect_to work_path(@work.id)
+    end
   end
 
   def home
@@ -53,6 +57,7 @@ class WorksController < ApplicationController
   private
   def find_work
     @work = Work.find_by(id: params[:id])
+    render_404 unless @work
   end
 
   def work_params

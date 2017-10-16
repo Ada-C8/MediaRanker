@@ -4,6 +4,7 @@ describe WorksController do
 
   let(:book1) { works(:book1) }
   let(:book2) { works(:book2) }
+  let(:album1) { works(:album1) }
 
   describe "CRUD methods" do
     describe "index" do
@@ -78,11 +79,23 @@ describe WorksController do
     end #update
 
     describe "destroy" do
-      it "should destroy a Work" do
+      it "will render 404 page if id isn't found" do
+        delete delete_work_path(Work.last.id + 1)
+        must_respond_with :not_found
+      end
+
+      it "should destroy a Work if Work has no votes" do
         proc { delete delete_work_path(book1.id) }.must_change 'Work.count', -1
         must_respond_with :redirect
 
         Work.find_by(id: book1.id).must_be_nil
+      end
+
+      it "should not destroy a Work if Work has votes" do
+        proc { delete delete_work_path(album1.id) }.must_change 'Work.count', 0
+        must_respond_with :redirect
+
+        Work.find_by(id: album1.id).wont_be_nil
       end
     end #destroy
   end # CRUD Tests
