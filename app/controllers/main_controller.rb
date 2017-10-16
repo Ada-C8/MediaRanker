@@ -2,6 +2,8 @@ class MainController < ApplicationController
 
   def index
     @work_top = Work.top_work
-    # @work_ten = Work.top_ten
+
+    @top = Work::CATEGORIES.map { |category| Work.top_ten(category.downcase.to_sym) }
+
   end
 end

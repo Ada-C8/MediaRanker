@@ -3,8 +3,8 @@
   <thead>
     <tr>
       <th>Username</th>
-      <th>Votes</th>
-      <th>Joined</th>
+      <th width="100">Votes</th>
+      <th width="150">Joined</th>
     </tr>
   </thead>
   <tbody>
@@ -12,7 +12,7 @@
       <tr>
         <td><%= link_to user.name, user_path(user.id) %></td>
         <td><%= user.votes.count %></td>
-        <td><%= user.created_at.strftime("%d %b %Y") %></td>
+        <td><%= user.created_at.localtime.strftime("%d %b %Y") %></td>
     <% end %>
       </tr>
 

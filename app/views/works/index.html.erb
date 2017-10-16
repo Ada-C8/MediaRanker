@@ -1,18 +1,16 @@
 <h3>List of works</h3>
 
-<% category_rename = { "album" => "Albums", "book" => "Books", "movie" => "Movies" }  %>
-
 <% works_by_category = @works.group_by { |w| w.category } %>
 <% works_by_category.each do |category, works|%>
 <section>
-  <h4><%= category_rename[category] %></h4>
+  <h4><%= category.capitalize %>s</h4>
   <table>
     <tr>
-      <th>Votes</th>
+      <th width="94">Votes</th>
       <th>Title</th>
-      <th>Created By</th>
-      <th>Published</th>
-      <th>Upvote</th>
+      <th width="150">Created By</th>
+      <th width="100">Published</th>
+      <th width="94">Upvote</th>
     </tr>
     <% works.each do |work| %>
       <tr>
@@ -20,7 +18,7 @@
         <td><%= link_to work.title, work_path(work.id) %></td>
         <td><%= work.creator %></td>
         <td><%= work.publication_year %></td>
-        <td><%= link_to "Upvote", votes_path(:work_id => work.id), method: :post %></td>
+        <td><%= link_to "Upvote", votes_path(work_id: work.id), method: :post, class: "button" %></td>
       </tr>
     <% end %>
   </table>

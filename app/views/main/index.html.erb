@@ -1,3 +1,20 @@
-<h3>Media Spotlight:</h3>
-<%= link_to @work_top.title, work_path(@work_top.id) %>
-<p>something</p>
+<div class="media-spotlight small-12 columns">
+  <h3><span>Media Spotlight:</span>
+  <%= link_to @work_top.title + "~", work_path(@work_top.id) %>
+  by <%= @work_top.creator %>
+  </h3>
+  <p><%= @work_top.votes.count %> votes - <%= @work_top.description %></p>
+</div>
+
+<% @top.each do |type| %>
+  <div class="top-ten large-4 small-12 columns">
+    <h3>Top <%=type.first.category.capitalize %>s</h3>
+    <% type.each do |work| %>
+      <h4>
+        <%= link_to work.title, work_path(work.id) %>
+        <small>by <%= work.creator %></small>
+      </h4>
+      <p><%= work.votes.count %> votes</p>
+    <% end %>
+  </div>
+<% end %>

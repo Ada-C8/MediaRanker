@@ -20,7 +20,7 @@
       <td><%= vote.work.creator %></td>
       <td><%= vote.work.publication_year %></td>
       <td><%= vote.work.category.capitalize %></td>
-      <td><%= vote.created_at.strftime('%d %b %Y') %></td>
+      <td><%= vote.created_at.localtime.strftime('%d %b %Y') %></td>
     </tr>
     <% end %>
   </tbody>
