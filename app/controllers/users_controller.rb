@@ -34,7 +34,7 @@ class UsersController < ApplicationController
         flash[:status] = :failure
         flash[:message] = "Please type in your username"
 
-        render :login_form
+        render :login_form, status: :bad_request
       end
 
     end
