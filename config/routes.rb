@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'works#homepage'
 
+  post 'works/:id/vote', to: 'votes#create', as: 'vote'
   resources :works
 
   resources :users

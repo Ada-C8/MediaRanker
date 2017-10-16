@@ -3,6 +3,7 @@
     <div>
       <h3><span class="media-spotlight-header">Media Spotlight: <%= @top_work.title %> by <%= @top_work.creator  %>
       </span></h3>
+      <p><%=@top_work.votes.count%> Votes</p>
     </div>
   </section>
 
@@ -15,7 +16,7 @@
         <% @albums.each do |work| %>
         <h4><%= link_to work.title, work_path(work.id) %>
           <small>by: <%= work.creator %></small></h4>
-          <p> [Count] votes </p>
+          <p> <%= work.votes.count %> votes </p>
         <% end %>
       </li>
     </ul>
@@ -29,7 +30,7 @@
         <% @books.each do |work| %>
         <h4><%= link_to work.title, work_path(work.id) %>
           <small>by: <%= work.creator %></small></h4>
-          <p> [Count] votes </p>
+          <p> <%= work.votes.count %> votes </p>
         <% end %>
       </li>
     </ul>
@@ -43,7 +44,7 @@
         <% @movies.each do |work| %>
         <h4><%= link_to work.title, work_path(work.id) %>
           <small>by: <%= work.creator %></small></h4>
-          <p> [Count] votes </p>
+          <p> <%= work.votes.count %> votes </p>
         <% end %>
       </li>
     </ul>

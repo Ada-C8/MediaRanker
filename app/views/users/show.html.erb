@@ -15,7 +15,15 @@
     </thead>
 
     <tbody>
-
+      <% @user.votes.each do |vote| %>
+      <tr>
+        <td><%= link_to(vote.work.title, work_path) %></td>
+         <td><%= vote.work.creator %></td>
+         <td><%= vote.work.publication_year %></td>
+         <td><%= vote.work.category %></td>
+         <td><%= vote.created_at.strftime('%m/%d/%Y') %></td>
+      </tr>
+      <% end %>
     </tbody>
   </table>
 
