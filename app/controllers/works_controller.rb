@@ -1,4 +1,3 @@
-require 'pry'
 class WorksController < ApplicationController
   def index
     @works = all_works_by_category
