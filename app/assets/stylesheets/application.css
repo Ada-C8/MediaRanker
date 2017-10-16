@@ -25,7 +25,7 @@
    color: #8a8a8a;
  }
 
- .status.error h3 {
+ .status.failure h3 {
    color: #C70039;
  }
 

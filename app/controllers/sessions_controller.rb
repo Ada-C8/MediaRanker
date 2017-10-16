@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
         flash[:success] = "Successfully created new user #{@user.username} with ID #{@user.id}"
         redirect_to root_path
       else
-        flash[:error] = "A problem occurred. Could not log in"
+        flash[:failure] = "A problem occurred. Could not log in"
         session[:errors] = @user.errors
         redirect_back(fallback_location: root_path)
         #BUG redirect_to login_path

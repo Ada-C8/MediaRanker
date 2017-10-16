@@ -6,10 +6,9 @@ class Work < ApplicationRecord
 
   def self.works_by_category
     categories = Hash.new
-
     work_cats = Work.all.pluck(:category).uniq
-    work_cats.each do |cat|
 
+    work_cats.each do |cat|
       categories[cat.capitalize] = sorted_by_vote(Work.where(category: cat))
     end
 

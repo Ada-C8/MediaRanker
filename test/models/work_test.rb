@@ -50,4 +50,12 @@ describe Work do
     end
 
   end # validations set
+
+  describe "works_by_category" do
+    it "can find all the works in a category" do
+
+    end
+
+    it "can return a hash of works with "
+  end
 end

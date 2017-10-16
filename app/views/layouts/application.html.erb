@@ -33,35 +33,35 @@
       </nav>
     </header>
 
-<% if flash[:error] %>
-    <% flash.each do |name, message| %>
-    <section class="row status <%= name %>">
-      <h3><%= message %></h3>
-      <% if (params[:controller] == "works") && (@work.errors)%>
-        <ul class="errors">
+    <% if flash[:failure] || flash[:success] %>
+      <% flash.each do |name, message| %>
+        <section class="row status <%= name %>">
+          <h3><%= message %></h3>
+          <% if (params[:controller] == "works") && @work %>
+          <ul class="errors">
             <% @work.errors.each do |column, message| %>
-              <li>
-                <%= "#{column}: #{message}" %>
-              </li>
+            <li>
+              <%= "#{column}: #{message}" %>
+            </li>
             <% end %>
-        </ul>
-      <% end %>
+          </ul>
+          <% end %>
 
-      <% if (params[:controller] == "sessions") && (session[:errors])%>
-        <ul class="errors">
+          <% if (params[:controller] == "sessions") && session[:errors] %>
+          <ul class="errors">
             <% session[:errors].each do |column, messages| %>
             <% messages.each do |m| %>
-              <li>
-                <%= "#{column}: #{m}" %>
-              </li>
-              <% end %>
+            <li>
+              <%= "#{column}: #{m}" %>
+            </li>
             <% end %>
-        </ul>
+            <% end %>
+          </ul>
+          <% end %>
+        </section>
       <% end %>
-
-    </section>
     <% end %>
-    <% end %>
+    <!-- FIX: Figure out how to get validation error message to show when a duplicate vote is attempted -->
 
     <main class="row">
       <%= yield %>

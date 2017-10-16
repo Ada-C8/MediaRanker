@@ -21,7 +21,7 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully created #{@work.category} #{@work.id}!"
       redirect_to work_path(@work.id)
     else
-      flash.now[:error] = "A problem occurred: Could not create #{@work.category}"
+      flash.now[:failure] = "A problem occurred: Could not create #{@work.category}"
       render :new, status: :bad_request
     end
   end
@@ -35,7 +35,7 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully updated Media ID#{@work.id}!"
       redirect_to work_path(params[:id])
     else
-      flash.now[:error] = "A problem occurred: Could not update Media ID#{@work.id}"
+      flash.now[:failure] = "A problem occurred: Could not update Media ID#{@work.id}"
       render :edit, status: :bad_request
     end
   end
