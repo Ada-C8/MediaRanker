@@ -12,8 +12,8 @@ describe User do
 
   it "should not be valid if user with that name already exists" do
     user.name = crisco.name
-    work.save.must_equal false
-    work.errors.keys.must_include :name
-    work.errors[:name].must_equal ["has already been taken"]
+    user.save.must_equal false
+    user.errors.keys.must_include :name
+    user.errors[:name].must_equal ["has already been taken"]
   end
 end
