@@ -4,7 +4,7 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def home
     @works = Work.order(:category)
-    @winner = @works.max_by {|work| work.votes.length}
+    @winner = @works.winner
   end
 
   def index
