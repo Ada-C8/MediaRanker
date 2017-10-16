@@ -13,3 +13,24 @@ greys:
   creator: Shonda Rhimes
   year: 2008
   category: screen
+
+howto:
+  title: How to Get Away with Murder
+  description: people get killed
+  creator: Shonda Rhimes
+  year: 3030
+  category: screen
+
+hp:
+  title: Harry Potter
+  description: magic
+  creator: J.K. Rowling
+  year: 1997
+  category: book
+
+unbreakable:
+  title: The Unbreakable Kimmy Schmidt
+  description: kidnapped
+  creator: idk
+  year: 2014
+  category: screen

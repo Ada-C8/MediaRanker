@@ -8,11 +8,10 @@ one:
   user: west
   work: greys
 
+two:
+  user: wells
+  work: hp
 
-  
-# column: value
-#
-# two:
-#   user_id: users(:wells).id
-#   work_id: works(:greys).id
-# column: value
+three:
+  user: wells
+  work: greys

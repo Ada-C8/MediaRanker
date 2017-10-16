@@ -21,4 +21,5 @@ class Work < ApplicationRecord
   def self.sort
     Work.all.sort_by {|work| work.votes.count * -1}
   end
+
 end

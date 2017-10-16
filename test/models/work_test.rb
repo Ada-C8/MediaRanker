@@ -34,14 +34,21 @@ describe Work do
     greatest = Work.sort[0]
     second = Work.sort[1]
     greatest.title.must_equal "Grey's Anatomy"
-    second.title.must_equal "Scandal"
-    greatest.votes.count.must_equal 1
-    second.votes.count.must_equal 0
+    second.title.must_equal "Harry Potter"
+    greatest.votes.count.must_equal 2
+    second.votes.count.must_equal 1
   end
 
   it "can return the 'featured' work by returning the work with the greatest vote count, #self.top" do
     top = Work.top
     top.title.must_equal "Grey's Anatomy"
+  end
+
+  it "will only return one featured work, even if there are two works with the same number of votes" do
+    Vote.new(user: users(:west), work: works(:hp))
+    Work.top.must_equal works(:greys)
+
+
   end
 
 
