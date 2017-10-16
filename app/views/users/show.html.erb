@@ -2,7 +2,7 @@
   <h2>User Summary: <%= @user.name %></h2>
 
   <p>
-    Joined site <%= @user.created_at.strftime('%B %d, %Y') %>
+    Joined site <%= @user.created %>
   </p>
   <h3>Votes</h3>
 
@@ -42,7 +42,7 @@
             <%= vote.work.category.capitalize %>
           </td>
           <td>
-            <%= vote.created_at.strftime('%B %d, %Y') %>
+            <%= vote.created %>
           </td>
         </tr>
       <% end %>
