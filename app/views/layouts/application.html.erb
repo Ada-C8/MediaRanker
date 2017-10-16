@@ -6,6 +6,7 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
 </head>
 
 <body>
@@ -30,11 +31,13 @@
   <main class="row">
     <h2>session</h2>
     <%= session[:user_id] %>
-    <section class="flash">
+    <% unless flash.empty? %>
+    <section class="row status">
       <% flash.each do |name, message| %>
       <div class="<%= name %>"><%= message %></div>
       <% end %>
     </section>
+    <% end %>
     <%= yield %>
   </main>
 </body>
