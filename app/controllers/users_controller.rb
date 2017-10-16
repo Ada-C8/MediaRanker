@@ -14,13 +14,23 @@ class UsersController < ApplicationController
       user = User.new(username: params[:username].capitalize)
       user.save
       session[:logged_in_user] = user.id
-      flash[:success] = "#{ user.username } is successfully logged in"
+      flash[:status] = :success
+      flash[:message] = "Successfully created new user #{user.username} with ID #{user.id}"
       redirect_to root_path
     else
       session[:logged_in_user] = user.id
-      flash[:success] = "#{ user.username } is successfully logged in"
+      flash[:status] = :success
+      flash[:message] = "Successfully logged in as existing user #{user.username}"
       redirect_to root_path
     end
+  end
+
+  def logout
+    # Remove the user id from the session
+    session[:logged_in_user] = nil
+    flash[:status] = :success
+    flash[:message] = "Successfully logged out"
+    redirect_to request.referrer, notice: "You're being redirected"
   end
 
   def show

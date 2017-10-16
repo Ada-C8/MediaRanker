@@ -10,11 +10,18 @@
 
   <body>
     <header>
+      <h1>Media Ranker | Ranking the Best of Everything</h1>
+      <%= button_to("View top media", root_path, method: :get) %>
+      <%= button_to("View all media", works_path, method: :get) %>
+      <%= button_to("Add a new work", new_work_path, method: :get) %>
+      <%= button_to("View all users", users_path, method: :get) %>
       <% if session[:logged_in_user] %>
-        <p>Logged in as <%= User.find(session[:logged_in_user]).username %></p>
+        <%= button_to("Logged in as #{User.find_by_id(session[:logged_in_user]).username}", user_path(session[:logged_in_user]), method: :get) %>
+        <%= button_to("Log out", logout_path, method: :delete) %>
       <% else %>
-        <p>Not logged in.</p>
+        <%= button_to("Log in", login_path, method: :get) %>
       <% end %>
+
     </header>
     <main>
       <section class="flash <%= flash[:status] %>">
