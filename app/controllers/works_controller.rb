@@ -26,8 +26,7 @@ class WorksController < ApplicationController
         render :new, status: :bad_request
       end
     else
-      flash.now[:status] = :failure
-      flash.now[:message] = "You must be logged in to do that"
+      not_logged_in_msg
       render :new
     end
   end
@@ -51,8 +50,7 @@ class WorksController < ApplicationController
 
     # This logic if the user is not logged in
     else
-      flash.now[:status] = :failure
-      flash.now[:message] = "You must be logged in to do that"
+      not_logged_in_msg
       render :new
     end
   end
@@ -71,8 +69,7 @@ class WorksController < ApplicationController
       redirect_to works_path
     # This logic if the user is not logged in
     else
-      flash[:status] = :failure
-      flash[:message] = "You must be logged in to do that"
+      not_logged_in_msg
       redirect_to work_path(@work)
     end
   end

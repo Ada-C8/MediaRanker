@@ -19,8 +19,8 @@ class VotesController < ApplicationController
         redirect_to work_path(@vote.work_id)
       end
     else
-      flash.now[:status] = :failure
-      flash.now[:message] = "You must be logged in to do that"
+      not_logged_in_msg
+      redirect_to work_path(@vote.work_id)
     end
   end
 

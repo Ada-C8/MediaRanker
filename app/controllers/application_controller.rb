@@ -14,8 +14,12 @@ class ApplicationController < ActionController::Base
       flash[:message] = "Could not create #{model.class}"
       flash[:details] = model.errors.messages
     end
-
     return result
+  end
+
+  def not_logged_in_msg
+    flash.now[:status] = :failure
+    flash.now[:message] = "You must be logged in to do that"
   end
 
 end
