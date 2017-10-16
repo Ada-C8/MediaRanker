@@ -1,0 +1,18 @@
+<h3>User Details: <%= link_to @user.name, user_path(@user.id) %></h3>
+<small>Joined site: <%= @user.created_at %></small>
+
+<h3>Votes</h3>
+<table>
+  <th> Media Title </th>
+  <th> Created By </th>
+  <th> Published </th>
+  <th> Category </th>
+  <th> Voted On </th>
+
+  <% Vote.user_votes_arary(@user.id).each do |vote| %>
+    <tr>
+<td><%= vote %></td>
+
+    </tr>
+  <% end %>
+</table>

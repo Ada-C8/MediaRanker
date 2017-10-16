@@ -17,5 +17,10 @@ class Work < ApplicationRecord
     return Work.all.where(category: category).sort_by{|work| -work.votes.count}[0..9]
   end
 
+  # added during wave two so no test
+  def work_from_user_vote_array(user_id)
+
+  end
+
 
 end
