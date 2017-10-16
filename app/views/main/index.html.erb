@@ -1,5 +1,5 @@
 <div class="media-spotlight small-12 columns">
-  <% if @work_top == nil %>
+  <% if @work_top != nil %>
   <h3><span>Media Spotlight:</span>
     <%= link_to @work_top.title + "~", work_path(@work_top.id) %> by <%= @work_top.creator %>
   </h3>
