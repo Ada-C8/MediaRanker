@@ -63,6 +63,15 @@ describe Work do
       end
 
     end
+
+    it "can be an empty array if there are no works of that category" do
+      movie = works(:movie_one)
+      movie.delete
+
+      sorted_movies = ((Work.all).sorted_by_votes("movie"))
+      sorted_movies.count.must_equal 0
+
+    end
   end
 
   it "can have votes" do
