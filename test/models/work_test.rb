@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe Work do
-  let :author { Author.first }
+  # let :author { Author.first }
   describe "validations" do
     it "can be created with all fields" do
       w = Work.new(title: "new_work", category:"album", creator:"yo", year:2017, description:"nice album")
@@ -23,7 +23,7 @@ describe Work do
     end
   end
 
-  
+
 
   # describe "method sort_all" do
   #   it "sort works by number of votes" do
