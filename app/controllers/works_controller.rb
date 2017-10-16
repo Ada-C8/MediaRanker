@@ -1,6 +1,9 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.order(:id)
+    @albums = Work.where("category = 'album'")
+    @books = Work.where("category = 'book'")
+    @movies = Work.where("category = 'movie'")
+
   end
 
   def homepage
