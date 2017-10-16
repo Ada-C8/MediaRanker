@@ -7,6 +7,14 @@ class WorksController < ApplicationController
   end
 
   def homepage
+    works = Work.all
+    @has_highest_votes = Work.first
+    works.each do |work|
+      if work.votes.length > @has_highest_votes.votes.length
+        @has_highest_votes = work
+      end
+    end
+
     @albums = Work.where("category = 'album'")
     @books = Work.where("category = 'book'")
     @movies = Work.where("category = 'movie'")
