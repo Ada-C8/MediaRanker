@@ -8,7 +8,7 @@
     </li>
     <li>
       Title
-      <p><%= work.title %></p>
+      <p><%= link_to(work.title, work_path(work.id)) %></p>
     </li>
     <li>
       Created By
@@ -19,8 +19,8 @@
       <p><%= work.publication_year %></p>
     </li>
     <li>
-      Upvote
-      <p>UPVOTE BUTTON</p>
+
+      <p><%= link_to("Upvote", votes_path(:work => work.id), method: :post )%></p>
     </li>
   </ul>
 

@@ -70,10 +70,10 @@ describe WorksController do
       assert_response 404
     end
 
-      it "successfully loads the home page" do
-         get root_path
-         must_respond_with :success
-       end
+    it "successfully loads the home page" do
+      get root_path
+      must_respond_with :success
+    end
 
 
 

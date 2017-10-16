@@ -16,7 +16,7 @@ class Work < ApplicationRecord
   end
 
   def self.categories
-    @categories = ["album", "book", "movie",]
+    @categories = ["album", "book", "movie"]
   end
 
 end

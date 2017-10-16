@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+
+  post '/votes', to: "votes#create"
+
+  post '/logout', to: 'sessions#logout'
+
+  get '/users', to: "users#index"
+
+  get '/users/:id', to: "users#show", as: "user"
+
+  get '/login', to: 'sessions#log_form'
+
+  post '/login', to: 'sessions#login'
+
+  delete '/login', to: 'sessions#destroy'
+
   root to: 'works#home'
 
   get 'works/home'
@@ -36,6 +51,14 @@ Rails.application.routes.draw do
 
   # this code is the same as all of the down below code :D
   #   Rails.application.routes.draw do
+  get 'sessions/log_form'
+
+  get 'sessions/login'
+
+  get 'sessions/logout'
+
+  get 'sessions/destroy'
+
   get 'works/home'
 
   get 'users/index'

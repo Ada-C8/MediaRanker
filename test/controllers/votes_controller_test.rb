@@ -1,6 +1,11 @@
 require "test_helper"
 
 describe VotesController do
+  before do
+    @work_id = Work.find( works(:movie).id ).id
+    post login_path, params: { username: "Retry"}
+  end
+
   it "should get index" do
     get votes_index_url
     value(response).must_be :success?

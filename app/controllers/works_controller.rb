@@ -16,6 +16,7 @@ class WorksController < ApplicationController
     @books = (Work.books).first(10)
     @movies = (Work.movies).first(10)
   end
+  #need a better order method including votes
 
   def index
     @works = Work.all
