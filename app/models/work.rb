@@ -1,5 +1,7 @@
 class Work < ApplicationRecord
   has_many :votes
+  # validates :title, presence: true
+  # validates :title, uniqueness: true
 
   def self.all_works_by_title
     all_works = Work.order(:title).group_by { |work| work.category }

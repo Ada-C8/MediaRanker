@@ -3,8 +3,17 @@ require "test_helper"
 describe Work do
   let(:work) { Work.new }
 
-  it "must be valid" do
-    value(work).must_be :valid?
+  it "must be valid if it has a title" do
+    works(:bonito).valid?.must_equal true
+    works(:bonito).title = nil
+    works(:bonito).valid?.must_equal false
+  end
+
+  it "should not be valid if work title already exists" do
+    work.title = works(:bonito).title
+    work.save.must_equal false
+    work.errors.keys.must_include :title
+    work.errors[:title].must_equal ["has already been take"]
   end
 
 describe "all_works_by_title" do
