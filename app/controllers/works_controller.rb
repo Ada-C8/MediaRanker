@@ -10,11 +10,13 @@ class WorksController < ApplicationController
 
   def edit
     find_work
+    require_owner(@work)
   end
 
   def update
     find_work
     redirect_to works_path unless @work
+    require_owner(@work)
     if @work.update_attributes work_params
       redirect_to work_path(@work.id)
       flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
@@ -116,6 +118,13 @@ def does_vote_exist(input_work)
     end
   end
   return false
+end
+
+def require_owner(input_work)
+  if input_work.user != @session_user
+    flash[:error] = "Works can only be deleted by their owners"
+    redirect_to :back
+  end
 end
 
 # def destroy_votes(input_work)
