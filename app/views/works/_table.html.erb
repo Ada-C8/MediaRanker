@@ -1,10 +1,12 @@
 <table>
   <thead>
-    <tr> Votes </tr>
-    <tr> Title </tr>
-    <tr> Created By </tr>
-    <tr> Published </tr>
-    <tr> Upvote </tr>
+    <tr>
+      <th width="80">Votes</th>
+      <th>Title</th>
+      <th>Created by</th>
+      <th width="100">Published</th>
+      <th width="100">Upvote</th>
+    </tr>
   </thead>
   <tbody>
   <% works.each do |work| %>
@@ -13,7 +15,7 @@
     <td><%= link_to(work.title, work_path(work.id)) %></td>
     <td><%= work.creator %></td>
     <td><%= work.publication_year %></td>
-    <td><%= link_to("Upvote", votes_path(:work => work.id), method: :post )%></td>
+    <td><%= link_to("Upvote", votes_path(:work => work.id), method: :post, :class => "button upvote" )%></td>
   </tr>
   <% end %>
   </tbody>

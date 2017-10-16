@@ -1,18 +1,18 @@
-<header>
-  <h1>List of works </h1>
-</header>
-<main>
-  <h2>Albums</h2>
-  <%= render partial: "table", locals: {works: @albums} %>
 
-  <h2>Books</h2>
-  <%= render partial: "table", locals: {works: @books} %>
-
-  <h2>Movies</h2>
-  <%= render partial: "table", locals: {works: @movies} %>
-
+<main class = "row">
+  <h3>List of works </h3>
+  <section class = "media-table">
+    <h4>Albums</h4>
+    <%= render partial: "table", locals: {works: @albums} %>
+  </section>
+  <section class = "media-table">
+    <h4>Books</h4>
+    <%= render partial: "table", locals: {works: @books} %>
+  </section>
+  <section class = "media-table">
+    <h4>Movies</h4>
+    <%= render partial: "table", locals: {works: @movies} %>
+  </section>
+  <%= link_to("View top media", root_path, :class => "button") %>
+  <%= link_to("Add a new work", new_work_path, :class => "button") %>
 </main>
-<footer>
-  <h3><%= link_to("View top media", root_path) %></h3>
-  <h3><%= link_to("Add a new work", new_work_path) %></h3>
-</footer>

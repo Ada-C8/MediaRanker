@@ -59,12 +59,6 @@ ul {
   line-height: 1.6;
 }
 
-table {
-  width: 100%;
-  margin-bottom: 1rem;
-  border-radius: 0;
-}
-
 body small {
   color: slategrey;
 }
@@ -104,6 +98,10 @@ a:hover {
 
 .media-spotlight-header {
   color: #424242;
+}
+
+.media_table.upvote.button {
+  margin:0;
 }
 
 section.spotlight>div {
@@ -163,7 +161,7 @@ section.spotlight>div {
    color: #8a8a8a;
  }
 
- .root-hr {
+.root-hr {
   margin: 0px auto 75px auto;
   color: #EEEEEE;
  }
