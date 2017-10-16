@@ -18,9 +18,14 @@ class Work < ApplicationRecord
   end
 
   # added during wave two so no test
-  def work_from_user_vote_array(user_id)
-
-  end
+  # not sure if I am going to utilize this method. If you do not see it used, I forgot to delet/comment it out.
+  # def work_from_user_vote_array(user_id)
+  #   Vote.user_votes_arary(user_id).each do |vote|
+  #     works_array = []
+  #     works_array << Work.find(vote.work_id)
+  #   end
+  #   return works_array
+  # end
 
 
 end

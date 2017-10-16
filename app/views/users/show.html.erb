@@ -9,10 +9,24 @@
   <th> Category </th>
   <th> Voted On </th>
 
+
   <% Vote.user_votes_arary(@user.id).each do |vote| %>
     <tr>
-<td><%= vote %></td>
-
+      <!-- the Work.find(...) definitely can be DRYed, maybe in a method. Given it is 9:15p and the code works, I am not going to sweat it.  -->
+      <td><%= Work.find(vote.work_id).title %></td>
+      <td><%= Work.find(vote.work_id).creator %></td>
+      <td><%= Work.find(vote.work_id).publication_year %></td>
+      <td><%= Work.find(vote.work_id).category %></td>
+      <td><%= vote.created_at %></td>
     </tr>
   <% end %>
 </table>
+
+<ol>
+  <li>
+    <%= link_to "View All Users", users_path %>
+  </li>
+  <li>
+    <%= link_to "Home", root_path %>
+  </li>
+</ol>
