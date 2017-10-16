@@ -9,7 +9,7 @@ describe UsersController do
 
   it "successfully loads an individual users' voting summary (#show)page" do
     get user_path( users(:jane).id )
-    must_respond_with :success
+    must_respond_with :success   
   end
 
 
