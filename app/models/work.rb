@@ -1,5 +1,5 @@
 class Work < ApplicationRecord
-  has_many :votes
+  has_many :votes, dependent: :delete
 
   validates :title, presence: true, uniqueness: {scope: :category, message: "has already been taken" }
 
