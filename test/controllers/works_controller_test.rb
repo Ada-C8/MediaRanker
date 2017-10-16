@@ -162,7 +162,7 @@ describe "WorksController" do
       work_id = Work.first.id
 
       delete work_path(work_id)
-      
+
       must_respond_with :redirect
       must_redirect_to works_path
       Work.find_by(id: work_id).must_be_nil

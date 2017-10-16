@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work_by_params_id, only: [:show, :edit, :update, :destroy]
 
-  #TODO: dry this up.
   def index
     @works = Work.all
     # @albums_sorted_by_votes = Work.work_sorted_by_votes("album")
@@ -15,24 +15,20 @@ class WorksController < ApplicationController
     @work = Work.new
   end
 
-  def edit
-    find_work_by_params_id
-  end
+  def edit ; end
 
   def update
-    if find_work_by_params_id
-      @work.update_attributes(work_params)
-      if @work.save
-        flash[:status] = :success
-        flash[:message] = "Successfully edited: #{@work.title}"
-        redirect_to work_path(@work.id)
-        return
-      else
-        flash.now[:status] = :failure
-        flash.now[:message] = "Failed to edit work"
-        flash.now[:details] = @work.errors.messages
-        render :edit, status: :bad_request
-      end
+    @work.update_attributes(work_params)
+    if @work.save
+      flash[:status] = :success
+      flash[:message] = "Successfully edited: #{@work.title}"
+      redirect_to work_path(@work.id)
+      return
+    else
+      flash.now[:status] = :failure
+      flash.now[:message] = "Failed to edit work"
+      flash.now[:details] = @work.errors.messages
+      render :edit, status: :bad_request
     end
   end
 
@@ -51,17 +47,13 @@ class WorksController < ApplicationController
     end
   end
 
-  def show
-    find_work_by_params_id
-  end
+  def show ; end
 
   def destroy
-    if find_work_by_params_id
-      @work.destroy
-      flash[:status] = :success
-      flash[:message] = "Successfully deleted: #{@work.title}"
-      redirect_to works_path
-    end
+    @work.destroy
+    flash[:status] = :success
+    flash[:message] = "Successfully deleted: #{@work.title}"
+    redirect_to works_path
   end
 
   private
@@ -75,7 +67,5 @@ class WorksController < ApplicationController
     unless @work
       head :not_found
     end
-    return @work
   end
-
 end
