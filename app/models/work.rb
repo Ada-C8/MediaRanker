@@ -20,6 +20,19 @@ class Work < ApplicationRecord
     Work.where(category: category).sort_by{|w| -w.votes.count}[0...10]
   end
 
+  def also_liked
+    works = Hash.new(0)
+
+    votes.each do |v|
+      v.user.votes.each do |vote|
+        work = vote.work
+        works[work.title] += 1
+      end
+    end
+
+    works.keys.sort_by{|t| -works[t]}
+  end
+
   private
   def legal_category
     errors.add(:category, 'is not a legal category') unless LEGAL_CATEGORIES.include? category
