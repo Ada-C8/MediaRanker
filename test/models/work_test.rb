@@ -52,10 +52,24 @@ describe Work do
   end
 
   describe "other methods" do
+    it "returns the input selection of works in order from highest votes to lowest votes" do
+      ordered_books = Work.order_by_popularity(Work.books)
 
+      ordered_books.must_be_kind_of Array
 
-    it "returns the selection of works in order from highest votes to lowest votes" do
+      ordered_books[0].must_equal works(:book)
+      ordered_books[1].must_equal works(:book2)
+      ordered_books[2].must_equal works(:book3)
+    end
 
+    it "returns an array of the same length even if there are no votes" do
+      movies = Work.movies
+
+      ordered_movies = Work.order_by_popularity(movies)
+
+      ordered_movies.must_be_kind_of Array
+
+      ordered_movies.length.must_equal movies.length
     end
   end
 end

@@ -20,6 +20,7 @@ class Work < ApplicationRecord
 
   def self.categories
     works = ["album", "book", "movie"]
+    return works
   end
 
   def self.order_by_popularity(works)
