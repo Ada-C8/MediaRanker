@@ -2,21 +2,21 @@
 <% if @work.errors.any? %>
   <ul class="errors">
     <% @work.errors.each do |column, message| %>
-      <li>
-        <strong><%= column.capitalize %></strong> <%= message %>
-      </li>
+    <li>
+      <strong><%= column.capitalize %></strong> <%= message %>
+    </li>
     <% end %>
   </ul>
 <% end %>
 <section>
 
-<%= form_for @work do |f| %>
+  <%= form_for @work do |f| %>
   <%= f.label :category %>
   <%= f.select :category, [['book'], ['album'], ['movie']] %>
 
   <%= f.label :title %>
   <%= f.text_field :title %>
-<hr />
+  <hr />
   <%= f.label :creator %>
   <%= f.text_field :creator %>
 
@@ -28,5 +28,5 @@
 
 
   <%= f.submit class: "button" %>
-<% end %>
+  <% end %>
 </section>

@@ -18,7 +18,8 @@
 <section class="top-ten columns large-4 small-12">
 
 <% i = 1 %>
-  <h3><%= "Top #{category.upcase}" %></h3>
+  <h3><%= "Top #{category.capitalize}s" %></h3>
+  <hr class="root-hr">
   <ul>
     <% works.each do |work| %>
     <% break if i > 10 %>

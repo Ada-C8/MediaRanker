@@ -19,7 +19,7 @@
         <%= link_to 'view all media', works_path, class: "button" %>
         <%= link_to 'add a new work', new_work_path, class: "button" %>
         <%= link_to 'view all users', users_path, class: "button" %>
-        <div class="float right">
+        <div class="float-right">
           <% if @session_user %>
 
           <%= link_to "Logged in as #{@session_user.name}", user_path(@session_user.id), class: "button" %>
@@ -30,10 +30,15 @@
         </div>
       </nav>
     </header>
-    <section class="flash">
+      <% if flash.keys.length > 0%>
+      <section class="row status">
       <% flash.each do |name, message| %>
-      <div class="<%= name %>"><%= message %></div>
+      <section class="row status">
+      <h3 class="<%= name %>"><%= message %></h3>
       <% end %>
+    </section>
+      <% end %>
+
 
       <main class="row">
         <%= yield %>
