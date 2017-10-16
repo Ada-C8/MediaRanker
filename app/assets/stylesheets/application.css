@@ -29,8 +29,6 @@
 
 /*----------------------------*/
 
-
-
  /*TABLE STYLING*/
 .table th{
    background-color: #f5f5f5;
@@ -39,6 +37,7 @@
 tbody:nth-child(even) {
    background-color: white;
  }
+
 tbody:nth-child(odd) {
   background-color: #ebebeb;
 }
@@ -92,7 +91,6 @@ h2 {
 
 .button:hover {
   background-color: #197a70;
-
 }
 
 .button a {
@@ -106,9 +104,38 @@ h2 {
   float: right;
 }
 
+/*----------HOME INDEX PAGE-----------*/
+
+main {
+  max-width: 75rem;
+  margin-right: 15%;
+  margin-left: 15%;
+}
+
+main div h3 {
+  color: #26A69A;
+  border-color: #B2DFDB;
+  border-bottom: solid;
+}
+
+main a {
+  color: #26A69A;
+}
+
+.spotlight a {
+  text-decoration:underline;
+}
+
+main li {
+  list-style-type: none;
+}
+
+main li a:hover {
+  list-style-type: none;
+  color: #197a70;
+}
+
+/*----------WORK INDEX PAGE-----------*/
 
 
-
-
-
-/**/
+/*----------USER INDEX PAGE-----------*/
