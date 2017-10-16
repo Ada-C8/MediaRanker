@@ -34,6 +34,7 @@
    background-color: #f5f5f5;
  }
 
+
 tbody:nth-child(even) {
    background-color: white;
  }
@@ -139,3 +140,6 @@ main li a:hover {
 
 
 /*----------USER INDEX PAGE-----------*/
+main h4 {
+  color: #26A69A;
+}

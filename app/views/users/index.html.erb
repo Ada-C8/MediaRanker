@@ -1,23 +1,25 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<!-- <h1>Users#index</h1>
+<p>Find me in app/views/users/index.html.erb</p> -->
 
-<h3>All Users</h3>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Votes</th>
-      <th>Joined</th>
-    </tr>
-  </thead>
-  <% @users.each do |user| %>
-  <tbody>
-    <tr>
-      <td><%=link_to(user.username, user_path(user.id))%></td>
-      <td><%= user.votes.count%></td>
-      <td><%= user.created_at%></td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
+<main>
+  <h4>List of Users</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Votes</th>
+        <th>Joined</th>
+      </tr>
+    </thead>
+    <% @users.each do |user| %>
+    <tbody>
+      <tr>
+        <td><%=link_to(user.username, user_path(user.id))%></td>
+        <td><%= user.votes.count%></td>
+        <td><%= user.created_at%></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</main>
