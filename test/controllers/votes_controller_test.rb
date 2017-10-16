@@ -5,7 +5,7 @@ describe VotesController do
     proc {post login_path, params: {user: {name: users(:west).name}}}.must_change 'User.count', 0
     session[:logged_in_user].must_equal users(:west)
 
-    proc { post votes_path(works(:scandal))}.must_change 'Vote.count', 1
+    proc { post votes_path(works(:scandal).id)}.must_change 'Vote.count', 1
     must_respond_with :redirect
 
   end
