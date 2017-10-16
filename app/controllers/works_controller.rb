@@ -63,15 +63,9 @@ class WorksController < ApplicationController
       return
     end
   end
-  # @work = Work.find(params[:id])
-  #  unless @work
-  #    head :not_found
-  #  enda
-  # @work.destroy
-  # redirect_to works_path
-
 
 def topten
+
 end
 
 

@@ -31,15 +31,11 @@
     VOTE!
   </th>
 </tr>
-<%# @votes.where(work_id: work.id).count
-%>
-<%# @votes = Vote.all    work.testing(work.id)%>
 
 <% @works.each do |work| %>
 <tr>
   <td>
-    <%#= work.id %>
-    <%= work.count %>
+    <%= work.counter %>
   </td>
   <td>
     <%= work.category %>
@@ -64,19 +60,6 @@
     <% end %>
   </td>
   <% end %>
-
-    <%# @vote = Vote.new %>
-    <%#= form_for @vote url {action: create}
-
-    <%# orm_for (:thing, url:{:controller=>'thing', :action=>'update'}, html:{method:'put'}). %>
-    <%#{}= form_for(:vote, url:  {:controller => votes, action: create} do |f| %>
-    <%#= form_tag("/upvote", method: :post) do %>
-    <%#= text_field :user_id, work.id %>
-    <%#= submit_tag "Vote" %>
-
-
-
-    <%#= link_to "Vote", new_work_vote_path(work.id) %>
 
 </tr>
 
