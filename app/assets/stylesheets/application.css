@@ -1,6 +1,7 @@
 @import url('foundation');
 
 header {
+
   max-width: 100%;
   background-color: #B2DFDB;
   border-bottom: 1px solid #EEEEEE;
@@ -8,11 +9,14 @@ header {
   margin-bottom: 10px
 }
 
-/*header.page-header.row::before {
-  display: table;
-  content: ' ';
-  box-sizing: inherit;
-}*/
+header small {
+  color: white;
+}
+
+.page-header {
+
+  color: #FF5722;
+}
 
 main {
   max-width: 75%;

@@ -1,31 +1,45 @@
 
+<section>
 <% work = Work.top %>
 <h3>
-<%= "Media Spotlight: #{work.title} by #{work.creator}" %>
+  <span class="media-spotlight-header">
+  Media Spotlight:
+  </span>
+  <%= link_to "#{work.title}", work_path(work.id) %> <%= "by #{work.creator}" %>
 <p> <%= "#{work.votes.count} votes" %> </p>
 </h3>
 
+</section>
 
+<section class="top-ten columns large-4 small-12">
 <h3> Top Albums </h3>
   <ol>
     <% Work.top_ten_albums.each do |work| %>
     <li> <%= link_to "#{work.title}", work_path(work.id)%>
-      <%= "by #{work.creator} category: #{work.category} Votes: #{work.votes.count}" %> </li>
+      <small> by <%= work.creator %> </small>
+      <p> <%= "#{work.votes.count} votes" %> </p> </li>
     <% end %>
   </ol>
+</section>
 
+<section class="top-ten columns large-4 small-12">
 <h3> Top Books </h3>
   <ol>
     <% Work.top_ten_books.each do |work| %>
     <li> <%= link_to "#{work.title}", work_path(work.id)%>
-      <%= "by #{work.creator} category: #{work.category} Votes: #{work.votes.count}" %> </li>
+      <small> by <%= work.creator %> </small>
+      <p> <%= "#{work.votes.count} votes" %> </p> </li>
     <% end %>
   </ol>
+</section>
 
+<section class="top-ten columns large-4 small-12">
 <h3> Top Movies </h3>
   <ol>
     <% Work.top_ten_movies.each do |work| %>
     <li> <%= link_to "#{work.title}", work_path(work.id)%>
-      <%= "by #{work.creator} category: #{work.category} Votes: #{work.votes.count}" %> </li>
+      <small> by <%= work.creator %> </small>
+      <p> <%= "#{work.votes.count} votes" %> </p> </li>
     <% end %>
   </ol>
+</section>

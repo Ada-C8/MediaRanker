@@ -22,8 +22,8 @@
         </div>
         <div class="float-right">
           <% if session[:logged_in_user] %>
-            <%= link_to "Logged in as #{User.find(session[:logged_in_user]).name}", users_path(@user), class: "button float-right"%>
-            <%= link_to "Log out", reset_session_path, method: :patch, class: "button" %>
+            <%= link_to "Logged in as #{User.find(session[:logged_in_user]).name}", user_path(User.find(session[:logged_in_user]).id), class: "button"%>
+            <%= link_to "Log out", reset_session_path, method: :patch, class: "button float-right" %>
             <%else%>
             <%= link_to "Log in", login_path, class: "button float-right" %>
           <%end%>
