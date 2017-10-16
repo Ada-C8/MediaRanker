@@ -17,7 +17,7 @@ describe WorksController do
   end
 
   it "should be able to create a new work" do
-    post works_path, params: {work: {title: "New Title", category: "movie"} }
+    proc {post works_path, params: {work: {title: "New Title", category: "movie"} }}.must_change "Work.count", 1
     must_respond_with :redirect
     must_redirect_to works_path
   end
@@ -35,12 +35,13 @@ describe WorksController do
   end
 
   it "should be able to destroy a work" do
-    delete work_path(works(:greys).id)
+    proc {delete work_path(works(:greys).id)}.must_change "Work.count", -1
+
     must_respond_with :redirect
     must_redirect_to works_path
   end
 
-  it "root_path shoudl direct to the home page" do
+  it "root_path should direct to the home page" do
     get top_works_path
     must_respond_with :success
   end

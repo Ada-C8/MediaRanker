@@ -5,7 +5,8 @@ describe VotesController do
     proc {post login_path, params: {user: {name: "HELLO IM NEW"}}}.must_change 'User.count', 1
     session[:logged_in_user]['name'].must_equal "HELLO IM NEW"
 
-    post votes_path(works(:scandal))
+    proc {post vote_path(works(:scandal).id)}.must_change "Vote.count", 1
+
     must_respond_with :redirect
     must_redirect_to work_path(works(:scandal))
     # this test is failing and I don't know why because the votes save in my browser
@@ -15,7 +16,7 @@ describe VotesController do
     proc {post login_path, params: {user: {name: users(:west).name}}}.must_change 'User.count', 0
     session[:logged_in_user].must_equal users(:west)
 
-    proc {post votes_path(works(:greys))}.must_change 'Vote.count', 0
+    proc {post vote_path(works(:greys).id)}.must_change 'Vote.count', 0
     must_respond_with :redirect
     must_redirect_to works_path
   end
