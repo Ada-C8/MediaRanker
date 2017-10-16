@@ -16,7 +16,7 @@
       <% @user.votes.each do |vote| %>
       <tr>
         <td data-label="Media Title">
-          <%= Work.find(vote.work_id).title %>
+          <%= link_to Work.find(vote.work_id).title, work_path(vote.work_id) %>
         </td>
         <td data-label="Created By">
           <%= Work.find(vote.work_id).creator %>
