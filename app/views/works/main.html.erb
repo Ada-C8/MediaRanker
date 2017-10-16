@@ -21,7 +21,7 @@
   <hr class="root-hr">
 
   <section class="top-ten columns large-4 small-12">
-    <% top_movies = @works.top_ten("movie")%>
+    <% top_movies = (@works.sorted_by_votes("movie")).take(10)%>
     <h3>Top Movies</h3>
     <% top_movies.each do |movie| %>
     <ul>
@@ -36,7 +36,7 @@
   </section>
 
   <section class="top-ten columns large-4 small-12">
-    <% top_books = @works.top_ten("book")%>
+    <% top_books = (@works.sorted_by_votes("book")).take(10)%>
     <h3>Top Books</h3>
     <% top_books.each do |book| %>
     <ul>
@@ -51,7 +51,7 @@
   </section>
 
   <section class="top-ten columns large-4 small-12">
-    <% top_albums = @works.top_ten("album")%>
+    <% top_albums = (@works.sorted_by_votes("album")).take(10)%>
     <h3>Top Albums</h3>
     <% top_albums.each do |album| %>
     <ul>

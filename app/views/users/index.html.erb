@@ -1,29 +1,28 @@
-<main class="row">
-   <h3>List of Users</h3>
-   <table>
-     <thead>
-       <tr>
-         <th>Username</th>
-         <th width="100">Votes</th>
-         <th width="200">Joined</th>
-       </tr>
-     </thead>
-     <tbody>
-       <% @users.each do |user| %>
-       <tr>
-         <td>
-           <%= link_to "#{user.username}", user_path(user.id) %>
-         </td>
-         <td>
-           <%= "#{user.votes.count}" %>
-         </td>
-         <td>
-           <%= "#{(user.created_at).to_date}" %>
-         </td>
-       </tr>
-       <% end %>
-     </tbody>
-   </table>
 
-   <%= link_to "Back to Media List", root_path, class: :button %>
-</main>
+ <h3>List of Users</h3>
+ <table>
+   <thead>
+     <tr>
+       <th>Username</th>
+       <th width="100">Votes</th>
+       <th width="200">Joined</th>
+     </tr>
+   </thead>
+   <tbody>
+     <% @users.each do |user| %>
+     <tr>
+       <td>
+         <%= link_to "#{user.username}", user_path(user.id) %>
+       </td>
+       <td>
+         <%= "#{user.votes.count}" %>
+       </td>
+       <td>
+         <%= "#{(user.created_at).to_date}" %>
+       </td>
+     </tr>
+     <% end %>
+   </tbody>
+ </table>
+
+ <%= link_to "Back to Media List", root_path, class: :button %>

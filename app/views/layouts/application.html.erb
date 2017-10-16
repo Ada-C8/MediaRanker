@@ -32,21 +32,23 @@
       </nav>
 
     </header>
-
     <% flash.each do |name, message| %>
-
       <section class = " row status <%= name%> " >
         <h3><%= message %></h3>
-        <% if params[:notice] %>
-          <ul class="errors">
+        <% @object ||= (@work||@vote||@user||nil) %>
+        <% if @object != nil && @object.errors.any?%>
+          <ul>
+            <% @object.errors.each do |column, message| %>
               <li>
-                <%= params[:notice] %>
+                <strong><%= column %>:</strong> <%= message %>
               </li>
+            <% end %>
           </ul>
         <% end %>
-
       </section>
     <% end %>
-    <%= yield %>
+    <main class = "row">
+      <%= yield %>
+    </main
   </body>
 </html>

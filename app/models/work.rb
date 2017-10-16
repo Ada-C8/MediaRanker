@@ -1,15 +1,13 @@
 class Work < ApplicationRecord
   has_many :votes
 
-  validates :title, presence: true, uniqueness: {scope: :category, message: "There is already a Work of this category with this title " }
+  validates :title, presence: true, uniqueness: {scope: :category, message: "has already been taken" }
 
-  def self.top_ten(category)
+  def self.sorted_by_votes(category)
     works_in_category = self.where(category: category)
     sorted = works_in_category.sort{ |x,y| x.votes.count <=> y.votes.count }
 
-    top_ten = sorted.reverse.take(10)
-
-    return top_ten
+    return sorted.reverse
   end
 
   def self.top_work

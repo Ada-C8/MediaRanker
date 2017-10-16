@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+
+  def render_404
+    render file: "#{Rails.root}/public/404.html", layout: false, status: 404
+  end
+
   def index
     @users = User.all
   end
@@ -16,6 +21,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    render_404 unless @user
   end
 
   private
@@ -23,23 +29,4 @@ class UsersController < ApplicationController
   def user_params
     return params.require(:user).permit(:username)
   end
-
-
-  ##should reserve this for sessions controller?
-  # def login
-  #   existing_user = User.find_by(username: params[:username])
-  #
-  #   if existing_user
-  #     flash[:success] = "Successfully logged in as existing user #{existing_user.username}"
-  #     session[:user_id] = existing_user.id
-  #     redirect_to root_path
-  #   elsif @user.save
-  #     flash[:success] = "Successfully created new user #{@user.username} with ID #{@user.id}"
-  #     redirect_to root_path
-  #   else
-  #     flash[:failure] = "User not created"
-  #     render :new
-  #   end
-  #
-  # end
 end

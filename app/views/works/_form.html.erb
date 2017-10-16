@@ -1,13 +1,3 @@
-<% if @work.errors.any? %>
-  <ul class="errors">
-    <% @work.errors.each do |column, message| %>
-      <li>
-        <strong><%= column.upcase %></strong> <%= message %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
-
 <%= form_for @work do |f| %>
 
   <%= f.label "Category" %>
