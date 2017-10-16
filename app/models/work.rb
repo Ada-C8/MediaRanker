@@ -35,15 +35,15 @@ class Work < ApplicationRecord
 
   def rec_list
     ids = recs
-    ids = ids.keys.sort_by!{|t| -ids[t]}[0...3]
+    ids = ids.keys.sort_by!{|t| -ids[t]}
 
-    works = []
+    rec_works = []
 
     ids.each do |id|
-      works << Work.find(id)
+      rec_works << Work.find(id)
     end
 
-    works
+    rec_works[0...3]
   end
 
   private

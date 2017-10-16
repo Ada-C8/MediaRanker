@@ -2,7 +2,6 @@ require "test_helper"
 
 describe User do
   let(:u) { User.new(name: 'test') }
-  let(:u1) { users(:one) }
 
   describe 'validations' do
     it 'can be created with valid data' do
@@ -28,7 +27,7 @@ describe User do
   describe 'recommendations' do
     describe '#recs' do
       it 'returns a hash of recommended work ids' do
-        recs = u1.recs
+        recs = users(:two).recs
 
         recs.must_be_kind_of Hash
 
@@ -52,19 +51,27 @@ describe User do
 
     describe "#rec_list" do
       it 'returns an array of 3 recommended works' do
-        list = u1.rec_list
+        list = users(:two).rec_list
 
         list.must_be_kind_of Array
-
         list.first.must_be_kind_of Work
         list.length.must_equal 3
       end
 
       it 'returns a shorter array if there are fewer voted works' do
-        list = users(:eight).rec_list
+        list = users(:nine).rec_list
 
         list.must_be_kind_of Array
-        list.length.must_equal 2
+        list.length.must_equal 1
+      end
+
+      it 'wont recommend a work the user has voted for' do
+        list = users(:two).rec_list
+        votes = users(:two).works
+
+        list.each do |rec|
+          votes.wont_include rec
+        end
       end
 
       it 'returns an empty array if users has no votes' do

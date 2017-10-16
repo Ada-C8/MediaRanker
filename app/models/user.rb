@@ -22,15 +22,16 @@ class User < ApplicationRecord
 
   def rec_list
     ids = recs
-    ids = ids.keys.sort_by{|k| -ids[k]}[0...3]
+    ids = ids.keys.sort_by{|k| -ids[k]}
 
-    works = []
+    rec_works = []
 
     ids.each do |id|
-      works << Work.find(id)
+      work =  Work.find(id)
+      rec_works << work unless works.include?work
     end
 
-    works
+    rec_works[0...3]
   end
 
 end
