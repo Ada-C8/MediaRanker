@@ -15,9 +15,9 @@ class Work < ApplicationRecord
   # end
 
   def self.sort
-    if Work.all.count != 0
+    # if Work.all.count != 0
       Work.all.sort_by { |work| -work.vote.count}
-    end
+    # end
   end
 
   def self.top_ten_albums
