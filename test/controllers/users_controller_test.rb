@@ -1,14 +1,25 @@
 require "test_helper"
 
 describe UsersController do
-  it "should get index" do
-    get users_index_url
-    value(response).must_be :success?
+  describe "User Index" do
+    it "should get index" do
+      get users_url
+      assert_response :success
+    end
   end
 
-  it "should get show" do
-    get users_show_url
-    value(response).must_be :success?
+
+  describe "User Show" do
+    it "should get the show page of a single user" do
+      get user_path(users(:potato).id)
+      assert_response :success
+    end
+
+    it "should redirect to 404 page if user goes to a non-existent user's show page" do
+      get user_path(9999)
+      assert_response :redirect
+      must_redirect_to "/404.html"
+    end
   end
 
 end
