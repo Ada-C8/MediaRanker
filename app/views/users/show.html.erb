@@ -13,16 +13,18 @@
       </tr>
     </thead>
     <tbody>
-      <% votes = Vote.where(user_id: @user.id) %>
+      
+      <% votes = @user.valid_votes(@user.id) %>
       <% votes.each do |vote| %>
       <tr> <%# Loop over here to get all the media titles for user votes %>
-        <td><%= link_to vote.work.title, work_path(vote.work.id) %></td>
+        <td class="black"><%= vote.work.title %></td>
         <td class="black"><%= vote.work.creator %></td>
         <td class="black"><%= vote.work.publication_year %></td>
         <td class="black"><%= vote.work.category.capitalize %></td>
         <td class="black"><%= vote.created_at.to_date %></td>
       </tr>
       <% end %>
+
     </tbody>
   </table>
   <%= link_to "See all Users", users_path, class: "button" %>

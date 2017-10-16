@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     unless @user
       head :not_found
     end
+    return @user
   end
 
 end

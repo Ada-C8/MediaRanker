@@ -8,7 +8,7 @@
       Created by: <%= @work.creator %>
     </p>
     <p>
-      Published:
+      Published: <%= @work.publication_year %>
     </p>
     <section>
 
@@ -42,7 +42,7 @@
         <% votes.each do |vote| %>
           <tr>
             <td>
-              <%= link_to vote.user.name, work_path(@work)%>
+              <%= link_to vote.user.name, user_path(vote.user_id)%>
             </td>
             <td class="black">
               <%= vote.created_at.to_date %>
