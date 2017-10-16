@@ -33,4 +33,26 @@ class SessionsController < ApplicationController
     session[:logged_in_as_user] = nil
     redirect_to root_path
   end
+
+  def create
+    @auth_hash = request.env['omniauth.auth']
+
+    @user = User.find_by(uid: @auth_hash['uid'], provider: @auth_hash['provider'])
+
+    if @user
+      session[:logged_in_as_user] = @user.id
+      flash[:success] = "Successfully logged in as existing user #{@user.username}"
+    else
+      @user = User.new(uid: @auth_hash['uid'], provider: @auth_hash['provider'], username: @auth_hash['info']['nickname'], email: @auth_hash['info']['email'])
+
+      if @user.save
+        session[:logged_in_as_user] = @user.id
+        flash[:success] = "Welcome #{@user.username}"
+      else
+        flash[:error] = "Unable to save user!"
+      end
+    end
+
+    redirect_to root_path
+  end
 end

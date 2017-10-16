@@ -4,9 +4,12 @@ describe VotesController do
   describe "create" do
     let(:user1) { users(:user1) }
     let(:movie1) { works(:movie1) }
-    let(:login) { post login_path, params: {name: user1.username} }
+    # let(:login) { post login_path, params: {name: user1.username} }
 
     #TODO I can't figure out how to have a session running during testing
+    def login
+      post login_path, params: {name: user1.username}
+    end
 
     it "can tell if a user is logged in" do
 
@@ -15,7 +18,6 @@ describe VotesController do
     it "should create a new Vote if input is valid" do
       puts "COUNT: #{Vote.count}"
       login
-      post login_path, params: { name: user1.username }
       post votes_path, params: { work: movie1 }
       puts "COUNT: #{Vote.count}"
 
