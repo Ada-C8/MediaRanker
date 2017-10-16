@@ -1,10 +1,11 @@
-<h1>Medias</h1>
+<section class="spotlight small-12 columns">
+  <h2 >Media Spotlight: <%= link_to(Work.top_title, work_path(Work.top_work.id)) %>
+   by <%=  Work.top_creator %> </h2>
+  <p> <%=  Work.top_votes %> votes - <%=  Work.top_description %> </p>
+</section>
 
-<h3>Media Spotlight: <%= link_to(Work.top_title, work_path(Work.top_work.id)) %>
- by <%=  Work.top_creator %> </h3>
-<p> <%=  Work.top_votes %> votes - <%=  Work.top_description %> </p>
 <hr>
-
+<section class="media-list medium-12 large-4 columns">
 <h3>Top Movies</h3>
 <hr>
 <% if @movies.count == 0 %>
@@ -17,28 +18,35 @@
     <% end %>
   </ul>
 <% end %>
+</section>
 
-<h3>Top Albums</h3>
-<hr>
-<% if @albums.count == 0 %>
-  <p>Nothing to show yet!</p>
-<% else %>
-  <ul>
-    <% @albums.each do |album| %>
-      <li><%= link_to(album.title, work_path(album.id)) %> by <%= album.creator %> <br /> <%= album.number_of_vote %> votes </li>
 
-    <% end %>
-  </ul>
-<% end %>
+<section class="media-list medium-12 large-4 columns">
+  <h3>Top Albums</h3>
+  <hr>
+  <% if @albums.count == 0 %>
+    <p>Nothing to show yet!</p>
+  <% else %>
+    <ul>
+      <% @albums.each do |album| %>
+        <li><%= link_to(album.title, work_path(album.id)) %> by <%= album.creator %> <br /> <%= album.number_of_vote %> votes </li>
 
-<h3>Top Books</h3>
-<hr>
-<% if @books.count == 0 %>
-  <p>Nothing to show yet!</p>
-<% else %>
-  <ul>
-    <% @books.each do |book| %>
-      <li><%= link_to(book.title, work_path(book.id)) %> by <%= book.creator %> <br /> <%= book.number_of_vote %> votes </li>
-    <% end %>
-  </ul>
-<% end %>
+      <% end %>
+    </ul>
+  <% end %>
+</section>
+
+
+<section class="media-list medium-12 large-4 columns">
+  <h3>Top Books</h3>
+  <hr>
+  <% if @books.count == 0 %>
+    <p>Nothing to show yet!</p>
+  <% else %>
+    <ul>
+      <% @books.each do |book| %>
+        <li><%= link_to(book.title, work_path(book.id)) %> by <%= book.creator %> <br /> <%= book.number_of_vote %> votes </li>
+      <% end %>
+    </ul>
+  <% end %>
+</section>

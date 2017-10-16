@@ -6,24 +6,37 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
   </head>
 
   <body>
-    <header>
-      <h1>Media Ranker | Ranking the Best of Everything</h1>
-      <%= button_to("View top media", root_path, method: :get) %>
-      <%= button_to("View all media", works_path, method: :get) %>
-      <%= button_to("Add a new work", new_work_path, method: :get) %>
-      <%= button_to("View all users", users_path, method: :get) %>
-      <% if session[:logged_in_user] %>
-        <%= button_to("Logged in as #{User.find_by_id(session[:logged_in_user]).username}", user_path(session[:logged_in_user]), method: :get) %>
-        <%= button_to("Log out", logout_path, method: :delete) %>
-      <% else %>
-        <%= button_to("Log in", login_path, method: :get) %>
-      <% end %>
+    <header class="row">
+      <h1 class="small-12 column"><span class="title">Media Ranker </span> <span class="title-separator"></span>
+        <span class="subtitle"> Ranking the Best of Everything</span></h1>
+        <div class="navigation small-12 columns">
+          <ul class="nav">
+            <li><%= button_to("View top media", root_path, method: :get) %></li>
+            <li><%= button_to("View all media", works_path, method: :get) %></li>
+            <li><%= button_to("Add a new work", new_work_path, method: :get) %></li>
+            <li><%= button_to("View all users", users_path, method: :get) %></li>
+          </ul>
+          <ul class="log">
+            <% if session[:logged_in_user] %>
+            <li><%= button_to("Logged in as #{User.find_by_id(session[:logged_in_user]).username}", user_path(session[:logged_in_user]), method: :get) %></li>
+            <li><%= button_to("Log out", logout_path, method: :delete) %></li>
+            <% else %>
+            <li><%= button_to("Log in", login_path, method: :get) %></li>
+            <% end %>
+          </ul>
+        </div>
+
+
+
+
 
     </header>
-    <main>
+    <main class="row">
       <section class="flash <%= flash[:status] %>">
         <p><%= flash[:message] %></p>
         <ul>

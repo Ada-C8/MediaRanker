@@ -15,3 +15,79 @@
  */
 
 @import url('foundation');
+
+/* HEADER */
+
+header {
+  position: relative;
+  display: block;
+  /*height: 213px;*/
+  background-color: #B2DFDB;
+  width: 100%;
+}
+header h1 {
+  position: absolute;
+  top: 50px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 2.3rem;
+  width: 100%;
+}
+header h1 span.title {
+  display: inline-block;
+  color: #FF5722;
+  font-family: "Gdea", sans-serif;
+  height: 50px;
+  border-right: 2px white solid;
+  padding-right: 20px;
+}
+header h1 span.subtitle {
+  color: white;
+  font-family: "Gudea", sans-serif;
+  padding-left: 10px;
+}
+header div.navigation {
+  display: block;
+  margin-top: 145px;
+  /*position: absolute;*/
+}
+header ul li {
+  display: inline-block;
+  /*position: relative;*/
+  position: static;
+  /*margin-top: 145px;*/
+}
+header ul {
+  height: 50px;
+}
+header ul li {
+  display: inline-block;
+  /*position: relative;*/
+  position: static;
+  /*margin-top: 145px;*/
+}
+header .nav {
+  list-style: none;
+  float: left;
+  padding-left: 10px;
+}
+header .log {
+  list-style: none;
+  padding-right: 10px;
+  float: right;
+}
+input {
+  background-color: #26A599;
+  border: none;
+  color: white;
+  font-weight: lighter;
+  font-size: 0.9rem;
+  height: 40px;
+  padding: 0 13px;
+}
+
+/* Main content */
+h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}

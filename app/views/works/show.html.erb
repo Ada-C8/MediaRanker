@@ -1,11 +1,11 @@
-<h1><%= @work.title %></h1>
+<h2><%= @work.title %></h2>
 <p>Created by: <%= @work.creator %></p>
 <p>Published: <%= @work.publication_year %></p>
 <p><%= @work.description %></p>
 
 
 
-<h1> <%= @work.number_of_vote %> Votes for this movie </h1>
+<h2> <%= @work.number_of_vote %> Votes for this movie </h2>
 
 <% if @work.number_of_vote > 0 %>
   <table>
