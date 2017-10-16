@@ -6,6 +6,8 @@ describe VotesController do
     let(:movie1) { works(:movie1) }
     let(:login) { post login_path, params: {name: user1.username} }
 
+    #TODO I can't figure out how to have a session running during testing
+
     it "can tell if a user is logged in" do
 
     end
@@ -13,8 +15,12 @@ describe VotesController do
     it "should create a new Vote if input is valid" do
       puts "COUNT: #{Vote.count}"
       login
+      post login_path, params: { name: user1.username }
       post votes_path, params: { work: movie1 }
       puts "COUNT: #{Vote.count}"
+
+      proc { post votes_path, params: { user: users(:user1), work: works(:movie2) } }.must_change 'Vote.count', 1
+
 
       must_respond_with :redirect
     end

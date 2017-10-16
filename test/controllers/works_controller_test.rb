@@ -82,7 +82,7 @@ describe WorksController do
         proc { delete delete_work_path(book1.id) }.must_change 'Work.count', -1
         must_respond_with :redirect
 
-        Work.find_by(id: book1.id).must_equal nil
+        Work.find_by(id: book1.id).must_be_nil
       end
     end #destroy
   end # CRUD Tests

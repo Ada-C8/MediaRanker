@@ -21,6 +21,6 @@ describe UsersController do
       end
     end #show
 
-  end #
+  end
 
 end
