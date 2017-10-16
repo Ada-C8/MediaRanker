@@ -25,23 +25,43 @@ class UsersController < ApplicationController
   end
 
   def login
-    name = params[:user][:name]
+    auth_hash = request.env['omniauth.auth']
 
-    @user = User.find_by(name: name)
+    if auth_hash['uid']
+      user = User.find_by(provider: params[:provider], uid: auth_hash['uid'])
 
-    if @user
-      session[:logged_in_user] = @user.id
-      redirect_to root_path
-      flash[:status] = :success
-      flash[:message] = "Successfully logged in as existing user #{@user.name}"
+      if user.nil?
+        user = User.from_auth_hash(params[:provider], auth_hash)
+        save_and_flash(user)
+      else
+        flash[:status] = :success
+        flash[:message] = "Successfully logged in as returning user #{user.name}"
+      end
+
+      session[:user_id] = user.id
+
     else
-      create
-      # Successfully created new user aweoituwelgnweb with ID 425
+      flash[:status] = :failure
+      flash[:message] = "could not create user from OAuth data"
     end
+    redirect_to root_path
+    # name = params[:user][:name]
+    #
+    # @user = User.find_by(name: name)
+    #
+    # if @user
+    #   session[:logged_in_user] = @user.id
+    #   redirect_to root_path
+    #   flash[:status] = :success
+    #   flash[:message] = "Successfully logged in as existing user #{@user.name}"
+    # else
+    #   create
+    #   # Successfully created new user aweoituwelgnweb with ID 425
+    # end
   end
 
   def logout
-    session[:logged_in_user] = nil
+    session[:user_id] = nil
     redirect_to root_path
     flash[:status] = :success
     flash[:message] = "Successfully logged out"
