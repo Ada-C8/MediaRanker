@@ -1,4 +1,4 @@
-<h3>Add a new work</h3>
+
 <% if @work.errors.any? %>
   <ul class="errors">
     <% @work.errors.each do |column, message| %>
@@ -8,6 +8,7 @@
     <% end %>
   </ul>
 <% end %>
+<section>
 
 <%= form_for @work do |f| %>
   <%= f.label :category %>
@@ -26,5 +27,6 @@
   <%= f.text_field :description %>
 
 
-  <%= f.submit %>
+  <%= f.submit class: "button" %>
 <% end %>
+</section>
