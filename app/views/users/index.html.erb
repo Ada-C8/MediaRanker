@@ -8,9 +8,9 @@
 
   <% @users.each do |user| %>
     <tr>
-      <td><%= user.name %></td>
-      <td>tbd</td>
-      <td>tbd</td>
+      <td><%= link_to user.name, user_path(user.id) %></td>
+      <td><%= user.votes.count %></td>
+      <td><%= user.created_at %></td>
     </tr>
   <% end %>
 </table>
