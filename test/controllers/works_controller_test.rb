@@ -33,6 +33,18 @@ describe "WorksController" do
       get edit_work_path(invalid_work_id)
       must_respond_with :not_found
     end
+
+    it "returns a not_found status when given an invalid ID of 0" do
+      invalid_work_id = 0
+      get edit_work_path(invalid_work_id)
+      must_respond_with :not_found
+    end
+
+    it "returns a not_found status when given an invalid ID of a string" do
+      invalid_work_id = "0"
+      get edit_work_path(invalid_work_id)
+      must_respond_with :not_found
+    end
   end
 
   describe "update" do
@@ -155,6 +167,19 @@ describe "WorksController" do
       get work_path(invalid_work_id)
       must_respond_with :not_found
     end
+
+    it "returns not_found when given an invalid work ID of 0" do
+      invalid_work_id = 0
+      get work_path(invalid_work_id)
+      must_respond_with :not_found
+    end
+
+    it "returns not_found when given an invalid work ID of a string" do
+      invalid_work_id = "one"
+      get work_path(invalid_work_id)
+      must_respond_with :not_found
+    end
+
   end
 
   describe "destroy" do

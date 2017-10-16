@@ -45,6 +45,18 @@ describe UsersController do
       get user_path(invalid_user_id)
       must_respond_with :not_found
     end
+
+    it "returns a not_found status when given an invalid ID of 0" do
+      invalid_user_id = 0
+      get user_path(invalid_user_id)
+      must_respond_with :not_found
+    end
+
+    it "returns a not_found status when given an invalid ID of a string" do
+      invalid_user_id = "0"
+      get user_path(invalid_user_id)
+      must_respond_with :not_found
+    end
   end
 
   describe "login_form" do
