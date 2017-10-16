@@ -39,12 +39,12 @@
 
     <%flash.each do |name, message| %>
     <div class="row flash <%=name%>">
-      <::before>
+
         <section class="row status <%= name%> ">
           <h3><%= message %></h3>
         </section>
       <%end%>
-      </::after>
+  
     </div>
 
     <main class="row">
