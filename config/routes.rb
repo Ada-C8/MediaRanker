@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-  get 'votes/create'
-
+  
   root to: 'works#home'
 
   get '/works/home'
-  resources :works do
-    resources :votes, only: [:create]
-  end
+  resources :works
 
   resources :users, only: [:index, :show]
 
