@@ -9,6 +9,9 @@
   <p>
     <%=@work.description %>
   </p>
+  <p>
+    Added by: <%=link_to(@work.user.name, user_path(@work.user.id)) %>
+  </p>
   <section>
     <%=link_to 'Back to media ranks', root_path, class: "button" %>
     <%= link_to 'Edit', edit_work_path(@work.id), class: "button" %>
