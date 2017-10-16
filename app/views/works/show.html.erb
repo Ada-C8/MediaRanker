@@ -6,7 +6,7 @@
   <section>
     <%= link_to "Back to Media Ranks", root_path, class: "button" %>
     <%= link_to "Edit", edit_work_path(@work.id), class: "button" %>
-    <%= link_to "Upvote", class: "button" %>
+    <%= link_to "Upvote", votes_path(work_id: @work.id, user_id: session[:user_id]), method: :post, class: "button" %>
     <%= link_to "Delete", work_path(@work.id), class: "button", method: :delete %>
   </section>
 </article>
