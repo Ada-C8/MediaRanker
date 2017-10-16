@@ -83,5 +83,47 @@ describe Work do
 
       recs.keys.wont_include "Blade Runner"
     end
+
+    it 'returns an empty hash if work has no votes' do
+      recs = works(:ruby).recs
+
+      recs.must_be_kind_of Hash
+      recs.count.must_equal 0
+    end
+
+    it 'returns an empty hash if voting users have not voted for anything else' do
+      recs = works(:woods).recs
+
+      recs.must_be_kind_of Hash
+      recs.count.must_equal 0
+    end
+  end
+
+  describe '#rec_list' do
+    it 'returns an array of up to 3 titles' do
+      list = w.rec_list
+
+      list.must_be_kind_of Array
+      list.count.must_equal 3
+    end
+
+    it 'returns a shorter list if there are not enough other works to recommend' do
+      list = works(:beat).rec_list
+
+      list.must_be_kind_of Array
+      list.count.must_equal 1
+    end
+
+    it 'returns an empty array if work has no votes' do
+      list = works(:ruby).rec_list
+
+      list.must_equal []
+    end
+
+    it 'returns an empty list if voting users have not voted for anything else' do
+      list = works(:woods).rec_list
+
+      list.must_equal []
+    end
   end
 end

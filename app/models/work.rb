@@ -34,7 +34,7 @@ class Work < ApplicationRecord
 
   def rec_list
     works = recs
-    works.keys.sort_by{|t| -works[t]}[0..3]
+    works.keys.sort_by{|t| -works[t]}[0...3]
   end
 
   private
