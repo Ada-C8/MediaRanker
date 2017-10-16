@@ -1,1 +1,27 @@
-show page
+<h2>User Summary: <%= @user.name %></h2>
+
+<p>Joined site <%= @user.created_at %></p>
+
+<table>
+  <h3>Votes</h3>
+  <tr>
+    <th>Media title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Category</th>
+    <th>Voted On</th>
+  </tr>
+
+  <% @user.votes.each do |vote| %>
+    <tr>
+      <td><%= vote.work.title %></td>
+      <td><%= vote.work.creator %></td>
+      <td><%= vote.work.created_at %></td>
+      <td><%= vote.work.category %></td>
+      <td><%= vote.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "See all users", users_path %>
+<%= link_to "Back to media list", works_path %>
