@@ -33,4 +33,9 @@ class SessionsController < ApplicationController
     session[:logged_in_as_user] = nil
     redirect_to root_path
   end
+
+  def create
+    auth_hash = request.env['omniauth.auth']
+    puts auth_hash
+  end
 end
