@@ -68,3 +68,7 @@ group :test do
   gem 'minitest-rails'
   gem 'minitest-reporters'
 end
+
+group :production do
+  gem 'dotenv-rails'
+end
