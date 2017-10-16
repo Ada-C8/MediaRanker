@@ -19,9 +19,4 @@ describe Vote do
       b.errors.messages.must_include :work_id
     end
   end
-
-  # describe "relations" do
-  #   it "can  belongs to "do
-  #   end
-  # end
 end
