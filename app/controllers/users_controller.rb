@@ -37,18 +37,12 @@ class UsersController < ApplicationController
     end
   end
 
-  # def login
-  #   name = params[:user][:name]
-  #
-  #   user = User.find_by(name: name)
-  #
-  #   if user
-  #     session[:logged_in_user] = user.id
-  #     redirect_to root_path
-  #   else
-  #
-  #   end
-  # end
+  def logout
+    session.clear
+    flash[:status] = :success
+    flash[:message] = "Successfully logged out"
+    redirect_to root_path
+  end
 
   private
   def user_params
