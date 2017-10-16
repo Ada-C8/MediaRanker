@@ -11,6 +11,7 @@ describe VotesController do
   describe "#upvote" do
 
     #PROBLEMS: none of my tests are working here, because I was not able to figure out how to set which page a user is coming from. And also id is setting to nil, and could not figure out how to fix this.
+    #https://stackoverflow.com/questions/38162970/testing-redirect-back-with-rspec-in-rails-5
     it "returns a redirect_to the works_path, if user is coming from works_path page" do
       # visit works_path
       # request.env[works_path]
@@ -26,19 +27,10 @@ describe VotesController do
     end
 
     it "returns a redirect_to the work_path(work.id), if user is coming from work_path(work.id)" do
-
+      
       post upvote_path(@work.id)
       must_respond_with :redirect
       must_redirect_to work_path(@work.id)
-    end
-
-    it "sets a flash variable to be equal to :failure and the message to indicate to the user must be logged in to vote, and redirects to works_path" do
-
-      post upvote_path(@work.id)
-      flash[:status].must_equal :failure
-      flash[:message].must_equal "You must be logged in to vote"
-      must_respond_with :redirect
-      must_redirect_to works_path
     end
 
     #PROBLEM: Can't get this test to work. Unable to set session in controller test.
@@ -57,6 +49,22 @@ describe VotesController do
     #   post :upvote, session: { :logged_in_user => user.id }
     #
     #   Vote.count.must_equal vote_count + 1
+    # end
+
+    it "sets a flash variable to be equal to :failure and the message to indicate to the user must be logged in to vote, and redirects to works_path" do
+
+      post upvote_path(@work.id)
+      flash[:status].must_equal :failure
+      flash[:message].must_equal "You must be logged in to vote"
+      must_respond_with :redirect
+      must_redirect_to works_path
+    end
+
+    #intial test when just one redirect
+    # it "returns a redirect_to the works_path" do
+    #   post upvote_path(@work.id)
+    #   must_respond_with :redirect
+    #   must_redirect_to works_path
     # end
   end
 end

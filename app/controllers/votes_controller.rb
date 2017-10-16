@@ -22,5 +22,6 @@ class VotesController < ApplicationController
 
     redirect_back(fallback_location: work_path(current_work_id))
 
+    # redirect_to works_path
   end
 end
