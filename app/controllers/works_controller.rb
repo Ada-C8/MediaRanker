@@ -1,9 +1,13 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.all
-    @movies = Work.where(category: "movie")
-    @books = Work.where(category: "book")
-    @albums = Work.where(category: "album")
+    works = Work.all
+    @works = works.sort_by {|work| -work.votes.count}
+    movies = Work.where(category: "movie")
+    @movies = movies.sort_by {|work| -work.votes.count}
+    books = Work.where(category: "book")
+    @books = books.sort_by {|work| -work.votes.count}
+    albums = Work.where(category: "album")
+    @albums = albums.sort_by {|work| -work.votes.count}
   end
 
   def new
@@ -72,5 +76,8 @@ class WorksController < ApplicationController
   private
     def work_params
       return params.require(:work).permit(:title, :creator, :category, :publication_year, :description)
+    end
+    def sort_by_vote_count
+      return Work.all.sort_by{ |work| -work.votes.count}
     end
 end
