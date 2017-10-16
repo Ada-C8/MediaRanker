@@ -15,7 +15,7 @@ class Work < ApplicationRecord
   # end
 
   def self.sort
-    if Work.all.count != nil
+    if Work.all.count != 0
       Work.all.sort_by { |work| -work.vote.count}
     end
   end
@@ -65,7 +65,7 @@ class Work < ApplicationRecord
 
 
   def self.top_work
-    if Work.all.count != nil
+    if Work.all.count != 0
       Work.all.sort_by { |work| -work.vote.count}.first
     end
   end

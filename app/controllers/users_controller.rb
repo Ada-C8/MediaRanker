@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-
   def index
     if params[:work_id]
       @user = User.find_by(id: params[:id])
