@@ -9,7 +9,7 @@ class Work < ApplicationRecord
   def self.media_spotlight
     works = Work.all
     works.max_by do |work|
-      work.votes.count
+      (work.votes.count).take(1)
     end
   end
 
