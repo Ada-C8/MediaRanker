@@ -1,7 +1,9 @@
 require "test_helper"
 
 describe User do
-  let(:user) { User.new } 
+  before do
+    @user = User.new
+  end
 
   describe "validations" do
 
@@ -12,16 +14,16 @@ describe User do
     end
 
     it "is invalid without a name" do
-      result = user.valid?
+      result = @user.valid?
       result.must_equal false
-      user.errors.messages.must_include :name
+      @user.errors.messages.must_include :name
     end
 
   end
 
   describe "relations" do
     it "responds to votes" do
-      user.must_respond_to :votes
+      @user.must_respond_to :votes
     end
   end
 

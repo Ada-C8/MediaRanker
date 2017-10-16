@@ -1,7 +1,9 @@
 require "test_helper"
 
 describe Vote do
-  let(:vote) { Vote.new }
+  before do
+    @vote = Vote.new
+  end
 
   describe "validations" do
     it "can created with all fields" do
@@ -11,15 +13,15 @@ describe Vote do
     end
 
     it "is invalid without a user_id" do
-      result = vote.valid?
+      result = @vote.valid?
       result.must_equal false
-      vote.errors.messages.must_include :user_id
+      @vote.errors.messages.must_include :user_id
     end
 
     it "is invalid without a work_id" do
-      result = vote.valid?
+      result = @vote.valid?
       result.must_equal false
-      vote.errors.messages.must_include :work_id
+      @vote.errors.messages.must_include :work_id
     end
 
     it "is invalid when the user_id and work_id pairing is not unique" do
@@ -35,11 +37,11 @@ describe Vote do
 
   describe "relations" do
     it "responds to work" do
-      vote.must_respond_to :work
+      @vote.must_respond_to :work
     end
 
     it "responds to user" do
-      vote.must_respond_to :user
+      @vote.must_respond_to :user
     end
   end
 end

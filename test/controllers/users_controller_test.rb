@@ -25,6 +25,12 @@ describe UsersController do
       get users_path
       must_respond_with :success
     end
+
+    it "returns a success status when there are no users" do
+      User.destroy_all
+      get users_path
+      must_respond_with :success
+    end
   end
 
   describe "show" do
@@ -80,6 +86,13 @@ describe UsersController do
       get logout_path
       must_respond_with :redirect
       must_redirect_to root_path
+    end
+
+    it "sets a session variable to be equal to nil, a flash variable to be equal to :success, and a flash message indicating that the user is logged out" do
+      get logout_path
+      session[:logged_in_user].must_equal nil
+      flash[:status].must_equal :success
+      flash[:message].must_equal "You have been successfully logged out"
     end
   end
 end

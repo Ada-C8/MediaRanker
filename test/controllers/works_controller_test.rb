@@ -21,55 +21,6 @@ describe "WorksController" do
     end
   end
 
-  describe "create" do
-    it "adds the work to the database and redirects when the work data is valid" do
-      #arrange
-      work_data = {
-        work: {
-          category: "book",
-          title: "When Nietzsche Wept",
-          creator: "Irvin Yalom",
-          publication_year: 1990,
-          description: "Read it"
-        }
-      }
-
-      Work.new(work_data[:work]).must_be :valid?
-
-      start_work_count = Work.count
-
-      #act
-      post works_path, params: work_data
-
-      #assert
-      must_respond_with :redirect
-      must_redirect_to works_path
-
-      Work.count.must_equal start_work_count + 1
-    end
-
-    it "sends a bad_request when the work data is invalid" do
-      #arrange
-      invalid_work_data = {
-        work: {
-          category: "book",
-          title: "Civilizations and its Discontents"
-        }
-      }
-
-      Work.new(invalid_work_data[:work]).wont_be :valid?
-
-      start_work_count = Work.count
-
-      #act
-      post works_path, params: invalid_work_data
-
-      #assert
-      must_respond_with :bad_request
-      Work.count.must_equal start_work_count
-    end
-  end
-
   describe "edit" do
     it "returns a success status when given a valid work ID" do
       work_id = Work.first.id
@@ -80,25 +31,6 @@ describe "WorksController" do
     it "returns not_found when given an invalid work ID" do
       invalid_work_id = Work.last.id + 1
       get edit_work_path(invalid_work_id)
-      must_respond_with :not_found
-    end
-  end
-
-  describe "show" do
-    it "returns success when given a valid work ID" do
-      # Arrange
-      work_id = Work.first.id
-
-      # Act
-      get work_path(work_id)
-
-      # Assert
-      must_respond_with :success
-    end
-
-    it "returns not_found when given an invalid work ID" do
-      invalid_work_id = Work.last.id + 1
-      get work_path(invalid_work_id)
       must_respond_with :not_found
     end
   end
@@ -159,10 +91,73 @@ describe "WorksController" do
 
       work.title.wont_equal invalid_work_data[:work][:title]
     end
-
   end
 
-  describe "destory" do
+  describe "create" do
+    it "adds the work to the database and redirects when the work data is valid" do
+      #arrange
+      work_data = {
+        work: {
+          category: "book",
+          title: "When Nietzsche Wept",
+          creator: "Irvin Yalom",
+          publication_year: 1990,
+          description: "Read it"
+        }
+      }
+
+      Work.new(work_data[:work]).must_be :valid?
+
+      start_work_count = Work.count
+
+      #act
+      post works_path, params: work_data
+
+      #assert
+      must_respond_with :redirect
+      must_redirect_to works_path
+
+      Work.count.must_equal start_work_count + 1
+    end
+
+    it "sends a bad_request when the work data is invalid" do
+      #arrange
+      invalid_work_data = {
+        work: {
+          category: "book",
+          title: "Civilizations and its Discontents"
+        }
+      }
+
+      Work.new(invalid_work_data[:work]).wont_be :valid?
+
+      start_work_count = Work.count
+
+      #act
+      post works_path, params: invalid_work_data
+
+      #assert
+      must_respond_with :bad_request
+      Work.count.must_equal start_work_count
+    end
+  end
+
+  describe "show" do
+    it "returns success when given a valid work ID" do
+      work_id = Work.first.id
+      get work_path(work_id)
+
+      must_respond_with :success
+    end
+
+    it "returns not_found when given an invalid work ID" do
+      invalid_work_id = Work.last.id + 1
+      get work_path(invalid_work_id)
+      must_respond_with :not_found
+    end
+  end
+
+  describe "destroy" do
     it "returns a success status and destroys the work when given a valid work ID" do
       work_id = Work.first.id
 

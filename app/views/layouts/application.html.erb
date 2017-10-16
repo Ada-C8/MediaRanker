@@ -24,6 +24,7 @@
 
         <div class="large-4 small-12 columns button-group row">
           <% if session[:logged_in_user] %>
+          <%# is there a better way to set current_user, without having this view need to call the User class? %>
             <% current_user = User.find_by(id: session[:logged_in_user])%>
               <%= link_to "Logged in as #{current_user.name}", user_path(session[:logged_in_user]), class: "button small-6 large-3" %>
               <%= link_to "Logout", logout_path, class: "button small-6 large-3" %>

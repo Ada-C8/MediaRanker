@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
   def show
     find_user_by_params_id
-
   end
 
   def login_form
