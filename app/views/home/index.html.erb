@@ -1,20 +1,19 @@
 
-  <% if @new %>
-    <h3>
-      <span class"media-spotlight-header">Media Spotlight:</span> No data
-  <% else %>
-    <h3>
-      <span class"media-spotlight-header">Media Spotlight:</span><%= @top.title %> by <%= @top.creator%>
-    </h3>
-    <p>
-      <%= @top.votes.count %> votes - <%= @top.description %>
-    </p>
-  <% end %>
-
-
-</h3>
-
-</p>
+<section class="row spotlight">
+  <div>
+    <% if @new %>
+      <h3>
+        <span class="media-spotlight-header">Media Spotlight:</span> No data
+    <% else %>
+      <h3>
+        <span class="media-spotlight-header">Media Spotlight:</span> <%= link_to @top.title, work_path(@top.id)%> by <%= @top.creator%>
+      </h3>
+      <p>
+        <%= @top.votes.count %> votes - <%= @top.description %>
+      </p>
+    <% end %>
+  </div>
+</section>
 <hr>
 <%= render partial: "works", locals: { model: @movies}%>
 <%= render partial: "works", locals: { model: @books}%>

@@ -3,7 +3,7 @@
   <head>
     <title>MediaRanker</title>
     <%= csrf_meta_tags %>
-
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag 'owl.jpg'%>
@@ -20,18 +20,16 @@
         <%= link_to "View all users", users_path, class: "button" %>
         <div class="float-right">
           <% if session[:logged_in_user] %>
-
               <%= link_to "Logged in as #{session[:logged_in_user]["username"]}", user_path(session[:logged_in_user]["id"]), class: "button"  %>
             <%= link_to "Log out", logout_path, class: "button",  method: :post%>
           <% else %>
-          <!-- login_path -->
             <%= link_to "Log in", login_path, class: "button"%>
           <% end %>
         </div>
       </nav>
     </header>
     <main class="row">
-      <section class="flash <%= flash[:status] %>">
+      <section class="row flash <%= flash[:status] %>">
         <p>
           <%= flash[:message] %>
         </p>

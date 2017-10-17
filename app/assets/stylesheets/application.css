@@ -24,10 +24,16 @@
  --orange: #FF5722;
 }
  .flash.success {
-   background-color: green;
+   border-radius: 5px;
+   background-color: #e6e6e6;
+   padding: 20px 25px;
+   margin-top: 30px;
  }
  .flash.failure {
-   background-color: red;
+   border-radius: 5px;
+   background-color: #e6e6e6;
+   padding: 20px 25px;
+   margin-top: 30px;
  }
 
 .page-header {
@@ -50,6 +56,9 @@
   border-right: white 2px solid;
 }
 
+a:hover {
+  color: var(--dark-teal);
+}
 body, h1, h2, h3, h4, h5 {
   font-family: "Gudea", sans-serif;
 }
@@ -69,4 +78,36 @@ h1, h2, h3, h4, h5 {
 main {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.media-spotlight-header {
+  color: var(--dark-gray);
+}
+
+section.spotlight>div {
+  padding: 0 2rem 2rem 2rem;
+}
+
+a, h3 {
+  color: var(--teal);
+}
+
+.spotlight a {
+  border-bottom: 2px solid;
+  border-color: var(--teal).
+}
+
+
+.top-ten ul{
+  list-style-type: none;
+  margin-left: 0;
+}
+
+.top-ten h3 {
+  border-bottom: 2px solid;
+  border-color: var(--light-teal);
+}
+
+body small {
+  color: slategrey;
 }
