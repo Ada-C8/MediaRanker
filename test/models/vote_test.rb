@@ -27,7 +27,6 @@ describe Vote do
       v = Vote.new(work: work, user: user)
       v.wont_be :valid?
       v.errors.messages.must_include :user_id
-
     end
   end
 

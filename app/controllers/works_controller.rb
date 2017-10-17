@@ -48,6 +48,8 @@ class WorksController < ApplicationController
     # if find_work_by_params_id
       @work.destroy
       redirect_to works_path
+      flash[:status] = :success
+      flash[:message] = "Successfully deleted!"
     # end
   end
 
