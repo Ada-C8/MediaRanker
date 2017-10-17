@@ -1,0 +1,28 @@
+<main class="users-index">
+  <h2 class="title-green">List of Users</h2>
+
+  <section class="user-list">
+    <table class="all-users">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th width="100">Votes</th>
+          <th width="200">Joined</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%=link_to user.name, user_path(user[:id])%></td>
+            <td><%= user.votes.length %></td>
+            <td><%= user.join_date.strftime("%b %d, %Y") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="bottom-nav">
+    <%= link_to "Back of Media List", root_path, class: "button" %>
+  </section>
+</main>

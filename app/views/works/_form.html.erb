@@ -1,0 +1,31 @@
+<%= form_for @work, html: {id: "work-form"} do |f| %>
+
+  <%= content_tag :div, class: "category-wrapper" do %>
+    <%= f.label :category, "Category"%>
+    <%= f.select :category, ['album', 'book', 'movie']  %>
+  <% end %>
+
+  <%= content_tag :div, class: "title-wrapper" do %>
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title %>
+  <% end %>
+
+  <%= content_tag :div, class: "creator-wrapper" do %>
+    <%= f.label :creator, "Creator" %>
+    <%= f.text_field :creator %>
+  <% end %>
+
+  <%= content_tag :div, class: "year-wrapper" do %>
+    <%= f.label :year, "Publication year" %>
+    <%= f.text_field :year %>
+  <% end %>
+
+  <%= content_tag :div, class: "desc-wrapper" do %>
+    <%= f.label :desc, "Description" %>
+    <%= f.text_area :desc %>
+  <% end %>
+
+  <%= content_tag :div, class: "submit-wrapper" do %>
+    <%= f.submit button_text, class: "button" %>
+  <% end %>
+<% end %>

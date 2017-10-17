@@ -1,0 +1,37 @@
+<main class="grid-x show-user">
+  <section class="small-12 cell">
+    <h2 class="title-green">User Summary: <%= @user.name %></h2>
+    <p>Joined site <%= @user.join_date.strftime("%b %d, %Y") %></p>
+  </section>
+
+  <section class="small-12 cell user-votes">
+    <h3>Votes</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Media Title</th>
+          <th>Created By</th>
+          <th>Published</th>
+          <th>Category</th>
+          <th>Voted On</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.votes.each do |vote| %>
+          <tr>
+            <td><%= link_to vote.work.title, work_path(vote.work[:id])  %></td>
+            <td><%= vote.work.creator %></td>
+            <td><%= vote.work.year %></td>
+            <td><%= vote.work.category.capitalize %></td>
+            <td><%= vote.date.strftime("%b %d, %Y") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="small-12 cell">
+    <%= link_to "See all Users", users_path, class: "button" %>
+    <%= link_to "Back to Media List", root_path, class: "button" %>
+  </section>
+</main>

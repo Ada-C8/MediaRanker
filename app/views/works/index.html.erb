@@ -1,0 +1,93 @@
+<main class="works-list">
+  <h2 class="title-green">List of Works</h2>
+
+  <section class="work-list">
+    <h3 class="list-title">Albums</h3>
+    <table class="album-list">
+      <thead>
+        <tr>
+          <th width="80">Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @works.each do |work| %>
+          <% if work.category == "album" %>
+            <tr>
+              <td><%= work.votes.length %></td>
+              <td><%= link_to work.title, work_path(work[:id]) %></td>
+              <td><%= work.creator %></td>
+              <td><%= work.year %></td>
+              <td><%= link_to "Upvote", new_work_vote_path(work[:id]), class: "button" %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="work-list">
+    <h3 class="list-title">Books</h3>
+    <table class="book-list">
+      <thead>
+        <tr>
+          <th width="80">Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @works.each do |work| %>
+          <% if work.category == "book" %>
+            <tr>
+              <td><%= work.votes.length %></td>
+              <td><%= link_to work.title, work_path(work[:id]) %></td>
+              <td><%= work.creator %></td>
+              <td><%= work.year %></td>
+              <td><%= link_to "Upvote", new_work_vote_path(work[:id]), class: "button" %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="work-list">
+    <h3 class="list-title">Movies</h3>
+    <table class="book-list">
+      <thead>
+        <tr>
+          <th width="80">Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @works.each do |work| %>
+          <% if work.category == "movie" %>
+            <tr>
+              <td><%= work.votes.length %></td>
+              <td><%= link_to work.title, work_path(work[:id]) %></td>
+              <td><%= work.creator %></td>
+              <td><%= work.year %></td>
+              <td><%= link_to "Upvote", new_work_vote_path(work[:id]), class: "button" %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="bottom-nav">
+    <%= link_to "View top media", root_path, class: "button" %>
+    <%= link_to "Add a new work", new_work_path, class: "button" %>
+  </section>
+
+</main>

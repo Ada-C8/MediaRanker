@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'favicon.ico' %>
+  </head>
+
+  <body class="grid-container fluid" id="main-body">
+    <header class="grid-x main-header">
+      <h1 class="small-12 cell site-title"><%=link_to "Media Ranker", root_path %> Ranking the Best of Everything</h1>
+      <nav class="small-12 cell site-nav">
+        <div class="grid-x grid-margin-x grid-padding-x">
+          <section class="small-12 large-8 cell">
+            <%= link_to "View top media", root_path, class: "button" %>
+            <%= link_to "View all media", works_path, class: "button" %>
+            <%= link_to "Add a new work", new_work_path, class: "button" %>
+            <%= link_to "View all users", users_path, class: "button" %>
+          </section>
+          <section class="login-buttons small-12 large-4 cell">
+            <% if session[:logged_in_user] %>
+              <%= link_to "Logged in as #{ User.find(session[:logged_in_user]).name}", user_path(User.find(session[:logged_in_user]).id), class: "button"%>
+              <%= link_to "Log Out", logout_path, class: "button"%>
+            <% else %>
+              <%= link_to "Log In", login_path, class: "button" %>
+            <% end %>
+          </section>
+        </div>
+      </nav>
+    </header>
+
+    <% if flash[:status] %>
+      <section class="flash <%= flash[:status]%>">
+        <p><%= flash[:message] %></p>
+        <% if flash[:details] %>
+          <ul>
+            <% flash[:details].each do |field, problems| %>
+              <% problems.each do |problem| %>
+              <li>
+                <strong>
+                  <%= field %>:
+                </strong>
+                <%= problem %>
+              </li>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
+      </section>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>
