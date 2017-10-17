@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= favicon_link_tag 'favicon.ico' %>
+
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
+
+    <%= stylesheet_link_tag 'application', 'media': 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="page-header row">
+      <h2 class="columns small-12">
+        <%= link_to "Media Ranker", root_path %>
+        <small>Ranking the Best of Everything</small>
+      </h2>
+      <nav class="columns small-12">
+        <%= link_to "View top media", root_path, class: "button" %>
+        <%= link_to "View all media", works_path, class: "button" %>
+        <%= link_to "Add a new work", new_work_path, class: "button" %>
+        <%= link_to "View all users", users_path, class: "button" %>
+        <div class="float-right">
+          <% if session[:logged_in_as_user] %>
+            <%= link_to "Logged in as #{User.find(session[:logged_in_as_user]).username}", user_path(session[:logged_in_as_user]), class: "button" %>
+            <%= link_to "Log Out", logout_path, class: "button" %>
+          <% else %>
+            <%= link_to "Log In", login_path, class: "button"%>
+          <% end %>
+        </div>
+      </nav>
+    </header>
+
+    <% if flash[:failure] || flash[:success] %>
+      <% flash.each do |name, message| %>
+        <section class="row status <%= name %>">
+          <h3><%= message %></h3>
+          <% if (params[:controller] == "works") && @work %>
+          <ul class="errors">
+            <% @work.errors.each do |column, message| %>
+            <li>
+              <%= "#{column}: #{message}" %>
+            </li>
+            <% end %>
+          </ul>
+          <% end %>
+
+          <% if (params[:controller] == "sessions") && session[:errors] %>
+          <ul class="errors">
+            <% session[:errors].each do |column, messages| %>
+            <% messages.each do |m| %>
+            <li>
+              <%= "#{column}: #{m}" %>
+            </li>
+            <% end %>
+            <% end %>
+          </ul>
+          <% end %>
+        </section>
+      <% end %>
+    <% end %>
+    <!-- FIX: Figure out how to get validation error message to show when a duplicate vote is attempted -->
+    
+    <main class="row">
+      <%= yield %>
+    </main>
+  </body>
+</html>
