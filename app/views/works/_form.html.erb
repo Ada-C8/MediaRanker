@@ -1,0 +1,20 @@
+<%= form_for @work do |f| %>
+
+<%= f.label :category %>
+<%= f.select :category, ['book', 'album', 'movie']%>
+
+<%= f.label :title %>
+<%= f.text_field :title, class: "form-field"%>
+
+<%= f.label :creator %>
+<%= f.text_field :creator, class: "form-field"%>
+
+<%= f.label :publication_year %>
+<%= f.text_field :publication_year, class: "form-field"%>
+
+<%= f.label :description %>
+<%= f.text_field :description, class: "form-field"%>
+
+<%= f.submit class: "submit button"%>
+
+<% end %>

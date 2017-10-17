@@ -1,0 +1,30 @@
+// Place all the styles related to the Main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+// spotlight
+.media-spotlight {
+    color: #424242;
+    font-weight: bold;
+}
+
+.spotlight a {
+    border-bottom: 2px solid;
+}
+
+.spotlight div {
+  padding: 0 2rem 2rem 2rem;
+}
+
+// hr
+.root-hr {
+    margin: 0px auto 75px auto;
+    color: #EEEEEE;
+}
+
+.top-ten h3 {
+    border-bottom: 2px solid;
+    border-bottom-color: #B2DFDB;
+}

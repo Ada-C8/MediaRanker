@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MediaRanker</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Gudea'%>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <header class="page-header row">
+    <h2 class="small-12 columns">
+      <%=link_to "Media Ranker", root_path %>
+      <small>Ranking the Best of Everything</small>
+    </h2>
+    <nav class="columns small-12 row">
+      <%=link_to "View Top Media", root_path, class: "button"  %>
+      <%=link_to "View All Media", works_path, class: "button" %>
+      <%=link_to "Add a New Work", new_work_path, class: "button"  %>
+      <%=link_to "View All Users", users_path, class: "button"  %>
+
+      <div class="float-right">
+        <% if session[:logged_in_user] %>
+        <% user = User.find_by(id: session[:logged_in_user])%>
+        <%=link_to "Logged in as #{user.username}", user_path(user), class: "button"  %>
+        <%=link_to "Log Out", logout_path, method: :post, class: "button"  %>
+        <%else%>
+        <%=link_to "Log In", login_path, class: "button"  %>
+        <%end%>
+      </div>
+
+    </nav>
+  </header>
+  <section class="row flash <%= flash[:status]%>">
+    <h3>
+      <%= flash[:message] %>
+    </h3>
+    <% if flash[:details] %>
+    <ul>
+      <% flash[:details].each do |field, problems| %>
+      <% problems.each do |problem| %>
+      <li>
+        <%= field %>: <%= problem %>
+      </li>
+      <% end %>
+      <%end%>
+
+    </ul>
+
+    <% end %>
+  </section>
+
+  <main class="row">
+    <%= yield %>
+  </main>
+</body>
+</html>
