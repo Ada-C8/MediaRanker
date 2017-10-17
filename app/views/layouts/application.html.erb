@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+
+    <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One" />
+    <link rel="stylesheet" media="all" href="/assets/application-0338439e9a7e99f56d844ee54a97af49fa77e63fbafd7054c630594f82025955.css" data-turbolinks-track="reload" />
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/owl.jpg" />
+  </head>
+
+  <body>
+    <header class="page-header row">
+      <h2 class="columns small-12">
+        <a href="/">Media Ranker</a>
+        <small>Ranking the Best of Everything</small>
+      </h2>
+
+      <nav class="columns small-12">
+        <a class="button" href="/">View top media</a>
+        <a class="button" href="/works">View all media</a>
+        <a class="button" href="/works/new">Add a new work</a>
+        <a class="button" href="/users">View all users</a>
+        <div class="float-right">
+          <% if session[:user] %>
+            <%= link_to(session[:user], user_path(session[:user_id]), class:"button") %>
+            <%= link_to("Log Out", login_path, method: :delete, class:"button") %>
+          <% else %>
+            <%= link_to("Log In", login_path , class:"button")%>
+          <% end %>
+        </div>
+      </nav>
+    </header>
+
+    <%= yield %>
+  </body>
+</html>

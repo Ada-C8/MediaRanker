@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+book1:
+  category: book
+  title: Book_Title
+  creator: E. Williams
+  publication_year: 2017
+  description: Book_Blah blah blah
+
+movie1:
+  category: movie
+  title: Movie_Title
+  creator: S. Saunders
+  publication_year: 2017
+  description: Movie_Blah blah blah
+
+album1:
+  category: album
+  title: Album_Title
+  creator: R. Finn
+  publication_year: 2017
+  description: Album_Blah blah blah
