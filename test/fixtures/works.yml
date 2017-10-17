@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: album
+  title: beat it
+  creator: mj
+  publication_year: 1990
+  description: mj is still the king
+
+two:
+  category: book
+  title: hp and the goblet of fire
+  creator: jk rowling
+  publication_year: 2005
+  description: best book ever
+
+three:
+  category: movie
+  title: deadpool
+  creator: idk
+  publication_year: 2016
+  description: best movie ever

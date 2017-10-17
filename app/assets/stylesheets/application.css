@@ -1,0 +1,163 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require ./foundation.css
+ *= require_tree
+
+ *= require_self
+ */
+/*
+
+
+/*--------GRID STYLING--------*/
+.row {
+  max-width: 100%;
+}
+
+.column {
+  column: 200px;
+}
+
+/*----------------------------*/
+
+ /*TABLE STYLING*/
+.table th{
+   background-color: #f5f5f5;
+ }
+
+
+tbody:nth-child(even) {
+   background-color: white;
+ }
+
+tbody:nth-child(odd) {
+  background-color: #ebebeb;
+}
+
+/*-------------HEADER-------------*/
+h2 {
+  text-align: center;
+  margin: 25px auto 40px auto;
+}
+
+.page-header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 10px;
+    padding: 25px 20px 10px 20px;
+  }
+
+.title {
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+.orange {
+  max-width: 30%;
+  color: #FF5722;
+  margin-right: 0;
+  font-size: 35px;
+  border-right: solid #ffffff;
+}
+
+.orange a{
+  color: #FF5722;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.white {
+  color: white;
+  text-decoration:none;
+  max-width: 50%;
+  margin:  0 0 0 10px;
+  font-size: 30px;
+
+}
+
+.button {
+  background-color: #26A69A;
+  font-size: 70%;
+}
+
+.button:hover {
+  background-color: #197a70;
+}
+
+.button a {
+  color: white;
+}
+
+.button a:hover {
+  color: white;
+}
+
+
+.button.delete {
+  background-color: #f23e3e;
+  font-size: 70%;
+}
+
+.delete:hover {
+  background-color: #b52020;
+  font-size: 70%;
+}
+/*--------nav bar--------*/
+
+.nav-right {
+  float: right;
+}
+
+/*----------HOME INDEX PAGE-----------*/
+
+main {
+  max-width: 75rem;
+  margin-right: 15%;
+  margin-left: 15%;
+}
+
+main div h3 {
+  color: #26A69A;
+  border-color: #B2DFDB;
+  border-bottom: solid;
+}
+
+main a {
+  color: #26A69A;
+}
+
+.spotlight a {
+  text-decoration:underline;
+}
+
+main li {
+  list-style-type: none;
+}
+
+main li a:hover {
+  list-style-type: none;
+  color: #197a70;
+}
+
+/*----------WORK INDEX PAGE-----------*/
+
+main h3 {
+  color: #26A69A;
+}
+
+/*----------USER INDEX PAGE-----------*/
+main h4 {
+  color: #26A69A;
+}
+
+/*----------USER WORK PAGE-----------*/

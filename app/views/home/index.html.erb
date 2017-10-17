@@ -1,0 +1,41 @@
+<!-- <h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p> -->
+
+
+<main>
+<h3 class="spotlight">Media Spotlight: <%=link_to(@spotlight.title, work_path(@spotlight.id)) %> by: <%=@spotlight.creator%> </h3>
+<h6><%=@spotlight.votes.count%> Votes</h6>
+
+
+  <div class="large-4 columns, small-3 columns">
+    <h3>Top Movies</h3>
+    <ul>
+      <% @movies.first(10).each do |movie| %>
+        <li><%=link_to(movie.title, work_path(movie.id)) %> by: <%= movie.creator %></li>
+        <li> <%= movie.votes.count %> Votes</li>
+      <%end%>
+    </ul>
+  </div>
+
+
+  <div class="large-4 columns, small-3 columns">
+    <h3>Top books</h3>
+    <ul>
+      <% @books.first(10).each do |book| %>
+        <li><%= link_to(book.title, work_path(book.id)) %> by: <%= book.creator %></li>
+        <li><%= book.votes.count %> Votes</li>
+      <%end%>
+    </ul>
+  </div>
+
+
+  <div class="large-4 columns, small-3 columns">
+    <h3>Top Albums</h3>
+    <ul>
+      <% @albums.first(10).each do |album| %>
+        <li><%=link_to(album.title, work_path(album.id)) %> by: <%= album.creator %></li>
+        <li> <%= album.votes.count %> Votes</li>
+      <%end%>
+    </ul>
+  </div>
+</main>

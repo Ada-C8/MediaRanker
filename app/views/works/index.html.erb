@@ -1,0 +1,86 @@
+<!-- <h1>Works#index</h1>
+<p>Find me in app/views/works/index.html.erb</p> -->
+
+<main class="large-8 columns, small-3 columns">
+  <h4>Albums</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+      <% @works.each do |work| %>
+        <% if work.category == "album" %>
+        <tbody>
+          <tr>
+            <td><%=work.votes.count %></td>
+            <td><%=link_to(work.title, work_path(work.id)) %></td>
+            <td><%=work.creator%></td>
+            <td><%=work.publication_year%></td>
+            <td><%=link_to("Up Vote", work_votes_path(work), method: :post)%></td>
+          </tr>
+        <% end%>
+      <% end %>
+    </tbody>
+  </table>
+
+
+
+  <h4>Movies</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+      <% @works.each do |work| %>
+        <% if work.category == "movie" %>
+          <tbody>
+            <tr>
+              <td><%=work.votes.count %></td>
+              <td><%=link_to(work.title, work_path(work.id)) %></td>
+              <td><%=work.creator%></td>
+              <td><%=work.publication_year%></td>
+              <td><%=link_to("Up Vote", work_votes_path(work), method: :post)%></td>
+            <tr>
+          </tbody>
+        <% end%>
+      <% end %>
+  </table>
+
+
+
+
+  <h4>Books</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+      <% @works.each do |work| %>
+        <% if work.category == "book" %>
+        <tbody>
+          <td><%=work.votes.count %></td>
+          <td><%=link_to(work.title, work_path(work.id)) %></td>
+          <td><%=work.creator%></td>
+          <td><%=work.publication_year%></td>
+          <td><%=link_to("Up Vote", work_votes_path(work), method: :post)%></td>
+        <% end%>
+      <% end %>
+      </tbody>
+  </table>
+
+</main>

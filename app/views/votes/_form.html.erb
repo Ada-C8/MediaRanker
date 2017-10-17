@@ -1,0 +1,7 @@
+<%= form_for @vote do |f| %>
+
+  <%= f.hidden_field :user.id %>
+  <%= f.hidden_field :@work.id %>
+
+  <%= f.submit "submit" %>
+<% end %>

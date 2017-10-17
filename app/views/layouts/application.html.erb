@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  </head>
+
+  <body>
+    <header class="page-header">
+
+      <div class="title">
+        <span class="orange"><%=link_to("Media Ranker", home_index_path)%> </span>
+        <span class="white">   Ranking the Best of Everything</span>
+      </div>
+
+      <nav>
+          <li class="button"><%= link_to("View Top Media", home_index_path) %></li>
+          <li class="button"><%= link_to("View All Media", works_path) %></li>
+          <li class="button"><%= link_to "Add New Work", new_work_path %></li>
+          <li class="button"><%= link_to("View All Users",users_path) %></li>
+
+
+        <div class="nav-right">
+          <%if session[:user_id]%>
+            <%@user = User.find(session[:user_id]) %>
+              <li class="button"><%="Logged in as #{@user.username}" %></li>
+              <li class="button"><%=link_to "Log out", login_path, method: :delete%></li>
+          <%else%>
+              <li class="button"><%= link_to "Log in", login_path %></li>
+          <%end%>
+        </div>
+      </nav>
+
+    </header>
+
+    <section class="flash">
+      <% flash.each do |name, message| %>
+        <div class="<%= name %>"><%= message %></div>
+      <% end %>
+    </section>
+    <%= yield %>
+  </body>
+</html>
