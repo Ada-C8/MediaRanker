@@ -1,13 +1,5 @@
 class VotesController < ApplicationController
 
-  def index
-    if params[:work_id]
-      @votes = Work.find(params[:work_id]).votes
-    else
-      @votes = Vote.all
-    end
-  end
-
   def new
     @vote = Vote.new
     if session[:logged_in_user]
