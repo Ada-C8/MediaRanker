@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One">
+  </head>
+
+  <body>
+    <header class="header row">
+      <h2 class="small-12 columns">
+        <span class="logo"><%= link_to "Media Ranker", root_path, alt: "Link to homepage"%></span>
+        <small>Ranking the Best of Everything</small>
+      </h2>
+      <nav class="nav-links small-12 columns">
+        <li class="button"><%= link_to "View Top Media", root_path, alt: "Link to view top ranking media" %></li>
+        <li class="button"><%= link_to "View All Media", works_path, alt: "Link to view all media" %></li>
+        <li class="button"><%= link_to "Add a New Work", new_work_path, alt: "Link to add a new work"%></li>
+        <li class="button"><%= link_to "View All Users", users_path, alt: "Link to view all users" %></li>
+        <% if session[:user_id] %>
+          <div class= "logged-in">
+            <% @user = User.find(session[:user_id]) %>
+            <li class="button">Logged in as <%= @user.username %></li>
+            <li class="button"><%= link_to "Logout", logout_path, method: :delete, alt: "Link to logout" %></li>
+        </div>
+        <% else %>
+          <li class="logged-out button"><%= link_to "Login", login_path, alt: "Link to login" %></li>
+        <% end %>
+      </nav>
+    </header>
+
+    <% if flash.count > 0 %>
+      <section class="row flash">
+       <% flash.each do |name, message| %>
+         <div class="<%= name %>"><%= message %></div>
+       <% end %>
+      </section>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+test_book:
+  category: "book"
+  title: "1984"
+  creator: "George Orwell"
+  publication_year: 1950
+  description: "A book that is turning out to be kind of true."
+
+another_test:
+  category: "album"
+  title: "Some Album"
+  creator: "George Michael"
+  publication_year: 1997
+  description: "An album for people that like albums"
+
+titleless:
+ category: "book"
+ title:
+ creator: "George Orwell"
+ publication_year: 1950
+ description: "A book that is turning out to be kind of true."
+
+no_category:
+  category:
+  title: "1984"
+  creator: "George Orwell"
+  publication_year: 1950
+  description: "A book that is turning out to be kind of true."
+
+no_creator:
+  category: "book"
+  title: "1984"
+  creator:
+  publication_year: 1950
+  description: "A book that is turning out to be kind of true."
+
+no_pub_date:
+  category: "book"
+  title: "1984"
+  creator: "George Orwell"
+  publication_year:
+  description: "A book that is turning out to be kind of true."
+
+no_description:
+  category: "book"
+  title: "1984"
+  creator: "George Orwell"
+  publication_year: 1950
+  description:
