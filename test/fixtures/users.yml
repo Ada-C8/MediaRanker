@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+user1:
+  username: sa
+
+user2:
+  username: wewewe
+
+# user:
+#   username: Fenix
+  # string: Fenix

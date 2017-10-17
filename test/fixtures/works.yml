@@ -1,0 +1,38 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+movie1:
+  title: Jurassic_Park
+  publication_year: 1994
+  creator: Steven Spielberg
+  category: movie
+  description: cool movie
+
+book:
+  title: Harry Potter
+  publication_year: 1993
+  creator: Rowling
+  category: book
+  description: great book
+
+album1:
+  title: Countdown to Ecstasy
+  publication_year: 1973
+  creator: Steely Dan
+  category: album
+  description: good
+
+album2:
+  title: Countdown to Ecstasy 2
+  category: album
+
+album3:
+  title: Countdown to Ecstasy 3
+  category: album
+
+album4:
+  title: Countdown to Ecstasy 4
+  category: album
