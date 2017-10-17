@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MediaRanker</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <header>
+    <h1 class="row">Media Ranker: Where the Media is Rank</h1>
+    <nav class="row">
+      <div class="large-9 small-12 columns button-group row">
+        <%= link_to "Top Media", topten_path, class: "button small"%>
+        <%= link_to "Add New Work", new_work_path, class: "button" %>
+        <%= link_to "All Media", works_path, class: "button" %>
+        <%= link_to "View Users", users_path, class: "button" %>
+        <%= link_to "Add New User", new_user_path, class: "button" %>
+      </div>
+      <div class="large-3 small-12 columns button-group row float-right">
+        <%= link_to "Log In", login_path, class: "button" %>
+        <%= link_to "Log Out", login_path, class: "button"%>
+      </div>
+
+    </nav>
+
+    <div>
+      <% if session[:logged_in_user] %>
+      <p>
+        Logged in as
+        <%= User.find(session[:logged_in_user]).username %>
+      </p>
+      <% else %>
+
+      <% end %>
+    </div>
+  </header>
+
+  <main>
+    <section class="flash <%= flash[:status] %>">
+      <p>
+        <%= flash[:message] %>
+      </p>
+      <% if flash[:details] %>
+      <ul>
+        <% flash[:details].each do |field, problems| %>
+        <% problems.each do |problem| %>
+        <li>
+          <strong>
+            <%= field %>:
+          </strong>
+          <%= problem %>
+        </li>
+        <% end %>
+        <% end %>
+      </ul>
+      <% end %>
+
+    </section>
+
+
+
+    <%= yield %>
+  </main>
+</body>
+</html>

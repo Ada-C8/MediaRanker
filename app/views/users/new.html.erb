@@ -1,0 +1,14 @@
+<h1>Choose a User Name</h1>
+
+<%= form_for @user do |f| %>
+<ul>
+    <li>
+      <%= f.label :username %>
+      <%= f.text_field :username, class: "form-field"%>
+    </li>
+
+    <li>
+      <%= f.submit class: "submit"%>
+    </li>
+  </ul>
+<% end %>

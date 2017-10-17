@@ -1,0 +1,13 @@
+
+<% @votes = Vote.all %>
+<% @works = Work.all %>
+
+<h2>Welcome <%= @user.username %> </h2>
+
+<h4>Works Voted On</h4>
+
+
+<% list_works = @user.list_votes(@user.id) %>
+<% list_works.each do |w| %>
+  <h4><%= w %></h4>
+<% end %>

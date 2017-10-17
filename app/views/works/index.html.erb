@@ -1,0 +1,61 @@
+
+
+<table>
+
+<tr>
+  <th>
+    Votes
+  </th>
+  <th>
+    Category
+  </th>
+  <th>
+    Title
+  </th>
+  <th>
+    Creator
+  </th>
+  <th>
+    Publication Year
+  </th>
+  <th>
+    Description
+  </th>
+  <th>
+    VOTE!
+  </th>
+</tr>
+
+<% @works.each do |work| %>
+<tr>
+  <td>
+    <%= work.counter %>
+  </td>
+  <td>
+    <%= work.category %>
+  </td>
+  <td>
+    <%= link_to work.title, work %>
+  </td>
+  <td>
+    <%= work.creator %>
+  </td>
+  <td>
+    <%= work.publication_year %>
+  </td>
+  <td>
+    <%= work.description %>
+  </td>
+  <td>
+    <%= form_for Vote.new do |f| %>
+    <%= f.hidden_field :work_id, value: work.id %>
+    <%= f.hidden_field :user_id, value: session[:logged_in_user] %>
+    <%= f.submit class: "button"%>
+    <% end %>
+  </td>
+  <% end %>
+
+</tr>
+
+
+</table>
