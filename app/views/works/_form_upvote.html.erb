@@ -1,0 +1,5 @@
+
+<%= form_for Vote.new(work_id: work.id) do |f| %>
+    <%= f.hidden_field :work_id %>
+    <%= f.submit "Upvote", class: "button" %>
+  <% end %>

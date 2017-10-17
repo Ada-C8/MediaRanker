@@ -1,0 +1,22 @@
+#albums
+vote1:
+  user: tanja
+  work: cat_stevens
+vote2:
+  user: kim
+  work: cat_stevens
+vote3:
+  user: dario
+  work: cat_stevens
+vote4:
+  user: bianca
+  work: cat_stevens
+vote5:
+  user: kim
+  work: florence
+vote6:
+  user: dario
+  work: florence
+vote7:
+  user: bianca
+  work: all_good

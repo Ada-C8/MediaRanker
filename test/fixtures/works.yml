@@ -1,0 +1,68 @@
+#BOOKS
+poodr:
+  title: POODR
+  category: book
+  publication_year: 2000
+  creator: Sandi Metz
+  description: org your code
+
+winnie:
+  title: Winnie the Pooh
+  category: book
+  publication_year: 1891
+  creator: Christopher Robbin
+  description: fantastic adventures and philosophy
+
+nineteen_eighty_four:
+  title: "1984"
+  category: book
+  publication_year: 1950
+  creator: George Orwell
+  description: The future is here
+
+hitchhiker:
+  title: Hitchhiker's Guide
+  category: book
+  publication_year: 1980
+  creator: Douglas Adams
+  description: Guide to life, the universe, and really everything.
+
+#END OF BOOKS
+
+#ALBUMS
+cat_stevens:
+  title: Cats in the Cradle
+  category: album
+  publication_year: 1970
+  creator: Cat Stevens
+  description: great album
+
+all_good:
+  title: All Good
+  category: album
+  publication_year: 1979
+  creator: Beatles
+  description: wonderful
+
+florence:
+  title: Florence and the Machine
+  category: album
+  publication_year: 2017
+  creator: Florence
+  description: love it
+#End of ALBUMS
+
+#Movies
+wonder_woman:
+  title: Wonder Woman
+  category: movie
+  publication_year: 2017
+  creator: Jane Doe
+  description: awesome
+
+sound_of_music:
+  title: The Sound of Music
+  category: movie
+  publication_year: 1960
+  creator: Marry Poppins
+  description: lovely musical
