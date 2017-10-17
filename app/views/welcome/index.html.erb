@@ -1,0 +1,39 @@
+<section class="spotlight row">
+  <h3> Media Spotlight: <%= link_to @rand_work.title, work_path(@rand_work.id)%> by <%= @rand_work.creator %></h3>
+  <p><%= "#{@rand_work.votes.count} votes" %></p>
+</section>
+
+<body>
+
+<h3> Top Albums </h3>
+
+<ul>
+  <% @works.each do |work| %>
+    <% if work.category == "album" %>
+      <li> <%= link_to(work.title, work_path(work.id)) %> </li>
+    <% end %>
+  <% end %>
+</ul>
+
+
+<h3> Top Books </h3>
+
+<ul>
+  <% @works.each do |work| %>
+    <% if work.category == "book" %>
+      <li> <%= link_to(work.title, work_path(work.id)) %> </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h3> Top Movies </h3>
+
+<ul>
+  <% @works.each do |work| %>
+    <% if work.category == "movie" %>
+      <li> <%= link_to(work.title, work_path(work.id)) %> </li>
+    <% end %>
+  <% end %>
+</ul>
+
+</body>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Media Ranker</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
+  </head>
+
+  <body>
+    <header class="page-header row">
+      <h2 class="large-12 columns"><li><%= link_to "Media Ranker", root_path %><small>  Ranking the Best of Everything</small></li></h2>
+      <nav class="large-12 columns">
+        <ul>
+          <li class="button"><%= link_to "View Top Media", root_path %></li>
+          <li class="button"><%= link_to "View All Media", works_path %></li>
+          <li class="button"><%= link_to "Add a new work", new_work_path %></li>
+          <li class="button"><%= link_to "View all users", users_path %></li>
+          <div class="float-right">
+                <% if session[:user_id] != nil %>
+                  <li class="button float-right"><%= link_to "Logged in as #{@user.username}", user_path(session[:user_id]) %></li>
+                  <li class="button float-right"><%= link_to "Log out", login_path(session[:user_id]), method: :delete %></li>
+                <% else %>
+                  <li class="button float-right"><%= link_to "Log In", login_path %></li>
+                <% end %>
+          </div>
+        </ul>
+      </nav>
+    </header>
+
+      <section class="flash">
+        <% flash.each do |name, message| %>
+          <div class="<%= name %>"><%= message %></div>
+        <% end %>
+      </section>
+
+
+    <%= yield %>
+  </body>
+</html>

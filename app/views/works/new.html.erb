@@ -1,0 +1,11 @@
+<h1 class="page_names">Add a new work</h1>
+
+<% if @work.errors.any? %>
+  <ul class="errors">
+    <% @work.errors.each do |column, message| %>
+    <li> <strong><%= column.capitalize %> </strong> <%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render partial: "form", locals: { submit_name: "Create Work" }%>
