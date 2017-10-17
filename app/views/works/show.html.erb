@@ -1,0 +1,30 @@
+<!-- @work.title is broken here -->
+<h2> <%= @work.title %> details </h2>
+
+<p>Created by: <%= @work.creator %></p>
+
+<p>Published: <%= @work.publication_year %></p>
+
+<p><%= @work.description %></p>
+
+
+<%= link_to "Back to media ranks", root_path, :class=>"button"  %>
+<%= link_to "Edit Work", edit_work_path, :class=>"button"  %>
+<%= link_to "Upvote", work_upvote_path(@work.id), method: :post, :class=>"button"  %>
+<%= link_to "Delete Work", work_path(@work), method: :delete, :class=>"button"  %>
+
+<h2><%= @work.votes.count%> votes for this <%=@work.category%></h2>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Date</th>
+  </tr>
+
+  <% @work.votes.each do |vote| %>
+    <tr>
+      <td><%= vote.user.name %></td>
+      <td><%= vote.user.created_at %></td>
+    </tr>
+  <% end %>
+</table>
