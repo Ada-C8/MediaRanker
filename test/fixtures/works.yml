@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+work1:
+  title: title1
+  category: books
+  creator: authorperson
+  year: 1999
+  

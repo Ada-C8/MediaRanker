@@ -1,0 +1,24 @@
+<% button_text ||= "The button" %>
+<% form_class ||= "" %>
+<% hide_placeholder_text ||= false %>
+
+<%= form_for @work, html: { class: form_class } do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, placeholder: hide_placeholder_text ? "" : "title" %>
+
+  <%= f.label :category %>
+  <%= f.select :category, Work::CATEGORIES %>
+
+  <%= f.label :creator %>
+  <%= f.text_field :creator %>
+
+  <%= f.label "Publication year", for: "work_year"%>
+  <%= f.text_field :year %>
+
+
+  <%= f.label "Description", for:"work_description" %>
+  <%= f.text_field :description %>
+
+  <%= f.submit button_text %>
+
+<% end %>

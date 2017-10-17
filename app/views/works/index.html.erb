@@ -1,0 +1,31 @@
+<h1>List of works</h1>
+
+<%# render partial: 'layouts/_error_messages.html.erb' %>
+
+
+  <% Work::CATEGORIES.each do |category| %>
+
+  <h4><strong><%= category.capitalize %></strong> </h4>
+  <table>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+  <% Work.where(category: category).each do |work| %>
+  <tr>
+     <th><%=work.votes.count%></th>
+    <th><%= link_to work.title, work_path(work.id) %></th>
+    <th><%=work.creator %></th>
+    <th><%=work.year%></th>
+
+  <%= form_for Vote.new(work_id: work.id) do |f| %>
+    <%= f.hidden_field :work_id %>
+    <th><%= f.submit "Upvote" %></th>
+  <% end %>
+</tr>
+  <% end %>
+</table>
+<% end %>
