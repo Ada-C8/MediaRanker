@@ -1,0 +1,55 @@
+<h2><%= "User Summary: #{@user.username}" %></h2>
+
+<section>
+  <%= "Joined site #{@user.created_at.strftime("%b %d, %Y")}" %>
+</section>
+
+<h3>Votes</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Media Title
+      </th>
+      <th>
+        Created By
+      </th>
+      <th>
+        Published
+      </th>
+      <th>
+        Category
+      </th>
+      <th>
+        Voted on
+      </th>
+    </tr>
+  </thead>
+  <% @user.votes.each do |vote| %>
+  <tbody>
+    <tr>
+      <td>
+        <%= link_to "#{vote.work.title}", work_path(vote.work.id), method: :get %>
+      </td>
+      <td>
+        <%= vote.work.creator %>
+      </td>
+      <td>
+        <%= vote.work.publication_year %>
+      </td>
+      <td>
+        <%= vote.work.category %>
+      </td>
+      <td>
+        <%= vote.created_at.strftime("%b %d,%Y") %>
+      </td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+
+<%= link_to "See all users", users_path, method: :get %>
+
+<%= link_to "Back to Media List", '/', method: :get %>

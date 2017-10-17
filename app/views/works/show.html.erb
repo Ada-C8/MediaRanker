@@ -1,0 +1,45 @@
+<h2><strong><%= @work.title %></strong></h2>
+
+<ul>
+  <li><%= "Created by: #{@work.creator}" %></li>
+  <li><%= "Published: #{@work.publication_year}" %></li>
+  <li><%= "#{@work.description}" %></li>
+</ul>
+
+<p>
+
+</p>
+
+<%= link_to "Back to media ranks", '/', method: :get %>
+<%= button_to "Edit", edit_work_path(@work.id), method: :get %>
+
+<%= link_to "Upvote", work_upvote_path(@work.id), method: :post %>
+<%= button_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you would like to delete this entry?" } %>
+
+<section class='work_vote_table'>
+  <%= "#{@work.votes.count} Votes for this #{@work.category}" %>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          User
+        </th>
+        <th>
+          Date
+        </th>
+      </tr>
+    </thead>
+    <% @work.votes.each do |vote| %>
+    <tbody>
+      <tr>
+        <td>
+          <%= link_to "#{vote.user.username}", user_path(vote.user) %>
+        </td>
+        <td>
+          <%= vote.created_at.strftime("%b %d,%Y") %>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</section>
