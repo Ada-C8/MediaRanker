@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+awesome_movie:
+  title: Terminator II
+  category: movie
+  publication_year: 1991
+  creator: James Cameron
+
+epic_album:
+  category: album
+  publication_year: 1984
+  creator: Prince
+
+good_book:
+  title: Half of a yellow sun
+  publication_year: 2013
+  creator: Chimamanda Ngozi Adichie
+
+oscar_worthy:
+  title: Shawshank redemption
+  category: movie
+  creator: Stephen King
+
+must_read:
+  title: The Alchemist
+  category: book
+  publication_year: 1988

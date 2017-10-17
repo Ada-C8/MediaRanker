@@ -1,0 +1,29 @@
+Show user's details
+
+<h1>User Summary need to put link to name</h1>
+<h3>Joined site link to date joined</h3>
+
+<h2>Votes</h2>
+
+<table>
+  <tr>
+    <th>Media Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Category</th>
+    <th>Voted On</th>
+  </tr>
+  <% votes = Vote.all.where(user_id: @user) %>
+  <% votes.each do |vote| %>
+  <% work = Work.find_by(id: vote.work_id) %>
+    <% if work %>
+  <tr>
+      <td><%= work.title %></td>
+      <td><%= work.creator %></td>
+      <td><%= work.publication_year %></td>
+      <td><%= work.category %></td>
+      <td><%= vote.updated_at.strftime("%b %d, %Y") %></td>
+    <% end %>
+  <% end %>
+  </tr>
+</table>
