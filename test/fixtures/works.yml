@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+album_one:
+  category: album
+  title: 6 Feet Beneath the Moon
+  creator: King Krule
+  publication_year: "2013"
+  description: King Krule's first major studio release
+  id: 1
+
+book_one:
+  category: book
+  title: Suddenly, a Knock on the Door
+  creator: Etgar Keret
+  publication_year: "2012"
+  description: Keret's latest book
+  id: 2
+
+movie_one:
+  category: movie
+  title: Rosemary's Baby
+  creator: Roman Polanski
+  publication_year: "1968"
+  description: Horror classic
+  id: 3

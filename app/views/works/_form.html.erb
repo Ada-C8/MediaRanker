@@ -1,0 +1,19 @@
+<%= form_for @work do |f| %>
+
+  <%= f.label "Category" %>
+  <%= f.select :category, [['album', 'album'], ['book', 'book'], ['movie', 'movie']] %>
+
+  <%= f.label "Title" %>
+  <%= f.text_field :title , :required => true %>
+
+  <%= f.label "Creator" %>
+  <%= f.text_field :creator %>
+
+  <%= f.label "Publication year" %>
+  <%= f.text_field :publication_year %>
+
+  <%= f.label "Description" %>
+  <%= f.text_area :description %>
+
+  <%= f.submit button_text, class: :button%>
+<% end %>

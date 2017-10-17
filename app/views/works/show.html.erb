@@ -1,0 +1,49 @@
+<main class="row">
+  <article class="media-details columns large-6 small-12">
+    <h3><%= @work.title %></h3>
+    <p><%= "Created by: #{@work.creator}"%></p>
+    <p><%= "Published: #{@work.publication_year}"%></p>
+    <p><%= "#{@work.description}"%></p>
+    <section>
+      <%= link_to "Back to media ranks", root_path, class: :button %>
+      <%= link_to "Edit", edit_work_path, class: :button %>
+      <%= link_to "Upvote", upvote_path(@work.id), method: :post,class: :button %>
+      <%= link_to "Delete", delete_work_path, method: :delete, data: {confirm: "Are you sure?"}, class: "button alert" %>
+    </section>
+  </article>
+
+  <article class="voting-users columns large-6 small-12">
+    <h3><%= "#{@work.votes.count} votes for this #{@work.category}"%></h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @work.votes.count > 0%>
+          <% @work.votes.each do |vote|%>
+            <tr>
+              <td><%= link_to "#{vote.user.username}", user_path(vote.user.id)%></td>
+              <td><%= "#{(vote.created_at).to_date} "%></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </article>
+
+</main>
+
+
+<!--  -->
+<!-- <% if @work.errors.any? %>
+  <ul class="errors">
+    <% @work.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %> -->
