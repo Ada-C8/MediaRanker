@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+wilco:
+  category: album
+  title: "A.M"
+  creator: "Wilco"
+  publication_year: 1998
+  description: "Morning Songs"
+
+film:
+  category: movie
+  title: "Some Movie"
+  creator: "MyString"
+  publication_year: 2017
+  description: "texters"
