@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Gudea:400,700" rel="stylesheet">
+    <%= favicon_link_tag 'favicon.ico' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class = "page-header row">
+      <h2 class = "columns small-12">
+        <%= link_to("Media Ranker", root_path) %>
+        <small>Ranking the Best of Everything</small>
+      </h2>
+      <nav class= "small columns-12">
+        <%= link_to("View top media", root_path, :class => "button") %>
+        <%= link_to("View all media", works_path, :class => "button") %>
+        <%= link_to("Add a new work", new_work_path, :class => "button") %>
+        <%= link_to("View all users", users_path, :class => "button") %>
+        <div class = "float_right">
+          <% if session[:user_id] %>
+            <%= link_to("Logged in as #{@user_in_session.name}" , root_path, :class => "button") %>
+            <%= link_to('Log Out', logout_path, method: :post, :class => "button") %>
+          <% else %>
+            <%= link_to('Log In', login_path, :class => "button")  %>
+          <% end %>
+        </div>
+      </nav>
+    </header>
+
+    <% if flash[:failure] %>
+      <section class = "row status failure">
+        <h3 class="<%= :failure %>"><%= flash[:failure] %></h3>
+        <% if flash[:errors] %>
+          <ul class = "errors">
+            <% flash[:errors].each do |column, message| %>
+              <li>
+                <%= column.capitalize %>: <%= message %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </section>
+    <% end  %>
+
+    <% if flash[:success] %>
+      <section class = "row status success">
+        <% flash.each do |name, message| %>
+          <h3 class="<%= name %>"><%= message %></h3>
+        <% end %>
+      </section>
+    <% end  %>
+
+    <%= yield %>
+  </body>
+</html>

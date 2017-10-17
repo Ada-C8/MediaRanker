@@ -1,0 +1,29 @@
+<main class = "row">
+  <section class = "row spotlight">
+    <div>
+      <h3>
+        <span class="media-spotlight-header">Media Spotlight:</span>
+        <%= link_to(@top_work.title, work_path(@top_work.id)) %> by <%= @top_work.creator %>
+      </h3>
+      <p>
+        <%= @top_work.votes.count %> votes -
+        <%= @top_work.description %>
+      </p>
+    </div>
+  </section>
+  <hr class= "root-hr" >
+
+  <section class="top-ten columns  small-12 large-4">
+      <h3>Top Movies</h3>
+      <%= render partial: "ulhome", locals: {works: @movies} %>
+  </section>
+  <section class = "top-ten columns small-12 large-4">
+    <h3>Top Books</h3>
+    <%= render partial: "ulhome", locals: {works: @books} %>
+  </section>
+  <section class = "top-ten columns small-12 large-4">
+    <h3>Top Albums</h3>
+    <%= render partial: "ulhome", locals: {works: @albums} %>
+  </section>
+
+</main>

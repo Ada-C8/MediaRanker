@@ -4,8 +4,8 @@ Congratulations! You're submitting your assignment!
 ## Comprehension Questions
 Question | Answer
 ---      | ---
-Describe a custom model method you wrote. |
-Describe how you approached testing that model method. What edge cases did you come up with? |
+Describe a custom model method you wrote. | A method to return a collection of works ordered from highest number of votes to lowest number of votes
+Describe how you approached testing that model method. What edge cases did you come up with? | I wrote a test that used fixtures. It ensured that the correct order was returned and if there were no votes that the full length array was still returned.
 Describe an edge case test you wrote for a controller |
 What are `session` and `flash`? What is the difference between them? |
 Describe a controller filter you wrote. |

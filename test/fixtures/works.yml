@@ -1,0 +1,44 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+book:
+  category: book
+  title: Field of Stars
+  creator: St. James
+  publication_year: 1983
+  description: A book about the Camino de Santiago
+
+book2:
+  category: book
+  title: book2
+
+book3:
+  category: book
+  title: book3
+
+book4:
+  category: book
+  title: book4
+
+movie:
+  category: movie
+  title: Anna Karenina
+  creator: Tolstoy
+  publication_year: 1999
+
+movie2:
+  category: movie
+  title: movie2
+
+album:
+  category: album
+  title: MXPX
+  creator: Jessica
+  publication_year: 2002
+
+album2:
+  category: album
+  title: album2
+
+album3:
+  category: album
+  title: album3

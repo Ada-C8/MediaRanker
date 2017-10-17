@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+jake:
+  name: Jake
+
+molly:
+  name: Molly
+
+cindy:
+  name: Cindy
