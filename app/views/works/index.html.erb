@@ -1,0 +1,110 @@
+<main class="row">
+  <h3>List of Works</h3>
+  <section class="media-table">
+    <h4>Albums</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th>Published</th>
+          <th>Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @works.where(category: :album).each do |work| %>
+        <tr>
+          <td data-label="Votes">
+            <%= work.votes.size %>
+          </td>
+          <td data-label="Title">
+            <%= link_to work.title, work_path(work.id) %>
+          </td>
+          <td data-label="Created By">
+            <%= work.creator %>
+          </td>
+          <td data-label="Published">
+            <%= work.publication_year %>
+          </td>
+          <td data-label="Upvote" class="button">
+            <%= link_to "Upvote", upvote_path(work.id), method: :post %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <h4>Books</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th>Published</th>
+          <th>Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @works.where(category: :book).each do |work| %>
+        <tr>
+          <td data-label="Votes">
+            <%= work.votes.size %>
+          </td>
+          <td data-label="Title">
+            <%= link_to work.title, work_path(work.id) %>
+          </td>
+          <td data-label="Created By">
+            <%= work.creator %>
+          </td>
+          <td data-label="Published">
+            <%= work.publication_year %>
+          </td>
+          <td data-label="Upvote" class="button">
+            <%= link_to "Upvote", upvote_path(work.id), method: :post %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <h4>Movies</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th>Published</th>
+          <th>Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @works.where(category: :movie).each do |work| %>
+        <tr>
+          <td data-label="Votes">
+            <%= work.votes.size %>
+          </td>
+          <td data-label="Title">
+            <%= link_to work.title, work_path(work.id) %>
+          </td>
+          <td data-label="Created By">
+            <%= work.creator %>
+          </td>
+          <td data-label="Published">
+            <%= work.publication_year %>
+          </td>
+          <td data-label="Upvote" class="button">
+            <%= link_to "Upvote", upvote_path(work.id), method: :post %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+</main>
+<div class="button">
+  <%= link_to "Add new media", new_work_path %>
+</div>
+<div class="button">
+  <%= link_to "View top media", root_path %>
+</div>
