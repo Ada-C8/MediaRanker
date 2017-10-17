@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+
+movie:
+  title: No Strings Attached
+
+kesha:
+  title: Rainbow
+  category: album
+  creator: Kesha
+  publication_year: 2017
+
+  # category: MyString
+  # title: MyString
+  # creator: MyString
+  # publication_year: 1
+  # description: MyText

@@ -1,0 +1,25 @@
+
+<% if @work.errors.any? %>
+  <ul class="errors">
+    <% @book.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @work do |f| %>
+  <%= f.label :category %>
+  <%= f.select :category, options_for_select([["album"], ["book"], ["movie"]]) %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :creator %>
+  <%= f.text_field :creator %>
+  <%= f.label :publication_year %>
+  <%= f.text_field :publication_year %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <%= f.submit button_name %>
+<% end %>

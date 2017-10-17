@@ -1,0 +1,88 @@
+
+<h3>List of Works</h3>
+
+<article>
+
+<section class="media-table">
+<h4>Albums</h4>
+  <table>
+    <thead>
+      <tr>
+        <th width=80>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th width=100>Published</th>
+        <th width=100>Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @works.each do |w| %>
+      <% if w.category == "album" %>
+      <tr>
+        <td><%= w.votes.count %></td>
+        <td><%= link_to w.title, work_path(w.id) %></td>
+        <td><%= w.creator %></td>
+        <td><%= w.publication_year %></td>
+        <td><%= link_to "Upvote", upvote_path(w.id), method: :patch %></td>
+      </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+<h4>Books</h4>
+  <table>
+    <thead>
+      <tr>
+        <th width=80>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th width=100>Published</th>
+        <th width=100>Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @works.each do |w| %>
+      <% if w.category == "book" %>
+      <tr>
+        <td><%= w.votes.count %></td>
+        <td><%= link_to w.title, work_path(w.id) %></td>
+        <td><%= w.creator %></td>
+        <td><%= w.publication_year %></td>
+        <td><%= link_to "Upvote", upvote_path(w.id), method: :patch %></td>
+      </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+<h4>Movies</h4>
+<table>
+  <thead>
+    <tr>
+      <th width=80>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th width=100>Published</th>
+      <th width=100>Upvote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @works.each do |w| %>
+    <% if w.category == "movie" %>
+    <tr>
+      <td><%= w.votes.count %></td>
+      <td><%= link_to w.title, work_path(w.id) %></td>
+      <td><%= w.creator %></td>
+      <td><%= w.publication_year %></td>
+      <td><%= link_to "Upvote", upvote_path(w.id), method: :patch %></td>
+    </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+</section>
+
+<%= link_to "View top media" %>
+<%= link_to "Add a new work", new_work_path %>
+</article>
