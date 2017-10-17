@@ -1,15 +1,29 @@
-<!-- columns -->
-<% if @work %>
-<h3><%= @work.title %></h3>
-<p>Created by: <%= @work.creator %></p>
-<p>Year Published: <%= @work.publication_year %></p>
-<p><%= @work.description %></p>
-<section>
-<%= link_to "Back to Media Ranks", root_path, class: "button" %>
-<%= link_to "Upvote", root_path, class: "button" %>
-<%= link_to "Edit", edit_work_path(@work.id), class: "button"%>
-<%= link_to "Delete", work_path(@work.id), method: :delete, class: "button", data: { confirm: "Are you sure?" } %>
-<%= link_to "Login", root_path, class: "button" %>
-</section>
-<% end %>
-</article>
+<main class ='row'>
+  <article class='media-details columns large-6 small-12'>
+    <% if @work %>
+    <h3><%= @work.title %></h3>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Year Published: <%= @work.publication_year %></p>
+    <p><%= @work.description %></p>
+    <section>
+      <%= link_to "Back to Media Ranks", root_path, class: "button" %>
+      <%= link_to "Upvote", root_path, class: "button" %>
+      <%= link_to "Edit", edit_work_path(@work.id), class: "button"%>
+      <%= link_to "Delete", work_path(@work.id), method: :delete, class: "button", data: { confirm: "Are you sure?" } %>
+    </section>
+    <% end %>
+  </article>
+
+  <article class= 'columns large-6 small-12'>
+    <h3>Votes</h3>
+
+    <table>
+
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+        </tr>
+
+
+    </table>
+  </section>
