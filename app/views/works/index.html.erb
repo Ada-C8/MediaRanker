@@ -1,4 +1,5 @@
-# Keep things in order; Album, Books, Movies.
+<!-- # Keep things in order; Album, Books, Movies. -->
+<!-- columns needed -->
 <%= link_to("New", new_work_path)  %>
 <header>
   <h1>List of Works</h1>
@@ -6,8 +7,8 @@
 <ul>
   <% @works.each do |work| %>
   <li>
-    <h4><%= work.title %> <small>by <%= work.creator%></small></h4>
-
+    <h4><%= link_to(work.title, work_path(work.id), alt: 'link to', class: "title") %> <small>by <%= work.creator%></small></h4>
+<!-- votes -->
   </li>
   <% end %>
 </ul>

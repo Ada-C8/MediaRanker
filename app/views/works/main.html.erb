@@ -1,0 +1,14 @@
+<header>
+  <h1>Media Spotlight:</h1>
+    <h3>Top Works</h3>
+    <!-- figure out how to make this different categories -->
+    <ul>
+      <% @works.each do |work| %>
+      <li>
+        <h4><%= link_to(work.title, work_path(work.id), alt: 'link to', class: "title") %> <small>by <%= work.creator%></small></h4>
+        <!-- votes -->
+      </li>
+      <% end %>
+    </ul>
+  </section>
+</header>
