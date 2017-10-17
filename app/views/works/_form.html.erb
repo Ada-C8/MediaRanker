@@ -2,7 +2,7 @@
 
   <%= content_tag :div, class: "category-wrapper" do %>
     <%= f.label :category, "Category"%>
-    <%= f.collection_select(:category, Work.all, :id, :category, prompt: true) %>
+    <%= f.select :category, ['album', 'book', 'movie']  %>
   <% end %>
 
   <%= content_tag :div, class: "title-wrapper" do %>

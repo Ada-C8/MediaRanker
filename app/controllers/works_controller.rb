@@ -10,13 +10,13 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
-      # flash[:status] = :success
-      # flash[:message] = "Successfully created work #{work.id}"
+      flash[:status] = :success
+      flash[:message] = "Successfully created work #{@work.id}"
       redirect_to works_path
     else
-      # flash.now[:status] = :failure
-      # flash.now[:message] = "Failed to create work"
-      # flash.now[:details] = @work.errors.messages
+      flash.now[:status] = :failure
+      flash.now[:message] = "Failed to create work"
+      flash.now[:details] = @work.errors.messages
       render :new, status: :bad_request
     end
   end
@@ -43,20 +43,10 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    # if session[:logged_in_user]
-    #   # current_user = User.find(session[:logged_in_user])
-    #   current_user = User.find_by(id: session[:logged_in_user])
-    # # else
-    # #   flash[:status] = :failure
-    # #   flash[:message] = "You must be logged in!"
-    # #   redirect_to works_path
-    # #   return
-    # end
-
     if find_work_by_params_id
       @work.destroy
-      # flash[:status] = :success
-      # flash[:message] = "Deleted work #{@work.title}"
+      flash[:status] = :success
+      flash[:message] = "Deleted work #{@work.title}"
       redirect_to works_path
     end
   end

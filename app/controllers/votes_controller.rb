@@ -13,8 +13,9 @@ class VotesController < ApplicationController
     if session[:logged_in_user]
       create
     else
-      flash.now[:status] = :failure
-      flash.now[:message] = "You must be logged in to vote!"
+      flash[:status] = :failure
+      flash[:message] = "You must be logged in to vote!"
+      redirect_to works_path
     end
   end
 

@@ -103,7 +103,11 @@ h3.list-title {
   font-size: 25px;
   color: rgb(10, 10, 10);
 }
-section.work-list table[class*="list"], thead, tbody { border: none; }
+section.work-list table[class*="list"],
+section.work-list table[class*="list"] thead,
+section.work-list table[class*="list"] tbody {
+  border: none;
+}
 section.work-list table[class*="list"] th {
   text-align: left;
   background: #f8f8f8;
@@ -115,4 +119,41 @@ section.work-list table[class*="list"] td {
 section.work-list table[class*="list"] td a {
   vertical-align: middle;
   margin-bottom: 0;
+}
+
+/* work show.html.erb */
+section.vote-info table,
+section.vote-info table thead,
+section.vote-info table tbody {
+  border: none;
+}
+section.vote-info table td {
+  padding: 8px 10px 10px;
+  border: 2px solid #fff;
+}
+
+/* user index.html.erb */
+section.user-list table,
+section.user-list table thead,
+section.user-list table tbody {
+  border: none;
+}
+section.user-list table td {
+  padding: 8px 10px 10px;
+  border: 2px solid #fff;
+}
+
+/* user show.html.erb */
+section.user-votes h3 {
+  font-size: 25px;
+  font-weight: 700;
+}
+section.user-votes table,
+section.user-votes table thead,
+section.user-votes table tbody {
+  border: none;
+}
+section.user-votes table td {
+  padding: 8px 10px 10px;
+  border: 2px solid #fff;
 }

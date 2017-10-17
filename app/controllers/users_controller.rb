@@ -10,10 +10,10 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     user.join_date = DateTime.now
     if user.save
-      session[:user_id] = user.id
       flash[:status] = :success
       flash[:message] = "Successfully created a new user #{user.name} with ID #{user.id}"
       redirect_to root_path
+      session[:logged_in_user] = user.id
     else
       flash.now[:status] = :failure
       flash.now[:message] = "Failed to log in"
