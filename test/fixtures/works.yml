@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+chansons:
+  category: album
+  title: Chansons Parisiennes
+  creator: Edith Piaf
+  publication_year: 1949
+
+sherlock:
+  category: book
+  title: Sherlock Holmes A Study in Scarlet
+  creator: Sir Arthur Conan Doyle
+  publication_year: 1887
+
+amelie:
+  category: movie
+  title: Amelie
+  creator: Jean-Pierre Jeunet
+  publication_year: 2001
