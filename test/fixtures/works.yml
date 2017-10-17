@@ -1,10 +1,74 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-cd:
+album1:
   title: "Discovery"
   category: "album"
   creator: "Daft Punk"
   publication_year: 2001
+  description: "test description"
+
+album2:
+  title: "Be Humble"
+  category: "album"
+  creator: "Kendric Llamar"
+  publication_year: 2017
+  description: "test description"
+
+album3:
+  title: "Coloring Book"
+  category: "album"
+  creator: "Chance the Rapper"
+  publication_year: 2015
+  description: "test description"
+
+album4:
+  title: "album4"
+  category: "album"
+  creator: "Chance the Rapper"
+  publication_year: 2015
+  description: "test description"
+
+album5:
+  title: "album5"
+  category: "album"
+  creator: "Chance the Rapper"
+  publication_year: 2015
+  description: "test description"
+album6:
+  title: "album6"
+  category: "album"
+  creator: "Chance the Rapper"
+  publication_year: 2015
+  description: "test description"
+album7:
+  title: "album7"
+  category: "album"
+  creator: "Chance the Rapper"
+  publication_year: 2015
+  description: "test description"
+album8:
+  title: "album8"
+  category: "album"
+  creator: "Chance the Rapper"
+  publication_year: 2015
+  description: "test description"
+album9:
+  title: "album9"
+  category: "album"
+  creator: "Chance the Rapper"
+  publication_year: 2015
+  description: "test description"
+album10:
+  title: "album10"
+  category: "album"
+  creator: "Chance the Rapper"
+  publication_year: 2015
+  description: "test description"
+album11:
+  title: "album11"
+  category: "album"
+  creator: "Chance the Rapper"
+  publication_year: 2015
   description: "test description"
 
 novel:
