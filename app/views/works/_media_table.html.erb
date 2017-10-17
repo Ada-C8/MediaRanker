@@ -1,0 +1,34 @@
+
+  <table>
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% types = Work.all.where(category: media_type)%>
+      <% types.all.each do |type|%>
+      <tr>
+      <td>
+        <%=Vote.all.where(work_id: type.id).count %>
+      </td>
+      <td>
+        <%=link_to type.title, work_path(type)%>
+      </td>
+      <td>
+        <%=type.creator %>
+      </td>
+      <td>
+        <%=type.publication_year %>
+      </td>
+      <td>
+        <%=link_to "Upvote", work_votes_path(type), class: "button" %>
+      </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>

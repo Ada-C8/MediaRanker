@@ -1,0 +1,185 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  work_id: 1
+
+two:
+  user_id: 1
+  work_id: 3
+
+three:
+  user_id: 1
+  work_id: 5
+
+four:
+  user_id: 1
+  work_id: 7
+
+five:
+  user_id: 1
+  work_id: 9
+
+six:
+  user_id: 1
+  work_id: 11
+
+seven:
+  user_id: 1
+  work_id: 13
+
+eight:
+  user_id: 1
+  work_id: 15
+
+nine:
+  user_id: 1
+  work_id: 17
+
+ten:
+  user_id: 1
+  work_id: 19
+
+eleven:
+  user_id: 1
+  work_id: 21
+
+twelve:
+  user_id: 1
+  work_id: 23
+
+thirteen:
+  user_id: 1
+  work_id: 25
+
+fourteen:
+  user_id: 1
+  work_id: 27
+
+fifteen:
+  user_id: 1
+  work_id: 29
+
+sixteen:
+  user_id: 1
+  work_id: 31
+
+seventeen:
+  user_id: 1
+  work_id: 33
+
+eightteen:
+  user_id: 2
+  work_id: 3
+
+nineteen:
+  user_id: 2
+  work_id: 6
+
+twenty:
+  user_id: 2
+  work_id: 9
+
+twentyone:
+  user_id: 2
+  work_id: 12
+
+twentytwo:
+  user_id: 2
+  work_id: 15
+
+twentythree:
+  user_id: 2
+  work_id: 18
+
+sixteen:
+  user_id: 2
+  work_id: 21
+
+seventeen:
+  user_id: 2
+  work_id: 24
+
+eightteen:
+  user_id: 2
+  work_id: 27
+
+nineteen:
+  user_id: 2
+  work_id: 30
+
+twenty:
+  user_id: 2
+  work_id: 33
+
+twentyone:
+  user_id: 3
+  work_id: 5
+
+twentytwo:
+  user_id: 3
+  work_id: 10
+
+twentythree:
+  user_id: 3
+  work_id: 15
+
+twentyfour:
+  user_id: 3
+  work_id: 20
+
+twentyfive:
+  user_id: 3
+  work_id: 25
+
+twentysix:
+  user_id: 3
+  work_id: 30
+
+twentyseven:
+  user_id: 4
+  work_id: 7
+
+twentyeight:
+  user_id: 4
+  work_id: 14
+
+twentynine:
+  user_id: 4
+  work_id: 21
+
+thirty:
+  user_id: 4
+  work_id: 28
+
+thirtyone:
+  user_id: 5
+  work_id: 11
+
+thirtytwo:
+  user_id: 5
+  work_id: 22
+
+thirtytwo:
+  user_id: 5
+  work_id: 33
+
+thirtythree:
+  user_id: 9
+  work_id: 30
+
+twentyone:
+  user_id: 9
+  work_id: 30
+
+thirtyfour:
+  user_id: 6
+  work_id: 30
+
+thirtyfive:
+  user_id: 7
+  work_id: 30
+
+thritysix:
+  user_id: 8
+  work_id: 30

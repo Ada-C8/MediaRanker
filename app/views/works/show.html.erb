@@ -1,0 +1,42 @@
+
+<main>
+  <h3><%=@work.title%></h3>
+  <article>
+    <p>
+      Created by: <%@work.creator%>
+    </p>
+    <p>
+      Published: <%=@work.publication_year%>
+    </p>
+    <p>
+    </p>
+    <section>
+      <%=link_to "Back to media ranks", root_path, class: "button" %>
+      <%= link_to "Edit", edit_work_path, class: "button" %>
+      <%=link_to("Upvote", work_votes_path(@work), method: :post, class: "button") %>
+      <%= link_to("Delete", work_path(@work.id), method: :delete, class: "alert button", data: {confirm: "Are you sure?"}) %>
+    </section>
+  </article>
+</article>
+<%votes = Vote.all.where(work_id: @work.id)%>
+<h3><%=votes.count%> Votes for this book </h3>
+<table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+  <%votes.each do |vote| %>
+  <%user = User.all.find_by(id: vote.user_id)%>
+  <%if user %>
+    <tr>
+      <td><%=link_to user.name, user_path(user)%></td>
+      <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+    </tr>
+    <%end%>
+  <%end %>
+</ul>
+</article>
+</main>
