@@ -6,6 +6,7 @@ class Work < ApplicationRecord
   #relationships
   has_many :votes
 
+  # custom methods
   def self.sorted_works(category)
     return Work.all.where(category: category).sort_by{|work| -work.votes.count}
   end

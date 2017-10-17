@@ -23,12 +23,14 @@
  --dark-gray: #424242;
  --orange: #FF5722;
 }
+
  .flash.success {
    border-radius: 5px;
    background-color: #e6e6e6;
    padding: 20px 25px;
    margin-top: 30px;
  }
+
  .flash.failure {
    border-radius: 5px;
    background-color: #e6e6e6;
@@ -59,12 +61,15 @@
 a:hover {
   color: var(--dark-teal);
 }
+
 body, h1, h2, h3, h4, h5 {
   font-family: "Gudea", sans-serif;
 }
+
 h1, h2, h3, h4, h5 {
   font-weight: bold;
 }
+
 .page-header h2 small {
   color: white;
 }
@@ -72,9 +77,11 @@ h1, h2, h3, h4, h5 {
 .button {
   background-color: var(--teal);
 }
+
 .button:hover {
   background-color: var(--dark-teal);
 }
+
 main {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -94,9 +101,8 @@ a, h3 {
 
 .spotlight a {
   border-bottom: 2px solid;
-  border-color: var(--teal).
+  border-color: var(--teal);
 }
-
 
 .top-ten ul{
   list-style-type: none;

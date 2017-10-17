@@ -3,7 +3,6 @@ class WorksController < ApplicationController
   before_action :find_work_by_params_id, only: [:show, :edit, :update, :destroy]
 
   def index
-    #rework me please...
     @works = Work.all
     @movies = Work.sorted_works("movie")
     @books = Work.sorted_works("book")
@@ -43,13 +42,10 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    # we don't need this here because it is getting checked in controller filter above
-    # if find_work_by_params_id
     @work.destroy
     redirect_to works_path
     flash[:status] = :success
     flash[:message] = "Successfully deleted!"
-    # end
   end
 
 private
