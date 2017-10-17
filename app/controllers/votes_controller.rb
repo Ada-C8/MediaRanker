@@ -3,7 +3,6 @@ class VotesController < ApplicationController
   def create
     vote = Vote.new(vote_params)
     user = session[:logged_in_user]
-    # binding.pry
 
     if user
       vote.user_id = user["id"]
@@ -21,7 +20,7 @@ class VotesController < ApplicationController
     redirect_to works_path
   end
 
-  private
+private
   def vote_params
     params.permit(:work_id)
   end

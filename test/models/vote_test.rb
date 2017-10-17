@@ -39,7 +39,4 @@ describe Vote do
       vote.must_respond_to :work
     end
   end
-
-  # describe "methods" do
-  # end
 end

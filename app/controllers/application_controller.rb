@@ -1,7 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
-  # def save_and_flash(model, message: "Failed to save")
   # could just pop last character off success message
   #sandi way would be to refactor and use keywords
   def save_and_flash(model, message_success, message_fail)
