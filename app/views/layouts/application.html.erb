@@ -9,11 +9,11 @@
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
 
-  <body class="grid-container fluid">
-    <header class="main-header grid-x">
-      <h1 class="small-12 cell"><%=link_to "Media Ranker", root_path %> | Ranking the Best of Everything</h1>
-      <nav class="small-12 cell">
-        <div class="grid-x">
+  <body class="grid-container fluid" id="main-body">
+    <header class="grid-x main-header">
+      <h1 class="small-12 cell site-title"><%=link_to "Media Ranker", root_path %> Ranking the Best of Everything</h1>
+      <nav class="small-12 cell site-nav">
+        <div class="grid-x grid-margin-x grid-padding-x">
           <section class="small-12 large-8 cell">
             <%= link_to "View top media", root_path, class: "button" %>
             <%= link_to "View all media", works_path, class: "button" %>
@@ -32,23 +32,25 @@
       </nav>
     </header>
 
-    <section class="flash <%= flash[:status]%>">
-      <p><%= flash[:message] %></p>
-      <% if flash[:details] %>
-        <ul>
-          <% flash[:details].each do |field, problems| %>
-            <% problems.each do |problem| %>
-            <li>
-              <strong>
-                <%= field %>:
-              </strong>
-              <%= problem %>
-            </li>
+    <% if flash[:status] %>
+      <section class="flash <%= flash[:status]%>">
+        <p><%= flash[:message] %></p>
+        <% if flash[:details] %>
+          <ul>
+            <% flash[:details].each do |field, problems| %>
+              <% problems.each do |problem| %>
+              <li>
+                <strong>
+                  <%= field %>:
+                </strong>
+                <%= problem %>
+              </li>
+              <% end %>
             <% end %>
-          <% end %>
-        </ul>
-      <% end %>
-    </section>
+          </ul>
+        <% end %>
+      </section>
+    <% end %>
 
     <%= yield %>
   </body>

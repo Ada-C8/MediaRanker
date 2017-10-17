@@ -16,3 +16,103 @@
 
 @import url('foundation.css');
 @import url('https://fonts.googleapis.com/css?family=Gudea:400,400i,700');
+
+body#main-body { padding: 0; }
+
+/* HEADER */
+header.main-header {
+  background: #B2DFDB;
+  margin-bottom: 10px;
+  padding: 25px 20px 10px 20px;
+}
+h1.site-title {
+  text-align: center;
+  margin: 25px auto 40px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+}
+h1.site-title a {
+  margin-right: 18px;
+  padding-right: 23px;
+  border-right: 2px solid #fff;
+  font-size: 40px;
+  color: #FF5722;
+}
+nav.site-nav section:nth-of-type(2){ text-align: right; }
+
+/* FLASH */
+section.flash {
+  border-radius: 5px;
+  background: #e6e6e6;
+  margin: 30px auto 0;
+  padding: 20px 25px;
+  width: 85%;
+}
+section.failure { color: #C70039; }
+
+/* MAINS */
+main {
+  width: 85%;
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+/* HOME INDEX.HTML.ERB */
+article.media-spotlight { border-bottom: 1px solid rgb(202,202,202); }
+article.media-spotlight div { padding: 0 32px 32px; }
+article.media-spotlight div h2 {
+  font-size: 31px;
+  font-weight: 700;
+  color: #26A69A;
+}
+article.media-spotlight div h2 span { color: #424242;
+}
+article.media-spotlight div h2 a { color: #26A69A; }
+article.top-lists { margin-top: 75px; }
+article.top-lists h3 {
+  color: #26A69A;
+  font-size: 31px;
+  font-weight: 700;
+  border-bottom: 2px solid #B2DFDB;
+  margin-bottom: 8px;
+}
+article.top-lists section[class*="list"] { padding: 0 15px; }
+article.top-lists ul { list-style-type: none; }
+article.top-lists ul li {
+  font-weight: 700;
+  font-size: 20px;
+  color: slategrey;
+  margin-bottom: 16px;
+}
+article.top-lists ul li a { font-size: 25px; }
+article.top-lists ul li span.vote-count {
+  color: #0a0a0a;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+/* works index.html.erb */
+h2.title-green {
+  font-weight: 700;
+  font-size: 31px;
+  color: #26A69A;
+}
+h3.list-title {
+  font-weight: 700;
+  font-size: 25px;
+  color: rgb(10, 10, 10);
+}
+section.work-list table[class*="list"], thead, tbody { border: none; }
+section.work-list table[class*="list"] th {
+  text-align: left;
+  background: #f8f8f8;
+}
+section.work-list table[class*="list"] td {
+  padding: 8px 10px 10px;
+  border: 2px solid #fff;
+}
+section.work-list table[class*="list"] td a {
+  vertical-align: middle;
+  margin-bottom: 0;
+}

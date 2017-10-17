@@ -29,11 +29,10 @@ class UsersController < ApplicationController
       session[:logged_in_user] = user.id
       save_and_flash(user)
       flash[:message] = "#{ user.name } has successfully logged in"
+      redirect_to root_path
     else
       create
-      session[:logged_in_user] = user.id
     end
-    redirect_to root_path
   end
 
   def logout

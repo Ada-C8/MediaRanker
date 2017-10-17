@@ -56,18 +56,18 @@ describe UsersController do
     end
   end
 
-  describe "edit" do
-  end
-
-  describe "update" do
-  end
-
-  describe "destroy" do
-  end
-
-  describe "login" do
-  end
-
-  describe "logout" do
-  end
+  # describe "edit" do
+  # end
+  #
+  # describe "update" do
+  # end
+  #
+  # describe "destroy" do
+  # end
+  #
+  # describe "login" do
+  # end
+  #
+  # describe "logout" do
+  # end
 end

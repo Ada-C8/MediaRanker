@@ -1,15 +1,15 @@
 <main class="grid-x main-index">
 
   <article class="small-12 cell media-spotlight">
-    <h2>Media Spotlight:
-      <% w = @works.max_by { |work| work.votes.length } %>
-      <%= link_to w.title, work_path(w[:id]) %>
-      by <span class="author"><%= w.creator %></span>
-    </h2>
-    <p><%= w.votes.length %> votes - <%= w.desc %></p>
+    <div>
+      <h2><span>Media Spotlight:</span>
+        <% w = @works.max_by { |work| work.votes.length } %>
+        <%= link_to w.title, work_path(w[:id]) %>
+        by <%= w.creator %>
+      </h2>
+      <p><%= w.votes.length %> votes - <%= w.desc %></p>
+    </div>
   </article>
-
-  <hr>
 
   <article class="small-12 cell top-lists">
     <div class="grid-x">
@@ -20,9 +20,9 @@
           <% movies.each do |movie_work| %>
             <li>
               <%= link_to movie_work.title, work_path(movie_work[:id]) %>
-              by <span class="author"><%= movie_work.creator %></span>
+              by <%= movie_work.creator %>
               <br />
-              <span><%= movie_work.votes.length %> votes</span>
+              <span class="vote-count"><%= movie_work.votes.length %> votes</span>
             </li>
           <% end %>
         </ul>
@@ -35,9 +35,9 @@
           <% books.each do |book_work| %>
             <li>
               <%= link_to book_work.title, work_path(book_work[:id]) %>
-              by <span class="author"><%= book_work.creator %></span>
+              by <%= book_work.creator %>
               <br />
-              <span><%= book_work.votes.length %> votes</span>
+              <span class="vote-count"><%= book_work.votes.length %> votes</span>
             </li>
           <% end %>
         </ul>
@@ -50,9 +50,9 @@
           <% albums.each do |album_work| %>
             <li>
               <%= link_to album_work.title, work_path(album_work[:id]) %>
-              by <span class="author"><%= album_work.creator %></span>
+              by <%= album_work.creator %>
               <br />
-              <span><%= album_work.votes.length %> votes</span>
+              <span class="vote-count"><%= album_work.votes.length %> votes</span>
             </li>
           <% end %>
         </ul>

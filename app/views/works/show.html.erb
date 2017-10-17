@@ -22,8 +22,10 @@
         <th>Date</th>
       </tr>
       <% @work.votes.each do |vote| %>
+      <tr>
         <td><%= vote.user.name %></td>
         <td><%= vote.date.strftime("%b %d, %Y") %></td>
+      </tr>
       <% end %>
     </table>
   </section>
