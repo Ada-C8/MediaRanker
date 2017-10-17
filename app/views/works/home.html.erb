@@ -1,0 +1,39 @@
+<%#render partial: "success" %>
+
+<section class="row spotlight">
+  <div>
+    <h3>
+      <span class="media-spotlight-header"> Media Spotlight: </span>
+      <% if @spotlight %>
+        <%= link_to(@spotlight.title, work_path(@spotlight.id)) %> by <%= @spotlight.creator %>
+    </h3>
+      <p>
+        <%= @spotlight.caption(@spotlight.num_votes) %>
+      </p>
+      <%# else %>
+      <!-- <p>
+        No media yet. <%= link_to "Add a new work to start", new_work_path %>
+      </p> -->
+    <% end %>
+  </div>
+</section>
+
+<hr class="root-hr" />
+
+<% ["movies", "books", "albums"].each do |type| %>
+  <section class="top-ten columns large-4 small-12">
+    <h3> Top <%=type.capitalize%></h3>
+    <% @top_ten = @media[type] %>
+    <% @top_ten.each do |work| %>
+    <ul>
+      <li>
+        <h4><%= link_to work.title, work_path(work) %><small> by <%= work.creator %></small></h4>
+        <p>
+          <%= work.num_votes_to_s %>
+        </p>
+      </li>
+    </ul>
+    <% end %>
+  </section>
+
+<% end %>

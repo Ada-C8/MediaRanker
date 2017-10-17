@@ -1,0 +1,35 @@
+
+<h3>List of works</h3>
+
+<% ["albums", "books", "movies"].each do |type| %>
+  <section class="media-table">
+    <h4><%=type.capitalize%></h4>
+    <table>
+      <thead>
+        <tr>
+          <th id="all-media-votes">Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th id="published">Published</th>
+          <th id="upvote">Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @works_list = @media[type] %>
+      <% @works_list.each do |work| %>
+        <tr>
+          <td><%= work.num_votes %></td>
+          <td><%= link_to work.title, work_path(work.id) %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td><%= link_to "Upvote", upvote_work_path(work), method: :post, class: "button upvote" %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </section>
+
+<% end %>
+
+<%= link_to "View top media", root_path, class: "button" %>
+<%= link_to "Add a new work", new_work_path, class: "button" %>

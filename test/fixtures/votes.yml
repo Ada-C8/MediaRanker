@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  work: hp
+  user: harry
+
+two:
+  work: dune
+  user: hermione
+
+three:
+  work: hp
+  user: hermione

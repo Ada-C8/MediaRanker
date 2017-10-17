@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+harry:
+  name: Harry Potter
+
+hermione:
+  name: Hermione Granger
+
+ron:
+  name: Ron Weasley

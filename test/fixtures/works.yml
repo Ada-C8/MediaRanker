@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+hp:
+  category: book
+  title: "Harry Potter"
+  creator: "J.K. Rowling"
+  publication_year: 2000
+  description: "magical and fantastical"
+
+dune:
+  category: book
+  title: Dune
+  creator: Frank Herbert
+  publication_year: 1974
+  description: happy face
+
+nonsense:
+  category: album
+  title: Stuff and nonsense
+  creator: anonymous
+  publication_year: 2005
+  description:
+
+lego:
+  category: movie
+  title: Lego Batman
+  creator: Somebody
+  publication_year: 2017
+  description: Lego + Batman
