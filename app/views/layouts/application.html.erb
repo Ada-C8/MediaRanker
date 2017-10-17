@@ -10,17 +10,17 @@
 
   <body>
     <header>
-      <h1>Media Ranker | Ranking the Best of Everything</h1>
+      <h1>Media Ranker <span class="sub-heading">| Ranking the Best of Everything</span></h1>
 
-      <%=link_to "View top media", root_path%>
-      <%=link_to "View all media", works_path%>
-      <%=link_to "Add a new work", new_work_path%>
-      <%=link_to "View all users", users_path%>
+      <%=link_to "View top media", root_path, :class=>"button" %>
+      <%=link_to "View all media", works_path, :class=>"button" %>
+      <%=link_to "Add a new work", new_work_path, :class=>"button" %>
+      <%=link_to "View all users", users_path, :class=>"button" %>
 
       <div class="float-right">
         <% if session[:logged_in_user] %>
-          <%=link_to "Logged in as #{User.find_by(id: session[:logged_in_user]).name}", user_path(session[:logged_in_user]) %>
-          <%= link_to "Log out", logout_path %>
+          <%=link_to "Logged in as #{User.find_by(id: session[:logged_in_user]).name}", user_path(session[:logged_in_user]), :class=>"button"  %>
+          <%= link_to "Log out", logout_path, :class=>"button"  %>
         <% else %>
           <%= link_to "Log In", login_path %>
         <% end %>

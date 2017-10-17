@@ -8,10 +8,10 @@
 <p><%= @work.description %></p>
 
 
-<%= link_to "Back to media ranks", root_path %>
-<%= link_to "Edit Work", edit_work_path %>
-<%= link_to "Upvote", work_upvote_path(@work.id), method: :post %>
-<%= link_to "Delete Work", work_path(@work), method: :delete %>
+<%= link_to "Back to media ranks", root_path, :class=>"button"  %>
+<%= link_to "Edit Work", edit_work_path, :class=>"button"  %>
+<%= link_to "Upvote", work_upvote_path(@work.id), method: :post, :class=>"button"  %>
+<%= link_to "Delete Work", work_path(@work), method: :delete, :class=>"button"  %>
 
 <h2><%= @work.votes.count%> votes for this <%=@work.category%></h2>
 

@@ -16,7 +16,7 @@
       <td><%= link_to work.title, work_path(work.id) %></td>
       <td><%= work.creator %></td>
       <td><%= work.publication_year %></td>
-      <td><%= link_to "Upvote", work_upvote_path(work.id), method: :post %>
+      <td><%= link_to "Upvote", work_upvote_path(work.id), method: :post, :class=>"button" %>
     </tr>
   <% end %>
 </table>
@@ -63,5 +63,5 @@
   <% end %>
 </table>
 
-<%=link_to "View top media", root_path%>
-<%=link_to "Add a new work", new_work_path%>
+<%=link_to "View top media", root_path, :class=>"button" %>
+<%=link_to "Add a new work", new_work_path, :class=>"button" %>
