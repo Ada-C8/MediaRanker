@@ -1,13 +1,31 @@
 <!-- # Keep things in order; Album, Books, Movies. -->
 <!-- columns needed -->
-<%= link_to("New", new_work_path)  %>
 <header>
-  <h1>List of Works</h1>
+  <h2>List of Works</h2>
 </header>
+  <h3>Albums</h3>
 <ul>
   <% @albums.each do |album| %>
   <li>
     <h4><%= link_to(album.title, work_path(album.id), alt: 'link to', class: "title") %> <small>by <%= album.creator%></small></h4>
+<!-- votes -->
+  </li>
+  <% end %>
+</ul>
+  <h3>Books</h3>
+<ul>
+  <% @books.each do |book| %>
+  <li>
+    <h4><%= link_to(book.title, work_path(book.id), alt: 'link to', class: "title") %> <small>by <%= book.creator%></small></h4>
+<!-- votes -->
+  </li>
+  <% end %>
+</ul>
+  <h3>Movies</h3>
+<ul>
+  <% @movies.each do |movie| %>
+  <li>
+    <h4><%= link_to(movie.title, work_path(movie.id), alt: 'link to', class: "title") %> <small>by <%= movie.creator%></small></h4>
 <!-- votes -->
   </li>
   <% end %>

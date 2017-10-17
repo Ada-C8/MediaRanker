@@ -1,14 +1,30 @@
 <header>
-  <h1>Media Spotlight:</h1>
-    <h3>Top Works</h3>
-    <!-- figure out how to make this different categories -->
-    <ul>
-      <% @works.each do |work| %>
-      <li>
-        <h4><%= link_to(work.title, work_path(work.id), alt: 'link to', class: "title") %> <small>by <%= work.creator%></small></h4>
-        <!-- votes -->
-      </li>
-      <% end %>
-    </ul>
-  </section>
+  <h2>Media Spotlight</h2>
 </header>
+  <h3>Top Albums</h3>
+<ul>
+  <% @albums.each do |album| %>
+  <li>
+    <h4><%= link_to(album.title, work_path(album.id), alt: 'link to', class: "title") %> <small>by <%= album.creator%></small></h4>
+<!-- votes -->
+  </li>
+  <% end %>
+</ul>
+  <h3>Top Books</h3>
+<ul>
+  <% @books.each do |book| %>
+  <li>
+    <h4><%= link_to(book.title, work_path(book.id), alt: 'link to', class: "title") %> <small>by <%= book.creator%></small></h4>
+<!-- votes -->
+  </li>
+  <% end %>
+</ul>
+  <h3>Top Movies</h3>
+<ul>
+  <% @movies.each do |movie| %>
+  <li>
+    <h4><%= link_to(movie.title, work_path(movie.id), alt: 'link to', class: "title") %> <small>by <%= movie.creator%></small></h4>
+<!-- votes -->
+  </li>
+  <% end %>
+</ul>
