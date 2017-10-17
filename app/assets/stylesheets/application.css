@@ -1,0 +1,142 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/*darkteal: #26A69A;*/
+/*lightteal: #B2DFDB;*/
+/*orange: #FF5722;*/
+/*delete button: #cc4b37;*/
+/*on hover: #008080;*/
+/*flash-grey: #e6e6e6;*/
+/*darkgrey: #8a8a8a;*/
+/*slategrey;*/
+
+* {
+  font-family: 'Gudea', sans-serif;
+  box-sizing: border-box;
+}
+
+.page-header h2 {
+  text-align: center;
+  margin: 25px auto 40px auto;
+}
+
+.page-header h2 a {
+  font-size: 40px;
+  color: #FF5722;
+  font-weight: bold;
+  border-right: 2px solid #FFF;
+  padding-right: 25px;
+  margin-right: 15px;
+}
+
+.page-header {
+  max-width: 100%;
+}
+
+h2 small {
+  font-size: 32px;
+  font-weight: bold;
+  color: #FFF;
+}
+
+header {
+  background-color: #B2DFDB;
+  padding: 10px 20px;
+}
+
+.button {
+  background-color: #26A69A;
+}
+
+.button:hover {
+  background-color: #008080;
+}
+
+.float-right {
+  float: right;
+}
+
+.flash-notice {
+  background-color: #e6e6e6;
+  padding: 20px 25px;
+  margin: 30px 0;
+  color: #8a8a8a;
+}
+
+.flash-notice p {
+  margin: 0;
+}
+
+nav {
+  padding: 0 15px;
+}
+
+h3 {
+  font-weight: bold;
+  color: #26A69A;
+  font-family: 'Gudea', sans-serif;
+}
+
+h4 {
+  font-weight: bold;
+}
+
+table td {
+  padding: .5rem .625rem .625rem;
+}
+
+main {
+  padding: 32px 0;
+}
+
+main table a, h4 a {
+  color: #26A69A;
+}
+
+main table a:hover, h4 a:hover {
+  color: #008080;
+}
+
+.delete {
+  background-color: #cc4b37;
+}
+
+.media-spotlight h3 span {
+  color: #000;
+}
+
+.media-spotlight a {
+  color: #26A69A;
+  border-bottom: 2px solid #26A69A;
+}
+
+div.media-spotlight {
+  border-bottom: 1px solid #e6e6e6;
+  padding-bottom: 5px;
+  margin-bottom: 50px;
+}
+
+h4 small {
+  color: slategrey;
+}
+
+.top-ten h3 {
+  border-bottom: 2px solid #B2DFDB;
+}
+
+main a.button {
+  margin: 0;
+}
