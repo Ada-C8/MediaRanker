@@ -1,0 +1,74 @@
+<section class="row">
+  <h2>User Summary: <%= @user.name %></h2>
+
+  <p>
+    Joined site <%= @user.created %>
+  </p>
+  <h3>Votes</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Media Title
+        </th>
+        <th>
+          Created By
+        </th>
+        <th>
+          Published
+        </th>
+        <th>
+          Category
+        </th>
+        <th>
+          Voted On
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.votes.each do |vote| %>
+        <% work = vote.work %>
+        <tr>
+          <td>
+            <%= link_to work.title, work_path(work.id) %>
+          </td>
+          <td>
+            <%= work.creator %>
+          </td>
+          <td>
+            <%= work.publication_year %>
+          </td>
+          <td>
+            <%= work.category.capitalize %>
+          </td>
+          <td>
+            <%= vote.created %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% unless @recs.empty? %>
+    <div class="recs">
+      <p>
+        <strong>
+          Based on their voting history, we think this user would enjoy:
+        </strong>
+      </p>
+      <ul>
+        <% @recs.each do |rec| %>
+        <li>
+          <%= link_to rec.title, work_path(rec) %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <nav>
+    <%= link_to 'See all Users', users_path, class: 'button' %>
+    <%= link_to 'Back to Media List', works_path, class: 'button' %>
+  </nav>
+</section>

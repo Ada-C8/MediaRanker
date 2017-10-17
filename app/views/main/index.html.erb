@@ -1,0 +1,33 @@
+<section class="row">
+  <section class="spotlight">
+    <h2>
+      <strong>Media Spotlight:</strong>
+      <%= link_to @best.title, work_path(@best.id) %>
+      by <%= @best.creator %>
+    </h2>
+
+    <p>
+      <%= @best.votes.count %> votes
+      <%= "- #{@best.description}" if @best.description %>
+    </p>
+  </section>
+
+  <hr />
+
+  <section class="top-10">
+
+    <div class="small-12 large-4 columns">
+      <h2>Top Movies</h2>
+      <%= render partial: 'top-list', locals: {works: @best_movies} %>
+    </div>
+    <div class="small-12 large-4 columns">
+      <h2>Top Books</h2>
+      <%= render partial: 'top-list', locals: {works: @best_books} %>
+    </div>
+    <div class="small-12 large-4 columns">
+      <h2>Top Albums</h2>
+      <%= render partial: 'top-list', locals: {works: @best_albums} %>
+    </div>
+
+  </section>
+</section>

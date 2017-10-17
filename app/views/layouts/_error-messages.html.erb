@@ -1,0 +1,11 @@
+<div class="error-messages">
+  <ul>
+    <% item.errors.messages.each do |field, errors| %>
+      <% errors.each do |error| %>
+        <li>
+          <%= field.capitalize %> <%= error %>.
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

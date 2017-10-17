@@ -1,0 +1,77 @@
+<div class="row">
+  <section class="small-12 large-6 columns">
+    <h2 class="small-12 columns"><%= @work.title %></h2>
+    <% if @work.creator %>
+      <p>
+        Created By:
+        <%= @work.creator %>
+      </p>
+    <% end %>
+    <% if @work.publication_year %>
+      <p>
+        Published:
+        <%= @work.publication_year %>
+      </p>
+    <% end %>
+    <% if @work.description %>
+      <p>
+        <%= @work.description %>
+      </p>
+    <% end %>
+
+    <% unless @recs.empty? %>
+      <div class="recs">
+        <p>
+          <strong>
+            Users who enjoy this work often enjoy:
+          </strong>
+        </p>
+        <ul>
+          <% @recs.each do |rec| %>
+            <li>
+              <%= link_to rec.title, work_path(rec) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </section>
+
+  <section class="small-12 large-6 columns">
+    <h2><%= @work.users.count %> Vote<%= 's' unless @work.users.count == 1 %> for this <%= @work.category.capitalize %></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>
+            User
+          </th>
+          <th>
+            Date
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @work.votes.each do |vote| %>
+        <% user = vote.user %>
+        <tr>
+          <td>
+            <%= link_to user.name, user_path(user.id) %>
+          </td>
+          <td>
+            <%= vote.created %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+</div>
+
+<div class="row">
+  <nav class="small-12 large-6 columns left">
+    <%= link_to "Back to media ranks", works_path, class: 'button' %>
+    <%= link_to "Edit", edit_work_path(@work.id), class: 'button' %>
+    <%= link_to "Upvote", upvote_path(@work.id), class: 'button' %>
+    <%= link_to "Delete", work_path, method: :delete, data: {confirm: "Are you sure?"}, class: 'button delete' %>
+  </nav>
+</div>
