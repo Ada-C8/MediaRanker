@@ -3,34 +3,34 @@
 <header>
   <h2>List of Works</h2>
 </header>
-  <h3>Albums</h3>
+<h3>Albums</h3>
 <ul>
   <% @albums.each do |album| %>
   <li>
     <h4><%= link_to(album.title, work_path(album.id), alt: 'link to', class: "title") %> <small>by <%= album.creator%></small></h4>
-<!-- votes -->
+    <!-- votes -->
   </li>
   <% end %>
 </ul>
-  <h3>Books</h3>
+<h3>Books</h3>
 <ul>
   <% @books.each do |book| %>
   <li>
     <h4><%= link_to(book.title, work_path(book.id), alt: 'link to', class: "title") %> <small>by <%= book.creator%></small></h4>
-<!-- votes -->
+    <!-- votes -->
   </li>
   <% end %>
 </ul>
-  <h3>Movies</h3>
+<h3>Movies</h3>
 <ul>
   <% @movies.each do |movie| %>
   <li>
     <h4><%= link_to(movie.title, work_path(movie.id), alt: 'link to', class: "title") %> <small>by <%= movie.creator%></small></h4>
-<!-- votes -->
+    <!-- votes -->
   </li>
   <% end %>
 </ul>
 <footer>
-  <h3>Top Media</h3>
-  <h3>Add New</h3>
+  <%= link_to "View top media", root_path, class: "button" %>
+  <%= link_to "Add a new work", new_work_path, class: "button" %>
 </footer>
