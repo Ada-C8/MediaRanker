@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: book
+  title: Staring at the Sun
+  creator: Irvin Yalom
+  publication_year: 2008
+  description: A profoundly encouraging approach to the universal issue of mortality
+
+two:
+  category: album
+  title: American Dream
+  creator: LCD Soundsystem
+  publication_year: 2017
+  description: An album obsessed with endings, of friendships, of love, of heroes, of a certain type of geeky fandom, and of the American dream itself
+
+three:
+  category: movie
+  title: Groundhog Day
+  creator: Harold Ramis
+  publication_year: 1993
+  description: A weatherman finds himself inexplicably living the same day over and over again

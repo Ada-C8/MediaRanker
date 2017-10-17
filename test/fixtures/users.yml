@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+anders:
+  name: anders
+  joined: 2017-10-12
+
+chen:
+  name: chen
+  joined: 2017-10-10
+
+mika:
+  name: mika
+  joined: 2017-10-08

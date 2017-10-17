@@ -1,0 +1,18 @@
+<section>
+  <h3>All Works</h3>
+
+  <article>
+    <h4>Albums</h4>
+    <%= render partial: "table", locals: {sorted_works: @albums_sorted_by_votes} %>
+  </article>
+
+  <article>
+    <h4>Books</h4>
+    <%= render partial: "table", locals: {sorted_works: @books_sorted_by_votes} %>
+  </article>
+
+  <article>
+    <h4>Movies</h4>
+    <%= render partial: "table", locals: {sorted_works: @movies_sorted_by_votes} %>
+  </article>
+</section>
