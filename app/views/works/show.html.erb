@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="small-12 large-6 columns">
+    <section>
+      <h1><%= @work.title %></h1>
+
+      <p>Created By: <%= @work.creator %></p>
+      <p>Published: <%= @work.publication_year %></p>
+      <p>Description: <%= @work.description %></p>
+
+      <%= link_to("Back to media ranks", root_path, class: "button") %>
+      <%= link_to("Edit", edit_work_path(@work.id), class: "button") %>
+      <%= link_to("Upvote", upvote_work_path(@work.id), method: :post, class: "button") %>
+      <%= link_to("Delete", work_path(@work.id), method: :delete, class: "button alert") %>
+    </section>
+  </div>
+
+  <div class="small-12 large-6 columns">
+    <section>
+      <h2><%= @work.votes.length %> Votes for this <%= @work.category.capitalize %></h2>
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @work.votes.each do |vote| %>
+          <tr><!-- For each vote a user has  -->
+            <td><%= link_to(vote.user.username, user_path(vote.user.id)) %></td>
+            <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+          </tr><!-- End loop  -->
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+
+  </div>
+
+</div>
