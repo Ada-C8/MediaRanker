@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+album:
+  category: album
+  title: MyAlbum
+  creator: AlbumCreator
+  publication_year: 1
+  description: an album
+
+movie:
+  category: movie
+  title: MyMovie
+  creator: MovieCreator
+  publication_year: 1
+  description: a movie
+
+book:
+  category: book
+  title: MyBook
+  creator: BookCreator
+  publication_year: 1
+  description: a book

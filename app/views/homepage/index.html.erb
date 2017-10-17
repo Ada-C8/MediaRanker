@@ -1,0 +1,26 @@
+<main class="row">
+  <% if @top_work %>
+    <section class='spotlight'>
+      <div class="">
+        <h3><span class='media-spotlight-header'>Media Spotlight: </span><%= link_to @top_work.title, work_path(@top_work.id) %> by <%= @top_work.creator %></h3>
+        <p><%= @top_work.votes.count %> vote<%= @plural %> - <%= @top_work.description %></p>
+      </div>
+    </section>
+    <hr class='root-hr' />
+    <% @top_works.each do |category, works| %>
+      <section class="large-<%= 12 / @top_works.count %> small-12 columns top-ten">
+        <h3>Top <%= category.titleize %>s</h3>
+        <ul>
+          <% works.each do |work| %>
+            <li>
+              <h4><%= link_to work.title, work_path(work.id) %> <small>by <%= work.creator %></small></h4>
+              <p><%= work.votes.count %> votes</p>
+            </li>
+          <% end %>
+        </ul>
+      </section>
+    <% end %>
+  <% else %>
+    <h2><%= link_to 'Get voting!', works_path %></h2>
+  <% end %>
+</main>
