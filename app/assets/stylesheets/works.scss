@@ -1,0 +1,57 @@
+// Place all the styles related to the Works controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*******************/
+/*    Main page       */
+/*******************/
+
+
+.section.spotlight {
+  padding: 0 2rem rem 2rem;
+}
+
+
+.media-spotlight-header {
+  color: #424242;
+}
+
+.spotlight a {
+  border-bottom: 2px solid;
+}
+
+.spotlight p {
+  margin-bottom: 0px;
+  padding-bottom: 5%;
+}
+
+.root-hr {
+  margin: 0px auto 75px auto;
+  color: #EEEEEE;
+}
+.top-ten h3 {
+  border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB;
+}
+
+.top-ten ul {
+  list-style-type: none;
+  margin-left: 0px;
+}
+
+li {
+  font-size: inherit;
+}
+
+a, h3 {
+  color: #26A69A;
+}
+
+
+/*******************/
+/*   Show page       */
+/*******************/
+
+.button.allert {
+  background-color: #cc4b37;
+}

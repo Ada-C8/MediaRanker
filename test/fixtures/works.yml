@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+singing_in_the_rain:
+  category: Movie
+  title: Singing in the Rain
+  creator: Gene Kelly
+  publication_year: 1952
+  description: An amazing musical
+
+cool_runnings:
+  category: Movie
+  title: Cool Runnings
+  creator: Jon Turteltab
+  publication_year: 1993
+  description: Jamaican Bobsled team
+
+hp1:
+  category: Book
+  title: Harry Potter and the Socerers Stone
+  creator: J.K. Rowling
+  publication_year: 1996
+  description: You're a wizard, Harry
+
+ratatat:
+  category: Album
+  title: Classics
+  creator: Ratatat
+  publication_year: 2007
+  description: Ratatat's second album
