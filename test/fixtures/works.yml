@@ -1,0 +1,18 @@
+album:
+  category: album
+  title: Can't Buy a Thrill
+  creator: Steely Dan
+  publication_year: 1972
+  description: An album description
+book:
+  category: book
+  title: Hidden Figures
+  creator: Margot Lee Shetterly
+  publication_year: 2016
+  description: Good book that came before the movie
+movie:
+  category: movie
+  title: Toy Story 3
+  creator: Lee Unkrich
+  publication_year: 2010
+  description: An movie description

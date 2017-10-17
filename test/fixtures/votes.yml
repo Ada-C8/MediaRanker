@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+vote:
+  user: one # Not sure how to test this relation
+  work: album
+
+# user - raised error
+# work -
+# I am trying to get the user_id from the users.yml and it does not work. Am I supposed to be testing this.
+# How to test tables that need a foreign key

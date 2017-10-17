@@ -1,0 +1,85 @@
+<main class="row">
+  <section>
+
+    <% works = Work.all.sort_by { |work| -work.votes.count} %>
+    <% if works.empty? %>
+    <div class="bold">
+      <h3>
+        <span class="spotlight">Media Spotlight:</span>
+      </h3>
+    </div>
+
+    <% else %>
+
+    <div class="bold">
+      <h3>
+        <span class="black">Media Spotlight:</span>
+        <%= link_to works.first.title, work_path(works.first.id), class: "spotlight-border" %> by <%= works.first.creator %>
+      <p>
+        <%= works.first.votes.count %> votes
+      </p>
+    </div>
+
+    <% end %>
+
+  </section>
+
+  <hr>
+
+  <section class="large-4 columns padding-top">
+    <h3 class="border-bottom">Top Movies</h3>
+    <% works = Work.where(category: "movie") %>
+    <% works.sort_by { |work| -work.votes.count } %>
+    <ul>
+      <% works.each do |work| %>
+      <li>
+        <h4>
+          <%= link_to work.title, work_path(work.id) %>
+          <small class="grey">
+            by <%= work.creator %>
+          </small>
+        </h4>
+        <p><%= work.votes.count %> Votes</p>
+      </li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section class="large-4 columns padding-top">
+    <h3 class="border-bottom">Top Books</h3>
+    <% works = Work.where(category: "book") %>
+    <% works.sort_by { |work| -work.votes.count } %>
+    <ul>
+      <% works.each do |work| %>
+      <li>
+        <h4>
+          <%= link_to work.title, work_path(work.id) %>
+          <small class="grey">
+            by <%= work.creator %>
+          </small>
+        </h4>
+        <p><%= work.votes.count %> Votes</p>
+      </li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section class="large-4 columns padding-top">
+    <h3 class="border-bottom">Top Albums</h3>
+    <% works = Work.where(category: "album") %>
+    <% works.sort_by { |work| -work.votes.count } %>
+    <ul>
+      <% works.each do |work| %>
+      <li>
+        <h4>
+          <%= link_to work.title, work_path(work.id) %>
+          <small class="grey">
+            by <%= work.creator %>
+          </small>
+        </h4>
+        <p><%= work.votes.count %> Votes</p>
+      </li>
+      <% end %>
+    </ul>
+  </section>
+</main>

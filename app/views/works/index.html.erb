@@ -1,0 +1,108 @@
+<main class="row">
+  <h3>List of Works </h3>
+
+  <section>
+    <h4 class="black">Albums</h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="large-1 small-2">Votes</th>
+          <th class="large-4 small-3">Title</th>
+          <th class="large-2 small-3">Created By</th>
+          <th class="large-2 small-2">Published</th>
+          <th class="large-1 small-2">Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @works.where(category: "album").each do |work| %>
+          <tr>
+            <td><p><%= Vote.where(work_id: work.id).count %></p></td>
+            <td><%= link_to work.title, work_path(work.id)%></td>
+            <td class="black"><%= work.creator %></td>
+            <td class="black"><%= work.publication_year %></td>
+            <td>
+              <%= link_to "Upvote", votes_path(
+                :vote => {
+                  user_id: session[:logged_in_session],
+                  work_id: work.id
+                }
+              ), method: :post, class:"button" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+  </section>
+
+  <section>
+    <h4 class="black">Books</h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="large-1 small-2">Votes</th>
+          <th class="large-4 small-3">Title</th>
+          <th class="large-2 small-3">Created By</th>
+          <th class="large-2 small-2">Published</th>
+          <th class="large-1 small-2">Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @works.where(category: "book").each do |work| %>
+          <tr>
+            <td><p><%= Vote.where(work_id: work.id).count %></p></td>
+            <td><%= link_to work.title, work_path(work.id)%></td>
+            <td class="black"><%= work.creator %></td>
+            <td class="black"><%= work.publication_year %></td>
+            <td>
+              <%= link_to "Upvote", votes_path(
+                :vote => {
+                  user_id: session[:logged_in_session],
+                  work_id: work.id
+                }
+              ), method: :post, class:"button" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h4 class="black">Movies</h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="large-1 small-2">Votes</th>
+          <th class="large-4 small-3">Title</th>
+          <th class="large-2 small-3">Created By</th>
+          <th class="large-2 small-2">Published</th>
+          <th class="large-1 small-2">Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @works.where(category: "movie").each do |work| %>
+          <tr>
+            <td><p><%= Vote.where(work_id: work.id).count %></p></td>
+            <td><%= link_to work.title, work_path(work.id)%></td>
+            <td class="black"><%= work.creator %></td>
+            <td class="black"><%= work.publication_year %></td>
+            <td>
+              <%= link_to "Upvote", votes_path(
+                :vote => {
+                  user_id: session[:logged_in_session],
+                  work_id: work.id
+                }
+              ), method: :post, class:"button" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to "View Top Media", works_path, class:"button" %>
+    <%= link_to "Add a new work", new_work_path, class: "button" %>
+  </section>
+</main>

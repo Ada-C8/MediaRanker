@@ -1,0 +1,59 @@
+<main class="row">
+  <article class="large-6 small-12 columns">
+    <h3>
+      <%= link_to @work.title, work_path(@work) %>
+    </h3>
+
+    <p>
+      Created by: <%= @work.creator %>
+    </p>
+    <p>
+      Published: <%= @work.publication_year %>
+    </p>
+    <p>
+      Description: <%= @work.description %>
+    </p>
+    <section>
+
+      <%= link_to "Back to media ranks", works_path, class: "button" %>
+      <%= link_to "Edit", edit_work_path, class: "button" %>
+      <%= link_to "Upvote", votes_path(
+        :vote => {
+          user_id: session[:logged_in_session],
+          work_id: @work.id
+        }
+      ), method: :post, class:"button" %>
+
+      <%= link_to "Delete", work_path, method: :delete, data: {confirm: "Are you sure?" }, class: "button alert" %>
+    </section>
+  </article>
+
+
+  <article class="large-6 small-12 columns">
+    <h3><%= Vote.where(work_id: @work.id).count %> Votes for this <%= @work.category %></h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% votes = Vote.where(work_id: @work.id) %>
+
+        <% votes.each do |vote| %>
+          <tr>
+            <td>
+              <%= link_to vote.user.name, user_path(vote.user_id)%>
+            </td>
+            <td class="black">
+              <%= vote.created_at.strftime("%b %d, %Y") %>
+            </td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </article>
+</main>

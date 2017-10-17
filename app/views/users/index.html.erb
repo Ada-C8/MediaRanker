@@ -1,0 +1,25 @@
+<main class="row">
+  <h3>List of Users</h3>
+  <table>
+
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th width="100">Votes</th>
+        <th width="200">Joined</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.name, user_path(user.id)%></td>
+          <td class="black"><%= Vote.where(user_id: user.id).count %></td>
+          <td class="black"><%= user.created_at.strftime("%b %d, %Y")%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "Back to Media List", works_path, class:"button" %>
+</main>

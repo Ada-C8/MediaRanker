@@ -1,0 +1,159 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+@import url('https://fonts.googleapis.com/css?family=Gudea');
+
+/********************************/
+/*********** FLASH **************/
+/********************************/
+
+.failure {
+  border-radius: 5px;
+  background-color: #E6E6E6;
+  padding: 20px 25px;
+  margin-top: 30px;
+  color: red;
+}
+
+.success {
+  border-radius: 5px;
+  background-color: #E6E6E6;
+  padding: 20px 25px;
+  margin-top: 30px;
+  color: #8A8A8A;
+}
+
+.login {
+  
+}
+
+.no-margin {
+  margin: 0;
+}
+
+
+/********************************/
+/*********** ALL STYLES *********/
+/********************************/
+
+.float-right {
+  float: right;
+}
+
+.button {
+  background-color: #26A69A;
+}
+
+.button:hover {
+  background-color: #186860;
+}
+
+main {
+  margin-top: 2em;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+.border-bottom {
+  border-bottom: 2px solid #B2DFDB;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Gudea', sans-serif;
+  font-weight: bolder
+}
+
+a:hover {
+  color: #186860;
+}
+
+/********************************/
+/*********** HEADER *************/
+/********************************/
+
+.bg-color {
+  background-color: #B2DFDB;
+  max-width: 100%;
+  padding: 0 1em 0 1em;
+}
+
+
+header small {
+  color: white;
+  padding-left: 1em;
+}
+
+h2.align {
+  text-align: center;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+.brand-style {
+  color: #FF5722;
+  border-right: 2px solid white;
+  padding-right: 1em;
+}
+
+nav.padding {
+  padding: 0 1em 1em 1em;
+}
+
+.hover-orange:hover {
+  color: #FF5722;
+}
+
+a {
+  color: #26A69A;
+}
+
+p {
+  font-size: 16px;
+  color: #0A0A0A;
+}
+
+.black {
+  color: #424242;
+}
+/******************************/
+/*********** BODY *************/
+/******************************/
+
+body {
+  font-family: 'Gudea', sans-serif;
+  color: #26A69A;
+}
+
+.logged-in-padding {
+  padding-right: 5px;
+}
+
+/********************************/
+/*********** CLEARFIX ***********/
+/********************************/
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
