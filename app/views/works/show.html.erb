@@ -1,0 +1,35 @@
+<article class="media-details columns large-6 small-12">
+<% if @work %>
+<h3><%= @work.title %></h3>
+<p>Created by: <%= @work.creator %></p>
+<p>Published: <%= @work.publication_year %></p>
+<p><%= @work.description %></p>
+<section>
+<%= link_to "Back to media ranks", root_path, class: "button" %>
+<%= link_to "Edit", edit_work_path(@work.id), class: "button"%>
+<%= link_to 'Upvote', create_vote_path(work_id: @work.id), method: :post, class: "button" %>
+<%= link_to "Delete", work_path(@work.id), method: :delete, class: "alert button", data: { confirm: "Are you sure?" } %>
+</section>
+<% end %>
+</article>
+
+<article class="voting-users columns large-6 small-12">
+<h3><%= "#{@work.votes.count} Votes for this #{@work.category}" %></h3>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @work.votes.each do |vote| %>
+    <tr>
+      <td><%= link_to vote.user.username, user_path(vote.user_id) %></td>
+      <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</article>
