@@ -1,0 +1,32 @@
+<ul class= "form">
+  <%= form_for @work do |f| %>
+    <li>
+      <%= f.label :category%>
+      <%# collection_select(:user, :user_id, User.all, :id, :name) %>
+      <!-- matches the user field, as found by user_id, take all the Users, display their name, and send back the id. -->
+      <%= f.select :category, [['album'], ['book'], ['movie']] %>
+    </li>
+    <li>
+      <%= f.label :title%>
+      <%= f.text_field :title%>
+    </li>
+
+    <li>
+      <%= f.label :creator %>
+      <%= f.text_field :creator %>
+    </li>
+    <li>
+      <%= f.label :publication_year %>
+      <%= f.text_field :publication_year %>
+    </li>
+
+    <li>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </li>
+
+    <li>
+      <%= f.submit message, class:'button' %>
+    </li>
+  <% end %>
+</ul>

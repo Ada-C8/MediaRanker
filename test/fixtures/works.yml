@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+hp2:
+  category: book
+  title: Harry Potter and the Chamber of Secrets
+  creator: J.K. Rowling
+  publication_year: 1998
+
+
+hp1:
+  category: book
+  title: Harry Potter and the Sorcerers Stone
+
+puberty2:
+  category: album
+  title: Puberty 2
+  creator: Mitski
+
+  

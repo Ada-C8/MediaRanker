@@ -1,0 +1,25 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.root-hr {
+    margin: 0px auto 75px auto;
+    color: #EEEEEE;
+}
+
+.spotlight {
+    padding: 0 2rem 2rem 2rem;
+    // border-bottom: 1px solid lightgrey;
+}
+
+.spotlight #media-spotlight {
+    color: #424242;
+}
+.spotlight a {
+    border-bottom: 2px solid;
+}
+
+.top-ten h3 {
+    border-bottom: 2px solid;
+    border-bottom-color: #B2DFDB;
+}
