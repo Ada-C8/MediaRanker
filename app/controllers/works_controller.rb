@@ -131,7 +131,7 @@ def require_owner(input_work)
 end
 
 def assign_user(input_work)
-  input_work.id = @session_user.id
+  input_work.user_id = @session_user.id
 end
 
 # def destroy_votes(input_work)
