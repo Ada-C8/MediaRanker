@@ -60,7 +60,7 @@ describe "WorkController" do
 
     it "won't create a new work when parameters are missing" do
       proc { post works_path, params: { work: {category: "book"} }}.must_change 'Work.count', 0
-      must_respond_with :success
+      must_respond_with :bad_request
     end
 
     it "can update a work" do

@@ -8,7 +8,16 @@ describe Work do
       foundation.category = nil
       foundation.valid?.must_equal false
 
-      foundation.category = "music"
+      foundation.category = "book"
+      foundation.valid?.must_equal true
+    end
+
+    it "must have either book, movie or album as the category to be valid" do
+      foundation = works(:foundation)
+      foundation.category = "something new"
+      foundation.valid?.must_equal false
+
+      foundation.category = "album"
       foundation.valid?.must_equal true
     end
 
@@ -26,17 +35,15 @@ describe Work do
       hp_copycat.category = "book"
       hp_copycat.title = "Harry Potter"
       hp_copycat.creator = "someone"
-      hp_copycat.publication_year = 2222
+      hp_copycat.publication_year = 2016
       hp_copycat.description =  "Something"
       hp_copycat.valid?.must_equal false, "The title should be unique within its category"
-    end
 
-    it "can't add a work if the title  already exists within the caegory" do
       hp_copycat = Work.new
       hp_copycat.category = "album"
       hp_copycat.title = "Harry Potter"
       hp_copycat.creator = "someone"
-      hp_copycat.publication_year = 2222
+      hp_copycat.publication_year = 2016
       hp_copycat.description =  "Something"
       hp_copycat.valid?.must_equal true
     end
@@ -59,9 +66,9 @@ describe Work do
       traveller.valid?.must_equal true
     end
 
-    it "the publication date must be an integer of 4 numbers to be valid" do
+    it "the publication date must be a positive integer of 4 numbers to be valid" do
       traveller = works(:traveller)
-      
+
       traveller.publication_year = "two thousand twelve"
       traveller.valid?.must_equal false
 
@@ -71,13 +78,24 @@ describe Work do
       traveller.publication_year = 230
       traveller.valid?.must_equal false
 
+      traveller.publication_year = "-2016"
+      traveller.valid?.must_equal false
+
       traveller.publication_year = "230a"
       traveller.valid?.must_equal false
 
       traveller.publication_year = "2023"
-      traveller.valid?.must_equal true
+      traveller.valid?.must_equal false
 
       traveller.publication_year = 2003
+      traveller.valid?.must_equal true
+    end
+
+    it "the publication date canno't be past the current date to be valid" do
+      traveller = works(:traveller)
+      traveller.publication_year = 2018
+      traveller.valid?.must_equal false
+      traveller.publication_year = 2017
       traveller.valid?.must_equal true
     end
   end

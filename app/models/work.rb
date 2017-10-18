@@ -12,7 +12,7 @@ class Work < ApplicationRecord
 
   validates :creator, presence: true
 
-  validates :publication_year, presence: true, numericality: { only_integer: true, less_than: (DateTime.now.year + 1) }, length: { is: 4 }
+  validates :publication_year, presence: true, numericality: { only_integer: true, less_than: (DateTime.now.year + 1), more_than: 0 },  length: { is: 4 }
 
   def number_of_vote
     vote_num = 0
