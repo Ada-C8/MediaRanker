@@ -41,7 +41,7 @@
       <tbody>
         <% @votes.each do |vote| %>
          <tr>
-           <td><%= link_to ApplicationHelper.find_user(vote.user_id), user_path(vote.user_id)%> </td>
+           <td><%= link_to vote.user.name, user_path(vote.user_id)%> </td>
            <td><%= vote.date %></td>
           </tr>
         <% end %>

@@ -12,15 +12,6 @@ describe 'testing custom functions' do
     t.must_be_kind_of Integer
   end
 
-  it 'tests top_10' do
-    category = 'album'
-    result = ApplicationHelper.top_10(category)
-    result.must_be_kind_of Array
-    result.each do |work|
-      work.category.must_equal category
-    end
-    result.length.must_be :<=, 10
-  end
 
   it 'tests user_cast_votes' do
     user = User.find(1)
