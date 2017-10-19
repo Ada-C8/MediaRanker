@@ -1,0 +1,21 @@
+
+
+
+<main class='row'>
+  <h3> List of works </h3>
+
+  <section>
+    <%= render partial: 'layouts/category', locals: {title: 'Albums', category: @albums} %>
+  </section>
+
+  <section>
+      <%= render partial: 'layouts/category', locals:  {title: 'Movies', category: @movies}  %>
+  </section>
+
+  <section>
+      <%= render partial: 'layouts/category', locals:  {title: 'Books', category: @books}  %>
+  </section>
+
+  <%= link_to 'View top media', root_path, :class => 'button' %>
+  <%= link_to 'Add a new work', new_work_path, :class => 'button'%>
+</main>
