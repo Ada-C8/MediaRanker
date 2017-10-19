@@ -1,0 +1,30 @@
+<%# view all users! so many! %>
+<section class="row">
+  <h1>
+    List of users
+  </h1>
+
+<%# list of users %>
+  <table>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th width="100">Votes</th>
+        <th width="200">Joined</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.username, user_path(user.id) %></td>
+          <td><%= user.votes.count %></td>
+          <td><%= user.created_at.strftime("%B %d, %Y") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+
+<footer>
+  <nav><%= link_to 'Back to Media List', root_path %></nav>
+</footer>

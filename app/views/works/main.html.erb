@@ -1,0 +1,28 @@
+<section class="row">
+  <article class="spotlight">
+    <h2>
+      Media Spotlight: <span class="spotlight"><%= link_to @spotlight.title, work_path(@spotlight.id) %> by <%= @spotlight.creator %></span>
+    </h2>
+    <p>
+      <%= @spotlight.votes.count %> votes
+      <%= " - #{@spotlight.description}" if @spotlight.description %>
+    </p>
+  </article>
+</section>
+
+<section class="top-10 row">
+  <div class="small-12 large-4 columns">
+    <h3>Top Albums</h3><%# top ten albums %>
+    <%= render partial: 'top-ten', locals: {works: @albums} %>
+  </div>
+
+  <div class="small-12 large-4 columns">
+    <h3>Top Books</h3><%# top ten books %>
+    <%= render partial: 'top-ten', locals: {works: @books} %>
+  </div>
+
+  <div class="small-12 large-4 columns">
+    <h3>Top Movies</h3><%# top ten movies %>
+    <%= render partial: 'top-ten', locals: {works: @movies} %>
+  </div>
+</section>

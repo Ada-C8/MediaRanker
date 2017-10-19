@@ -1,0 +1,19 @@
+<section class="row">
+  <header>
+    <h1>List of works<h1>
+  </header>
+
+  <h3>Albums</h3>
+  <%= render partial: 'list', locals: {works: @albums} %>
+
+  <h3>Books</h3>
+  <%= render partial: 'list', locals: {works: @books} %>
+
+  <h3>Movies</h3>
+  <%= render partial: 'list', locals: {works: @movies} %>
+
+  <nav>
+    <%= link_to "View top media", root_path, class: 'button' %>
+    <%= link_to "Add a new work", new_work_path, class: 'button' %>
+  </nav>
+</section>
