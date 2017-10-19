@@ -1,6 +1,9 @@
-<%= render partial: 'layouts/header' %>
+
 
 <section class='spotlight'>
+  <% if @top_work_id == {} %>
+    <h3> There's currently no top work. Vote away! </h3>
+  <% else %>
     <h3>
       <span class='spotlight_text'> Media Spotlight: </span>
       <%= link_to @top_work.title, work_path(@top_work)%> by <%= @top_work.creator%>
@@ -8,6 +11,7 @@
     <p>
       <%= @top_work_votes.count %> votes - <%= @top_work.description %>
     </p>
+  <% end %>
 </section>
 
 <main class = 'row'>

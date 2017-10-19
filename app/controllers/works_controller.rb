@@ -31,21 +31,16 @@ class WorksController < ApplicationController
   end
 
   def create
-    if params[:work][:title] == ""
-      flash[:failed] = "title can't be blank"
-      redirect_to new_work_path
-    else
 
-      @work = Work.new(title: params[:work][:title],
-                      description: params[:work][:description],
-                      category: params[:work][:category],
-                      creator: params[:work][:creator],
-                      published: params[:work][:published])
-      @work.save
-
-      flash[:success] = "Successfully created #{@work.category} #{@work.id}"
-      redirect_to work_path(@work.id)
-    end
+      @work = Work.new(work_params)
+      if @work.save
+        flash[:success] = "Successfully created #{@work.category} #{@work.id}"
+        redirect_to work_path(@work.id)
+      else
+        flash[:failure] = 'Could not create work'
+        flash.now[:details] = @work.errors.messages
+        render :new
+      end
   end
 
   def upvote
@@ -91,5 +86,11 @@ class WorksController < ApplicationController
 
   def show_all
     @works = Work.all
+  end
+
+  private
+
+  def work_params
+    params.require(:title).permit(:category, :description, :creator, :published)
   end
 end

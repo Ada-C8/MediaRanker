@@ -1,163 +1,19 @@
-<%= render partial: 'layouts/header' %>
+
 
 
 <main class='row'>
   <h3> List of works </h3>
 
   <section>
-    <h4>
-      Albums
-    </h4>
-    <table class ='table'>
-      <thead>
-        <tr>
-          <th>
-            Votes
-          </th>
-          <th>
-            Title
-          </th>
-          <th>
-            Created By
-          </th>
-          <th>
-            Published
-          </th>
-          <th>
-            Upvote
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @albums.each do |album| %>
-        <tr>
-          <td>
-            <%= ApplicationHelper.votes_for_work(album) %>
-          </td>
-
-          <td>
-            <%= link_to album.title, work_path(album) %>
-          </td>
-
-          <td>
-            <%= album.creator %>
-          </td>
-
-          <td>
-            <%= album.published %>
-          </td>
-
-          <td>
-            <%= link_to 'Upvote', upvote_work_path(album), method: :post, :class => 'button' %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= render partial: 'top_10', locals:  {category: 'Albums', works: @albums} %>
   </section>
 
   <section>
-    <h4>
-      Books
-    </h4>
-    <table>
-      <thead>
-        <tr>
-          <th>
-            Votes
-          </th>
-          <th>
-            Title
-          </th>
-          <th>
-            Created By
-          </th>
-          <th>
-            Published
-          </th>
-          <th>
-            Upvote
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @books.each do |book| %>
-        <tr>
-          <td>
-            <%= ApplicationHelper.votes_for_work(book) %>
-          </td>
-
-          <td>
-            <%= link_to book.title, work_path(book) %>
-          </td>
-
-          <td>
-            <%= book.creator %>
-          </td>
-
-          <td>
-            <%= book.published %>
-          </td>
-
-          <td>
-            <%= link_to 'Upvote', upvote_work_path(book), method: :post %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+      <%= render partial: 'top_10', locals:  {category: 'Movies', works: @movies} %>
   </section>
 
   <section>
-    <h4>
-      Movies
-    </h4>
-    <table>
-      <thead>
-        <tr>
-          <th>
-            Votes
-          </th>
-          <th>
-            Title
-          </th>
-          <th>
-            Created By
-          </th>
-          <th>
-            Published
-          </th>
-          <th>
-            Upvote
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @movies.each do |movie| %>
-        <tr>
-          <td>
-            <%= ApplicationHelper.votes_for_work(movie) %>
-          </td>
-
-          <td>
-            <%= link_to movie.title, work_path(movie) %>
-          </td>
-
-          <td>
-            <%= movie.creator %>
-          </td>
-
-          <td>
-            <%= movie.published %>
-          </td>
-
-          <td>
-            <%= link_to 'Upvote', upvote_work_path(movie), method: :post %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+      <%= render partial: 'top_10', locals:  {category: 'Books', works: @books} %>
   </section>
 
   <%= link_to 'View top media', root_path, :class => 'button' %>
