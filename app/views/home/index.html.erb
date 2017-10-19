@@ -1,0 +1,75 @@
+
+
+<section class='spotlight'>
+  <% if @top_work_id == {} %>
+    <h3> There's currently no top work. Vote away! </h3>
+  <% else %>
+    <h3>
+      <span class='spotlight_text'> Media Spotlight: </span>
+      <%= link_to @top_work.title, work_path(@top_work)%> by <%= @top_work.creator%>
+    </h3>
+    <p>
+      <%= @top_work_votes.count %> votes - <%= @top_work.description %>
+    </p>
+  <% end %>
+</section>
+
+<main class = 'row'>
+  <section class='columns large-4 small-12 top_10'>
+    <h3 class= 'top_10_header'>
+      Top Albums
+    </h3>
+
+    <ul>
+      <% Work.top_10('album').each do |album| %>
+        <li>
+          <h4>
+              <%= link_to album.title, work_path(album) %>
+              <small> by <%= album.creator %> </small>
+          </h4>
+          <p>
+            <%= Work.votes_for_work(album) %> votes
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section class='columns large-4 small-12 top_10'>
+    <h3> Top Movies </h3>
+      <ul>
+        <%  Work.top_10('movie').each do |movie| %>
+          <li>
+            <h4>
+                <%= link_to movie.title, work_path(movie) %>
+                <small> by <%= movie.creator %> </small>
+            </h4>
+            <p>
+              <%= Work.votes_for_work(movie) %> votes
+            </p>
+          </li>
+        <% end %>
+      </ul>
+  </section>
+
+
+  <section class='columns large-4 small-12 top_10'>
+    <h3>
+      Top Books
+    </h3>
+
+    <ul>
+      <% Work.top_10('book').each do |book| %>
+        <li>
+          <h4>
+              <%= link_to book.title, work_path(book) %>
+              <small> by <%= book.creator %> </small>
+          </h4>
+          <p>
+            <%= Work.votes_for_work(book) %> votes
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</main>

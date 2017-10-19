@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  category: album
+  title: title
+  creator: creator
+  published: 2000
+  description: MyText
+
+two:
+  id: 2
+  category: book
+  title: title2
+  creator: creator2
+  published: 2001
+  description: MyText2
