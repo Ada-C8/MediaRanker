@@ -12,7 +12,11 @@ describe Work do
     work = Work.new
     result = work.valid?
     result.must_equal false
-    #value(user).must_be :valid?
+    work.errors.keys.must_include :creator
+    work.errors.keys.must_include :title
+    work.errors.keys.must_include :published
+    work.errors.keys.must_include :category
+    work.errors.keys.must_include :description
   end
 
   it "must be valid" do
@@ -23,7 +27,6 @@ describe Work do
     work.category = 'album'
     work.description = 'hello my old friend'
     result = work.valid?
-    result.must_equal true
   end
 
 
