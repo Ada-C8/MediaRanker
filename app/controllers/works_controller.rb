@@ -2,9 +2,27 @@ require 'date'
 
 class WorksController < ApplicationController
   def index
-    @albums = Work.where(category: 'album')
-    @books = Work.where(category: 'book')
-    @movies = Work.where(category: 'movie')
+    @albums = Work.all.select('works.id, works.title, works.creator,
+                              works.published,  votes.count(*) as vote_count')
+                              .joins("LEFT JOIN Votes on Votes.work_id")
+                              .where("Works.category = 'album'")
+                              .group('works.id')
+                              .order('vote_count DESC')
+
+    @books = Work.all.select('works.id, works.title, works.creator,
+                              works.published,  count(*) as vote_count')
+                              .joins("LEFT JOIN Votes on Votes.work_id")
+                              .where("Works.category = 'book'")
+                              .group('works.id')
+                              .order('vote_count DESC')
+
+    @movies = Work.all.select('works.id, works.title, works.creator,
+                              works.published,  count(*) as vote_count')
+                              .joins("LEFT JOIN Votes on Votes.work_id")
+                              .where("Works.category = 'movie'").
+                              group('works.id')
+                              .order('vote_count DESC')
+
   end
 
   def destroy

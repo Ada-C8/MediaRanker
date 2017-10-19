@@ -1,5 +1,5 @@
 <h4>
-  <%= @category %>
+  <%= title %> 
 </h4>
 <table class ='table'>
   <thead>
@@ -22,7 +22,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @works.each do |work| %>
+    <% category.each do |work| %>
     <tr>
       <td>
         <%= ApplicationHelper.votes_for_work(work) %>

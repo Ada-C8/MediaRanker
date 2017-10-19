@@ -16,12 +16,6 @@ module ApplicationHelper
     return result
   end
 
-
-
-
-
-
-
   def self.user_cast_votes(user)
     return Vote.where(user_id: user.id)
   end

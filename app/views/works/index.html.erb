@@ -5,15 +5,15 @@
   <h3> List of works </h3>
 
   <section>
-    <%= render partial: 'top_10', locals:  {category: 'Albums', works: @albums} %>
+    <%= render partial: 'layouts/category', locals: {title: 'Albums', category: @albums} %>
   </section>
 
   <section>
-      <%= render partial: 'top_10', locals:  {category: 'Movies', works: @movies} %>
+      <%= render partial: 'layouts/category', locals:  {title: 'Movies', category: @movies}  %>
   </section>
 
   <section>
-      <%= render partial: 'top_10', locals:  {category: 'Books', works: @books} %>
+      <%= render partial: 'layouts/category', locals:  {title: 'Books', category: @books}  %>
   </section>
 
   <%= link_to 'View top media', root_path, :class => 'button' %>
