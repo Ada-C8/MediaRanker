@@ -6,11 +6,13 @@ class WorksController < ApplicationController
     @movies = Work.sort_by_category("movie")
     @books = Work.sort_by_category("book")
     @albums = Work.sort_by_category("album")
-    #
-    unless @works
+
+    # Dan's comment: If there are no works, Work.all will return an empty array, which is truthy. Only nil or false will ever make this unless block happen.
+    # However, I'm not sure not_found is what you want if there are no works. Wouldn't it make sense to just show 3 empty tables?
+    # if @works.empty?
       # how to trigger this and make this actually occur?
-      head :not_found
-    end
+      # head :not_found
+    # end
   end
 
   def show ; end

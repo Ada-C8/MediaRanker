@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   ####### works ######
 
   ####### users and login ######
-  get 'users', to: 'users#index', as: 'users'
-  get 'users/:id', to: 'users#show', as: 'user'
+  # get 'users', to: 'users#index', as: 'users'
+  # get 'users/:id', to: 'users#show', as: 'user'
+  resources :users, only: [:index, :show]
+
 
   get 'login', to: 'users#login_form', as: 'login'
   post 'login', to: 'users#login'
