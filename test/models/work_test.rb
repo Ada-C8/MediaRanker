@@ -45,7 +45,7 @@ describe Work do
   end
 
   it "will only return one featured work, even if there are two works with the same number of votes" do
-    Vote.new(user: users(:west), work: works(:hp))
+    Vote.new(user: users(:west), work: works(:hp)).save
     Work.top.must_equal works(:greys)
 
 
