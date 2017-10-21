@@ -16,6 +16,11 @@
 
 @import url('foundation');
 
+.row {
+  width: 100%;
+  max-width: 100%;
+}
+
 /* HEADER */
 
 header {

@@ -2,11 +2,11 @@ class VotesController < ApplicationController
   before_action :find_vote, only: [:show, :edit, :update, :destroy]
 
   def index
-    @vote = Vote.all
+    # @vote = Vote.all
   end
 
   def show
-    redirect_to votes_path unless @vote
+    # redirect_to votes_path unless @vote
   end
 
   def new

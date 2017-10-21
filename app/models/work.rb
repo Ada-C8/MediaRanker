@@ -25,25 +25,35 @@ class Work < ApplicationRecord
   def self.top_work
     max_vote = 0
     max_work = nil
-    Work.all.each do |work|
-      if work.number_of_vote > max_vote
-        max_vote = work.number_of_vote
-        max_work = work
+    if Vote.all.count > 0
+      Work.all.each do |work|
+        if work.number_of_vote > max_vote
+          max_vote = work.number_of_vote
+          max_work = work
+        end
       end
+      return max_work
+    else
+      return max_work = Work.all.sample
     end
-    return max_work
   end
 
   def self.top_title
-    return Work.top_work.title
+    unless top_work == nil
+      return Work.top_work.title
+    end
   end
 
   def self.top_creator
-    return Work.top_work.creator
+    unless top_work == nil
+      return Work.top_work.creator
+    end
   end
 
   def self.top_votes
-    return Work.top_work.number_of_vote
+    unless top_work == nil
+      return Work.top_work.number_of_vote
+    end
   end
 
   def self.top_description

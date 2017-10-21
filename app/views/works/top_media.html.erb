@@ -1,9 +1,14 @@
 
   <section class="top-media">
     <section class="spotlight small-12 column">
-      <h2> <span id="black">Media Spotlight: </span><%= link_to(Work.top_title, work_path(Work.top_work.id)) %>
+      <h2> <span id="black">Media Spotlight: </span>
+        <% if Work.count == 0 %>
+          <p>Nothing to show yet!</p>
+        <% else %>
+      <%= link_to(Work.top_title, work_path(Work.top_work.id)) %>
        by <%=  Work.top_creator %> </h2>
       <p> <%=  Work.top_votes %> votes - <%=  Work.top_description %> </p>
+        <% end %>
     </section>
 
     <hr>
