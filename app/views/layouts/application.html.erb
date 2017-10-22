@@ -24,8 +24,8 @@
           </ul>
           <ul class="log">
             <% if session[:logged_in_user] %>
-              <li><%= button_to("Logged in", user_path(session[:logged_in_user]), method: :get) %></li>
-              <li><%= button_to("Log out", logout_path, method: :delete) %></li>
+              <li><%= button_to(User.find_by_id(session[:logged_in_user]).name, root_path, method: :get) %></li>
+              <li><%= button_to("Log out", root_path, method: :get) %></li>
             <% else %>
               <li><%= button_to("Log in", login_path, method: :get) %></li>
             <% end %>
