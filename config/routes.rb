@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :votes
 
-  get '/auth/:provider/callback', to: 'users#login', as: "auth_callback"
+  get '/auth/:provider/callback', to: 'users#login'
   # get 'users/create'
   # get 'users/index'
 

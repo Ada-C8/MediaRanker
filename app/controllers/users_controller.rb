@@ -5,11 +5,12 @@ class UsersController < ApplicationController
     if auth_hash['uid']
       user = User.find_by(provider: params[:provider], uid: params[:uid])
       if user.nil?
-        user = User.from_auth_hash(auth_hash['provider'], auth_hash)
+        user = User.from_auth_hash(params['provider'], auth_hash)
         # if user.persisted?
         if user.save
           flash[:status] = :success
           flash[:message] = "Successfully created new user #{user.name}"
+
         else
           flash[:status] = :failure
           flash[:message] ="Could not create new user"
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
       flash[:status] = :failure
       flash[:message] = "Could not create new user"
     end
+    redirect_to root_path
   end
 
 end
