@@ -2,6 +2,9 @@ class User < ApplicationRecord
   has_many :votes
   has_many :works, through: :votes
   validates :username, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
+  validates :uid, presence: true, uniqueness: true, numericality: {only_integer: true}
+  validates :provider, presence: true, uniqueness: true
 
   def number_of_vote
     vote_num = 0
