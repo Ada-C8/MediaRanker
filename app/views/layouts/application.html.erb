@@ -24,13 +24,16 @@
           </ul>
           <ul class="log">
             <% if session[:user_id] %>
-              <li><%= button_to(User.find_by_id(session[:user_id]).name, root_path, method: :get) %></li>
-              <li><%#= button_to("Log out", logout_path, method: :get) %></li>
+              <li><%= link_to(User.find_by(uid: session[:user_id]).username, root_path) %></li>
+              <li><%#= link_to("Log out", logout_path) %></li>
             <% else %>
-              <li><%= button_to("Log in", '/auth/github', method: :get) %></li>
+
+              <li><%= link_to("Log in", '/auth/github') %></li>
+              <p>Not logged in</p>
             <% end %>
           </ul>
         </div>
+
 
     </header>
     <main class="row">

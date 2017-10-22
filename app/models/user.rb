@@ -6,7 +6,11 @@ class User < ApplicationRecord
     user.name = auth_hash['info']['name']
     user.email = auth_hash['info']['email']
     user.username = auth_hash['info']['nickname']
-    # user.save
+    
+    puts "========"
+    puts user.email
+    puts user
+    puts "========"
     return user
   end
 end

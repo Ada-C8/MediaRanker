@@ -14,13 +14,13 @@ class VotesController < ApplicationController
   end
 
   def create
-    # if Vote.where({ user_id: session[:logged_in_user], work_id: params[:pass_work_id].to_i }).count > 0
+    # if Vote.where({ user_id: ssession[:user_id], work_id: params[:pass_work_id].to_i }).count > 0
     #   flash[:status] = :failure
     #   flash[:message] = "You already voted for this work"
     #   flash[:details] = @vote.errors.messages
     #   redirect_to request.referrer, notice: "You're being redirected"
     # else
-      @vote = Vote.new(work_id: params[:pass_work_id], user_id: session[:logged_in_user])
+      @vote = Vote.new(work_id: params[:pass_work_id], user_id: session[:user_id])
       if @vote.save
         flash[:status] = :success
         flash[:message] = "Successfully upvoted!"
