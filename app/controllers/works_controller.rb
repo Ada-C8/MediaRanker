@@ -1,6 +1,8 @@
 class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :require_login, only:[:top_media]
+
   def index
     @works = Work.all
     @albums = Work.where(category: "album").all.limit(10)
