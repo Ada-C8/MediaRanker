@@ -11,7 +11,11 @@ class WorksController < ApplicationController
   end
 
   def show
-    redirect_to works_path unless @work
+     unless @work
+       redirect_to works_path
+       flash[:status] = :failure
+       flash[:message] = "Could not find this work"
+     end
   end
 
   def top_media
@@ -43,7 +47,11 @@ class WorksController < ApplicationController
   end
 
   def update
-    redirect_to work_path unless @work
+    unless @work
+      redirect_to works_path
+      flash[:status] = :failure
+      flash[:message] = "Could not find this work"
+    end
     if @work.update_attributes work_params
       redirect_to work_path(@work.id)
     else
@@ -52,6 +60,11 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    unless @work
+      redirect_to works_path
+      flash[:status] = :failure
+      flash[:message] = "Could not find this work"
+    end
     @work.destroy
     redirect_to works_path
   end
@@ -68,7 +81,6 @@ class WorksController < ApplicationController
   end
 
   def find_work
-    # redirect_to works_path unless @work
     @work = Work.find_by_id(params[:id])
   end
 end
