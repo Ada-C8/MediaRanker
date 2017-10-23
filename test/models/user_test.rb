@@ -120,16 +120,5 @@ describe UsersController do
       }.wont_change "User.count"
     end
   end
-  #
-  # describe "#trainer" do
-  #   let(:user) { users(:user_with_trainer) }
-  #
-  #   it "should return the associated trainer" do
-  #     user.trainer.must_equal trainers(:misty)
-  #   end
-  #
-  #   it "should return nil with no associated trainer" do
-  #     users(:github_user).trainer.must_be_nil
-  #   end
-  # end
+  
 end
