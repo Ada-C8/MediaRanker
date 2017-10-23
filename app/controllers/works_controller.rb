@@ -1,6 +1,8 @@
 class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
 
+  before_action :work_owner?, only: [:edit, :update, :destroy]
+
   skip_before_action :require_login, only:[:top_media]
 
   def index
@@ -82,5 +84,13 @@ class WorksController < ApplicationController
 
   def find_work
     @work = Work.find_by_id(params[:id])
+  end
+
+  def work_owner?
+    unless session[:user_id] = find_work.user_id
+      flash[:status] = :failure
+      flash[:message] = "You must be this work's owner to edit it"
+      redirect_to root_path
+    end
   end
 end
