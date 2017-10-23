@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
+  </head>
+
+  <body>
+    <header class="row">
+      <h1 class="small-12 column"><span class="title">Media Ranker </span> <span class="title-separator"></span>
+        <span class="subtitle"> Ranking the Best of Everything</span></h1>
+        <div class="navigation small-12 column">
+          <ul class="nav">
+            <li><%= button_to("View top media", root_path, method: :get) %></li>
+            <li><%= button_to("View all media", works_path, method: :get) %></li>
+            <li><%= button_to("Add a new work", new_work_path, method: :get) %></li>
+            <li><%= button_to("View all users", users_path, method: :get) %></li>
+
+          </ul>
+          <ul class="log">
+            <% if session[:user_id] %>
+            <%= session[:user_id] %>
+              <li><%#= link_to("Logged in #{session[:user_id]}", user_path(find_by(uid: session[:user_id]).id), class: "button") %></li>
+              <li><%= link_to("Log out", logout_path, method: :post, class: "button") %></li>
+            <% else %>
+
+              <li><%= link_to("Log in", '/auth/github', class: "button") %></li>
+            <% end %>
+          </ul>
+        </div>
+
+
+    </header>
+    <main class="row">
+      <section class="flash <%= flash[:status] %>">
+        <p><%= flash[:message] %></p>
+        <ul>
+          <% if flash[:details] %>
+            <% flash[:details].each do |field, problems| %>
+              <% problems.each do |problem| %>
+                <li> <strong><%= field.capitalize %> </strong> <%= problem %></li>
+                <% end %>
+              <% end %>
+            <% end %>
+        </ul>
+      </section>
+
+      <%= yield %>
+    </main>
+
+  </body>
+</html>

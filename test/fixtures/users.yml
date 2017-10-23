@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Marcel
+  username: Mars
+  email: marcel@gmail.com
+  provider: github
+  uid: 111
+
+two:
+  name: Walter
+  username: Wally
+  email: walter@gmail.com
+  provider: github
+  uid: 101

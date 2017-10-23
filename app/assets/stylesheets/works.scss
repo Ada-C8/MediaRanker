@@ -1,0 +1,72 @@
+// Place all the styles related to the Works controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Main content */
+
+section .spotlight {
+  padding-top: 25px;
+  padding-bottom: 0px;
+
+}
+section .spotlight p {
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+
+.top-media hr {
+  margin: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 70px;
+}
+
+section .media-list hr {
+  border: 1px #B2DFDB solid;
+  margin-bottom: 10px;
+}
+.media-list .content {
+  padding-top: 0px;
+}
+ul li {
+  list-style: none;
+}
+.work-title a {
+  color: #26A599;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.work-title a:hover {
+  color: #0F635B;
+}
+.work-creator {
+  color: #708090;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.all-media h3 {
+  color: black;
+  font-size: 1.5rem;
+}
+table a {
+  color: #26A599;
+}
+table a:hover {
+  color: #0F635B;
+}
+th {
+  background-color: #DBDBDB;
+}
+
+input {
+  display: inline-block;
+  background-color: #26A599;
+  border: none;
+  color: white;
+  font-weight: lighter;
+  font-size: 0.9rem;
+  height: 40px;
+  padding: 0 13px;
+}
+.vote-col {
+  width: 100px;
+}

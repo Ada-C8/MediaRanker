@@ -1,0 +1,68 @@
+
+  <section class="top-media">
+    <section class="spotlight small-12 column">
+      <h2> <span id="black">Media Spotlight: </span>
+        <% if Work.count == 0 %>
+          <p>Nothing to show yet!</p>
+        <% else %>
+      <%= link_to(Work.top_title, work_path(Work.top_work.id)) %>
+       by <%=  Work.top_creator %> </h2>
+      <p> <%=  Work.top_votes %> votes - <%=  Work.top_description %> </p>
+        <% end %>
+    </section>
+
+    <hr>
+
+    <section class="media-list medium-12 large-4 columns">
+      <h3>Top Movies</h3>
+      <hr>
+      <section class="content">
+        <% if @movies.count == 0 %>
+          <p>Nothing to show yet!</p>
+        <% else %>
+          <ul>
+            <% @movies.each do |movie| %>
+              <li><span class="work-title"><%= link_to(movie.title, work_path(movie.id)) %></span> <span class="work-creator"> by <%= movie.creator %></span><br /><%= movie.number_of_vote %> votes</li>
+
+            <% end %>
+          </ul>
+        <% end %>
+      </section>
+
+    </section>
+
+
+    <section class="media-list medium-12 large-4 columns">
+      <h3>Top Albums</h3>
+      <hr>
+      <section class="content">
+        <% if @albums.count == 0 %>
+          <p>Nothing to show yet!</p>
+        <% else %>
+          <ul>
+            <% @albums.each do |album| %>
+              <li> <span class="work-title"><%= link_to(album.title, work_path(album.id)) %></span><span class="work-creator"> by <%= album.creator %></span><br /> <%= album.number_of_vote %> votes</li>
+
+            <% end %>
+          </ul>
+        <% end %>
+      </section>
+    </section>
+
+
+    <section class="media-list medium-12 large-4 columns">
+      <h3>Top Books</h3>
+      <hr>
+      <section class="content">
+        <% if @books.count == 0 %>
+          <p>Nothing to show yet!</p>
+        <% else %>
+          <ul>
+            <% @books.each do |book| %>
+              <li> <span class="work-title"><%= link_to(book.title, work_path(book.id)) %></span><span class="work-creator"> by <%= book.creator %> </span><br /> <%= book.number_of_vote %> votes</li>
+            <% end %>
+          </ul>
+        <% end %>
+      </section>
+    </section>
+  </section>

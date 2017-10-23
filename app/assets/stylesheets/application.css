@@ -1,0 +1,130 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import url('foundation');
+
+.row {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* HEADER */
+
+header {
+  position: relative;
+  display: block;
+  /*height: 213px;*/
+  background-color: #B2DFDB;
+  width: 100%;
+}
+header h1 {
+  position: absolute;
+  top: 50px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 2.3rem;
+  width: 100%;
+  padding-bottom: 10px;
+}
+header h1 span.title {
+  display: inline-block;
+  color: #FF5722;
+  font-family: "Gdea", sans-serif;
+  height: 50px;
+  border-right: 2px white solid;
+  padding-right: 20px;
+}
+@media (max-width: 793px) {
+  header h1 {
+    font-size: 2rem;
+    line-height: 1.5rem;
+    height: 10px;
+  }
+  header h1 span.title {
+    height: 30px;
+    padding-bottom: 0px;
+  }
+}
+
+
+header h1 span.subtitle {
+  color: white;
+  font-family: "Gudea", sans-serif;
+  padding-left: 10px;
+}
+header div.navigation {
+  display: block;
+  margin-top: 145px;
+  /*position: absolute;*/
+}
+header ul li {
+  display: inline-block;
+  /*position: relative;*/
+  position: static;
+  /*margin-top: 145px;*/
+}
+header ul {
+  height: 50px;
+}
+header ul li {
+  display: inline-block;
+  /*position: relative;*/
+  position: static;
+  /*margin-top: 145px;*/
+}
+header .nav {
+  list-style: none;
+  float: left;
+  padding-left: 10px;
+}
+header .log {
+  list-style: none;
+  padding-right: 10px;
+  float: right;
+}
+input {
+  background-color: #26A599;
+  border: none;
+  color: white;
+  font-weight: lighter;
+  font-size: 0.9rem;
+  height: 40px;
+  padding: 0 13px;
+  margin-top: 5px;
+}
+
+/* Titles */
+h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #26A599;
+}
+h2 a {
+  color: #26A599;
+  text-decoration: underline;
+}
+h2 a:hover {
+  color: #0F635B;
+}
+h2 #black {
+  color: black;
+}
+h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #26A599;
+  margin-bottom: 0px;
+}
