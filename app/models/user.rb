@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :votes
   has_many :works, through: :votes
+  has_many :works
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :uid, presence: true, uniqueness: { scope: :provider }

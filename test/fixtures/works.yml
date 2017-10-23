@@ -6,6 +6,7 @@ harrypot:
   creator: J.K. Rolling
   publication_year: 1997
   description: Just one of the best book ever, no big deal.
+  user: one
 
 foundation:
   category: movie
@@ -13,6 +14,7 @@ foundation:
   creator: Asimov
   publication_year: 1942
   description: Ok, actually talking about the book. When is the TV show coming out already?
+  user: one
 
 traveller:
   category: album
@@ -20,3 +22,4 @@ traveller:
   creator: Lord Huron
   publication_year: 2012
   description: Currently playing.
+  user: one

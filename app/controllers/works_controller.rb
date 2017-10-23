@@ -33,6 +33,7 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
+    @work.user_id = session[:user_id]
     if @work.save
       flash[:status] = :success
       flash[:message] = "#{@work.category.capitalize} added successfully"
@@ -87,7 +88,8 @@ class WorksController < ApplicationController
   end
 
   def work_owner?
-    unless session[:user_id] = find_work.user_id
+    unless session[:user_id] == find_work.user_id
+
       flash[:status] = :failure
       flash[:message] = "You must be this work's owner to edit it"
       redirect_to root_path

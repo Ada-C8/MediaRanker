@@ -45,6 +45,7 @@ describe Work do
       hp_copycat.creator = "someone"
       hp_copycat.publication_year = 2016
       hp_copycat.description =  "Something"
+      hp_copycat.user_id =  users(:one).id
       hp_copycat.valid?.must_equal true
     end
 

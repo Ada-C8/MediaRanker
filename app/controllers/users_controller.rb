@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only:[:login]
 
   def show
-    @user = User.find_by(uid: session[:user_id])
+    @user = User.find_by(id: session[:user_id])
   end
   def index
     @users = User.all
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
         user = User.from_auth_hash(auth_hash['provider'], auth_hash)
         # if user.persisted?
         if user.save
-          session[:user_id] = user.uid
+          session[:user_id] = user.id
           flash[:status] = :success
           flash[:message] = "Successfully created new user #{user.name}"
 
@@ -26,7 +26,8 @@ class UsersController < ApplicationController
           flash[:message] ="Could not create new user"
         end
       else
-        session[:user_id] = user.uid
+        session[:user_id] = user.id
+        session[:user_id] = user.id
         flash[:status] = :success
         flash[:message] = "Successfully logged in as returning user #{user.name}"
       end

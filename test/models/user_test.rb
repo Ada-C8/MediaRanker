@@ -9,8 +9,8 @@ describe UsersController do
 
       login(user, :github)
       must_redirect_to root_path
-      session[:user_id].must_equal user.uid
-      session[:user_id].must_equal  User.last.uid
+      session[:user_id].must_equal user.id
+      session[:user_id].must_equal  User.last.id
 
       User.count.must_equal start_count
     end
@@ -26,8 +26,7 @@ describe UsersController do
 
       User.count.must_equal start_count + 1
 
-      session[:user_id].must_equal user.uid
-      session[:user_id].must_equal User.last.uid
+      session[:user_id].must_equal User.last.id
     end
 
     it "redirects to the login route if given invalid user data" do

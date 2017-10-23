@@ -1,6 +1,7 @@
 class Work < ApplicationRecord
   has_many :votes
   has_many :users, through: :votes
+  belongs_to :user
 
   validates :category, presence: true
   validates :category, inclusion: { in: ["movie", "book", "album"], message: "%{value} is not a valid category" }

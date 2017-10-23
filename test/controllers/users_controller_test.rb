@@ -15,7 +15,7 @@ describe UsersController do
       must_respond_with :redirect
       must_redirect_to root_path
       User.count.must_equal start_count
-      session[:user_id].must_equal user.uid
+      session[:user_id].must_equal user.id
     end
 
     it "should not create a new user on repeat logins" do
@@ -31,7 +31,7 @@ describe UsersController do
 
       proc {login(user, :github)}.must_change 'User.count', +1
       must_redirect_to root_path
-      session[:user_id].must_equal User.find_by(username: "newusername").uid
+      session[:user_id].must_equal User.find_by(username: "newusername").id
     end
 
     it "clears the session and redirects back to the root path when a merchant logs out" do
