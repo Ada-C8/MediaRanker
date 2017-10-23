@@ -3,8 +3,8 @@ class User < ApplicationRecord
   has_many :works, through: :votes
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  validates :uid, presence: true, uniqueness: true, numericality: {only_integer: true}
-  validates :provider, presence: true, uniqueness: true
+  validates :uid, presence: true, uniqueness: { scope: :provider }
+  validates :provider, presence: true, inclusion: { in: ["github"] }
 
   def number_of_vote
     vote_num = 0
@@ -21,6 +21,7 @@ class User < ApplicationRecord
     user.name = auth_hash['info']['name']
     user.email = auth_hash['info']['email']
     user.username = auth_hash['info']['nickname']
+    # user.save
     return user
   end
 end

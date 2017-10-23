@@ -36,8 +36,47 @@ class ActiveSupport::TestCase
       uid: user.uid,
       info: {
         email: user.email,
-        nickname: user.username
+        nickname: user.username      }
+    }
+  end
+
+  def auth_hash_github
+    return {
+      provider: "github",
+      uid: 777,
+      info: {
+        email: "new@gmail.com",
+        name: "newnew",
+        nickname: "new"
       }
     }
+  end
+
+  def very_bad_hash
+    return {
+      provider: "github",
+      uid: nil,
+      info: {
+        email: "boo@gmail.com",
+        name: "booboo",
+        nickname: "boooooo"
+      }
+    }
+  end
+
+  def auth_hash(user)
+    return {
+      provider: user.provider,
+      uid: user.uid,
+      name: user.name,
+      info: auth_hash_github[:info]
+    }
+  end
+
+  def login_github(user = nil)
+    auth_hash = user ? auth_hash(user) : auth_hash_github
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(auth_hash)
+
+    get auth_callback_github_path
   end
 end
