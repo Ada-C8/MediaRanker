@@ -72,11 +72,4 @@ class ActiveSupport::TestCase
       info: auth_hash_github[:info]
     }
   end
-
-  def login_github(user = nil)
-    auth_hash = user ? auth_hash(user) : auth_hash_github
-    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(auth_hash)
-
-    get auth_callback_github_path
-  end
 end

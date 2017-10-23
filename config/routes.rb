@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :votes
 
   get '/auth/:provider/callback', to: 'users#login', as: 'auth_callback'
-  get 'logout', to: 'users#logout', as: "logout"
+  post 'logout', to: 'users#logout', as: "logout"
   # get 'users/index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

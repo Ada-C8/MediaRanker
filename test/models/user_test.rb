@@ -95,11 +95,6 @@ describe UsersController do
     let(:new_auth_hash) { OmniAuth::AuthHash.new(auth_hash_github) }
     let(:invalid_auth_hash) { OmniAuth::AuthHash.new(very_bad_hash) }
 
-    # it "should return an existing users" do
-    #   proc {
-    #     User.from_auth_hash("github", existing_auth_hash).must_equal user
-    #   }.wont_change "User.count"
-    # end
 
     it "should create and return new users" do
       proc {
@@ -120,5 +115,5 @@ describe UsersController do
       }.wont_change "User.count"
     end
   end
-  
+
 end
