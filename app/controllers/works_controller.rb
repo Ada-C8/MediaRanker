@@ -14,7 +14,7 @@ class WorksController < ApplicationController
 
   def show
      unless @work
-       redirect_to works_path
+       redirect_to works_path, status: 404
        flash[:status] = :failure
        flash[:message] = "Could not find this work"
      end

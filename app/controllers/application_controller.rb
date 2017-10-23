@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
     unless session[:user_id]
       flash[:status] = :failure
       flash[:message] = "You must be logged in to access this section"
-      redirect_to root_path
+      redirect_to root_path, status: 401
+
     end
   end
 end

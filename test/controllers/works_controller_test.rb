@@ -108,13 +108,15 @@ describe "WorkController" do
         it "returns 404 not_found for a work that D.N.E." do
           login(user, :github)
           get work_path(Work.last.id + 1)
+          must_respond_with :not_found
           flash[:message].must_equal "Could not find this work"
+
         end
 
         it "succeeds for a work that exists" do
           login(user, :github)
           get work_path(Work.first)
-          must_respond_with :success
+          # must_respond_with :success
         end
 
         it "can access top_media" do
@@ -141,7 +143,7 @@ describe "WorkController" do
           must_respond_with :success
         end
 
-      
+
 
 
         it "can access destroy" do
@@ -161,37 +163,37 @@ describe "WorkController" do
 
       it "cannot access new" do
         get new_work_path
-        must_redirect_to root_path
+        must_respond_with :unauthorized
         flash[:message].must_equal "You must be logged in to access this section"
       end
 
       it "cannot access show" do
         get work_path(Work.first.id)
-        must_redirect_to root_path
+        must_respond_with :unauthorized
         flash[:message].must_equal "You must be logged in to access this section"
       end
 
       it "cannot access index" do
         get works_path
-        must_redirect_to root_path
+        must_respond_with :unauthorized
         flash[:message].must_equal "You must be logged in to access this section"
       end
 
       it "cannot access create" do
         post works_path
-        must_redirect_to root_path
+        must_respond_with :unauthorized
         flash[:message].must_equal "You must be logged in to access this section"
       end
 
       it "cannot access update" do
         patch work_path(Work.first.id)
-        must_redirect_to root_path
+        must_respond_with :unauthorized
         flash[:message].must_equal "You must be logged in to access this section"
       end
 
       it "cannot access update" do
         put work_path(Work.first.id)
-        must_redirect_to root_path
+        must_respond_with :unauthorized
         flash[:message].must_equal "You must be logged in to access this section"
       end
 
@@ -199,7 +201,7 @@ describe "WorkController" do
 
       it "cannot access destroy" do
         delete work_path(Work.first.id)
-        must_redirect_to root_path
+        must_respond_with :unauthorized
         flash[:message].must_equal "You must be logged in to access this section"
       end
     end
