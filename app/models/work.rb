@@ -2,6 +2,7 @@ class Work < ApplicationRecord
   has_many :votes, dependent: :destroy
   validates :category, presence: true
   validates :title, presence: true
+  validates :publication_year, numericality: { only_integer: true }
   # can't add two works of same title to same category
   validates_uniqueness_of :title, scope: [:category]
 

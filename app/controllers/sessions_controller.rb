@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
         redirect_to root_path
       else
         flash[:error] = "Could not log user in"
+        redirect_to login_path
       end
     end
   end
