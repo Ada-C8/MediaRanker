@@ -23,7 +23,7 @@ describe "WorksController" do
   end
 
   it "should be able to create a work" do
-    proc {post works_path, params: {work: {category: "movie", title: "New Movie"}}}.must_change 'Work.count', 1
+    proc {post works_path, params: {work: {category: "movie", title: "2345New Movie", publication_year: 2000}}}.must_change 'Work.count', 1
 
     must_respond_with :redirect
   end
