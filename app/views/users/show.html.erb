@@ -1,32 +1,35 @@
-<h3>User Details: <%= link_to @user.name, user_path(@user.id) %></h3>
-<small>Joined site: <%= @user.created_at %></small>
+<body>
 
-<h3>Votes</h3>
-<table>
-  <th> Media Title </th>
-  <th> Created By </th>
-  <th> Published </th>
-  <th> Category </th>
-  <th> Voted On </th>
+  <h3>User Details: <%= link_to @user.name, user_path(@user.id) %></h3>
+  <small>Joined site: <%= @user.created_at %></small>
+
+  <h3>Votes</h3>
+  <table>
+    <th> Media Title </th>
+    <th> Created By </th>
+    <th> Published </th>
+    <th> Category </th>
+    <th> Voted On </th>
 
 
-  <% Vote.user_votes_arary(@user.id).each do |vote| %>
-    <tr>
-      <!-- the Work.find(...) definitely can be DRYed, maybe in a method. Given it is 9:15p and the code works, I am not going to sweat it.  -->
-      <td><%= Work.find(vote.work_id).title %></td>
-      <td><%= Work.find(vote.work_id).creator %></td>
-      <td><%= Work.find(vote.work_id).publication_year %></td>
-      <td><%= Work.find(vote.work_id).category %></td>
-      <td><%= vote.created_at %></td>
-    </tr>
-  <% end %>
-</table>
+    <% Vote.user_votes_arary(@user.id).each do |vote| %>
+      <tr>
+        <!-- the Work.find(...) definitely can be DRYed, maybe in a method. Given it is 9:15p and the code works, I am not going to sweat it.  -->
+        <td><%= Work.find(vote.work_id).title %></td>
+        <td><%= Work.find(vote.work_id).creator %></td>
+        <td><%= Work.find(vote.work_id).publication_year %></td>
+        <td><%= Work.find(vote.work_id).category %></td>
+        <td><%= vote.created_at %></td>
+      </tr>
+    <% end %>
+  </table>
 
-<ol>
-  <li>
-    <%= link_to "View All Users", users_path %>
-  </li>
-  <li>
-    <%= link_to "Home", root_path %>
-  </li>
-</ol>
+  <ol>
+    <li>
+      <%= link_to "View All Users", users_path %>
+    </li>
+    <li>
+      <%= link_to "Home", root_path %>
+    </li>
+  </ol>
+</body>

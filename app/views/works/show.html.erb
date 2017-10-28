@@ -1,39 +1,42 @@
-<br><br><h1>Need to work on UpVote.</h1><br><br>
-<h3>
-<%= params %>
-<br><br>
-</h3>
+<body>
+  <br><br><h1>Need to work on UpVote.</h1><br><br>
+  <h3>
+  <%= params %>
+  <br><br>
+  </h3>
 
-<h3>
-  <strong><%= @work.title %></strong>
-</h3>
-<div class="">
-  <p>Created by: <%= @work.creator %></p>
-  <p>Published: <%= @work.publication_year %></p>
+  <h3>
+    <strong><%= @work.title %></strong>
+  </h3>
+  <div class="">
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_year %></p>
 
-</div>
+  </div>
 
-<section>
-  <%= link_to "Home", root_path %>
-  <%= link_to "Edit", edit_work_path %>
-  <%= link_to "UpVote" %>
-  <%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure?" } %>
-</section>
-<table>
-  <tr>
-    <th>User</th>
-    <th>Date</th>
-  </tr>
+  <section>
+    <%= link_to "Home", root_path %>
+    <%= link_to "Edit", edit_work_path %>
+    <%= link_to "UpVote" %>
+    <%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure?" } %>
+  </section>
+  <table>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
 
 
+  <!-- Eager load users search rails eager loading -->
+      <% @work.votes.includes(:user).each do |vote| %>
+        <tr>
+          <strong>
+            <td><%= link_to vote.user.name, user_path(vote.user_id) %></td>
+            <td><%= vote.updated_at %></td>
+            <!-- <td><%= Vote.find(vote.user_id).updated_at %></td> -->
+          </strong>
+        </tr>
+      <% end %>
 
-    <% @work.votes.each do |vote| %>
-      <tr>
-        <strong>
-          <td><%= link_to User.find(vote.user_id).name, user_path(vote.user_id) %></td>
-          <td><%= Vote.find(vote.user_id).updated_at %></td>
-        </strong>
-      </tr>
-    <% end %>
-
-</table>
+  </table>
+</body>

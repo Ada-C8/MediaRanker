@@ -1,20 +1,23 @@
-<div class="work-partial">
-  <%= form_for @work do |f| %>
-    <%= f.label :category %>
-    <%= f.text_field :category %>
 
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+<body>
+  <div class="work-partial">
+    <%= form_for @work do |f| %>
+      <%= f.label :category %>
+      <%= f.text_field :category %>
 
-    <%= f.label :creator %>
-    <%= f.text_field :creator %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
 
-    <%= f.label :publication_year %>
-    <%= f.text_field :publication_year %>
+      <%= f.label :creator %>
+      <%= f.text_field :creator %>
 
-    <%= f.label :description %>
-    <%= f.text_field :description %>
+      <%= f.label :publication_year %>
+      <%= f.text_field :publication_year %>
 
-    <%= f.submit button_text %>
-  <% end %>
-</div>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+
+      <%= f.submit button_text %>
+    <% end %>
+  </div>
+</body>

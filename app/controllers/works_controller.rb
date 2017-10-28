@@ -14,7 +14,7 @@ class WorksController < ApplicationController
     # end
   end
 
-  # the new media is not saving to DB. Not sure why. The code structure below is from rails library and theoretically should work. I am still unfamiliar with binding.pry for debugging and pry in the terminal is only so useful. 
+  # the new media is not saving to DB. Not sure why. The code structure below is from rails library and theoretically should work. I am still unfamiliar with binding.pry for debugging and pry in the terminal is only so useful.
   def create
     @work = Work.new(work_params
     )
@@ -56,9 +56,8 @@ class WorksController < ApplicationController
   def find_work_by_params_id
     @work = Work.find_by(id: params[:id])
 
-    unless @work
+    unless @work # unless is the same as if !@work then we respond with 404 Not Found. Head is just the bare bones part of the response without the body.
       head :not_found
     end
-
   end
 end

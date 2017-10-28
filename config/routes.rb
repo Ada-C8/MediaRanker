@@ -7,6 +7,4 @@ Rails.application.routes.draw do
   resources :works do
     resources :user, only: [:show, :edit, :delete]
   end
-
-
 end
