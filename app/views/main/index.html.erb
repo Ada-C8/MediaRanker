@@ -11,9 +11,16 @@
   <h2>Books</h2>
 
  <ol>
-  
+
   <% @books.each do |instance| %>
-   <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id) %>, Votes: <%= instance.votes.count %> <%= vote_button(instance, session[:user]['id']) %>
+   <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id) %>, Votes: <%= instance.votes.count %>
+     <% if session[:user].nil? %>
+     <p>
+       log in to vote
+     </p>
+     <% else %>
+     <%= vote_button(instance, session[:user]['id']) %>
+     <% end %>
    </li>
     <% end %>
  </ol>
@@ -24,7 +31,14 @@
   <h2>Movies</h2>
   <ol>
    <% @movies.each do |instance| %>
-    <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id)%>, Votes: <%= instance.votes.count %> <%= vote_button(instance, session[:user]['id']) %>
+    <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id)%>, Votes: <%= instance.votes.count %>
+      <% if session[:user].nil? %>
+      <p>
+        log in to vote
+      </p>
+      <% else %>
+      <%= vote_button(instance, session[:user]['id']) %>
+      <% end %>
     </li>
      <% end %>
   </ol>
@@ -34,7 +48,14 @@
   <h2>Music</h2>
   <ol>
    <% @music.each do |instance| %>
-    <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id) %>, Votes: <%= instance.votes.count %> <%= vote_button(instance, session[:user]['id']) %>
+    <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id) %>, Votes: <%= instance.votes.count %>
+      <% if session[:user].nil? %>
+      <p>
+        log in to vote
+      </p>
+      <% else %>
+      <%= vote_button(instance, session[:user]['id']) %>
+      <% end %>
     </li>
       <% end %>
 
