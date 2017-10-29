@@ -11,6 +11,7 @@
   <h2>Books</h2>
 
  <ol>
+  
   <% @books.each do |instance| %>
    <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id) %>, Votes: <%= instance.votes.count %> <%= vote_button(instance, session[:user]['id']) %>
    </li>
