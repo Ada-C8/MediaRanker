@@ -74,6 +74,9 @@ GEM
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
+    foundation-rails (5.4.5.0)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     hashie (3.5.6)
@@ -159,6 +162,7 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_layout (1.0.41)
     railties (5.1.4)
       actionpack (= 5.1.4)
       activesupport (= 5.1.4)
@@ -233,6 +237,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   dotenv-rails
+  foundation-rails
   jbuilder (~> 2.5)
   jquery-turbolinks
   listen (>= 3.0.5, < 3.2)
@@ -245,6 +250,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.7)
   rails (~> 5.1.4)
+  rails_layout
   sass-rails (~> 5.0)
   selenium-webdriver
   simplecov

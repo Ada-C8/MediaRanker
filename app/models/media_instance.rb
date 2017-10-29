@@ -6,16 +6,4 @@ class MediaInstance < ApplicationRecord
     where(media_type: type).sort{|instance| instance.votes.count}.reverse
   end
 
-  # def self.ten_music
-  #   where(media_type: "music").sort{|book| book.votes.count}.reverse
-  # end
-  #
-  # def self.ten_movie
-  #   where(media_type: "movie").sort{|book| book.votes.count}.reverse
-  # end
-  #
-  # def self.ten_books
-  #   binding.pry
-  #   where(media_type: "book").sort{|book| book.votes.count}.reverse
-  # end
 end

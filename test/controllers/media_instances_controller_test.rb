@@ -6,18 +6,20 @@ describe "MediaInstancesController" do
   # end
   describe "index" do
     it "returns a success status for all media_instances" do
-      get media_instances_path
+      get media_instances_path :media_type => "music"
       must_respond_with :success
     end
 
     it "returns a success status when there are no media_instances" do
+      binding.pry
       MediaInstance.destroy_all
-      get media_instances_path
+
+      get media_instances_path :media_type => "music"
       must_respond_with :success
     end
 
     it "returns a success status when given a valid user_id" do
-      get user_media_instances_path(user.first)
+      get user_media_instances_path(User.first)
       must_respond_with :success
     end
 
