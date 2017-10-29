@@ -8,9 +8,9 @@ require "minitest/reporters"  # for Colorized output
 
 #  For colorful output!
 Minitest::Reporters.use!(
-Minitest::Reporters::SpecReporter.new,
-ENV,
-Minitest.backtrace_filter
+  Minitest::Reporters::SpecReporter.new,
+  ENV,
+  Minitest.backtrace_filter
 )
 
 
@@ -24,5 +24,28 @@ Minitest.backtrace_filter
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
+  def setup
+    # Once you have enabled test mode, all requests
+    # to OmniAuth will be short circuited to use the mock authentication hash.
+    # A request to /auth/provider will redirect immediately to /auth/provider/callback.
+    OmniAuth.config.test_mode = true
+  end
+
+  def mock_auth_hash(user)
+    return {
+      provider: user.oauth_provider,
+      uid: user.oauth_uid,
+      info: {
+        email: user.email,
+        nickname: user.name
+      }
+    }
+  end
+
+  def login_test_user
+    user = users(:one)
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
+    get login_path(:github)
+  end
   # Add more helper methods to be used by all tests here...
 end

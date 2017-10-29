@@ -1,21 +1,21 @@
 class UsersController < ApplicationController
 
 
-  def new
-    # use strong params to limit the fields that the user can populate with data
-    @user = User.new
-    # if @user.save
-    #   flash[:status] = :success
-    #   flash[:message] = "Successfully created user #{@user.id}"
-    #   redirect_to users_path
-    # else
-    #   # Tell the user what went wrong
-    #   flash.now[:status] = :failure
-    #   flash.now[:message] = "Failed to create user"
-    #   flash.now[:details] = @user.errors.messages
-    #   render :new, status: :bad_request
-    # end
-  end
+  # def new
+  #   # use strong params to limit the fields that the user can populate with data
+  #   @user = User.new
+  #   if @user.save
+  #     flash[:status] = :success
+  #     flash[:message] = "Successfully created user #{@user.id}"
+  #     redirect_to users_path
+  #   else
+  #     # Tell the user what went wrong
+  #     flash.now[:status] = :failure
+  #     flash.now[:message] = "Failed to create user"
+  #     flash.now[:details] = @user.errors.messages
+  #     render :new, status: :bad_request
+  #   end
+  # end
 
   def create
     @user = User.new(user_params)
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
     return head :not_found unless @user
   end
 
@@ -44,15 +44,19 @@ class UsersController < ApplicationController
     @user.update_attributes(user_params)
     if @user.save
       redirect_to root_path
+      flash[:status] = :success
+      flash[:message] = "Successfully updated #{@user.name}"
     else
-      render :edit
+      flash.now[:status] = :failure
+      flash.now[:message] = "Could not update #{@user.name}"
+      render :edit, status: :bad_request
     end
   end
 
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-  end
+  # def destroy
+  #   @user = User.find(params[:id])
+  #   @user.destroy
+  # end
 
   def login
     auth_hash = request.env['omniauth.auth']
@@ -71,6 +75,10 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def logout
+    session[:user] = nil
+    redirect_to root_path
+  end
   private
 
   # def user_params

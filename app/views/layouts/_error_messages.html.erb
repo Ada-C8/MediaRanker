@@ -1,17 +1,15 @@
-<% if model.errors.messages.length > 0 %>
-  <section class="error-messages">
-    <h3>Please fix the following errors:</h3>
+
+<section class="errors <%= flash[:status] if flash[:status] %> small-10 columns">
+  <h5 class="readable <%= flash[:status] if flash[:status] %>"><%= flash[:message] if flash[:message] %></h5>
+  <% if flash[:details] %>
     <ul>
-      <% model.errors.messages.each do |field, problems| %>
-        <% problems.each do |problem| %>
+      <% flash[:details].each do |category, errors| %>
+        <% errors.each do |error| %>
           <li>
-            <strong>
-              <%= field %>:
-            </strong>
-            <%= problem %>
+            <%= category.to_s.capitalize %> - <%= error %>
           </li>
         <% end %>
       <% end %>
     </ul>
-  </section>
-<% end %>
+  <% end %>
+</section>
