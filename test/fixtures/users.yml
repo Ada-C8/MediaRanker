@@ -3,7 +3,11 @@
 one:
   name: name one
   email: MyString_one@mystring.com
+  oauth_uid: 1
+  oauth_provider: github
 
 two:
   name: name two
   email: MyString_two@mystring.com
+  oauth_uid: 2
+  oauth_provider: github

@@ -19,28 +19,24 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # binding.pry
+
     if @user.save
+      #success message
       flash[:status] = :success
       flash[:message] = "Successfully created user #{@user.id}"
-      session[:user_id] = @user.id
       redirect_to root_path
     else
-      # Tell the user what went wrong
+      #I'm not sure how we're deciding to do error messages.  Flash?
       flash.now[:status] = :failure
       flash.now[:message] = "Failed to create user"
       flash.now[:details] = @user.errors.messages
       render :new, status: :bad_request
     end
-    # if @user.save
-    #   redirect_to users_path
-    # else
-    #   render :new
-    # end
   end
 
   def edit
     @user = User.find(params[:id])
+    return head :not_found unless @user
   end
 
   def update
@@ -59,21 +55,20 @@ class UsersController < ApplicationController
   end
 
   def login
-    user_id = params[:user][:user_id]
-    user = User.find_by(id: user_id)
+    auth_hash = request.env['omniauth.auth']
+    user = User.find_by(oauth_uid: auth_hash['uid'], oauth_provider: auth_hash['provider'])
 
-    if user
-      session[:logged_in_user] = user_id
-      redirect_to root_path
-    else
-
-      head :not_found
+    unless user
+      user = User.by_auth_hash(auth_hash)
+      unless user.save
+        flash.now[:status] = :failure
+        flash.now[:result_text] = "Not logged in"
+        flash.now[:messages] = user.errors.messages
+        return redirect_to root_path
+      end
     end
-  end
-
-  def logout
-  session[:user_id] = nil
-  redirect_to root_path
+    session[:user] = user
+    redirect_to root_path
   end
 
   private
@@ -82,7 +77,7 @@ class UsersController < ApplicationController
   #   return params.permit(:name, :email)
   # end
   def user_params
-    return params.require(:user).permit(:name, :email)
+    return params.require(:user).permit(:name, :email, :oauth_uid, :oauth_provider)
   end
 
 

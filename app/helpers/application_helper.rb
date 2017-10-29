@@ -6,8 +6,9 @@ module ApplicationHelper
         f.submit "Upvote", class:'success button'
       end
     else
+      # binding.pry
       html =  "<br>"
-      html += link_to "Upvote", login_path, class:'success button'
+      html += link_to "Upvote", '/auth/github', class:'success button'
     end
 
     html.html_safe

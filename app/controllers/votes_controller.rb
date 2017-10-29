@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
 
-  
+
   def create
     @vote = Vote.new(vote_params)
     if @vote.save
@@ -18,8 +18,8 @@ class VotesController < ApplicationController
 
   def destroy
     current_user = nil
-    if session[:logged_in_user]
-      current_user = user.find_by(id:session[:logged_in_user])
+    if session[:user]
+      current_user = user.find_by(id:session[:user])
     end
     # @vote = Vote.find(params[:id])
     if find_vote_by_params_id
