@@ -1,8 +1,5 @@
-<body>
+<h1>Edit Media</h1>
 
-  <h1>Edit Media</h1>
+<%= render partial: 'layouts/error_messages', locals: { model: @work } %>
 
-  <%= render partial: 'layouts/error_messages', locals: { model: @work } %>
-
-  <%= render partial: 'form', locals: { button_text: "Edit Media"} %>
-</body>
+<%= render partial: 'form', locals: { button_text: "Edit Media"} %>

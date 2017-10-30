@@ -1,57 +1,55 @@
-<body>
-  # Want to DRY up code and will think about it later.
-  <h1>Albums</h1>
-  <table>
-    <th>Title</th>
-    <th>Creator</th>
-    <th>Publication Year</th>
+# Want to DRY up code and will think about it later.
+<h1>Albums</h1>
+<table>
+  <th>Title</th>
+  <th>Creator</th>
+  <th>Publication Year</th>
 
-    <% @works.each do |work| %>
-      <% if work.category == "album" %>
-        <tr>
-          <td><%= link_to work.title, work_path(work.id) %></td>
-          <td><%= work.creator %></td>
-          <td><%= work.publication_year %></td>
-        </tr>
-      <% end %>
+  <% @works.each do |work| %>
+    <% if work.category == "album" %>
+      <tr>
+        <td><%= link_to work.title, work_path(work.id) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+      </tr>
     <% end %>
-  </table>
+  <% end %>
+</table>
 
-  <h1>Books</h1>
+<h1>Books</h1>
 
-  <table>
-    <th>Title</th>
-    <th>Creator</th>
-    <th>Publication Year</th>
+<table>
+  <th>Title</th>
+  <th>Creator</th>
+  <th>Publication Year</th>
 
 
-    <% @works.each do |work| %>
-      <% if work.category == "book" %>
-        <tr>
-          <td><%= link_to work.title, work_path(work.id) %></td>
-          <td><%= work.creator %></td>
-          <td><%= work.publication_year %></td>
-        </tr>
-      <% end %>
+  <% @works.each do |work| %>
+    <% if work.category == "book" %>
+      <tr>
+        <td><%= link_to work.title, work_path(work.id) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+      </tr>
     <% end %>
-  </table>
+  <% end %>
+</table>
 
-  <h1>Movies</h1>
+<h1>Movies</h1>
 
-  <table>
-    <th>Title</th>
-    <th>Creator</th>
-    <th>Publication Year</th>
+<table>
+  <th>Title</th>
+  <th>Creator</th>
+  <th>Publication Year</th>
 
 
-    <% @works.each do |work| %>
-      <% if work.category == "movie" %>
-        <tr>
-          <td><%= link_to work.title, work_path(work.id) %></td>
-          <td><%= work.creator %></td>
-          <td><%= work.publication_year %></td>
-        </tr>
-      <% end %>
+  <% @works.each do |work| %>
+    <% if work.category == "movie" %>
+      <tr>
+        <td><%= link_to work.title, work_path(work.id) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+      </tr>
     <% end %>
-  </table>
-</body>
+  <% end %>
+</table>

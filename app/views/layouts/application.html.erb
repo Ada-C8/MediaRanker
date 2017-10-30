@@ -9,26 +9,35 @@
   </head>
 
   <body>
+    <header>
 
-    <h1>Rank Media</h1>
-    <nav>
-      <div class="">
-        <ol>
-        <li>
-          <%= link_to "Home", root_path %>
-        </li>
-        <li>
-        <%= link_to "All Media", works_path %>
-        </li>
-        <li>
-        <%= link_to "Add New Work", new_work_path %>
-        </li>
-        <li>
-        <%= link_to "View All Users", users_path %>
-        </li>
-      </ol>
-      </div>
-    </nav>
-    <%= yield %>
+      <h1>Rank Media</h1>
+      <nav>
+        <div class="">
+          <ol>
+          <li>
+            <%= link_to "Home", root_path %>
+          </li>
+          <li>
+          <%= link_to "All Media", works_path %>
+          </li>
+          <li>
+          <%= link_to "Add New Work", new_work_path %>
+          </li>
+          <li>
+          <%= link_to "View All Users", users_path %>
+          </li>
+        </ol>
+        </div>
+
+        <div class="login">
+          <%= link_to "Login", login_path %>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

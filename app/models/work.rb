@@ -6,11 +6,19 @@ class Work < ApplicationRecord
 
 
 # feedback from rideshare noted using an instance variable instead of .self. I worked on using @blah and was unsuccessful.
+  def self.top_ten(category)
+    where(category: category).order(vote_count: :desc).limit(10)
+  end
+
   def self.spotlight
     works = Work.all
-    spotlight = works.max_by {|work| work.votes.count}
+    if works == []
+      return "No media on website, please enter a media"
+    else
+      spotlight = works.max_by {|work| work.votes.count}
 
-    return spotlight
+      return spotlight
+    end
   end
 
   def self.top_ten(category)

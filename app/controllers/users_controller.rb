@@ -19,11 +19,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def login_form
+
+  end
+
   def login
-    username = params[:email]
-    user = User.find_by(username: username)
+
+    name = params[:name]
+    user = User.find_by(name: name)
     # session is created in Rails when the user arrives on the app. A session is a hash and we are filling it with a key-value pair.
-    session[:uid] = user.id
+
+    if user
+      session[:uid] = user.id
+      redirect_to root_path
+    else
+      # is flash stored in the session?
+      flash.now[:status] = :failure
+      flash.now[:message] = "No user found with username #{username}"
+      render login_form
+    end
+
   end
 
   # votes#create
