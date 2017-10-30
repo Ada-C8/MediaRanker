@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
 
-before_action :find_work, only: [:show, :edit, :update, :destroy]
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def home
     @works = Work.order(:category)
@@ -8,7 +8,12 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
   end
 
   def index
-    @works = Work.order(:category)
+    @works = Work.all
+    if params[:search]
+      @works = Work.search(params[:search]).order("created_at DESC")
+    else
+      @works = Work.all.order("created_at DESC")
+    end
   end
 
   def show

@@ -28,6 +28,9 @@
         <%= button_to((session[:user_id] == nil ? "Log In" : "Logged in as #{session[:name]}"), (session[:user_id] == nil ? login_path : user_path((session[:user_id]))), method: :get, alt: "link to user summary", class: "button") %>
         <% if session[:user_id] != nil %> <%= button_to("Log Out", logout_path, method: :post, alt: "link to log out", class: "button") %>
         <% end %>
+        <%= form_tag(works_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: raw("Search") %>
+        <% end %>
       </div>
     </nav>
   </header>

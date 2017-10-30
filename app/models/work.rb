@@ -18,4 +18,8 @@ class Work < ApplicationRecord
     return ten
   end
 
+  def self.search(search)
+    where("title ILIKE ?", "%#{search}%")
+  end
+
 end
