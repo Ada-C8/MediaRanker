@@ -12,6 +12,8 @@ describe User do
 
   it "should not be valid if user with that name already exists" do
     user.name = crisco.name
+    user.uid = 500
+    user.provider = "github"
     user.save.must_equal false
     user.errors.keys.must_include :name
     user.errors[:name].must_equal ["has already been taken"]

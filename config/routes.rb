@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   post '/works/:id/upvote', to: 'works#upvote', as: 'upvote'
   # get '/login', to: 'sessions#login_form'
   # post '/login', to: 'sessions#login'
-  post '/logout', to: 'sessions#logout'
-  get "/auth/github", as: 'login'
-  get "/auth/:provider/callback", to: "sessions#create"
+  post '/logout', to: 'sessions#logout', as: 'logout'
+  get "/auth/github", as: 'github_login'
+  # get "/auth/twitter", as: 'twitter_login'
+  get "/auth/:provider/callback", to: "sessions#create", as: "auth_callback"
+
 
 
 

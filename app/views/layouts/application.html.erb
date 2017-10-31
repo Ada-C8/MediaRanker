@@ -27,11 +27,22 @@
           <%= link_to "Logged in as #{@session_user.name}", user_path(@session_user.id), class: "button" %>
           <%= link_to 'Log Out', logout_path, method: :post, class: "button" %>
           <% else %>
-          <%= link_to 'log in', login_path, class: "button" %>
+          <%= link_to 'log in using github', github_login_path, class: "button" %>
+          <%= link_to 'log in using twitter', twitter_login_path, class: "button" %>
           <% end %>
         </div>
       </nav>
     </header>
+    <h1>Cookies</h1>
+    <%= cookies.each do |key, value| %>
+    [:<%= key %>] Value: <%= value %>
+    <br />
+    <% end %>
+    <h1>Values</h1>
+    <%= session.each do |name, message| %>
+    [:<%= name %>] Value: <%=message %>
+    <br />
+    <% end %>
       <% if flash.keys.length > 0%>
       <section class="row status">
       <% flash.each do |name, message| %>

@@ -12,6 +12,14 @@ private
 
 def all_works_by_category
   works = Work.order(:title).group_by { |work| work.category }
+  if !(works)
+    work = Work.new
+    work.title = "Add some media, it would be so cool..."
+    work.user_id = 1
+    works = {
+      "Add Some Media To Rank!" => [work]
+    }
+  end
   return works
 end
 
@@ -22,6 +30,8 @@ def all_works_by_votes
   end
   return works
 end
+
+
 
 # def spotlight
 #   top_voted = []

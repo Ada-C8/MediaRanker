@@ -6,6 +6,7 @@ pride:
   creator: Jane Austen
   publication_year: 1813
   description: Mr. Bingley lol
+  user: crisco
 
 bonito:
   category: album
@@ -13,6 +14,7 @@ bonito:
   creator: Kero Kero Bonito
   publication_year: 2016
   description: Hold ur camera high..and click! exercise your right to picture thIS but don't forget to SHow everybody you'veeverknown
+  user: crisco
 
 anti:
   category: album
@@ -20,6 +22,7 @@ anti:
   creator: Rihanna
   publication_year: 2016
   description: /#fenty
+  user: crisco
 
 lotr:
   category: movie
@@ -27,3 +30,4 @@ lotr:
   creator: Peter Jackson
   publication_year: 2003
   description: empty string
+  user: crisco
