@@ -14,10 +14,10 @@
 </div>
 
 <section>
-  <%= link_to "Home", root_path %>
-  <%= link_to "Edit", edit_work_path %>
-  <%= link_to "UpVote" %>
-  <%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure?" } %>
+  <%= link_to "Home", root_path, class: "button" %>
+  <%= link_to "Edit", edit_work_path, class: "button" %>
+  <%= link_to "UpVote", votes_path(work_id: @work.id), method: :post, class: "button" %>
+  <%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure?" }, class: "button" %>
 </section>
 <table>
   <tr>

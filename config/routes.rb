@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   resources :works
   resources :users
-  resources :votes
+  
+  post '/votes/:work_id', to: 'votes#create', as: 'votes'
+
 
   # resources :works do
   #   resources :user, only: [:show, :edit, :delete]

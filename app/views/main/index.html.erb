@@ -3,9 +3,16 @@
 The code for Top media per category could be rolled into a partial. Do it later.-->
 
 <h1>
-  Media spotlight: <%= link_to Work.spotlight.title, work_path(Work.spotlight.id) %> by:
-  <%= Work.spotlight.creator %>
-  <%= Work.spotlight.votes.count %> votes
+  <% if Work.all == [] %>
+    Work.spotlight
+    <% else %>
+      Media spotlight: <%= link_to Work.spotlight.title, work_path(Work.spotlight.id) %> by:
+      <%= Work.spotlight.creator %>
+      <%= Work.spotlight.votes.count %> votes
+  <% end %>
+  <!-- Media spotlight: <%#= link_to Work.spotlight, work_path(Work.spotlight.id) %> by:
+  <%#= Work.spotlight.creator %>
+  <%#= Work.spotlight.votes.count %> votes -->
 </h1>
 
 

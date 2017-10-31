@@ -6,9 +6,9 @@ class Work < ApplicationRecord
 
 
 # feedback from rideshare noted using an instance variable instead of .self. I worked on using @blah and was unsuccessful.
-  def self.top_ten(category)
-    where(category: category).order(vote_count: :desc).limit(10)
-  end
+  # def self.top_ten(category)
+  #   where(category: category).order(vote_count: :desc).limit(10)
+  # end
 
   def self.spotlight
     works = Work.all

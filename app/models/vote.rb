@@ -10,4 +10,13 @@ class Vote < ApplicationRecord
     Vote.where(user_id: user_id)
 
   end
+
+
+
+    def initialize(work_id, user_id)
+      @work_id = work_id
+      @user_id = user_id
+    end
+  
+
 end
