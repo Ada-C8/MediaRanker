@@ -6,9 +6,10 @@ Rails.application.routes.draw do
 
   resources :works
   resources :users
+  resources :votes
 
-  resources :works do
-    resources :user, only: [:show, :edit, :delete]
-  end
+  # resources :works do
+  #   resources :user, only: [:show, :edit, :delete]
+  # end
 
 end

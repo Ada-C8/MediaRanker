@@ -1,3 +1,5 @@
+# session comparisions are always made in the controller
+
 class WorksController < ApplicationController
   before_action :find_work_by_params_id, only: [:show, :edit, :update, :destroy]
 
