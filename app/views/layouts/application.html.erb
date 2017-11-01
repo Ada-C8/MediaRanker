@@ -3,40 +3,30 @@
   <head>
     <title>MediaRanker</title>
     <%= csrf_meta_tags %>
-
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'owl.jpg'%>
+
   </head>
 
   <body>
-    <header>
+    <header class="page-header row">
 
-      <h1>Rank Media</h1>
-      <nav>
-        <div class="">
-          <ol>
-          <li>
-            <%= link_to "Home", root_path %>
-          </li>
-          <li>
-          <%= link_to "All Media", works_path %>
-          </li>
-          <li>
-          <%= link_to "Add New Work", new_work_path %>
-          </li>
-          <li>
-          <%= link_to "View All Users", users_path %>
-          </li>
-        </ol>
-        </div>
+      <h1><%= link_to "Media Ranker", root_path%><small>Ranking the Best of Everything</small></h1>
+      <nav class="columns small-12">
+          <%= link_to "Home", root_path, class: "button" %>
+          <%= link_to "All Media", works_path, class: "button" %>
+          <%= link_to "Add New Work", new_work_path, class: "button" %>
+          <%= link_to "View All Users", users_path, class: "button" %>
 
-        <div class="login">
-          <%= link_to "Login", login_path %>
+        <div class="float-rigtht">
+          <%= link_to "Login", login_path, class: "button" %>
         </div>
       </nav>
     </header>
 
-    <main>
+    <main class="row">
       <%= yield %>
     </main>
   </body>

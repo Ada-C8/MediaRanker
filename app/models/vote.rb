@@ -12,11 +12,12 @@ class Vote < ApplicationRecord
   end
 
 
+# create session through ip
+  def initialize(work_id, user_id)
+    @work_id = work_id
+    
+    @user_id = user_id
+  end
 
-    def initialize(work_id, user_id)
-      @work_id = work_id
-      @user_id = user_id
-    end
-  
 
 end

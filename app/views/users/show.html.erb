@@ -10,23 +10,21 @@
   <th> Voted On </th>
 
 
-  <% Vote.user_votes_arary(@user.id).each do |vote| %>
+  <% @user.votes.each do |vote| %>
     <tr>
       <!-- the Work.find(...) definitely can be DRYed, maybe in a method. Given it is 9:15p and the code works, I am not going to sweat it.  -->
-      <td><%= Work.find(vote.work_id).title %></td>
-      <td><%= Work.find(vote.work_id).creator %></td>
-      <td><%= Work.find(vote.work_id).publication_year %></td>
-      <td><%= Work.find(vote.work_id).category %></td>
+      <td><%= link_to vote.work.title, work_path(vote.work.id) %></td>
+      <td><%= vote.work.creator %></td>
+      <td><%= vote.work.publication_year %></td>
+      <td><%= vote.work.category %></td>
       <td><%= vote.created_at %></td>
     </tr>
   <% end %>
 </table>
 
-<ol>
-  <li>
-    <%= link_to "View All Users", users_path %>
-  </li>
-  <li>
-    <%= link_to "Home", root_path %>
-  </li>
-</ol>
+  <div class="">
+
+    <%= link_to "View All Users", users_path, class: "button" %>
+
+    <%= link_to "Home", root_path, class: "button" %>
+  </div>
