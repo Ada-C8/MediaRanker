@@ -3,54 +3,66 @@
 The code for Top media per category could be rolled into a partial. Do it later.-->
 
 <h1>
-  <% if Work.all == [] %>
+  <!-- if statement should check what the return value is, and display content based on that.  -->
+
+  <!-- <% if Work.all == [] %>
     Work.spotlight
     <% else %>
       Media spotlight: <%= link_to Work.spotlight.title, work_path(Work.spotlight.id) %> by:
       <%= Work.spotlight.creator %>
       <%= Work.spotlight.votes.count %> votes
-  <% end %>
+  <% end %> -->
+
+
+
   <!-- Media spotlight: <%#= link_to Work.spotlight, work_path(Work.spotlight.id) %> by:
   <%#= Work.spotlight.creator %>
   <%#= Work.spotlight.votes.count %> votes -->
 </h1>
 
+<section class="top-ten columms large-4 small-12">
 
-<h2>
-  Top Albums
-</h2>
+  <h2>
+    Top Albums
+  </h2>
 
-<ul>
-  <% Work.top_ten("album").each do |work| %>
-    <li>
-      <%= link_to(work.title, work_path(work.id)) %> by: <%= work.creator %>
-      <%= work.votes.count %> votes
-    </li>
-  <% end %>
+  <ul>
+    <% Work.top_ten("album").each do |work| %>
+      <li>
+        <%= link_to(work.title, work_path(work.id)) %> by: <%= work.creator %>
+        <p><%= work.votes.count %> votes</p>
+      </li>
+    <% end %>
 </ul>
+</section>
+<section class="top-ten columms large-4 small-12">
 
-<h2>
-  Top Books
-</h2>
+  <h2>
+    Top Books
+  </h2>
 
-<ul>
-  <% Work.top_ten("book").each do |work| %>
-    <li>
-      <%= link_to work.title, work_path(work.id)%> by: <%= work.creator %>
-      <%= work.votes.count %> votes
-    </li>
-  <% end %>
-</ul>
+  <ul>
+    <% Work.top_ten("book").each do |work| %>
+      <li>
+        <%= link_to work.title, work_path(work.id)%> by: <%= work.creator %>
+        <p><%= work.votes.count %> votes</p>
+      </li>
+    <% end %>
+  </ul>
+</section>
 
-<h2>
-  Top Movies
-</h2>
+<section class="top-ten columms large-4 small-12">
 
-<ul>
-  <% Work.top_ten("movie").each do |work| %>
-    <li>
-      <%= link_to work.title, work_path(work.id)%> by: <%= work.creator %>
-      <%= work.votes.count %> votes
-    </li>
-  <% end %>
-</ul>
+  <h2>
+    Top Movies
+  </h2>
+
+  <ul>
+    <% Work.top_ten("movie").each do |work| %>
+      <li>
+        <%= link_to work.title, work_path(work.id)%> by: <%= work.creator %>
+        <p><%= work.votes.count %> votes</p>
+      </li>
+    <% end %>
+  </ul>
+</section>

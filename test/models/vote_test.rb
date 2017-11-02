@@ -44,4 +44,37 @@ describe Vote do
       vote2.errors.messages.must_include :user_id
     end
   end
+
+  describe "make new vote" do
+    it "Successfully make new vote" do
+      # need user id so make a user
+      user_id = User.create!(name: "angela").id
+      puts user_id
+      work_id = 1
+      puts work_id
+
+      start_count = Vote.all.count
+      puts "Start count: #{start_count}"
+
+      vote = Vote.new(
+        work_id: work_id,
+        user_id: user_id
+      )
+
+      puts vote
+      after_count = Vote.all.count
+      puts after_count
+
+
+      vote.must_be_instance_of Vote
+      after_count.must_equal start_count + 1
+
+
+
+
+
+
+
+    end
+  end
 end
