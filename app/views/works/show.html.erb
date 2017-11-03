@@ -1,9 +1,6 @@
-<br><br><h1>Need to work on UpVote.</h1><br><br>
-<h3>
-<%= params %>
-<br><br>
+
 </h3>
-<article class="">
+<article class="voting-users columns large-6 small-12">
   <h3>
     <strong><%= @work.title %></strong>
   </h3>
@@ -20,11 +17,11 @@
   </section>
 </article>
 
+<article class="voting-users" columns large-6 small-12>
 <h3>
   <%= @work.votes.count %> Votes for this <%= @work.category.capitalize %>
 </h3>
 
-<article class="voting-users" columns large-6 small-12>
 
   <table>
     <tr>

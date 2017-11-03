@@ -76,9 +76,13 @@ Button
   line-height: 1;
   text-align: center;
   cursor: pointer;
-  background-color: #1779ba;
+
   color: #fefefe;
   font-weight: normal;
+}
+
+.float-right {
+  float: right !important;
 }
 
 /*
@@ -104,7 +108,54 @@ a, h2 {
 }
 
 
+.spotlight {
+  padding: 0 2rem 2rem 2rem;
+}
 
+.columns {
+  width: 100%;
+  float: left;
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+}
+.small-12 {
+  width: 100%;
+}
+
+article, aside, footer, header, nav, section {
+    display: block;
+}
+
+a:hover {
+   color: #00796B;
+ }
+
+.button:hover {
+  background-color: #00796B;
+}
+
+a, h3 {
+    color: #26A69A;
+}
+
+.media-spotlight-header {
+    color: #424242;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+
+.spotlight p {
+    margin-bottom: 0px;
+}
+
+p {
+    margin-bottom: 1rem;
+    font-size: inherit;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+}
 
 
 
@@ -162,4 +213,30 @@ html {
 
 *, *::before, *::after {
     box-sizing: inherit;
+}
+
+
+/* work show page */
+
+thead th, thead td, tfoot th, tfoot td {
+    padding: 0.5rem 0.625rem 0.625rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+
+.small-12 {
+    width: 100%;
+}
+
+.columns {
+    width: 100%;
+    float: left;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
 }

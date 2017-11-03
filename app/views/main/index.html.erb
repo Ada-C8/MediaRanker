@@ -12,15 +12,29 @@ The code for Top media per category could be rolled into a partial. Do it later.
       <%= Work.spotlight.creator %>
       <%= Work.spotlight.votes.count %> votes
   <% end %> -->
+<section class="row spotlight">
+  <div class="">
 
-
+  <% if @new %>
+  <h3>
+    <span class="media-spotlight-header"> Media Spotlight:</span> No Media
+    </h3>
+  <% else %>
+  <h3>
+    <span class="media-spotlight-header"> Media Spotlight:</span> <%= link_to @spotlight.title, work_path(@spotlight.id) %> by <%= @spotlight.creator %>
+    </h3>
+    <p><%= @spotlight.votes.count %> votes - <%= @spotlight.category %></p>
+    <% end %>
 
   <!-- Media spotlight: <%#= link_to Work.spotlight, work_path(Work.spotlight.id) %> by:
   <%#= Work.spotlight.creator %>
   <%#= Work.spotlight.votes.count %> votes -->
+
+  </div>
+</section>
 </h1>
 
-<section class="top-ten columms large-4 small-12">
+<section class="top-ten columns large-4 small-12">
 
   <h2>
     Top Albums
@@ -35,7 +49,7 @@ The code for Top media per category could be rolled into a partial. Do it later.
     <% end %>
 </ul>
 </section>
-<section class="top-ten columms large-4 small-12">
+<section class="top-ten columns large-4 small-12">
 
   <h2>
     Top Books
@@ -51,7 +65,7 @@ The code for Top media per category could be rolled into a partial. Do it later.
   </ul>
 </section>
 
-<section class="top-ten columms large-4 small-12">
+<section class="top-ten columns large-4 small-12">
 
   <h2>
     Top Movies
