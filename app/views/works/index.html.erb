@@ -1,0 +1,52 @@
+<h3> List of works</h3>
+
+<% @works.each do |category, works| %>
+<section class="media-table">
+<article id= <%="top-#{category}" %> class="top-media">
+  <h4><%= "Top #{category.capitalize}" %></h4>
+  <td>
+    <table class="table">
+  <tr>
+  <th>
+    Votes
+  </th>
+  <th>
+    Title
+  </th>
+  <th>
+    Created By
+  </th>
+  <th>
+    Published
+  </th>
+  <th>
+    Upvote
+  </th>
+</tr>
+    <% works.each do |work| %>
+    <tr>
+    <td>
+      <%= work.votes.length %>
+    </td>
+    <td>
+      <%= link_to(work.title, work_path(work.id)) %>
+    </td>
+    <td>
+      <%= work.creator %>
+    </td>
+    <td>
+      <%= work.publication_year %>
+    </td>
+    <td>
+      <%= link_to'Upvote', upvote_path(work.id), method: :post, class: "button upvote"%>
+    </td>
+  </tr>
+    <% end %>
+</table>
+</section>
+  <%end %>
+<%= link_to 'View top media', root_path %>
+<%= link_to 'Add a new work', new_work_path %>
+
+
+<p>Find me in app/views/works/index.html.erb</p>

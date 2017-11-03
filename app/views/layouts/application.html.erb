@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>MediaRanker</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+</head>
+
+<body>
+  <header class="page-header row">
+    <h2 class="columns small-12">
+      <%= link_to 'Media Ranker', root_path %>
+      <small>Ranking the best of everything<small>
+      </h2>
+      <nav class="columns small-12">
+        <%= link_to 'top media', root_path, class: "button" %>
+        <%= link_to 'view all media', works_path, class: "button" %>
+        <%= link_to 'add a new work', new_work_path, class: "button" %>
+        <%= link_to 'view all users', users_path, class: "button" %>
+        <div class="float-right">
+          <% if @session_user %>
+
+          <%= link_to "Logged in as #{@session_user.name}", user_path(@session_user.id), class: "button" %>
+          <%= link_to 'Log Out', logout_path, method: :post, class: "button" %>
+          <% else %>
+          <%= link_to 'log in using github', github_login_path, class: "button" %>
+          <%= link_to 'log in using twitter', twitter_login_path, class: "button" %>
+          <% end %>
+        </div>
+      </nav>
+    </header>
+    <h1>Cookies</h1>
+    <%= cookies.each do |key, value| %>
+    [:<%= key %>] Value: <%= value %>
+    <br />
+    <% end %>
+    <h1>Values</h1>
+    <%= session.each do |name, message| %>
+    [:<%= name %>] Value: <%=message %>
+    <br />
+    <% end %>
+      <% if flash.keys.length > 0%>
+      <section class="row status">
+      <% flash.each do |name, message| %>
+      <h3 class="<%= name %>"><%= message %></h3>
+      <% end %>
+    </section>
+      <% end %>
+
+
+      <main class="row">
+        <%= yield %>
+      </main>
+    </footer>
+  </body>
+  </html>

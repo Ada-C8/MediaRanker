@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+vote_1:
+  user: abby
+  work: bonito
+
+vote_2:
+  user: crisco
+  work: anti

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+crisco:
+  name: crisco
+  email: crisco@crisco.com
+  uid: 100
+  provider: fake
+
+abby:
+  name: abby
+  email: abby@abby.com
+  uid: 200
+  provider: fake
+
+becca:
+  name: becca
+  email: becca@becca.com
+  uid: 300
+  provider: fake
+
+shiba:
+  name: isabelle
+  email: isabelle@doge.com
+  uid: 400
+  provider: fake

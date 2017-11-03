@@ -1,0 +1,36 @@
+<section class="row spotlight">
+<div>
+  <h3><span class="media-spotlight-header">Media Spotlight: <%= link_to(@spotlight_work.title, work_path(@spotlight_work.id)) %>
+  </span>
+    <%= "by #{@spotlight_work.creator} " %>
+  </h3>
+  <p class="description">
+    <%= @spotlight_work.description %>
+  </p>
+  <p>
+    <%= @spotlight_work.votes.length %> votes
+  </p>
+</div>
+</section>
+<hr class="root-hr" />
+
+<% @works.each do |category, works| %>
+<section class="top-ten columns large-4 small-12">
+
+<% i = 1 %>
+  <h3><%= "Top #{category.capitalize}s" %></h3>
+  <hr class="root-hr">
+  <ul>
+    <% works.each do |work| %>
+    <% break if i > 10 %>
+    <li>
+      <h4><%= link_to(work.title, work_path(work.id)) %> </h4><small>by <%=work.creator %></small>
+    </h4>
+      <p><%=work.votes.length %> votes</p>
+    </li>
+    <% i += 1 %>
+    <% end %>
+  </ul>
+
+</section>
+  <%end %>
