@@ -1,7 +1,7 @@
 <div class="work-partial">
   <%= form_for @work do |f| %>
     <%= f.label :category %>
-    <%= f.text_field :category %>
+    <%= f.select :category, [['album'], ['book'], ['movie']] %>
 
     <%= f.label :title %>
     <%= f.text_field :title %>
