@@ -7,6 +7,9 @@ describe Work do
     it "has many votes" do
       work =  Work.new(title: "test")
       work.must_respond_to :votes
+      work.votes.each do |vote|
+        vote.must_be_kind_of Vote
+      end
     end
   end #end description
 
@@ -58,8 +61,9 @@ describe Work do
 
       works.must_be_kind_of Array
 
-      works.first.must_be_instance_of Work
-      works.last.must_be_instance_of Work
+      works.each do |work|
+        work.must_be_instance_of Work
+      end
 
       works.first.title.must_equal "test_record"
       works.last.title.must_equal "test_record"
@@ -80,8 +84,9 @@ describe Work do
 
       works.must_be_kind_of Array
 
-      works.first.must_be_instance_of Work
-      works.last.must_be_instance_of Work
+      works.each do |work|
+        work.must_be_instance_of Work
+      end
 
       works.last.title.must_equal "many"
       works.first.title.must_equal "indiana jones"
@@ -100,8 +105,21 @@ describe Work do
       #testing book
       works = Work.top_ten("book")
 
-      works.must_equal []
+      works.must_be_kind_of Array
+
+      works.each do |work|
+        work.must_be_instance_of Work
+      end
+
       works.length.must_be :<=, 10
     end
+
+    it "if no books in db returns []" do
+      Work.destroy_all
+
+      work = Work.top_ten("book")
+      work.must_equal []
+    end
+
   end
 end
