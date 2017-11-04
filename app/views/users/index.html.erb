@@ -8,8 +8,8 @@
   <% @users.each do |user| %>
     <tr>
       <td><%= link_to user.name, user_path(user.id) %></td>
-      <td><%= user.votes.count %></td>
-      <td><%= user.created_at %></td>
+      <td width="100"><%= user.votes.count %></td>
+      <td width="200"><%= user.created_at %></td>
     </tr>
   <% end %>
 </table>

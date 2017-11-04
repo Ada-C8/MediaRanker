@@ -112,15 +112,6 @@ a, h2 {
   padding: 0 2rem 2rem 2rem;
 }
 
-.columns {
-  width: 100%;
-  float: left;
-  padding-right: 0.625rem;
-  padding-left: 0.625rem;
-}
-.small-12 {
-  width: 100%;
-}
 
 article, aside, footer, header, nav, section {
     display: block;
@@ -136,6 +127,10 @@ a:hover {
 
 a, h3 {
     color: #26A69A;
+}
+
+h3 a {
+  text-decoration: underline;
 }
 
 .media-spotlight-header {
@@ -227,16 +222,9 @@ thead th, thead td, tfoot th, tfoot td {
 td, th {
     display: table-cell;
     vertical-align: inherit;
+    text-align: left;
 }
 
-
-.small-12 {
-    width: 100%;
-}
-
-.columns {
-    width: 100%;
-    float: left;
-    padding-right: 0.625rem;
-    padding-left: 0.625rem;
+td:last-of-type {
+  text-align: right;
 }

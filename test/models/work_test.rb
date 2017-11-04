@@ -50,10 +50,10 @@ describe Work do
     it "spotlight returns 'no work' when no works are present" do
       Work.destroy_all
 
-      Work.spotlight.must_equal "No media on website, please enter a media"
+      Work.spotlight.must_equal nil
     end
 
-    it "top_ten returns top_ten works in each category" do
+    it "top_ten returns top_ten works for Album" do
       works = Work.top_ten("album")
 
       works.must_be_kind_of Array
@@ -65,7 +65,16 @@ describe Work do
       works.last.title.must_equal "test_record"
 
       works.length.must_be :<=, 10
+    end
 
+    it "if no albums in db returns []" do
+      Work.destroy_all
+
+      work = Work.top_ten("album")
+      work.must_equal []
+    end
+
+    it "top_ten returns top_ten works for movie" do
       #testing movie
       works = Work.top_ten("movie")
 
@@ -74,11 +83,20 @@ describe Work do
       works.first.must_be_instance_of Work
       works.last.must_be_instance_of Work
 
-      works.first.title.must_equal "indiana jones"
       works.last.title.must_equal "many"
+      works.first.title.must_equal "indiana jones"
 
-      works.must_be :<=, 10
+      works.length.must_be :<=, 10
+    end
 
+    it "if no movies in db returns []" do
+      Work.destroy_all
+
+      work = Work.top_ten("movie")
+      work.must_equal []
+    end
+
+    it "top_ten returns top_ten works for book" do
       #testing book
       works = Work.top_ten("book")
 

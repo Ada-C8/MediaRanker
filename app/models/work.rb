@@ -13,7 +13,7 @@ class Work < ApplicationRecord
   def self.spotlight
     works = Work.all
     if works == []
-      return "No media on website, please enter a media"
+      return nil
     else
       spotlight = works.max_by {|work| work.votes.count}
 
