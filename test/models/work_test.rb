@@ -50,10 +50,10 @@ describe Work do
       Work.spotlight.title.must_equal "test_record"
     end
 
-    it "spotlight returns 'no work' when no works are present" do
+    it "spotlight returns 'nil' when no works are present" do
       Work.destroy_all
 
-      Work.spotlight.must_equal nil
+      Work.spotlight.must_be_nil
     end
 
     it "top_ten returns top_ten works for Album" do
@@ -65,17 +65,11 @@ describe Work do
         work.must_be_instance_of Work
       end
 
+      # test_record has 2 votes and stew has 1 vote
       works.first.title.must_equal "test_record"
-      works.last.title.must_equal "test_record"
+      works.last.title.must_equal "stew"
 
       works.length.must_be :<=, 10
-    end
-
-    it "if no albums in db returns []" do
-      Work.destroy_all
-
-      work = Work.top_ten("album")
-      work.must_equal []
     end
 
     it "top_ten returns top_ten works for movie" do
@@ -88,17 +82,12 @@ describe Work do
         work.must_be_instance_of Work
       end
 
-      works.last.title.must_equal "many"
+      #indiana jones has 1 vote and the rest of the movies have 0 votes
       works.first.title.must_equal "indiana jones"
+      works.last.title.must_equal "many"
+
 
       works.length.must_be :<=, 10
-    end
-
-    it "if no movies in db returns []" do
-      Work.destroy_all
-
-      work = Work.top_ten("movie")
-      work.must_equal []
     end
 
     it "top_ten returns top_ten works for book" do
@@ -111,14 +100,24 @@ describe Work do
         work.must_be_instance_of Work
       end
 
+      # HP1 has 2 votes and Love in the time has 1 vote
+      works.first.title.must_equal "HP1"
+      works.last.title.must_equal "Love in the time"
+
       works.length.must_be :<=, 10
     end
 
-    it "if no books in db returns []" do
+
+    it "if no media than returns an empty array for each category" do
       Work.destroy_all
 
-      work = Work.top_ten("book")
-      work.must_equal []
+      categories = ["album", "movie", "book"]
+
+      categories.each do |category|
+        work = Work.top_ten(category)
+        work.must_equal []
+      end
+
     end
 
   end

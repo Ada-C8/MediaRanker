@@ -5,13 +5,29 @@
 # below each fixture, per the syntax in the comments below
 #
 vote1:
-  user: user1
-  work: work1
+  user: user1 #angela
+  work: work1 #album test_record
 #
 vote2:
-  user: user2
-  work: work1
+  user: user2 #angela
+  work: work1 #album test_record
 
 vote3:
-  user: user2
-  work: work2
+  user: user2 #jordan
+  work: work2 #movie indiana jones
+
+vote4:
+  user: user1 #angela
+  work: work13 # movie stew
+
+vote5:
+  user: user1 #angela
+  work: work14 #book HP1
+
+vote6:
+  user: user2 #jordan
+  work: work14 #book HP1
+
+vote7:
+  user: user2 #jordan
+  work: work15 #book Love in the time
