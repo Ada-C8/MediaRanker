@@ -11,12 +11,4 @@ class User < ApplicationRecord
       return "must have work id"
     end
   end
-
-
-  def valid
-
-    if user_id > 0 && work_id > 0
-      return true
-    end
-  end
 end
