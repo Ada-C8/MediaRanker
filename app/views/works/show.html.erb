@@ -1,0 +1,45 @@
+
+</h3>
+<article class="voting-users columns large-6 small-12">
+  <h3>
+    <strong><%= @work.title %></strong>
+  </h3>
+
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_year %></p>
+    <p><%= @work.description %></p>
+
+  <section>
+    <%= link_to "Home", root_path, class: "button" %>
+    <%= link_to "Edit", edit_work_path, class: "button" %>
+    <%= link_to "UpVote", votes_path(work_id: @work.id), method: :post, class: "button" %>
+    <%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure?" }, class: "alert button" %>
+  </section>
+</article>
+
+<article class="voting-users columns large-6 small-12">
+<h3>
+  <%= @work.votes.count %> Votes for this <%= @work.category.capitalize %>
+</h3>
+
+
+  <table>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
+
+
+  <!-- Eager load users search rails eager loading -->
+      <% @work.votes.includes(:user).each do |vote| %>
+        <tr>
+          <strong>
+            <td><%= link_to vote.user.name, user_path(vote.user_id) %></td>
+            <td><%= vote.updated_at %></td>
+            <!-- <td><%= Vote.find(vote.user_id).updated_at %></td> -->
+          </strong>
+        </tr>
+      <% end %>
+
+  </table>
+</article>

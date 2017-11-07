@@ -1,0 +1,30 @@
+<h3>User Details: <%= link_to @user.name, user_path(@user.id) %></h3>
+<small>Joined site: <%= @user.created_at %></small>
+
+<h3>Votes</h3>
+<table>
+  <th> Media Title </th>
+  <th> Created By </th>
+  <th> Published </th>
+  <th> Category </th>
+  <th> Voted On </th>
+
+
+  <% @user.votes.each do |vote| %>
+    <tr>
+      <!-- the Work.find(...) definitely can be DRYed, maybe in a method. Given it is 9:15p and the code works, I am not going to sweat it.  -->
+      <td><%= link_to vote.work.title, work_path(vote.work.id) %></td>
+      <td><%= vote.work.creator %></td>
+      <td><%= vote.work.publication_year %></td>
+      <td><%= vote.work.category %></td>
+      <td><%= vote.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+  <div class="">
+
+    <%= link_to "View All Users", users_path, class: "button" %>
+
+    <%= link_to "Home", root_path, class: "button" %>
+  </div>

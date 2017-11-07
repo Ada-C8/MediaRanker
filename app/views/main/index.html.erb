@@ -1,0 +1,74 @@
+<!-- the code for work title, creator and votes could be DRYer. come back later to clean it up
+
+The code for Top media per category could be rolled into a partial. Do it later.-->
+
+
+<section class="row spotlight">
+  <div class="">
+
+    <% unless @spotlight %>
+      <h3>
+        <span class="media-spotlight-header"> Media Spotlight:</span> No Media
+      </h3>
+    <% else %>
+      <h3>
+        <span class="media-spotlight-header"> Media Spotlight:</span> <%= link_to @spotlight.title, work_path(@spotlight.id) %> by <%= @spotlight.creator %>
+      </h3>
+      <p><%= @spotlight.votes.count %> votes - <%= @spotlight.category %></p>
+    <% end %>
+  </div>
+</section>
+
+<hr class="root-hr" />
+
+
+
+<div class="row">
+
+  <section class="top-ten columns large-4 small-12">
+
+    <h2>
+      Top Albums
+    </h2>
+
+    <ul>
+      <% Work.top_ten("album").each do |work| %>
+        <li>
+          <%= link_to(work.title, work_path(work.id)) %> by: <%= work.creator %>
+          <p><%= work.votes.count %> votes</p>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+  <section class="top-ten columns large-4 small-12">
+
+    <h2>
+      Top Books
+    </h2>
+
+    <ul>
+      <% Work.top_ten("book").each do |work| %>
+        <li>
+          <%= link_to work.title, work_path(work.id)%> by: <%= work.creator %>
+          <p><%= work.votes.count %> votes</p>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section class="top-ten columns large-4 small-12">
+
+    <h2>
+      Top Movies
+    </h2>
+
+    <ul>
+      <% Work.top_ten("movie").each do |work| %>
+        <li>
+          <%= link_to work.title, work_path(work.id)%> by: <%= work.creator %>
+          <p><%= work.votes.count %> votes</p>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</div>

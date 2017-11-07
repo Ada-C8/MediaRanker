@@ -1,0 +1,111 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+work1:
+  category: album
+  title: test_record
+  creator: me
+  description: stuff
+  publication_year: 2017
+
+#
+work2:
+  category: movie
+  title: indiana jones
+  creator: speilberg
+  description: action-adventure
+  publication_year: 1987
+
+work3:
+  category: movie
+  title: trick
+  creator: speilberg
+  description: action-adventure
+  publication_year: 1987
+
+work4:
+  category: movie
+  title: treat
+  creator: speilberg
+  description: action-adventure
+  publication_year: 1987
+
+work5:
+  category: movie
+  title: wedding
+  creator: speilberg
+  description: action-adventure
+  publication_year: 1987
+
+work6:
+  category: movie
+  title: chair
+  creator: speilberg
+  description: action-adventure
+  publication_year: 1987
+
+work7:
+  category: movie
+  title: scare
+  creator: speilberg
+  description: action-adventure
+  publication_year: 1987
+
+work8:
+  category: movie
+  title: flar
+  creator: speilberg
+  description: action-adventure
+  publication_year: 1987
+
+work9:
+  category: movie
+  title: ouch
+  creator: speilberg
+  description: action-adventure
+  publication_year: 1987
+
+work10:
+  category: movie
+  title: too
+  creator: speilberg
+  description: action-adventure
+  publication_year: 1987
+
+work11:
+  category: movie
+  title: many
+  creator: speilberg
+  description: action-adventure
+  publication_year: 1987
+
+work12:
+  category: movie
+  title: slay
+  creator: speilberg
+  description: action-adventure
+  publication_year: 1987
+
+work13:
+  category: album
+  title: stew
+  creator: speilberg
+  description: action-adventure
+  publication_year: 1987
+
+work14:
+  category: book
+  title: HP1
+  creator: speilberg
+  description: action-adventure
+  publication_year: 1987
+
+work15:
+  category: book
+  title: Love in the time
+  creator: speilberg
+  description: action-adventure
+  publication_year: 1987
