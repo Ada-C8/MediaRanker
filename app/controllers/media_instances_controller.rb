@@ -6,6 +6,9 @@ class MediaInstancesController < ApplicationController
 
   def show
     @media_instance = MediaInstance.find(params[:id])
+    unless @media_instance
+      redirect_to root_path, status: :not_found
+    end
   end
 
 
@@ -23,6 +26,7 @@ class MediaInstancesController < ApplicationController
       flash.now[:status] = :failure
       flash.now[:message] = "Failed to create media"
       flash.now[:details] = @media_instance.errors.messages
+      puts flash.now[:details]
       render :new, status: :bad_request
     end
   end
@@ -77,7 +81,7 @@ class MediaInstancesController < ApplicationController
   end
 
   def get_music
-      @media_instances = MediaInstance.where(media_type: "music")
+    @media_instances = MediaInstance.where(media_type: "music")
   end
 
   def get_movies

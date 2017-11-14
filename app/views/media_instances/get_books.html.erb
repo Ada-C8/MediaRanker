@@ -1,13 +1,17 @@
+<div class="category-holder">
+
+
 <h1>Books</h1>
 
-<section>
+<section class = "category-box">
 
-  <ul>
+  <ul class = "wrap row small-up-2 medium-up-3 large-up-4">
     <% @media_instances.each do |book| %>
-    <li>
+    <li class="column column-block">
         <%= link_to book.title, media_instance_path(book.media_type, book.id) %>
     </li>
     <% end %>
   </ul>
 
 </section>
+</div>

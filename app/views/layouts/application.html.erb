@@ -1,39 +1,41 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>MediaRanker</title>
-    <%= csrf_meta_tags %>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
 
-  <body>
-    <header class = "row">
-      <h1>
-        <%= link_to "Top Media", root_path %>
-        </h1>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<header>
+<article class="small-12 medium-12 large-12 columns top-section">
 
 
-        <nav class="top-bar" data-topbar role="navigation" >
-          <ul>
-            <li > <%= link_to "Books", books_path , class: "button" %> </li>
-            <li ><%= link_to "Movies", movies_path , class: "button" %>  </li>
-            <li ><%= link_to "Music", music_path ,  class: "button"  %> </li>
-            <li><%= link_to "Add Media",  new_media_instance_path(media_type: "book"),  class: "button"  %> </li>
-            <% if session[:user] %>
-              <li class = "right button"> <%= link_to "Log Out", logout_path,  class: "button" %> </li>
-            <% else %>
-            <li class = "right button"><%= link_to "Log In", '/auth/github',  class: "button" %> </li>
-              <% end %>
-          </ul>
-          </nav>
+  <div class="top-words">
+    <h1 class = "big-title"><em><%= link_to 'Best Things Ever', root_path %></em></h1>
+  </div>
 
-    </header>
-    <%= yield %>
-  </body>
 
-  <footer>
-    &copy 2017
-  </footer>
+
+
+
+</article>
+<%= render 'layouts/navigation' %>
+</header>
+<main>
+
+  <%= yield %>
+</main>
+
+<footer>
+  <div class="wrap-row small-up-1">
+    <div class="edamam">
+      <p class="edamam">Powered by Edamam</p>
+    </div>
+  </div>
+</footer>
+
 </html>

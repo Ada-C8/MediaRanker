@@ -1,63 +1,70 @@
 <!-- this is the main page and should have the top ten of each style of media -->
-<article class="small-12 medium-12 large-12 columns">
-<h2>Feature</h2>
-<feature class="small-12 columns center">
+
+
+
+<div class="small-12 columns center">
+  <h2>Feature</h2>
   <% if @feature %>
-<%= link_to @feature.title, media_instance_path(@feature.media_type, @feature.id) %> by <%= @feature.creator %>
-<% end %>
-</feature>
-</article>
-<article class="small-12 medium-12 large-4 columns">
-  <h2>Books</h2>
+    <p>
+      <%= link_to @feature.title, media_instance_path(@feature.media_type, @feature.id) %> by <%= @feature.creator %>
+    </p>
+  <% end %>
+</div>
 
- <ol>
+<div class="wrap row small-up-1 medium-up-3 large-up-3 media-types">
 
-  <% @books.each do |instance| %>
-   <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id) %>, Votes: <%= instance.votes.count %>
-     <% if session[:user].nil? %>
-     <p>
-       log in to vote
-     </p>
-     <% else %>
-     <%= vote_button(instance, session[:user]['id']) %>
-     <% end %>
-   </li>
-    <% end %>
- </ol>
+  <article class="column column-block">
+    <h2>Books</h2>
 
-</article>
+    <ol>
 
-<article class="small-12 medium-12 large-4 columns">
-  <h2>Movies</h2>
-  <ol>
-   <% @movies.each do |instance| %>
-    <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id)%>, Votes: <%= instance.votes.count %>
-      <% if session[:user].nil? %>
-      <p>
-        log in to vote
-      </p>
-      <% else %>
-      <%= vote_button(instance, session[:user]['id']) %>
+      <% @books.each do |instance| %>
+      <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id) %>, Votes: <%= instance.votes.count %>
+        <% if session[:user].nil? %>
+        <p>
+          log in to vote
+        </p>
+        <% else %>
+        <%= vote_button(instance, session[:user]['id']) %>
+        <% end %>
+      </li>
       <% end %>
-    </li>
-     <% end %>
-  </ol>
-</article>
+    </ol>
 
-<article class="small-12 medium-12 large-4 columns">
-  <h2>Music</h2>
-  <ol>
-   <% @music.each do |instance| %>
-    <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id) %>, Votes: <%= instance.votes.count %>
-      <% if session[:user].nil? %>
-      <p>
-        log in to vote
-      </p>
-      <% else %>
-      <%= vote_button(instance, session[:user]['id']) %>
+  </article>
+
+  <article class="column column-block">
+    <h2>Movies</h2>
+    <ol>
+      <% @movies.each do |instance| %>
+      <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id)%>, Votes: <%= instance.votes.count %>
+        <% if session[:user].nil? %>
+        <p>
+          log in to vote
+        </p>
+        <% else %>
+        <%= vote_button(instance, session[:user]['id']) %>
+        <% end %>
+      </li>
       <% end %>
-    </li>
+    </ol>
+  </article>
+
+  <article class="column column-block">
+    <h2>Music</h2>
+    <ol>
+      <% @music.each do |instance| %>
+      <li><%= link_to instance.title, media_instance_path(instance.media_type, instance.id) %>, Votes: <%= instance.votes.count %>
+        <% if session[:user].nil? %>
+        <p>
+          log in to vote
+        </p>
+        <% else %>
+        <%= vote_button(instance, session[:user]['id']) %>
+        <% end %>
+      </li>
       <% end %>
 
-  </ol>
+    </ol>
+  </div>
 </article>

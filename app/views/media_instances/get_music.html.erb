@@ -1,14 +1,18 @@
+<div class="category-holder">
+
+
 <h1>Music</h1>
 
 
-<section>
+<section class = "category-box">
 
-  <ul>
+  <ul class = "wrap row small-up-2 medium-up-3 large-up-4">
     <% @media_instances.each do |music| %>
-    <li>
+    <li class="column column-block">
         <%= link_to music.title, media_instance_path(music.media_type, music.id) %>
     </li>
     <% end %>
   </ul>
 
 </section>
+</div>
