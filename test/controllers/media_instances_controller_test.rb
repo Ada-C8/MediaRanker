@@ -24,14 +24,14 @@ describe "MediaInstancesController" do
 
     it "returns something when given a bogus user_id" do
       bad_user_id = User.last.id + 1
-      get user_media_instances_path(bad_user_id)
+      get media_instances_path(id: bad_user_id, media_type: "book")
       must_respond_with :not_found
     end
   end
 
   describe "new" do
     it "works with an user id" do
-
+      binding.pry
       get new_media_instance_path({title: "The Giver", media_type: "book", user: User.first.id})
       must_respond_with :success
     end
@@ -117,9 +117,11 @@ describe "MediaInstancesController" do
     it "returns success when given a valid media_instance ID" do
       # Arrange
       media_instance_id = MediaInstance.first.id
+      # media_instance_type = MediaInstance.first.media_type
+# binding.pry
 
       # Act
-      get edit_media_instance_path(media_instance_id)
+      get edit_media_instance_path(:id => media_instance_id, :media_type => "book")
 
       # Assert
       must_respond_with :success
@@ -127,7 +129,7 @@ describe "MediaInstancesController" do
 
     it "returns not_found when given an invalid media_instance ID" do
       invalid_media_instance_id = MediaInstance.last.id + 1
-      get edit_media_instance_path(invalid_media_instance_id)
+      get edit_media_instance_path(:id => invalid_media_instance_id, :media_type => "book")
       must_respond_with :not_found
     end
   end

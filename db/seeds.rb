@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'csv'
+media_file = Rails.root.join('db', 'media_seeds.csv')
+
+CSV.foreach(media_file, headers: true, header_converters: :symbol, converters: :all) do |row|
+  data = Hash[row.headers.zip(row.fields)]
+  puts data
+  MediaInstance.create!(data)
+end

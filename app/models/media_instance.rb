@@ -3,7 +3,7 @@ class MediaInstance < ApplicationRecord
   has_many :votes, dependent: :destroy
 
   def self.ten_by_type(type)
-    where(media_type: type).sort{|instance| instance.votes.count}.reverse
+    (where(media_type: type).sort{|instance| instance.votes.count}.reverse)[0..4]
   end
 
 end

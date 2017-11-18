@@ -1,19 +1,17 @@
 class MediaInstancesController < ApplicationController
   def index
     @media_instances = MediaInstance.all
-
   end
 
   def show
-    @media_instance = MediaInstance.find(params[:id])
-    unless @media_instance
+    if MediaInstance.exists?(params[:id])
+      @media_instance = MediaInstance.find(params[:id])
+    else
       redirect_to root_path, status: :not_found
     end
   end
 
-
   def new
-
     # use strong params to limit the fields that the user can populate with data
     @media_instances = MediaInstance.all
     @media_instance = MediaInstance.new
@@ -45,12 +43,14 @@ class MediaInstancesController < ApplicationController
       flash.now[:details] = @media_instance.errors.messages
       render :new, status: :bad_request
     end
-
   end
 
   def edit
-    @media_instances = MediaInstance.all
-    @media_instance = MediaInstance.find(params[:id])
+    if MediaInstance.exists?(params[:id])
+      @media_instance = MediaInstance.find(params[:id])
+    else
+      redirect_to root_path, status: :not_found
+    end
   end
 
   def update
@@ -64,7 +64,14 @@ class MediaInstancesController < ApplicationController
   end
 
   def destroy
+
     current_user = nil
+    if MediaInstance.exists?(params[:id])
+      @media_instance = MediaInstance.find(params[:id])
+    else
+      redirect_to root_path, status: :not_found
+    end
+
     if session[:logged_in_user]
       current_user = User.find_by(id:session[:logged_in_user])
 
