@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+twilight:
+  category: book
+  title: Twilight
+  creator: Stephenie Meyer
+  publication_year: 2005
+  description: Young Adult Vampire Fic
+
+harry_potter:
+  category: book
+  title: Harry Potter
+  creator: JK Rowling
+  publication_year: 1997
+  description: Young Adult Wizard Fic

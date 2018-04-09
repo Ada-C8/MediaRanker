@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: fanGirl
+  work: twilight
+
+two:
+  user: fanBoy
+  work: twilight

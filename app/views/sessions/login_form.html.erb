@@ -1,0 +1,17 @@
+<main class="row">
+
+<h2>Login</h2>
+
+<%= form_tag do %>
+<%= label_tag(:name, "Username") %>
+<%= text_field_tag(:name) %>
+<%= submit_tag("Log In", class: "button") %>
+<% end %>
+
+<article>
+  <h4>A note about logging in</h4>
+  <p>
+    You must log in to vote. No password is required. Username is not guaranteed to be secure and access to your account is not guaranteed. Do not submit personally identifying or sensitive information.
+  </p>
+</article>
+</main>

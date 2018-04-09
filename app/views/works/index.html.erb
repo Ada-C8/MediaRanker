@@ -1,0 +1,125 @@
+<main class="row">
+
+  <section class="media-table">
+
+    <% if @works.blank? %>
+    <h3>Search Results</h3>
+    <h4>There are no works containing the term <%= params[:search] %>.</h4>
+
+    <% elsif params[:search] %>
+    <h3>Search Results</h3>
+    <h5>Works / Search: <%= params[:search] %></h5>
+
+    <table>
+      <thead>
+        <tr>
+          <th width="80">Vote </th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @works.each do |work| %>
+        <tr>
+          <td><%= work.votes.length %> </td>
+          <td><%= link_to(work.title, work_path(work.id), alt: "link to work show page") %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td><%= link_to("Upvote", work_votes_path(work.id), method: :post, alt: "link to upvote this work", class: "button upvote")%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </section>
+
+  <% else %>
+  <h3>List of Works</h3>
+  <section class="media-table">
+
+    <h4>Albums</h4>
+    <table>
+      <thead>
+        <tr>
+          <th width="80">Vote </th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @works.where(category: "album").each do |work| %>
+        <tr>
+          <td><%= work.votes.length %> </td>
+          <td><%= link_to(work.title, work_path(work.id), alt: "link to work show page") %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td><%= link_to("Upvote", work_votes_path(work.id), method: :post, alt: "link to upvote this work", class: "button upvote")%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="media-table">
+
+    <h4>Books</h4>
+    <table>
+      <thead>
+        <tr>
+          <th width="80">Vote </th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @works.where(category: "book").each do |work| %>
+        <tr>
+          <td><%= work.votes.length %> </td>
+          <td><%= link_to(work.title, work_path(work.id), alt: "link to work show page") %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td><%= link_to("Upvote", work_votes_path(work.id), method: :post, alt: "link to upvote this work", class: "button upvote")%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="media-table">
+
+    <h4>Movies</h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th width="80">Vote </th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @works.where(category: "movie").each do |work| %>
+        <tr>
+          <td><%= work.votes.length %></td>
+          <td><%= link_to(work.title, work_path(work.id), alt: "link to work show page") %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td><%= link_to("Upvote", work_votes_path(work.id), method: :post, alt: "link to upvote this work", class: "button upvote")%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= button_to("View top media", root_path, method: :get, alt: "link to home page", class: "button") %>
+
+    <%= button_to("Add a new work", new_work_path, method: :get, alt: "link to create new work", class: "button") %>
+  </section>
+  <% end %>
+</main>

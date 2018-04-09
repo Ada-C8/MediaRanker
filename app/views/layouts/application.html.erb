@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'owl.jpg'%>
+
+<link rel="stylesheet" media="screen" href="/assets/application-0338439e9a7e99f56d844ee54a97af49fa77e63fbafd7054c630594f82025955.css">
+<link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One">
+<link rel="stylesheet" media="all" href="/assets/application-0338439e9a7e99f56d844ee54a97af49fa77e63fbafd7054c630594f82025955.css" data-turbolinks-track="reload">
+<script src="/assets/application-acf35f2eda959e19835276b6ab695a4529b77e663b5d3b69a7685f02900c9c71.js" data-turbolinks-track="reload"></script>
+
+  </head>
+
+  <body>
+    <header class="page-header row">
+
+    <h2 class="columns small-12"> <%= link_to("Media Ranker", root_path, alt: "link to home page") %> <small>Ranking the Best of Everything</small></h2>
+    <nav class="columns small-12">
+      <%= button_to("View top media", root_path, method: :get, alt: "link to home page", class: "button") %>
+      <%= button_to("View all media", works_path, method: :get, alt: "link to index page", class: "button") %>
+      <%= button_to("Add a new work", new_work_path, method: :get, alt: "link to add a new work", class: "button") %>
+      <%= button_to("View all users", users_path, method: :get, alt: "link to user index", class: "button") %>
+      <div class="float-right">
+        <%= button_to((session[:user_id] == nil ? "Log In" : "Logged in as #{session[:name]}"), (session[:user_id] == nil ? login_path : user_path((session[:user_id]))), method: :get, alt: "link to user summary", class: "button") %>
+        <% if session[:user_id] != nil %> <%= button_to("Log Out", logout_path, method: :post, alt: "link to log out", class: "button") %>
+        <% end %>
+        <%= form_tag(works_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: raw("Search") %>
+        <% end %>
+      </div>
+    </nav>
+  </header>
+
+  <% unless flash.empty? %>
+  <section class="flash" >
+      <% flash.each do |name, message| %>
+        <div class=<%= name %> ><%= message %></div>
+      <% end %>
+<% end %>
+</section>
+
+
+    <%= yield %>
+  </body>
+</html>
