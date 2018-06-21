@@ -1,0 +1,36 @@
+<main class = "row">
+
+
+<h3>List of Users</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th width = 100>Votes</th>
+      <th width = 200>Joined</th>
+    </tr>
+  </thead>
+
+  <tr>
+      <%users = User.all%>
+      <% users.each do |user| %>
+    <th>
+      <%= link_to user.name, user_path(user.id), class: "link"%>
+    </th>
+    <th>
+      <%=user.vote.count%>
+    </th>
+    <th>
+      <%= user.created_at.strftime("%b %d, %Y") %>
+    </th>
+  </tr>
+
+    <%end%>
+  </table>
+
+  <div class="buttons">
+  <%= link_to "Back to Media List", root_path,   class: "button"%>
+  </div>
+
+</main>

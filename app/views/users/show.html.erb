@@ -1,0 +1,47 @@
+<main class = "user row">
+
+<h3>User summary: <%=@user.name%></h3>
+<p>Joined Site <%=@user.created_at.strftime("%b %d, %Y")%></p>
+<h4>Votes</h4>
+<table>
+  <thead>
+
+  <tr>
+    <th>Media Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Category</th>
+    <th>Voted On</th>
+  </tr>
+</thead>
+  <tr>
+    <% votes = Vote.where(user_id: @user.id) %>
+      <% votes.each do |vote| %>
+
+    <th>
+      <%= link_to Work.find_by_id(vote.work_id).title, work_path(vote.work_id), class: "link"%>
+    </th>
+    <th>
+      <%= Work.find_by_id(vote.work_id).creator%>
+    </th>
+    <th>
+      <%= Work.find_by_id(vote.work_id).pub_year%>
+    </th>
+    <th>
+      <%= Work.find_by_id(vote.work_id).category%>
+    </th>
+    <th>
+      <%= vote.updated_at.strftime("%b %d, %Y") %>
+    </th>
+    </tr>
+    <%end%>
+  </table>
+
+<div class="buttons">
+
+    <%= link_to "View all Media",   works_path,   class: "button"%>
+    <%= link_to "View all users", users_path, class: "button"%>
+
+  </div>
+
+  </main>
