@@ -1,0 +1,30 @@
+<div class = "category-holder">
+  <h2>All Media</h2>
+
+  <section class = "category-box">
+    <ul class="wrap row small-up-1 medium-up-3 large-up-3 media-types">
+      <% @media_instances.each do |instance| %>
+      <div class="column column-block">
+
+      <li>
+        <%= instance.title %> - <%= instance.votes.count %>
+        <%#= link_to "instance.title", media_instances_path(instance.id) %>
+      </li>
+      <li>
+        <%= instance.creator %>
+      </li>
+      <li>
+        <% if session[:user].nil? %>
+        <p>You must log in to vote</p>
+        <% else %>
+        <%= form_for [instance, User.find(session[:user]['id']), Vote.new] do |f| %>
+          <%= f.submit "Upvote", class:'success button' %>
+          <% end %>
+        <% end %>
+        <!-- so I'm in the index page.  instance has the variables that I need as well as the logged in user.  How do I grab these two variables and put them in the  vote.create route -->
+      </li>
+        </div>
+      <% end %>
+    </ul>
+  </section>
+</div>

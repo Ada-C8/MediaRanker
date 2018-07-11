@@ -1,0 +1,17 @@
+<nav class="top-bar wrap-row small-up-1" data-topbar role="navigation" >
+  <ul>
+    <li><%= link_to "Home", root_path, class: "button" %></li>
+    <li > <%= link_to "Books", books_path , class: "button" %> </li>
+    <li ><%= link_to "Movies", movies_path , class: "button" %>  </li>
+    <li ><%= link_to "Music", music_path ,  class: "button"  %> </li>
+    <li><%= link_to "Add Media",  new_media_instance_path(media_type: "book"),  class: "button"  %> </li>
+  </ul>
+
+  <ul>
+    <% if session[:user] %>
+    <li> <%= link_to "Log Out", logout_path,  class: "button" %> </li>
+    <% else %>
+    <li><%= link_to "Log In", '/auth/github',  class: "button" %> </li>
+    <% end %>
+  </ul>
+</nav>

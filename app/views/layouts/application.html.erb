@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<header>
+<article class="small-12 medium-12 large-12 columns top-section">
+
+
+  <div class="top-words">
+    <h1 class = "big-title"><em><%= link_to 'Best Things Ever', root_path %></em></h1>
+  </div>
+
+
+
+
+
+</article>
+<%= render 'layouts/navigation' %>
+</header>
+<main>
+
+  <%= yield %>
+</main>
+
+<footer>
+  <div class="wrap-row small-up-1">
+    <div class="name">
+      <p>2017</p>
+    </div>
+  </div>
+</footer>
+
+</html>
